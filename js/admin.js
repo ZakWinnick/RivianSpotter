@@ -2,7 +2,7 @@
 
 // Configuration
 const API_URL = '/api/locations.php';
-const ADMIN_TOKEN = 'your-secret-admin-token-here'; // Must match the token in locations.php
+const ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c'; // Must match the token in locations.php
 
 // State Management
 let locations = [];
