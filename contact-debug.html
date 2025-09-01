@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Debug - Rivian Spotter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Contact Form Debugger</h1>
+    
+    <div class="debug-section">
+        <h2>1. Test PHP Installation</h2>
+        <p>First, let's check if PHP is working on your server:</p>
+        <button onclick="testPHP()">Test PHP</button>
+        <div id="phpResult" class="result" style="display:none;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>2. Test Contact Handler</h2>
+        <p>Test if the contact-handler.php file is accessible:</p>
+        <button onclick="testContactHandler()">Test Contact Handler</button>
+        <div id="handlerResult" class="result" style="display:none;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>3. Test Form Submission</h2>
+        <p>Try sending a test message:</p>
+        
+        <form id="testForm">
+            <label>Name:</label>
+            <input type="text" id="name" value="Test User" required>
+            
+            <label>Email:</label>
+            <input type="email" id="email" value="test@example.com" required>
+            
+            <label>Message:</label>
+            <textarea id="message" required>This is a test message from the debugger.</textarea>
+            
+            <button type="submit" style="margin-top: 10px;">Send Test Message</button>
+        </form>
+        
+        <div id="formResult" class="result" style="display:none;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>4. Server Information</h2>
+        <button onclick="showServerInfo()">Show Server Info</button>
+        <div id="serverInfo" class="result info" style="display:none;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>5. Alternative Solutions</h2>
+        <div class="result warning">
+            <strong>If PHP is not working, you have these alternatives:</strong>
+            
+            1. <strong>Use a Form Service:</strong>
+               - Formspree (https://formspree.io) - Free tier available
+               - Netlify Forms (if hosting on Netlify)
+               - Google Forms embedded
+            
+            2. <strong>Use EmailJS:</strong>
+               - Client-side email sending (https://emailjs.com)
+               - No backend required
+            
+            3. <strong>Static Site Solution:</strong>
+               - Use a serverless function (Netlify/Vercel)
+               - AWS Lambda with API Gateway
+            
+            4. <strong>Check with your host:</strong>
+               - Ensure PHP is enabled
+               - Check PHP version (need 7.0+)
+               - Verify mail() function is enabled
+        </div>
+    </div>
+
+    <script>
+        // Test basic PHP
+        async function testPHP() {
+            const resultDiv = document.getElementById('phpResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result info';
+            resultDiv.textContent = 'Testing PHP...';
+            
+            try {
+                const response = await fetch('/test-contact.php');
+                const text = await response.text();
+                
+                try {
+                    const data = JSON.parse(text);
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = '✓ PHP is working!\n' + JSON.stringify(data, null, 2);
+                } catch (e) {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = '✗ PHP file found but returned invalid JSON:\n' + text;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '✗ Cannot reach PHP file. Error: ' + error.message + 
+                    '\n\nThis means either:\n' +
+                    '1. PHP is not installed/enabled on your server\n' +
+                    '2. The test-contact.php file is not in the root directory\n' +
+                    '3. File permissions are incorrect';
+            }
+        }
+        
+        // Test contact handler
+        async function testContactHandler() {
+            const resultDiv = document.getElementById('handlerResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result info';
+            resultDiv.textContent = 'Testing contact handler...';
+            
+            try {
+                // First try GET to see if file exists
+                const response = await fetch('/contact-handler.php', {
+                    method: 'GET'
+                });
+                
+                if (response.status === 405) {
+                    // This is good - means file exists but doesn't accept GET
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = '✓ Contact handler found and responding correctly!';
+                } else if (response.status === 200) {
+                    const text = await response.text();
+                    resultDiv.className = 'result warning';
+                    resultDiv.textContent = '⚠ File found but may not be configured correctly:\n' + text;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = '✗ HTTP ' + response.status + ' - File may not exist or has errors';
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '✗ Cannot reach contact handler: ' + error.message;
+            }
+        }
+        
+        // Test form submission
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('formResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result info';
+            resultDiv.textContent = 'Sending test message...';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: 'general',
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                const response = await fetch('/contact-handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+                
+                try {
+                    const data = JSON.parse(responseText);
+                    
+                    if (data.success) {
+                        resultDiv.className = 'result success';
+                        resultDiv.textContent = '✓ Form submission successful!\n' + 
+                            JSON.stringify(data, null, 2);
+                    } else {
+                        resultDiv.className = 'result warning';
+                        resultDiv.textContent = '⚠ Form processed but returned error:\n' + 
+                            JSON.stringify(data, null, 2);
+                    }
+                } catch (e) {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = '✗ Invalid JSON response:\n' + responseText + 
+                        '\n\nThis might mean there\'s a PHP error. Check PHP error logs.';
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '✗ Network error: ' + error.message + 
+                    '\n\nDetails:\n' + error.stack;
+            }
+        });
+        
+        // Show server info
+        function showServerInfo() {
+            const infoDiv = document.getElementById('serverInfo');
+            infoDiv.style.display = 'block';
+            
+            const info = {
+                'Current URL': window.location.href,
+                'Protocol': window.location.protocol,
+                'Hostname': window.location.hostname,
+                'Port': window.location.port || 'default',
+                'User Agent': navigator.userAgent,
+                'Local Testing': window.location.hostname === 'localhost' || 
+                                window.location.hostname === '127.0.0.1'
+            };
+            
+            let output = '';
+            for (const [key, value] of Object.entries(info)) {
+                output += `${key}: ${value}\n`;
+            }
+            
+            if (info['Local Testing']) {
+                output += '\n⚠ WARNING: You\'re testing locally. Make sure:\n';
+                output += '1. You have a local PHP server running (XAMPP, MAMP, etc.)\n';
+                output += '2. Files are in the correct directory\n';
+                output += '3. PHP mail() won\'t work locally without configuration';
+            }
+            
+            infoDiv.textContent = output;
+        }
+    </script>
+</body>
+</html>
