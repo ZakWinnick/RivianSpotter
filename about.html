@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rivian Spotter</title>
+    <meta name="description" content="Learn about Rivian Spotter - the community-driven platform for finding Rivian Spaces and Service Centers.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo">
+                <div class="logo-dot"></div>
+                Rivian Spotter
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Map</a>
+                <a href="/about.html" class="nav-link active">About</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+            </nav>
+        </header>
+        
+        <div class="page-content">
+            <h1 class="page-title">About Rivian Spotter</h1>
+            
+            <div class="page-section">
+                <h2>Our Mission</h2>
+                <p>
+                    Rivian Spotter is a community-driven platform designed to help Rivian enthusiasts, owners, and 
+                    prospective buyers easily find and explore Rivian Spaces and Service Centers across the United States.
+                </p>
+                <p>
+                    Whether you're looking to test drive a vehicle, schedule service, or simply explore the nearest 
+                    Rivian location, our interactive map makes it simple to discover what's available near you.
+                </p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalLocations">35+</div>
+                    <div class="stat-label">Total Locations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalStates">20+</div>
+                    <div class="stat-label">States Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalSpaces">25+</div>
+                    <div class="stat-label">Rivian Spaces</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalOutposts">10+</div>
+                    <div class="stat-label">Service Centers</div>
+                </div>
+            </div>
+            
+            <div class="page-section">
+                <h2>What We Track</h2>
+                <p><strong>Rivian Spaces:</strong> Retail locations where you can explore vehicles, schedule test drives, 
+                shop for merchandise, and connect with Rivian specialists. These are typically found in shopping centers 
+                and high-traffic retail areas.</p>
+                
+                <p><strong>Service Centers (Outposts):</strong> Dedicated service facilities where Rivian owners can 
+                schedule maintenance, repairs, and receive support from certified technicians. Some locations also 
+                serve as delivery centers.</p>
+                
+                <p><strong>Factory Locations:</strong> Manufacturing facilities in Normal, Illinois and Social Circle, 
+                Georgia (coming soon) where Rivian vehicles are produced.</p>
+            </div>
+            
+            <div class="page-section">
+                <h2>Features</h2>
+                <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Interactive map with all current Rivian locations</li>
+                    <li>Search by city, state, or location name</li>
+                    <li>Filter between Spaces and Service Centers</li>
+                    <li>Get directions to any location</li>
+                    <li>View hours of operation and contact information</li>
+                    <li>Mobile-responsive design for on-the-go access</li>
+                </ul>
+            </div>
+            
+            <div class="page-section">
+                <h2>Coming Soon</h2>
+                <p>We're constantly working to improve Rivian Spotter. Future features include:</p>
+                <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
+                    <li>User photo submissions and reviews</li>
+                    <li>Event listings for local Rivian meetups</li>
+                    <li>Service appointment availability checker</li>
+                    <li>iOS and Android mobile apps</li>
+                    <li>Email notifications for new locations</li>
+                    <li>Community forum for owners</li>
+                </ul>
+            </div>
+            
+            <div class="page-section">
+                <h2>Disclaimer</h2>
+                <p style="font-size: 0.9rem; font-style: italic;">
+                    Rivian Spotter is an independent, community-driven project and is not affiliated with, endorsed by, 
+                    or sponsored by Rivian Automotive, Inc. All trademarks, service marks, and company names are the 
+                    property of their respective owners. Location information is gathered from public sources and may 
+                    not always be current. Please verify hours and availability directly with Rivian locations before visiting.
+                </p>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p class="footer-text">
+                © 2024 Rivian Spotter • Made with ❤️ by the Rivian community • 
+                <a href="/contact.html" style="color: #666;">Contact</a> • 
+                <a href="/about.html" style="color: #666;">About</a>
+            </p>
+        </footer>
+    </div>
+    
+    <!-- Load location data for stats -->
+    <script src="js/locations.js"></script>
+    <script>
+        // Update stats with real data
+        document.getElementById('totalLocations').textContent = rivianLocations.length;
+        document.getElementById('totalStates').textContent = [...new Set(rivianLocations.map(l => l.state))].length;
+        document.getElementById('totalSpaces').textContent = rivianLocations.filter(l => l.type === 'Space').length;
+        document.getElementById('totalOutposts').textContent = rivianLocations.filter(l => l.type === 'Outpost').length;
+    </script>
+</body>
+</html>

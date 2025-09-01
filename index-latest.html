@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivian Spotter - Find Rivian Spaces & Outposts</title>
+    <meta name="description" content="Interactive map of all Rivian Spaces and Service Centers across the United States. Find locations, hours, and services.">
+    
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Additional styles for services */
+        .location-services {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .service-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .popup-services {
+            margin: 0.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .popup-service-tag {
+            background: #f0f7ff;
+            color: #1976d2;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo">
+                <div class="logo-dot"></div>
+                Rivian Spotter
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link active">Map</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="#" class="nav-link" id="statsLink">Stats</a>
+            </nav>
+        </header>
+        
+        <div class="map-container">
+            <div class="sidebar" id="sidebar">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Search by city, state, or name..."
+                    />
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Space">Spaces</button>
+                    <button class="filter-btn" data-filter="Outpost">Outposts</button>
+                    <button class="filter-btn" data-filter="Service Center">Service Centers</button>
+                </div>
+                
+                <div class="location-stats" id="locationStats">
+                    <!-- Stats will be inserted here -->
+                </div>
+                
+                <div class="location-list" id="locationList">
+                    <!-- Locations will be inserted here -->
+                </div>
+            </div>
+            
+            <div id="map"></div>
+        </div>
+    </div>
+    
+    <!-- Mapbox GL JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    
+    <!-- Location Data -->
+    <script src="js/locations.js"></script>
+    
+    <!-- Main Application -->
+    <script>
+        // Initialize Mapbox
+        mapboxgl.accessToken = 'pk.eyJ1IjoiemFrd2lubmljayIsImEiOiJjbWYxYzV5bmQxZGwzMmxxNHBieHp3NDI2In0.YAzo3vcGSqaNxZyz4GA7xg';
+        
+        // Global variables
+        let map;
+        let markers = [];
+        let currentFilter = 'all';
+        let searchTerm = '';
+        
+        // Initialize map
+        function initMap() {
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/light-v11',
+                center: [-98.5795, 39.8283], // Center of USA
+                zoom: 4
+            });
+            
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+            
+            // Add all markers
+            addMarkers(rivianLocations);
+            
+            // Fit map to show all locations
+            const bounds = new mapboxgl.LngLatBounds();
+            rivianLocations.forEach(location => {
+                bounds.extend([location.lng, location.lat]);
+            });
+            map.fitBounds(bounds, { padding: 50 });
+        }
+        
+        // Add markers to map
+        function addMarkers(locations) {
+            // Clear existing markers
+            markers.forEach(marker => marker.remove());
+            markers = [];
+            
+            locations.forEach(location => {
+                // Create custom marker element
+                const el = document.createElement('div');
+                el.className = `marker ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}`;
+                el.innerHTML = `
+                    <svg class="marker-icon" viewBox="0 0 24 24">
+                        ${location.type === 'Space' 
+                            ? '<path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>'
+                            : '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>'
+                        }
+                    </svg>
+                `;
+                
+                // Create services HTML for popup
+                const servicesHtml = location.services && location.services.length > 0 
+                    ? `<div class="popup-services">
+                        ${location.services.map(service => 
+                            `<span class="popup-service-tag">${service}</span>`
+                        ).join('')}
+                       </div>`
+                    : '';
+                
+                // Create popup
+                const popupContent = `
+                    <div class="popup-content">
+                        <div class="popup-type ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}">${location.type}</div>
+                        <div class="popup-name">${location.name}</div>
+                        <div class="popup-address">
+                            ${location.address}<br>
+                            ${location.city}
+                        </div>
+                        ${location.phone ? `<div style="font-size: 0.85rem; color: #666;">${location.phone}</div>` : ''}
+                        ${location.hours ? `<div style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;">${location.hours}</div>` : ''}
+                        ${servicesHtml}
+                        <button class="popup-button" style="margin-top: 0.75rem;" onclick="window.open('https://maps.google.com/?q=${encodeURIComponent(location.address + ' ' + location.city)}', '_blank')">
+                            Get Directions
+                        </button>
+                    </div>
+                `;
+                
+                const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent);
+                
+                // Add marker to map
+                const marker = new mapboxgl.Marker(el)
+                    .setLngLat([location.lng, location.lat])
+                    .setPopup(popup)
+                    .addTo(map);
+                
+                // Add click handler
+                el.addEventListener('click', () => {
+                    highlightLocation(location.id);
+                });
+                
+                markers.push({ marker, location });
+            });
+        }
+        
+        // Filter locations
+        function filterLocations() {
+            const filtered = rivianLocations.filter(location => {
+                const matchesFilter = currentFilter === 'all' || location.type === currentFilter;
+                const matchesSearch = searchTerm === '' || 
+                    location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.address.toLowerCase().includes(searchTerm.toLowerCase());
+                
+                return matchesFilter && matchesSearch;
+            });
+            
+            renderLocationList(filtered);
+            updateStats(filtered);
+            
+            // Show/hide markers based on filter
+            markers.forEach(({ marker, location }) => {
+                const isVisible = filtered.some(loc => loc.id === location.id);
+                marker.getElement().style.display = isVisible ? 'flex' : 'none';
+            });
+        }
+        
+        // Render location list
+        function renderLocationList(locations) {
+            const listEl = document.getElementById('locationList');
+            
+            if (locations.length === 0) {
+                listEl.innerHTML = '<div style="padding: 2rem; text-align: center; color: #666;">No locations found</div>';
+                return;
+            }
+            
+            listEl.innerHTML = locations.map(location => {
+                // Create services HTML
+                const servicesHtml = location.services && location.services.length > 0 
+                    ? `<div class="location-services">
+                        ${location.services.map(service => 
+                            `<span class="service-tag">${service}</span>`
+                        ).join('')}
+                       </div>`
+                    : '';
+                
+                return `
+                    <div class="location-card" onclick="flyToLocation(${location.lng}, ${location.lat}, ${location.id})">
+                        <div class="location-type ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}">${location.type}</div>
+                        <div class="location-name">${location.name}</div>
+                        <div class="location-address">
+                            ${location.address}<br>
+                            ${location.city}
+                        </div>
+                        ${location.hours ? `<div class="location-hours ${location.isOpen === false ? 'location-closed' : ''}">${location.hours}</div>` : ''}
+                        ${servicesHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Update stats
+        function updateStats(locations) {
+            const spaces = locations.filter(l => l.type === 'Space').length;
+            const serviceCenters = locations.filter(l => l.type === 'Service Center').length;
+            const outposts = locations.filter(l => l.type === 'Outpost').length;
+            
+            document.getElementById('locationStats').innerHTML = `
+                Showing ${locations.length} locations • ${spaces} Spaces • ${serviceCenters} Service Centers • ${outposts} Outposts
+            `;
+        }
+        
+        // Fly to location
+        function flyToLocation(lng, lat, id) {
+            map.flyTo({
+                center: [lng, lat],
+                zoom: 13,
+                duration: 1500
+            });
+            
+            highlightLocation(id);
+            
+            // Open popup
+            const marker = markers.find(m => m.location.id === id);
+            if (marker) {
+                marker.marker.togglePopup();
+            }
+        }
+        
+        // Highlight location in list
+        function highlightLocation(id) {
+            document.querySelectorAll('.location-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            const cards = document.querySelectorAll('.location-card');
+            const index = rivianLocations.findIndex(l => l.id === id);
+            if (cards[index]) {
+                cards[index].classList.add('active');
+            }
+        }
+        
+        // Show stats modal
+        function showStats() {
+            const states = [...new Set(rivianLocations.map(l => l.state))].length;
+            const spaces = rivianLocations.filter(l => l.type === 'Space').length;
+            const serviceCenters = rivianLocations.filter(l => l.type === 'Service Center').length;
+            const outposts = rivianLocations.filter(l => l.type === 'Outpost').length;
+            const open = rivianLocations.filter(l => l.isOpen !== false).length;
+            
+            alert(`Rivian Spotter Statistics\n\nTotal Locations: ${rivianLocations.length}\nStates/Provinces: ${states}\nSpaces: ${spaces}\nService Centers: ${serviceCenters}\nOutposts: ${outposts}\nCurrently Open: ${open}`);
+        }
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+            filterLocations();
+            
+            // Search input handler
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value;
+                filterLocations();
+            });
+            
+            // Filter button handlers
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    filterLocations();
+                });
+            });
+            
+            // Stats link handler
+            document.getElementById('statsLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                showStats();
+            });
+        });
+    </script>
+</body>
+</html>

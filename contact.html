@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Rivian Spotter</title>
+    <meta name="description" content="Get in touch with Rivian Spotter - submit new locations, report issues, or share feedback.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo">
+                <div class="logo-dot"></div>
+                Rivian Spotter
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Map</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/contact.html" class="nav-link active">Contact</a>
+            </nav>
+        </header>
+        
+        <div class="page-content">
+            <h1 class="page-title">Contact Us</h1>
+            
+            <div class="page-section">
+                <h2>Get in Touch</h2>
+                <p>
+                    Have a question, suggestion, or found an issue with Rivian Spotter? We'd love to hear from you! 
+                    Use the form below or reach out directly via email.
+                </p>
+            </div>
+            
+            <div class="page-section">
+                <h2>Ways to Contribute</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div style="padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                        <h3 style="margin-bottom: 0.5rem; color: #1a1a1a;">📍 Submit New Locations</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Know of a new Rivian location? Let us know and we'll add it to the map.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                        <h3 style="margin-bottom: 0.5rem; color: #1a1a1a;">📸 Share Photos</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Have photos from a Rivian Space or event? We'd love to feature them.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                        <h3 style="margin-bottom: 0.5rem; color: #1a1a1a;">🐛 Report Issues</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Found incorrect information or a bug? Help us keep the data accurate.</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f8f8f8; border-radius: 8px;">
+                        <h3 style="margin-bottom: 0.5rem; color: #1a1a1a;">💡 Suggest Features</h3>
+                        <p style="color: #666; font-size: 0.9rem;">Have ideas for new features? We're always looking to improve.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page-section">
+                <h2>Contact Form</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <select id="subject" name="subject" class="form-input">
+                            <option value="new-location">Submit New Location</option>
+                            <option value="update">Update Existing Location</option>
+                            <option value="bug">Report a Bug</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+                
+                <div id="formMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 6px; display: none;"></div>
+            </div>
+            
+            <div class="page-section">
+                <h2>Direct Contact</h2>
+                <p>
+                    Prefer email? Reach us directly at: 
+                    <a href="mailto:contact@rivianspotter.com" style="color: #4CAF50; font-weight: 500;">contact@rivianspotter.com</a>
+                </p>
+                
+                <p style="margin-top: 1rem;">
+                    For urgent location updates or corrections, please include:
+                </p>
+                <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Location name and address</li>
+                    <li>Type (Space or Service Center)</li>
+                    <li>Current hours of operation</li>
+                    <li>Any additional relevant details</li>
+                </ul>
+            </div>
+            
+            <div class="page-section">
+                <h2>Connect on Social</h2>
+                <p>Follow Rivian Spotter for updates and community highlights:</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #1877f2; color: white; text-decoration: none; border-radius: 6px;">Facebook</a>
+                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #1da1f2; color: white; text-decoration: none; border-radius: 6px;">Twitter</a>
+                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #E4405F; color: white; text-decoration: none; border-radius: 6px;">Instagram</a>
+                    <a href="#" style="display: inline-block; padding: 0.5rem 1rem; background: #FF4500; color: white; text-decoration: none; border-radius: 6px;">Reddit</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p class="footer-text">
+                © 2024 Rivian Spotter • Made with ❤️ by the Rivian community • 
+                <a href="/contact.html" style="color: #666;">Contact</a> • 
+                <a href="/about.html" style="color: #666;">About</a>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // For now, just show a success message
+            // Later you can add actual email sending functionality
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.style.display = 'block';
+            messageDiv.style.background = '#4CAF50';
+            messageDiv.style.color = 'white';
+            messageDiv.innerHTML = '✓ Thank you for your message! We\'ll get back to you soon.';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+            
+            // In production, you would send this data to your server
+            console.log('Form data:', formData);
+        });
+    </script>
+</body>
+</html>

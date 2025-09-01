@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rivian Spotter - Find Rivian Spaces & Outposts</title>
+    <meta name="description" content="Interactive map of all Rivian Spaces and Service Centers across the United States. Find locations, hours, and services.">
+    
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Mobile-First Approach - Start with mobile styles */
+        
+        /* Base mobile styles */
+        .header {
+            padding: 0.75rem 1rem;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+        }
+        
+        .nav-links.desktop {
+            display: none !important;
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            transition: left 0.3s ease;
+            border-radius: 0;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e5e5e5;
+            background: #f8f8f8;
+        }
+        
+        .sidebar-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        .mobile-bottom-bar {
+            display: flex !important;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e5e5;
+            padding: 0.5rem;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-bottom-bar button {
+            flex: 1;
+            padding: 0.75rem;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            margin: 0 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .mobile-bottom-bar button.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        
+        .map-container {
+            height: calc(100vh - 60px);
+        }
+        
+        .filter-buttons {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 1rem;
+        }
+        
+        .filter-btn {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        
+        .location-list {
+            max-height: calc(100vh - 280px);
+        }
+        
+        .mapboxgl-popup-content {
+            max-width: 280px;
+        }
+        
+        .popup-content {
+            padding: 0.75rem;
+        }
+        
+        /* Desktop styles - only apply above 768px */
+        @media (min-width: 769px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links.desktop {
+                display: flex !important;
+                gap: 2rem;
+                align-items: center;
+            }
+            
+            .mobile-menu-btn {
+                display: none !important;
+            }
+            
+            .sidebar {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                width: 380px;
+                max-width: calc(100% - 2rem);
+                height: auto;
+                max-height: calc(100vh - 100px);
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 100;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.active {
+                left: 1rem;
+            }
+            
+            .sidebar-header {
+                display: none !important;
+            }
+            
+            .mobile-bottom-bar {
+                display: none !important;
+            }
+            
+            .mobile-overlay {
+                display: none !important;
+            }
+            
+            .map-container {
+                height: calc(100vh - 80px);
+            }
+            
+            .location-list {
+                max-height: 400px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                overflow-x: visible;
+            }
+            
+            .mapboxgl-popup-content {
+                min-width: 250px;
+                max-width: 350px;
+            }
+            
+            .popup-content {
+                padding: 1rem;
+            }
+            
+            .location-btn {
+                bottom: 20px !important;
+            }
+        }
+        
+        /* State Filter Styles */
+        .state-filter-container {
+            padding: 0 1rem 0.75rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .state-filter-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .state-filter-select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .state-filter-select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        /* Service Tags */
+        .location-services {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .service-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .popup-services {
+            margin: 0.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .popup-service-tag {
+            background: #f0f7ff;
+            color: #1976d2;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1500;
+            margin: 0.5rem;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            background: #f9f9f9;
+        }
+        
+        /* Current Location Button */
+        .location-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .location-btn:hover {
+            background: #4CAF50;
+        }
+        
+        .location-btn:hover svg {
+            fill: white;
+        }
+        
+        .location-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #4CAF50;
+        }
+        
+        /* Hamburger Icon */
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: #333;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <a href="/" class="logo">
+                <div class="logo-dot"></div>
+                Rivian Spotter
+            </a>
+            <nav class="nav-links desktop">
+                <a href="/" class="nav-link active">Map</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="#" class="nav-link" id="statsLink">Stats</a>
+            </nav>
+        </header>
+        
+        <!-- Mobile Navigation Dropdown -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="/">Map</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="#" id="mobileStatsLink">Statistics</a>
+        </div>
+        
+        <div class="map-container">
+            <!-- Mobile Overlay -->
+            <div class="mobile-overlay" id="mobileOverlay"></div>
+            
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">Filter Locations</span>
+                    <button class="close-sidebar" id="closeSidebar">×</button>
+                </div>
+                
+                <div class="search-box">
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="Search by city, state, or name..."
+                    />
+                </div>
+                
+                <div class="state-filter-container">
+                    <label class="state-filter-label">Filter by State/Province</label>
+                    <select class="state-filter-select" id="stateFilter">
+                        <option value="all">All States/Provinces</option>
+                    </select>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Space">Spaces</button>
+                    <button class="filter-btn" data-filter="Service Center">Service Centers</button>
+                    <button class="filter-btn" data-filter="Outpost">Outposts</button>
+                </div>
+                
+                <div class="location-stats" id="locationStats">
+                    <!-- Stats will be inserted here -->
+                </div>
+                
+                <div class="location-list" id="locationList">
+                    <!-- Locations will be inserted here -->
+                </div>
+            </div>
+            
+            <div id="map"></div>
+            
+            <!-- Current Location Button -->
+            <button class="location-btn" id="locationBtn" title="Go to my location">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                </svg>
+            </button>
+            
+            <!-- Mobile Bottom Bar -->
+            <div class="mobile-bottom-bar" id="mobileBottomBar">
+                <button id="mobileFilterBtn">Filter</button>
+                <button id="mobileListBtn">List</button>
+                <button id="mobileNearMeBtn">Near Me</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mapbox GL JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    
+    <!-- Location Data -->
+    <script src="js/locations.js"></script>
+    
+    <!-- Main Application -->
+    <script>
+        // Initialize Mapbox
+        mapboxgl.accessToken = 'pk.eyJ1IjoiemFrd2lubmljayIsImEiOiJjbWYxYzV5bmQxZGwzMmxxNHBieHp3NDI2In0.YAzo3vcGSqaNxZyz4GA7xg';
+        
+        // Global variables
+        let map;
+        let markers = [];
+        let currentFilter = 'all';
+        let currentStateFilter = 'all';
+        let searchTerm = '';
+        let userMarker = null;
+        
+        // Initialize map
+        function initMap() {
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/light-v11',
+                center: [-98.5795, 39.8283], // Center of USA
+                zoom: 4
+            });
+            
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+            
+            // Add geolocate control for mobile
+            const geolocate = new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true,
+                showUserHeading: true
+            });
+            map.addControl(geolocate);
+            
+            // Populate state filter
+            populateStateFilter();
+            
+            // Add all markers
+            addMarkers(rivianLocations);
+            
+            // Fit map to show all locations
+            const bounds = new mapboxgl.LngLatBounds();
+            rivianLocations.forEach(location => {
+                bounds.extend([location.lng, location.lat]);
+            });
+            map.fitBounds(bounds, { padding: 50 });
+        }
+        
+        // Populate state filter dropdown
+        function populateStateFilter() {
+            const states = [...new Set(rivianLocations.map(l => l.state))].sort();
+            const stateNames = {
+                'AB': 'Alberta',
+                'AZ': 'Arizona',
+                'BC': 'British Columbia',
+                'CA': 'California',
+                'CO': 'Colorado',
+                'FL': 'Florida',
+                'GA': 'Georgia',
+                'HI': 'Hawaii',
+                'ID': 'Idaho',
+                'IL': 'Illinois',
+                'KS': 'Kansas',
+                'MD': 'Maryland',
+                'MA': 'Massachusetts',
+                'MI': 'Michigan',
+                'MO': 'Missouri',
+                'NV': 'Nevada',
+                'NJ': 'New Jersey',
+                'NY': 'New York',
+                'ON': 'Ontario',
+                'OR': 'Oregon',
+                'QC': 'Quebec',
+                'TN': 'Tennessee',
+                'TX': 'Texas',
+                'UT': 'Utah',
+                'VA': 'Virginia',
+                'WA': 'Washington',
+                'WI': 'Wisconsin'
+            };
+            
+            const select = document.getElementById('stateFilter');
+            states.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = `${stateNames[state] || state} (${state})`;
+                select.appendChild(option);
+            });
+        }
+        
+        // Add markers to map
+        function addMarkers(locations) {
+            // Clear existing markers
+            markers.forEach(marker => marker.remove());
+            markers = [];
+            
+            locations.forEach(location => {
+                // Create custom marker element
+                const el = document.createElement('div');
+                el.className = `marker ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}`;
+                el.innerHTML = `
+                    <svg class="marker-icon" viewBox="0 0 24 24">
+                        ${location.type === 'Space' 
+                            ? '<path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>'
+                            : '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>'
+                        }
+                    </svg>
+                `;
+                
+                // Create services HTML for popup
+                const servicesHtml = location.services && location.services.length > 0 
+                    ? `<div class="popup-services">
+                        ${location.services.map(service => 
+                            `<span class="popup-service-tag">${service}</span>`
+                        ).join('')}
+                       </div>`
+                    : '';
+                
+                // Create popup
+                const popupContent = `
+                    <div class="popup-content">
+                        <div class="popup-type ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}">${location.type}</div>
+                        <div class="popup-name">${location.name}</div>
+                        <div class="popup-address">
+                            ${location.address}<br>
+                            ${location.city}
+                        </div>
+                        ${location.phone ? `<div style="font-size: 0.85rem; color: #666;">${location.phone}</div>` : ''}
+                        ${location.hours ? `<div style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;">${location.hours}</div>` : ''}
+                        ${servicesHtml}
+                        <button class="popup-button" style="margin-top: 0.75rem;" onclick="window.open('https://maps.google.com/?q=${encodeURIComponent(location.address + ' ' + location.city)}', '_blank')">
+                            Get Directions
+                        </button>
+                    </div>
+                `;
+                
+                const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent);
+                
+                // Add marker to map
+                const marker = new mapboxgl.Marker(el)
+                    .setLngLat([location.lng, location.lat])
+                    .setPopup(popup)
+                    .addTo(map);
+                
+                // Add click handler
+                el.addEventListener('click', () => {
+                    highlightLocation(location.id);
+                });
+                
+                markers.push({ marker, location });
+            });
+        }
+        
+        // Filter locations
+        function filterLocations() {
+            const filtered = rivianLocations.filter(location => {
+                const matchesFilter = currentFilter === 'all' || location.type === currentFilter;
+                const matchesState = currentStateFilter === 'all' || location.state === currentStateFilter;
+                const matchesSearch = searchTerm === '' || 
+                    location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    location.address.toLowerCase().includes(searchTerm.toLowerCase());
+                
+                return matchesFilter && matchesState && matchesSearch;
+            });
+            
+            renderLocationList(filtered);
+            updateStats(filtered);
+            
+            // Show/hide markers based on filter
+            markers.forEach(({ marker, location }) => {
+                const isVisible = filtered.some(loc => loc.id === location.id);
+                marker.getElement().style.display = isVisible ? 'flex' : 'none';
+            });
+            
+            // If state filter is active, zoom to those locations
+            if (currentStateFilter !== 'all' && filtered.length > 0) {
+                const bounds = new mapboxgl.LngLatBounds();
+                filtered.forEach(location => {
+                    bounds.extend([location.lng, location.lat]);
+                });
+                map.fitBounds(bounds, { padding: 50 });
+            }
+        }
+        
+        // Render location list
+        function renderLocationList(locations) {
+            const listEl = document.getElementById('locationList');
+            
+            if (locations.length === 0) {
+                listEl.innerHTML = '<div style="padding: 2rem; text-align: center; color: #666;">No locations found</div>';
+                return;
+            }
+            
+            listEl.innerHTML = locations.map(location => {
+                // Create services HTML
+                const servicesHtml = location.services && location.services.length > 0 
+                    ? `<div class="location-services">
+                        ${location.services.map(service => 
+                            `<span class="service-tag">${service}</span>`
+                        ).join('')}
+                       </div>`
+                    : '';
+                
+                return `
+                    <div class="location-card" onclick="flyToLocation(${location.lng}, ${location.lat}, ${location.id})">
+                        <div class="location-type ${location.type === 'Service Center' || location.type === 'Outpost' ? 'outpost' : ''}">${location.type}</div>
+                        <div class="location-name">${location.name}</div>
+                        <div class="location-address">
+                            ${location.address}<br>
+                            ${location.city}
+                        </div>
+                        ${location.hours ? `<div class="location-hours ${location.isOpen === false ? 'location-closed' : ''}">${location.hours}</div>` : ''}
+                        ${servicesHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Update stats
+        function updateStats(locations) {
+            const spaces = locations.filter(l => l.type === 'Space').length;
+            const serviceCenters = locations.filter(l => l.type === 'Service Center').length;
+            const outposts = locations.filter(l => l.type === 'Outpost').length;
+            
+            document.getElementById('locationStats').innerHTML = `
+                Showing ${locations.length} locations • ${spaces} Spaces • ${serviceCenters} Service Centers • ${outposts} Outposts
+            `;
+        }
+        
+        // Fly to location
+        function flyToLocation(lng, lat, id) {
+            map.flyTo({
+                center: [lng, lat],
+                zoom: 13,
+                duration: 1500
+            });
+            
+            highlightLocation(id);
+            
+            // Open popup
+            const marker = markers.find(m => m.location.id === id);
+            if (marker) {
+                marker.marker.togglePopup();
+            }
+            
+            // Close sidebar on mobile after selection
+            if (window.innerWidth <= 768) {
+                closeSidebar();
+            }
+        }
+        
+        // Highlight location in list
+        function highlightLocation(id) {
+            document.querySelectorAll('.location-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            const cards = document.querySelectorAll('.location-card');
+            const index = rivianLocations.findIndex(l => l.id === id);
+            if (cards[index]) {
+                cards[index].classList.add('active');
+                // Scroll to card in list
+                cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // Find nearest location
+        function findNearestLocation(userLat, userLng) {
+            let nearest = null;
+            let minDistance = Infinity;
+            
+            rivianLocations.forEach(location => {
+                const distance = getDistance(userLat, userLng, location.lat, location.lng);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearest = location;
+                }
+            });
+            
+            if (nearest) {
+                flyToLocation(nearest.lng, nearest.lat, nearest.id);
+                if (window.innerWidth <= 768) {
+                    alert(`Nearest location: ${nearest.name}\nDistance: ${minDistance.toFixed(1)} miles`);
+                }
+            }
+        }
+        
+        // Calculate distance between two points
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 3958.8; // Radius of Earth in miles
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+        
+        // Go to user location
+        function goToUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        
+                        // Add or update user marker
+                        if (userMarker) {
+                            userMarker.setLngLat([userLng, userLat]);
+                        } else {
+                            userMarker = new mapboxgl.Marker({ color: '#4CAF50' })
+                                .setLngLat([userLng, userLat])
+                                .setPopup(new mapboxgl.Popup().setHTML('<div style="padding: 0.5rem;">Your Location</div>'))
+                                .addTo(map);
+                        }
+                        
+                        map.flyTo({
+                            center: [userLng, userLat],
+                            zoom: 10
+                        });
+                    },
+                    (error) => {
+                        alert('Unable to get your location. Please enable location services.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        }
+        
+        // Mobile sidebar functions
+        function openSidebar() {
+            document.getElementById('sidebar').classList.add('active');
+            document.getElementById('mobileOverlay').classList.add('active');
+        }
+        
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+        }
+        
+        // Show stats modal
+        function showStats() {
+            const states = [...new Set(rivianLocations.map(l => l.state))].length;
+            const spaces = rivianLocations.filter(l => l.type === 'Space').length;
+            const serviceCenters = rivianLocations.filter(l => l.type === 'Service Center').length;
+            const outposts = rivianLocations.filter(l => l.type === 'Outpost').length;
+            const open = rivianLocations.filter(l => l.isOpen !== false).length;
+            
+            alert(`Rivian Spotter Statistics\n\nTotal Locations: ${rivianLocations.length}\nStates/Provinces: ${states}\nSpaces: ${spaces}\nService Centers: ${serviceCenters}\nOutposts: ${outposts}\nCurrently Open: ${open}`);
+        }
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+            filterLocations();
+            
+            // Search input handler
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value;
+                filterLocations();
+            });
+            
+            // State filter handler
+            document.getElementById('stateFilter').addEventListener('change', function(e) {
+                currentStateFilter = e.target.value;
+                filterLocations();
+            });
+            
+            // Filter button handlers
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    filterLocations();
+                });
+            });
+            
+            // Stats link handlers
+            document.getElementById('statsLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                showStats();
+            });
+            
+            document.getElementById('mobileStatsLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                showStats();
+                document.getElementById('mobileNav').classList.remove('active');
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const mobileNav = document.getElementById('mobileNav');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileNav.classList.remove('active');
+                }
+            });
+            
+            // Mobile bottom bar handlers
+            if (document.getElementById('mobileFilterBtn')) {
+                document.getElementById('mobileFilterBtn').addEventListener('click', openSidebar);
+            }
+            
+            if (document.getElementById('mobileListBtn')) {
+                document.getElementById('mobileListBtn').addEventListener('click', function() {
+                    openSidebar();
+                    // Scroll to location list
+                    setTimeout(() => {
+                        document.querySelector('.location-list').scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                });
+            }
+            
+            if (document.getElementById('mobileNearMeBtn')) {
+                document.getElementById('mobileNearMeBtn').addEventListener('click', function() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                findNearestLocation(position.coords.latitude, position.coords.longitude);
+                            },
+                            (error) => {
+                                alert('Unable to get your location. Please enable location services.');
+                            }
+                        );
+                    }
+                });
+            }
+            
+            // Close sidebar button
+            if (document.getElementById('closeSidebar')) {
+                document.getElementById('closeSidebar').addEventListener('click', closeSidebar);
+            }
+            
+            // Mobile overlay click
+            if (document.getElementById('mobileOverlay')) {
+                document.getElementById('mobileOverlay').addEventListener('click', closeSidebar);
+            }
+            
+            // Location button handler
+            document.getElementById('locationBtn').addEventListener('click', goToUserLocation);
+        });
+    </script>
+</body>
+</html>
