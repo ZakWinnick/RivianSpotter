@@ -1507,11 +1507,11 @@ const rivianLocations = [
     "id": 82,
     "name": "Belgrade - Service + Demo Center",
     "type": "Service Center",
-    "state": "MT",
     "lat": 45.7749,
     "lng": -111.1768,
     "address": "617 Alaska Frontage Rd",
     "city": "Belgrade, MT 59714",
+    "state": "MT",
     "hours": "General: Mon-Sun: 9am-6pm | Service: Mon-Fri: 8am-5pm",
     "phone": "",
     "services": [
@@ -1592,7 +1592,6 @@ const rivianLocations = [
     "isOpen": true
   }
 ];
-
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = rivianLocations;
+    module.exports = rivianLocations;
 }
