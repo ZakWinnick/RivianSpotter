@@ -963,575 +963,323 @@
     </div>
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // State Management
-        let locations = [];
-        let originalLocations = [];
-        let filteredLocations = [];
-        let editingId = null;
-        let pendingChanges = new Map();
-        let currentView = 'table';
-        let currentFilter = 'all';
-        let selectedLocations = new Set();
-        let map = null;
+// ============================================
+// CONFIGURATION - Update these values
+// ============================================
+const API_URL = '/api/locations.php';
+let ADMIN_TOKEN = ''; // Will be set on login
+
+// ============================================
+// AUTHENTICATION
+// ============================================
+function checkAuth() {
+    // Check if we have a stored token
+    const storedToken = localStorage.getItem('rivianAdminToken');
+    
+    if (storedToken) {
+        ADMIN_TOKEN = storedToken;
+        testApiConnection();
+    } else {
+        // Prompt for token instead of password
+        const token = prompt('Enter admin API token:');
+        if (token) {
+            ADMIN_TOKEN = token;
+            localStorage.setItem('rivianAdminToken', token);
+            testApiConnection();
+        } else {
+            alert('Admin token required');
+            window.location.href = '/';
+        }
+    }
+}
+
+// Test if API connection works
+async function testApiConnection() {
+    try {
+        const response = await fetch(API_URL);
+        if (response.ok) {
+            loadLocations();
+        } else {
+            throw new Error('API connection failed');
+        }
+    } catch (error) {
+        alert('Failed to connect to API. Please check your configuration.');
+        localStorage.removeItem('rivianAdminToken');
+        window.location.href = '/';
+    }
+}
+
+window.logout = function() {
+    localStorage.removeItem('rivianAdminToken');
+    window.location.href = '/';
+}
+
+// ============================================
+// API HELPER FUNCTIONS
+// ============================================
+async function apiRequest(method, data = null, params = {}) {
+    const url = new URL(API_URL, window.location.origin);
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+    
+    const options = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    
+    // Add auth header for non-GET requests
+    if (method !== 'GET') {
+        options.headers['Authorization'] = `Bearer ${ADMIN_TOKEN}`;
+    }
+    
+    if (data && method !== 'GET') {
+        options.body = JSON.stringify(data);
+    }
+    
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
         
-        // Simple authentication
-        const ADMIN_PASSWORD = 'rivian2024';
-        
-        // Check authentication
-        function checkAuth() {
-            const auth = localStorage.getItem('rivianAdminAuth');
-            if (!auth) {
-                const password = prompt('Enter admin password:');
-                if (password === ADMIN_PASSWORD) {
-                    localStorage.setItem('rivianAdminAuth', 'true');
-                } else {
-                    alert('Invalid password');
-                    window.location.href = '/';
-                }
-            }
+        if (!response.ok) {
+            throw new Error(result.error || 'API request failed');
         }
         
-        // Logout
-        window.logout = function() {
-            if (confirm('Are you sure you want to logout?')) {
-                localStorage.removeItem('rivianAdminAuth');
-                window.location.href = '/';
-            }
+        return result;
+    } catch (error) {
+        console.error('API Error:', error);
+        showNotification(`Error: ${error.message}`, 'error');
+        throw error;
+    }
+}
+
+// ============================================
+// NOTIFICATION SYSTEM
+// ============================================
+function showNotification(message, type = 'info') {
+    // Remove existing notification
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+    
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+        color: white;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add animation styles
+if (!document.querySelector('#notificationStyles')) {
+    const style = document.createElement('style');
+    style.id = 'notificationStyles';
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ============================================
+// DATA MANAGEMENT - REPLACE OLD FUNCTIONS
+// ============================================
+
+// Load locations from API (replaces old file-based loading)
+async function loadLocations() {
+    try {
+        const response = await fetch(API_URL);
+        locations = await response.json();
+        originalLocations = JSON.parse(JSON.stringify(locations));
+        renderLocations();
+        updateStats();
+        showNotification('Locations loaded successfully', 'success');
+    } catch (error) {
+        console.error('Error loading locations:', error);
+        showNotification('Failed to load locations', 'error');
+    }
+}
+
+// Delete location via API (replaces old delete)
+window.deleteLocation = async function(id) {
+    if (!confirm('Are you sure you want to delete this location?')) return;
+    
+    try {
+        await apiRequest('DELETE', null, { id: id });
+        locations = locations.filter(l => l.id !== id);
+        renderLocations(document.getElementById('searchInput').value);
+        updateStats();
+        showNotification('Location deleted successfully', 'success');
+    } catch (error) {
+        showNotification('Failed to delete location', 'error');
+    }
+}
+
+// Save ALL changes via API (replaces old download method)
+window.saveAllChanges = async function() {
+    if (pendingChanges.size === 0) {
+        showNotification('No changes to save', 'info');
+        return;
+    }
+    
+    try {
+        // Save all locations at once
+        await apiRequest('PUT', locations, { action: 'bulk' });
+        
+        // Clear pending changes
+        pendingChanges.clear();
+        originalLocations = JSON.parse(JSON.stringify(locations));
+        updateChangesBar();
+        renderLocations(document.getElementById('searchInput').value);
+        
+        showNotification(`✅ ${pendingChanges.size} changes saved to server!`, 'success');
+    } catch (error) {
+        showNotification('Failed to save changes', 'error');
+    }
+}
+
+// Form submission handler (updated for API)
+document.getElementById('locationForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        id: editingId || Date.now(),
+        name: document.getElementById('name').value,
+        type: document.getElementById('type').value,
+        lat: parseFloat(document.getElementById('lat').value),
+        lng: parseFloat(document.getElementById('lng').value),
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        state: document.getElementById('state').value.toUpperCase(),
+        hours: document.getElementById('hours').value,
+        phone: document.getElementById('phone').value,
+        services: document.getElementById('services').value.split(',').map(s => s.trim()).filter(s => s),
+        isOpen: document.getElementById('isOpen').checked
+    };
+    
+    try {
+        if (editingId) {
+            // Update existing via API
+            await apiRequest('PUT', formData);
+            const index = locations.findIndex(l => l.id === editingId);
+            locations[index] = formData;
+            showNotification('Location updated successfully', 'success');
+        } else {
+            // Add new via API
+            const result = await apiRequest('POST', formData);
+            locations.push(result.location || formData);
+            showNotification('Location added successfully', 'success');
         }
         
-        // Load locations
-        async function loadLocations() {
+        originalLocations = JSON.parse(JSON.stringify(locations));
+        renderLocations(document.getElementById('searchInput').value);
+        updateStats();
+        window.closeModal();
+        
+        // Clear pending changes since we saved directly
+        pendingChanges.clear();
+        updateChangesBar();
+    } catch (error) {
+        showNotification('Failed to save location', 'error');
+    }
+});
+
+// ============================================
+// IMPORT/EXPORT FUNCTIONS (UPDATED)
+// ============================================
+
+// Export data (downloads JSON backup)
+window.exportData = function() {
+    const dataStr = JSON.stringify(locations, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `rivian-locations-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    showNotification('Backup downloaded successfully', 'success');
+}
+
+// Import data (uploads to API)
+window.importData = function() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = async function(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = async function(event) {
             try {
-                // Simulate loading
-                setTimeout(() => {
-                    // In production, load from API
-                    const script = document.createElement('script');
-                    script.src = '/js/locations.js';
-                    script.onload = () => {
-                        locations = [...rivianLocations];
-                        originalLocations = JSON.parse(JSON.stringify(rivianLocations));
-                        filteredLocations = [...locations];
-                        renderView();
-                        updateStats();
-                    };
-                    document.head.appendChild(script);
-                }, 500);
+                const imported = JSON.parse(event.target.result);
+                if (!confirm(`Import ${imported.length} locations? This will replace all current data.`)) {
+                    return;
+                }
+                
+                // Upload to API
+                await apiRequest('PUT', imported, { action: 'bulk' });
+                locations = imported;
+                originalLocations = JSON.parse(JSON.stringify(imported));
+                renderLocations(document.getElementById('searchInput').value);
+                updateStats();
+                showNotification(`Successfully imported ${imported.length} locations!`, 'success');
             } catch (error) {
-                console.error('Error loading locations:', error);
-                document.getElementById('locationsDisplay').innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">⚠️</div>
-                        <h3>Error loading locations</h3>
-                        <p>Please try refreshing the page</p>
-                    </div>
-                `;
+                showNotification('Error importing file', 'error');
             }
-        }
-        
-        // Update statistics
-        function updateStats() {
-            document.getElementById('totalCount').textContent = locations.length;
-            document.getElementById('spacesCount').textContent = locations.filter(l => l.type === 'Space').length;
-            document.getElementById('serviceCentersCount').textContent = locations.filter(l => l.type === 'Service Center').length;
-            document.getElementById('outpostsCount').textContent = locations.filter(l => l.type === 'Outpost').length;
-            document.getElementById('statesCount').textContent = [...new Set(locations.map(l => l.state))].length;
-        }
-        
-        // Filter locations
-        window.filterByType = function(type) {
-            currentFilter = type;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            applyFilters();
-        }
-        
-        // Apply filters and search
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            filteredLocations = locations.filter(loc => {
-                const matchesType = currentFilter === 'all' || loc.type === currentFilter;
-                const matchesSearch = searchTerm === '' || 
-                    loc.name.toLowerCase().includes(searchTerm) ||
-                    loc.city.toLowerCase().includes(searchTerm) ||
-                    loc.state.toLowerCase().includes(searchTerm) ||
-                    loc.address.toLowerCase().includes(searchTerm);
-                
-                return matchesType && matchesSearch;
-            });
-            
-            renderView();
-        }
-        
-        // Set view type
-        window.setView = function(view) {
-            currentView = view;
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            renderView();
-        }
-        
-        // Render current view
-        function renderView() {
-            const container = document.getElementById('locationsDisplay');
-            
-            if (filteredLocations.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📍</div>
-                        <h3>No locations found</h3>
-                        <p>Try adjusting your filters or search terms</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            switch(currentView) {
-                case 'table':
-                    renderTableView(container);
-                    break;
-                case 'cards':
-                    renderCardsView(container);
-                    break;
-                case 'map':
-                    renderMapView(container);
-                    break;
-            }
-        }
-        
-        // Render table view
-        function renderTableView(container) {
-            const html = `
-                <div class="table-container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th style="width: 40px;">
-                                    <input type="checkbox" onchange="toggleSelectAll(this)">
-                                </th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Location</th>
-                                <th>Status</th>
-                                <th>Services</th>
-                                <th style="width: 120px;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${filteredLocations.map(location => {
-                                const isModified = pendingChanges.has(location.id);
-                                const isSelected = selectedLocations.has(location.id);
-                                const typeClass = location.type === 'Service Center' ? 'service' : location.type.toLowerCase();
-                                
-                                return `
-                                    <tr class="${isModified ? 'modified' : ''}">
-                                        <td>
-                                            <input type="checkbox" ${isSelected ? 'checked' : ''} 
-                                                onchange="toggleSelection(${location.id})">
-                                        </td>
-                                        <td>
-                                            <strong>${location.name}</strong>
-                                            ${isModified ? '<span style="color: #fbbf24; margin-left: 0.5rem;">●</span>' : ''}
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-${typeClass}">${location.type}</span>
-                                        </td>
-                                        <td>
-                                            ${location.city}, ${location.state}
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-${location.isOpen !== false ? 'open' : 'closed'}">
-                                                ${location.isOpen !== false ? 'Open' : 'Closed'}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            ${(location.services || []).length} services
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-sm btn-secondary" onclick="editLocation(${location.id})">Edit</button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteLocation(${location.id})">Delete</button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-            container.innerHTML = html;
-        }
-        
-        // Render cards view
-        function renderCardsView(container) {
-            const html = `
-                <div class="cards-grid">
-                    ${filteredLocations.map(location => {
-                        const isModified = pendingChanges.has(location.id);
-                        const typeClass = location.type === 'Service Center' ? 'service' : location.type.toLowerCase();
-                        
-                        return `
-                            <div class="location-card ${isModified ? 'modified' : ''}">
-                                <div class="card-header">
-                                    <h3 class="card-title">${location.name}</h3>
-                                    <div class="card-subtitle">
-                                        <span class="badge badge-${typeClass}">${location.type}</span>
-                                        <span class="badge badge-${location.isOpen !== false ? 'open' : 'closed'}">
-                                            ${location.isOpen !== false ? 'Open' : 'Closed'}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-info">
-                                        <div class="card-info-row">
-                                            📍 ${location.address}
-                                        </div>
-                                        <div class="card-info-row">
-                                            🏙️ ${location.city}, ${location.state}
-                                        </div>
-                                        ${location.phone ? `
-                                            <div class="card-info-row">
-                                                📞 ${location.phone}
-                                            </div>
-                                        ` : ''}
-                                        ${location.services && location.services.length > 0 ? `
-                                            <div class="card-info-row">
-                                                ✨ ${location.services.join(', ')}
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                    <div class="card-actions">
-                                        <button class="btn btn-sm btn-secondary" onclick="editLocation(${location.id})">Edit</button>
-                                        <button class="btn btn-sm btn-secondary" onclick="viewOnMap(${location.lat}, ${location.lng})">Map</button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteLocation(${location.id})">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-            `;
-            container.innerHTML = html;
-        }
-        
-        // Render map view
-        function renderMapView(container) {
-            container.innerHTML = '<div id="mainMap" style="height: 600px; border-radius: 12px; overflow: hidden;"></div>';
-            
-            setTimeout(() => {
-                if (map) {
-                    map.remove();
-                }
-                
-                map = L.map('mainMap').setView([39.8283, -98.5795], 4);
-                
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-                
-                filteredLocations.forEach(location => {
-                    const marker = L.marker([location.lat, location.lng])
-                        .addTo(map)
-                        .bindPopup(`
-                            <strong>${location.name}</strong><br>
-                            ${location.type}<br>
-                            ${location.city}, ${location.state}
-                        `);
-                });
-            }, 100);
-        }
-        
-        // View location on map
-        window.viewOnMap = function(lat, lng) {
-            setView('map');
-            setTimeout(() => {
-                map.setView([lat, lng], 15);
-            }, 200);
-        }
-        
-        // Selection management
-        window.toggleSelection = function(id) {
-            if (selectedLocations.has(id)) {
-                selectedLocations.delete(id);
-            } else {
-                selectedLocations.add(id);
-            }
-            updateBulkActions();
-        }
-        
-        window.toggleSelectAll = function(checkbox) {
-            if (checkbox.checked) {
-                filteredLocations.forEach(loc => selectedLocations.add(loc.id));
-            } else {
-                selectedLocations.clear();
-            }
-            updateBulkActions();
-            renderView();
-        }
-        
-        window.clearSelection = function() {
-            selectedLocations.clear();
-            updateBulkActions();
-            renderView();
-        }
-        
-        function updateBulkActions() {
-            const bulkBar = document.getElementById('bulkActions');
-            const count = selectedLocations.size;
-            
-            if (count > 0) {
-                bulkBar.classList.add('active');
-                document.getElementById('selectedCount').textContent = count;
-            } else {
-                bulkBar.classList.remove('active');
-            }
-        }
-        
-        // Modal functions
-        window.openModal = function(id = null) {
-            editingId = id;
-            document.getElementById('locationModal').classList.add('active');
-            
-            if (id) {
-                const location = locations.find(l => l.id === id);
-                document.getElementById('modalTitle').textContent = 'Edit Location';
-                document.getElementById('locationId').value = location.id;
-                document.getElementById('name').value = location.name;
-                document.getElementById('type').value = location.type;
-                document.getElementById('lat').value = location.lat;
-                document.getElementById('lng').value = location.lng;
-                document.getElementById('address').value = location.address;
-                document.getElementById('city').value = location.city;
-                document.getElementById('state').value = location.state;
-                document.getElementById('hours').value = location.hours || '';
-                document.getElementById('phone').value = location.phone || '';
-                document.getElementById('isOpen').value = location.isOpen !== false ? 'true' : 'false';
-                
-                // Set services checkboxes
-                const services = location.services || [];
-                document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                    if (cb.value !== 'on') {
-                        cb.checked = services.includes(cb.value);
-                    }
-                });
-            } else {
-                document.getElementById('modalTitle').textContent = 'Add Location';
-                document.getElementById('locationForm').reset();
-            }
-        }
-        
-        window.closeModal = function() {
-            document.getElementById('locationModal').classList.remove('active');
-            editingId = null;
-        }
-        
-        window.editLocation = function(id) {
-            openModal(id);
-        }
-        
-        window.deleteLocation = function(id) {
-            if (confirm('Are you sure you want to delete this location?')) {
-                locations = locations.filter(l => l.id !== id);
-                trackChange(id, 'deleted');
-                applyFilters();
-                updateStats();
-            }
-        }
-        
-        window.bulkDelete = function() {
-            if (confirm(`Delete ${selectedLocations.size} selected locations?`)) {
-                selectedLocations.forEach(id => {
-                    locations = locations.filter(l => l.id !== id);
-                    trackChange(id, 'deleted');
-                });
-                selectedLocations.clear();
-                updateBulkActions();
-                applyFilters();
-                updateStats();
-            }
-        }
-        
-        // Save location
-        window.saveLocation = function() {
-            const services = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-                if (cb.value !== 'on') {
-                    services.push(cb.value);
-                }
-            });
-            
-            const formData = {
-                id: editingId || Date.now(),
-                name: document.getElementById('name').value,
-                type: document.getElementById('type').value,
-                lat: parseFloat(document.getElementById('lat').value),
-                lng: parseFloat(document.getElementById('lng').value),
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value,
-                state: document.getElementById('state').value.toUpperCase(),
-                hours: document.getElementById('hours').value,
-                phone: document.getElementById('phone').value,
-                services: services,
-                isOpen: document.getElementById('isOpen').value === 'true'
-            };
-            
-            if (editingId) {
-                const index = locations.findIndex(l => l.id === editingId);
-                locations[index] = formData;
-                trackChange(editingId, 'modified');
-            } else {
-                locations.push(formData);
-                trackChange(formData.id, 'added');
-            }
-            
-            applyFilters();
-            updateStats();
-            closeModal();
-        }
-        
-        // Track changes
-        function trackChange(locationId, action = 'modified') {
-            pendingChanges.set(locationId, action);
-            updateChangesBar();
-        }
-        
-        function updateChangesBar() {
-            const changesBar = document.getElementById('changesBar');
-            const changesCount = document.getElementById('changesCount');
-            
-            if (pendingChanges.size > 0) {
-                changesBar.classList.add('active');
-                changesCount.textContent = pendingChanges.size;
-            } else {
-                changesBar.classList.remove('active');
-            }
-        }
-        
-        // Save all changes
-        window.saveAllChanges = function() {
-            if (pendingChanges.size === 0) {
-                alert('No changes to save');
-                return;
-            }
-            
-            const changesCount = pendingChanges.size;
-            
-            // Create downloadable file
-            const dataStr = `const rivianLocations = ${JSON.stringify(locations, null, 2)};
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = rivianLocations;
-}`;
-            
-            const blob = new Blob([dataStr], { type: 'text/javascript' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'locations.js';
-            a.click();
-            
-            // Clear pending changes
-            pendingChanges.clear();
-            originalLocations = JSON.parse(JSON.stringify(locations));
-            updateChangesBar();
-            renderView();
-            
-            alert(`✅ ${changesCount} changes saved! Upload the downloaded locations.js file to your server.`);
-        }
-        
-        // Discard changes
-        window.discardChanges = function() {
-            if (pendingChanges.size === 0) return;
-            
-            if (confirm(`Discard ${pendingChanges.size} unsaved changes?`)) {
-                locations = JSON.parse(JSON.stringify(originalLocations));
-                pendingChanges.clear();
-                updateChangesBar();
-                applyFilters();
-                updateStats();
-            }
-        }
-        
-        // Export data
-        window.exportData = function() {
-            const dataStr = JSON.stringify(locations, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `rivian-locations-${new Date().toISOString().split('T')[0]}.json`;
-            a.click();
-        }
-        
-        // Import data
-        window.importData = function() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    try {
-                        const imported = JSON.parse(event.target.result);
-                        if (confirm(`Import ${imported.length} locations? This will replace all current data.`)) {
-                            locations = imported;
-                            originalLocations = JSON.parse(JSON.stringify(imported));
-                            applyFilters();
-                            updateStats();
-                            alert('Import successful!');
-                        }
-                    } catch (error) {
-                        alert('Error importing file. Please check the format.');
-                    }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
-        }
-        
-        // Get coordinates from address (placeholder)
-        window.getCoordinates = function() {
-            alert('Geocoding API integration needed. For now, please enter coordinates manually.');
-        }
-        
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            applyFilters();
-        });
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Ctrl/Cmd + S to save
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                saveAllChanges();
-            }
-            // Escape to close modal
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-            // Ctrl/Cmd + A to select all (when in table view)
-            if ((e.ctrlKey || e.metaKey) && e.key === 'a' && currentView === 'table') {
-                e.preventDefault();
-                document.querySelector('input[type="checkbox"]').click();
-            }
-        });
-        
-        // Warn before leaving with unsaved changes
-        window.addEventListener('beforeunload', function(e) {
-            if (pendingChanges.size > 0) {
-                e.preventDefault();
-                e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
-            }
-        });
-        
-        // Initialize
-        checkAuth();
-        loadLocations();
-    </script>
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// ============================================
+// REMOVE OR COMMENT OUT THESE OLD FUNCTIONS
+// ============================================
+// Remove or comment out these old functions since they're no longer needed:
+// - Old loadLocations() that loads from JS file
+// - Old saveAllChanges() that downloads a file
+// - Old file-based save mechanisms
+
+// ============================================
+// KEEP ALL YOUR OTHER FUNCTIONS
+// ============================================
+// Keep these existing functions as they are:
+// - renderLocations()
+// - filterByType()
+// - updateStats()
+// - trackChange()
+// - updateChangesBar()
+// - openModal()
+// - closeModal()
+// - editLocation()
+// - duplicateLocation() <- You may want to update this to use API
+// - discardChanges()
+// - Search functionality
+// - Keyboard shortcuts
+
+// ============================================
+// INITIALIZE
+// ============================================
+checkAuth(); // This now checks for API token instead of password
 </body>
 </html>
