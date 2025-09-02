@@ -515,44 +515,6 @@
             gap: 0.75rem;
         }
         
-        /* Service Checkboxes */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-        }
-        
-        .service-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            padding: 0.25rem;
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
-        
-        .service-checkbox:hover {
-            background: #f3f4f6;
-        }
-        
-        .service-checkbox input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: #667eea;
-        }
-        
-        .service-checkbox span {
-            font-size: 0.875rem;
-            color: #374151;
-            user-select: none;
-        }
-        
         /* Changes Bar */
         .changes-bar {
             position: fixed;
@@ -893,57 +855,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Available Services</label>
-                        <div class="services-grid">
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Test Drives">
-                                <span>Test Drives</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Demo Drive">
-                                <span>Demo Drive</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Vehicle Tours">
-                                <span>Vehicle Tours</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Service">
-                                <span>Service</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Repairs">
-                                <span>Repairs</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Parts">
-                                <span>Parts</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Charging">
-                                <span>Charging</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Merchandise">
-                                <span>Merchandise</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Restrooms">
-                                <span>Restrooms</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Coffee">
-                                <span>Coffee/Snacks</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="WiFi">
-                                <span>WiFi</span>
-                            </label>
-                            <label class="service-checkbox">
-                                <input type="checkbox" name="services" value="Lounge">
-                                <span>Customer Lounge</span>
-                            </label>
-                        </div>
+                        <label class="form-label">Services (comma-separated)</label>
+                        <input type="text" class="form-input" id="services" placeholder="Test Drives, Vehicle Tours, Merchandise">
                     </div>
                 </form>
             </div>
@@ -1138,12 +1051,6 @@
         
         // Save location (works with both API and file mode)
         window.saveLocation = async function() {
-            // Collect checked services
-            const checkedServices = [];
-            document.querySelectorAll('input[name="services"]:checked').forEach(cb => {
-                checkedServices.push(cb.value);
-            });
-            
             const formData = {
                 id: editingId || Date.now(),
                 name: document.getElementById('name').value,
@@ -1155,7 +1062,7 @@
                 state: document.getElementById('state').value.toUpperCase(),
                 hours: document.getElementById('hours').value || '',
                 phone: document.getElementById('phone').value || '',
-                services: checkedServices,
+                services: document.getElementById('services').value.split(',').map(s => s.trim()).filter(s => s),
                 isOpen: document.getElementById('isOpen').value === 'true'
             };
             
@@ -1360,20 +1267,12 @@ if (typeof module !== 'undefined' && module.exports) {
                 document.getElementById('state').value = location.state;
                 document.getElementById('hours').value = location.hours || '';
                 document.getElementById('phone').value = location.phone || '';
+                document.getElementById('services').value = (location.services || []).join(', ');
                 document.getElementById('isOpen').value = location.isOpen !== false ? 'true' : 'false';
-                
-                // Set service checkboxes
-                document.querySelectorAll('input[name="services"]').forEach(cb => cb.checked = false);
-                (location.services || []).forEach(service => {
-                    const checkbox = document.querySelector(`input[name="services"][value="${service}"]`);
-                    if (checkbox) checkbox.checked = true;
-                });
             } else {
                 document.getElementById('modalTitle').textContent = 'Add Location';
                 document.getElementById('locationForm').reset();
                 document.getElementById('isOpen').value = 'true';
-                // Clear all service checkboxes
-                document.querySelectorAll('input[name="services"]').forEach(cb => cb.checked = false);
             }
         }
         
