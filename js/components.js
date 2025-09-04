@@ -68,7 +68,7 @@ class RivianComponents {
         const footer = `
             <footer class="footer">
                 <p class="footer-text">
-                    © ${currentYear} Wyld Media • Made with ❤️ for the Rivian community • 
+                    © ${currentYear} Wyld Media • 
                     <a href="/contact.html" style="color: #666;">Contact</a> • 
                     <a href="/about.html" style="color: #666;">About</a> • 
                     <a href="https://zak.codetoadventure.com" target="_blank">Zak's Referral Code</a>
