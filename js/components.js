@@ -133,8 +133,8 @@ class RivianComponents {
                 }
                 
                 .logo-img {
-                    width: 32px;
-                    height: 32px;
+                    width: 64px;
+                    height: 64px;
                     object-fit: contain;
                     display: block;
                 }
@@ -204,7 +204,7 @@ class RivianComponents {
                 .mobile-nav {
                     display: none;
                     position: fixed;
-                    top: 60px;
+                    top: 88px;
                     right: 0;
                     background: white;
                     border: 1px solid #e5e5e5;
@@ -261,10 +261,22 @@ class RivianComponents {
                     text-decoration: underline;
                 }
                 
+                /* Tablet styles */
+                @media (min-width: 481px) and (max-width: 768px) {
+                    .logo-img {
+                        width: 80px;
+                        height: 80px;
+                    }
+                    
+                    .mobile-nav {
+                        top: 88px;
+                    }
+                }
+                
                 /* Desktop styles */
                 @media (min-width: 769px) {
                     .header {
-                        padding: 1rem 1.5rem;
+                        padding: 0.5rem 1.5rem;
                     }
                     
                     .logo {
@@ -272,8 +284,8 @@ class RivianComponents {
                     }
                     
                     .logo-img {
-                        width: 40px;
-                        height: 40px;
+                        width: 120px;
+                        height: 120px;
                     }
                     
                     .nav-links.desktop {
