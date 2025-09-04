@@ -33,8 +33,8 @@ class RivianComponents {
                     </div>
                 </button>
                 <a href="/" class="logo">
-                    <div class="logo-dot"></div>
-                    Rivian Spotter
+                    <img src="/images/rivianspotter-logosolo-trans.png" alt="Rivian Spotter" class="logo-img">
+                    <span class="logo-text">Rivian Spotter</span>
                 </a>
                 <nav class="nav-links desktop">
                     <a href="/" class="nav-link ${this.currentPage === 'map' ? 'active' : ''}">Map</a>
@@ -120,18 +120,38 @@ class RivianComponents {
                 .logo {
                     display: flex;
                     align-items: center;
-                    gap: 0.5rem;
+                    gap: 0.75rem;
                     text-decoration: none;
                     color: #1a1a1a;
                     font-weight: 600;
                     font-size: 1.25rem;
+                    transition: opacity 0.2s;
                 }
                 
-                .logo-dot {
-                    width: 24px;
-                    height: 24px;
-                    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-                    border-radius: 50%;
+                .logo:hover {
+                    opacity: 0.8;
+                }
+                
+                .logo-img {
+                    width: 32px;
+                    height: 32px;
+                    object-fit: contain;
+                    display: block;
+                }
+                
+                .logo-text {
+                    display: inline-block;
+                }
+                
+                /* Hide logo text on very small screens if needed */
+                @media (max-width: 360px) {
+                    .logo-text {
+                        display: none;
+                    }
+                    
+                    .logo {
+                        gap: 0;
+                    }
                 }
                 
                 .nav-links.desktop {
@@ -251,9 +271,9 @@ class RivianComponents {
                         font-size: 1.5rem;
                     }
                     
-                    .logo-dot {
-                        width: 32px;
-                        height: 32px;
+                    .logo-img {
+                        width: 40px;
+                        height: 40px;
                     }
                     
                     .nav-links.desktop {
