@@ -49,6 +49,7 @@ class RivianComponents {
                 <a href="/">Map</a>
                 <a href="/about.html">About</a>
                 <a href="/contact.html">Contact</a>
+                <a href="https://zak.codetoadventure.com/">R1 Shop</a>
                 ${this.currentPage === 'map' ? '<a href="#" id="mobileStatsLink">Statistics</a>' : ''}
             </div>
         `;
