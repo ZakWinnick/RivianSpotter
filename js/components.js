@@ -40,7 +40,7 @@ class RivianComponents {
                     <a href="/" class="nav-link ${this.currentPage === 'map' ? 'active' : ''}">Map</a>
                     <a href="/about.html" class="nav-link ${this.currentPage === 'about' ? 'active' : ''}">About</a>
                     <a href="/contact.html" class="nav-link ${this.currentPage === 'contact' ? 'active' : ''}">Contact</a>
-                    <a href="https://zak.codetoadventure.com/" class="nav-link target="_blank" ${this.currentPage === 'shop' ? 'active' : ''}">R1 Shop</a>
+                    <a href="https://zak.codetoadventure.com/" class="nav-link target="_blank">R1 Shop</a>
                     ${this.currentPage === 'map' ? '<a href="#" class="nav-link" id="statsLink">Stats</a>' : ''}
                 </nav>
             </header>
@@ -50,7 +50,7 @@ class RivianComponents {
                 <a href="/">Map</a>
                 <a href="/about.html">About</a>
                 <a href="/contact.html">Contact</a>
-                <a href="https://zak.codetoadventure.com/">R1 Shop</a>
+                <a href="https://zak.codetoadventure.com/" target="_blank">R1 Shop</a>
                 ${this.currentPage === 'map' ? '<a href="#" id="mobileStatsLink">Statistics</a>' : ''}
             </div>
         `;
