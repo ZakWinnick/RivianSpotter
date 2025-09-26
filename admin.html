@@ -1044,27 +1044,27 @@
         async function apiRequest(method, data = null, params = {}) {
             const url = new URL(API_URL, window.location.origin);
             Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-            
+
             const options = {
                 method: method,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             };
-            
+
             // Add auth header for non-GET requests
             if (method !== 'GET') {
                 options.headers['Authorization'] = `Bearer ${ADMIN_TOKEN}`;
             }
-            
+
             if (data && method !== 'GET') {
                 options.body = JSON.stringify(data);
             }
-            
+
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                
+
                 if (!response.ok) {
                     throw new Error(result.error || 'API request failed');
                 }
