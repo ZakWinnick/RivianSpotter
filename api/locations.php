@@ -267,16 +267,24 @@ switch ($method) {
                 echo json_encode(['error' => 'Invalid location data']);
                 exit;
             }
-            
+
+            // Validate and sanitize the input data
+            $validatedInput = validateAndSanitizeInput($input);
+            if (!$validatedInput) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid location data. Please check required fields and coordinate values.']);
+                exit;
+            }
+
             $locations = getLocations();
             $found = false;
-            
+
             foreach ($locations as &$location) {
-                if ($location['id'] == $input['id']) {
+                if ($location['id'] == $validatedInput['id']) {
                     // Preserve created_at, update everything else
-                    $input['created_at'] = $location['created_at'] ?? date('Y-m-d H:i:s');
-                    $input['updated_at'] = date('Y-m-d H:i:s');
-                    $location = $input;
+                    $validatedInput['created_at'] = $location['created_at'] ?? date('Y-m-d H:i:s');
+                    $validatedInput['updated_at'] = date('Y-m-d H:i:s');
+                    $location = $validatedInput;
                     $found = true;
                     break;
                 }
@@ -289,7 +297,7 @@ switch ($method) {
             }
             
             if (saveLocations($locations)) {
-                echo json_encode(['success' => true, 'location' => $input]);
+                echo json_encode(['success' => true, 'location' => $validatedInput]);
             } else {
                 http_response_code(500);
                 echo json_encode(['error' => 'Failed to update location']);
