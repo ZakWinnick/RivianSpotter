@@ -73,10 +73,10 @@ function validateAndSanitizeInput($data) {
 
     // Validate Rivian URL if provided
     if (isset($data['rivianUrl']) && !empty($data['rivianUrl'])) {
-        // Skip validation for now to test
-        // if (!filter_var($data['rivianUrl'], FILTER_VALIDATE_URL)) {
-        //     return false;
-        // }
+        if (!filter_var($data['rivianUrl'], FILTER_VALIDATE_URL)) {
+            return false;
+        }
+        // Allow any valid URL (not just rivian.com) for flexibility
     }
 
     // Validate coordinates
