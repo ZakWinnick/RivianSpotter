@@ -73,8 +73,11 @@ function validateAndSanitizeInput($data) {
 
     // Validate Rivian URL if provided
     if (isset($data['rivianUrl']) && !empty($data['rivianUrl'])) {
-        if (!filter_var($data['rivianUrl'], FILTER_VALIDATE_URL) ||
-            strpos($data['rivianUrl'], 'rivian.com') === false) {
+        if (!filter_var($data['rivianUrl'], FILTER_VALIDATE_URL)) {
+            return false;
+        }
+        // Only validate rivian.com if URL is not empty and not a placeholder
+        if ($data['rivianUrl'] !== '' && strpos($data['rivianUrl'], 'rivian.com') === false) {
             return false;
         }
     }
