@@ -1099,9 +1099,7 @@
         // DATA LOADING AND SAVING
         // ============================================
         async function loadLocations() {
-            console.log('loadLocations() called');
             try {
-                console.log('Trying API at:', API_URL);
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
 
@@ -1111,17 +1109,14 @@
                 });
                 clearTimeout(timeoutId);
 
-                console.log('API response status:', response.status);
                 if (!response.ok) {
                     // If API doesn't exist, fall back to loading from JS file
-                    console.log('API failed, calling loadFromJSFile()');
                     await loadFromJSFile();
                     return;
                 }
 
                 locations = await response.json();
                 originalLocations = JSON.parse(JSON.stringify(locations));
-                console.log('Loaded from API:', locations.length, 'locations');
                 renderLocations();
                 updateStats();
 
