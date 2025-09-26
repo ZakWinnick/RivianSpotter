@@ -1124,7 +1124,7 @@
         // Fallback: Load from JS file if API is not set up yet
         function loadFromJSFile() {
             const script = document.createElement('script');
-            script.src = '/js/locations.js';
+            script.src = './js/locations.js';
             script.onload = () => {
                 locations = [...rivianLocations];
                 originalLocations = JSON.parse(JSON.stringify(rivianLocations));
