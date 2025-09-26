@@ -1099,7 +1099,9 @@
         // DATA LOADING AND SAVING
         // ============================================
         async function loadLocations() {
+            console.log('loadLocations() called');
             try {
+                console.log('Trying API at:', API_URL);
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
 
@@ -1109,14 +1111,17 @@
                 });
                 clearTimeout(timeoutId);
 
+                console.log('API response status:', response.status);
                 if (!response.ok) {
                     // If API doesn't exist, fall back to loading from JS file
+                    console.log('API failed, calling loadFromJSFile()');
                     await loadFromJSFile();
                     return;
                 }
 
                 locations = await response.json();
                 originalLocations = JSON.parse(JSON.stringify(locations));
+                console.log('Loaded from API:', locations.length, 'locations');
                 renderLocations();
                 updateStats();
 
@@ -1131,14 +1136,19 @@
         
         // Fallback: Load from JS file if API is not set up yet
         async function loadFromJSFile() {
+            console.log('loadFromJSFile() called');
             try {
                 // Try loading the script dynamically first
                 const script = document.createElement('script');
                 script.src = './js/locations.js?v=20250926b';
+                console.log('Loading script from:', script.src);
 
                 await new Promise((resolve, reject) => {
                     script.onload = () => {
+                        console.log('Script loaded, checking rivianLocations...');
+                        console.log('typeof rivianLocations:', typeof rivianLocations);
                         if (typeof rivianLocations !== 'undefined' && Array.isArray(rivianLocations)) {
+                            console.log('Found rivianLocations with', rivianLocations.length, 'items');
                             locations = [...rivianLocations];
                             originalLocations = JSON.parse(JSON.stringify(rivianLocations));
                             resolve();
@@ -1146,10 +1156,14 @@
                             reject(new Error('rivianLocations not found after script load'));
                         }
                     };
-                    script.onerror = () => reject(new Error('Failed to load locations.js script'));
+                    script.onerror = (e) => {
+                        console.error('Script error:', e);
+                        reject(new Error('Failed to load locations.js script'));
+                    };
                     document.head.appendChild(script);
                 });
 
+                console.log('About to render locations...');
                 renderLocations();
                 updateStats();
 
