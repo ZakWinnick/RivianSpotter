@@ -1099,19 +1099,24 @@
         // DATA LOADING AND SAVING
         // ============================================
         async function loadLocations() {
+            console.log('Loading locations...');
             try {
+                console.log('Trying API URL:', API_URL);
                 const response = await fetch(API_URL);
+                console.log('API response status:', response.status);
                 if (!response.ok) {
                     // If API doesn't exist, fall back to loading from JS file
+                    console.log('API not available, falling back to JS file');
                     loadFromJSFile();
                     return;
                 }
-                
+
                 locations = await response.json();
                 originalLocations = JSON.parse(JSON.stringify(locations));
+                console.log('Loaded', locations.length, 'locations from API');
                 renderLocations();
                 updateStats();
-                
+
                 // Update connection status
                 document.getElementById('connectionStatus').textContent = '● API Connected';
                 document.getElementById('connectionStatus').style.color = '#4CAF50';
@@ -1123,21 +1128,27 @@
         
         // Fallback: Load from JS file if API is not set up yet
         async function loadFromJSFile() {
+            console.log('Loading from JS file...');
             try {
                 // First try to fetch as text and parse
+                console.log('Fetching ./js/locations.js');
                 const response = await fetch('./js/locations.js');
+                console.log('JS file response status:', response.status);
                 if (!response.ok) throw new Error('Failed to fetch JS file');
 
                 const jsContent = await response.text();
+                console.log('JS file loaded, content length:', jsContent.length);
 
                 // Extract the rivianLocations array from the JS content
                 const match = jsContent.match(/const rivianLocations = (\[[\s\S]*?\]);/);
                 if (!match) throw new Error('Could not parse locations data');
 
+                console.log('Regex match found, parsing JSON...');
                 const locationsData = JSON.parse(match[1]);
                 locations = [...locationsData];
                 originalLocations = JSON.parse(JSON.stringify(locationsData));
 
+                console.log('Loaded', locations.length, 'locations from JS file');
                 renderLocations();
                 updateStats();
 
