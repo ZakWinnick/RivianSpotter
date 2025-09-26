@@ -1,4 +1,3 @@
-// Auto-generated location data - Updated 2025-09-26T19:08:41.216Z
 const rivianLocations = [
   {
     "id": 1,
@@ -1593,8 +1592,6 @@ const rivianLocations = [
     "isOpen": true
   }
 ];
-
-// Export for Node.js environments
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = rivianLocations;
 }
