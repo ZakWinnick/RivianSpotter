@@ -970,7 +970,7 @@
         // ============================================
         // CONFIGURATION
         // ============================================
-        const API_URL = '/api/locations.php';
+        const API_URL = './api/locations.php';
         const ADMIN_PASSWORD = 'rivian2024'; // Your simple password
         let ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c'; // Your API token from the server
         
@@ -1122,62 +1122,40 @@
         }
         
         // Fallback: Load from JS file if API is not set up yet
-        function loadFromJSFile() {
-            const script = document.createElement('script');
-            script.src = './js/locations.js';
-            script.onload = () => {
-                if (typeof rivianLocations !== 'undefined') {
-                    locations = [...rivianLocations];
-                    originalLocations = JSON.parse(JSON.stringify(rivianLocations));
-                    renderLocations();
-                    updateStats();
+        async function loadFromJSFile() {
+            try {
+                // First try to fetch as text and parse
+                const response = await fetch('./js/locations.js');
+                if (!response.ok) throw new Error('Failed to fetch JS file');
 
-                    // Update connection status
-                    document.getElementById('connectionStatus').textContent = '● File Mode';
-                    document.getElementById('connectionStatus').style.color = '#fbbf24';
-                    showNotification('API not configured. Using file mode. Changes will download as file.', 'info');
-                } else {
-                    loadEmbeddedData();
-                }
-            };
-            script.onerror = () => {
-                loadEmbeddedData();
-            };
-            document.head.appendChild(script);
-        }
+                const jsContent = await response.text();
 
-        // Embedded fallback data when external files can't be loaded
-        function loadEmbeddedData() {
-            // Try to fetch the locations file content directly
-            fetch('./js/locations.js')
-                .then(response => response.text())
-                .then(jsCode => {
-                    // Execute the JavaScript code
-                    eval(jsCode);
-                    if (typeof rivianLocations !== 'undefined') {
-                        locations = [...rivianLocations];
-                        originalLocations = JSON.parse(JSON.stringify(rivianLocations));
-                        renderLocations();
-                        updateStats();
+                // Extract the rivianLocations array from the JS content
+                const match = jsContent.match(/const rivianLocations = (\[[\s\S]*?\]);/);
+                if (!match) throw new Error('Could not parse locations data');
 
-                        document.getElementById('connectionStatus').textContent = '● File Mode';
-                        document.getElementById('connectionStatus').style.color = '#fbbf24';
-                        showNotification('Loaded from file. Changes will download as file.', 'info');
-                    } else {
-                        throw new Error('rivianLocations not found');
-                    }
-                })
-                .catch(error => {
-                    console.error('All loading methods failed:', error);
-                    document.getElementById('locationsList').innerHTML = `
-                        <div class="empty-state">
-                            <div class="empty-icon">⚠️</div>
-                            <h3>Error loading locations</h3>
-                            <p>Could not load from API or file. Please ensure you're running this on a web server.</p>
-                            <small>For local development, try: <code>python -m http.server 8000</code></small>
-                        </div>
-                    `;
-                });
+                const locationsData = JSON.parse(match[1]);
+                locations = [...locationsData];
+                originalLocations = JSON.parse(JSON.stringify(locationsData));
+
+                renderLocations();
+                updateStats();
+
+                // Update connection status
+                document.getElementById('connectionStatus').textContent = '● File Mode';
+                document.getElementById('connectionStatus').style.color = '#fbbf24';
+                showNotification('API not configured. Using file mode. Changes will download as file.', 'info');
+
+            } catch (error) {
+                console.error('Failed to load from JS file:', error);
+                document.getElementById('locationsList').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <h3>Error loading locations</h3>
+                        <p>Could not load location data. Error: ${error.message}</p>
+                    </div>
+                `;
+            }
         }
         
         // Save location (works with both API and file mode)
