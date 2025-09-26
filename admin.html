@@ -1099,21 +1099,24 @@
         // DATA LOADING AND SAVING
         // ============================================
         async function loadLocations() {
-            console.log('Loading locations...');
             try {
-                console.log('Trying API URL:', API_URL);
-                const response = await fetch(API_URL);
-                console.log('API response status:', response.status);
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+                const response = await fetch(API_URL, {
+                    signal: controller.signal,
+                    cache: 'no-cache' // Prevent caching issues
+                });
+                clearTimeout(timeoutId);
+
                 if (!response.ok) {
                     // If API doesn't exist, fall back to loading from JS file
-                    console.log('API not available, falling back to JS file');
-                    loadFromJSFile();
+                    await loadFromJSFile();
                     return;
                 }
 
                 locations = await response.json();
                 originalLocations = JSON.parse(JSON.stringify(locations));
-                console.log('Loaded', locations.length, 'locations from API');
                 renderLocations();
                 updateStats();
 
@@ -1122,7 +1125,7 @@
                 document.getElementById('connectionStatus').style.color = '#4CAF50';
             } catch (error) {
                 console.error('Error loading from API, falling back to JS file:', error);
-                loadFromJSFile();
+                await loadFromJSFile();
             }
         }
         
@@ -1130,21 +1133,41 @@
         async function loadFromJSFile() {
             console.log('Loading from JS file...');
             try {
-                // First try to fetch as text and parse
-                console.log('Fetching ./js/locations.js');
-                const response = await fetch('./js/locations.js');
+                // Add cache buster to prevent cached files
+                const cacheBuster = '?v=' + Date.now();
+                const jsUrl = `./js/locations.js${cacheBuster}`;
+
+                console.log('Fetching', jsUrl);
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+                const response = await fetch(jsUrl, {
+                    signal: controller.signal,
+                    cache: 'no-cache'
+                });
+                clearTimeout(timeoutId);
+
                 console.log('JS file response status:', response.status);
-                if (!response.ok) throw new Error('Failed to fetch JS file');
+                if (!response.ok) throw new Error(`Failed to fetch JS file: ${response.status}`);
 
                 const jsContent = await response.text();
                 console.log('JS file loaded, content length:', jsContent.length);
 
+                if (jsContent.length < 100) {
+                    throw new Error('JS file appears to be empty or corrupted');
+                }
+
                 // Extract the rivianLocations array from the JS content
                 const match = jsContent.match(/const rivianLocations = (\[[\s\S]*?\]);/);
-                if (!match) throw new Error('Could not parse locations data');
+                if (!match) throw new Error('Could not parse locations data from JS file');
 
                 console.log('Regex match found, parsing JSON...');
                 const locationsData = JSON.parse(match[1]);
+
+                if (!Array.isArray(locationsData) || locationsData.length === 0) {
+                    throw new Error('Locations data is invalid or empty');
+                }
+
                 locations = [...locationsData];
                 originalLocations = JSON.parse(JSON.stringify(locationsData));
 
@@ -1164,6 +1187,7 @@
                         <div class="empty-icon">⚠️</div>
                         <h3>Error loading locations</h3>
                         <p>Could not load location data. Error: ${error.message}</p>
+                        <p><small>Please check browser console for details</small></p>
                     </div>
                 `;
             }

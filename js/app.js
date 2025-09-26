@@ -613,19 +613,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function waitForDependencies() {
         return new Promise((resolve, reject) => {
             let attempts = 0;
-            const maxAttempts = 50; // 5 seconds maximum wait
+            const maxAttempts = 150; // 15 seconds maximum wait for production
 
             function check() {
                 attempts++;
-                console.log(`Dependency check attempt ${attempts}`);
+                if (attempts % 10 === 0) { // Log every second instead of every 100ms
+                    console.log(`Dependency check attempt ${attempts}/${maxAttempts}`);
+                }
 
                 // Check for required dependencies
                 if (typeof mapboxgl === 'undefined') {
-                    console.log('Mapbox GL JS not loaded yet');
+                    if (attempts % 10 === 0) console.log('Mapbox GL JS not loaded yet');
                 } else if (typeof rivianLocations === 'undefined') {
-                    console.log('Location data not loaded yet');
+                    if (attempts % 10 === 0) console.log('Location data not loaded yet');
                 } else if (!Array.isArray(rivianLocations) || rivianLocations.length === 0) {
-                    console.log('Location data is invalid or empty');
+                    console.log('Location data is invalid or empty:', rivianLocations);
                 } else {
                     console.log(`All dependencies loaded successfully - found ${rivianLocations.length} locations`);
                     resolve();
@@ -633,6 +635,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (attempts >= maxAttempts) {
+                    console.error('Dependency loading failed:', {
+                        mapboxgl: typeof mapboxgl,
+                        rivianLocations: typeof rivianLocations,
+                        rivianLocationsLength: Array.isArray(rivianLocations) ? rivianLocations.length : 'N/A'
+                    });
                     reject(new Error('Dependencies failed to load within timeout'));
                     return;
                 }
