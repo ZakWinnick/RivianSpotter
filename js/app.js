@@ -609,17 +609,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show initial loading state
     Utils.showLoading(document.getElementById('locationList'), 'Loading locations...');
 
-    // Wait for components to initialize
-    setTimeout(async () => {
-        try {
-            // Check for required dependencies
-            if (typeof mapboxgl === 'undefined') {
-                throw new Error('Mapbox GL JS not loaded');
+    // Function to wait for all dependencies
+    function waitForDependencies() {
+        return new Promise((resolve, reject) => {
+            let attempts = 0;
+            const maxAttempts = 50; // 5 seconds maximum wait
+
+            function check() {
+                attempts++;
+                console.log(`Dependency check attempt ${attempts}`);
+
+                // Check for required dependencies
+                if (typeof mapboxgl === 'undefined') {
+                    console.log('Mapbox GL JS not loaded yet');
+                } else if (typeof rivianLocations === 'undefined') {
+                    console.log('Location data not loaded yet');
+                } else if (!Array.isArray(rivianLocations) || rivianLocations.length === 0) {
+                    console.log('Location data is invalid or empty');
+                } else {
+                    console.log(`All dependencies loaded successfully - found ${rivianLocations.length} locations`);
+                    resolve();
+                    return;
+                }
+
+                if (attempts >= maxAttempts) {
+                    reject(new Error('Dependencies failed to load within timeout'));
+                    return;
+                }
+
+                setTimeout(check, 100);
             }
 
-            if (!rivianLocations) {
-                throw new Error('Location data not loaded');
-            }
+            check();
+        });
+    }
+
+    // Wait for all dependencies then initialize
+    waitForDependencies().then(async () => {
+        try {
 
             // Initialize map
             await MapManager.initMap();
@@ -717,5 +744,9 @@ document.addEventListener('DOMContentLoaded', function() {
             Utils.showError('Failed to initialize application: ' + error.message,
                 document.getElementById('locationList'));
         }
-    }, 100);
+    }).catch(error => {
+        console.error('Failed to load dependencies:', error);
+        Utils.showError('Failed to initialize application: ' + error.message,
+            document.getElementById('locationList'));
+    });
 });
