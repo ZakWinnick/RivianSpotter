@@ -1134,7 +1134,7 @@
             try {
                 // Try loading the script dynamically first
                 const script = document.createElement('script');
-                script.src = './js/locations.js';
+                script.src = './js/locations.js?v=20250926b';
 
                 await new Promise((resolve, reject) => {
                     script.onload = () => {
@@ -1163,7 +1163,7 @@
 
                 // Fallback to fetch method
                 try {
-                    const response = await fetch('./js/locations.js');
+                    const response = await fetch('./js/locations.js?v=20250926b');
                     if (!response.ok) throw new Error('Failed to fetch JS file');
 
                     const jsContent = await response.text();
