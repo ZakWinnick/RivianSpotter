@@ -2,7 +2,7 @@ const rivianLocations = [
   {
     "id": 1,
     "name": "Calgary - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "AB",
     "lat": 51.02,
     "lng": -113.9749,
@@ -39,7 +39,7 @@ const rivianLocations = [
   {
     "id": 3,
     "name": "Tempe - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "AZ",
     "lat": 33.3465,
     "lng": -111.9781,
@@ -76,7 +76,7 @@ const rivianLocations = [
   {
     "id": 5,
     "name": "Burbank - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 34.1808,
     "lng": -118.309,
@@ -95,7 +95,7 @@ const rivianLocations = [
   {
     "id": 6,
     "name": "Costa Mesa - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 33.6412,
     "lng": -117.9187,
@@ -132,7 +132,7 @@ const rivianLocations = [
   {
     "id": 8,
     "name": "Eastvale - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 33.963,
     "lng": -117.5638,
@@ -151,7 +151,7 @@ const rivianLocations = [
   {
     "id": 9,
     "name": "El Segundo - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 33.9192,
     "lng": -118.4165,
@@ -242,7 +242,7 @@ const rivianLocations = [
   {
     "id": 14,
     "name": "Lake Forest - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 33.6462,
     "lng": -117.689,
@@ -279,7 +279,7 @@ const rivianLocations = [
   {
     "id": 16,
     "name": "San Diego - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 32.8967,
     "lng": -117.2005,
@@ -352,7 +352,7 @@ const rivianLocations = [
   {
     "id": 20,
     "name": "South San Francisco - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 37.6547,
     "lng": -122.4077,
@@ -371,7 +371,7 @@ const rivianLocations = [
   {
     "id": 21,
     "name": "Van Nuys - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 34.2117,
     "lng": -118.449,
@@ -426,7 +426,7 @@ const rivianLocations = [
   {
     "id": 24,
     "name": "West Sacramento - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 38.5816,
     "lng": -121.5301,
@@ -463,7 +463,7 @@ const rivianLocations = [
   {
     "id": 26,
     "name": "Colorado Springs - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "CO",
     "lat": 38.9349,
     "lng": -104.7436,
@@ -500,7 +500,7 @@ const rivianLocations = [
   {
     "id": 28,
     "name": "Miami - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "FL",
     "lat": 25.8324,
     "lng": -80.2799,
@@ -537,7 +537,7 @@ const rivianLocations = [
   {
     "id": 30,
     "name": "Orlando North - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "FL",
     "lat": 28.5923,
     "lng": -81.3588,
@@ -556,7 +556,7 @@ const rivianLocations = [
   {
     "id": 31,
     "name": "Orlando South - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "FL",
     "lat": 28.4754,
     "lng": -81.3712,
@@ -575,7 +575,7 @@ const rivianLocations = [
   {
     "id": 32,
     "name": "Tampa - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "FL",
     "lat": 27.959,
     "lng": -82.4998,
@@ -630,7 +630,7 @@ const rivianLocations = [
   {
     "id": 35,
     "name": "Honolulu - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "HI",
     "lat": 21.316,
     "lng": -157.8621,
@@ -649,7 +649,7 @@ const rivianLocations = [
   {
     "id": 36,
     "name": "Boise - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "ID",
     "lat": 43.6187,
     "lng": -116.2146,
@@ -686,7 +686,7 @@ const rivianLocations = [
   {
     "id": 38,
     "name": "Melrose Park - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "IL",
     "lat": 41.9006,
     "lng": -87.8561,
@@ -723,7 +723,7 @@ const rivianLocations = [
   {
     "id": 40,
     "name": "Kansas City - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "KS",
     "lat": 38.889,
     "lng": -94.6906,
@@ -742,7 +742,7 @@ const rivianLocations = [
   {
     "id": 41,
     "name": "Gaithersburg - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MD",
     "lat": 39.1434,
     "lng": -77.2014,
@@ -761,7 +761,7 @@ const rivianLocations = [
   {
     "id": 42,
     "name": "Glen Burnie - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MD",
     "lat": 39.1626,
     "lng": -76.6247,
@@ -798,7 +798,7 @@ const rivianLocations = [
   {
     "id": 44,
     "name": "Chelsea - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MA",
     "lat": 42.3917,
     "lng": -71.0497,
@@ -817,7 +817,7 @@ const rivianLocations = [
   {
     "id": 45,
     "name": "Caledonia - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MI",
     "lat": 42.7878,
     "lng": -85.5178,
@@ -836,7 +836,7 @@ const rivianLocations = [
   {
     "id": 46,
     "name": "Madison Heights - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MI",
     "lat": 42.5156,
     "lng": -83.1052,
@@ -855,7 +855,7 @@ const rivianLocations = [
   {
     "id": 47,
     "name": "St. Louis - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "MO",
     "lat": 38.761,
     "lng": -90.3765,
@@ -874,7 +874,7 @@ const rivianLocations = [
   {
     "id": 48,
     "name": "North Las Vegas - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "NV",
     "lat": 36.2657,
     "lng": -115.1768,
@@ -893,7 +893,7 @@ const rivianLocations = [
   {
     "id": 49,
     "name": "Sparks - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "NV",
     "lat": 39.5342,
     "lng": -119.7511,
@@ -912,7 +912,7 @@ const rivianLocations = [
   {
     "id": 50,
     "name": "Woodbridge - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "NJ",
     "lat": 40.5576,
     "lng": -74.2846,
@@ -931,7 +931,7 @@ const rivianLocations = [
   {
     "id": 51,
     "name": "Blauvelt - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "NY",
     "lat": 41.0645,
     "lng": -73.9546,
@@ -1022,7 +1022,7 @@ const rivianLocations = [
   {
     "id": 56,
     "name": "Toronto - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "ON",
     "lat": 43.773,
     "lng": -79.5373,
@@ -1041,7 +1041,7 @@ const rivianLocations = [
   {
     "id": 57,
     "name": "Portland - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "OR",
     "lat": 45.5004,
     "lng": -122.6749,
@@ -1078,7 +1078,7 @@ const rivianLocations = [
   {
     "id": 59,
     "name": "Montreal - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "QC",
     "lat": 45.527,
     "lng": -73.6518,
@@ -1097,7 +1097,7 @@ const rivianLocations = [
   {
     "id": 60,
     "name": "Franklin - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TN",
     "lat": 35.9251,
     "lng": -86.8689,
@@ -1116,7 +1116,7 @@ const rivianLocations = [
   {
     "id": 61,
     "name": "Memphis - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TN",
     "lat": 35.21,
     "lng": -89.8036,
@@ -1171,7 +1171,7 @@ const rivianLocations = [
   {
     "id": 64,
     "name": "Austin - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TX",
     "lat": 30.3165,
     "lng": -97.6967,
@@ -1208,7 +1208,7 @@ const rivianLocations = [
   {
     "id": 66,
     "name": "Dallas - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TX",
     "lat": 32.735,
     "lng": -96.8669,
@@ -1227,7 +1227,7 @@ const rivianLocations = [
   {
     "id": 67,
     "name": "Houston - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TX",
     "lat": 30.0305,
     "lng": -95.4363,
@@ -1246,7 +1246,7 @@ const rivianLocations = [
   {
     "id": 68,
     "name": "San Antonio - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "TX",
     "lat": 29.5081,
     "lng": -98.4437,
@@ -1265,7 +1265,7 @@ const rivianLocations = [
   {
     "id": 69,
     "name": "Salt Lake City - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "UT",
     "lat": 40.7397,
     "lng": -111.92,
@@ -1284,7 +1284,7 @@ const rivianLocations = [
   {
     "id": 70,
     "name": "Richmond - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "VA",
     "lat": 37.5758,
     "lng": -77.5099,
@@ -1303,7 +1303,7 @@ const rivianLocations = [
   {
     "id": 71,
     "name": "Bellevue - Education Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "WA",
     "lat": 47.6101,
     "lng": -122.2015,
@@ -1359,7 +1359,7 @@ const rivianLocations = [
   {
     "id": 74,
     "name": "Menomonee Falls - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "WI",
     "lat": 43.179,
     "lng": -88.1171,
@@ -1468,7 +1468,7 @@ const rivianLocations = [
   {
     "id": 80,
     "name": "Fort Myers - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "FL",
     "lat": 26.5945,
     "lng": -81.8011,
@@ -1487,7 +1487,7 @@ const rivianLocations = [
   {
     "id": 81,
     "name": "Buffalo Grove - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "IL",
     "lat": 42.1731,
     "lng": -87.9496,
@@ -1506,7 +1506,7 @@ const rivianLocations = [
   {
     "id": 82,
     "name": "Belgrade - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "lat": 45.7749,
     "lng": -111.1768,
     "address": "617 Alaska Frontage Rd",
@@ -1525,7 +1525,7 @@ const rivianLocations = [
   {
     "id": 83,
     "name": "Ladson - Service + Demo Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "SC",
     "lat": 33.0094,
     "lng": -80.1283,
@@ -1562,7 +1562,7 @@ const rivianLocations = [
   {
     "id": 85,
     "name": "Bothell - Education Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "WA",
     "lat": 47.8354,
     "lng": -122.2033,
@@ -1578,7 +1578,7 @@ const rivianLocations = [
   {
     "id": 86,
     "name": "Seattle - Education Center",
-    "type": "Service Center",
+    "type": "Demo Center",
     "state": "WA",
     "lat": 47.6613,
     "lng": -122.2889,

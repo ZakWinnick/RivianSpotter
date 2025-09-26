@@ -1,10 +1,27 @@
 <?php
 // api/locations.php - Locations management API
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type');
+// Security headers
+header('Content-Type: application/json; charset=utf-8');
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('X-XSS-Protection: 1; mode=block');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+
+// CORS headers (restrict in production)
+$allowed_origins = ['http://localhost', 'https://rivianspotter.com', 'https://www.rivianspotter.com'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+if (in_array($origin, $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} else {
+    header('Access-Control-Allow-Origin: null');
+}
+
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Max-Age: 3600');
 
 // Configuration
 define('DATA_FILE', __DIR__ . '/../data/locations.json');
@@ -24,16 +41,103 @@ if (!file_exists(DATA_FILE)) {
     file_put_contents(DATA_FILE, json_encode($defaultLocations, JSON_PRETTY_PRINT));
 }
 
+// Input validation and sanitization
+function validateAndSanitizeInput($data) {
+    if (!is_array($data)) {
+        return false;
+    }
+
+    // Required fields validation
+    $required_fields = ['name', 'lat', 'lng', 'type'];
+    foreach ($required_fields as $field) {
+        if (!isset($data[$field]) || empty(trim($data[$field]))) {
+            return false;
+        }
+    }
+
+    // Sanitize string fields
+    $string_fields = ['name', 'address', 'city', 'state', 'type', 'phone', 'hours', 'rivianUrl'];
+    foreach ($string_fields as $field) {
+        if (isset($data[$field])) {
+            $data[$field] = htmlspecialchars(trim($data[$field]), ENT_QUOTES, 'UTF-8');
+        }
+    }
+
+    // Validate opening date if provided
+    if (isset($data['openingDate']) && !empty($data['openingDate'])) {
+        $date = DateTime::createFromFormat('Y-m-d', $data['openingDate']);
+        if (!$date || $date->format('Y-m-d') !== $data['openingDate']) {
+            return false;
+        }
+    }
+
+    // Validate Rivian URL if provided
+    if (isset($data['rivianUrl']) && !empty($data['rivianUrl'])) {
+        if (!filter_var($data['rivianUrl'], FILTER_VALIDATE_URL) ||
+            strpos($data['rivianUrl'], 'rivian.com') === false) {
+            return false;
+        }
+    }
+
+    // Validate coordinates
+    $lat = floatval($data['lat']);
+    $lng = floatval($data['lng']);
+    if ($lat < -90 || $lat > 90 || $lng < -180 || $lng > 180) {
+        return false;
+    }
+    $data['lat'] = $lat;
+    $data['lng'] = $lng;
+
+    // Validate and sanitize services array
+    if (isset($data['services']) && is_array($data['services'])) {
+        $data['services'] = array_map(function($service) {
+            return htmlspecialchars(trim($service), ENT_QUOTES, 'UTF-8');
+        }, $data['services']);
+    }
+
+    return $data;
+}
+
+// Simple rate limiting
+function checkRateLimit() {
+    session_start();
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $current_time = time();
+    $limit_window = 300; // 5 minutes
+    $max_requests = 100; // Max requests per window
+
+    if (!isset($_SESSION['rate_limit'])) {
+        $_SESSION['rate_limit'] = [];
+    }
+
+    // Clean old entries
+    $_SESSION['rate_limit'] = array_filter($_SESSION['rate_limit'], function($timestamp) use ($current_time, $limit_window) {
+        return ($current_time - $timestamp) < $limit_window;
+    });
+
+    // Check if rate limit exceeded
+    if (count($_SESSION['rate_limit']) >= $max_requests) {
+        http_response_code(429);
+        die(json_encode(['error' => 'Rate limit exceeded. Please try again later.']));
+    }
+
+    // Add current request
+    $_SESSION['rate_limit'][] = $current_time;
+}
+
 // Check authentication for write operations
 function checkAuth() {
     $headers = getallheaders();
     $token = $headers['Authorization'] ?? $_GET['token'] ?? '';
-    
+
     if ($token !== 'Bearer ' . ADMIN_TOKEN && $token !== ADMIN_TOKEN) {
         http_response_code(401);
         die(json_encode(['error' => 'Unauthorized']));
     }
 }
+
+// Apply rate limiting for all requests
+checkRateLimit();
 
 // Get request method
 $method = $_SERVER['REQUEST_METHOD'];
@@ -88,30 +192,37 @@ switch ($method) {
     case 'POST':
         // Add new location (requires auth)
         checkAuth();
-        
+
         $input = json_decode(file_get_contents('php://input'), true);
-        
-        if (!$input || !isset($input['name'])) {
+
+        if (!$input) {
             http_response_code(400);
-            echo json_encode(['error' => 'Invalid location data']);
+            echo json_encode(['error' => 'Invalid JSON data']);
+            exit;
+        }
+
+        $validatedInput = validateAndSanitizeInput($input);
+        if (!$validatedInput) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid location data. Please check required fields and coordinate values.']);
             exit;
         }
         
         $locations = getLocations();
         
         // Generate ID if not provided
-        if (!isset($input['id'])) {
-            $input['id'] = time() . rand(1000, 9999);
+        if (!isset($validatedInput['id'])) {
+            $validatedInput['id'] = time() . rand(1000, 9999);
         }
-        
+
         // Add timestamps
-        $input['created_at'] = date('Y-m-d H:i:s');
-        $input['updated_at'] = date('Y-m-d H:i:s');
-        
-        $locations[] = $input;
+        $validatedInput['created_at'] = date('Y-m-d H:i:s');
+        $validatedInput['updated_at'] = date('Y-m-d H:i:s');
+
+        $locations[] = $validatedInput;
         
         if (saveLocations($locations)) {
-            echo json_encode(['success' => true, 'location' => $input]);
+            echo json_encode(['success' => true, 'location' => $validatedInput]);
         } else {
             http_response_code(500);
             echo json_encode(['error' => 'Failed to save location']);

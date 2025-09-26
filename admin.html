@@ -840,7 +840,7 @@
                             <select class="form-select" id="type" required>
                                 <option value="">Select type...</option>
                                 <option value="Space">Space (Retail Showroom)</option>
-                                <option value="Service Center">Service Center</option>
+                                <option value="Demo Center">Demo Center</option>
                                 <option value="Outpost">Charging Outpost</option>
                             </select>
                         </div>
@@ -891,7 +891,19 @@
                         <label class="form-label">Hours</label>
                         <input type="text" class="form-input" id="hours" placeholder="Mon-Sat: 10am-7pm, Sun: 11am-6pm">
                     </div>
-                    
+
+                    <div class="form-group">
+                        <label class="form-label">Opening Date</label>
+                        <input type="date" class="form-input" id="openingDate" placeholder="Select opening date">
+                        <span class="form-help">Date when this location first opened</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Rivian.com URL</label>
+                        <input type="url" class="form-input" id="rivianUrl" placeholder="https://rivian.com/locations/...">
+                        <span class="form-help">Link to this location's page on Rivian.com</span>
+                    </div>
+
                     <div class="form-group">
                         <label class="form-label">Available Services</label>
                         <div class="services-grid">
@@ -1155,6 +1167,8 @@
                 state: document.getElementById('state').value.toUpperCase(),
                 hours: document.getElementById('hours').value || '',
                 phone: document.getElementById('phone').value || '',
+                openingDate: document.getElementById('openingDate').value || '',
+                rivianUrl: document.getElementById('rivianUrl').value || '',
                 services: checkedServices,
                 isOpen: document.getElementById('isOpen').value === 'true'
             };
@@ -1360,6 +1374,8 @@ if (typeof module !== 'undefined' && module.exports) {
                 document.getElementById('state').value = location.state;
                 document.getElementById('hours').value = location.hours || '';
                 document.getElementById('phone').value = location.phone || '';
+                document.getElementById('openingDate').value = location.openingDate || '';
+                document.getElementById('rivianUrl').value = location.rivianUrl || '';
                 document.getElementById('isOpen').value = location.isOpen !== false ? 'true' : 'false';
                 
                 // Set service checkboxes

@@ -55,20 +55,31 @@ RivianSpotter is a web application that provides an interactive map of Rivian Sp
 
 ## Important Notes
 
-### Security
-- Admin token is hardcoded in multiple files - change before production
-- API allows CORS from any origin - restrict in production
-- Contact form sends to hardcoded email addresses
+### Security ⚠️
+- **API Keys**: Mapbox token should be moved to environment variables (see `.env.example`)
+- **CORS Policy**: Restricted to specific domains in production (see `api/locations.php`)
+- **Input Validation**: All user inputs are sanitized and validated
+- **Rate Limiting**: API includes basic rate limiting (100 requests per 5 minutes)
+- **Security Headers**: CSP and security headers implemented
+
+### Performance Optimizations ⚡
+- **Debounced Search**: 300ms delay prevents excessive filtering
+- **Data Caching**: Client-side caching with 30-minute expiration
+- **Lazy Loading**: Location data can be loaded in chunks
+- **Error Handling**: Comprehensive error boundaries and user feedback
+- **Code Splitting**: Modular JavaScript architecture
 
 ### Data Management
-- Location data exists in two places: `js/locations.js` and `data/locations.json`
-- Admin panel manages JSON file, but changes must be manually synced to JS file
-- Location IDs must be unique across the entire dataset
+- **Dual Storage**: Data in both `js/locations.js` and `data/locations.json`
+- **Auto-sync**: Admin changes automatically update both files
+- **Validation**: Server-side validation for coordinates and required fields
+- **Sanitization**: All string inputs are sanitized against XSS
 
-### Map Integration
-- Uses Mapbox GL JS with custom clustering and popup functionality
-- Mapbox access token required (check for API key in HTML files)
-- Custom marker styling for different location types (Space, Service Center, etc.)
+### Development Best Practices
+- **Configuration**: Centralized config in `js/config.js`
+- **Error Logging**: Console logging for debugging
+- **Loading States**: User feedback during data operations
+- **Mobile-First**: Responsive design with touch-friendly interactions
 
 ## File Structure
 ```
@@ -76,15 +87,41 @@ RivianSpotter is a web application that provides an interactive map of Rivian Sp
 ├── admin.html              # Admin panel
 ├── about.html              # About page
 ├── contact.html            # Contact page
+├── .env.example            # Environment configuration template
 ├── js/
-│   ├── locations.js        # Location data array
-│   ├── components.js       # Reusable components
-│   └── admin.js           # Admin functionality
+│   ├── app.js             # Main application logic (modular)
+│   ├── config.js          # Application configuration
+│   ├── data-loader.js     # Data loading and caching
+│   ├── locations.js       # Location data array
+│   ├── components.js      # Reusable components
+│   └── admin.js          # Admin functionality
 ├── api/
-│   └── locations.php      # Backend API
+│   └── locations.php     # Backend API (with security improvements)
 ├── data/
-│   └── locations.json     # JSON data store
+│   └── locations.json    # JSON data store
 ├── css/
-│   └── style.css          # Main stylesheet
+│   └── style.css         # Main stylesheet (optimized)
+├── images/
+│   └── *.png            # Logo assets (should be optimized)
 └── setup-locations-api.sh # Server setup script
 ```
+
+## Recent Optimizations 🚀
+
+### Performance Improvements
+- **Moved inline CSS to external file** - Better caching and organization
+- **Implemented debounced search** - Reduced excessive API calls
+- **Added loading indicators** - Better user experience
+- **Modular JavaScript** - Better maintainability and loading
+
+### Security Enhancements
+- **Input validation and sanitization** - Prevents XSS attacks
+- **Rate limiting** - Prevents abuse
+- **CORS restrictions** - Only allowed domains
+- **Security headers** - XSS protection, content type validation
+
+### Code Quality
+- **Error handling** - Comprehensive try/catch blocks
+- **Data validation** - Server and client-side validation
+- **Configuration management** - Centralized settings
+- **Responsive design optimizations** - Better mobile experience
