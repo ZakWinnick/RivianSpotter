@@ -36,25 +36,64 @@ fi
 # 1. Check Prerequisites
 echo "1️⃣  Checking prerequisites..."
 
-# Check Apache
-if command -v apache2 >/dev/null 2>&1 || command -v httpd >/dev/null 2>&1; then
-    print_success "Apache web server found"
+# Check Apache - try multiple methods
+APACHE_FOUND=false
+APACHE_CMD=""
+APACHE_CTL=""
+
+if command -v apache2 >/dev/null 2>&1; then
+    APACHE_CMD="apache2"
+    APACHE_CTL="apache2ctl"
+    APACHE_FOUND=true
+elif command -v httpd >/dev/null 2>&1; then
+    APACHE_CMD="httpd"
+    APACHE_CTL="apachectl"
+    APACHE_FOUND=true
+elif [ -x "/usr/sbin/httpd" ]; then
+    APACHE_CMD="/usr/sbin/httpd"
+    APACHE_CTL="/usr/sbin/apachectl"
+    APACHE_FOUND=true
+elif [ -x "/usr/sbin/apache2" ]; then
+    APACHE_CMD="/usr/sbin/apache2"
+    APACHE_CTL="apache2ctl"
+    APACHE_FOUND=true
+fi
+
+if [ "$APACHE_FOUND" = true ]; then
+    APACHE_VERSION=$($APACHE_CMD -v 2>/dev/null | head -n 1 || echo "unknown")
+    print_success "Apache web server found: $APACHE_VERSION"
 else
     print_error "Apache web server not found. Please install Apache first."
+    print_info "Searched for: apache2, httpd, /usr/sbin/httpd, /usr/sbin/apache2"
     exit 1
 fi
 
 # Check PHP
+PHP_FOUND=false
 if command -v php >/dev/null 2>&1; then
     PHP_VERSION=$(php -v | head -n 1 | cut -d " " -f 2 | cut -d "." -f 1,2)
     print_success "PHP $PHP_VERSION found"
+    PHP_FOUND=true
 
-    if [[ $(echo "$PHP_VERSION < 7.4" | bc -l) -eq 1 ]]; then
-        print_warning "PHP version is below 7.4. Consider upgrading for better performance."
+    if command -v bc >/dev/null 2>&1; then
+        if [[ $(echo "$PHP_VERSION < 7.4" | bc -l) -eq 1 ]]; then
+            print_warning "PHP version is below 7.4. Consider upgrading for better performance."
+        fi
     fi
+elif [ -x "/usr/bin/php" ]; then
+    PHP_VERSION=$(/usr/bin/php -v | head -n 1 | cut -d " " -f 2 | cut -d "." -f 1,2)
+    print_success "PHP $PHP_VERSION found at /usr/bin/php"
+    PHP_FOUND=true
 else
-    print_error "PHP not found. Please install PHP 7.4 or higher."
-    exit 1
+    print_warning "PHP not found in PATH. This is okay for local development."
+    print_info "Admin panel will run in File Mode (read-only)."
+    print_info "On production server with PHP, it will use API Mode automatically."
+    echo ""
+    read -p "Continue anyway? (y/n) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
 fi
 
 # 2. Check .env file
@@ -132,7 +171,7 @@ echo ""
 echo "4️⃣  Checking Apache modules..."
 
 check_module() {
-    if apache2ctl -M 2>/dev/null | grep -q "$1" || httpd -M 2>/dev/null | grep -q "$1"; then
+    if $APACHE_CTL -M 2>/dev/null | grep -q "$1"; then
         print_success "$1 is enabled"
         return 0
     else
@@ -184,13 +223,17 @@ fi
 echo ""
 echo "6️⃣  Testing configuration..."
 
-# Test PHP syntax
-php -l api/locations.php >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-    print_success "PHP syntax is valid"
+# Test PHP syntax (only if PHP is available)
+if [ "$PHP_FOUND" = true ]; then
+    php -l api/locations.php >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        print_success "PHP syntax is valid"
+    else
+        print_error "PHP syntax error in api/locations.php"
+        exit 1
+    fi
 else
-    print_error "PHP syntax error in api/locations.php"
-    exit 1
+    print_info "Skipping PHP syntax check (PHP not available)"
 fi
 
 # 7. Display next steps
