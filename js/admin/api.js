@@ -100,9 +100,9 @@ const AdminAPI = {
             AdminUI.renderLocations();
             AdminUI.updateStats();
 
-            document.getElementById('connectionStatus').textContent = '● File Mode';
+            document.getElementById('connectionStatus').textContent = '● File Mode (Read-Only)';
             document.getElementById('connectionStatus').style.color = '#fbbf24';
-            AdminUI.showNotification('API not configured. Using file mode. Changes will download as file.', 'info');
+            AdminUI.showNotification('Running in file mode. To enable API mode, start a PHP server: php -S localhost:8000', 'info');
 
         } catch (error) {
             console.error('Script loading failed, trying fetch method:', error);

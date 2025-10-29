@@ -23,20 +23,25 @@ const AdminConfig = {
 
     // Initialize and load token from API
     async initialize() {
+        // Set fallback token first (for file mode)
+        this.ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c';
+
         try {
-            // Try to load config from API endpoint
-            const response = await fetch('./api/config.php');
+            // Try to load config from API endpoint (only in API mode)
+            const response = await fetch('./api/config.php', {
+                method: 'GET',
+                cache: 'no-cache'
+            });
+
             if (response.ok) {
                 const config = await response.json();
-                this.ADMIN_TOKEN = config.adminToken;
-            } else {
-                // Fallback to hardcoded token if config endpoint doesn't exist
-                this.ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c';
+                // Note: API config endpoint doesn't expose adminToken for security
+                // Token is only used server-side for authentication
+                console.log('API config loaded successfully');
             }
         } catch (error) {
-            // Fallback to hardcoded token
-            console.warn('Could not load config from API, using fallback token');
-            this.ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c';
+            // Silent fail - this is expected when PHP server isn't running
+            console.log('API not available, admin will run in file mode');
         }
     }
 };
