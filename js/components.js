@@ -33,7 +33,10 @@ class RivianComponents {
                     </div>
                 </button>
                 <a href="/" class="logo">
-                    <img src="/images/rivianspotter-logosolo-trans.png" alt="Rivian Spotter" class="logo-img">
+                    <picture>
+                        <source srcset="/images/rivianspotter-logosolo-optimized.webp" type="image/webp">
+                        <img src="/images/rivianspotter-logosolo-optimized.png" alt="Rivian Spotter" class="logo-img">
+                    </picture>
                     <span class="logo-text">Rivian Spotter</span>
                 </a>
                 <nav class="nav-links desktop">

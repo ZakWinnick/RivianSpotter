@@ -1,0 +1,43 @@
+# Environment variables
+.env
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Backup files
+*.backup
+*.bak
+*-old.*
+*-backup.*
+
+# Node modules (if added later)
+node_modules/
+
+# Build outputs (if added later)
+dist/
+build/
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Test results
+test-results/
+junit.xml

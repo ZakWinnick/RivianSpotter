@@ -1,6 +1,20 @@
 <?php
 // api/locations.php - Locations management API
 
+// Load environment variables
+require_once __DIR__ . '/env-loader.php';
+try {
+    loadEnv();
+} catch (Exception $e) {
+    http_response_code(500);
+    die(json_encode(['error' => 'Configuration error: ' . $e->getMessage()]));
+}
+
+// Enforce HTTPS in production
+require_once __DIR__ . '/https-check.php';
+enforceHttps();
+addSecurityHeaders();
+
 // Security headers
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
@@ -8,8 +22,8 @@ header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
-// CORS headers (restrict in production)
-$allowed_origins = ['http://localhost', 'https://rivianspotter.com', 'https://www.rivianspotter.com'];
+// CORS headers (from environment config)
+$allowed_origins = explode(',', env('ALLOWED_ORIGINS', 'http://localhost'));
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 
 if (in_array($origin, $allowed_origins)) {
@@ -26,7 +40,7 @@ header('Access-Control-Max-Age: 3600');
 // Configuration
 define('DATA_FILE', __DIR__ . '/../data/locations.json');
 define('JS_FILE', __DIR__ . '/../js/locations.js');
-define('ADMIN_TOKEN', 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c'); // Change this!
+define('ADMIN_TOKEN', env('ADMIN_TOKEN'));
 
 // Ensure data directory exists
 $dataDir = dirname(DATA_FILE);
@@ -100,11 +114,15 @@ function validateAndSanitizeInput($data) {
 
 // Simple rate limiting
 function checkRateLimit() {
+    if (!env('ENABLE_RATE_LIMITING', true)) {
+        return;
+    }
+
     session_start();
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $current_time = time();
-    $limit_window = 300; // 5 minutes
-    $max_requests = 100; // Max requests per window
+    $limit_window = (int)env('RATE_LIMIT_WINDOW_SECONDS', 300);
+    $max_requests = (int)env('MAX_REQUESTS_PER_WINDOW', 100);
 
     if (!isset($_SESSION['rate_limit'])) {
         $_SESSION['rate_limit'] = [];

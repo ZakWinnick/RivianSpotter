@@ -9,7 +9,15 @@ const AppState = {
     searchTerm: '',
     userMarker: null,
     isLoading: false,
-    searchTimeout: null
+    searchTimeout: null,
+    // Advanced filters
+    selectedStates: [],
+    selectedServices: [],
+    dateFrom: null,
+    dateTo: null,
+    distanceEnabled: false,
+    distanceRadius: 50,
+    userLocation: null
 };
 
 // Utility functions
@@ -167,65 +175,243 @@ const MapManager = {
 
     addMarkers(locations) {
         try {
-            // Clear existing markers
-            AppState.markers.forEach(({marker}) => marker.remove());
-            AppState.markers = [];
+            // Clear existing markers if any
+            if (AppState.markers.length > 0) {
+                AppState.markers.forEach(({marker}) => marker.remove());
+                AppState.markers = [];
+            }
 
-            locations.forEach(location => {
-                // Validate location data
-                if (!Utils.isValidCoordinate(location.lat, location.lng)) {
-                    console.warn('Invalid coordinates for location:', location.name);
-                    return;
-                }
+            // Remove existing sources and layers if they exist
+            if (AppState.map.getSource('locations')) {
+                // Remove layers first
+                if (AppState.map.getLayer('clusters')) AppState.map.removeLayer('clusters');
+                if (AppState.map.getLayer('cluster-count')) AppState.map.removeLayer('cluster-count');
+                if (AppState.map.getLayer('unclustered-space')) AppState.map.removeLayer('unclustered-space');
+                if (AppState.map.getLayer('unclustered-demo')) AppState.map.removeLayer('unclustered-demo');
+                if (AppState.map.getLayer('unclustered-outpost')) AppState.map.removeLayer('unclustered-outpost');
+                // Remove source
+                AppState.map.removeSource('locations');
+            }
 
-                // Create marker element with specific styling for each type
-                const el = document.createElement('div');
-                let markerClass = 'marker';
-                if (location.type === 'Demo Center') {
-                    markerClass += ' demo-center';
-                } else if (location.type === 'Outpost') {
-                    markerClass += ' outpost';
-                } else {
-                    markerClass += ' space';
-                }
-                el.className = markerClass;
+            // Convert locations to GeoJSON format
+            const geojsonData = {
+                type: 'FeatureCollection',
+                features: locations
+                    .filter(location => Utils.isValidCoordinate(location.lat, location.lng))
+                    .map(location => ({
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [location.lng, location.lat]
+                        },
+                        properties: {
+                            id: location.id,
+                            name: location.name,
+                            type: location.type,
+                            address: location.address,
+                            city: location.city,
+                            state: location.state,
+                            phone: location.phone || '',
+                            hours: location.hours || '',
+                            openingDate: location.openingDate || '',
+                            rivianUrl: location.rivianUrl || '',
+                            services: JSON.stringify(location.services || []),
+                            isOpen: location.isOpen !== false
+                        }
+                    }))
+            };
 
-                // Set icon based on location type
-                let iconPath = '';
-                if (location.type === 'Space') {
-                    // Building/store icon for Spaces
-                    iconPath = '<path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>';
-                } else if (location.type === 'Demo Center') {
-                    // Directions/navigation icon for Demo Centers
-                    iconPath = '<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/>';
-                } else if (location.type === 'Outpost') {
-                    // Charging station/electric icon for Outposts
-                    iconPath = '<path d="M14.5 11l-3 6v-4h-2l3-6v4h2zm3.5 6h-2v-6h2v6zm2-6v8c0 1.1-.9 2-2 2h-2c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v6h2c1.1 0 2 .9 2 2z"/>';
-                }
-
-                el.innerHTML = `
-                    <svg class="marker-icon" viewBox="0 0 24 24">
-                        ${iconPath}
-                    </svg>
-                `;
-
-                // Create popup content
-                const popupContent = this.createPopupContent(location);
-                const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent);
-
-                // Add marker to map
-                const marker = new mapboxgl.Marker(el)
-                    .setLngLat([location.lng, location.lat])
-                    .setPopup(popup)
-                    .addTo(AppState.map);
-
-                // Add click handler
-                el.addEventListener('click', () => {
-                    LocationManager.highlightLocation(location.id);
-                });
-
-                AppState.markers.push({ marker, location });
+            // Add source with clustering enabled
+            AppState.map.addSource('locations', {
+                type: 'geojson',
+                data: geojsonData,
+                cluster: true,
+                clusterMaxZoom: 14, // Max zoom to cluster points on
+                clusterRadius: window.RivianSpotterConfig.performance.markerClusterRadius || 50
             });
+
+            // Add cluster circles layer with color based on point count
+            AppState.map.addLayer({
+                id: 'clusters',
+                type: 'circle',
+                source: 'locations',
+                filter: ['has', 'point_count'],
+                paint: {
+                    // Use step expressions to create three sizes based on point count
+                    'circle-color': [
+                        'step',
+                        ['get', 'point_count'],
+                        '#4CAF50',  // Small clusters (< 10) - Green
+                        10,
+                        '#1976D2',  // Medium clusters (10-50) - Blue
+                        50,
+                        '#FF6B6B'   // Large clusters (50+) - Red
+                    ],
+                    'circle-radius': [
+                        'step',
+                        ['get', 'point_count'],
+                        20,  // Small clusters
+                        10,
+                        30,  // Medium clusters
+                        50,
+                        40   // Large clusters
+                    ],
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Add cluster count text layer
+            AppState.map.addLayer({
+                id: 'cluster-count',
+                type: 'symbol',
+                source: 'locations',
+                filter: ['has', 'point_count'],
+                layout: {
+                    'text-field': '{point_count_abbreviated}',
+                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                    'text-size': 14
+                },
+                paint: {
+                    'text-color': '#ffffff'
+                }
+            });
+
+            // Add individual marker layers for each location type
+            // Spaces (green)
+            AppState.map.addLayer({
+                id: 'unclustered-space',
+                type: 'circle',
+                source: 'locations',
+                filter: ['all',
+                    ['!', ['has', 'point_count']],
+                    ['==', ['get', 'type'], 'Space']
+                ],
+                paint: {
+                    'circle-color': '#4CAF50',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Demo Centers (blue)
+            AppState.map.addLayer({
+                id: 'unclustered-demo',
+                type: 'circle',
+                source: 'locations',
+                filter: ['all',
+                    ['!', ['has', 'point_count']],
+                    ['==', ['get', 'type'], 'Demo Center']
+                ],
+                paint: {
+                    'circle-color': '#1976D2',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Outposts (orange)
+            AppState.map.addLayer({
+                id: 'unclustered-outpost',
+                type: 'circle',
+                source: 'locations',
+                filter: ['all',
+                    ['!', ['has', 'point_count']],
+                    ['==', ['get', 'type'], 'Outpost']
+                ],
+                paint: {
+                    'circle-color': '#FF9800',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Add click handlers for clusters
+            AppState.map.on('click', 'clusters', (e) => {
+                const features = AppState.map.queryRenderedFeatures(e.point, {
+                    layers: ['clusters']
+                });
+                const clusterId = features[0].properties.cluster_id;
+                AppState.map.getSource('locations').getClusterExpansionZoom(
+                    clusterId,
+                    (err, zoom) => {
+                        if (err) return;
+
+                        AppState.map.easeTo({
+                            center: features[0].geometry.coordinates,
+                            zoom: zoom,
+                            duration: 500
+                        });
+                    }
+                );
+            });
+
+            // Add click handlers for individual markers
+            const markerLayers = ['unclustered-space', 'unclustered-demo', 'unclustered-outpost'];
+
+            markerLayers.forEach(layerId => {
+                AppState.map.on('click', layerId, (e) => {
+                    const coordinates = e.features[0].geometry.coordinates.slice();
+                    const properties = e.features[0].properties;
+
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+
+                    // Reconstruct location object from properties
+                    const location = {
+                        id: properties.id,
+                        name: properties.name,
+                        type: properties.type,
+                        address: properties.address,
+                        city: properties.city,
+                        state: properties.state,
+                        phone: properties.phone,
+                        hours: properties.hours,
+                        openingDate: properties.openingDate,
+                        rivianUrl: properties.rivianUrl,
+                        services: JSON.parse(properties.services),
+                        isOpen: properties.isOpen
+                    };
+
+                    const popupContent = this.createPopupContent(location);
+
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setLngLat(coordinates)
+                        .setHTML(popupContent)
+                        .addTo(AppState.map);
+
+                    // Highlight location in sidebar
+                    LocationManager.highlightLocation(properties.id);
+                });
+            });
+
+            // Change cursor to pointer when hovering over clusters or markers
+            AppState.map.on('mouseenter', 'clusters', () => {
+                AppState.map.getCanvas().style.cursor = 'pointer';
+            });
+            AppState.map.on('mouseleave', 'clusters', () => {
+                AppState.map.getCanvas().style.cursor = '';
+            });
+
+            markerLayers.forEach(layerId => {
+                AppState.map.on('mouseenter', layerId, () => {
+                    AppState.map.getCanvas().style.cursor = 'pointer';
+                });
+                AppState.map.on('mouseleave', layerId, () => {
+                    AppState.map.getCanvas().style.cursor = '';
+                });
+            });
+
+            // Store reference for filtering
+            AppState.markers = locations.map(loc => ({ location: loc }));
+
         } catch (error) {
             console.error('Failed to add markers:', error);
             Utils.showError('Failed to load map markers', document.getElementById('locationList'));
@@ -258,10 +444,40 @@ const MapManager = {
             typeClass = 'outpost';
         }
 
+        // Generate popup action buttons (with inline check for managers)
+        const favoriteBtn = typeof FavoritesManager !== 'undefined' ?
+            `<button class="popup-action-btn favorite-btn"
+                    data-location-id="${location.id}"
+                    onclick="FavoritesManager.toggleFavorite(${location.id})"
+                    title="Add to favorites"
+                    aria-label="Add to favorites">
+            </button>` : '';
+
+        const shareBtn = typeof SharingManager !== 'undefined' ?
+            `<button class="popup-action-btn share-btn"
+                    data-location-id="${location.id}"
+                    data-location-name="${name}"
+                    data-location-address="${address}"
+                    onclick="SharingManager.handleShareClick(this)"
+                    title="Share this location"
+                    aria-label="Share ${name}">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 18px; height: 18px;">
+                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                </svg>
+            </button>` : '';
+
         return `
             <div class="popup-content">
-                <div class="popup-type ${typeClass}">${Utils.sanitizeHTML(location.type)}</div>
-                <div class="popup-name">${name}</div>
+                <div class="popup-header">
+                    <div>
+                        <div class="popup-type ${typeClass}">${Utils.sanitizeHTML(location.type)}</div>
+                        <div class="popup-name">${name}</div>
+                    </div>
+                    <div class="popup-actions">
+                        ${favoriteBtn}
+                        ${shareBtn}
+                    </div>
+                </div>
                 <div class="popup-address">
                     ${address}<br>
                     ${city}
@@ -298,6 +514,374 @@ const MapManager = {
     }
 };
 
+// Advanced Filter Management
+const AdvancedFilterManager = {
+    init() {
+        this.populateStateCheckboxes();
+        this.populateServiceCheckboxes();
+        this.setupEventListeners();
+    },
+
+    populateStateCheckboxes() {
+        try {
+            const stateCheckboxes = document.getElementById('stateCheckboxes');
+            if (!stateCheckboxes) return;
+
+            const stateNames = {
+                'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
+                'CA': 'California', 'CO': 'Colorado', 'FL': 'Florida',
+                'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho',
+                'IL': 'Illinois', 'KS': 'Kansas', 'MD': 'Maryland',
+                'MA': 'Massachusetts', 'MI': 'Michigan', 'MO': 'Missouri',
+                'MT': 'Montana', 'NV': 'Nevada', 'NJ': 'New Jersey',
+                'NY': 'New York', 'ON': 'Ontario', 'OR': 'Oregon',
+                'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
+                'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
+                'WA': 'Washington', 'WI': 'Wisconsin'
+            };
+
+            const stateCounts = {};
+            rivianLocations.forEach(loc => {
+                stateCounts[loc.state] = (stateCounts[loc.state] || 0) + 1;
+            });
+
+            const states = Object.keys(stateCounts).sort();
+
+            stateCheckboxes.innerHTML = states.map(state => `
+                <div class="state-checkbox-item">
+                    <input type="checkbox" id="state-${state}" value="${state}" class="state-checkbox" />
+                    <label for="state-${state}" class="state-checkbox-label">
+                        <span>${stateNames[state] || state}</span>
+                        <span class="state-count">${stateCounts[state]}</span>
+                    </label>
+                </div>
+            `).join('');
+
+        } catch (error) {
+            console.error('Failed to populate state checkboxes:', error);
+        }
+    },
+
+    populateServiceCheckboxes() {
+        try {
+            const serviceCheckboxes = document.getElementById('serviceCheckboxes');
+            if (!serviceCheckboxes) return;
+
+            const allServices = new Set();
+            rivianLocations.forEach(loc => {
+                if (loc.services && Array.isArray(loc.services)) {
+                    loc.services.forEach(service => allServices.add(service));
+                }
+            });
+
+            const services = Array.from(allServices).sort();
+
+            serviceCheckboxes.innerHTML = services.map(service => `
+                <div class="service-checkbox-item">
+                    <input type="checkbox" id="service-${service.replace(/\s+/g, '-')}" value="${service}" class="service-checkbox" />
+                    <label for="service-${service.replace(/\s+/g, '-')}" class="service-checkbox-label">
+                        ${Utils.sanitizeHTML(service)}
+                    </label>
+                </div>
+            `).join('');
+
+        } catch (error) {
+            console.error('Failed to populate service checkboxes:', error);
+        }
+    },
+
+    setupEventListeners() {
+        // Toggle advanced filters panel
+        const toggleBtn = document.getElementById('toggleAdvancedFilters');
+        const panel = document.getElementById('advancedFiltersPanel');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        if (toggleBtn && panel) {
+            toggleBtn.addEventListener('click', () => {
+                const isExpanded = panel.style.display === 'block';
+                panel.style.display = isExpanded ? 'none' : 'block';
+                if (toggleIcon) {
+                    toggleIcon.classList.toggle('rotated', !isExpanded);
+                }
+            });
+        }
+
+        // State checkboxes
+        document.querySelectorAll('.state-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                this.updateSelectedStates();
+                LocationManager.filterLocations();
+            });
+        });
+
+        // Select/Clear all states
+        const selectAllStates = document.getElementById('selectAllStates');
+        const clearAllStates = document.getElementById('clearAllStates');
+
+        if (selectAllStates) {
+            selectAllStates.addEventListener('click', () => {
+                document.querySelectorAll('.state-checkbox').forEach(cb => cb.checked = true);
+                this.updateSelectedStates();
+                LocationManager.filterLocations();
+            });
+        }
+
+        if (clearAllStates) {
+            clearAllStates.addEventListener('click', () => {
+                document.querySelectorAll('.state-checkbox').forEach(cb => cb.checked = false);
+                this.updateSelectedStates();
+                LocationManager.filterLocations();
+            });
+        }
+
+        // Service checkboxes
+        document.querySelectorAll('.service-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                this.updateSelectedServices();
+                LocationManager.filterLocations();
+            });
+        });
+
+        // Date filters
+        const dateFrom = document.getElementById('dateFrom');
+        const dateTo = document.getElementById('dateTo');
+
+        if (dateFrom) {
+            dateFrom.addEventListener('change', (e) => {
+                AppState.dateFrom = e.target.value ? new Date(e.target.value) : null;
+                LocationManager.filterLocations();
+            });
+        }
+
+        if (dateTo) {
+            dateTo.addEventListener('change', (e) => {
+                AppState.dateTo = e.target.value ? new Date(e.target.value) : null;
+                LocationManager.filterLocations();
+            });
+        }
+
+        // Date presets
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const preset = e.target.dataset.preset;
+                this.applyDatePreset(preset);
+
+                // Update active state
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+            });
+        });
+
+        // Distance filter
+        const enableDistanceBtn = document.getElementById('enableDistanceFilter');
+        const distanceSliderContainer = document.getElementById('distanceSliderContainer');
+        const distanceSlider = document.getElementById('distanceSlider');
+        const distanceValue = document.getElementById('distanceValue');
+
+        if (enableDistanceBtn) {
+            enableDistanceBtn.addEventListener('click', () => {
+                if (!AppState.distanceEnabled) {
+                    this.enableDistanceFilter();
+                } else {
+                    this.disableDistanceFilter();
+                }
+            });
+        }
+
+        if (distanceSlider && distanceValue) {
+            distanceSlider.addEventListener('input', (e) => {
+                const value = e.target.value;
+                distanceValue.textContent = value;
+                AppState.distanceRadius = parseInt(value);
+                if (AppState.distanceEnabled) {
+                    LocationManager.filterLocations();
+                }
+            });
+        }
+
+        // Clear all filters
+        const clearAllFilters = document.getElementById('clearAllFilters');
+        if (clearAllFilters) {
+            clearAllFilters.addEventListener('click', () => {
+                this.clearAllFilters();
+            });
+        }
+    },
+
+    updateSelectedStates() {
+        AppState.selectedStates = Array.from(document.querySelectorAll('.state-checkbox:checked'))
+            .map(cb => cb.value);
+        this.updateFilterBadge();
+    },
+
+    updateSelectedServices() {
+        AppState.selectedServices = Array.from(document.querySelectorAll('.service-checkbox:checked'))
+            .map(cb => cb.value);
+        this.updateFilterBadge();
+    },
+
+    updateFilterBadge() {
+        const badge = document.getElementById('activeFilterBadge');
+        if (!badge) return;
+
+        let count = 0;
+        if (AppState.selectedStates.length > 0) count++;
+        if (AppState.selectedServices.length > 0) count++;
+        if (AppState.dateFrom || AppState.dateTo) count++;
+        if (AppState.distanceEnabled) count++;
+
+        if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = 'inline-block';
+        } else {
+            badge.style.display = 'none';
+        }
+    },
+
+    applyDatePreset(preset) {
+        const today = new Date();
+        const dateFrom = document.getElementById('dateFrom');
+        const dateTo = document.getElementById('dateTo');
+
+        if (preset === 'opening-soon') {
+            // Locations opening in the future
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const threeMonthsLater = new Date(today);
+            threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
+
+            if (dateFrom) {
+                dateFrom.value = tomorrow.toISOString().split('T')[0];
+                AppState.dateFrom = tomorrow;
+            }
+            if (dateTo) {
+                dateTo.value = threeMonthsLater.toISOString().split('T')[0];
+                AppState.dateTo = threeMonthsLater;
+            }
+        } else if (preset === 'recently-opened') {
+            // Locations opened in the last 6 months
+            const sixMonthsAgo = new Date(today);
+            sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+            if (dateFrom) {
+                dateFrom.value = sixMonthsAgo.toISOString().split('T')[0];
+                AppState.dateFrom = sixMonthsAgo;
+            }
+            if (dateTo) {
+                dateTo.value = today.toISOString().split('T')[0];
+                AppState.dateTo = today;
+            }
+        }
+
+        LocationManager.filterLocations();
+    },
+
+    enableDistanceFilter() {
+        if (!navigator.geolocation) {
+            alert('Geolocation is not supported by your browser.');
+            return;
+        }
+
+        const enableBtn = document.getElementById('enableDistanceFilter');
+        const sliderContainer = document.getElementById('distanceSliderContainer');
+
+        enableBtn.textContent = 'Getting location...';
+        enableBtn.disabled = true;
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                AppState.userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                AppState.distanceEnabled = true;
+
+                enableBtn.textContent = 'Location Enabled';
+                enableBtn.classList.add('active');
+                enableBtn.disabled = false;
+
+                if (sliderContainer) {
+                    sliderContainer.style.display = 'block';
+                }
+
+                this.updateFilterBadge();
+                LocationManager.filterLocations();
+            },
+            (error) => {
+                console.error('Geolocation error:', error);
+                alert('Unable to get your location. Please enable location services.');
+                enableBtn.textContent = 'Enable Location';
+                enableBtn.disabled = false;
+            }
+        );
+    },
+
+    disableDistanceFilter() {
+        AppState.distanceEnabled = false;
+        AppState.userLocation = null;
+
+        const enableBtn = document.getElementById('enableDistanceFilter');
+        const sliderContainer = document.getElementById('distanceSliderContainer');
+
+        if (enableBtn) {
+            enableBtn.textContent = 'Enable Location';
+            enableBtn.classList.remove('active');
+        }
+
+        if (sliderContainer) {
+            sliderContainer.style.display = 'none';
+        }
+
+        this.updateFilterBadge();
+        LocationManager.filterLocations();
+    },
+
+    clearAllFilters() {
+        // Clear state checkboxes
+        document.querySelectorAll('.state-checkbox').forEach(cb => cb.checked = false);
+        AppState.selectedStates = [];
+
+        // Clear service checkboxes
+        document.querySelectorAll('.service-checkbox').forEach(cb => cb.checked = false);
+        AppState.selectedServices = [];
+
+        // Clear date filters
+        const dateFrom = document.getElementById('dateFrom');
+        const dateTo = document.getElementById('dateTo');
+        if (dateFrom) {
+            dateFrom.value = '';
+            AppState.dateFrom = null;
+        }
+        if (dateTo) {
+            dateTo.value = '';
+            AppState.dateTo = null;
+        }
+
+        // Clear date preset active state
+        document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
+        // Disable distance filter
+        if (AppState.distanceEnabled) {
+            this.disableDistanceFilter();
+        }
+
+        // Reset basic filters
+        AppState.currentFilter = 'all';
+        AppState.currentStateFilter = 'all';
+        AppState.searchTerm = '';
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = '';
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === 'all');
+        });
+
+        this.updateFilterBadge();
+        LocationManager.filterLocations();
+    }
+};
+
 // Location filtering and management
 const LocationManager = {
     filterLocations() {
@@ -307,16 +891,60 @@ const LocationManager = {
             }
 
             const filtered = rivianLocations.filter(location => {
+                // Basic type filter
                 const matchesFilter = AppState.currentFilter === 'all' || location.type === AppState.currentFilter;
+
+                // Legacy state filter (for backward compatibility)
                 const matchesState = AppState.currentStateFilter === 'all' || location.state === AppState.currentStateFilter;
 
-                // Safe search term matching
+                // Search term matching
                 const searchLower = AppState.searchTerm.toLowerCase().trim();
                 const matchesSearch = searchLower === '' || [
                     location.name, location.city, location.state, location.address
                 ].some(field => field && field.toLowerCase().includes(searchLower));
 
-                return matchesFilter && matchesState && matchesSearch;
+                // Advanced state filter (multi-select)
+                const matchesAdvancedState = AppState.selectedStates.length === 0 ||
+                    AppState.selectedStates.includes(location.state);
+
+                // Services filter
+                const matchesServices = AppState.selectedServices.length === 0 ||
+                    (location.services && Array.isArray(location.services) &&
+                     AppState.selectedServices.some(service => location.services.includes(service)));
+
+                // Date range filter
+                let matchesDateRange = true;
+                if (AppState.dateFrom || AppState.dateTo) {
+                    if (location.openingDate) {
+                        const locationDate = new Date(location.openingDate);
+                        if (AppState.dateFrom && locationDate < AppState.dateFrom) {
+                            matchesDateRange = false;
+                        }
+                        if (AppState.dateTo && locationDate > AppState.dateTo) {
+                            matchesDateRange = false;
+                        }
+                    } else {
+                        // If location has no opening date, exclude it from date filter
+                        matchesDateRange = false;
+                    }
+                }
+
+                // Distance filter
+                let matchesDistance = true;
+                if (AppState.distanceEnabled && AppState.userLocation) {
+                    const distance = this.calculateDistance(
+                        AppState.userLocation.lat,
+                        AppState.userLocation.lng,
+                        location.lat,
+                        location.lng
+                    );
+                    matchesDistance = distance <= AppState.distanceRadius;
+                }
+
+                // Combine all filters with AND logic
+                return matchesFilter && matchesState && matchesSearch &&
+                       matchesAdvancedState && matchesServices &&
+                       matchesDateRange && matchesDistance;
             });
 
             this.renderLocationList(filtered);
@@ -324,7 +952,7 @@ const LocationManager = {
             this.updateMapMarkers(filtered);
 
             // Auto-zoom for state filter
-            if (AppState.currentStateFilter !== 'all' && filtered.length > 0) {
+            if ((AppState.currentStateFilter !== 'all' || AppState.selectedStates.length > 0) && filtered.length > 0) {
                 MapManager.fitMapToLocations(filtered);
             }
         } catch (error) {
@@ -369,10 +997,46 @@ const LocationManager = {
                     })
                     : 'Opening date TBD';
 
+                // Calculate distance if location filter is enabled
+                let distanceHtml = '';
+                if (AppState.distanceEnabled && AppState.userLocation) {
+                    const distance = this.calculateDistance(
+                        AppState.userLocation.lat,
+                        AppState.userLocation.lng,
+                        location.lat,
+                        location.lng
+                    );
+                    distanceHtml = `<div class="location-distance">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="#4CAF50" style="vertical-align: middle; margin-right: 4px;">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        ${distance.toFixed(1)} miles away
+                    </div>`;
+                }
+
+                // Generate card action buttons (using inline check for managers)
+                const favoriteBtn = typeof FavoritesManager !== 'undefined' ?
+                    `<button class="favorite-btn"
+                            data-location-id="${location.id}"
+                            onclick="event.stopPropagation(); FavoritesManager.toggleFavorite(${location.id})"
+                            title="Add to favorites"
+                            aria-label="Add to favorites">
+                    </button>` : '';
+
+                const shareBtn = typeof SharingManager !== 'undefined' ?
+                    SharingManager.getShareButtonHTML(location) : '';
+
                 return `
                     <div class="location-card" onclick="LocationManager.flyToLocation(${location.lng}, ${location.lat}, ${location.id})">
-                        <div class="location-type ${typeClass}">${Utils.sanitizeHTML(location.type)}</div>
+                        <div class="location-card-header">
+                            <div class="location-type ${typeClass}">${Utils.sanitizeHTML(location.type)}</div>
+                            <div class="location-card-actions">
+                                ${favoriteBtn}
+                                ${shareBtn}
+                            </div>
+                        </div>
                         <div class="location-name">${Utils.sanitizeHTML(location.name)}</div>
+                        ${distanceHtml}
                         <div class="location-address">
                             ${Utils.sanitizeHTML(location.address)}<br>
                             ${Utils.sanitizeHTML(location.city)}
@@ -417,13 +1081,37 @@ const LocationManager = {
 
     updateMapMarkers(filteredLocations) {
         try {
-            AppState.markers.forEach(({ marker, location }) => {
-                const isVisible = filteredLocations.some(loc => loc.id === location.id);
-                const element = marker.getElement();
-                if (element) {
-                    element.style.display = isVisible ? 'flex' : 'none';
-                }
-            });
+            // Update GeoJSON source with filtered locations
+            if (AppState.map.getSource('locations')) {
+                const geojsonData = {
+                    type: 'FeatureCollection',
+                    features: filteredLocations
+                        .filter(location => Utils.isValidCoordinate(location.lat, location.lng))
+                        .map(location => ({
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: [location.lng, location.lat]
+                            },
+                            properties: {
+                                id: location.id,
+                                name: location.name,
+                                type: location.type,
+                                address: location.address,
+                                city: location.city,
+                                state: location.state,
+                                phone: location.phone || '',
+                                hours: location.hours || '',
+                                openingDate: location.openingDate || '',
+                                rivianUrl: location.rivianUrl || '',
+                                services: JSON.stringify(location.services || []),
+                                isOpen: location.isOpen !== false
+                            }
+                        }))
+                };
+
+                AppState.map.getSource('locations').setData(geojsonData);
+            }
         } catch (error) {
             console.error('Failed to update map markers:', error);
         }
@@ -437,17 +1125,23 @@ const LocationManager = {
 
             AppState.map.flyTo({
                 center: [lng, lat],
-                zoom: 13,
+                zoom: 15, // Zoom in enough to see individual marker
                 duration: 1500
             });
 
             this.highlightLocation(id);
 
-            // Open popup
-            const markerData = AppState.markers.find(m => m.location.id === id);
-            if (markerData) {
-                markerData.marker.togglePopup();
-            }
+            // Open popup after animation completes
+            setTimeout(() => {
+                const location = rivianLocations.find(l => l.id === id);
+                if (location) {
+                    const popupContent = MapManager.createPopupContent(location);
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setLngLat([lng, lat])
+                        .setHTML(popupContent)
+                        .addTo(AppState.map);
+                }
+            }, 1600);
 
             // Close sidebar on mobile
             if (window.innerWidth <= 768) {
@@ -622,6 +1316,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Initialize map
             await MapManager.initMap();
+
+            // Initialize advanced filters
+            AdvancedFilterManager.init();
+
             LocationManager.filterLocations();
 
             // Set up event handlers with debounced search

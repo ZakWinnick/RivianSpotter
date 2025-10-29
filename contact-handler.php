@@ -1,23 +1,47 @@
 <?php
-// Enable error reporting for debugging (remove in production)
+// Load environment variables
+require_once __DIR__ . '/api/env-loader.php';
+try {
+    loadEnv();
+} catch (Exception $e) {
+    // Continue without env vars for backward compatibility
+}
+
+// Enforce HTTPS in production
+require_once __DIR__ . '/api/https-check.php';
+enforceHttps();
+addSecurityHeaders();
+
+// Enable error reporting for debugging (controlled by env)
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', env('DISPLAY_ERRORS', '0'));
 
 // Set JSON response header
 header('Content-Type: application/json');
 
-// CORS headers if needed (adjust origin as needed)
-header('Access-Control-Allow-Origin: *');
+// CORS headers (restricted to allowed origins)
+$allowed_origins = explode(',', env('ALLOWED_ORIGINS', 'http://localhost'));
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+if (in_array($origin, $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} else {
+    // For backward compatibility, allow localhost
+    if (strpos($origin, 'localhost') !== false) {
+        header('Access-Control-Allow-Origin: ' . $origin);
+    }
+}
+
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Configuration
 $config = [
-    'to_email' => 'contact@rivianspotter.com', // Change to your email
-    'from_email' => 'noreply@rivianspotter.com', // Change to your domain email
+    'to_email' => env('CONTACT_EMAIL', 'contact@rivianspotter.com'),
+    'from_email' => env('FROM_EMAIL', 'noreply@rivianspotter.com'),
     'site_name' => 'Rivian Spotter',
-    'save_to_db' => false, // Set to true if you want to save to database
-    'db_file' => 'data/contact_submissions.json' // File-based storage for now
+    'save_to_db' => env('SAVE_CONTACTS', false),
+    'db_file' => 'data/contact_submissions.json'
 ];
 
 // Handle preflight requests

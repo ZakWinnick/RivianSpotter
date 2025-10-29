@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Rivian Spotter</title>
     <meta name="description" content="Learn about Rivian Spotter - the community-driven platform for finding Rivian Spaces and Service Centers.">
-    
-    <!-- Fonts -->
+
+    <!-- Font Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHAPUlGe_ThNYzL-qWIW8DFQIAgicVw.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
@@ -116,6 +119,52 @@
                 document.getElementById('totalOutposts').textContent = rivianLocations.filter(l => l.type === 'Outpost').length;
             }
         });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register Service Worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully:', registration.scope);
+
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available - refresh to update');
+
+                                    // Optionally show a notification to the user
+                                    if (confirm('A new version of Rivian Spotter is available. Reload to update?')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+
+                // Listen for service worker messages
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                    if (event.data.type === 'SYNC_COMPLETE') {
+                        console.log('Background sync complete:', event.data.syncedCount, 'changes synced');
+                    }
+                });
+
+                // Handle controller change (new service worker activated)
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    console.log('Service Worker controller changed - reloading page');
+                    window.location.reload();
+                });
+            });
+        }
     </script>
 </body>
 </html>

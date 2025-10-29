@@ -5,26 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Rivian Spotter</title>
     <meta name="description" content="Get in touch with Rivian Spotter - submit new locations, report issues, or share feedback.">
-    
-    <!-- Fonts -->
+
+    <!-- Font Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHAPUlGe_ThNYzL-qWIW8DFQIAgicVw.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <meta name="build-version" content="production">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <a href="/" class="logo">
-                <div class="logo-dot"></div>
-                Rivian Spotter
-            </a>
-            <nav class="nav-links">
-                <a href="/" class="nav-link">Map</a>
-                <a href="/about.html" class="nav-link">About</a>
-                <a href="/contact.html" class="nav-link active">Contact</a>
-            </nav>
-        </header>
+        <!-- Header and footer will be injected by components.js -->
         
         <div class="page-content">
             <h1 class="page-title">Contact Us</h1>
@@ -109,32 +104,16 @@
                 </p>
                 <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
                     <li>Location name and address</li>
-                    <li>Type (Space or Service Center)</li>
+                    <li>Type (Space or Demo Center)</li>
                     <li>Current hours of operation</li>
                     <li>Any additional relevant details</li>
                 </ul>
             </div>
-            
-           <!-- <div class="page-section">
-                <h2>Connect on Social</h2>
-                <p>Follow Rivian Spotter for updates and community highlights:</p>
-                <div style="margin-top: 1rem;">
-                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #1877f2; color: white; text-decoration: none; border-radius: 6px;">Facebook</a>
-                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #1da1f2; color: white; text-decoration: none; border-radius: 6px;">Twitter</a>
-                    <a href="#" style="display: inline-block; margin-right: 1rem; padding: 0.5rem 1rem; background: #E4405F; color: white; text-decoration: none; border-radius: 6px;">Instagram</a>
-                    <a href="#" style="display: inline-block; padding: 0.5rem 1rem; background: #FF4500; color: white; text-decoration: none; border-radius: 6px;">Reddit</a>
-                </div>
-            </div>
-        </div> -->
-        
- <footer class="footer">
-            <p class="footer-text">
-                 <p>&copy; <script>document.write(new Date().getFullYear())</script> Wyld Media • Made with ❤️ for the Rivian community • 
-                <a href="/contact.html" style="color: #666;">Contact</a> • 
-                <a href="/about.html" style="color: #666;">About</a> • <a href="https://zak.codetoadventure.com" target="_blank">Zak's Referral Code</a>
-            </p>
-        </footer>
+        </div>
     </div>
+    
+    <!-- Load Components -->
+    <script src="js/components.min.js"></script>
     
     <script>
         // Handle form submission
@@ -256,6 +235,52 @@
                 }
             });
         });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register Service Worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully:', registration.scope);
+
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker available
+                                    console.log('New service worker available - refresh to update');
+
+                                    // Optionally show a notification to the user
+                                    if (confirm('A new version of Rivian Spotter is available. Reload to update?')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+
+                // Listen for service worker messages
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                    if (event.data.type === 'SYNC_COMPLETE') {
+                        console.log('Background sync complete:', event.data.syncedCount, 'changes synced');
+                    }
+                });
+
+                // Handle controller change (new service worker activated)
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    console.log('Service Worker controller changed - reloading page');
+                    window.location.reload();
+                });
+            });
+        }
     </script>
 </body>
 </html>

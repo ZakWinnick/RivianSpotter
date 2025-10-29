@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Rivian Spotter</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offline-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .offline-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #ffa500;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .offline-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #ffa500;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff8c00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .connection-status {
+            margin-top: 3rem;
+            padding: 1rem;
+            background-color: rgba(255, 165, 0, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ff4444;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.online {
+            background-color: #44ff44;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .cached-notice {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .offline-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .offline-actions {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" opacity="0.3"/>
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+        </div>
+
+        <h1>You're Offline</h1>
+        <p>
+            It looks like you've lost your internet connection. Don't worry - some features of Rivian Spotter are still available offline thanks to cached data.
+        </p>
+
+        <div class="offline-actions">
+            <button class="btn btn-primary" onclick="tryReconnect()">Try Again</button>
+            <a href="/" class="btn btn-secondary">Go to Home</a>
+        </div>
+
+        <div class="connection-status">
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span id="statusText">Checking connection...</span>
+        </div>
+
+        <div class="cached-notice">
+            <strong>Offline Mode:</strong> You can still view previously loaded locations and browse cached pages. New data will sync automatically when you're back online.
+        </div>
+    </div>
+
+    <script>
+        // Check connection status
+        function updateConnectionStatus() {
+            const indicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+
+            if (navigator.onLine) {
+                indicator.classList.add('online');
+                statusText.textContent = 'Connected - You can now navigate';
+            } else {
+                indicator.classList.remove('online');
+                statusText.textContent = 'Offline - Waiting for connection';
+            }
+        }
+
+        // Try to reconnect
+        async function tryReconnect() {
+            const statusText = document.getElementById('statusText');
+            statusText.textContent = 'Checking connection...';
+
+            try {
+                // Try to fetch a small resource
+                const response = await fetch('/manifest.json', {
+                    method: 'HEAD',
+                    cache: 'no-cache'
+                });
+
+                if (response.ok) {
+                    statusText.textContent = 'Connected! Redirecting...';
+                    // Redirect to the page they were trying to access
+                    setTimeout(() => {
+                        window.history.back();
+                    }, 1000);
+                } else {
+                    statusText.textContent = 'Still offline - Please check your connection';
+                }
+            } catch (error) {
+                statusText.textContent = 'Still offline - Please check your connection';
+            }
+        }
+
+        // Listen for connection changes
+        window.addEventListener('online', () => {
+            updateConnectionStatus();
+            setTimeout(() => {
+                window.history.back();
+            }, 1500);
+        });
+
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Initial status check
+        updateConnectionStatus();
+
+        // Periodic connection check
+        setInterval(updateConnectionStatus, 5000);
+    </script>
+</body>
+</html>

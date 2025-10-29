@@ -1,0 +1,67 @@
+# Build Ignore File
+# Files and patterns listed here will be excluded from the build process
+
+# Data files (not code to minify)
+js/locations.js
+js/config-loader.js
+
+# Test files
+tests/**
+*.test.js
+*.spec.js
+
+# Documentation
+*.md
+docs/**
+
+# Environment configuration files
+.env
+.env.*
+webpack.config.js
+rollup.config.js
+jest.config.js
+
+# API and backend files (handled separately)
+api/**
+*.php
+
+# Already minified files
+*.min.js
+*.min.css
+
+# Source maps
+*.map
+
+# Node modules and dependencies
+node_modules/**
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/**
+build/**
+*.prod.html
+
+# Version control
+.git/**
+.gitignore
+
+# IDE and editor files
+.vscode/**
+.idea/**
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Service Worker (requires special handling)
+service-worker.js
+
+# Legacy/backup files
+*.backup
+*.old
+*-old.*
+*-backup.*

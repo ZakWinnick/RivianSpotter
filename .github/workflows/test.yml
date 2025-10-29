@@ -1,0 +1,155 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run unit tests
+      run: npm run test:unit
+
+    - name: Run integration tests
+      run: npm run test:integration
+      continue-on-error: true  # Integration tests may fail without PHP server
+
+    - name: Run all tests with coverage
+      run: npm run test:ci
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      if: matrix.node-version == '20.x'
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage/coverage-final.json
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+    - name: Archive test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-${{ matrix.node-version }}
+        path: |
+          coverage/
+          *.log
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Check for console errors
+      run: |
+        if grep -r "console\\.log" js/*.js; then
+          echo "Warning: console.log statements found in production code"
+        fi
+      continue-on-error: true
+
+  php-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: json, mbstring
+        coverage: none
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Create test data directory
+      run: |
+        mkdir -p data
+        echo "[]" > data/locations.json
+
+    - name: Start PHP server
+      run: |
+        php -S localhost:8000 > /dev/null 2>&1 &
+        sleep 2
+
+    - name: Run integration tests
+      run: npm run test:integration
+      env:
+        API_URL: http://localhost:8000/api/locations.php
+        ADMIN_TOKEN: aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c
+
+    - name: Stop PHP server
+      if: always()
+      run: killall php || true
+
+  security:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run security audit
+      run: npm audit --audit-level=moderate
+      continue-on-error: true
+
+    - name: Check for security issues
+      run: |
+        echo "Checking for common security issues..."
+        if grep -r "eval(" js/*.js; then
+          echo "Error: eval() found in code"
+          exit 1
+        fi
+        if grep -r "innerHTML.*=" js/*.js | grep -v "sanitize"; then
+          echo "Warning: Potential XSS vulnerability with innerHTML"
+        fi
+      continue-on-error: true
