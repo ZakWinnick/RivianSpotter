@@ -102,10 +102,15 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Create test data directory
+    - name: Create test environment
       run: |
         mkdir -p data
         echo "[]" > data/locations.json
+        cp .env.example .env
+        # Set test values
+        sed -i 's/your_mapbox_token_here/pk.test_token/g' .env
+        sed -i 's/your_secure_admin_token_here/aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c/g' .env
+        sed -i 's/DEBUG_MODE=false/DEBUG_MODE=true/g' .env
 
     - name: Start PHP server
       run: |
