@@ -21,27 +21,27 @@
         
         <div class="page-content">
             <h1 class="page-title">About Rivian Spotter</h1>
-            
+
             <div class="page-section">
                 <h2>Our Mission</h2>
                 <p>
-                    Rivian Spotter is a community-driven platform designed to help Rivian enthusiasts, owners, and 
-                    prospective buyers easily find and explore Rivian Spaces and Demo Centers across the United States.
+                    Rivian Spotter is a community-driven platform designed to help Rivian enthusiasts, owners, and
+                    prospective buyers easily find and explore Rivian locations across North America.
                 </p>
                 <p>
-                    Whether you're looking to test drive a vehicle or simply explore the nearest 
-                    Rivian location, our interactive map makes it simple to discover what's available near you.
+                    Whether you're looking to test drive a vehicle, get your R1T or R1S serviced, or find an
+                    adventure outpost, our interactive map makes it simple to discover what's available near you.
                 </p>
             </div>
-            
+
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number" id="totalLocations">35+</div>
+                    <div class="stat-number" id="totalLocations">120+</div>
                     <div class="stat-label">Total Locations</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" id="totalStates">20+</div>
-                    <div class="stat-label">States Covered</div>
+                    <div class="stat-number" id="totalStates">35+</div>
+                    <div class="stat-label">States & Provinces</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number" id="totalSpaces">25+</div>
@@ -56,52 +56,88 @@
                     <div class="stat-label">Outposts</div>
                 </div>
             </div>
-            
+
             <div class="page-section">
                 <h2>What We Track</h2>
-                <p><strong>Rivian Spaces:</strong> Retail locations where you can explore vehicles, schedule test drives, 
-                shop for merchandise, and connect with Rivian specialists. These are typically found in shopping centers 
-                and high-traffic retail areas.</p>
-                
-                <p><strong>Demo Centers:</strong> Dedicated facilities where Rivian owners can test drive vehicles,
-                schedule maintenance, repairs, and receive support from certified technicians. Some locations also 
-                serve as delivery centers.</p>
-                
+                <p><strong>Rivian Spaces:</strong> Retail showrooms where you can explore vehicles, schedule test drives,
+                shop for merchandise, and connect with Rivian specialists. Found in shopping centers and high-traffic retail areas.</p>
+
+                <p><strong>Demo Centers:</strong> Dedicated facilities for test drives and vehicle deliveries. Many also
+                offer service capabilities and parts.</p>
+
+                <p><strong>Service Centers:</strong> Locations focused on vehicle maintenance, repairs, and parts.
+                Staffed by certified Rivian technicians.</p>
+
+                <p><strong>Outposts:</strong> Adventure partner locations offering unique experiences, charging access,
+                and Rivian community gathering spots in outdoor destinations.</p>
             </div>
-            
+
             <div class="page-section">
                 <h2>Features</h2>
-                <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
-                    <li>Interactive map with all current Rivian locations</li>
+                <ul style="color: var(--text-light); line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Interactive map with clustered markers for 120+ locations</li>
                     <li>Search by city, state, or location name</li>
-                    <li>Filter between Spaces and Demo Centers</li>
-                    <li>Get directions to any location</li>
-                    <li>View hours of operation and contact information</li>
-                    <li>Mobile-responsive design for on-the-go access</li>
+                    <li>Filter by location type (Spaces, Demo Centers, Service Centers, Outposts)</li>
+                    <li>Advanced filters: state, services offered, opening date, distance</li>
+                    <li>Open Now / Coming Soon quick filters</li>
+                    <li>Save favorite locations (stored locally)</li>
+                    <li>Direct links to official Rivian.com pages</li>
+                    <li>Export locations to CSV or JSON</li>
+                    <li>Dark mode (follows system preference)</li>
+                    <li>PWA support - install as an app on your device</li>
+                    <li>Mobile-responsive design</li>
                 </ul>
             </div>
-            
+
             <div class="page-section">
-                <h2>Coming Soon</h2>
-                <p>We're constantly working to improve Rivian Spotter. Future features include:</p>
-                <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
-                    <li>Space/Demo Center Opening Dates</li>
-                    <li>User photo submissions and reviews</li>
-                    <li>Event listings for local Rivian meetups</li>
-                    <li>Links to Rivian.com pages for Spaces/Demo Centers</li>
-                    <li>iOS and Android mobile apps</li>
-                    <li>Email notifications for new locations</li>
-                    <li>Community forum for owners</li>
+                <h2>Changelog</h2>
+
+                <h3 style="color: var(--text-dark); margin-top: 1.5rem; margin-bottom: 0.5rem;">December 2025</h3>
+                <ul style="color: var(--text-light); line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Added 34 Service Center locations from official Rivian data</li>
+                    <li>Added direct links to Rivian.com for all locations</li>
+                    <li>Implemented automatic dark/light mode based on system preference</li>
+                    <li>Fixed mobile PWA layout and safe area spacing</li>
+                    <li>Updated location hours from Rivian.com</li>
+                    <li>Added La Jolla Space and San Jose Service Center</li>
+                </ul>
+
+                <h3 style="color: var(--text-dark); margin-top: 1.5rem; margin-bottom: 0.5rem;">November 2025</h3>
+                <ul style="color: var(--text-light); line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Migrated from PHP backend to static GitHub Pages</li>
+                    <li>Admin panel now uses GitHub API for data management</li>
+                    <li>Added PWA support with offline caching</li>
+                    <li>Added favorites and recent locations features</li>
+                    <li>Added export to CSV/JSON functionality</li>
+                    <li>Added share location feature</li>
+                </ul>
+
+                <h3 style="color: var(--text-dark); margin-top: 1.5rem; margin-bottom: 0.5rem;">October 2025</h3>
+                <ul style="color: var(--text-light); line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Added advanced filters (state, services, date range, distance)</li>
+                    <li>Added Open Now / Coming Soon quick filters</li>
+                    <li>Added collapsible sections in sidebar</li>
+                    <li>Improved mobile navigation and touch interactions</li>
+                    <li>Added Statistics page</li>
+                </ul>
+
+                <h3 style="color: var(--text-dark); margin-top: 1.5rem; margin-bottom: 0.5rem;">Earlier Updates</h3>
+                <ul style="color: var(--text-light); line-height: 1.8; margin-left: 1.5rem;">
+                    <li>Initial launch with Spaces and Demo Centers</li>
+                    <li>Added Outpost locations</li>
+                    <li>Added opening dates for locations</li>
+                    <li>Added marker clustering for better map performance</li>
+                    <li>Added accessibility features (ARIA labels, keyboard navigation)</li>
                 </ul>
             </div>
-            
+
             <div class="page-section">
                 <h2>Disclaimer</h2>
-                <p style="font-size: 0.9rem; font-style: italic;">
-                    Rivian Spotter is an independent, community-driven project and is not affiliated with, endorsed by, 
-                    or sponsored by Rivian Automotive, Inc. All trademarks, service marks, and company names are the 
-                    property of their respective owners. Location information is gathered from public sources and may 
-                    not always be current. Please verify hours and availability directly with Rivian locations before visiting.
+                <p style="font-size: 0.9rem; font-style: italic; color: var(--text-light);">
+                    Rivian Spotter is an independent, community-driven project and is not affiliated with, endorsed by,
+                    or sponsored by Rivian Automotive, Inc. All trademarks, service marks, and company names are the
+                    property of their respective owners. Location information is gathered from public sources and may
+                    not always be current. Please verify hours and availability directly with Rivian before visiting.
                 </p>
             </div>
         </div>
