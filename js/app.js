@@ -99,12 +99,26 @@ const MapManager = {
                 throw new Error('Location data not available');
             }
 
+            // Detect dark mode preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const mapStyle = prefersDark ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
+
             // Initialize map
             AppState.map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/light-v11',
+                style: mapStyle,
                 center: [-98.5795, 39.8283], // Center of USA
                 zoom: 4
+            });
+
+            // Listen for dark mode changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                const newStyle = e.matches ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
+                AppState.map.setStyle(newStyle);
+                // Re-add markers after style change
+                AppState.map.once('style.load', () => {
+                    MapManager.addMarkers(rivianLocations);
+                });
             });
 
             // Add map error handler

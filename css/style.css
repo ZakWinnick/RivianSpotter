@@ -145,6 +145,33 @@ textarea:focus-visible,
     --active-bg: #f0f7ff;
     --shadow: 0 4px 12px rgba(0,0,0,0.15);
     --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f8f8;
+    --bg-tertiary: #f0f0f0;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --popup-bg: #ffffff;
+}
+
+/* Dark Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #66BB6A;
+        --secondary-color: #42A5F5;
+        --text-dark: #f0f0f0;
+        --text-light: #a0a0a0;
+        --border-color: #3a3a3a;
+        --hover-bg: #2a2a2a;
+        --active-bg: #1a3a4a;
+        --shadow: 0 4px 12px rgba(0,0,0,0.4);
+        --shadow-light: 0 1px 3px rgba(0,0,0,0.3);
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #242424;
+        --bg-tertiary: #2e2e2e;
+        --card-bg: #242424;
+        --input-bg: #2a2a2a;
+        --popup-bg: #2a2a2a;
+    }
 }
 
 html, body {
@@ -157,6 +184,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     position: relative;
+    background: var(--bg-primary);
 }
 
 /* Container */
@@ -168,7 +196,7 @@ body {
 
 /* Header */
 .header {
-    background: white;
+    background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 1.5rem;
     display: flex;
@@ -233,7 +261,7 @@ body {
     left: 1rem;
     width: 380px;
     max-width: calc(100% - 2rem);
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--shadow);
     z-index: 100;
@@ -249,12 +277,13 @@ body {
     position: absolute;
     right: -40px;
     top: 1rem;
-    background: white;
+    background: var(--card-bg);
     border: none;
     border-radius: 0 8px 8px 0;
     padding: 0.5rem;
     cursor: pointer;
     box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    color: var(--text-dark);
 }
 
 /* Search Box */
@@ -270,6 +299,12 @@ body {
     border-radius: 8px;
     font-size: 0.95rem;
     transition: border-color 0.2s;
+    background: var(--input-bg);
+    color: var(--text-dark);
+}
+
+.search-input::placeholder {
+    color: var(--text-light);
 }
 
 .search-input:focus {
@@ -288,7 +323,8 @@ body {
 .filter-btn {
     padding: 0.4rem 0.8rem;
     border: 1px solid var(--border-color);
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-dark);
     border-radius: 20px;
     font-size: 0.85rem;
     cursor: pointer;
@@ -308,7 +344,7 @@ body {
 /* Location Stats */
 .location-stats {
     padding: 0.75rem 1rem;
-    background: #f8f8f8;
+    background: var(--bg-secondary);
     font-size: 0.85rem;
     color: var(--text-light);
     border-bottom: 1px solid var(--border-color);
@@ -407,6 +443,17 @@ body {
     padding: 0;
     border-radius: 8px;
     min-width: 250px;
+    background: var(--popup-bg);
+    color: var(--text-dark);
+}
+
+.mapboxgl-popup-close-button {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.mapboxgl-popup-close-button:hover {
+    background: var(--hover-bg);
 }
 
 .popup-content {
@@ -496,7 +543,7 @@ body {
 }
 
 .stat-card {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow-light);
@@ -751,8 +798,8 @@ body {
 
 /* Skeleton card template */
 .skeleton-card {
-    background: white;
-    border: 1px solid #e5e5e5;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 0.75rem;
@@ -792,7 +839,7 @@ body {
     width: 85%;
     max-width: 350px;
     height: 100vh;
-    background: white;
+    background: var(--card-bg);
     z-index: 2000;
     transform: translateX(-100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -813,13 +860,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
-    background: #f8f8f8;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
 }
 
 .sidebar-title {
     font-weight: 600;
     font-size: 1.1rem;
+    color: var(--text-dark);
 }
 
 .close-sidebar {
@@ -833,6 +881,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--text-dark);
 }
 
 .mobile-overlay {
@@ -2560,5 +2609,245 @@ fieldset.filter-section legend {
     .date-filter-input {
         min-height: 44px;
         font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+
+/* ============================================================================
+   DARK MODE - COMPREHENSIVE OVERRIDES
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    /* Body and base */
+    body {
+        background: var(--bg-primary);
+        color: var(--text-dark);
+    }
+
+    /* Mobile bottom bar */
+    .mobile-bottom-bar {
+        background: rgba(26, 26, 26, 0.95);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .mobile-bottom-bar button {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .mobile-bottom-bar button:hover,
+    .mobile-bottom-bar button:active {
+        background: var(--hover-bg);
+    }
+
+    /* Filter buttons in mobile */
+    .filter-btn {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .filter-btn:hover {
+        background: var(--hover-bg);
+    }
+
+    /* Location cards */
+    .location-card {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+    }
+
+    .location-card:active {
+        background: var(--hover-bg);
+    }
+
+    .location-card.active:active {
+        background: var(--active-bg);
+    }
+
+    /* Location stats */
+    .location-stats {
+        background: var(--bg-secondary);
+        color: var(--text-light);
+    }
+
+    /* Search input */
+    .search-input {
+        background: var(--input-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .search-box {
+        border-color: var(--border-color);
+    }
+
+    /* Recent locations section */
+    .recent-locations-section {
+        background: var(--bg-secondary);
+    }
+
+    .recent-locations-section .section-header {
+        border-color: var(--border-color);
+    }
+
+    .recent-location-item {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+    }
+
+    .recent-location-item:hover {
+        background: var(--hover-bg);
+    }
+
+    /* Actions section */
+    .actions-section {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .action-btn {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .action-btn:hover,
+    .action-btn:active {
+        background: var(--hover-bg);
+    }
+
+    /* Advanced filters panel */
+    .advanced-filters-panel {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+
+    .filter-group label {
+        color: var(--text-dark);
+    }
+
+    .state-filter-select,
+    .distance-input,
+    .date-filter-input {
+        background: var(--input-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    /* Preset buttons */
+    .preset-btn {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .preset-btn:hover,
+    .preset-btn:active {
+        background: var(--hover-bg);
+    }
+
+    /* Quick filter buttons */
+    .quick-filter-btn {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .quick-filter-btn:hover {
+        background: var(--hover-bg);
+    }
+
+    .quick-filter-btn.open-now-btn:active {
+        background: var(--hover-bg);
+    }
+
+    .quick-filter-btn.coming-soon-btn:active {
+        background: var(--hover-bg);
+    }
+
+    /* Toggle filters button */
+    .toggle-filters-btn {
+        background: var(--card-bg);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .toggle-filters-btn:hover,
+    .toggle-filters-btn:active {
+        background: var(--hover-bg);
+    }
+
+    /* Close sidebar button */
+    .close-sidebar:active {
+        background: var(--hover-bg);
+    }
+
+    /* Filter action buttons */
+    .filter-action-btn:active {
+        background: var(--hover-bg);
+    }
+
+    /* Location button */
+    .location-btn {
+        background: var(--card-bg);
+        color: var(--text-dark);
+    }
+
+    /* Mapbox attribution */
+    .mapboxgl-ctrl-attrib {
+        background: rgba(26, 26, 26, 0.8) !important;
+    }
+
+    .mapboxgl-ctrl-attrib a {
+        color: var(--text-light) !important;
+    }
+
+    /* Skeleton loading */
+    .skeleton-shimmer,
+    .skeleton-header,
+    .skeleton-line,
+    .skeleton-line-short {
+        background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+    }
+
+    .skeleton-loading-overlay {
+        background: rgba(26, 26, 26, 0.7);
+    }
+
+    /* Loading placeholder */
+    .loading-placeholder-text {
+        color: var(--text-light);
+    }
+
+    /* Checkboxes and inputs */
+    input[type="checkbox"] {
+        accent-color: var(--primary-color);
+    }
+
+    /* State checkbox labels */
+    .state-checkbox-label {
+        color: var(--text-dark);
+    }
+
+    /* Service checkbox labels */
+    .service-checkbox-label {
+        color: var(--text-dark);
+    }
+
+    /* Badge styles */
+    .badge {
+        background: var(--primary-color);
+    }
+
+    /* Favorites count badge */
+    #favoritesCountBadge {
+        background: var(--primary-color);
+    }
+
+    /* Coming soon count badge */
+    .coming-soon-count {
+        background: #FF9800;
     }
 }

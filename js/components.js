@@ -113,8 +113,8 @@ class RivianComponents {
             <style id="component-styles">
                 /* Mobile-First Header Styles */
                 .header {
-                    background: white;
-                    border-bottom: 1px solid #e5e5e5;
+                    background: var(--bg-primary, white);
+                    border-bottom: 1px solid var(--border-color, #e5e5e5);
                     padding: 0.75rem 1rem;
                     display: flex;
                     align-items: center;
@@ -128,7 +128,7 @@ class RivianComponents {
                     align-items: center;
                     gap: 0.75rem;
                     text-decoration: none;
-                    color: #1a1a1a;
+                    color: var(--text-dark, #1a1a1a);
                     font-weight: 600;
                     font-size: 1.25rem;
                     transition: opacity 0.2s;
@@ -165,18 +165,18 @@ class RivianComponents {
                 }
                 
                 .nav-link {
-                    color: #666;
+                    color: var(--text-light, #666);
                     text-decoration: none;
                     font-weight: 500;
                     transition: color 0.2s;
                 }
-                
+
                 .nav-link:hover {
-                    color: #4CAF50;
+                    color: var(--primary-color, #4CAF50);
                 }
-                
+
                 .nav-link.active {
-                    color: #4CAF50;
+                    color: var(--primary-color, #4CAF50);
                     font-weight: 600;
                 }
                 
@@ -202,7 +202,7 @@ class RivianComponents {
                 .hamburger span {
                     display: block;
                     height: 2px;
-                    background: #333;
+                    background: var(--text-dark, #333);
                     border-radius: 2px;
                     transition: all 0.3s ease;
                 }
@@ -212,58 +212,58 @@ class RivianComponents {
                     position: fixed;
                     top: 88px;
                     right: 0;
-                    background: white;
-                    border: 1px solid #e5e5e5;
+                    background: var(--card-bg, white);
+                    border: 1px solid var(--border-color, #e5e5e5);
                     border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.15));
                     z-index: 1500;
                     margin: 0.5rem;
                     min-width: 200px;
                 }
-                
+
                 .mobile-nav.active {
                     display: block;
                 }
-                
+
                 .mobile-nav a {
                     display: block;
                     padding: 1rem 1.5rem;
-                    color: #666;
+                    color: var(--text-light, #666);
                     text-decoration: none;
-                    border-bottom: 1px solid #e5e5e5;
+                    border-bottom: 1px solid var(--border-color, #e5e5e5);
                     transition: background 0.2s;
                 }
-                
+
                 .mobile-nav a:last-child {
                     border-bottom: none;
                 }
-                
+
                 .mobile-nav a:hover {
-                    background: #f9f9f9;
+                    background: var(--hover-bg, #f9f9f9);
                 }
                 
                 /* Footer Styles */
                 .footer {
-                    background: white;
-                    border-top: 1px solid #e5e5e5;
+                    background: var(--bg-primary, white);
+                    border-top: 1px solid var(--border-color, #e5e5e5);
                     padding: 2rem 1rem;
                     text-align: center;
                     margin-top: auto;
                 }
-                
+
                 .footer-text {
-                    color: #666;
+                    color: var(--text-light, #666);
                     font-size: 0.875rem;
                     line-height: 1.6;
                 }
-                
+
                 .footer-text a {
-                    color: #666;
+                    color: var(--text-light, #666);
                     text-decoration: none;
                 }
-                
+
                 .footer-text a:hover {
-                    color: #4CAF50;
+                    color: var(--primary-color, #4CAF50);
                     text-decoration: underline;
                 }
                 
