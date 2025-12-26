@@ -1,0 +1,25 @@
+{
+  "name": "Rivian Spotter",
+  "short_name": "RivianSpotter",
+  "description": "Find Rivian Spaces, Demo Centers, and Service Centers",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#4CAF50",
+  "background_color": "#ffffff",
+  "orientation": "any",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/images/rivianspotter-logosolo-optimized.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/rivianspotter-logosolo-optimized.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

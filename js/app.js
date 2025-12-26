@@ -17,7 +17,10 @@ const AppState = {
     dateTo: null,
     distanceEnabled: false,
     distanceRadius: 50,
-    userLocation: null
+    userLocation: null,
+    // Quick filters
+    openNowFilter: false,
+    comingSoonFilter: false
 };
 
 // Utility functions
@@ -877,6 +880,16 @@ const AdvancedFilterManager = {
             btn.classList.toggle('active', btn.dataset.filter === 'all');
         });
 
+        // Reset quick filters
+        AppState.openNowFilter = false;
+        AppState.comingSoonFilter = false;
+        if (typeof OpenNowFilter !== 'undefined') {
+            OpenNowFilter.updateUI();
+        }
+        if (typeof ComingSoonFilter !== 'undefined') {
+            ComingSoonFilter.updateUI();
+        }
+
         this.updateFilterBadge();
         LocationManager.filterLocations();
     }
@@ -941,10 +954,28 @@ const LocationManager = {
                     matchesDistance = distance <= AppState.distanceRadius;
                 }
 
+                // Open Now filter
+                let matchesOpenNow = true;
+                if (AppState.openNowFilter) {
+                    const isOpen = typeof OpenNowFilter !== 'undefined' ?
+                        OpenNowFilter.isLocationOpen(location) : null;
+                    // Only include if definitely open (true), exclude if closed (false) or unknown (null)
+                    matchesOpenNow = isOpen === true;
+                }
+
+                // Coming Soon filter
+                let matchesComingSoon = true;
+                if (AppState.comingSoonFilter) {
+                    const isComingSoon = typeof ComingSoonFilter !== 'undefined' ?
+                        ComingSoonFilter.isComingSoon(location) : false;
+                    matchesComingSoon = isComingSoon;
+                }
+
                 // Combine all filters with AND logic
                 return matchesFilter && matchesState && matchesSearch &&
                        matchesAdvancedState && matchesServices &&
-                       matchesDateRange && matchesDistance;
+                       matchesDateRange && matchesDistance &&
+                       matchesOpenNow && matchesComingSoon;
             });
 
             this.renderLocationList(filtered);

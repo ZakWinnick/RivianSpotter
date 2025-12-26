@@ -5,8 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rivian Spotter - Find Rivian Spaces & Outposts</title>
-    <meta name="description" content="Interactive map of all Rivian Spaces and Demo Centers across the United States. Find locations, hours, and services.">
-    
+    <meta name="description" content="Find Rivian Spaces, Demo Centers, and Service Centers across North America. Interactive map with locations, hours, and services.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rivianspotter.com/">
+
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rivian Spotter">
+    <meta property="og:title" content="Rivian Spotter - Find Rivian Spaces & Outposts">
+    <meta property="og:description" content="Find Rivian Spaces, Demo Centers, and Service Centers across North America. Interactive map with locations, hours, and services.">
+    <meta property="og:url" content="https://rivianspotter.com/">
+    <meta property="og:image" content="https://rivianspotter.com/images/rivianspotter-logosolo-optimized.png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="Rivian Spotter - Interactive map of Rivian locations">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rivian Spotter - Find Rivian Spaces & Outposts">
+    <meta name="twitter:description" content="Find Rivian Spaces, Demo Centers, and Service Centers across North America. Interactive map with locations, hours, and services.">
+    <meta name="twitter:image" content="https://rivianspotter.com/images/rivianspotter-logosolo-optimized.png">
+    <meta name="twitter:image:alt" content="Rivian Spotter - Interactive map of Rivian locations">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Rivian Spotter",
+        "url": "https://rivianspotter.com",
+        "description": "Find Rivian Spaces, Demo Centers, and Service Centers across North America. Interactive map with locations, hours, and services.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://rivianspotter.com/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Rivian Spotter",
+        "url": "https://rivianspotter.com",
+        "logo": "https://rivianspotter.com/images/rivianspotter-logosolo-optimized.png",
+        "description": "Find Rivian Spaces, Demo Centers, and Service Centers across North America. Interactive map with locations, hours, and services.",
+        "sameAs": []
+    }
+    </script>
+
     <!-- Mapbox CSS -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
 
@@ -18,158 +70,191 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#4CAF50">
+
+    <!-- Apple Touch Icon & Favicon -->
+    <link rel="apple-touch-icon" href="/images/rivianspotter-logosolo-optimized.png">
+    <link rel="icon" type="image/png" href="/images/rivianspotter-logosolo-optimized.png">
+
 </head>
 <body>
+    <!-- Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <div class="container">
         <!-- Header will be injected by components.js -->
-        
-        <div class="map-container">
+
+        <main id="main-content" class="map-container" role="main">
             <!-- Mobile Overlay -->
             <div class="mobile-overlay" id="mobileOverlay"></div>
             
-            <div class="sidebar" id="sidebar">
+            <aside class="sidebar" id="sidebar" role="complementary" aria-label="Location filters and search">
                 <div class="sidebar-header">
-                    <span class="sidebar-title">Filter Locations</span>
-                    <button class="close-sidebar" id="closeSidebar">×</button>
+                    <span class="sidebar-title" id="sidebar-title">Filter Locations</span>
+                    <button class="close-sidebar" id="closeSidebar" aria-label="Close sidebar">×</button>
                 </div>
 
-                <div class="search-box">
+                <div class="search-box" role="search">
+                    <label for="searchInput" class="visually-hidden">Search locations</label>
                     <input
                         type="text"
                         class="search-input"
                         id="searchInput"
                         placeholder="Search by city, state, or name..."
+                        aria-label="Search by city, state, or name"
                     />
                 </div>
 
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="Space">Spaces</button>
-                    <button class="filter-btn" data-filter="Demo Center">Demo Centers</button>
-                    <button class="filter-btn" data-filter="Outpost">Outposts</button>
-                    <button class="filter-btn" id="favoritesFilterBtn" disabled>
+                <div class="filter-buttons" role="group" aria-label="Filter by location type">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" data-filter="Space" aria-pressed="false">Spaces</button>
+                    <button class="filter-btn" data-filter="Demo Center" aria-pressed="false">Demo Centers</button>
+                    <button class="filter-btn" data-filter="Outpost" aria-pressed="false">Outposts</button>
+                    <button class="filter-btn" id="favoritesFilterBtn" disabled aria-pressed="false">
                         My Favorites
-                        <span class="badge" id="favoritesCountBadge" style="display: none;">0</span>
+                        <span class="badge" id="favoritesCountBadge" style="display: none;" aria-hidden="true">0</span>
+                    </button>
+                </div>
+
+                <!-- Quick Filters -->
+                <div class="quick-filters" role="group" aria-label="Quick filters">
+                    <button class="quick-filter-btn open-now-btn" id="openNowFilterBtn" onclick="OpenNowFilter.toggle()" title="Show only locations currently open" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        Open Now
+                    </button>
+                    <button class="quick-filter-btn coming-soon-btn" id="comingSoonFilterBtn" onclick="ComingSoonFilter.toggle()" title="Show only upcoming locations" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+                        </svg>
+                        Coming Soon
+                        <span class="coming-soon-count badge" style="display: none;" aria-hidden="true">0</span>
                     </button>
                 </div>
 
                 <!-- Recent Locations Section -->
-                <div class="recent-locations-section">
+                <section class="recent-locations-section" aria-labelledby="recent-locations-title">
                     <div class="section-header">
-                        <span class="section-title">Recent Locations</span>
-                        <button class="clear-btn" id="clearRecentBtn" title="Clear recent locations">Clear</button>
+                        <span class="section-title" id="recent-locations-title">Recent Locations</span>
+                        <button class="clear-btn" id="clearRecentBtn" title="Clear recent locations" aria-label="Clear recent locations">Clear</button>
                     </div>
-                    <div class="recent-locations-list" id="recentLocationsList">
+                    <div class="recent-locations-list" id="recentLocationsList" role="list" aria-label="Recently viewed locations">
                         <!-- Recent locations will be inserted here -->
                     </div>
-                </div>
+                </section>
 
                 <!-- Export/Import Actions -->
-                <div class="actions-section">
+                <section class="actions-section" aria-labelledby="actions-title">
                     <div class="section-header">
-                        <span class="section-title">Actions</span>
+                        <span class="section-title" id="actions-title">Actions</span>
                     </div>
-                    <div class="action-buttons">
-                        <button class="action-btn" id="exportCSVBtn" title="Export all locations to CSV">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                    <div class="action-buttons" role="group" aria-label="Export and import actions">
+                        <button class="action-btn" id="exportCSVBtn" title="Export all locations to CSV" aria-label="Export all locations to CSV file">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                             </svg>
                             Export CSV
                         </button>
-                        <button class="action-btn" id="exportJSONBtn" title="Export all locations to JSON">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                        <button class="action-btn" id="exportJSONBtn" title="Export all locations to JSON" aria-label="Export all locations to JSON file">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                             </svg>
                             Export JSON
                         </button>
-                        <button class="action-btn" id="printAllBtn" title="Print all locations">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                        <button class="action-btn" id="printAllBtn" title="Print all locations" aria-label="Print all locations">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
                             </svg>
                             Print All
                         </button>
-                        <button class="action-btn" id="exportFavoritesBtn" title="Export favorites">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                        <button class="action-btn" id="exportFavoritesBtn" title="Export favorites" aria-label="Export favorite locations to file">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                             </svg>
                             Export Favorites
                         </button>
-                        <button class="action-btn" id="importFavoritesBtn" title="Import favorites">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                        <button class="action-btn" id="importFavoritesBtn" title="Import favorites" aria-label="Import favorite locations from file">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
                             </svg>
                             Import Favorites
                         </button>
-                        <input type="file" id="importFavoritesInput" accept=".json" style="display: none;" />
+                        <input type="file" id="importFavoritesInput" accept=".json" style="display: none;" aria-hidden="true" />
                     </div>
-                </div>
+                </section>
 
                 <!-- Advanced Filters Toggle -->
                 <div class="advanced-filters-toggle">
-                    <button class="toggle-filters-btn" id="toggleAdvancedFilters">
+                    <button class="toggle-filters-btn" id="toggleAdvancedFilters" aria-expanded="false" aria-controls="advancedFiltersPanel">
                         <span>Advanced Filters</span>
-                        <span class="filter-badge" id="activeFilterBadge" style="display: none;">0</span>
-                        <svg class="toggle-icon" id="toggleIcon" viewBox="0 0 24 24" width="20" height="20">
+                        <span class="filter-badge" id="activeFilterBadge" style="display: none;" aria-hidden="true">0</span>
+                        <svg class="toggle-icon" id="toggleIcon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                             <path d="M7 10l5 5 5-5z"/>
                         </svg>
                     </button>
                 </div>
 
                 <!-- Advanced Filters Panel -->
-                <div class="advanced-filters-panel" id="advancedFiltersPanel" style="display: none;">
+                <div class="advanced-filters-panel" id="advancedFiltersPanel" style="display: none;" role="region" aria-label="Advanced filter options">
                     <!-- Multi-select State Filter -->
-                    <div class="filter-section">
+                    <fieldset class="filter-section">
                         <div class="filter-section-header">
-                            <label class="filter-section-label">States/Provinces</label>
+                            <legend class="filter-section-label" id="states-filter-label">States/Provinces</legend>
                             <div class="filter-section-actions">
-                                <button class="filter-action-btn" id="selectAllStates">Select All</button>
-                                <button class="filter-action-btn" id="clearAllStates">Clear</button>
+                                <button class="filter-action-btn" id="selectAllStates" aria-label="Select all states">Select All</button>
+                                <button class="filter-action-btn" id="clearAllStates" aria-label="Clear all state selections">Clear</button>
                             </div>
                         </div>
-                        <div class="state-checkboxes" id="stateCheckboxes">
+                        <div class="state-checkboxes" id="stateCheckboxes" role="group" aria-labelledby="states-filter-label">
                             <!-- State checkboxes will be inserted here -->
                         </div>
-                    </div>
+                    </fieldset>
 
                     <!-- Services Filter -->
-                    <div class="filter-section">
-                        <label class="filter-section-label">Services Offered</label>
-                        <div class="service-checkboxes" id="serviceCheckboxes">
+                    <fieldset class="filter-section">
+                        <legend class="filter-section-label" id="services-filter-label">Services Offered</legend>
+                        <div class="service-checkboxes" id="serviceCheckboxes" role="group" aria-labelledby="services-filter-label">
                             <!-- Service checkboxes will be inserted here -->
                         </div>
-                    </div>
+                    </fieldset>
 
                     <!-- Opening Date Range Filter -->
-                    <div class="filter-section">
-                        <label class="filter-section-label">Opening Date</label>
+                    <fieldset class="filter-section">
+                        <legend class="filter-section-label">Opening Date</legend>
                         <div class="date-filter-controls">
                             <div class="date-filter-group">
-                                <label class="date-filter-label">From:</label>
-                                <input type="date" class="date-filter-input" id="dateFrom" />
+                                <label class="date-filter-label" for="dateFrom">From:</label>
+                                <input type="date" class="date-filter-input" id="dateFrom" aria-label="Filter locations opening from this date" />
                             </div>
                             <div class="date-filter-group">
-                                <label class="date-filter-label">To:</label>
-                                <input type="date" class="date-filter-input" id="dateTo" />
+                                <label class="date-filter-label" for="dateTo">To:</label>
+                                <input type="date" class="date-filter-input" id="dateTo" aria-label="Filter locations opening until this date" />
                             </div>
-                            <div class="date-filter-presets">
-                                <button class="preset-btn" data-preset="opening-soon">Opening Soon</button>
-                                <button class="preset-btn" data-preset="recently-opened">Recently Opened</button>
+                            <div class="date-filter-presets" role="group" aria-label="Date filter presets">
+                                <button class="preset-btn" data-preset="opening-soon" aria-label="Show locations opening soon">Opening Soon</button>
+                                <button class="preset-btn" data-preset="recently-opened" aria-label="Show recently opened locations">Recently Opened</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
 
                     <!-- Distance Filter -->
-                    <div class="filter-section">
-                        <label class="filter-section-label">Distance From Me</label>
+                    <fieldset class="filter-section">
+                        <legend class="filter-section-label" id="distance-filter-label">Distance From Me</legend>
                         <div class="distance-filter-controls">
-                            <button class="enable-distance-btn" id="enableDistanceFilter">
+                            <button class="enable-distance-btn" id="enableDistanceFilter" aria-label="Enable location-based distance filter">
                                 Enable Location
                             </button>
                             <div class="distance-slider-container" id="distanceSliderContainer" style="display: none;">
-                                <div class="distance-value-display">
+                                <div class="distance-value-display" aria-live="polite">
                                     <span id="distanceValue">50</span> miles
                                 </div>
+                                <label for="distanceSlider" class="visually-hidden">Distance radius in miles</label>
                                 <input
                                     type="range"
                                     class="distance-slider"
@@ -178,53 +263,57 @@
                                     max="500"
                                     value="50"
                                     step="5"
+                                    aria-labelledby="distance-filter-label"
+                                    aria-valuemin="10"
+                                    aria-valuemax="500"
+                                    aria-valuenow="50"
                                 />
-                                <div class="distance-labels">
+                                <div class="distance-labels" aria-hidden="true">
                                     <span>10</span>
                                     <span>100</span>
                                     <span>500 mi</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
 
                     <!-- Clear All Filters -->
                     <div class="filter-section">
-                        <button class="clear-all-filters-btn" id="clearAllFilters">
+                        <button class="clear-all-filters-btn" id="clearAllFilters" aria-label="Clear all filters and reset to default view">
                             Clear All Filters
                         </button>
                     </div>
                 </div>
 
-                <div class="location-stats" id="locationStats">
+                <div class="location-stats" id="locationStats" role="status" aria-live="polite" aria-atomic="true">
                     <!-- Stats will be inserted here -->
                 </div>
 
-                <div class="location-list" id="locationList">
+                <div class="location-list" id="locationList" role="list" aria-label="List of Rivian locations">
                     <!-- Locations will be inserted here -->
                 </div>
-            </div>
-            
-            <div id="map"></div>
-            
+            </aside>
+
+            <div id="map" role="application" aria-label="Interactive map showing Rivian locations"></div>
+
             <!-- Current Location Button -->
-            <button class="location-btn" id="locationBtn" title="Go to my location">
-                <svg viewBox="0 0 24 24">
+            <button class="location-btn" id="locationBtn" title="Go to my location" aria-label="Center map on my current location">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
                 </svg>
             </button>
-            
+
             <!-- Mobile Bottom Bar -->
-            <div class="mobile-bottom-bar" id="mobileBottomBar">
-                <button id="mobileFilterBtn">Filter</button>
-                <button id="mobileListBtn">List</button>
-                <button id="mobileNearMeBtn">Near Me</button>
-            </div>
-        </div>
+            <nav class="mobile-bottom-bar" id="mobileBottomBar" role="navigation" aria-label="Mobile navigation">
+                <button id="mobileFilterBtn" aria-label="Open filter panel">Filter</button>
+                <button id="mobileListBtn" aria-label="View location list">List</button>
+                <button id="mobileNearMeBtn" aria-label="Find locations near me">Near Me</button>
+            </nav>
+        </main>
     </div>
 
     <!-- Feature Notification -->
-    <div class="feature-notification" id="featureNotification"></div>
+    <div class="feature-notification" id="featureNotification" role="alert" aria-live="assertive"></div>
 
     <!-- Load Components First -->
     <script src="js/components.js"></script>
@@ -242,10 +331,9 @@
     <script src="js/locations.js?v=20250926d"></script>
 
 
-    <!-- Configuration and Main Application -->
+    <!-- Initialize Mapbox from config -->
     <script>
-        // Initialize Mapbox (should be moved to environment variables in production)
-        mapboxgl.accessToken = 'pk.eyJ1IjoiemFrd2lubmljayIsImEiOiJjbWYxYzV5bmQxZGwzMmxxNHBieHp3NDI2In0.YAzo3vcGSqaNxZyz4GA7xg';
+        mapboxgl.accessToken = window.RivianSpotterConfig.mapboxToken;
     </script>
 
     <!-- Main Application Logic -->

@@ -7,6 +7,129 @@
     box-sizing: border-box;
 }
 
+/* ============================================================================
+   ACCESSIBILITY STYLES
+   ============================================================================ */
+
+/* Visually Hidden - for screen readers only */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Link - visible on focus */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    z-index: 10000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 8px 0;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #1976D2;
+    outline-offset: 2px;
+}
+
+/* Focus Outline Styles for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users, keep for keyboard */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Enhanced focus for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Focus styles for filter buttons */
+.filter-btn:focus-visible {
+    outline: 3px solid #1976D2;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.2);
+}
+
+/* Focus styles for location cards */
+.location-card:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: -2px;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+/* Focus styles for action buttons */
+.action-btn:focus-visible,
+.popup-button:focus-visible,
+.form-submit:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+/* Focus styles for map controls */
+.location-btn:focus-visible {
+    outline: 3px solid #1976D2;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :focus,
+    :focus-visible {
+        outline: 3px solid currentColor !important;
+        outline-offset: 3px !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .skip-link {
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 :root {
     --primary-color: #4CAF50;
     --secondary-color: #2196F3;
@@ -494,6 +617,151 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+/* ============================================================================
+   LOADING SKELETON STYLES
+   ============================================================================ */
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Base skeleton styles */
+.loading-skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+/* Skeleton location card */
+.location-card.loading-skeleton {
+    pointer-events: none;
+    min-height: 120px;
+}
+
+.location-card.loading-skeleton .location-type,
+.location-card.loading-skeleton .location-name,
+.location-card.loading-skeleton .location-address,
+.location-card.loading-skeleton .location-hours {
+    background: linear-gradient(
+        90deg,
+        #e8e8e8 25%,
+        #d8d8d8 50%,
+        #e8e8e8 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    color: transparent;
+    border-radius: 4px;
+}
+
+/* Skeleton type badge */
+.skeleton-type {
+    width: 80px;
+    height: 20px;
+    background: linear-gradient(
+        90deg,
+        #e0e0e0 25%,
+        #d0d0d0 50%,
+        #e0e0e0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+/* Skeleton title */
+.skeleton-title {
+    width: 70%;
+    height: 18px;
+    background: linear-gradient(
+        90deg,
+        #e0e0e0 25%,
+        #d0d0d0 50%,
+        #e0e0e0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+/* Skeleton text line */
+.skeleton-text {
+    width: 100%;
+    height: 14px;
+    background: linear-gradient(
+        90deg,
+        #e8e8e8 25%,
+        #d8d8d8 50%,
+        #e8e8e8 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+}
+
+.skeleton-text.short {
+    width: 60%;
+}
+
+.skeleton-text.medium {
+    width: 80%;
+}
+
+/* Location list loading state */
+.location-list.loading {
+    position: relative;
+}
+
+.location-list.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+/* Skeleton card template */
+.skeleton-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Loading placeholder for empty state */
+.loading-placeholder {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.loading-placeholder .spinner {
+    margin: 0 auto 1rem;
+}
+
+.loading-placeholder-text {
+    color: #999;
+    font-size: 0.9rem;
+}
+
 /* Map-specific styles */
 .map-container {
     height: calc(100vh - 60px);
@@ -509,20 +777,24 @@ body {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 85%;
     max-width: 350px;
     height: 100vh;
     background: white;
     z-index: 2000;
-    transition: left 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 0;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .sidebar.active {
-    left: 0;
+    transform: translateX(0);
 }
 
 .sidebar-header {
@@ -573,15 +845,21 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
-    border-top: 1px solid #e5e5e5;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(229, 229, 229, 0.8);
     padding: 0.5rem;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
     z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-bottom-bar button {
     flex: 1;
+    min-height: 44px;
     padding: 0.75rem;
     background: white;
     border: 1px solid #e5e5e5;
@@ -590,17 +868,27 @@ body {
     font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-bottom-bar button:hover {
     background: #f9f9f9;
 }
 
+.mobile-bottom-bar button:active {
+    transform: scale(0.96);
+    background: #f0f0f0;
+}
+
 .mobile-bottom-bar button.active {
     background: #4CAF50;
     color: white;
     border-color: #4CAF50;
+}
+
+.mobile-bottom-bar button.active:active {
+    background: #45a049;
 }
 
 .filter-buttons {
@@ -1042,6 +1330,19 @@ body {
     border-bottom: none;
 }
 
+/* Fieldset reset for accessibility - remove default browser styles */
+fieldset.filter-section {
+    border: none;
+    margin: 0;
+    min-width: 0;
+}
+
+fieldset.filter-section legend {
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
 .filter-section-header {
     display: flex;
     justify-content: space-between;
@@ -1344,11 +1645,14 @@ body {
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         z-index: 100;
         overflow-y: auto;
-        transition: transform 0.3s ease;
+        /* Reset mobile transform on desktop */
+        transform: translateX(0);
+        transition: none;
+        will-change: auto;
     }
 
     .sidebar.active {
-        left: 1rem;
+        transform: translateX(0);
     }
 
     .sidebar-header {
@@ -1740,5 +2044,452 @@ body {
 
     .recent-locations-list {
         max-height: 150px;
+    }
+}
+
+/* ============================================================================
+   QUICK FILTERS (Open Now, Coming Soon)
+   ============================================================================ */
+
+/* Quick Filters Container */
+.quick-filters {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+}
+
+/* Quick Filter Button Base Styles */
+.quick-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    border: 2px solid #e5e5e5;
+    background: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #666;
+    white-space: nowrap;
+}
+
+.quick-filter-btn:hover {
+    background: #f9f9f9;
+    border-color: #ccc;
+}
+
+.quick-filter-btn svg {
+    flex-shrink: 0;
+}
+
+/* Open Now Button */
+.quick-filter-btn.open-now-btn {
+    border-color: #e5e5e5;
+}
+
+.quick-filter-btn.open-now-btn:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.quick-filter-btn.open-now-btn.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.quick-filter-btn.open-now-btn.active svg {
+    fill: white;
+}
+
+/* Coming Soon Button */
+.quick-filter-btn.coming-soon-btn {
+    border-color: #e5e5e5;
+}
+
+.quick-filter-btn.coming-soon-btn:hover {
+    border-color: #FF9800;
+    color: #FF9800;
+}
+
+.quick-filter-btn.coming-soon-btn.active {
+    background: #FF9800;
+    color: white;
+    border-color: #FF9800;
+}
+
+.quick-filter-btn.coming-soon-btn.active svg {
+    fill: white;
+}
+
+/* Coming Soon Badge */
+.quick-filter-btn .coming-soon-count {
+    background: #FF9800;
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+.quick-filter-btn.coming-soon-btn.active .coming-soon-count {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Coming Soon Badge on Location Cards */
+.location-coming-soon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #fff3e0;
+    color: #e65100;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.location-coming-soon-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: #e65100;
+}
+
+/* Open Now Indicator on Location Cards */
+.location-open-now-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #4CAF50;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.location-open-now-indicator::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* Closed Indicator */
+.location-closed-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #dc3545;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.location-closed-indicator::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #dc3545;
+    border-radius: 50%;
+}
+
+/* Focus styles for quick filter buttons */
+.quick-filter-btn:focus-visible {
+    outline: 3px solid #1976D2;
+    outline-offset: 2px;
+}
+
+/* Mobile Responsive for Quick Filters */
+@media (max-width: 768px) {
+    .quick-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+
+    .quick-filter-btn {
+        flex-shrink: 0;
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================================
+   MOBILE TOUCH FEEDBACK & INTERACTIONS (max-width: 768px)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    /* Ensure minimum tap target sizes (44px) */
+    .filter-btn,
+    .quick-filter-btn,
+    .action-btn,
+    .popup-button,
+    .preset-btn,
+    .toggle-filters-btn,
+    .close-sidebar {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Touch feedback for filter buttons */
+    .filter-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .filter-btn:active {
+        transform: scale(0.95);
+        background: #e8e8e8;
+    }
+
+    .filter-btn.active:active {
+        background: #45a049;
+    }
+
+    /* Touch feedback for quick filter buttons */
+    .quick-filter-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .quick-filter-btn:active {
+        transform: scale(0.95);
+    }
+
+    .quick-filter-btn.open-now-btn:active {
+        background: #e8f5e9;
+    }
+
+    .quick-filter-btn.open-now-btn.active:active {
+        background: #45a049;
+    }
+
+    .quick-filter-btn.coming-soon-btn:active {
+        background: #fff3e0;
+    }
+
+    .quick-filter-btn.coming-soon-btn.active:active {
+        background: #f57c00;
+    }
+
+    /* Touch feedback for location cards */
+    .location-card {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .location-card:active {
+        transform: scale(0.98);
+        background: #f5f5f5;
+    }
+
+    .location-card.active:active {
+        background: #e3f2fd;
+    }
+
+    /* Touch feedback for popup button */
+    .popup-button {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .popup-button:active {
+        transform: scale(0.96);
+        background: #3d8b40;
+    }
+
+    /* Touch feedback for action buttons */
+    .action-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .action-btn:active {
+        transform: scale(0.96);
+        background: #e8e8e8;
+    }
+
+    /* Touch feedback for preset buttons */
+    .preset-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .preset-btn:active {
+        transform: scale(0.95);
+        background: #e0f2f1;
+    }
+
+    .preset-btn.active:active {
+        background: #45a049;
+    }
+
+    /* Touch feedback for toggle filters button */
+    .toggle-filters-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .toggle-filters-btn:active {
+        transform: scale(0.98);
+        background: #e8e8e8;
+    }
+
+    /* Touch feedback for close sidebar button */
+    .close-sidebar {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-sidebar:active {
+        transform: scale(0.9);
+        background: #f0f0f0;
+        border-radius: 50%;
+    }
+
+    /* Touch feedback for location button */
+    .location-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .location-btn:active {
+        transform: scale(0.92);
+    }
+
+    /* Touch feedback for favorite button */
+    .favorite-btn {
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .favorite-btn:active {
+        transform: scale(0.9);
+    }
+
+    /* Touch feedback for share button */
+    .share-btn {
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .share-btn:active {
+        transform: scale(0.9);
+    }
+
+    /* Touch feedback for filter action buttons */
+    .filter-action-btn {
+        min-height: 36px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .filter-action-btn:active {
+        transform: scale(0.95);
+        background: #e0e0e0;
+    }
+
+    /* Touch feedback for clear all filters button */
+    .clear-all-filters-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .clear-all-filters-btn:active {
+        transform: scale(0.98);
+        background: #b02a37;
+    }
+
+    /* Touch feedback for enable distance button */
+    .enable-distance-btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .enable-distance-btn:active {
+        transform: scale(0.98);
+        background: #3d8b40;
+    }
+
+    /* Touch feedback for state checkbox items */
+    .state-checkbox-item,
+    .service-checkbox-item {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 44px;
+    }
+
+    .state-checkbox-item:active,
+    .service-checkbox-item:active {
+        background: #e3f2fd;
+    }
+
+    /* Touch feedback for recent location items */
+    .recent-location-item {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 48px;
+    }
+
+    .recent-location-item:active {
+        background: #f0f0f0;
+    }
+
+    /* Smooth overlay animation */
+    .mobile-overlay {
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-overlay.active {
+        opacity: 1;
+    }
+
+    /* Improve search input for touch */
+    .search-input {
+        min-height: 48px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Improve select for touch */
+    .state-filter-select {
+        min-height: 48px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Improve date inputs for touch */
+    .date-filter-input {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
     }
 }

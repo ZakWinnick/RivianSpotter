@@ -807,8 +807,332 @@ if (typeof LocationManager !== 'undefined') {
     };
 }
 
+// ============================================================================
+// 5. OPEN NOW FILTER
+// ============================================================================
+
+const OpenNowFilter = {
+    // Day name mappings
+    dayNames: ['Sun', 'Sunday', 'Mon', 'Monday', 'Tue', 'Tues', 'Tuesday', 'Wed', 'Wednesday',
+               'Thur', 'Thurs', 'Thursday', 'Fri', 'Friday', 'Sat', 'Saturday'],
+
+    dayAbbreviations: {
+        'sun': 0, 'sunday': 0,
+        'mon': 1, 'monday': 1,
+        'tue': 2, 'tues': 2, 'tuesday': 2,
+        'wed': 3, 'wednesday': 3,
+        'thur': 4, 'thurs': 4, 'thursday': 4,
+        'fri': 5, 'friday': 5,
+        'sat': 6, 'saturday': 6
+    },
+
+    // Check if a location is currently open based on hours string
+    isLocationOpen(location) {
+        try {
+            // If location explicitly marked as not open, return false
+            if (location.isOpen === false) {
+                return false;
+            }
+
+            // If no hours specified, assume open (can't determine)
+            if (!location.hours || location.hours.trim() === '') {
+                return null; // Unknown
+            }
+
+            // Check for "Temporarily closed" or similar
+            const hoursLower = location.hours.toLowerCase();
+            if (hoursLower.includes('temporarily closed') ||
+                hoursLower.includes('closed for') ||
+                hoursLower.includes('permanently closed')) {
+                return false;
+            }
+
+            const now = new Date();
+            const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
+            const currentHours = now.getHours();
+            const currentMinutes = now.getMinutes();
+            const currentTimeInMinutes = currentHours * 60 + currentMinutes;
+
+            // Parse the hours string
+            const todaySchedule = this.getTodaySchedule(location.hours, currentDay);
+
+            if (!todaySchedule) {
+                return false; // Closed today
+            }
+
+            // Check if current time falls within any open period
+            for (const period of todaySchedule) {
+                if (currentTimeInMinutes >= period.open && currentTimeInMinutes < period.close) {
+                    return true;
+                }
+            }
+
+            return false;
+        } catch (error) {
+            console.error('Error checking if location is open:', error, location.name);
+            return null; // Unknown on error
+        }
+    },
+
+    // Get today's schedule from hours string
+    getTodaySchedule(hoursString, currentDay) {
+        try {
+            // Handle different formats:
+            // "Mon-Sat: 10am-7pm, Sun: 11am-6pm"
+            // "General: Mon-Sat: 9am-5pm, Sun: Closed | Service: Mon-Fri: 8am-5pm"
+            // "Mon-Sun: 9:00am-6:00pm"
+            // "Sun-Thu: 10:00am-9:00pm, Fri-Sat: 10:00am-10:00pm"
+
+            const schedules = [];
+
+            // Split by | to handle General/Service sections - only use General hours
+            let relevantHours = hoursString;
+            if (hoursString.includes('|')) {
+                const sections = hoursString.split('|');
+                // Use the first section (usually General hours)
+                relevantHours = sections[0].replace(/^General:\s*/i, '');
+            }
+
+            // Split by comma to get individual day/time segments
+            const segments = relevantHours.split(',').map(s => s.trim());
+
+            for (const segment of segments) {
+                const parsed = this.parseTimeSegment(segment);
+                if (parsed && this.isDayInRange(currentDay, parsed.days)) {
+                    if (parsed.closed) {
+                        return null; // Explicitly closed
+                    }
+                    schedules.push({ open: parsed.openTime, close: parsed.closeTime });
+                }
+            }
+
+            return schedules.length > 0 ? schedules : null;
+        } catch (error) {
+            console.error('Error parsing hours:', error, hoursString);
+            return null;
+        }
+    },
+
+    // Parse a time segment like "Mon-Sat: 10am-7pm" or "Sun: Closed"
+    parseTimeSegment(segment) {
+        try {
+            // Match patterns like "Mon-Sat: 10am-7pm", "Sun: 11am-6pm", "Mon-Sun: 9:00am-6:00pm"
+            const match = segment.match(/([A-Za-z\-&,\s]+):\s*(.+)/);
+            if (!match) return null;
+
+            const daysStr = match[1].trim();
+            const timeStr = match[2].trim();
+
+            // Check for closed
+            if (timeStr.toLowerCase() === 'closed') {
+                return { days: this.parseDays(daysStr), closed: true };
+            }
+
+            // Parse time range like "10am-7pm" or "10:00am-7:00pm"
+            const timeMatch = timeStr.match(/(\d{1,2}):?(\d{2})?\s*(am|pm|a|p)?[–-](\d{1,2}):?(\d{2})?\s*(am|pm|a|p)?/i);
+            if (!timeMatch) return null;
+
+            const openHour = parseInt(timeMatch[1]);
+            const openMinutes = parseInt(timeMatch[2] || '0');
+            const openPeriod = (timeMatch[3] || 'am').toLowerCase();
+
+            const closeHour = parseInt(timeMatch[4]);
+            const closeMinutes = parseInt(timeMatch[5] || '0');
+            const closePeriod = (timeMatch[6] || 'pm').toLowerCase();
+
+            const openTime = this.convertTo24Hour(openHour, openMinutes, openPeriod);
+            const closeTime = this.convertTo24Hour(closeHour, closeMinutes, closePeriod);
+
+            return {
+                days: this.parseDays(daysStr),
+                openTime: openTime,
+                closeTime: closeTime
+            };
+        } catch (error) {
+            console.error('Error parsing time segment:', error, segment);
+            return null;
+        }
+    },
+
+    // Parse days string like "Mon-Sat", "Sun", "Mon-Fri", "Mon & Tues"
+    parseDays(daysStr) {
+        const days = [];
+        const lowerStr = daysStr.toLowerCase();
+
+        // Handle ranges like "Mon-Sat", "Sun-Thu"
+        const rangeMatch = lowerStr.match(/(\w+)\s*[–-]\s*(\w+)/);
+        if (rangeMatch) {
+            const startDay = this.dayAbbreviations[rangeMatch[1]];
+            const endDay = this.dayAbbreviations[rangeMatch[2]];
+
+            if (startDay !== undefined && endDay !== undefined) {
+                if (startDay <= endDay) {
+                    for (let d = startDay; d <= endDay; d++) {
+                        days.push(d);
+                    }
+                } else {
+                    // Handle wrap-around (e.g., Sun-Thu)
+                    for (let d = startDay; d <= 6; d++) {
+                        days.push(d);
+                    }
+                    for (let d = 0; d <= endDay; d++) {
+                        days.push(d);
+                    }
+                }
+            }
+        } else {
+            // Single day or comma/ampersand separated
+            const dayParts = lowerStr.split(/[,&]/);
+            for (const part of dayParts) {
+                const trimmed = part.trim();
+                if (this.dayAbbreviations[trimmed] !== undefined) {
+                    days.push(this.dayAbbreviations[trimmed]);
+                }
+            }
+        }
+
+        return days;
+    },
+
+    // Check if current day is in the days array
+    isDayInRange(currentDay, days) {
+        return days.includes(currentDay);
+    },
+
+    // Convert hour to 24-hour format in minutes
+    convertTo24Hour(hour, minutes, period) {
+        let hour24 = hour;
+        const periodLower = period.charAt(0); // 'a' or 'p'
+
+        if (periodLower === 'p' && hour !== 12) {
+            hour24 = hour + 12;
+        } else if (periodLower === 'a' && hour === 12) {
+            hour24 = 0;
+        }
+
+        return hour24 * 60 + minutes;
+    },
+
+    // Toggle open now filter
+    toggle() {
+        AppState.openNowFilter = !AppState.openNowFilter;
+
+        // Disable coming soon filter if open now is enabled
+        if (AppState.openNowFilter && AppState.comingSoonFilter) {
+            AppState.comingSoonFilter = false;
+            this.updateComingSoonUI();
+        }
+
+        this.updateUI();
+        LocationManager.filterLocations();
+    },
+
+    // Update UI for open now button
+    updateUI() {
+        const btn = document.getElementById('openNowFilterBtn');
+        if (btn) {
+            btn.classList.toggle('active', AppState.openNowFilter);
+        }
+    },
+
+    // Update coming soon UI (called when toggling off)
+    updateComingSoonUI() {
+        const btn = document.getElementById('comingSoonFilterBtn');
+        if (btn) {
+            btn.classList.toggle('active', AppState.comingSoonFilter);
+        }
+    }
+};
+
+// ============================================================================
+// 6. COMING SOON FILTER
+// ============================================================================
+
+const ComingSoonFilter = {
+    // Check if a location is coming soon (not yet open)
+    isComingSoon(location) {
+        // Check if explicitly marked as not open
+        if (location.isOpen === false) {
+            return true;
+        }
+
+        // Check if opening date is in the future
+        if (location.openingDate) {
+            const openingDate = new Date(location.openingDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (openingDate > today) {
+                return true;
+            }
+        }
+
+        // Check hours for "coming soon" or "opening" mentions
+        if (location.hours) {
+            const hoursLower = location.hours.toLowerCase();
+            if (hoursLower.includes('coming soon') ||
+                hoursLower.includes('opening') ||
+                hoursLower.includes('temporarily closed')) {
+                return true;
+            }
+        }
+
+        return false;
+    },
+
+    // Get count of coming soon locations
+    getCount() {
+        if (!rivianLocations || !Array.isArray(rivianLocations)) return 0;
+        return rivianLocations.filter(loc => this.isComingSoon(loc)).length;
+    },
+
+    // Toggle coming soon filter
+    toggle() {
+        AppState.comingSoonFilter = !AppState.comingSoonFilter;
+
+        // Disable open now filter if coming soon is enabled
+        if (AppState.comingSoonFilter && AppState.openNowFilter) {
+            AppState.openNowFilter = false;
+            OpenNowFilter.updateUI();
+        }
+
+        this.updateUI();
+        LocationManager.filterLocations();
+    },
+
+    // Update UI
+    updateUI() {
+        const btn = document.getElementById('comingSoonFilterBtn');
+        if (btn) {
+            btn.classList.toggle('active', AppState.comingSoonFilter);
+
+            const count = this.getCount();
+            const badge = btn.querySelector('.coming-soon-count');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'inline-block' : 'none';
+            }
+        }
+    },
+
+    // Initialize - update badge count
+    init() {
+        this.updateUI();
+    }
+};
+
+// Add initialization for new features
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Coming Soon filter after a small delay to ensure locations are loaded
+    setTimeout(() => {
+        ComingSoonFilter.init();
+    }, 200);
+});
+
 // Make managers globally accessible
 window.FavoritesManager = FavoritesManager;
 window.SharingManager = SharingManager;
 window.ExportManager = ExportManager;
 window.RecentLocationsManager = RecentLocationsManager;
+window.OpenNowFilter = OpenNowFilter;
+window.ComingSoonFilter = ComingSoonFilter;

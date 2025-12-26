@@ -2,6 +2,10 @@
 // This file should be customized for different environments
 
 window.RivianSpotterConfig = {
+    // Mapbox Access Token
+    // Note: Client-side tokens are always visible in browser. Restrict by URL in Mapbox dashboard.
+    mapboxToken: 'pk.eyJ1IjoiemFrd2lubmljayIsImEiOiJjbWYxYzV5bmQxZGwzMmxxNHBieHp3NDI2In0.YAzo3vcGSqaNxZyz4GA7xg',
+
     // Map configuration
     map: {
         style: 'mapbox://styles/mapbox/light-v11',
