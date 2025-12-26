@@ -42,8 +42,8 @@ class RivianComponents {
                 </a>
                 <nav class="nav-links desktop">
                     <a href="/" class="nav-link ${this.currentPage === 'map' ? 'active' : ''}">Map</a>
-                    <a href="/stats.html" class="nav-link ${this.currentPage === 'stats' ? 'active' : ''}">Stats</a>
                     <a href="/about.html" class="nav-link ${this.currentPage === 'about' ? 'active' : ''}">About</a>
+                    <a href="/stats.html" class="nav-link ${this.currentPage === 'stats' ? 'active' : ''}">Stats</a>
                     <a href="/contact.html" class="nav-link ${this.currentPage === 'contact' ? 'active' : ''}">Contact</a>
                     <a href="https://zak.codetoadventure.com/" class="nav-link" target="_blank">R1 Shop</a>
                 </nav>
@@ -52,8 +52,8 @@ class RivianComponents {
             <!-- Mobile Navigation Dropdown -->
             <div class="mobile-nav" id="mobileNav">
                 <a href="/">Map</a>
-                <a href="/stats.html">Stats</a>
                 <a href="/about.html">About</a>
+                <a href="/stats.html">Stats</a>
                 <a href="/contact.html">Contact</a>
                 <a href="https://zak.codetoadventure.com/" target="_blank">R1 Shop</a>
             </div>
