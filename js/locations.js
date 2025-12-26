@@ -16,7 +16,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center"
   },
   {
     "id": 2,
@@ -34,7 +35,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/scottsdale"
   },
   {
     "id": 3,
@@ -53,7 +55,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/tempe-service-demo-center"
   },
   {
     "id": 4,
@@ -71,7 +74,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/vancouver"
   },
   {
     "id": 5,
@@ -90,7 +94,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/burbank-service-demo-center"
   },
   {
     "id": 6,
@@ -109,7 +114,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/costa-mesa-service-demo-center"
   },
   {
     "id": 7,
@@ -127,7 +133,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/del-mar"
   },
   {
     "id": 8,
@@ -146,7 +153,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/eastvale-service-demo-center"
   },
   {
     "id": 9,
@@ -165,7 +173,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/el-segundo-service-demo-center"
   },
   {
     "id": 10,
@@ -183,7 +192,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/el-segundo"
   },
   {
     "id": 11,
@@ -201,7 +211,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/irvine"
   },
   {
     "id": 12,
@@ -219,7 +230,8 @@ const rivianLocations = [
       "Restrooms",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/joshua-tree"
   },
   {
     "id": 13,
@@ -237,7 +249,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/laguna-beach"
   },
   {
     "id": 14,
@@ -256,7 +269,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/lake-forest-service-demo-center"
   },
   {
     "id": 15,
@@ -274,7 +288,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/pasadena"
   },
   {
     "id": 16,
@@ -293,7 +308,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-diego-service-demo-center"
   },
   {
     "id": 17,
@@ -311,7 +327,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-diego"
   },
   {
     "id": 18,
@@ -329,7 +346,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-francisco"
   },
   {
     "id": 19,
@@ -347,7 +365,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-jose"
   },
   {
     "id": 20,
@@ -366,7 +385,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/south-san-francisco-service-demo-center"
   },
   {
     "id": 21,
@@ -385,7 +405,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/van-nuys-service-demo-center"
   },
   {
     "id": 22,
@@ -403,7 +424,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/venice"
   },
   {
     "id": 23,
@@ -421,7 +443,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/walnut-creek"
   },
   {
     "id": 24,
@@ -440,7 +463,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/west-sacramento-service-demo-center"
   },
   {
     "id": 25,
@@ -458,7 +482,8 @@ const rivianLocations = [
       "Restrooms",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/yosemite"
   },
   {
     "id": 26,
@@ -477,7 +502,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/colorado-springs-service-demo-center"
   },
   {
     "id": 27,
@@ -495,7 +521,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/denver"
   },
   {
     "id": 28,
@@ -514,7 +541,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/miami-service-demo-center"
   },
   {
     "id": 29,
@@ -532,7 +560,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/miami-aventura"
   },
   {
     "id": 30,
@@ -551,7 +580,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/orlando-service-demo-center"
   },
   {
     "id": 31,
@@ -570,7 +600,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/orlando-service-demo-center"
   },
   {
     "id": 32,
@@ -589,7 +620,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/tampa-service-demo-center"
   },
   {
     "id": 33,
@@ -607,7 +639,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/alpharetta"
   },
   {
     "id": 34,
@@ -625,7 +658,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/atlanta"
   },
   {
     "id": 35,
@@ -644,7 +678,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/honolulu-service-demo-center"
   },
   {
     "id": 36,
@@ -663,7 +698,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/boise-service-demo-center"
   },
   {
     "id": 37,
@@ -681,7 +717,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/chicago"
   },
   {
     "id": 38,
@@ -700,7 +737,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/melrose-park-service-demo-center"
   },
   {
     "id": 39,
@@ -718,7 +756,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/skokie"
   },
   {
     "id": 40,
@@ -737,7 +776,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/kansas-city-service-demo-center"
   },
   {
     "id": 41,
@@ -756,7 +796,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/gaithersburg-service-demo-center"
   },
   {
     "id": 42,
@@ -775,7 +816,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/glen-burnie-service-demo-center"
   },
   {
     "id": 43,
@@ -793,7 +835,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/boston"
   },
   {
     "id": 44,
@@ -812,7 +855,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/chelsea-service-demo-center"
   },
   {
     "id": 45,
@@ -831,7 +875,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/caledonia-service-demo-center"
   },
   {
     "id": 46,
@@ -850,7 +895,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/madison-heights-service-demo-center"
   },
   {
     "id": 47,
@@ -869,7 +915,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/st-louis-service-demo-center"
   },
   {
     "id": 48,
@@ -888,7 +935,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/north-las-vegas-service-demo-center"
   },
   {
     "id": 49,
@@ -907,7 +955,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/sparks-service-demo-center"
   },
   {
     "id": 50,
@@ -926,7 +975,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/woodbridge-service-demo-center"
   },
   {
     "id": 51,
@@ -945,7 +995,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/blauvelt-service-demo-center"
   },
   {
     "id": 52,
@@ -963,7 +1014,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/brooklyn"
   },
   {
     "id": 53,
@@ -981,7 +1033,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/new-york"
   },
   {
     "id": 54,
@@ -999,7 +1052,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/roslyn"
   },
   {
     "id": 55,
@@ -1017,7 +1071,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/white-plains"
   },
   {
     "id": 56,
@@ -1036,7 +1091,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/toronto-service-demo-center"
   },
   {
     "id": 57,
@@ -1055,7 +1111,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/portland-service-demo-center"
   },
   {
     "id": 58,
@@ -1073,7 +1130,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/tigard"
   },
   {
     "id": 59,
@@ -1092,7 +1150,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/montreal-service-demo-center"
   },
   {
     "id": 60,
@@ -1111,7 +1170,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/franklin-service-demo-center"
   },
   {
     "id": 61,
@@ -1130,7 +1190,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/memphis-service-demo-center"
   },
   {
     "id": 62,
@@ -1148,7 +1209,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/nashville"
   },
   {
     "id": 63,
@@ -1166,7 +1228,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/austin"
   },
   {
     "id": 64,
@@ -1185,7 +1248,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/austin-service-demo-center"
   },
   {
     "id": 65,
@@ -1203,7 +1267,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/dallas"
   },
   {
     "id": 66,
@@ -1222,7 +1287,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/dallas-service-demo-center"
   },
   {
     "id": 67,
@@ -1241,7 +1307,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/houston-service-demo-center"
   },
   {
     "id": 68,
@@ -1260,7 +1327,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-antonio-service-demo-center"
   },
   {
     "id": 69,
@@ -1279,7 +1347,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/salt-lake-city-service-demo-center"
   },
   {
     "id": 70,
@@ -1298,7 +1367,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/richmond-service-demo-center"
   },
   {
     "id": 71,
@@ -1318,7 +1388,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/bellevue-service-demo-center"
   },
   {
     "id": 72,
@@ -1336,7 +1407,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/fife-service-demo-center"
   },
   {
     "id": 73,
@@ -1354,7 +1426,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": false
+    "isOpen": false,
+    "rivianUrl": "https://rivian.com/spaces/seattle"
   },
   {
     "id": 74,
@@ -1373,7 +1446,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/menomonee-falls-service-demo-center"
   },
   {
     "id": 75,
@@ -1391,7 +1465,8 @@ const rivianLocations = [
       "Test Drives",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/hamptons"
   },
   {
     "id": 76,
@@ -1409,7 +1484,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/miami-brickell"
   },
   {
     "id": 77,
@@ -1427,7 +1503,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/brea"
   },
   {
     "id": 78,
@@ -1445,7 +1522,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/los-angeles"
   },
   {
     "id": 79,
@@ -1463,7 +1541,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/palo-alto"
   },
   {
     "id": 80,
@@ -1482,7 +1561,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/fort-myers-service-demo-center"
   },
   {
     "id": 81,
@@ -1501,7 +1581,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/buffalo-grove-service-demo-center"
   },
   {
     "id": 82,
@@ -1520,7 +1601,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/belgrade-service-demo-center"
   },
   {
     "id": 83,
@@ -1539,7 +1621,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/ladson-service-demo-center"
   },
   {
     "id": 84,
@@ -1557,7 +1640,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/mclean"
   },
   {
     "id": 85,
@@ -1573,7 +1657,8 @@ const rivianLocations = [
     "services": [
       "Education"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/bothell-service-demo-center"
   },
   {
     "id": 86,
@@ -1589,7 +1674,8 @@ const rivianLocations = [
     "services": [
       "Education"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/seattle"
   },
   {
     "id": 87,
@@ -1607,7 +1693,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 88,
@@ -1625,7 +1712,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 89,
@@ -1643,7 +1731,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 90,
@@ -1661,7 +1750,8 @@ const rivianLocations = [
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/la-jolla"
   },
   {
     "id": 91,
@@ -1680,7 +1770,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/milpitas-service-demo-center"
   },
   {
     "id": 92,
@@ -1698,7 +1789,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 93,
@@ -1716,7 +1808,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 94,
@@ -1734,7 +1827,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 95,
@@ -1752,7 +1846,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 96,
@@ -1770,7 +1865,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 97,
@@ -1788,7 +1884,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 98,
@@ -1806,7 +1903,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 99,
@@ -1824,7 +1922,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 100,
@@ -1842,7 +1941,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 101,
@@ -1860,7 +1960,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 102,
@@ -1878,7 +1979,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 103,
@@ -1896,7 +1998,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 104,
@@ -1914,7 +2017,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 105,
@@ -1932,7 +2036,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 106,
@@ -1950,7 +2055,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 107,
@@ -1968,7 +2074,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 108,
@@ -1986,7 +2093,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 109,
@@ -2004,7 +2112,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 110,
@@ -2022,7 +2131,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 111,
@@ -2040,7 +2150,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 112,
@@ -2058,7 +2169,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 113,
@@ -2076,7 +2188,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 114,
@@ -2094,7 +2207,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 115,
@@ -2112,7 +2226,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 116,
@@ -2130,7 +2245,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 117,
@@ -2148,7 +2264,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 118,
@@ -2166,7 +2283,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 119,
@@ -2184,7 +2302,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 120,
@@ -2202,7 +2321,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": ""
   },
   {
     "id": 121,
@@ -2221,7 +2341,8 @@ const rivianLocations = [
       "Repairs",
       "Parts"
     ],
-    "isOpen": true
+    "isOpen": true,
+    "rivianUrl": "https://rivian.com/spaces/san-jose-service-demo-center"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) {
