@@ -204,11 +204,8 @@ const MapManager = {
 
     addMarkers(locations) {
         try {
-            // Clear existing markers if any
-            if (AppState.markers.length > 0) {
-                AppState.markers.forEach(({marker}) => marker.remove());
-                AppState.markers = [];
-            }
+            // Clear marker references (we use GeoJSON layers, not individual markers)
+            AppState.markers = [];
 
             // Remove existing sources and layers if they exist
             if (AppState.map.getSource('locations')) {
