@@ -1440,6 +1440,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 locationBtn.addEventListener('click', UIManager.getUserLocation);
             }
 
+            // Collapsible sections toggle
+            const actionsToggle = document.getElementById('actionsToggle');
+            const actionsContent = document.getElementById('actionsContent');
+            if (actionsToggle && actionsContent) {
+                actionsToggle.addEventListener('click', () => {
+                    const isExpanded = actionsToggle.getAttribute('aria-expanded') === 'true';
+                    actionsToggle.setAttribute('aria-expanded', !isExpanded);
+                    if (isExpanded) {
+                        actionsContent.setAttribute('hidden', '');
+                    } else {
+                        actionsContent.removeAttribute('hidden');
+                    }
+                });
+            }
+
         } catch (error) {
             console.error('Failed to initialize app:', error);
             Utils.showError('Failed to initialize application: ' + error.message,

@@ -149,12 +149,15 @@
                     </div>
                 </section>
 
-                <!-- Export/Import Actions -->
+                <!-- Export/Import Actions (Collapsible) -->
                 <section class="actions-section" aria-labelledby="actions-title">
-                    <div class="section-header">
+                    <button class="section-header collapsible" id="actionsToggle" aria-expanded="false" aria-controls="actionsContent">
                         <span class="section-title" id="actions-title">Actions</span>
-                    </div>
-                    <div class="action-buttons" role="group" aria-label="Export and import actions">
+                        <svg class="collapse-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="action-buttons collapsible-content" id="actionsContent" role="group" aria-label="Export and import actions" hidden>
                         <button class="action-btn" id="exportCSVBtn" title="Export all locations to CSV" aria-label="Export all locations to CSV file">
                             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;" aria-hidden="true">
                                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
