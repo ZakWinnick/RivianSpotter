@@ -48,6 +48,10 @@
                     <div class="stat-label">Rivian Spaces</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-number" id="totalServiceCenters">30+</div>
+                    <div class="stat-label">Service Centers</div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-number" id="totalOutposts">10+</div>
                     <div class="stat-label">Outposts</div>
                 </div>
@@ -116,6 +120,7 @@
                 document.getElementById('totalLocations').textContent = rivianLocations.length;
                 document.getElementById('totalStates').textContent = [...new Set(rivianLocations.map(l => l.state))].length;
                 document.getElementById('totalSpaces').textContent = rivianLocations.filter(l => l.type === 'Space').length;
+                document.getElementById('totalServiceCenters').textContent = rivianLocations.filter(l => l.type === 'Service Center').length;
                 document.getElementById('totalOutposts').textContent = rivianLocations.filter(l => l.type === 'Outpost').length;
             }
         });
