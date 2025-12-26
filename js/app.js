@@ -601,8 +601,9 @@ const AdvancedFilterManager = {
 
         if (toggleBtn && panel) {
             toggleBtn.addEventListener('click', () => {
-                const isExpanded = panel.style.display === 'block';
-                panel.style.display = isExpanded ? 'none' : 'block';
+                const isExpanded = panel.classList.contains('expanded');
+                panel.classList.toggle('expanded');
+                toggleBtn.setAttribute('aria-expanded', !isExpanded);
                 if (toggleIcon) {
                     toggleIcon.classList.toggle('rotated', !isExpanded);
                 }
