@@ -151,15 +151,17 @@ const MapManager = {
             const states = [...new Set(rivianLocations.map(l => l.state))].sort();
             const stateNames = {
                 'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
-                'CA': 'California', 'CO': 'Colorado', 'FL': 'Florida',
-                'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho',
-                'IL': 'Illinois', 'KS': 'Kansas', 'MD': 'Maryland',
-                'MA': 'Massachusetts', 'MI': 'Michigan', 'MO': 'Missouri',
-                'MT': 'Montana', 'NV': 'Nevada', 'NJ': 'New Jersey',
-                'NY': 'New York', 'ON': 'Ontario', 'OR': 'Oregon',
-                'QC': 'Quebec', 'TN': 'Tennessee', 'TX': 'Texas',
-                'UT': 'Utah', 'VA': 'Virginia', 'WA': 'Washington',
-                'WI': 'Wisconsin'
+                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+                'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
+                'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+                'KS': 'Kansas', 'MA': 'Massachusetts', 'MD': 'Maryland',
+                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
+                'MT': 'Montana', 'NC': 'North Carolina', 'NJ': 'New Jersey',
+                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                'ON': 'Ontario', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
+                'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
+                'WA': 'Washington', 'WI': 'Wisconsin'
             };
 
             const select = document.getElementById('stateFilter');
@@ -532,12 +534,14 @@ const AdvancedFilterManager = {
 
             const stateNames = {
                 'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
-                'CA': 'California', 'CO': 'Colorado', 'FL': 'Florida',
-                'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho',
-                'IL': 'Illinois', 'KS': 'Kansas', 'MD': 'Maryland',
-                'MA': 'Massachusetts', 'MI': 'Michigan', 'MO': 'Missouri',
-                'MT': 'Montana', 'NV': 'Nevada', 'NJ': 'New Jersey',
-                'NY': 'New York', 'ON': 'Ontario', 'OR': 'Oregon',
+                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+                'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
+                'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+                'KS': 'Kansas', 'MA': 'Massachusetts', 'MD': 'Maryland',
+                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
+                'MT': 'Montana', 'NC': 'North Carolina', 'NJ': 'New Jersey',
+                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                'ON': 'Ontario', 'OR': 'Oregon', 'PA': 'Pennsylvania',
                 'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
                 'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
                 'WA': 'Washington', 'WI': 'Wisconsin'
