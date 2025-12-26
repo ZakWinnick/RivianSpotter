@@ -120,6 +120,7 @@
 
         .type-dot.space { background: #4CAF50; }
         .type-dot.demo { background: #2196F3; }
+        .type-dot.service { background: #9C27B0; }
         .type-dot.outpost { background: #FF9800; }
 
         .type-list {
@@ -204,6 +205,12 @@
                         </ul>
                     </div>
                     <div class="type-card">
+                        <h3><span class="type-dot service"></span> Service Centers (<span id="serviceCount">-</span>)</h3>
+                        <ul class="type-list" id="serviceList">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                    <div class="type-card">
                         <h3><span class="type-dot outpost"></span> Outposts (<span id="outpostCount">-</span>)</h3>
                         <ul class="type-list" id="outpostList">
                             <li>Loading...</li>
@@ -249,10 +256,12 @@
             // Type breakdown
             const spaces = locations.filter(l => l.type === 'Space');
             const demos = locations.filter(l => l.type === 'Demo Center');
+            const services = locations.filter(l => l.type === 'Service Center');
             const outposts = locations.filter(l => l.type === 'Outpost');
 
             document.getElementById('spaceCount').textContent = spaces.length;
             document.getElementById('demoCount').textContent = demos.length;
+            document.getElementById('serviceCount').textContent = services.length;
             document.getElementById('outpostCount').textContent = outposts.length;
 
             // Type lists
@@ -261,6 +270,10 @@
                 .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
 
             document.getElementById('demoList').innerHTML = demos
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
+
+            document.getElementById('serviceList').innerHTML = services
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
 
@@ -278,11 +291,12 @@
                 'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
                 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
                 'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
-                'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                'KS': 'Kansas', 'MA': 'Massachusetts', 'MD': 'Maryland',
-                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
-                'MT': 'Montana', 'NC': 'North Carolina', 'NJ': 'New Jersey',
-                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                'HI': 'Hawaii', 'IA': 'Iowa', 'ID': 'Idaho', 'IL': 'Illinois',
+                'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                'MA': 'Massachusetts', 'MD': 'Maryland', 'MI': 'Michigan',
+                'MN': 'Minnesota', 'MO': 'Missouri', 'MT': 'Montana',
+                'NC': 'North Carolina', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio', 'OK': 'Oklahoma',
                 'ON': 'Ontario', 'OR': 'Oregon', 'PA': 'Pennsylvania',
                 'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
                 'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',

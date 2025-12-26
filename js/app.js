@@ -153,11 +153,12 @@ const MapManager = {
                 'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
                 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
                 'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
-                'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                'KS': 'Kansas', 'MA': 'Massachusetts', 'MD': 'Maryland',
-                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
-                'MT': 'Montana', 'NC': 'North Carolina', 'NJ': 'New Jersey',
-                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                'HI': 'Hawaii', 'IA': 'Iowa', 'ID': 'Idaho', 'IL': 'Illinois',
+                'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                'MA': 'Massachusetts', 'MD': 'Maryland', 'MI': 'Michigan',
+                'MN': 'Minnesota', 'MO': 'Missouri', 'MT': 'Montana',
+                'NC': 'North Carolina', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio', 'OK': 'Oklahoma',
                 'ON': 'Ontario', 'OR': 'Oregon', 'PA': 'Pennsylvania',
                 'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
                 'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
@@ -194,6 +195,7 @@ const MapManager = {
                 if (AppState.map.getLayer('unclustered-space')) AppState.map.removeLayer('unclustered-space');
                 if (AppState.map.getLayer('unclustered-demo')) AppState.map.removeLayer('unclustered-demo');
                 if (AppState.map.getLayer('unclustered-outpost')) AppState.map.removeLayer('unclustered-outpost');
+                if (AppState.map.getLayer('unclustered-service')) AppState.map.removeLayer('unclustered-service');
                 // Remove source
                 AppState.map.removeSource('locations');
             }
@@ -334,6 +336,23 @@ const MapManager = {
                 }
             });
 
+            // Service Centers (purple)
+            AppState.map.addLayer({
+                id: 'unclustered-service',
+                type: 'circle',
+                source: 'locations',
+                filter: ['all',
+                    ['!', ['has', 'point_count']],
+                    ['==', ['get', 'type'], 'Service Center']
+                ],
+                paint: {
+                    'circle-color': '#9C27B0',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
             // Add click handlers for clusters
             AppState.map.on('click', 'clusters', (e) => {
                 const features = AppState.map.queryRenderedFeatures(e.point, {
@@ -355,7 +374,7 @@ const MapManager = {
             });
 
             // Add click handlers for individual markers
-            const markerLayers = ['unclustered-space', 'unclustered-demo', 'unclustered-outpost'];
+            const markerLayers = ['unclustered-space', 'unclustered-demo', 'unclustered-outpost', 'unclustered-service'];
 
             markerLayers.forEach(layerId => {
                 AppState.map.on('click', layerId, (e) => {
@@ -536,11 +555,12 @@ const AdvancedFilterManager = {
                 'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
                 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
                 'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
-                'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                'KS': 'Kansas', 'MA': 'Massachusetts', 'MD': 'Maryland',
-                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
-                'MT': 'Montana', 'NC': 'North Carolina', 'NJ': 'New Jersey',
-                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                'HI': 'Hawaii', 'IA': 'Iowa', 'ID': 'Idaho', 'IL': 'Illinois',
+                'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                'MA': 'Massachusetts', 'MD': 'Maryland', 'MI': 'Michigan',
+                'MN': 'Minnesota', 'MO': 'Missouri', 'MT': 'Montana',
+                'NC': 'North Carolina', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio', 'OK': 'Oklahoma',
                 'ON': 'Ontario', 'OR': 'Oregon', 'PA': 'Pennsylvania',
                 'QC': 'Quebec', 'SC': 'South Carolina', 'TN': 'Tennessee',
                 'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',

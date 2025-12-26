@@ -1590,6 +1590,618 @@ const rivianLocations = [
       "Education"
     ],
     "isOpen": true
+  },
+  {
+    "id": 87,
+    "name": "Phoenix - Service Center",
+    "type": "Service Center",
+    "state": "AZ",
+    "lat": 33.4484,
+    "lng": -112.0773,
+    "address": "Phoenix, AZ",
+    "city": "Phoenix, AZ",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 88,
+    "name": "Fresno - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 36.7378,
+    "lng": -119.7871,
+    "address": "Fresno, CA",
+    "city": "Fresno, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 89,
+    "name": "Hayward - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 37.6688,
+    "lng": -122.0808,
+    "address": "Hayward, CA",
+    "city": "Hayward, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 90,
+    "name": "La Jolla - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 32.8328,
+    "lng": -117.2713,
+    "address": "La Jolla, CA",
+    "city": "La Jolla, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 91,
+    "name": "Milpitas - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 37.4323,
+    "lng": -121.8996,
+    "address": "Milpitas, CA",
+    "city": "Milpitas, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 92,
+    "name": "Rohnert Park - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 38.3396,
+    "lng": -122.7011,
+    "address": "Rohnert Park, CA",
+    "city": "Rohnert Park, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 93,
+    "name": "Sunnyvale - Service Center",
+    "type": "Service Center",
+    "state": "CA",
+    "lat": 37.3688,
+    "lng": -122.0363,
+    "address": "Sunnyvale, CA",
+    "city": "Sunnyvale, CA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 94,
+    "name": "Shelton - Service Center",
+    "type": "Service Center",
+    "state": "CT",
+    "lat": 41.3165,
+    "lng": -73.0931,
+    "address": "Shelton, CT",
+    "city": "Shelton, CT",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 95,
+    "name": "Roswell - Service Center",
+    "type": "Service Center",
+    "state": "GA",
+    "lat": 34.0234,
+    "lng": -84.3616,
+    "address": "Roswell, GA",
+    "city": "Roswell, GA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 96,
+    "name": "Normal - Service Center",
+    "type": "Service Center",
+    "state": "IL",
+    "lat": 40.5142,
+    "lng": -88.9906,
+    "address": "Normal, IL",
+    "city": "Normal, IL",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 97,
+    "name": "Chicago - Service Center",
+    "type": "Service Center",
+    "state": "IL",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "address": "Chicago, IL",
+    "city": "Chicago, IL",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 98,
+    "name": "Fort Wayne - Service Center",
+    "type": "Service Center",
+    "state": "IN",
+    "lat": 41.0793,
+    "lng": -85.1394,
+    "address": "Fort Wayne, IN",
+    "city": "Fort Wayne, IN",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 99,
+    "name": "Council Bluffs - Service Center",
+    "type": "Service Center",
+    "state": "IA",
+    "lat": 41.2619,
+    "lng": -95.8608,
+    "address": "Council Bluffs, IA",
+    "city": "Council Bluffs, IA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 100,
+    "name": "Shepherdsville - Service Center",
+    "type": "Service Center",
+    "state": "KY",
+    "lat": 37.9884,
+    "lng": -85.7158,
+    "address": "Shepherdsville, KY",
+    "city": "Shepherdsville, KY",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 101,
+    "name": "Minneapolis - Service Center",
+    "type": "Service Center",
+    "state": "MN",
+    "lat": 44.9778,
+    "lng": -93.265,
+    "address": "Minneapolis, MN",
+    "city": "Minneapolis, MN",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 102,
+    "name": "Canton - Service Center",
+    "type": "Service Center",
+    "state": "MA",
+    "lat": 42.1584,
+    "lng": -71.1448,
+    "address": "Canton, MA",
+    "city": "Canton, MA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 103,
+    "name": "Hudson - Service Center",
+    "type": "Service Center",
+    "state": "NH",
+    "lat": 42.7653,
+    "lng": -71.4398,
+    "address": "Hudson, NH",
+    "city": "Hudson, NH",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 104,
+    "name": "Trenton - Service Center",
+    "type": "Service Center",
+    "state": "NJ",
+    "lat": 40.2171,
+    "lng": -74.7429,
+    "address": "Trenton, NJ",
+    "city": "Trenton, NJ",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 105,
+    "name": "East Syracuse - Service Center",
+    "type": "Service Center",
+    "state": "NY",
+    "lat": 43.0651,
+    "lng": -76.0781,
+    "address": "East Syracuse, NY",
+    "city": "East Syracuse, NY",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 106,
+    "name": "West Henrietta - Service Center",
+    "type": "Service Center",
+    "state": "NY",
+    "lat": 43.0653,
+    "lng": -77.6629,
+    "address": "West Henrietta, NY",
+    "city": "West Henrietta, NY",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 107,
+    "name": "Queens - Service Center",
+    "type": "Service Center",
+    "state": "NY",
+    "lat": 40.7282,
+    "lng": -73.7949,
+    "address": "Queens, NY",
+    "city": "Queens, NY",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 108,
+    "name": "Woodbury - Service Center",
+    "type": "Service Center",
+    "state": "NY",
+    "lat": 40.8176,
+    "lng": -73.4707,
+    "address": "Woodbury, NY",
+    "city": "Woodbury, NY",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 109,
+    "name": "Knightdale - Service Center",
+    "type": "Service Center",
+    "state": "NC",
+    "lat": 35.7879,
+    "lng": -78.4897,
+    "address": "Knightdale, NC",
+    "city": "Knightdale, NC",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 110,
+    "name": "Cleveland - Service Center",
+    "type": "Service Center",
+    "state": "OH",
+    "lat": 41.4993,
+    "lng": -81.6944,
+    "address": "Cleveland, OH",
+    "city": "Cleveland, OH",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 111,
+    "name": "Groveport - Service Center",
+    "type": "Service Center",
+    "state": "OH",
+    "lat": 39.8481,
+    "lng": -82.8835,
+    "address": "Groveport, OH",
+    "city": "Groveport, OH",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 112,
+    "name": "Sharonville - Service Center",
+    "type": "Service Center",
+    "state": "OH",
+    "lat": 39.2681,
+    "lng": -84.4133,
+    "address": "Sharonville, OH",
+    "city": "Sharonville, OH",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 113,
+    "name": "Oklahoma City - Service Center",
+    "type": "Service Center",
+    "state": "OK",
+    "lat": 35.4676,
+    "lng": -97.5164,
+    "address": "Oklahoma City, OK",
+    "city": "Oklahoma City, OK",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 114,
+    "name": "Tualatin - Service Center",
+    "type": "Service Center",
+    "state": "OR",
+    "lat": 45.384,
+    "lng": -122.7636,
+    "address": "Tualatin, OR",
+    "city": "Tualatin, OR",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 115,
+    "name": "Malvern - Service Center",
+    "type": "Service Center",
+    "state": "PA",
+    "lat": 40.0362,
+    "lng": -75.5138,
+    "address": "Malvern, PA",
+    "city": "Malvern, PA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 116,
+    "name": "Duncan - Service Center",
+    "type": "Service Center",
+    "state": "SC",
+    "lat": 34.9376,
+    "lng": -82.1437,
+    "address": "Duncan, SC",
+    "city": "Duncan, SC",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 117,
+    "name": "Fort Worth - Service Center",
+    "type": "Service Center",
+    "state": "TX",
+    "lat": 32.7555,
+    "lng": -97.3308,
+    "address": "Fort Worth, TX",
+    "city": "Fort Worth, TX",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 118,
+    "name": "Katy - Service Center",
+    "type": "Service Center",
+    "state": "TX",
+    "lat": 29.7858,
+    "lng": -95.8245,
+    "address": "Katy, TX",
+    "city": "Katy, TX",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 119,
+    "name": "Sterling - Service Center",
+    "type": "Service Center",
+    "state": "VA",
+    "lat": 39.0062,
+    "lng": -77.4286,
+    "address": "Sterling, VA",
+    "city": "Sterling, VA",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 120,
+    "name": "Richmond - Service Center",
+    "type": "Service Center",
+    "state": "BC",
+    "lat": 49.166,
+    "lng": -123.1336,
+    "address": "Richmond, BC",
+    "city": "Richmond, BC",
+    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "phone": "",
+    "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
   }
 ];
 if (typeof module !== 'undefined' && module.exports) {
