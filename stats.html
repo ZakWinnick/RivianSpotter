@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Rivian Spotter</title>
+    <meta name="description" content="Rivian Spotter statistics - see the breakdown of Rivian Spaces, Demo Centers, and Outposts across North America.">
+
+    <!-- Font Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .stats-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stats-page-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e5e5e5;
+        }
+
+        .stats-page-card.highlight {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+        }
+
+        .stats-page-number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-page-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-page-card.highlight .stats-page-label {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .breakdown-section {
+            margin: 3rem 0;
+        }
+
+        .breakdown-section h2 {
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            font-size: 1.5rem;
+        }
+
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .state-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .state-item .count {
+            background: #4CAF50;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .type-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e5e5e5;
+        }
+
+        .type-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .type-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .type-dot.space { background: #4CAF50; }
+        .type-dot.demo { background: #2196F3; }
+        .type-dot.outpost { background: #FF9800; }
+
+        .type-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .type-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .type-list li:last-child {
+            border-bottom: none;
+        }
+
+        .back-to-map {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .back-to-map:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header will be injected by components.js -->
+
+        <div class="page-content">
+            <h1 class="page-title">Statistics</h1>
+
+            <!-- Main Stats Grid -->
+            <div class="stats-page-grid">
+                <div class="stats-page-card highlight">
+                    <div class="stats-page-number" id="totalLocations">-</div>
+                    <div class="stats-page-label">Total Locations</div>
+                </div>
+                <div class="stats-page-card">
+                    <div class="stats-page-number" id="totalStates">-</div>
+                    <div class="stats-page-label">States & Provinces</div>
+                </div>
+                <div class="stats-page-card">
+                    <div class="stats-page-number" id="totalOpen">-</div>
+                    <div class="stats-page-label">Currently Open</div>
+                </div>
+                <div class="stats-page-card">
+                    <div class="stats-page-number" id="totalComingSoon">-</div>
+                    <div class="stats-page-label">Coming Soon</div>
+                </div>
+            </div>
+
+            <!-- Type Breakdown -->
+            <div class="breakdown-section">
+                <h2>By Location Type</h2>
+                <div class="type-breakdown">
+                    <div class="type-card">
+                        <h3><span class="type-dot space"></span> Spaces (<span id="spaceCount">-</span>)</h3>
+                        <ul class="type-list" id="spaceList">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                    <div class="type-card">
+                        <h3><span class="type-dot demo"></span> Demo Centers (<span id="demoCount">-</span>)</h3>
+                        <ul class="type-list" id="demoList">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                    <div class="type-card">
+                        <h3><span class="type-dot outpost"></span> Outposts (<span id="outpostCount">-</span>)</h3>
+                        <ul class="type-list" id="outpostList">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- State Breakdown -->
+            <div class="breakdown-section">
+                <h2>By State/Province</h2>
+                <div class="state-grid" id="stateGrid">
+                    <div class="state-item">Loading...</div>
+                </div>
+            </div>
+
+            <a href="/" class="back-to-map">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Map
+            </a>
+        </div>
+    </div>
+
+    <!-- Load Components -->
+    <script src="js/components.js"></script>
+
+    <!-- Load location data -->
+    <script src="js/locations.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            if (typeof rivianLocations === 'undefined') return;
+
+            const locations = rivianLocations;
+
+            // Main stats
+            document.getElementById('totalLocations').textContent = locations.length;
+            document.getElementById('totalStates').textContent = [...new Set(locations.map(l => l.state))].length;
+            document.getElementById('totalOpen').textContent = locations.filter(l => l.isOpen !== false).length;
+            document.getElementById('totalComingSoon').textContent = locations.filter(l => l.isOpen === false).length;
+
+            // Type breakdown
+            const spaces = locations.filter(l => l.type === 'Space');
+            const demos = locations.filter(l => l.type === 'Demo Center');
+            const outposts = locations.filter(l => l.type === 'Outpost');
+
+            document.getElementById('spaceCount').textContent = spaces.length;
+            document.getElementById('demoCount').textContent = demos.length;
+            document.getElementById('outpostCount').textContent = outposts.length;
+
+            // Type lists
+            document.getElementById('spaceList').innerHTML = spaces
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
+
+            document.getElementById('demoList').innerHTML = demos
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
+
+            document.getElementById('outpostList').innerHTML = outposts
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(l => `<li>${l.name}</li>`).join('') || '<li>None</li>';
+
+            // State breakdown
+            const stateCounts = {};
+            locations.forEach(l => {
+                stateCounts[l.state] = (stateCounts[l.state] || 0) + 1;
+            });
+
+            const stateNames = {
+                'AB': 'Alberta', 'AZ': 'Arizona', 'BC': 'British Columbia',
+                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+                'DC': 'Washington DC', 'FL': 'Florida', 'GA': 'Georgia',
+                'IL': 'Illinois', 'MA': 'Massachusetts', 'MD': 'Maryland',
+                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri',
+                'NC': 'North Carolina', 'NJ': 'New Jersey', 'NV': 'Nevada',
+                'NY': 'New York', 'OH': 'Ohio', 'ON': 'Ontario',
+                'OR': 'Oregon', 'PA': 'Pennsylvania', 'TN': 'Tennessee',
+                'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
+                'WA': 'Washington', 'WI': 'Wisconsin'
+            };
+
+            const sortedStates = Object.entries(stateCounts)
+                .sort((a, b) => b[1] - a[1]);
+
+            document.getElementById('stateGrid').innerHTML = sortedStates
+                .map(([state, count]) => `
+                    <div class="state-item">
+                        <span>${stateNames[state] || state}</span>
+                        <span class="count">${count}</span>
+                    </div>
+                `).join('');
+        });
+    </script>
+</body>
+</html>

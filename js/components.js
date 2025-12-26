@@ -12,6 +12,7 @@ class RivianComponents {
         if (path === '/' || path.includes('index.html')) return 'map';
         if (path.includes('about.html')) return 'about';
         if (path.includes('contact.html')) return 'contact';
+        if (path.includes('stats.html')) return 'stats';
         if (path.includes('admin.html')) return 'admin';
         return 'map';
     }
@@ -41,20 +42,20 @@ class RivianComponents {
                 </a>
                 <nav class="nav-links desktop">
                     <a href="/" class="nav-link ${this.currentPage === 'map' ? 'active' : ''}">Map</a>
+                    <a href="/stats.html" class="nav-link ${this.currentPage === 'stats' ? 'active' : ''}">Stats</a>
                     <a href="/about.html" class="nav-link ${this.currentPage === 'about' ? 'active' : ''}">About</a>
                     <a href="/contact.html" class="nav-link ${this.currentPage === 'contact' ? 'active' : ''}">Contact</a>
-                    <a href="https://zak.codetoadventure.com/" class="nav-link target="_blank">R1 Shop</a>
-                    ${this.currentPage === 'map' ? '<a href="#" class="nav-link" id="statsLink">Stats</a>' : ''}
+                    <a href="https://zak.codetoadventure.com/" class="nav-link" target="_blank">R1 Shop</a>
                 </nav>
             </header>
             
             <!-- Mobile Navigation Dropdown -->
             <div class="mobile-nav" id="mobileNav">
                 <a href="/">Map</a>
+                <a href="/stats.html">Stats</a>
                 <a href="/about.html">About</a>
                 <a href="/contact.html">Contact</a>
                 <a href="https://zak.codetoadventure.com/" target="_blank">R1 Shop</a>
-                ${this.currentPage === 'map' ? '<a href="#" id="mobileStatsLink">Statistics</a>' : ''}
             </div>
         `;
         
@@ -395,30 +396,7 @@ class RivianComponents {
 
     // Initialize page-specific functionality
     initializePageSpecific() {
-        if (this.currentPage === 'map') {
-            // Stats link handler for map page
-            const statsLink = document.getElementById('statsLink');
-            const mobileStatsLink = document.getElementById('mobileStatsLink');
-            
-            if (statsLink) {
-                statsLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (typeof showStats === 'function') {
-                        showStats();
-                    }
-                });
-            }
-            
-            if (mobileStatsLink) {
-                mobileStatsLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (typeof showStats === 'function') {
-                        showStats();
-                    }
-                    document.getElementById('mobileNav').classList.remove('active');
-                });
-            }
-        }
+        // No page-specific initialization needed currently
     }
 }
 
