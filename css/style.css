@@ -822,7 +822,7 @@ body {
 
 /* Map-specific styles */
 .map-container {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 60px - 70px - env(safe-area-inset-bottom, 0px));
     position: relative;
 }
 
@@ -905,12 +905,12 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(229, 229, 229, 0.8);
-    padding: 0.5rem;
-    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 20px));
     z-index: 1000;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
     transform: translateY(0);
@@ -921,24 +921,25 @@ body {
     flex: 1;
     min-height: 44px;
     padding: 0.75rem;
-    background: white;
-    border: 1px solid #e5e5e5;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin: 0 0.25rem;
     font-size: 0.85rem;
     font-weight: 500;
+    color: var(--text-dark);
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-bottom-bar button:hover {
-    background: #f9f9f9;
+    background: var(--hover-bg);
 }
 
 .mobile-bottom-bar button:active {
     transform: scale(0.96);
-    background: #f0f0f0;
+    background: var(--hover-bg);
 }
 
 .mobile-bottom-bar button.active {
