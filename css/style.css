@@ -618,7 +618,7 @@ body {
 
 /* Footer */
 .footer {
-    background: #f8f8f8;
+    background: var(--bg-secondary);
     padding: 2rem 1.5rem;
     text-align: center;
     border-top: 1px solid var(--border-color);
@@ -964,23 +964,24 @@ body {
     flex-shrink: 0;
     white-space: nowrap;
     padding: 0.6rem 1rem;
-    border: 2px solid #e5e5e5;
-    background: white;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
     font-size: 0.9rem;
+    color: var(--text-dark);
 }
 
 .filter-btn:hover {
-    background: #f9f9f9;
+    background: var(--hover-bg);
 }
 
 .filter-btn.active {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
 }
 
 .location-list {
@@ -991,33 +992,35 @@ body {
 
 .search-box {
     padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .search-input {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e5e5e5;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     transition: border-color 0.2s;
+    background: var(--input-bg);
+    color: var(--text-dark);
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
 }
 
 .location-stats {
     padding: 0.75rem 1rem;
-    background: #f8f8f8;
+    background: var(--bg-secondary);
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-light);
 }
 
 .location-card {
-    background: white;
-    border: 1px solid #e5e5e5;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 0.75rem;
@@ -1038,11 +1041,12 @@ body {
 .location-name {
     font-weight: 600;
     margin-bottom: 0.25rem;
+    color: var(--text-dark);
 }
 
 .location-address {
     font-size: 0.875rem;
-    color: #666;
+    color: var(--text-light);
     line-height: 1.4;
 }
 
@@ -1075,7 +1079,7 @@ body {
 
 .location-hours {
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-light);
     margin-top: 0.5rem;
 }
 
@@ -1161,10 +1165,13 @@ body {
     padding: 0;
     border-radius: 8px;
     overflow: hidden;
+    background: var(--popup-bg);
+    color: var(--text-dark);
 }
 
 .popup-content {
     padding: 0.75rem;
+    background: var(--popup-bg);
 }
 
 .popup-type {
@@ -1198,13 +1205,43 @@ body {
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .popup-address {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-light);
     line-height: 1.4;
     margin-bottom: 0.5rem;
+}
+
+.popup-detail {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+.popup-date {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.popup-placeholder {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.popup-rivian-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.popup-rivian-link:hover {
+    text-decoration: underline;
 }
 
 .popup-button {
@@ -1226,13 +1263,13 @@ body {
 /* State Filter */
 .state-filter-container {
     padding: 0 1rem 0.75rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .state-filter-label {
     font-size: 0.85rem;
     font-weight: 500;
-    color: #666;
+    color: var(--text-light);
     margin-bottom: 0.5rem;
     display: block;
 }
@@ -1240,17 +1277,18 @@ body {
 .state-filter-select {
     width: 100%;
     padding: 0.6rem;
-    border: 2px solid #e5e5e5;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
-    background: white;
+    background: var(--input-bg);
+    color: var(--text-dark);
     cursor: pointer;
     transition: border-color 0.2s;
 }
 
 .state-filter-select:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
 }
 
 /* Service Tags */
@@ -1322,7 +1360,7 @@ body {
 /* Advanced Filters Toggle */
 .advanced-filters-toggle {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .toggle-filters-btn {
@@ -1331,17 +1369,18 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem;
-    background: #f8f8f8;
-    border: 1px solid #e5e5e5;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
+    color: var(--text-dark);
     transition: all 0.2s;
 }
 
 .toggle-filters-btn:hover {
-    background: #f0f0f0;
+    background: var(--hover-bg);
 }
 
 .toggle-filters-btn span:first-child {
@@ -1373,7 +1412,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .advanced-filters-panel.expanded {
@@ -1383,7 +1422,7 @@ body {
 /* Filter Sections */
 .filter-section {
     padding: 1rem;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .filter-section:last-child {
@@ -1413,7 +1452,7 @@ fieldset.filter-section legend {
 .filter-section-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-dark);
     display: block;
     margin-bottom: 0.75rem;
 }
@@ -1425,18 +1464,18 @@ fieldset.filter-section legend {
 
 .filter-action-btn {
     background: none;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border-color);
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.75rem;
     cursor: pointer;
     transition: all 0.2s;
-    color: #666;
+    color: var(--text-light);
 }
 
 .filter-action-btn:hover {
-    background: #f0f0f0;
-    color: #333;
+    background: var(--hover-bg);
+    color: var(--text-dark);
 }
 
 /* State Checkboxes */
@@ -1447,7 +1486,7 @@ fieldset.filter-section legend {
     max-height: 200px;
     overflow-y: auto;
     padding: 0.5rem;
-    background: #f9f9f9;
+    background: var(--bg-tertiary);
     border-radius: 6px;
 }
 
@@ -1456,14 +1495,14 @@ fieldset.filter-section legend {
     align-items: center;
     gap: 0.5rem;
     padding: 0.4rem;
-    background: white;
+    background: var(--card-bg);
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .state-checkbox-item:hover {
-    background: #f0f7ff;
+    background: var(--active-bg);
 }
 
 .state-checkbox-item input[type="checkbox"] {
@@ -1483,8 +1522,8 @@ fieldset.filter-section legend {
 
 .state-count {
     font-size: 0.75rem;
-    color: #999;
-    background: #f0f0f0;
+    color: var(--text-light);
+    background: var(--bg-tertiary);
     padding: 0.1rem 0.4rem;
     border-radius: 10px;
 }
@@ -1495,7 +1534,7 @@ fieldset.filter-section legend {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem;
-    background: #f9f9f9;
+    background: var(--bg-tertiary);
     border-radius: 6px;
 }
 
@@ -1504,14 +1543,14 @@ fieldset.filter-section legend {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
-    background: white;
+    background: var(--card-bg);
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .service-checkbox-item:hover {
-    background: #f0f7ff;
+    background: var(--active-bg);
 }
 
 .service-checkbox-item input[type="checkbox"] {
@@ -1541,22 +1580,24 @@ fieldset.filter-section legend {
 
 .date-filter-label {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-light);
     min-width: 50px;
 }
 
 .date-filter-input {
     flex: 1;
     padding: 0.5rem;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 0.85rem;
     cursor: pointer;
+    background: var(--input-bg);
+    color: var(--text-dark);
 }
 
 .date-filter-input:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
 }
 
 .date-filter-presets {
@@ -1568,23 +1609,24 @@ fieldset.filter-section legend {
 .preset-btn {
     flex: 1;
     padding: 0.5rem;
-    background: white;
-    border: 1px solid #e5e5e5;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.2s;
+    color: var(--text-dark);
 }
 
 .preset-btn:hover {
-    background: #f0f7ff;
-    border-color: #4CAF50;
+    background: var(--active-bg);
+    border-color: var(--primary-color);
 }
 
 .preset-btn.active {
-    background: #4CAF50;
+    background: var(--primary-color);
     color: white;
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
 }
 
 /* Distance Filter Controls */
@@ -1617,7 +1659,7 @@ fieldset.filter-section legend {
 
 .distance-slider-container {
     padding: 0.75rem;
-    background: #f9f9f9;
+    background: var(--bg-tertiary);
     border-radius: 6px;
 }
 
@@ -1625,7 +1667,7 @@ fieldset.filter-section legend {
     text-align: center;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #4CAF50;
+    color: var(--primary-color);
     margin-bottom: 0.75rem;
 }
 
@@ -1635,7 +1677,7 @@ fieldset.filter-section legend {
     border-radius: 3px;
     outline: none;
     -webkit-appearance: none;
-    background: #e5e5e5;
+    background: var(--border-color);
     margin: 0.5rem 0;
 }
 
@@ -1664,7 +1706,7 @@ fieldset.filter-section legend {
     display: flex;
     justify-content: space-between;
     font-size: 0.75rem;
-    color: #999;
+    color: var(--text-light);
     margin-top: 0.25rem;
 }
 
@@ -1700,9 +1742,9 @@ fieldset.filter-section legend {
         max-width: calc(100% - 2rem);
         height: auto;
         max-height: calc(100vh - 100px);
-        background: white;
+        background: var(--card-bg);
         border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: var(--shadow);
         z-index: 100;
         overflow-y: auto;
         /* Reset mobile transform on desktop */
@@ -1759,11 +1801,12 @@ fieldset.filter-section legend {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #333;
-    color: white;
+    background: var(--card-bg);
+    color: var(--text-dark);
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
     z-index: 10000;
     opacity: 0;
     transform: translateY(20px);
@@ -1782,7 +1825,7 @@ fieldset.filter-section legend {
     background: transparent;
     border: none;
     cursor: pointer;
-    color: #999;
+    color: var(--text-light);
     padding: 0.25rem;
     border-radius: 4px;
     transition: all 0.2s;
@@ -1792,8 +1835,8 @@ fieldset.filter-section legend {
 }
 
 .favorite-btn:hover {
-    background: #f0f0f0;
-    color: #666;
+    background: var(--hover-bg);
+    color: var(--text-dark);
 }
 
 .favorite-btn.active {
@@ -1810,7 +1853,7 @@ fieldset.filter-section legend {
     background: transparent;
     border: none;
     cursor: pointer;
-    color: #666;
+    color: var(--text-light);
     padding: 0.25rem;
     border-radius: 4px;
     transition: all 0.2s;
@@ -1820,16 +1863,17 @@ fieldset.filter-section legend {
 }
 
 .share-btn:hover {
-    background: #f0f0f0;
-    color: #1976D2;
+    background: var(--hover-bg);
+    color: var(--secondary-color);
 }
 
 /* Share Menu */
 .share-menu {
     position: fixed;
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
     padding: 0.5rem;
     z-index: 10001;
     min-width: 180px;
@@ -1846,13 +1890,13 @@ fieldset.filter-section legend {
     cursor: pointer;
     border-radius: 6px;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-dark);
     transition: background 0.2s;
     text-align: left;
 }
 
 .share-menu button:hover {
-    background: #f5f5f5;
+    background: var(--hover-bg);
 }
 
 .share-menu button svg {
@@ -1937,7 +1981,7 @@ fieldset.filter-section legend {
 
 /* Recent Locations Section */
 .recent-locations-section {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--border-color);
     padding-top: 0.5rem;
 }
 
@@ -1951,13 +1995,13 @@ fieldset.filter-section legend {
 .section-title {
     font-weight: 600;
     font-size: 0.9rem;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .clear-btn {
     background: transparent;
     border: none;
-    color: #999;
+    color: var(--text-light);
     font-size: 0.8rem;
     cursor: pointer;
     padding: 0.25rem 0.5rem;
@@ -1966,8 +2010,8 @@ fieldset.filter-section legend {
 }
 
 .clear-btn:hover {
-    background: #f0f0f0;
-    color: #666;
+    background: var(--hover-bg);
+    color: var(--text-dark);
 }
 
 .recent-locations-list {
@@ -1977,13 +2021,13 @@ fieldset.filter-section legend {
 
 .recent-location-item {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .recent-location-item:hover {
-    background: #f9f9f9;
+    background: var(--hover-bg);
 }
 
 .recent-location-item:last-child {
@@ -2019,12 +2063,12 @@ fieldset.filter-section legend {
 
 .recent-location-city {
     font-size: 0.8rem;
-    color: #999;
+    color: var(--text-light);
 }
 
 /* Actions Section */
 .actions-section {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--border-color);
     padding-top: 0.5rem;
 }
 
@@ -2040,20 +2084,20 @@ fieldset.filter-section legend {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0.75rem;
-    border: 1px solid #e5e5e5;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-light);
     transition: all 0.2s;
     white-space: nowrap;
 }
 
 .action-btn:hover {
-    background: #f9f9f9;
-    border-color: #1976D2;
-    color: #1976D2;
+    background: var(--hover-bg);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .action-btn svg {
@@ -2076,22 +2120,22 @@ fieldset.filter-section legend {
 }
 
 .section-header.collapsible:hover {
-    background-color: #f5f5f5;
+    background-color: var(--hover-bg);
 }
 
 .section-header.collapsible:focus {
-    outline: 2px solid #4CAF50;
+    outline: 2px solid var(--primary-color);
     outline-offset: -2px;
 }
 
 .section-header.collapsible .section-title {
     font-weight: 600;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .collapse-icon {
     transition: transform 0.3s ease;
-    color: #666;
+    color: var(--text-light);
 }
 
 .section-header.collapsible[aria-expanded="true"] .collapse-icon {
@@ -2174,7 +2218,7 @@ fieldset.filter-section legend {
     display: flex;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--border-color);
     flex-wrap: wrap;
 }
 
@@ -2184,20 +2228,20 @@ fieldset.filter-section legend {
     align-items: center;
     gap: 0.4rem;
     padding: 0.5rem 0.85rem;
-    border: 2px solid #e5e5e5;
-    background: white;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #666;
+    color: var(--text-light);
     white-space: nowrap;
 }
 
 .quick-filter-btn:hover {
-    background: #f9f9f9;
-    border-color: #ccc;
+    background: var(--hover-bg);
+    border-color: var(--text-light);
 }
 
 .quick-filter-btn svg {
@@ -2206,12 +2250,12 @@ fieldset.filter-section legend {
 
 /* Open Now Button */
 .quick-filter-btn.open-now-btn {
-    border-color: #e5e5e5;
+    border-color: var(--border-color);
 }
 
 .quick-filter-btn.open-now-btn:hover {
-    border-color: #4CAF50;
-    color: #4CAF50;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .quick-filter-btn.open-now-btn.active {
@@ -2226,7 +2270,7 @@ fieldset.filter-section legend {
 
 /* Coming Soon Button */
 .quick-filter-btn.coming-soon-btn {
-    border-color: #e5e5e5;
+    border-color: var(--border-color);
 }
 
 .quick-filter-btn.coming-soon-btn:hover {
@@ -2849,5 +2893,24 @@ fieldset.filter-section legend {
     /* Coming soon count badge */
     .coming-soon-count {
         background: #FF9800;
+    }
+
+    /* Mapbox popup dark mode */
+    .mapboxgl-popup-content {
+        background: var(--popup-bg) !important;
+        color: var(--text-dark);
+    }
+
+    .mapboxgl-popup-tip {
+        border-top-color: var(--popup-bg) !important;
+        border-bottom-color: var(--popup-bg) !important;
+    }
+
+    .mapboxgl-popup-close-button {
+        color: var(--text-dark);
+    }
+
+    .mapboxgl-popup-close-button:hover {
+        background: var(--hover-bg);
     }
 }

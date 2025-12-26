@@ -115,9 +115,12 @@ const MapManager = {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 const newStyle = e.matches ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
                 AppState.map.setStyle(newStyle);
-                // Re-add markers after style change
+                // Re-add markers after style change with current filter state
                 AppState.map.once('style.load', () => {
+                    // Re-initialize the map layers with all locations first
                     MapManager.addMarkers(rivianLocations);
+                    // Then apply current filters to show correct markers
+                    LocationManager.filterLocations();
                 });
             });
 
@@ -520,11 +523,11 @@ const MapManager = {
                     ${address}<br>
                     ${city}
                 </div>
-                ${phone ? `<div style="font-size: 0.85rem; color: #666;">${phone}</div>` : ''}
-                ${hours ? `<div style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;">${hours}</div>` : ''}
-                ${location.openingDate ? `<div style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;"><strong>Opened:</strong> ${new Date(location.openingDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>` : '<div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem; font-style: italic;"><strong>Opened:</strong> Date TBD</div>'}
+                ${phone ? `<div class="popup-detail">${phone}</div>` : ''}
+                ${hours ? `<div class="popup-detail">${hours}</div>` : ''}
+                ${location.openingDate ? `<div class="popup-detail popup-date"><strong>Opened:</strong> ${new Date(location.openingDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>` : '<div class="popup-detail popup-date popup-placeholder"><strong>Opened:</strong> Date TBD</div>'}
                 ${servicesHtml}
-                ${location.rivianUrl ? `<a href="${Utils.sanitizeHTML(location.rivianUrl)}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; color: #1976D2; text-decoration: none; font-size: 0.85rem; font-weight: 500;">View on Rivian.com →</a>` : '<div style="font-size: 0.85rem; color: #999; margin-top: 0.5rem; font-style: italic;">Rivian.com link TBD</div>'}
+                ${location.rivianUrl ? `<a href="${Utils.sanitizeHTML(location.rivianUrl)}" target="_blank" rel="noopener noreferrer" class="popup-rivian-link">View on Rivian.com →</a>` : '<div class="popup-detail popup-placeholder">Rivian.com link TBD</div>'}
                 <button class="popup-button" style="margin-top: 0.75rem;" onclick="window.open('${directionsUrl}', '_blank')">
                     Get Directions
                 </button>
