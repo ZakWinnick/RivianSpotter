@@ -53,56 +53,22 @@
             </div>
             
             <div class="page-section">
-                <h2>Contact Form</h2>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Subject</label>
-                        <select id="subject" name="subject" class="form-input">
-                            <option value="new-location">Submit New Location</option>
-                            <option value="update">Update Existing Location</option>
-                            <option value="bug">Report a Bug</option>
-                            <option value="feature">Feature Request</option>
-                            <option value="general">General Inquiry</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-submit" id="submitBtn">
-                        <span id="submitText">Send Message</span>
-                        <span id="submitLoader" style="display: none;">Sending...</span>
-                    </button>
-                </form>
-                
-                <div id="formMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 6px; display: none;"></div>
-            </div>
-            
-            <div class="page-section">
-                <h2>Direct Contact</h2>
+                <h2>Get in Touch</h2>
                 <p>
-                    Prefer email? Reach us directly at: 
-                    <a href="mailto:contact@rivianspotter.com" style="color: #4CAF50; font-weight: 500;">contact@rivianspotter.com</a>
+                    Have questions, feedback, or location updates? Email us at:
                 </p>
-                
-                <p style="margin-top: 1rem;">
-                    For urgent location updates or corrections, please include:
+                <p style="margin: 1.5rem 0;">
+                    <a href="mailto:support@rivianspotter.com" style="display: inline-block; background: #4CAF50; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 1.1rem;">
+                        support@rivianspotter.com
+                    </a>
+                </p>
+
+                <p style="margin-top: 1.5rem;">
+                    When submitting location updates or corrections, please include:
                 </p>
                 <ul style="color: #666; line-height: 1.8; margin-left: 1.5rem;">
                     <li>Location name and address</li>
-                    <li>Type (Space or Demo Center)</li>
+                    <li>Type (Space, Demo Center, or Outpost)</li>
                     <li>Current hours of operation</li>
                     <li>Any additional relevant details</li>
                 </ul>
@@ -112,173 +78,5 @@
     
     <!-- Load Components -->
     <script src="js/components.js"></script>
-    
-    <script>
-        // Handle form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form elements
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitLoader = document.getElementById('submitLoader');
-            const messageDiv = document.getElementById('formMessage');
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitText.style.display = 'none';
-            submitLoader.style.display = 'inline';
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            try {
-                // Send form data to backend
-                const response = await fetch('/contact-handler.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await response.json();
-                
-                // Show message based on response
-                messageDiv.style.display = 'block';
-                
-                if (result.success) {
-                    // Success message
-                    messageDiv.style.background = '#4CAF50';
-                    messageDiv.style.color = 'white';
-                    messageDiv.innerHTML = `
-                        <div style="display: flex; align-items: center;">
-                            <span style="font-size: 1.5rem; margin-right: 0.5rem;">✓</span>
-                            <div>
-                                <strong>Message sent successfully!</strong><br>
-                                ${result.message}
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Reset form
-                    this.reset();
-                    
-                    // Hide message after 7 seconds
-                    setTimeout(() => {
-                        messageDiv.style.display = 'none';
-                    }, 7000);
-                } else {
-                    // Error message
-                    messageDiv.style.background = '#f44336';
-                    messageDiv.style.color = 'white';
-                    messageDiv.innerHTML = `
-                        <div style="display: flex; align-items: center;">
-                            <span style="font-size: 1.5rem; margin-right: 0.5rem;">⚠</span>
-                            <div>
-                                <strong>Error sending message</strong><br>
-                                ${result.message || 'Please try again or email us directly.'}
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Show validation errors if any
-                    if (result.errors && result.errors.length > 0) {
-                        messageDiv.innerHTML += '<ul style="margin: 0.5rem 0 0 2rem; padding: 0;">';
-                        result.errors.forEach(error => {
-                            messageDiv.innerHTML += `<li>${error}</li>`;
-                        });
-                        messageDiv.innerHTML += '</ul>';
-                    }
-                }
-            } catch (error) {
-                // Network or parsing error
-                console.error('Error:', error);
-                messageDiv.style.display = 'block';
-                messageDiv.style.background = '#ff9800';
-                messageDiv.style.color = 'white';
-                messageDiv.innerHTML = `
-                    <div style="display: flex; align-items: center;">
-                        <span style="font-size: 1.5rem; margin-right: 0.5rem;">⚠</span>
-                        <div>
-                            <strong>Connection Error</strong><br>
-                            Unable to send message. Please check your connection and try again, or email us directly at contact@rivianspotter.com
-                        </div>
-                    </div>
-                `;
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitText.style.display = 'inline';
-                submitLoader.style.display = 'none';
-            }
-        });
-        
-        // Add form validation feedback
-        const inputs = document.querySelectorAll('.form-input, .form-textarea');
-        inputs.forEach(input => {
-            input.addEventListener('invalid', function(e) {
-                e.preventDefault();
-                this.style.borderColor = '#f44336';
-            });
-            
-            input.addEventListener('input', function() {
-                if (this.validity.valid) {
-                    this.style.borderColor = '';
-                }
-            });
-        });
-    </script>
-
-    <!-- Service Worker Registration -->
-    <script>
-        // Register Service Worker for offline support
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered successfully:', registration.scope);
-
-                        // Check for updates
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // New service worker available
-                                    console.log('New service worker available - refresh to update');
-
-                                    // Optionally show a notification to the user
-                                    if (confirm('A new version of Rivian Spotter is available. Reload to update?')) {
-                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
-                                        window.location.reload();
-                                    }
-                                }
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Service Worker registration failed:', error);
-                    });
-
-                // Listen for service worker messages
-                navigator.serviceWorker.addEventListener('message', (event) => {
-                    if (event.data.type === 'SYNC_COMPLETE') {
-                        console.log('Background sync complete:', event.data.syncedCount, 'changes synced');
-                    }
-                });
-
-                // Handle controller change (new service worker activated)
-                navigator.serviceWorker.addEventListener('controllerchange', () => {
-                    console.log('Service Worker controller changed - reloading page');
-                    window.location.reload();
-                });
-            });
-        }
-    </script>
 </body>
 </html>

@@ -3,46 +3,43 @@
 // ============================================
 
 const AdminConfig = {
-    API_URL: './api/locations.php',
-
-    // TODO: Move ADMIN_PASSWORD to backend authentication
-    // This should be handled by a proper session-based auth system
-    ADMIN_PASSWORD: 'rivian2024',
-
-    // Admin token will be loaded from API config endpoint
-    ADMIN_TOKEN: null,
+    // GitHub repository settings
+    GITHUB: {
+        OWNER: 'zakwinnick',
+        REPO: 'RivianSpotter',
+        BRANCH: 'main',
+        LOCATIONS_PATH: 'js/locations.js'
+    },
 
     // Session settings
-    SESSION_DURATION_HOURS: 24,
+    SESSION_DURATION_HOURS: 24 * 7, // 7 days for GitHub PAT
 
     // Storage keys
     STORAGE_KEYS: {
-        AUTH: 'rivianAdminAuth',
+        GITHUB_TOKEN: 'rivianAdminGitHubToken',
         AUTH_TIME: 'rivianAdminAuthTime'
     },
 
-    // Initialize and load token from API
+    // Get stored GitHub token
+    getGitHubToken() {
+        return localStorage.getItem(this.STORAGE_KEYS.GITHUB_TOKEN);
+    },
+
+    // Set GitHub token
+    setGitHubToken(token) {
+        localStorage.setItem(this.STORAGE_KEYS.GITHUB_TOKEN, token);
+        localStorage.setItem(this.STORAGE_KEYS.AUTH_TIME, Date.now().toString());
+    },
+
+    // Clear GitHub token
+    clearGitHubToken() {
+        localStorage.removeItem(this.STORAGE_KEYS.GITHUB_TOKEN);
+        localStorage.removeItem(this.STORAGE_KEYS.AUTH_TIME);
+    },
+
+    // Initialize config
     async initialize() {
-        // Set fallback token first (for file mode)
-        this.ADMIN_TOKEN = 'aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c';
-
-        try {
-            // Try to load config from API endpoint (only in API mode)
-            const response = await fetch('./api/config.php', {
-                method: 'GET',
-                cache: 'no-cache'
-            });
-
-            if (response.ok) {
-                const config = await response.json();
-                // Note: API config endpoint doesn't expose adminToken for security
-                // Token is only used server-side for authentication
-                console.log('API config loaded successfully');
-            }
-        } catch (error) {
-            // Silent fail - this is expected when PHP server isn't running
-            console.log('API not available, admin will run in file mode');
-        }
+        console.log('Admin config initialized for GitHub Pages mode');
     }
 };
 

@@ -1,225 +1,221 @@
 // ============================================
-// API FUNCTIONS
+// API FUNCTIONS (GitHub API)
 // ============================================
 
 const AdminAPI = {
-    // Generic API request handler
-    async apiRequest(method, data = null, params = {}) {
-        const url = new URL(AdminConfig.API_URL, window.location.origin);
-        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+    // Current file SHA (needed for GitHub API updates)
+    currentSha: null,
 
-        const options = {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json'
-            }
+    // GitHub API base URL
+    GITHUB_API: 'https://api.github.com',
+
+    // Get GitHub API headers
+    getHeaders() {
+        const token = AdminConfig.getGitHubToken();
+        return {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
         };
-
-        // Add auth header for non-GET requests
-        if (method !== 'GET') {
-            options.headers['Authorization'] = `Bearer ${AdminConfig.ADMIN_TOKEN}`;
-        }
-
-        if (data && method !== 'GET') {
-            options.body = JSON.stringify(data);
-        }
-
-        try {
-            const response = await fetch(url, options);
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.error || 'API request failed');
-            }
-
-            return result;
-        } catch (error) {
-            console.error('API Error:', error);
-            AdminUI.showNotification(`Error: ${error.message}`, 'error');
-            throw error;
-        }
     },
 
-    // Load locations from API or fallback to JS file
-    async loadLocations() {
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000);
+    // Get file content from GitHub
+    async getFileFromGitHub() {
+        const { OWNER, REPO, BRANCH, LOCATIONS_PATH } = AdminConfig.GITHUB;
+        const url = `${this.GITHUB_API}/repos/${OWNER}/${REPO}/contents/${LOCATIONS_PATH}?ref=${BRANCH}`;
 
-            const response = await fetch(AdminConfig.API_URL, {
-                signal: controller.signal,
-                cache: 'no-cache'
-            });
-            clearTimeout(timeoutId);
+        const response = await fetch(url, {
+            headers: this.getHeaders()
+        });
 
-            if (!response.ok) {
-                await this.loadFromJSFile();
-                return;
-            }
-
-            const locations = await response.json();
-            AdminState.setLocations(locations);
-            AdminUI.renderLocations();
-            AdminUI.updateStats();
-
-            document.getElementById('connectionStatus').textContent = '● API Connected';
-            document.getElementById('connectionStatus').style.color = '#4CAF50';
-        } catch (error) {
-            console.error('Error loading from API, falling back to JS file:', error);
-            await this.loadFromJSFile();
-        }
-    },
-
-    // Fallback: Load from JS file if API is not available
-    async loadFromJSFile() {
-        console.log('loadFromJSFile() called');
-        try {
-            const script = document.createElement('script');
-            script.src = './js/locations.js?v=20250926b';
-            console.log('Loading script from:', script.src);
-
-            await new Promise((resolve, reject) => {
-                script.onload = () => {
-                    console.log('Script loaded, checking rivianLocations...');
-                    if (typeof rivianLocations !== 'undefined' && Array.isArray(rivianLocations)) {
-                        console.log('Found rivianLocations with', rivianLocations.length, 'items');
-                        AdminState.setLocations([...rivianLocations]);
-                        resolve();
-                    } else {
-                        reject(new Error('rivianLocations not found after script load'));
-                    }
-                };
-                script.onerror = (e) => {
-                    console.error('Script error:', e);
-                    reject(new Error('Failed to load locations.js script'));
-                };
-                document.head.appendChild(script);
-            });
-
-            console.log('About to render locations...');
-            AdminUI.renderLocations();
-            AdminUI.updateStats();
-
-            document.getElementById('connectionStatus').textContent = '● File Mode (Read-Only)';
-            document.getElementById('connectionStatus').style.color = '#fbbf24';
-            AdminUI.showNotification('Running in file mode. To enable API mode, start a PHP server: php -S localhost:8000', 'info');
-
-        } catch (error) {
-            console.error('Script loading failed, trying fetch method:', error);
-
-            try {
-                const response = await fetch('./js/locations.js?v=20250926b');
-                if (!response.ok) throw new Error('Failed to fetch JS file');
-
-                const jsContent = await response.text();
-                const match = jsContent.match(/const rivianLocations = (\[[\s\S]*?\]);/);
-                if (!match) throw new Error('Could not parse locations data');
-
-                const locationsData = JSON.parse(match[1]);
-                AdminState.setLocations([...locationsData]);
-
-                AdminUI.renderLocations();
-                AdminUI.updateStats();
-
-                document.getElementById('connectionStatus').textContent = '● File Mode';
-                document.getElementById('connectionStatus').style.color = '#fbbf24';
-                AdminUI.showNotification('API not configured. Using file mode. Changes will download as file.', 'info');
-
-            } catch (fetchError) {
-                console.error('All loading methods failed:', fetchError);
-                document.getElementById('locationsList').innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">⚠️</div>
-                        <h3>Error loading locations</h3>
-                        <p>Please ensure you're running this page from a web server, not opening the file directly.</p>
-                        <p><small>For local testing: <code>python -m http.server 8000</code></small></p>
-                    </div>
-                `;
-            }
-        }
-    },
-
-    // Save a location (create or update)
-    async saveLocation(formData) {
-        const editingId = AdminState.getEditingId();
-
-        try {
-            if (editingId) {
-                await this.apiRequest('PUT', formData);
-                AdminState.updateLocation(editingId, formData);
-            } else {
-                const result = await this.apiRequest('POST', formData);
-                AdminState.addLocation(result.location || formData);
-            }
-
-            AdminState.setLocations(AdminState.getLocations());
-            AdminUI.showNotification('Location saved successfully', 'success');
-        } catch (error) {
-            // Fallback to local changes
-            if (editingId) {
-                AdminState.updateLocation(editingId, formData);
-                AdminState.trackChange(editingId, 'modified');
-            } else {
-                AdminState.addLocation(formData);
-                AdminState.trackChange(formData.id, 'added');
-            }
-            AdminUI.showNotification('Saved locally. Use "Save All" to download changes.', 'info');
+        if (!response.ok) {
+            throw new Error('Failed to fetch file from GitHub');
         }
 
-        AdminUI.renderLocations();
-        AdminUI.updateStats();
+        const data = await response.json();
+        this.currentSha = data.sha;
+
+        // Decode base64 content
+        const content = atob(data.content);
+        return content;
     },
 
-    // Delete a location
-    async deleteLocation(id) {
-        try {
-            await this.apiRequest('DELETE', null, { id: id });
-            AdminState.deleteLocation(id);
-            AdminState.setLocations(AdminState.getLocations());
-            AdminUI.showNotification('Location deleted successfully', 'success');
-        } catch (error) {
-            // Fallback to local deletion
-            AdminState.deleteLocation(id);
-            AdminState.trackChange(id, 'deleted');
-            AdminUI.showNotification('Deleted locally. Use "Save All" to apply changes.', 'info');
+    // Parse locations.js content to extract array
+    parseLocationsJS(content) {
+        const match = content.match(/const rivianLocations = (\[[\s\S]*?\]);/);
+        if (!match) {
+            throw new Error('Could not parse locations data');
         }
-
-        AdminUI.renderLocations();
-        AdminUI.updateStats();
+        return JSON.parse(match[1]);
     },
 
-    // Save all changes
-    async saveAllChanges() {
-        const locations = AdminState.getLocations();
-
-        try {
-            await this.apiRequest('PUT', locations, { action: 'bulk' });
-            AdminState.clearPendingChanges();
-            AdminState.setLocations(locations);
-            AdminUI.updateChangesBar();
-            AdminUI.showNotification('All changes saved to server!', 'success');
-        } catch (error) {
-            // Fallback to file download
-            const dataStr = `const rivianLocations = ${JSON.stringify(locations, null, 2)};
+    // Generate locations.js file content
+    generateLocationsJS(locations) {
+        return `const rivianLocations = ${JSON.stringify(locations, null, 2)};
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = rivianLocations;
 }`;
+    },
 
-            const blob = new Blob([dataStr], { type: 'text/javascript' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'locations.js';
-            a.click();
+    // Commit file to GitHub
+    async commitToGitHub(content, message) {
+        const { OWNER, REPO, BRANCH, LOCATIONS_PATH } = AdminConfig.GITHUB;
+        const url = `${this.GITHUB_API}/repos/${OWNER}/${REPO}/contents/${LOCATIONS_PATH}`;
+
+        // We need the current SHA to update the file
+        if (!this.currentSha) {
+            await this.getFileFromGitHub();
+        }
+
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: this.getHeaders(),
+            body: JSON.stringify({
+                message: message,
+                content: btoa(unescape(encodeURIComponent(content))),
+                sha: this.currentSha,
+                branch: BRANCH
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Failed to commit to GitHub');
+        }
+
+        const result = await response.json();
+        this.currentSha = result.content.sha;
+        return result;
+    },
+
+    // Load locations from GitHub
+    async loadLocations() {
+        try {
+            document.getElementById('connectionStatus').textContent = '● Loading...';
+            document.getElementById('connectionStatus').style.color = '#fbbf24';
+
+            const content = await this.getFileFromGitHub();
+            const locations = this.parseLocationsJS(content);
+
+            AdminState.setLocations(locations);
+            AdminUI.renderLocations();
+            AdminUI.updateStats();
+
+            document.getElementById('connectionStatus').textContent = '● GitHub Connected';
+            document.getElementById('connectionStatus').style.color = '#4CAF50';
+
+        } catch (error) {
+            console.error('Error loading from GitHub:', error);
+
+            // Fallback to loading from static file (for viewing without auth)
+            await this.loadFromStaticFile();
+        }
+    },
+
+    // Fallback: Load from static JS file
+    async loadFromStaticFile() {
+        try {
+            const response = await fetch('./js/locations.js?v=' + Date.now());
+            if (!response.ok) throw new Error('Failed to fetch JS file');
+
+            const content = await response.text();
+            const locations = this.parseLocationsJS(content);
+
+            AdminState.setLocations(locations);
+            AdminUI.renderLocations();
+            AdminUI.updateStats();
+
+            document.getElementById('connectionStatus').textContent = '● Read-Only Mode';
+            document.getElementById('connectionStatus').style.color = '#fbbf24';
+
+        } catch (error) {
+            console.error('Failed to load locations:', error);
+            document.getElementById('locationsList').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">⚠️</div>
+                    <h3>Error loading locations</h3>
+                    <p>${error.message}</p>
+                    <button class="btn btn-primary" onclick="AdminAPI.loadLocations()">Retry</button>
+                </div>
+            `;
+        }
+    },
+
+    // Save a location (create or update) - saves to local state
+    async saveLocation(formData) {
+        const editingId = AdminState.getEditingId();
+
+        if (editingId) {
+            AdminState.updateLocation(editingId, formData);
+            AdminState.trackChange(editingId, 'modified');
+        } else {
+            AdminState.addLocation(formData);
+            AdminState.trackChange(formData.id, 'added');
+        }
+
+        AdminUI.renderLocations();
+        AdminUI.updateStats();
+        AdminUI.showNotification('Location saved locally. Click "Save All" to commit to GitHub.', 'info');
+    },
+
+    // Delete a location - saves to local state
+    async deleteLocation(id) {
+        AdminState.deleteLocation(id);
+        AdminState.trackChange(id, 'deleted');
+
+        AdminUI.renderLocations();
+        AdminUI.updateStats();
+        AdminUI.showNotification('Location deleted locally. Click "Save All" to commit to GitHub.', 'info');
+    },
+
+    // Save all changes to GitHub
+    async saveAllChanges() {
+        const locations = AdminState.getLocations();
+        const pendingChanges = AdminState.getPendingChanges();
+
+        if (Object.keys(pendingChanges).length === 0) {
+            AdminUI.showNotification('No changes to save', 'info');
+            return;
+        }
+
+        try {
+            document.getElementById('connectionStatus').textContent = '● Saving...';
+            document.getElementById('connectionStatus').style.color = '#fbbf24';
+
+            const content = this.generateLocationsJS(locations);
+
+            // Generate commit message from changes
+            const changeTypes = Object.values(pendingChanges);
+            const added = changeTypes.filter(t => t === 'added').length;
+            const modified = changeTypes.filter(t => t === 'modified').length;
+            const deleted = changeTypes.filter(t => t === 'deleted').length;
+
+            const parts = [];
+            if (added) parts.push(`Add ${added} location${added > 1 ? 's' : ''}`);
+            if (modified) parts.push(`Update ${modified} location${modified > 1 ? 's' : ''}`);
+            if (deleted) parts.push(`Remove ${deleted} location${deleted > 1 ? 's' : ''}`);
+
+            const commitMessage = parts.join(', ') || 'Update locations';
+
+            await this.commitToGitHub(content, commitMessage);
 
             AdminState.clearPendingChanges();
             AdminState.setLocations(locations);
             AdminUI.updateChangesBar();
 
-            alert('API not configured. Downloaded locations.js file. Upload this to your server at /js/locations.js');
-        }
+            document.getElementById('connectionStatus').textContent = '● GitHub Connected';
+            document.getElementById('connectionStatus').style.color = '#4CAF50';
 
-        AdminUI.renderLocations();
+            AdminUI.showNotification('Changes committed to GitHub!', 'success');
+            AdminUI.renderLocations();
+
+        } catch (error) {
+            console.error('Failed to save to GitHub:', error);
+            document.getElementById('connectionStatus').textContent = '● Save Failed';
+            document.getElementById('connectionStatus').style.color = '#ef4444';
+
+            AdminUI.showNotification(`Failed to save: ${error.message}`, 'error');
+        }
     },
 
     // Export data as JSON backup
@@ -250,19 +246,18 @@ if (typeof module !== 'undefined' && module.exports) {
                         return;
                     }
 
-                    try {
-                        await this.apiRequest('PUT', imported, { action: 'bulk' });
-                        AdminState.setLocations(imported);
-                        AdminUI.showNotification(`Successfully imported ${imported.length} locations!`, 'success');
-                    } catch (error) {
-                        AdminState.setLocations(imported);
-                        AdminUI.showNotification('Imported locally. Use "Save All" to save to server.', 'info');
-                    }
+                    // Track all as changes
+                    imported.forEach(loc => {
+                        AdminState.trackChange(loc.id, 'modified');
+                    });
 
+                    AdminState.setLocations(imported);
                     AdminUI.renderLocations();
                     AdminUI.updateStats();
+                    AdminUI.showNotification(`Imported ${imported.length} locations. Click "Save All" to commit to GitHub.`, 'info');
+
                 } catch (error) {
-                    AdminUI.showNotification('Error importing file', 'error');
+                    AdminUI.showNotification('Error importing file: ' + error.message, 'error');
                 }
             };
             reader.readAsText(file);

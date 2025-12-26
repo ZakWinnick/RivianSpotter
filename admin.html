@@ -20,13 +20,17 @@
             <div class="login-logo">
                 <div class="login-logo-dot"></div>
                 <h1 class="login-title">Rivian Spotter Admin</h1>
-                <p class="login-subtitle">Sign in to manage locations</p>
+                <p class="login-subtitle">Sign in with GitHub to manage locations</p>
             </div>
             <form id="loginForm" class="login-form">
-                <input type="password" id="adminPassword" class="login-input" placeholder="Enter admin password" required>
+                <input type="password" id="adminPassword" class="login-input" placeholder="Enter GitHub Personal Access Token" required>
                 <button type="submit" class="login-button">Sign In</button>
-                <div id="loginError" class="login-error">Invalid password. Please try again.</div>
+                <div id="loginError" class="login-error">Invalid token. Please try again.</div>
             </form>
+            <div class="login-help" style="margin-top: 1.5rem; font-size: 0.85rem; color: #666; text-align: center;">
+                <p style="margin-bottom: 0.5rem;">Need a token? <a href="https://github.com/settings/tokens/new?description=RivianSpotter%20Admin&scopes=repo" target="_blank" style="color: #4CAF50;">Create one here</a></p>
+                <p style="font-size: 0.75rem; color: #888;">Token needs <code style="background: #f0f0f0; padding: 2px 4px; border-radius: 3px;">repo</code> scope for write access</p>
+            </div>
         </div>
     </div>
     

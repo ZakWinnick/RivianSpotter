@@ -29,7 +29,7 @@ const AdminApp = {
             console.log('Modal initialized');
 
             // 6. Check authentication and load data if authenticated
-            AdminAuth.checkAuth();
+            await AdminAuth.checkAuth();
             console.log('Auth check complete');
 
             // 7. Set up global functions for onclick handlers in HTML

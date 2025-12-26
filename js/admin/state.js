@@ -45,6 +45,11 @@ const AdminState = {
         return this.pendingChanges.size;
     },
 
+    // Get pending changes as object
+    getPendingChanges() {
+        return Object.fromEntries(this.pendingChanges);
+    },
+
     // Clear all pending changes
     clearPendingChanges() {
         this.pendingChanges.clear();
