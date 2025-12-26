@@ -114,14 +114,20 @@ const MapManager = {
             // Listen for dark mode changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
                 const newStyle = e.matches ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v11';
+                console.log('Dark mode changed, switching to:', newStyle);
                 AppState.map.setStyle(newStyle);
-                // Re-add markers after style change with current filter state
-                AppState.map.once('style.load', () => {
+
+                // Wait for style to fully load before re-adding markers
+                const readdMarkers = () => {
+                    console.log('Style loaded, re-adding markers...');
                     // Re-initialize the map layers with all locations first
                     MapManager.addMarkers(rivianLocations);
                     // Then apply current filters to show correct markers
                     LocationManager.filterLocations();
-                });
+                };
+
+                // Use idle event which fires when map is completely ready
+                AppState.map.once('idle', readdMarkers);
             });
 
             // Add map error handler
