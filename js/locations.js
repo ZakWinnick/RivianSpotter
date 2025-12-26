@@ -82,7 +82,7 @@ const rivianLocations = [
     "lng": -118.309,
     "address": "3120 W. Empire Ave",
     "city": "Burbank, CA 91504",
-    "hours": "General: Sat-Sun: 10:30am-6:00pm | Service: Mon-Fri: 8:00am-6:00pm, Sat-Sun: 9:00am-4:00pm",
+    "hours": "General: Mon-Fri: 10am-6pm, Sat-Sun: 8:30am-5pm | Service: Mon-Fri: 8am-6pm",
     "phone": "",
     "services": [
       "Demo Drive",
@@ -176,8 +176,8 @@ const rivianLocations = [
     "lng": -118.4109,
     "address": "850 Pacific Coast Hwy #116",
     "city": "El Segundo, CA 90245",
-    "hours": "Thurs-Fri: 11am-6pm, Sat-Sun: 9:30am-5pm",
-    "phone": "1 (888) 748-4261",
+    "hours": "Mon-Sun: 11am-6pm",
+    "phone": "(888) 748-4261",
     "services": [
       "Test Drives",
       "Vehicle Tours",
@@ -304,7 +304,7 @@ const rivianLocations = [
     "lng": -117.17,
     "address": "925 Waterfront Place Suite 189",
     "city": "San Diego, CA 92101",
-    "hours": "Mon-Sat: 10:00am-7:00pm, Sun: 11:00am-7:00pm",
+    "hours": "Mon-Sun: 10am-6pm",
     "phone": "(619) 483-2661",
     "services": [
       "Test Drives",
@@ -488,7 +488,7 @@ const rivianLocations = [
     "lng": -104.9825,
     "address": "2763 Blake St.",
     "city": "Denver, CO 80205",
-    "hours": "Mon-Sat: 10:00am-7:00pm, Sun: Closed",
+    "hours": "Mon-Sat: 9am-6pm, Sun: 11am-5pm",
     "phone": "(720) 664-6674",
     "services": [
       "Test Drives",
@@ -692,7 +692,7 @@ const rivianLocations = [
     "lng": -87.8561,
     "address": "2050 Janice Ave",
     "city": "Melrose Park, IL 60160",
-    "hours": "General: Tues-Sat: 8:00am-4:30pm | Service: Mon-Fri: 8:00am-5:00pm",
+    "hours": "General: Mon-Sat: 9am-5:30pm | Service: Mon-Fri: 8am-5pm",
     "phone": "",
     "services": [
       "Demo Drive",
@@ -1421,7 +1421,7 @@ const rivianLocations = [
     "address": "1230 Brea Mall",
     "city": "Brea, CA 92821",
     "hours": "Mon-Thur: 10am-8pm, Fri-Sat: 10am-9pm, Sun: 11am-7pm",
-    "phone": "",
+    "phone": "(657) 208-8472",
     "services": [
       "Test Drives",
       "Vehicle Tours",
@@ -1438,7 +1438,7 @@ const rivianLocations = [
     "lng": -118.3578,
     "address": "189 The Grove Drive",
     "city": "Los Angeles, CA 90036",
-    "hours": "Mon-Sat: 10am-7pm, Sun: 11am-7pm",
+    "hours": "Mon-Tue: Closed, Wed-Sun: 11am-7pm",
     "phone": "",
     "services": [
       "Test Drives",
@@ -1493,7 +1493,7 @@ const rivianLocations = [
     "lng": -87.9496,
     "address": "909 Asbury Dr",
     "city": "Buffalo Grove, IL 60089",
-    "hours": "General: Mon-Sat: 10am-6pm | Service: Mon-Fri: 10am-5pm",
+    "hours": "General: Mon-Sat: 9am-6pm | Service: Mon-Fri: 8am-5pm",
     "phone": "",
     "services": [
       "Demo Drive",
@@ -1647,34 +1647,35 @@ const rivianLocations = [
   },
   {
     "id": 90,
-    "name": "La Jolla - Service Center",
-    "type": "Service Center",
+    "name": "La Jolla - UTC",
+    "type": "Space",
     "state": "CA",
-    "lat": 32.8328,
-    "lng": -117.2713,
-    "address": "La Jolla, CA",
-    "city": "La Jolla, CA",
-    "hours": "Mon-Fri: 8:00am-5:00pm",
-    "phone": "",
+    "lat": 32.8696,
+    "lng": -117.2106,
+    "address": "4353 La Jolla Village Dr., Suite H21",
+    "city": "San Diego, CA 92122",
+    "hours": "Mon-Sat: 10am-8pm, Sun: 11am-7pm",
+    "phone": "(858) 333-5437",
     "services": [
-      "Service",
-      "Repairs",
-      "Parts"
+      "Test Drives",
+      "Vehicle Tours",
+      "Merchandise"
     ],
     "isOpen": true
   },
   {
     "id": 91,
-    "name": "Milpitas - Service Center",
-    "type": "Service Center",
+    "name": "Milpitas - Service + Demo Center",
+    "type": "Demo Center",
     "state": "CA",
     "lat": 37.4323,
     "lng": -121.8996,
-    "address": "Milpitas, CA",
-    "city": "Milpitas, CA",
-    "hours": "Mon-Fri: 8:00am-5:00pm",
+    "address": "755 Yosemite Dr",
+    "city": "Milpitas, CA 95035",
+    "hours": "General: Mon-Sun: 10am-6pm | Service: Mon-Fri: 8am-6pm, Sat: 9am-4pm",
     "phone": "",
     "services": [
+      "Demo Drive",
       "Service",
       "Repairs",
       "Parts"
@@ -2197,6 +2198,25 @@ const rivianLocations = [
     "hours": "Mon-Fri: 8:00am-5:00pm",
     "phone": "",
     "services": [
+      "Service",
+      "Repairs",
+      "Parts"
+    ],
+    "isOpen": true
+  },
+  {
+    "id": 121,
+    "name": "San Jose - Service + Demo Center",
+    "type": "Demo Center",
+    "state": "CA",
+    "lat": 37.3689,
+    "lng": -121.8575,
+    "address": "660 N King Rd",
+    "city": "San Jose, CA 95133",
+    "hours": "General: Tue: 10am-7pm, Wed-Sat: 8am-7pm, Sun: 8am-4pm, Mon: Closed | Service: Mon-Fri: 8am-6pm",
+    "phone": "",
+    "services": [
+      "Demo Drive",
       "Service",
       "Repairs",
       "Parts"
