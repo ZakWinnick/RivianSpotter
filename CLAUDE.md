@@ -4,124 +4,115 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-RivianSpotter is a web application that provides an interactive map of Rivian Spaces, Demo Centers, and Service Centers across the United States. The project is a client-side web application with a PHP backend API for data management and a contact form handler.
+RivianSpotter is a web application providing an interactive map of Rivian Spaces, Demo Centers, Service Centers, and Outposts across North America. It's a static site hosted on GitHub Pages with no server-side code in production.
+
+**Live Site:** https://rivianspotter.com
+
+## Development Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Run all tests with coverage
+npm test
+
+# Run specific test suites
+npm run test:unit          # Unit tests only
+npm run test:integration   # Integration tests only
+npm run test:e2e           # End-to-end tests only
+npm run test:watch         # Watch mode for development
+
+# Build for production (minify JS/CSS)
+npm run build
+
+# Local development - serve with any HTTP server
+python -m http.server 8000
+# or
+npx serve
+```
 
 ## Architecture
 
-### Frontend Architecture
-- **Pure JavaScript/HTML/CSS**: No build tools or frameworks required
-- **Mapbox Integration**: Uses Mapbox GL JS v2.15.0 for interactive mapping
-- **Component System**: Custom component system in `js/components.js` for reusable header/footer
-- **Location Data**: Stored in `js/locations.js` as a JavaScript array and synchronized with `data/locations.json`
+### Static Site (GitHub Pages Deployment)
+- **No build required for development** - open `index.html` directly or serve with any HTTP server
+- **Admin panel** uses GitHub API for data management (requires GitHub Personal Access Token)
+- **PWA support** with service worker for offline functionality
 
-### Backend Architecture
-- **PHP API**: RESTful API at `api/locations.php` for CRUD operations on location data
-- **File-based Storage**: Uses JSON files in `data/` directory for persistence
-- **Authentication**: Simple token-based auth for admin operations (token: `aef8301d12c72fb3498e63bc27e08fe4fc1cc6f5cde89ca59ea3e0fcbc1e9a5c`)
-- **Contact Handler**: PHP script at `contact-handler.php` for form submissions
+### Frontend Structure
+- **Vanilla JavaScript (ES6+)** - no frameworks, no transpilation needed
+- **Mapbox GL JS v2.15.0** for interactive mapping with GeoJSON clustering
+- **Global state** managed through `AppState` object in `js/app.js`
 
-### Key Files
-- `index.html` - Main map interface
-- `admin.html` - Administrative panel for managing locations
-- `js/locations.js` - Master location data array
-- `api/locations.php` - Backend API for location management
-- `js/components.js` - Reusable header/footer components
-- `js/admin.js` - Admin panel functionality
-- `data/locations.json` - JSON data storage
-- `setup-locations-api.sh` - Server setup script
+### Key JavaScript Modules
+| File | Purpose |
+|------|---------|
+| `js/app.js` | Main application: map initialization, filtering, location management |
+| `js/locations.js` | Location data array (`rivianLocations` global variable) |
+| `js/features.js` | User features: favorites, sharing, export, recent locations |
+| `js/config.js` | App configuration (`window.RivianSpotterConfig`) |
+| `js/components.js` | Reusable header/footer components |
+| `js/admin.js` | Admin panel functionality |
 
-## Data Flow
+### Data Flow
+1. Location data lives in `js/locations.js` as the `rivianLocations` array
+2. Admin panel reads/writes via GitHub API to update `js/locations.js`
+3. Map displays locations using Mapbox GeoJSON source with clustering
+4. Filters update the GeoJSON source data dynamically
 
-1. **Location Data**: Stored primarily in `js/locations.js` as `rivianLocations` array
-2. **API Sync**: Admin panel uses `api/locations.php` to read/write `data/locations.json`
-3. **Data Sync**: Changes in admin panel should update both JSON file and JavaScript array
-4. **Map Display**: Main map reads from `js/locations.js` array for real-time display
+### Core Objects in `app.js`
+- `AppState` - Global state (map instance, filters, search term, user location)
+- `MapManager` - Map initialization, marker management, popups
+- `LocationManager` - Filtering, list rendering, fly-to functionality
+- `AdvancedFilterManager` - State/service/date/distance filters
+- `UIManager` - Sidebar controls, mobile UI
+- `Utils` - Debounce, sanitization, coordinate validation
 
-## Development Workflow
+## Testing
 
-### Local Development
-- Serve files using a local web server (PHP required for API functionality)
-- Open `index.html` for the main application
-- Open `admin.html` for location management (requires admin token)
+Tests use Jest with jsdom environment. Test files are in `tests/`:
+- `tests/unit/` - Unit tests for config and utilities
+- `tests/integration/` - API integration tests
+- `tests/e2e/` - End-to-end tests
+- `tests/setup.js` - Test setup and mocks
 
-### Testing Locations
-- Use `test-api.html` to test API endpoints
-- Admin panel provides live testing interface at `/admin.html`
+Coverage threshold: 70% for branches, functions, lines, and statements.
 
-### Deployment
-- Run `setup-locations-api.sh` on server to configure directory structure and permissions
-- Ensure PHP server can write to `data/` directory
-- Update admin token in both `api/locations.php` and `js/admin.js`
+## Location Data Schema
 
-## Important Notes
-
-### Security ⚠️
-- **API Keys**: Mapbox token should be moved to environment variables (see `.env.example`)
-- **CORS Policy**: Restricted to specific domains in production (see `api/locations.php`)
-- **Input Validation**: All user inputs are sanitized and validated
-- **Rate Limiting**: API includes basic rate limiting (100 requests per 5 minutes)
-- **Security Headers**: CSP and security headers implemented
-
-### Performance Optimizations ⚡
-- **Debounced Search**: 300ms delay prevents excessive filtering
-- **Data Caching**: Client-side caching with 30-minute expiration
-- **Lazy Loading**: Location data can be loaded in chunks
-- **Error Handling**: Comprehensive error boundaries and user feedback
-- **Code Splitting**: Modular JavaScript architecture
-
-### Data Management
-- **Dual Storage**: Data in both `js/locations.js` and `data/locations.json`
-- **Auto-sync**: Admin changes automatically update both files
-- **Validation**: Server-side validation for coordinates and required fields
-- **Sanitization**: All string inputs are sanitized against XSS
-
-### Development Best Practices
-- **Configuration**: Centralized config in `js/config.js`
-- **Error Logging**: Console logging for debugging
-- **Loading States**: User feedback during data operations
-- **Mobile-First**: Responsive design with touch-friendly interactions
-
-## File Structure
-```
-├── index.html              # Main map application
-├── admin.html              # Admin panel
-├── about.html              # About page
-├── contact.html            # Contact page
-├── .env.example            # Environment configuration template
-├── js/
-│   ├── app.js             # Main application logic (modular)
-│   ├── config.js          # Application configuration
-│   ├── data-loader.js     # Data loading and caching
-│   ├── locations.js       # Location data array
-│   ├── components.js      # Reusable components
-│   └── admin.js          # Admin functionality
-├── api/
-│   └── locations.php     # Backend API (with security improvements)
-├── data/
-│   └── locations.json    # JSON data store
-├── css/
-│   └── style.css         # Main stylesheet (optimized)
-├── images/
-│   └── *.png            # Logo assets (should be optimized)
-└── setup-locations-api.sh # Server setup script
+```javascript
+{
+  id: 1,
+  name: "Rivian Space - Venice",
+  lat: 33.9935,
+  lng: -118.4714,
+  type: "Space",           // "Space" | "Demo Center" | "Service Center" | "Outpost"
+  address: "245 Abbot Kinney Blvd",
+  city: "Venice",
+  state: "CA",             // Two-letter state/province code
+  phone: "(555) 123-4567",
+  hours: "Mon-Sat: 10am-7pm, Sun: 11am-6pm",
+  services: ["Sales", "Test Drives", "Merchandise"],
+  openingDate: "2022-03-15",
+  rivianUrl: "https://rivian.com/spaces/venice",
+  isOpen: true
+}
 ```
 
-## Recent Optimizations 🚀
+## Important Patterns
 
-### Performance Improvements
-- **Moved inline CSS to external file** - Better caching and organization
-- **Implemented debounced search** - Reduced excessive API calls
-- **Added loading indicators** - Better user experience
-- **Modular JavaScript** - Better maintainability and loading
+### Adding/Modifying Locations
+Edit `js/locations.js` directly or use the admin panel at `/admin.html` with a GitHub PAT.
 
-### Security Enhancements
-- **Input validation and sanitization** - Prevents XSS attacks
-- **Rate limiting** - Prevents abuse
-- **CORS restrictions** - Only allowed domains
-- **Security headers** - XSS protection, content type validation
+### Map Marker Types
+- **Green circles** - Spaces
+- **Blue circles** - Demo Centers
+- **Orange circles** - Outposts
+- **Purple circles** - Service Centers
 
-### Code Quality
-- **Error handling** - Comprehensive try/catch blocks
-- **Data validation** - Server and client-side validation
-- **Configuration management** - Centralized settings
-- **Responsive design optimizations** - Better mobile experience
+### Filtering Architecture
+All filters use AND logic and update the map's GeoJSON source via `LocationManager.filterLocations()`. The filter state lives in `AppState`.
+
+## Deployment
+
+Automatically deployed to GitHub Pages on push to `main`. No build step required for basic deployment - minified files are pre-built.
