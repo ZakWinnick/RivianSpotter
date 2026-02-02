@@ -331,53 +331,6 @@ const MapManager = {
         }
     },
 
-    // Custom SVG marker definitions
-    markerSVGs: {
-        space: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#78BE21"/>
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
-            <text x="16" y="20" text-anchor="middle" fill="#fff" font-family="Arial" font-weight="bold" font-size="14">R</text>
-        </svg>`,
-        demo: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#004C6D"/>
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
-            <path d="M10 12h8c1.1 0 2 .9 2 2v5c0 1.1-.9 2-2 2h-8c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2zm-1 7h10v-4H9v4zm2-6v1h2v-1h-2z" fill="#fff"/>
-        </svg>`,
-        service: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#7C3AED"/>
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
-            <path d="M20.5 10.5l-2.83 2.83 1.41 1.41L22 11.91V15h2v-6h-6v2h3.09zM12 9h-2v6h6v-2h-3.09l2.83-2.83-1.41-1.41L12 11.09V9zm-2 8v6h6v-2h-3.09l2.83-2.83-1.41-1.41L12 19.09V17h-2zm10 0v2h-3.09l2.83 2.83-1.41 1.41L16 20.91V23h-2v-6h6z" fill="#fff" transform="translate(4, 4) scale(0.7)"/>
-        </svg>`,
-        outpost: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#F59E0B"/>
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
-            <path d="M16 8l-6 6h4v6h4v-6h4z" fill="#fff"/>
-        </svg>`
-    },
-
-    // Load custom marker images into map
-    async loadMarkerImages() {
-        const markerTypes = ['space', 'demo', 'service', 'outpost'];
-
-        for (const type of markerTypes) {
-            const imageName = `marker-${type}`;
-            if (!AppState.map.hasImage(imageName)) {
-                const svg = this.markerSVGs[type];
-                const img = new Image(32, 40);
-                img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-                await new Promise((resolve) => {
-                    img.onload = () => {
-                        if (!AppState.map.hasImage(imageName)) {
-                            AppState.map.addImage(imageName, img);
-                        }
-                        resolve();
-                    };
-                    img.onerror = resolve; // Don't block on error
-                });
-            }
-        }
-    },
-
     addMarkers(locations) {
         try {
             // Clear marker references (we use GeoJSON layers, not individual markers)
@@ -395,9 +348,6 @@ const MapManager = {
                 // Remove source
                 AppState.map.removeSource('locations');
             }
-
-            // Load custom marker images
-            this.loadMarkerImages();
 
             // Convert locations to GeoJSON format
             const geojsonData = {
@@ -483,72 +433,72 @@ const MapManager = {
                 }
             });
 
-            // Add individual marker layers for each location type using custom icons
-            // Spaces (green pin with R)
+            // Add individual marker layers for each location type
+            // Spaces (green)
             AppState.map.addLayer({
                 id: 'unclustered-space',
-                type: 'symbol',
+                type: 'circle',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Space']
                 ],
-                layout: {
-                    'icon-image': 'marker-space',
-                    'icon-size': 1,
-                    'icon-anchor': 'bottom',
-                    'icon-allow-overlap': true
+                paint: {
+                    'circle-color': '#78BE21',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
                 }
             });
 
-            // Demo Centers (blue pin with car)
+            // Demo Centers (blue)
             AppState.map.addLayer({
                 id: 'unclustered-demo',
-                type: 'symbol',
+                type: 'circle',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Demo Center']
                 ],
-                layout: {
-                    'icon-image': 'marker-demo',
-                    'icon-size': 1,
-                    'icon-anchor': 'bottom',
-                    'icon-allow-overlap': true
+                paint: {
+                    'circle-color': '#004C6D',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
                 }
             });
 
-            // Outposts (orange pin with arrow)
+            // Outposts (orange)
             AppState.map.addLayer({
                 id: 'unclustered-outpost',
-                type: 'symbol',
+                type: 'circle',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Outpost']
                 ],
-                layout: {
-                    'icon-image': 'marker-outpost',
-                    'icon-size': 1,
-                    'icon-anchor': 'bottom',
-                    'icon-allow-overlap': true
+                paint: {
+                    'circle-color': '#FF9800',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
                 }
             });
 
-            // Service Centers (purple pin with wrench)
+            // Service Centers (purple)
             AppState.map.addLayer({
                 id: 'unclustered-service',
-                type: 'symbol',
+                type: 'circle',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Service Center']
                 ],
-                layout: {
-                    'icon-image': 'marker-service',
-                    'icon-size': 1,
-                    'icon-anchor': 'bottom',
-                    'icon-allow-overlap': true
+                paint: {
+                    'circle-color': '#9C27B0',
+                    'circle-radius': 10,
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
                 }
             });
 
