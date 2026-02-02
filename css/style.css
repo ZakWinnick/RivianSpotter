@@ -2996,6 +2996,68 @@ fieldset.filter-section legend {
         background: var(--active-bg);
     }
 
+    /* Location card text colors */
+    .location-name {
+        color: var(--text-dark);
+    }
+
+    .location-address {
+        color: var(--text-light);
+    }
+
+    .location-hours {
+        color: var(--primary-color);
+    }
+
+    .location-opening-date {
+        color: var(--text-light);
+    }
+
+    .location-rivian-link a {
+        color: var(--primary-color);
+    }
+
+    .location-rivian-link .rivian-link-placeholder {
+        color: var(--text-light);
+    }
+
+    .service-tag {
+        background: var(--bg-tertiary);
+        color: var(--text-dark);
+    }
+
+    /* Popup text colors */
+    .mapboxgl-popup-content {
+        background: var(--popup-bg);
+        color: var(--text-dark);
+    }
+
+    .popup-content {
+        background: var(--popup-bg);
+        color: var(--text-dark);
+    }
+
+    .popup-name {
+        color: var(--text-dark);
+    }
+
+    .popup-address {
+        color: var(--text-light);
+    }
+
+    .popup-detail {
+        color: var(--text-light);
+    }
+
+    .popup-rivian-link {
+        color: var(--primary-color);
+    }
+
+    .popup-service-tag {
+        background: var(--bg-tertiary);
+        color: var(--text-dark);
+    }
+
     /* Location stats */
     .location-stats {
         background: var(--bg-secondary);
