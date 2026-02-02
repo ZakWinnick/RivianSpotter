@@ -2351,10 +2351,10 @@ const rivianLocations = [
     "state": "PA",
     "lat": 40.0879,
     "lng": -75.3903,
-    "address": "King of Prussia Mall",
+    "address": "160 N Gulph Road",
     "city": "King of Prussia, PA 19406",
-    "hours": "",
-    "phone": "",
+    "hours": "Mon-Thurs: 10am-8pm, Fri-Sat: 10am-9pm, Sun: 11am-6pm",
+    "phone": "(484) 808-4776",
     "services": [
       "Test Drives",
       "Vehicle Tours",
