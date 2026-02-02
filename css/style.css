@@ -464,36 +464,16 @@ body {
     transition: all 0.25s ease;
 }
 
-.location-card::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.25s ease;
-}
-
 .location-card:hover {
     background: var(--hover-bg);
-    border-color: transparent;
     transform: translateX(4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.location-card:hover::before {
-    opacity: 1;
 }
 
 .location-card.active {
     background: var(--active-bg);
     border-color: var(--primary-color);
     box-shadow: 0 4px 16px rgba(120, 190, 33, 0.15);
-}
-
-.location-card.active::before {
-    opacity: 1;
 }
 
 .location-type {
@@ -2970,98 +2950,13 @@ fieldset.filter-section legend {
         background: var(--hover-bg);
     }
 
-    /* Location cards - Glassmorphism effect */
-    .location-card {
-        background: rgba(36, 36, 36, 0.8);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .location-card:hover {
-        background: rgba(42, 42, 42, 0.9);
-        border-color: transparent;
-    }
-
+    /* Location cards */
     .location-card:active {
         background: var(--hover-bg);
     }
 
-    .location-card.active {
-        background: rgba(120, 190, 33, 0.1);
-        border-color: rgba(120, 190, 33, 0.3);
-    }
-
     .location-card.active:active {
         background: var(--active-bg);
-    }
-
-    /* Location card text colors */
-    .location-name {
-        color: var(--text-dark);
-    }
-
-    .location-address {
-        color: var(--text-light);
-    }
-
-    .location-hours {
-        color: var(--primary-color);
-    }
-
-    .location-opening-date {
-        color: var(--text-light);
-    }
-
-    .location-rivian-link a {
-        color: var(--primary-color);
-    }
-
-    .location-rivian-link .rivian-link-placeholder {
-        color: var(--text-light);
-    }
-
-    .service-tag {
-        background: var(--bg-tertiary);
-        color: var(--text-dark);
-    }
-
-    /* Popup text colors */
-    .mapboxgl-popup-content {
-        background: var(--popup-bg);
-        color: var(--text-dark);
-    }
-
-    .popup-content {
-        background: var(--popup-bg);
-        color: var(--text-dark);
-    }
-
-    .popup-name {
-        color: var(--text-dark);
-    }
-
-    .popup-address {
-        color: var(--text-light);
-    }
-
-    .popup-detail {
-        color: var(--text-light);
-    }
-
-    .popup-rivian-link {
-        color: var(--primary-color);
-    }
-
-    .popup-service-tag {
-        background: var(--bg-tertiary);
-        color: var(--text-dark);
-    }
-
-    /* Location stats */
-    .location-stats {
-        background: var(--bg-secondary);
-        color: var(--text-light);
     }
 
     /* Search input */
