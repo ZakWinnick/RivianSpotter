@@ -172,11 +172,11 @@ class RivianComponents {
                 }
 
                 .nav-link:hover {
-                    color: var(--primary-color, #4CAF50);
+                    color: var(--primary-color, #78BE21);
                 }
 
                 .nav-link.active {
-                    color: var(--primary-color, #4CAF50);
+                    color: var(--primary-color, #78BE21);
                     font-weight: 600;
                 }
                 
@@ -263,7 +263,7 @@ class RivianComponents {
                 }
 
                 .footer-text a:hover {
-                    color: var(--primary-color, #4CAF50);
+                    color: var(--primary-color, #78BE21);
                     text-decoration: underline;
                 }
                 

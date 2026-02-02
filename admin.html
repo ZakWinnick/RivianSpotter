@@ -28,7 +28,7 @@
                 <div id="loginError" class="login-error">Invalid token. Please try again.</div>
             </form>
             <div class="login-help" style="margin-top: 1.5rem; font-size: 0.85rem; color: #666; text-align: center;">
-                <p style="margin-bottom: 0.5rem;">Need a token? <a href="https://github.com/settings/tokens/new?description=RivianSpotter%20Admin&scopes=repo" target="_blank" style="color: #4CAF50;">Create one here</a></p>
+                <p style="margin-bottom: 0.5rem;">Need a token? <a href="https://github.com/settings/tokens/new?description=RivianSpotter%20Admin&scopes=repo" target="_blank" style="color: #78BE21;">Create one here</a></p>
                 <p style="font-size: 0.75rem; color: #888;">Token needs <code style="background: #f0f0f0; padding: 2px 4px; border-radius: 3px;">repo</code> scope for write access</p>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     Rivian Spotter Admin
                 </a>
                 <div class="nav-actions">
-                    <span id="connectionStatus" style="margin-right: 1rem; font-size: 0.875rem; color: #4CAF50;">● Connected</span>
+                    <span id="connectionStatus" style="margin-right: 1rem; font-size: 0.875rem; color: #78BE21;">● Connected</span>
                     <button class="btn btn-secondary" onclick="exportData()">
                         📥 Export Backup
                     </button>
@@ -371,7 +371,7 @@
                 // Update connection status indicator
                 window.addEventListener('online', () => {
                     document.getElementById('connectionStatus').textContent = '● Connected';
-                    document.getElementById('connectionStatus').style.color = '#4CAF50';
+                    document.getElementById('connectionStatus').style.color = '#78BE21';
 
                     // Trigger background sync when coming back online
                     if ('serviceWorker' in navigator && 'sync' in navigator.serviceWorker) {

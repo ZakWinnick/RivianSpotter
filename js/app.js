@@ -83,8 +83,127 @@ const Utils = {
             `;
         }
         console.error('App Error:', message);
+    },
+
+    // Detect platform for maps deep linking
+    getPlatform() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return 'ios';
+        }
+        if (/android/i.test(ua)) {
+            return 'android';
+        }
+        return 'desktop';
+    },
+
+    // Generate platform-aware directions URL
+    getDirectionsUrl(address, city, lat, lng) {
+        const platform = this.getPlatform();
+        const query = encodeURIComponent(`${address}, ${city}`);
+
+        switch (platform) {
+            case 'ios':
+                // Apple Maps URL scheme
+                return `maps://maps.apple.com/?daddr=${query}&dirflg=d`;
+            case 'android':
+                // Google Maps intent for Android
+                return `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+            default:
+                // Desktop: Google Maps
+                return `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+        }
     }
 };
+
+// Geocoding Manager for address/zip code search
+const GeocodeManager = {
+    cache: new Map(),
+    lastQuery: '',
+    geocodedLocation: null,
+
+    // Check if query looks like an address or zip code
+    isAddressQuery(query) {
+        if (!query || query.length < 3) return false;
+        // Contains numbers (likely address or zip)
+        if (/\d/.test(query)) return true;
+        // Contains comma (likely "city, state" format)
+        if (query.includes(',')) return true;
+        return false;
+    },
+
+    // Geocode a query using Mapbox API
+    async geocode(query) {
+        if (!query || query.length < 3) return null;
+
+        // Check cache
+        if (this.cache.has(query)) {
+            return this.cache.get(query);
+        }
+
+        try {
+            const token = mapboxgl.accessToken;
+            const encodedQuery = encodeURIComponent(query);
+            const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedQuery}.json?access_token=${token}&country=us,ca&types=postcode,place,address,locality&limit=1`;
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Geocoding failed');
+
+            const data = await response.json();
+
+            if (data.features && data.features.length > 0) {
+                const result = {
+                    center: data.features[0].center,
+                    placeName: data.features[0].place_name,
+                    lng: data.features[0].center[0],
+                    lat: data.features[0].center[1]
+                };
+                this.cache.set(query, result);
+                return result;
+            }
+
+            return null;
+        } catch (error) {
+            console.error('Geocoding error:', error);
+            return null;
+        }
+    },
+
+    // Clear geocoded location
+    clear() {
+        this.geocodedLocation = null;
+        this.lastQuery = '';
+        this.updateIndicator(null);
+    },
+
+    // Update the "searching near" indicator
+    updateIndicator(placeName) {
+        let indicator = document.getElementById('geocodeIndicator');
+
+        if (!placeName) {
+            if (indicator) indicator.remove();
+            return;
+        }
+
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.id = 'geocodeIndicator';
+            indicator.className = 'geocode-indicator';
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox) {
+                searchBox.insertAdjacentElement('afterend', indicator);
+            }
+        }
+
+        indicator.innerHTML = `
+            <span>Showing locations near <strong>${Utils.sanitizeHTML(placeName)}</strong></span>
+            <button onclick="GeocodeManager.clear(); LocationManager.filterLocations();" title="Clear">×</button>
+        `;
+    }
+};
+
+// Make GeocodeManager globally accessible
+window.GeocodeManager = GeocodeManager;
 
 // Map initialization and management
 const MapManager = {
@@ -155,6 +274,16 @@ const MapManager = {
             });
             AppState.map.addControl(geolocate);
 
+            // Listen for geolocate events to enable distance badges
+            geolocate.on('geolocate', (e) => {
+                AppState.userLocation = {
+                    lat: e.coords.latitude,
+                    lng: e.coords.longitude
+                };
+                // Re-render location list with distance badges
+                LocationManager.filterLocations();
+            });
+
             // Initialize app components
             this.populateStateFilter();
             this.addMarkers(rivianLocations);
@@ -202,6 +331,53 @@ const MapManager = {
         }
     },
 
+    // Custom SVG marker definitions
+    markerSVGs: {
+        space: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#78BE21"/>
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
+            <text x="16" y="20" text-anchor="middle" fill="#fff" font-family="Arial" font-weight="bold" font-size="14">R</text>
+        </svg>`,
+        demo: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#004C6D"/>
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
+            <path d="M10 12h8c1.1 0 2 .9 2 2v5c0 1.1-.9 2-2 2h-8c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2zm-1 7h10v-4H9v4zm2-6v1h2v-1h-2z" fill="#fff"/>
+        </svg>`,
+        service: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#7C3AED"/>
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
+            <path d="M20.5 10.5l-2.83 2.83 1.41 1.41L22 11.91V15h2v-6h-6v2h3.09zM12 9h-2v6h6v-2h-3.09l2.83-2.83-1.41-1.41L12 11.09V9zm-2 8v6h6v-2h-3.09l2.83-2.83-1.41-1.41L12 19.09V17h-2zm10 0v2h-3.09l2.83 2.83-1.41 1.41L16 20.91V23h-2v-6h6z" fill="#fff" transform="translate(4, 4) scale(0.7)"/>
+        </svg>`,
+        outpost: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="#F59E0B"/>
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 24 16 24s16-12 16-24C32 7.163 24.837 0 16 0z" fill="none" stroke="#fff" stroke-width="2"/>
+            <path d="M16 8l-6 6h4v6h4v-6h4z" fill="#fff"/>
+        </svg>`
+    },
+
+    // Load custom marker images into map
+    async loadMarkerImages() {
+        const markerTypes = ['space', 'demo', 'service', 'outpost'];
+
+        for (const type of markerTypes) {
+            const imageName = `marker-${type}`;
+            if (!AppState.map.hasImage(imageName)) {
+                const svg = this.markerSVGs[type];
+                const img = new Image(32, 40);
+                img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+                await new Promise((resolve) => {
+                    img.onload = () => {
+                        if (!AppState.map.hasImage(imageName)) {
+                            AppState.map.addImage(imageName, img);
+                        }
+                        resolve();
+                    };
+                    img.onerror = resolve; // Don't block on error
+                });
+            }
+        }
+    },
+
     addMarkers(locations) {
         try {
             // Clear marker references (we use GeoJSON layers, not individual markers)
@@ -219,6 +395,9 @@ const MapManager = {
                 // Remove source
                 AppState.map.removeSource('locations');
             }
+
+            // Load custom marker images
+            this.loadMarkerImages();
 
             // Convert locations to GeoJSON format
             const geojsonData = {
@@ -268,9 +447,9 @@ const MapManager = {
                     'circle-color': [
                         'step',
                         ['get', 'point_count'],
-                        '#4CAF50',  // Small clusters (< 10) - Green
+                        '#78BE21',  // Small clusters (< 10) - Green
                         10,
-                        '#1976D2',  // Medium clusters (10-50) - Blue
+                        '#004C6D',  // Medium clusters (10-50) - Blue
                         50,
                         '#FF6B6B'   // Large clusters (50+) - Red
                     ],
@@ -304,72 +483,72 @@ const MapManager = {
                 }
             });
 
-            // Add individual marker layers for each location type
-            // Spaces (green)
+            // Add individual marker layers for each location type using custom icons
+            // Spaces (green pin with R)
             AppState.map.addLayer({
                 id: 'unclustered-space',
-                type: 'circle',
+                type: 'symbol',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Space']
                 ],
-                paint: {
-                    'circle-color': '#4CAF50',
-                    'circle-radius': 10,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#fff'
+                layout: {
+                    'icon-image': 'marker-space',
+                    'icon-size': 1,
+                    'icon-anchor': 'bottom',
+                    'icon-allow-overlap': true
                 }
             });
 
-            // Demo Centers (blue)
+            // Demo Centers (blue pin with car)
             AppState.map.addLayer({
                 id: 'unclustered-demo',
-                type: 'circle',
+                type: 'symbol',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Demo Center']
                 ],
-                paint: {
-                    'circle-color': '#1976D2',
-                    'circle-radius': 10,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#fff'
+                layout: {
+                    'icon-image': 'marker-demo',
+                    'icon-size': 1,
+                    'icon-anchor': 'bottom',
+                    'icon-allow-overlap': true
                 }
             });
 
-            // Outposts (orange)
+            // Outposts (orange pin with arrow)
             AppState.map.addLayer({
                 id: 'unclustered-outpost',
-                type: 'circle',
+                type: 'symbol',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Outpost']
                 ],
-                paint: {
-                    'circle-color': '#FF9800',
-                    'circle-radius': 10,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#fff'
+                layout: {
+                    'icon-image': 'marker-outpost',
+                    'icon-size': 1,
+                    'icon-anchor': 'bottom',
+                    'icon-allow-overlap': true
                 }
             });
 
-            // Service Centers (purple)
+            // Service Centers (purple pin with wrench)
             AppState.map.addLayer({
                 id: 'unclustered-service',
-                type: 'circle',
+                type: 'symbol',
                 source: 'locations',
                 filter: ['all',
                     ['!', ['has', 'point_count']],
                     ['==', ['get', 'type'], 'Service Center']
                 ],
-                paint: {
-                    'circle-color': '#9C27B0',
-                    'circle-radius': 10,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#fff'
+                layout: {
+                    'icon-image': 'marker-service',
+                    'icon-size': 1,
+                    'icon-anchor': 'bottom',
+                    'icon-allow-overlap': true
                 }
             });
 
@@ -478,7 +657,7 @@ const MapManager = {
                </div>`
             : '';
 
-        const directionsUrl = `https://maps.google.com/?q=${encodeURIComponent(location.address + ' ' + location.city)}`;
+        const directionsUrl = Utils.getDirectionsUrl(location.address, location.city, location.lat, location.lng);
 
         // Determine popup type class
         let typeClass = '';
@@ -987,7 +1166,7 @@ const LocationManager = {
                     }
                 }
 
-                // Distance filter
+                // Distance filter (user location)
                 let matchesDistance = true;
                 if (AppState.distanceEnabled && AppState.userLocation) {
                     const distance = this.calculateDistance(
@@ -997,6 +1176,18 @@ const LocationManager = {
                         location.lng
                     );
                     matchesDistance = distance <= AppState.distanceRadius;
+                }
+
+                // Geocoded location proximity filter (100 mile radius)
+                let matchesGeocode = true;
+                if (GeocodeManager.geocodedLocation) {
+                    const distanceFromGeocode = this.calculateDistance(
+                        GeocodeManager.geocodedLocation.lat,
+                        GeocodeManager.geocodedLocation.lng,
+                        location.lat,
+                        location.lng
+                    );
+                    matchesGeocode = distanceFromGeocode <= 100; // 100 mile radius
                 }
 
                 // Open Now filter
@@ -1019,7 +1210,7 @@ const LocationManager = {
                 // Combine all filters with AND logic
                 return matchesFilter && matchesState && matchesSearch &&
                        matchesAdvancedState && matchesServices &&
-                       matchesDateRange && matchesDistance &&
+                       matchesDateRange && matchesDistance && matchesGeocode &&
                        matchesOpenNow && matchesComingSoon;
             });
 
@@ -1073,20 +1264,22 @@ const LocationManager = {
                     })
                     : 'Opening date TBD';
 
-                // Calculate distance if location filter is enabled
-                let distanceHtml = '';
-                if (AppState.distanceEnabled && AppState.userLocation) {
+                // Calculate distance badge if user location is available
+                let distanceBadgeHtml = '';
+                if (AppState.userLocation) {
                     const distance = this.calculateDistance(
                         AppState.userLocation.lat,
                         AppState.userLocation.lng,
                         location.lat,
                         location.lng
                     );
-                    distanceHtml = `<div class="location-distance">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="#4CAF50" style="vertical-align: middle; margin-right: 4px;">
+                    // Color code: near (<10mi), medium (10-50mi), far (>50mi)
+                    const distanceClass = distance < 10 ? 'near' : distance < 50 ? 'medium' : 'far';
+                    distanceBadgeHtml = `<div class="distance-badge ${distanceClass}">
+                        <svg viewBox="0 0 24 24">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        ${distance.toFixed(1)} miles away
+                        ${distance.toFixed(1)} mi
                     </div>`;
                 }
 
@@ -1104,6 +1297,7 @@ const LocationManager = {
 
                 return `
                     <div class="location-card" onclick="LocationManager.flyToLocation(${location.lng}, ${location.lat}, ${location.id})">
+                        ${distanceBadgeHtml}
                         <div class="location-card-header">
                             <div class="location-type ${typeClass}">${Utils.sanitizeHTML(location.type)}</div>
                             <div class="location-card-actions">
@@ -1112,7 +1306,6 @@ const LocationManager = {
                             </div>
                         </div>
                         <div class="location-name">${Utils.sanitizeHTML(location.name)}</div>
-                        ${distanceHtml}
                         <div class="location-address">
                             ${Utils.sanitizeHTML(location.address)}<br>
                             ${Utils.sanitizeHTML(location.city)}
@@ -1129,6 +1322,12 @@ const LocationManager = {
                             <span class="rivian-link-placeholder">Rivian.com link TBD</span>
                         </div>`}
                         ${servicesHtml}
+                        <button class="card-directions-btn" onclick="event.stopPropagation(); window.open('${Utils.getDirectionsUrl(location.address, location.city, location.lat, location.lng)}', '_blank')">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                <path d="M21.71 11.29l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.39-.38.39-1.01 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/>
+                            </svg>
+                            Get Directions
+                        </button>
                     </div>
                 `;
             }).join('');
@@ -1292,6 +1491,100 @@ const LocationManager = {
     }
 };
 
+// Bottom Sheet Manager for mobile
+const BottomSheetManager = {
+    startY: 0,
+    currentY: 0,
+    isDragging: false,
+    sheetHeight: 0,
+
+    init() {
+        if (window.innerWidth > 768) return; // Only on mobile
+
+        const sidebar = document.getElementById('sidebar');
+        if (!sidebar) return;
+
+        this.sheetHeight = sidebar.offsetHeight;
+
+        // Touch events for drag handle area (top of sheet)
+        sidebar.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: true });
+        sidebar.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+        sidebar.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: true });
+    },
+
+    handleTouchStart(e) {
+        // Only start drag if touching near the top (drag handle area)
+        const touch = e.touches[0];
+        const sidebar = document.getElementById('sidebar');
+        const rect = sidebar.getBoundingClientRect();
+
+        // Allow drag from top 60px of visible sheet
+        if (touch.clientY < rect.top + 60) {
+            this.isDragging = true;
+            this.startY = touch.clientY;
+            sidebar.style.transition = 'none';
+        }
+    },
+
+    handleTouchMove(e) {
+        if (!this.isDragging) return;
+
+        const touch = e.touches[0];
+        const deltaY = touch.clientY - this.startY;
+        const sidebar = document.getElementById('sidebar');
+
+        // Limit upward drag
+        const newTransform = Math.max(0, deltaY);
+        sidebar.style.transform = `translateY(${newTransform}px)`;
+
+        e.preventDefault();
+    },
+
+    handleTouchEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+
+        const sidebar = document.getElementById('sidebar');
+        sidebar.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+
+        const touch = e.changedTouches[0];
+        const deltaY = touch.clientY - this.startY;
+        const velocity = deltaY / 100; // Rough velocity estimate
+
+        // Snap points: 0 = full, 50% = half, 100% = collapsed
+        if (deltaY > 150 || velocity > 1) {
+            // Swipe down - close or half
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                sidebar.classList.add('collapsed');
+            }
+        } else if (deltaY < -50 || velocity < -1) {
+            // Swipe up - open
+            sidebar.classList.add('active');
+            sidebar.classList.remove('collapsed', 'half-open');
+        }
+
+        // Reset inline transform
+        sidebar.style.transform = '';
+    },
+
+    openFull() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            sidebar.classList.add('active');
+            sidebar.classList.remove('collapsed', 'half-open');
+        }
+    },
+
+    collapse() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            sidebar.classList.remove('active', 'half-open');
+            sidebar.classList.add('collapsed');
+        }
+    }
+};
+
 // UI Management
 const UIManager = {
     openSidebar() {
@@ -1300,6 +1593,11 @@ const UIManager = {
             const overlay = document.getElementById('mobileOverlay');
             if (sidebar) sidebar.classList.add('active');
             if (overlay) overlay.classList.add('active');
+
+            // On mobile, ensure bottom sheet is fully open
+            if (window.innerWidth <= 768) {
+                BottomSheetManager.openFull();
+            }
         } catch (error) {
             console.error('Failed to open sidebar:', error);
         }
@@ -1311,6 +1609,11 @@ const UIManager = {
             const overlay = document.getElementById('mobileOverlay');
             if (sidebar) sidebar.classList.remove('active');
             if (overlay) overlay.classList.remove('active');
+
+            // On mobile, collapse to bottom
+            if (window.innerWidth <= 768) {
+                BottomSheetManager.collapse();
+            }
         } catch (error) {
             console.error('Failed to close sidebar:', error);
         }
@@ -1332,7 +1635,7 @@ const UIManager = {
                     if (AppState.userMarker) {
                         AppState.userMarker.setLngLat([userLng, userLat]);
                     } else {
-                        AppState.userMarker = new mapboxgl.Marker({ color: '#4CAF50' })
+                        AppState.userMarker = new mapboxgl.Marker({ color: '#78BE21' })
                             .setLngLat([userLng, userLat])
                             .setPopup(new mapboxgl.Popup().setHTML('<div style="padding: 0.5rem;">Your Location</div>'))
                             .addTo(AppState.map);
@@ -1398,11 +1701,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
             LocationManager.filterLocations();
 
-            // Set up event handlers with debounced search
-            const debouncedSearch = Utils.debounce((searchTerm) => {
+            // Set up event handlers with debounced search (with geocoding support)
+            const debouncedSearch = Utils.debounce(async (searchTerm) => {
                 AppState.searchTerm = searchTerm;
+
+                // Check if this looks like an address/zip query
+                if (GeocodeManager.isAddressQuery(searchTerm) && searchTerm.length >= 5) {
+                    const result = await GeocodeManager.geocode(searchTerm);
+                    if (result) {
+                        GeocodeManager.geocodedLocation = result;
+                        GeocodeManager.lastQuery = searchTerm;
+                        GeocodeManager.updateIndicator(result.placeName);
+
+                        // Fly to the geocoded location
+                        AppState.map.flyTo({
+                            center: [result.lng, result.lat],
+                            zoom: 10
+                        });
+                    }
+                } else if (searchTerm.length < 3) {
+                    GeocodeManager.clear();
+                }
+
                 LocationManager.filterLocations();
-            }, 300);
+            }, 500);
 
             // Search input handler
             const searchInput = document.getElementById('searchInput');
@@ -1478,6 +1800,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (mobileOverlay) {
                 mobileOverlay.addEventListener('click', UIManager.closeSidebar);
             }
+
+            // Initialize bottom sheet for mobile
+            BottomSheetManager.init();
 
             // Location button
             const locationBtn = document.getElementById('locationBtn');

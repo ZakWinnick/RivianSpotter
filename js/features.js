@@ -490,8 +490,8 @@ const ExportManager = {
                             font-size: 12pt;
                         }
                         h1 {
-                            color: #4CAF50;
-                            border-bottom: 2px solid #4CAF50;
+                            color: #78BE21;
+                            border-bottom: 2px solid #78BE21;
                             padding-bottom: 10px;
                         }
                         .location {
@@ -520,7 +520,7 @@ const ExportManager = {
                             margin-bottom: 5px;
                         }
                         .location-hours {
-                            color: #4CAF50;
+                            color: #78BE21;
                             font-weight: 500;
                         }
                         .footer {

@@ -102,7 +102,7 @@ if (typeof module !== 'undefined' && module.exports) {
             AdminUI.updateStats();
 
             document.getElementById('connectionStatus').textContent = '● GitHub Connected';
-            document.getElementById('connectionStatus').style.color = '#4CAF50';
+            document.getElementById('connectionStatus').style.color = '#78BE21';
 
         } catch (error) {
             console.error('Error loading from GitHub:', error);
@@ -204,7 +204,7 @@ if (typeof module !== 'undefined' && module.exports) {
             AdminUI.updateChangesBar();
 
             document.getElementById('connectionStatus').textContent = '● GitHub Connected';
-            document.getElementById('connectionStatus').style.color = '#4CAF50';
+            document.getElementById('connectionStatus').style.color = '#78BE21';
 
             AdminUI.showNotification('Changes committed to GitHub!', 'success');
             AdminUI.renderLocations();

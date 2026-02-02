@@ -42,7 +42,7 @@
 
 .skip-link:focus {
     transform: translateY(0);
-    outline: 3px solid #1976D2;
+    outline: 3px solid #004C6D;
     outline-offset: 2px;
 }
 
@@ -80,7 +80,7 @@ textarea:focus-visible,
 
 /* Focus styles for filter buttons */
 .filter-btn:focus-visible {
-    outline: 3px solid #1976D2;
+    outline: 3px solid #004C6D;
     outline-offset: 2px;
     box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.2);
 }
@@ -103,7 +103,7 @@ textarea:focus-visible,
 
 /* Focus styles for map controls */
 .location-btn:focus-visible {
-    outline: 3px solid #1976D2;
+    outline: 3px solid #004C6D;
     outline-offset: 2px;
 }
 
@@ -136,8 +136,8 @@ textarea:focus-visible,
 }
 
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #2196F3;
+    --primary-color: #78BE21;
+    --secondary-color: #004C6D;
     --text-dark: #1a1a1a;
     --text-light: #666;
     --border-color: #e5e5e5;
@@ -156,8 +156,8 @@ textarea:focus-visible,
 /* Dark Mode - System Preference */
 @media (prefers-color-scheme: dark) {
     :root {
-        --primary-color: #66BB6A;
-        --secondary-color: #42A5F5;
+        --primary-color: #8FD42A;
+        --secondary-color: #0066A1;
         --text-dark: #f0f0f0;
         --text-light: #a0a0a0;
         --border-color: #3a3a3a;
@@ -312,33 +312,130 @@ body {
     border-color: var(--primary-color);
 }
 
-/* Filter Buttons */
-.filter-buttons {
+/* Geocode Indicator */
+.geocode-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0.5rem 1rem;
+    background: rgba(120, 190, 33, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.geocode-indicator strong {
+    color: var(--primary-color);
+}
+
+.geocode-indicator button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    padding: 0 0.25rem;
+    line-height: 1;
+}
+
+.geocode-indicator button:hover {
+    color: var(--text-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+    .geocode-indicator {
+        background: rgba(143, 212, 42, 0.1);
+    }
+}
+
+/* Filter Buttons - Horizontal Scroll Chips */
+.filter-buttons {
+    position: relative;
+    padding: 0.75rem 1rem;
     display: flex;
     gap: 0.5rem;
     border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filter-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+/* Fade indicators for scroll */
+.filter-buttons::before,
+.filter-buttons::after {
+    content: '';
+    position: sticky;
+    min-width: 24px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.filter-buttons::before {
+    left: 0;
+    background: linear-gradient(to right, var(--card-bg) 0%, transparent 100%);
+    margin-left: -1rem;
+}
+
+.filter-buttons::after {
+    right: 0;
+    background: linear-gradient(to left, var(--card-bg) 0%, transparent 100%);
+    margin-right: -1rem;
 }
 
 .filter-btn {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border-color);
     background: var(--card-bg);
     color: var(--text-dark);
-    border-radius: 20px;
+    border-radius: 999px;
     font-size: 0.85rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .filter-btn:hover {
     background: var(--hover-bg);
+    border-color: var(--primary-color);
 }
 
 .filter-btn.active {
     background: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(120, 190, 33, 0.3);
+}
+
+.filter-btn .count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.filter-btn:not(.active) .count-badge {
+    background: var(--bg-tertiary);
+    color: var(--text-light);
 }
 
 /* Location Stats */
@@ -357,18 +454,46 @@ body {
 }
 
 .location-card {
+    position: relative;
     padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    margin: 0.5rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.25s ease;
+}
+
+.location-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.25s ease;
 }
 
 .location-card:hover {
     background: var(--hover-bg);
+    border-color: transparent;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.location-card:hover::before {
+    opacity: 1;
 }
 
 .location-card.active {
     background: var(--active-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(120, 190, 33, 0.15);
+}
+
+.location-card.active::before {
+    opacity: 1;
 }
 
 .location-type {
@@ -409,6 +534,91 @@ body {
     color: #f44336;
 }
 
+/* Distance Badge */
+.distance-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.distance-badge.near {
+    background: rgba(120, 190, 33, 0.15);
+    color: #78BE21;
+}
+
+.distance-badge.medium {
+    background: rgba(255, 152, 0, 0.15);
+    color: #F59E0B;
+}
+
+.distance-badge.far {
+    background: var(--bg-tertiary);
+    color: var(--text-light);
+}
+
+.distance-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+@media (prefers-color-scheme: dark) {
+    .distance-badge.near {
+        background: rgba(120, 190, 33, 0.2);
+    }
+
+    .distance-badge.medium {
+        background: rgba(255, 152, 0, 0.2);
+    }
+}
+
+/* Card Directions Button */
+.card-directions-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.card-directions-btn:hover {
+    background: #68A51D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(120, 190, 33, 0.3);
+}
+
+.card-directions-btn svg {
+    flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-directions-btn {
+        background: var(--primary-color);
+    }
+
+    .card-directions-btn:hover {
+        background: #68A51D;
+    }
+}
+
 /* Map Markers */
 .marker {
     background-color: var(--primary-color);
@@ -441,10 +651,13 @@ body {
 /* Mapbox Popup */
 .mapboxgl-popup-content {
     padding: 0;
-    border-radius: 8px;
-    min-width: 250px;
+    border-radius: 12px;
+    min-width: 280px;
     background: var(--popup-bg);
     color: var(--text-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
 .mapboxgl-popup-close-button {
@@ -502,7 +715,7 @@ body {
 }
 
 .popup-button:hover {
-    background: #45a049;
+    background: #68A51D;
 }
 
 /* Page Content (for About/Contact pages) */
@@ -613,7 +826,7 @@ body {
 }
 
 .form-submit:hover {
-    background: #45a049;
+    background: #68A51D;
 }
 
 /* Footer */
@@ -831,7 +1044,7 @@ body {
     height: 100%;
 }
 
-/* Sidebar Styles */
+/* Sidebar Styles - Desktop */
 .sidebar {
     position: fixed;
     top: 0;
@@ -853,6 +1066,53 @@ body {
 
 .sidebar.active {
     transform: translateX(0);
+}
+
+/* Mobile Bottom Sheet */
+@media (max-width: 768px) {
+    .sidebar {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 85vh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(calc(100% - 60px));
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.active {
+        transform: translateY(0);
+    }
+
+    .sidebar.half-open {
+        transform: translateY(50%);
+    }
+
+    .sidebar.collapsed {
+        transform: translateY(calc(100% - 60px));
+    }
+
+    /* Drag Handle */
+    .sidebar::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: var(--border-color);
+        border-radius: 2px;
+        z-index: 10;
+    }
+
+    .sidebar-header {
+        padding-top: 1.5rem;
+    }
 }
 
 .sidebar-header {
@@ -943,13 +1203,13 @@ body {
 }
 
 .mobile-bottom-bar button.active {
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
-    border-color: #4CAF50;
+    border-color: #78BE21;
 }
 
 .mobile-bottom-bar button.active:active {
-    background: #45a049;
+    background: #68A51D;
 }
 
 .filter-buttons {
@@ -1035,7 +1295,7 @@ body {
 }
 
 .location-card.active {
-    border-color: #4CAF50;
+    border-color: #78BE21;
     box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
@@ -1069,7 +1329,7 @@ body {
 /* Demo Center location type styling (blue) */
 .location-type.demo-center {
     background: #e3f2fd;
-    color: #1976D2;
+    color: #004C6D;
 }
 
 /* Outpost location type styling (orange) */
@@ -1100,7 +1360,7 @@ body {
 }
 
 .location-rivian-link a {
-    color: #1976D2;
+    color: #004C6D;
     text-decoration: none;
     font-weight: 500;
 }
@@ -1116,7 +1376,7 @@ body {
 
 .location-distance {
     font-size: 0.85rem;
-    color: #4CAF50;
+    color: #78BE21;
     font-weight: 500;
     margin: 0.25rem 0;
 }
@@ -1141,12 +1401,12 @@ body {
 
 /* Space markers (green) */
 .marker.space {
-    background: #4CAF50;
+    background: #78BE21;
 }
 
 /* Demo Center markers (blue) */
 .marker.demo-center {
-    background: #1976D2;
+    background: #004C6D;
 }
 
 /* Outpost markers (orange/amber) */
@@ -1193,7 +1453,7 @@ body {
 /* Demo Center popup styling (blue) */
 .popup-type.demo-center {
     background: #e3f2fd;
-    color: #1976D2;
+    color: #004C6D;
 }
 
 /* Outpost popup styling (orange) */
@@ -1248,7 +1508,7 @@ body {
 .popup-button {
     width: 100%;
     padding: 0.5rem;
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
     border: none;
     border-radius: 6px;
@@ -1258,7 +1518,7 @@ body {
 }
 
 .popup-button:hover {
-    background: #45a049;
+    background: #68A51D;
 }
 
 /* State Filter */
@@ -1333,7 +1593,7 @@ body {
     width: 48px;
     height: 48px;
     background: white;
-    border: 2px solid #4CAF50;
+    border: 2px solid #78BE21;
     border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     cursor: pointer;
@@ -1345,7 +1605,7 @@ body {
 }
 
 .location-btn:hover {
-    background: #4CAF50;
+    background: #78BE21;
 }
 
 .location-btn:hover svg {
@@ -1355,7 +1615,7 @@ body {
 .location-btn svg {
     width: 24px;
     height: 24px;
-    fill: #4CAF50;
+    fill: #78BE21;
 }
 
 /* Advanced Filters Toggle */
@@ -1390,7 +1650,7 @@ body {
 }
 
 .filter-badge {
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
     font-size: 0.75rem;
     padding: 0.15rem 0.5rem;
@@ -1640,7 +1900,7 @@ fieldset.filter-section legend {
 .enable-distance-btn {
     width: 100%;
     padding: 0.75rem;
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
     border: none;
     border-radius: 6px;
@@ -1651,11 +1911,11 @@ fieldset.filter-section legend {
 }
 
 .enable-distance-btn:hover {
-    background: #45a049;
+    background: #68A51D;
 }
 
 .enable-distance-btn.active {
-    background: #1976D2;
+    background: #004C6D;
 }
 
 .distance-slider-container {
@@ -1688,7 +1948,7 @@ fieldset.filter-section legend {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #78BE21;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -1697,7 +1957,7 @@ fieldset.filter-section legend {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #78BE21;
     cursor: pointer;
     border: none;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -2048,7 +2308,7 @@ fieldset.filter-section legend {
 
 .recent-location-type.demo-center {
     background: #e3f2fd;
-    color: #1976D2;
+    color: #004C6D;
 }
 
 .recent-location-type.outpost {
@@ -2216,22 +2476,33 @@ fieldset.filter-section legend {
 
 /* Quick Filters Container */
 .quick-filters {
+    position: relative;
     display: flex;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--border-color);
-    flex-wrap: wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.quick-filters::-webkit-scrollbar {
+    display: none;
 }
 
 /* Quick Filter Button Base Styles */
 .quick-filter-btn {
-    display: flex;
+    flex-shrink: 0;
+    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.5rem 0.85rem;
+    padding: 0.5rem 1rem;
     border: 2px solid var(--border-color);
     background: var(--card-bg);
-    border-radius: 20px;
+    border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
@@ -2260,9 +2531,10 @@ fieldset.filter-section legend {
 }
 
 .quick-filter-btn.open-now-btn.active {
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
-    border-color: #4CAF50;
+    border-color: #78BE21;
+    box-shadow: 0 2px 8px rgba(120, 190, 33, 0.3);
 }
 
 .quick-filter-btn.open-now-btn.active svg {
@@ -2283,6 +2555,7 @@ fieldset.filter-section legend {
     background: #FF9800;
     color: white;
     border-color: #FF9800;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
 }
 
 .quick-filter-btn.coming-soon-btn.active svg {
@@ -2330,7 +2603,7 @@ fieldset.filter-section legend {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    color: #4CAF50;
+    color: #78BE21;
     font-size: 0.8rem;
     font-weight: 500;
     margin-top: 0.25rem;
@@ -2340,7 +2613,7 @@ fieldset.filter-section legend {
     content: '';
     width: 8px;
     height: 8px;
-    background: #4CAF50;
+    background: #78BE21;
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
@@ -2378,7 +2651,7 @@ fieldset.filter-section legend {
 
 /* Focus styles for quick filter buttons */
 .quick-filter-btn:focus-visible {
-    outline: 3px solid #1976D2;
+    outline: 3px solid #004C6D;
     outline-offset: 2px;
 }
 
@@ -2428,7 +2701,7 @@ fieldset.filter-section legend {
     }
 
     .filter-btn.active:active {
-        background: #45a049;
+        background: #68A51D;
     }
 
     /* Touch feedback for quick filter buttons */
@@ -2446,7 +2719,7 @@ fieldset.filter-section legend {
     }
 
     .quick-filter-btn.open-now-btn.active:active {
-        background: #45a049;
+        background: #68A51D;
     }
 
     .quick-filter-btn.coming-soon-btn:active {
@@ -2507,7 +2780,7 @@ fieldset.filter-section legend {
     }
 
     .preset-btn.active:active {
-        background: #45a049;
+        background: #68A51D;
     }
 
     /* Touch feedback for toggle filters button */
@@ -2697,14 +2970,26 @@ fieldset.filter-section legend {
         background: var(--hover-bg);
     }
 
-    /* Location cards */
+    /* Location cards - Glassmorphism effect */
     .location-card {
-        background: var(--card-bg);
-        border-color: var(--border-color);
+        background: rgba(36, 36, 36, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .location-card:hover {
+        background: rgba(42, 42, 42, 0.9);
+        border-color: transparent;
     }
 
     .location-card:active {
         background: var(--hover-bg);
+    }
+
+    .location-card.active {
+        background: rgba(120, 190, 33, 0.1);
+        border-color: rgba(120, 190, 33, 0.3);
     }
 
     .location-card.active:active {

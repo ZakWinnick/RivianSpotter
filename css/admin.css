@@ -628,7 +628,7 @@ body {
 }
 
 .notification.success {
-    background: #4CAF50;
+    background: #78BE21;
     color: white;
 }
 
@@ -638,7 +638,7 @@ body {
 }
 
 .notification.info {
-    background: #2196F3;
+    background: #004C6D;
     color: white;
 }
 

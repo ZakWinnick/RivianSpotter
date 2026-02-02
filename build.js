@@ -21,6 +21,14 @@ const { minify } = require('terser');
 const CleanCSS = require('clean-css');
 const chalk = require('chalk');
 
+// Try to load sharp for image optimization (optional dependency)
+let sharp = null;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  // sharp is optional, will skip image optimization if not available
+}
+
 // Configuration
 const config = {
   jsFiles: [
@@ -47,8 +55,60 @@ const config = {
     'about.html',
     'contact.html'
   ],
+  imageDir: 'images',
   ignorePatterns: []
 };
+
+// Optimize images (requires sharp)
+async function optimizeImages() {
+  if (!sharp) {
+    console.log(chalk.yellow('  ⚠ sharp not installed, skipping image optimization'));
+    console.log(chalk.gray('    Run: npm install sharp'));
+    return;
+  }
+
+  const imageDir = path.join(__dirname, config.imageDir);
+  if (!fs.existsSync(imageDir)) {
+    console.log(chalk.yellow(`  ⚠ Image directory not found: ${config.imageDir}`));
+    return;
+  }
+
+  const files = fs.readdirSync(imageDir);
+  const imageFiles = files.filter(f => /\.(png|jpg|jpeg)$/i.test(f));
+
+  console.log(chalk.blue(`\n📷 Optimizing ${imageFiles.length} images...\n`));
+
+  for (const file of imageFiles) {
+    const inputPath = path.join(imageDir, file);
+    const baseName = path.basename(file, path.extname(file));
+
+    try {
+      const originalSize = fs.statSync(inputPath).size;
+
+      // Generate WebP version
+      const webpPath = path.join(imageDir, `${baseName}.webp`);
+      await sharp(inputPath)
+        .webp({ quality: 85 })
+        .toFile(webpPath);
+      const webpSize = fs.statSync(webpPath).size;
+
+      // Generate optimized PNG (if original is PNG)
+      if (/\.png$/i.test(file)) {
+        const optimizedPath = path.join(imageDir, `${baseName}-optimized.png`);
+        await sharp(inputPath)
+          .png({ compressionLevel: 9, palette: true })
+          .toFile(optimizedPath);
+      }
+
+      const savings = ((1 - webpSize / originalSize) * 100).toFixed(1);
+      console.log(chalk.green(`  ✓ ${file}`));
+      console.log(chalk.gray(`    WebP: ${(webpSize / 1024).toFixed(1)}KB (${savings}% smaller)`));
+
+    } catch (error) {
+      console.log(chalk.red(`  ✗ Failed to optimize ${file}: ${error.message}`));
+    }
+  }
+}
 
 // Read .buildignore file if it exists
 function readBuildIgnore() {
@@ -343,7 +403,7 @@ async function build(options = {}) {
     }
 
     // Generate production HTML
-    if (!options.jsOnly && !options.cssOnly) {
+    if (!options.jsOnly && !options.cssOnly && !options.imagesOnly) {
       console.log(chalk.cyan('📄 Generating production HTML files...\n'));
       for (const htmlFile of config.htmlFiles) {
         const inputPath = path.join(__dirname, htmlFile);
@@ -355,6 +415,11 @@ async function build(options = {}) {
         }
       }
       console.log('');
+    }
+
+    // Optimize images
+    if (options.imagesOnly || (!options.jsOnly && !options.cssOnly && !options.htmlOnly)) {
+      await optimizeImages();
     }
 
     const endTime = Date.now();
@@ -379,6 +444,7 @@ const options = {
   jsOnly: args.includes('--js-only'),
   cssOnly: args.includes('--css-only'),
   htmlOnly: args.includes('--html-only'),
+  imagesOnly: args.includes('--images-only'),
   clean: args.includes('--clean')
 };
 
