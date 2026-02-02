@@ -1417,16 +1417,16 @@ const rivianLocations = [
     "state": "WA",
     "lat": 47.6615,
     "lng": -122.2985,
-    "address": "2623 University Village St, Suite 7",
+    "address": "2617 NE 46th Street",
     "city": "Seattle, WA 98105",
-    "hours": "Temporarily closed for the month",
-    "phone": "",
+    "hours": "Mon-Sat: 10am-8pm, Sun: 11am-6pm",
+    "phone": "(206) 249-9056",
     "services": [
       "Test Drives",
       "Vehicle Tours",
       "Merchandise"
     ],
-    "isOpen": false,
+    "isOpen": true,
     "rivianUrl": "https://rivian.com/spaces/seattle"
   },
   {
