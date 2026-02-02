@@ -2384,24 +2384,6 @@ const rivianLocations = [
   },
   {
     "id": 124,
-    "name": "Iselin - Service Center",
-    "type": "Service Center",
-    "state": "NJ",
-    "lat": 40.56804,
-    "lng": -74.29723,
-    "address": "931 US-1",
-    "city": "Iselin, NJ 08830",
-    "hours": "Mon-Fri: 8AM-5PM",
-    "phone": "",
-    "services": [
-      "Service",
-      "Repairs",
-      "Parts"
-    ],
-    "isOpen": true
-  },
-  {
-    "id": 125,
     "name": "Martinez - Service Center",
     "type": "Service Center",
     "state": "CA",
@@ -2419,61 +2401,7 @@ const rivianLocations = [
     "isOpen": true
   },
   {
-    "id": 126,
-    "name": "Olathe - Service Center",
-    "type": "Service Center",
-    "state": "KS",
-    "lat": 38.8895,
-    "lng": -94.78508,
-    "address": "601 North Lindenwood Dr",
-    "city": "Olathe, KS 66062",
-    "hours": "Sat: 9AM-4PM",
-    "phone": "",
-    "services": [
-      "Service",
-      "Repairs",
-      "Parts"
-    ],
-    "isOpen": true
-  },
-  {
-    "id": 127,
-    "name": "Hazelwood - Service Center",
-    "type": "Service Center",
-    "state": "MO",
-    "lat": 38.77188,
-    "lng": -90.36292,
-    "address": "",
-    "city": "Hazelwood, MO 63042",
-    "hours": "Sat: 9AM-5PM",
-    "phone": "",
-    "services": [
-      "Service",
-      "Repairs",
-      "Parts"
-    ],
-    "isOpen": true
-  },
-  {
-    "id": 128,
-    "name": "Vaughan - Service Center",
-    "type": "Service Center",
-    "state": "ON",
-    "lat": 43.80446,
-    "lng": -79.54993,
-    "address": "8311 Weston Rd",
-    "city": "Vaughan, ON L4L 1A6",
-    "hours": "",
-    "phone": "",
-    "services": [
-      "Service",
-      "Repairs",
-      "Parts"
-    ],
-    "isOpen": true
-  },
-  {
-    "id": 129,
+    "id": 125,
     "name": "Niagara Falls - Service Center",
     "type": "Service Center",
     "state": "NY",
@@ -2491,7 +2419,7 @@ const rivianLocations = [
     "isOpen": true
   },
   {
-    "id": 130,
+    "id": 126,
     "name": "Stallings - Service Center",
     "type": "Service Center",
     "state": "NC",
