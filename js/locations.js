@@ -2343,6 +2343,26 @@ const rivianLocations = [
     ],
     "isOpen": true,
     "rivianUrl": "https://rivian.com/spaces/san-jose-service-demo-center"
+  },
+  {
+    "id": 122,
+    "name": "King of Prussia",
+    "type": "Space",
+    "state": "PA",
+    "lat": 40.0879,
+    "lng": -75.3903,
+    "address": "King of Prussia Mall",
+    "city": "King of Prussia, PA 19406",
+    "hours": "",
+    "phone": "",
+    "services": [
+      "Test Drives",
+      "Vehicle Tours",
+      "Merchandise"
+    ],
+    "isOpen": false,
+    "openingDate": "2026-02-21",
+    "rivianUrl": "https://rivian.com/spaces/king-of-prussia"
   }
 ];
 if (typeof module !== 'undefined' && module.exports) {
