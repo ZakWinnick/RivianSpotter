@@ -511,7 +511,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/dvkAangwEn3PMTFT9",
-    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
+    "verificationNote": "Published location facts and a matching coordinate point were checked against official sources; this was not an on-site visit."
   },
   {
     "id": 13,
@@ -1053,7 +1053,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/j7niKFV2eSFJARwg6",
-    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
+    "verificationNote": "Published location facts and a matching coordinate point were checked against official sources; this was not an on-site visit."
   },
   {
     "id": 26,
@@ -2201,7 +2201,7 @@ const rivianLocations = [
     "coordinateSource": "https://rivian.com/spaces/new-york#structured-data",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": "Mon–Sun: 10am–7pm",
+    "hours": "10/14: 10am-3pm\n\n\nMon–Sun: 10am–7pm",
     "serviceHours": null,
     "phone": "(332) 284-2576",
     "services": [
@@ -3161,7 +3161,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/14FApiGJGjnd98LSA",
-    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
+    "verificationNote": "Published location facts and a matching coordinate point were checked against official sources; this was not an on-site visit."
   },
   {
     "id": 76,
@@ -3219,7 +3219,7 @@ const rivianLocations = [
     "coordinateSource": "https://rivian.com/spaces/brea#structured-data",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": "Mon–Thur: 10am–8pm\n\nFri–Sat: 10am–9pm\nSun: 11am–7pm",
+    "hours": "Mon–Sat: 10:00am–9:00pm\nSun: 11:00am–7:00pm",
     "serviceHours": null,
     "phone": "(657) 413-4079",
     "services": [
@@ -5644,8 +5644,8 @@ const rivianLocations = [
     "coordinateSource": "https://rivian.com/spaces/calgary-service-demo-center#embedded-service-map",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": "Mon–Fri: 8:00am–7:00pm\nSat–Sun: 10:00am-7:00pm",
-    "serviceHours": "Mon–Fri: 8:00am–7:00pm\nSat–Sun: 10:00am-7:00pm",
+    "hours": "Mon–Sun: 10:00am-7:00pm",
+    "serviceHours": "Mon–Fri: 8:00am–5:00pm\nSat–Sun: Closed",
     "phone": "(650) 487-1792",
     "services": [
       "See vehicles",

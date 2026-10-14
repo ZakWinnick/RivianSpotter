@@ -8542,6 +8542,93 @@
           "name": "Stallings - Service Center"
         }
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "directorySha256": "79dea956d2e08e7c1fbebc0fe64f9e2d538fd095a9f848cf95899701196c615a",
+      "supplementalMapSha256": "1122cdf8d7ea03872d8207b83d64297054b8a4ddc2be790ac8b21b8c35c84c9e",
+      "added": [],
+      "changed": [
+        {
+          "id": 12,
+          "name": "Joshua Tree, CA Charging Outpost",
+          "fields": [
+            "verificationNote"
+          ]
+        },
+        {
+          "id": 25,
+          "name": "Yosemite, CA Charging Outpost",
+          "fields": [
+            "verificationNote"
+          ]
+        },
+        {
+          "id": 53,
+          "name": "New York, NY Meatpacking District",
+          "fields": [
+            "hours"
+          ]
+        },
+        {
+          "id": 75,
+          "name": "The Hamptons, NY Charging Outpost",
+          "fields": [
+            "verificationNote"
+          ]
+        },
+        {
+          "id": 77,
+          "name": "Brea, CA",
+          "fields": [
+            "hours"
+          ]
+        },
+        {
+          "id": 138,
+          "name": "Colma, CA - Service + Demo Center",
+          "fields": [
+            "hours",
+            "serviceHours"
+          ]
+        }
+      ],
+      "mergedLegacyIds": [
+        {
+          "id": 73,
+          "aliases": [
+            86
+          ]
+        },
+        {
+          "id": 107,
+          "aliases": [
+            123
+          ]
+        }
+      ],
+      "unmatchedLegacy": [
+        {
+          "id": 59,
+          "name": "Montreal - Service + Demo Center"
+        },
+        {
+          "id": 78,
+          "name": "The Grove"
+        },
+        {
+          "id": 124,
+          "name": "Martinez - Service Center"
+        },
+        {
+          "id": 125,
+          "name": "Niagara Falls - Service Center"
+        },
+        {
+          "id": 126,
+          "name": "Stallings - Service Center"
+        }
+      ]
     }
   ]
 }
