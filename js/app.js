@@ -485,8 +485,8 @@
     $("clear-filters").addEventListener("click", reset);
     $("near-me").addEventListener("click", near);
     $("full-overview").addEventListener("click",()=>{if(selected) closeDetail(); SpotterMap.resetOverview();});
-    $("map-mode").addEventListener("click", () => setView("map"));
-    $("list-mode").addEventListener("click", () => setView("list"));
+    $("map-mode").addEventListener("click", () => { if(selected) closeDetail(false); setView("map"); });
+    $("list-mode").addEventListener("click", () => { if(selected) closeDetail(false); setView("list"); });
     $("retry-map").addEventListener("click", () => SpotterMap.init());
     $("search-area").addEventListener("click", () => {
       area = SpotterMap.bounds();

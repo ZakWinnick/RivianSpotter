@@ -1,6 +1,6 @@
 [
   {
-    "version": "2026.42.17",
+    "version": "2026.42.18",
     "date": "2026-10-14",
     "title": "October 2026 update",
     "changes": [
@@ -10,7 +10,8 @@
       "Added charging prices, connector types, speeds, site features, and individual charger details where available.",
       "Added color-coded charging ratings to location cards and detail pages.",
       "Added automatic location-data refreshes and dated charger maintenance and issue reports.",
-      "Introduced a new route-inspired logo across the site and app icons."
+      "Introduced a new route-inspired logo across the site and app icons.",
+      "Improved mobile browsing with a fixed bottom List/Map bar that keeps location content unobstructed."
     ]
   },
   {
