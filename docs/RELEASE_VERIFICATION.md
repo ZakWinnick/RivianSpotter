@@ -1,6 +1,6 @@
 # Explorer overhaul verification — 2026-10-14
 
-Release 2026.42.3. This record captures pre-publication verification; public propagation is checked separately after release.
+Release 2026.42.4. This record captures pre-publication verification; public propagation is checked separately after release.
 
 ## Inventory
 
@@ -38,3 +38,7 @@ Release 2026.42.3. This record captures pre-publication verification; public pro
 Responsive checks used browser emulation, not physical phones. Native share-sheet completion, successful precise geolocation, and a full offline browser restart were not exercised. Cache denial/offline responses were tested against the actual service-worker handlers. No copied official photos are used; destination pages link to the official galleries.
 
 Screenshots: docs/screenshots/desktop-explorer.jpg, mobile-detail.jpg and mobile-map.jpg.
+
+## Short desktop follow-up
+
+The first public release passed deployment and exact dataset-byte comparison. A subsequent 1280 × 720 live check exposed the desktop detail panel extending below the viewport. Release 2026.42.4 constrains its maximum height relative to the explorer. Local browser verification: panel bounds top 160 / bottom 688 in a 720px window, with internal scrolling; phone bounds remain top 258 / bottom 844 in a 390 × 844 viewport.

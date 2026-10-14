@@ -5,7 +5,7 @@
 - Replaced credential-based administrator pages with a static GitHub maintenance workflow and a canonical-data review queue.
 - Removed every legacy `js/admin/` source, minified script, and source map. Replaced `js/admin.js` with safe text rendering and removal of known legacy storage keys.
 - Replaced PHP administrator/configuration/contact routes with inert 410 retirement responses, removing token-query authentication, writes, and email sending.
-- Added release 2026.42.3 same-origin allowlist caching, network-first public navigations/data, bounded runtime caches, old-cache removal, and a real shared-style offline page.
+- Added release 2026.42.4 same-origin allowlist caching, network-first public navigations/data, bounded runtime caches, old-cache removal, and a real shared-style offline page.
 - Replaced permissive CI with blocking Node tests, static build, and production dependency audit, followed by a least-permission `dist/` Pages deployment for successful main runs.
 - Documented canonical editing, local checks, Pages prerequisites, offline limits, retirement behavior, and rollback.
 

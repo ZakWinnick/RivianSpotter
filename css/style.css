@@ -657,11 +657,11 @@
   .detail-sheet {
     position: absolute;
     right: 24px;
-    top: 80px;
+    top: auto;
     bottom: 32px;
     width: min(380px, calc(100% - 438px));
-    max-height: 760px;
-    align-self: end;
+    max-height: min(760px, calc(100% - 112px));
+    align-self: auto;
     overflow: auto;
     padding: 24px;
     background: var(--surface);
@@ -889,7 +889,7 @@
     .detail-sheet {
       width: 330px;
       right: 16px;
-      top: 88px;
+      top: auto;
       bottom: 24px;
     }
     .map-legend {
