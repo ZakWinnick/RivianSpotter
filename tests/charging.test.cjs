@@ -69,3 +69,13 @@ test('refresh snapshot rejects malformed directory before applying files',async(
  assert.doesNotThrow(()=>validateSnapshot(places,summary,chargers,places,chargers));
  assert.throws(()=>validateSnapshot(places,summary,[...chargers,{...chargers[0],sourceId:'collision',slug:'collision'}],places,chargers),/Duplicate/);
 });
+
+test('official map grades survive normalization and lead badge rendering without live counts',async()=>{
+ const {normalize}=await api();
+ const p=normalize({...fixtures[1],properties:{...fixtures[1].properties,score:'A',available:4}},'2026-10-14');
+ assert.equal(p.reliabilityGrade,'A');assert(!('available' in p));
+ assert.match(U.locationGrade(p),/Reliability A/);
+ assert.match(U.locationGrade({...p,reliabilityGrade:'B',roamer:{reliabilityGrade:'A',reliabilityTone:'emerald'}}),/reliability-lime/);
+ assert.match(U.locationGrade({...p,reliabilityGrade:null,roamer:{reliabilityGrade:'A'}}),/Reliability A/);
+ assert.equal(normalize({...fixtures[1],properties:{...fixtures[1].properties,score:'UNKNOWN'}},'2026-10-14').reliabilityGrade,null);
+});

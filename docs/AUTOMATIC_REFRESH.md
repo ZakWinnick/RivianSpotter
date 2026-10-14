@@ -7,7 +7,7 @@ The `Refresh official location and charging data` GitHub Actions workflow runs d
 1. Check out current `main` and install pinned dependencies.
 2. Retrieve Rivian's official location directory, each location detail page, and supplemental service map.
 3. Retrieve the public charging-map vector tiles covering the continental US, Canada (including the north), Alaska and Hawaii. Filter only `Rivian Adventure Network` and `Rivian Waypoints Network`.
-4. Deduplicate station source IDs, refine each map pin at zoom 12, and normalize names, addresses, charger counts, maximum kW and vehicle access. Drop `available` and `score`: there is no live stall-availability promise.
+4. Deduplicate station source IDs, refine each map pin at zoom 12, and normalize names, addresses, charger counts, maximum kW and vehicle access. Retain valid letter grades from `score`; omit `available` because there is no live stall-availability promise.
 5. Validate both inventories together before applying them. Reject missing tiles, malformed data, duplicate identities/URLs, unexpectedly small inventories, or a per-network/directory count decline over 15%.
 6. Generate every page, run tests, and audit production dependencies.
 7. Commit only validated data/bundles/generated pages. A concurrent human push makes the normal fast-forward push fail; the workflow never force-pushes or rebases unseen code.
@@ -19,7 +19,7 @@ Every build adds a deterministic data hash to the release cache version, so auto
 
 ## Source limits and identity
 
-The source is the public tile service used by `https://rivian.com/experience/charging#map`. It is a website implementation detail, not a guaranteed external API. Requests are throttled below its observed five-per-second limit, honor rate-limit backoff, and have bounded retries/timeouts. Expensive overview tiles may be subdivided; unresolved failures block publication. The job has a 75-minute ceiling, including a 45-minute budget for charging-detail requests.
+The source is the public tile service used by `https://rivian.com/experience/charging#map`. It is a website implementation detail, not a guaranteed external API. Requests are throttled to at most one new request per second, honor rate-limit backoff, and have bounded retries/timeouts. Source limits can still reject that cadence. Expensive overview tiles may be subdivided; unresolved failures block publication. The job has a 75-minute ceiling, including a 45-minute budget for charging-detail requests.
 
 Source IDs map to deterministic safe numeric IDs. Existing slugs and IDs survive station renames. Stations absent from a later complete snapshot retain their detail URL and saved-place identity but leave the default directory; their page says they are no longer listed, without claiming a closure. Charger pins are labeled internally `map-pin` rather than survey-accurate coordinates. Directions use a published address when present, falling back to the pin.
 
@@ -40,3 +40,7 @@ Each daily run works through all station detail pages, missing details first and
 A 429 response stops requests immediately and persists a cooldown of at least 24 hours (or a longer Retry-After). A source error retains the previous facts; optional Roamer retrieval can fail without blocking valid official updates. Build, test and dependency audit failures always block publication. Network inventory loss over 15%, duplicate IDs, missing pins or incomplete cards are rejected. Grade, price, connector, explicit condition and detail changes are retained for 30 days (up to 200 events). A new source listing is not claimed as a newly opened station; an absent or unknown condition is not a charger outage.
 
 The initial October 14 snapshot includes 160 network cards and 17 detail pages. A rate-limit response stopped further detail collection and established the first cooldown. Scheduled runs use a fresh temporary cache and resume missing detail coverage after that cooldown. For parser recovery only, `ROAMER_CACHE_DIR=/path/to/saved/html npm run refresh:roamer -- --cache-only` imports existing HTML without requesting the source.
+
+Public map letter grades are the primary badge source; a supplemental rating is used only when the official station record has no valid grade. Public map records checked on October 14 expose count, maximum power, vehicle access and grade, but no pricing, hours, or individual ports.
+
+The first grade backfill retains three individually verified October 14 records (East Greenwich, Tigard, and Mackinaw City). A bulk backfill stopped at HTTP 429 without publishing its partial inventory. Remaining official grades will arrive through a successful complete scheduled refresh; existing supplemental badges remain available in the meantime.

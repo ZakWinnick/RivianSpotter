@@ -57,6 +57,7 @@ export function normalize(feature, date, previous) {
   return {id,slug,name,type:NETWORKS[p.network],network:p.network,sourceId:p.id,sourceKind:'charging-map',sourceUrl:SOURCE,
     address:p.address.trim(),displayAddress:p.address.split(',')[0].trim(),city:p.city.trim(),state:p.state,country,lat,lng,coordinatePrecision:'map-pin',coordinateSource:TILES,
     chargerCount:count,maxKw,maxPowerLabel:maxKw>0?`Up to ${maxKw} kW`:null,
+    reliabilityGrade:/^[A-F][+-]?$/.test(p.score || '') ? p.score : null,
     rivianOnly:typeof p.rivianonly==='boolean'?p.rivianonly:null,
     capabilities:['charging'],services:[NETWORKS[p.network]==='RAN'?'DC Fast Charging':'Level 2 Charging'],
     status:'unknown',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,

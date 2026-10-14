@@ -46,6 +46,10 @@
     const tone = allowed.includes(record.reliabilityTone) ? record.reliabilityTone : ({A:"emerald",B:"lime"}[grade] || "neutral");
     return `<span class="reliability-badge reliability-${tone}${compact ? " reliability-compact" : ""}" role="img" aria-label="Reliability ${escape(grade)}"><span aria-hidden="true">${escape(grade)}</span></span>`;
   }
+  function locationGrade(p, compact = false) {
+    const grade = p.reliabilityGrade;
+    return gradeBadge(/^[A-F][+-]?$/.test(grade || "") ? {reliabilityGrade:grade, reliabilityTone:p.roamer?.reliabilityGrade === grade ? p.roamer.reliabilityTone : null} : p.roamer, compact);
+  }
   function hasReportedIssue(status) {
     return /^(?:inoperable|offline|out of service|maintenance|under maintenance|unavailable|downtime|outage|temporarily closed)$/i.test(status || "");
   }
@@ -123,5 +127,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, relatedPlaces };
+  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, locationGrade, relatedPlaces };
 });
