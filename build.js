@@ -5,7 +5,7 @@ const { buildPages } = require("./scripts/build-pages.cjs");
 const { header } = require("./js/components.js");
 const root = __dirname,
   dist = path.join(root, "dist");
-const release = "2026.42.5";
+const release = "2026.42.6";
 const locations = JSON.parse(
   fs.readFileSync(path.join(root, "data/locations.json"), "utf8"),
 );
@@ -41,6 +41,12 @@ for (const file of [
   "data/location-history.json",
 ])
   copy(file);
+// Support both extensionless and legacy admin entry URLs. These pages contain
+// only an authentication handoff; no maintenance interface is published.
+for (const route of ["admin", "admin-new"]) {
+  fs.mkdirSync(path.join(dist, route), { recursive: true });
+  fs.copyFileSync(path.join(root, "admin.html"), path.join(dist, route, "index.html"));
+}
 let index = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 index = index.replace(
   '<div data-site-header data-active="Explore"></div>',
