@@ -41,7 +41,7 @@ test('generated pages contain no review warnings or cross-location official link
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 test('current directory address supplies directions when detail-page coordinates are stale',()=>{
- const p=records.find(x=>x.slug==='scottsdale');
+ const p=require('./fixtures/location-edge-cases.json').find(x=>x.slug==='scottsdale');
  const url=new URL(M.getDirectionsUrl(p));
  assert.equal(url.searchParams.get('destination'),`${p.address}, ${p.city}, ${p.state}`);
 });

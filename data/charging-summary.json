@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-14",
+  "sourceUrl": "https://rivian.com/experience/charging#map",
+  "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
+  "coverage": [
+    [
+      -141,
+      24,
+      -50,
+      72
+    ],
+    [
+      -180,
+      50,
+      -129,
+      72
+    ],
+    [
+      -161,
+      18,
+      -154,
+      23
+    ],
+    [
+      -141,
+      60,
+      -50,
+      84
+    ]
+  ],
+  "discoveryZoom": 6,
+  "pinZoom": 12,
+  "tilesScanned": 544,
+  "splitTiles": 0,
+  "requests": 0,
+  "counts": {
+    "RAN": 161,
+    "Waypoint": 207
+  },
+  "added": [],
+  "removed": [],
+  "sha256": "07a163a2908666fd00dee5b57feb54979d1dc48d471a7ced01754db75abd9e63"
+}

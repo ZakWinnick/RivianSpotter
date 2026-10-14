@@ -4,6 +4,10 @@
 
 `npm run build` validates all generated internal routes/assets. `npm audit --omit=dev` checks the production dependency tree.
 
+Charging tests cover network classification, source facts, missing-name fallback, stable IDs through renames, inventory-loss guards, nearby cross-links, saved filters, and generated station pages. Live availability is deliberately excluded. Source-specific parser edge cases use frozen fixtures so legitimate daily data changes do not break regression checks.
+
+Charging release checks: RAN and Waypoint filters, station details, published directions, saved-page persistence, station deep links, mobile detail scrolling, nearby place links, and map overview restoration. Run the combined refresh locally, then manually dispatch the scheduled workflow on `main` and verify its data commit, deployment, and public output.
+
 Browser release checks: desktop and 390px phone layouts, tablet navigation, both themes, keyboard selection and focus return, mobile List/Map, compound filters, empty state, saved-place persistence/removal, deep links, explicit source conflicts, booking/directions URLs, correction prefill, map failure/retry and old service-worker migration. Use read-only or local test data; do not submit messages or book appointments during validation.
 
 `docs/RELEASE_VERIFICATION.md` records the current release evidence and limits. The previous Jest tests used mock interfaces that did not exercise the application and were removed.

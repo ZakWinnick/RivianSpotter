@@ -21,6 +21,8 @@
     drive: "m3 11 2-6h14l2 6M2 11h20v8H2v-8Zm3 8v3m14-3v3M5 14h3m8 0h3",
     service: "m14 3-3 4 2 4 4 2 4-3a7 7 0 0 1-9 9L5 23l-4-4 7-7a7 7 0 0 1 6-9Z",
     outpost: "m2 21 10-18 10 18H2Zm6 0 4-7 4 7",
+    bolt: "m13 2-9 12h7l-1 8 10-12h-7l1-8Z",
+    plug: "M8 2v5m8-5v5M6 7h12v4a6 6 0 0 1-12 0V7Zm6 10v5",
     check: "m4 12 5 5L20 6",
     clock: "M12 6v6l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0",
     map: "m2 5 6-3 8 3 6-3v17l-6 3-8-3-6 3V5Zm6-3v17m8-14v17",
@@ -29,6 +31,17 @@
   };
   function icon(name, cls = "") {
     return `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name] || paths.pin}"/></svg>`;
+  }
+  function escape(value) {
+    return String(value ?? "").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function relatedPlaces(items, heading) {
+    if (!items?.length) return "";
+    return `<section class="related-places"><h3>${heading}</h3>${items.map(p=>`<a class="link-row" href="/locations/${encodeURIComponent(p.slug)}/"><span><strong>${escape(p.name)}</strong><br><small>${escape(p.type)}${p.chargerCount != null ? ` · ${p.chargerCount} ${p.chargerCount===1?'charger':'chargers'}` : ''}</small></span>${icon('chevron')}</a>`).join('')}</section>`;
+  }
+  function chargingDetails(p) {
+    const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
+    return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
   function header(active = "") {
     return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Rivian Spotter home"><img src="/assets/spotter-mark.svg" width="28" height="34" alt=""><span>RIVIAN <span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
@@ -88,5 +101,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { header, footer, icon, mount };
+  return { header, footer, icon, mount, chargingDetails, relatedPlaces };
 });

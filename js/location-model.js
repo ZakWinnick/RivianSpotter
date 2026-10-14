@@ -26,6 +26,19 @@
       Math.abs(p.lng) <= 180
     );
   }
+  function isCharging(p) { return p?.sourceKind === "charging-map"; }
+  function isMapped(p) { return coordinates(p) && ["exact", "map-pin"].includes(p.coordinatePrecision); }
+  function chargingSummary(p) {
+    return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
+      p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
+  }
+  function combineLocations(places, chargers) {
+    const active = chargers.filter(p=>p.listed!==false);
+    return [...places.map(p=>({...p, chargingStations: active.filter(c=>c.state===p.state && isMapped(p) && distanceMiles(p,c)<=0.15)
+      .map(c=>({id:c.id,slug:c.slug,name:c.name,type:c.type,chargerCount:c.chargerCount,maxKw:c.maxKw}))})),
+      ...chargers.map(c=>({...c, nearbyPlaces: places.filter(p=>p.state===c.state && isMapped(p) && distanceMiles(c,p)<=0.15)
+        .map(p=>({id:p.id,slug:p.slug,name:p.name,type:p.type}))}))];
+  }
   function formatDate(value) {
     if (!value) return "Date unavailable";
     const d = new Date(String(value).slice(0, 10) + "T12:00:00Z");
@@ -186,6 +199,7 @@
     const q = (f.query || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
     return list.filter(
       (p) =>
+        (p.listed !== false || f.savedOnly) &&
         q.every((w) =>
           [
             p.name,
@@ -194,6 +208,7 @@
             p.state,
             p.country,
             p.type,
+            p.network,
             ...(p.services || []),
           ]
             .join(" ")
@@ -213,6 +228,10 @@
     );
   }
   function getDirectionsUrl(p) {
+    if (isCharging(p) && isMapped(p)) {
+      const destination = p.address || `${p.lat},${p.lng}`;
+      return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+    }
     const published = safeUrl(p.officialDirectionsUrl);
     if (published && p.coordinatePrecision === "exact" && new URL(published).hostname === "maps.app.goo.gl") return published;
     return (p.sourceKind === "directory" && p.address && p.city && p.state) ||
@@ -250,6 +269,10 @@
     );
   }
   return {
+    isCharging,
+    isMapped,
+    chargingSummary,
+    combineLocations,
     safeUrl,
     coordinates,
     formatDate,

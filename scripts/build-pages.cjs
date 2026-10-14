@@ -5,6 +5,20 @@ const M = require("../js/location-model.js"),
   e = M.escapeHtml;
 const BASE = "https://rivianspotter.com";
 const regions = {
+  AK: "Alaska",
+  AL: "Alabama",
+  AR: "Arkansas",
+  DC: "District of Columbia",
+  MS: "Mississippi",
+  MB: "Manitoba",
+  NB: "New Brunswick",
+  NL: "Newfoundland and Labrador",
+  NS: "Nova Scotia",
+  NT: "Northwest Territories",
+  NU: "Nunavut",
+  PE: "Prince Edward Island",
+  SK: "Saskatchewan",
+  YT: "Yukon",
   AB: "Alberta",
   AZ: "Arizona",
   BC: "British Columbia",
@@ -66,7 +80,7 @@ function shell({
   content,
   structured,
 }) {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#244e3c"><title>${e(title)} · Rivian Spotter</title><meta name="description" content="${e(description)}"><link rel="canonical" href="${BASE}${url}"><meta property="og:title" content="${e(title)} · Rivian Spotter"><meta property="og:description" content="${e(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${BASE}${url}"><link rel="icon" href="/assets/spotter-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css"><script defer src="/js/components.js"></script>${page ? '<script defer src="/js/location-model.js"></script><script defer src="/js/locations.js"></script><script defer src="/js/app.js"></script>' : ""}${structured ? '<script type="application/ld+json">' + JSON.stringify(structured).replace(/</g, "\\u003c") + "</script>" : ""}</head><body data-page="${page}"${slug ? ' data-slug="' + e(slug) + '"' : ""}>${U.header(active)}<main id="main" class="page ${page === "location" ? "location-page" : ""}">${content}${U.footer()}</main><div id="toast" class="toast" role="status" hidden></div></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#244e3c"><title>${e(title)} · Rivian Spotter</title><meta name="description" content="${e(description)}"><link rel="canonical" href="${BASE}${url}"><meta property="og:title" content="${e(title)} · Rivian Spotter"><meta property="og:description" content="${e(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${BASE}${url}"><link rel="icon" href="/assets/spotter-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css"><script defer src="/js/components.js"></script>${page ? '<script defer src="/js/location-model.js"></script><script defer src="/js/locations.js"></script><script defer src="/js/charging.js"></script><script defer src="/js/app.js"></script>' : ""}${structured ? '<script type="application/ld+json">' + JSON.stringify(structured).replace(/</g, "\\u003c") + "</script>" : ""}</head><body data-page="${page}"${slug ? ' data-slug="' + e(slug) + '"' : ""}>${U.header(active)}<main id="main" class="page ${page === "location" ? "location-page" : ""}">${content}${U.footer()}</main><div id="toast" class="toast" role="status" hidden></div></body></html>`;
 }
 function linkRow(p) {
   return `<a class="link-row" href="${M.locationUrl(p)}"><span><strong>${e(p.name)}</strong><br><small>${e(p.type)} · ${e(p.city)}, ${e(p.state)}</small></span>${U.icon("chevron")}</a>`;
@@ -76,6 +90,8 @@ function section(title, body) {
 }
 function buildPages(dist, list, summary = {}) {
   const routes = [];
+  const routable = list;
+  list = list.filter(p => p.listed !== false);
   function write(url, html) {
     const file = url.endsWith("/") ? url + "index.html" : url;
     fs.mkdirSync(path.dirname(path.join(dist, file)), { recursive: true });
@@ -86,8 +102,9 @@ function buildPages(dist, list, summary = {}) {
       .map((p) => p.lastVerified || "")
       .sort()
       .at(-1),
-    states = [...new Set(list.map((p) => p.state))].filter(Boolean).sort(),
+    states = [...new Set(routable.map((p) => p.state))].filter(Boolean).sort(),
     official = list.filter((p) => p.sourceKind === "directory");
+  const additions = [...(summary.added || []), ...(summary.charging?.added || [])];
   const header = (eyebrow, title, body) =>
     `<header class="page-header"><p class="eyebrow">${eyebrow}</p><h1>${title}</h1><p>${body}</p></header>`;
   write(
@@ -103,7 +120,7 @@ function buildPages(dist, list, summary = {}) {
         header(
           "Your personal shortlist",
           "A few places to go.",
-          "Save a Space for the weekend, a service location for later, or an Outpost along the way.",
+          "Save a Space for the weekend, a service location for later, or a charging stop along the way.",
         ) +
         '<p id="saved-count" class="muted">Loading your saved places…</p><div id="saved-results" class="saved-list"></div>' +
         section(
@@ -126,7 +143,7 @@ function buildPages(dist, list, summary = {}) {
           "Less searching.<br>More getting there.",
           "Rivian Spotter brings Rivian’s places into one useful map, so you can decide where to go and what to expect.",
         ) +
-        `<div class="content-grid">${section("A place for every kind of visit.", '<p>Explore Spaces to see the vehicles, find a location offering demo drives, check a service address, or make an Outpost part of a trip.</p><p>Each location page brings together its published address, contact details, hours, and official links. Filters use the capabilities confirmed by Rivian’s sources.</p><p><a href="/regions/">Browse the regional directory →</a></p>')}${section("Built for a useful next step.", "<p>Save a shortlist, share an individual place, and get directions for your next visit. General opening hours and service hours remain separate.</p><p>Rivian Spotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive. Rivian names and trademarks belong to their owners.</p>")}</div><section id="sources" class="content-section"><h2>Information from Rivian.</h2><p>Location information comes from <a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">Rivian’s official location directory</a>, its location pages, and its service-center map. Location pages include official links and the latest source refresh date.</p><p>Opening hours use the destination’s local time zone. Visiting, service, and charging hours are listed separately where published. Service visits and demo drives can be arranged directly with Rivian.</p><p>This directory covers Rivian places, including charging offered at those locations. Charging hours describe published access, not live charger availability.</p></section>${section("Privacy, in plain language.", '<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used locally to sort places and are not saved by Rivian Spotter. The map provider receives normal map requests for the area you view.</p><p>Maps are provided by Mapbox and its data partners. Their <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We do not add advertising trackers. A service worker stores public pages and location data on your device for faster repeat visits and limited offline access.</p><p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>')}${section("Help keep the map useful.", '<p>A moved address, new opening, or changed schedule is worth sharing.</p><p><a class="button" href="/contact.html">Report an update</a></p>')}`,
+        `<div class="content-grid">${section("A place for every kind of visit.", '<p>Explore Spaces to see the vehicles, find a location offering demo drives, check a service address, or make an Outpost part of a trip.</p><p>Each location page brings together its published address, contact details, hours, and official links. Filters use the capabilities confirmed by Rivian’s sources.</p><p><a href="/regions/">Browse the regional directory →</a></p>')}${section("Built for a useful next step.", "<p>Save a shortlist, share an individual place, and get directions for your next visit. General opening hours and service hours remain separate.</p><p>Rivian Spotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive. Rivian names and trademarks belong to their owners.</p>")}</div><section id="sources" class="content-section"><h2>Information from Rivian.</h2><p>Location information comes from <a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">Rivian’s official location directory</a>, its location pages, its service-center map, and its <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener">charging map</a>. Location pages include official links and the latest source refresh date.</p><p>Opening hours use the destination’s local time zone. Visiting, service, and charging hours are listed separately where published. Service visits and demo drives can be arranged directly with Rivian.</p><p>This directory includes Rivian Adventure Network (RAN) and Waypoint charging locations from Rivian’s public charging map. Charger counts, published maximum power and access are shown on station pages. Map pins come from the official map; directions use the published station address when available. These are station details, not live charger availability. Nearby charging and Rivian places link to each other without merging their services or hours.</p></section>${section("Privacy, in plain language.", '<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used locally to sort places and are not saved by Rivian Spotter. The map provider receives normal map requests for the area you view.</p><p>Maps are provided by Mapbox and its data partners. Their <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We do not add advertising trackers. A service worker stores public pages and location data on your device for faster repeat visits and limited offline access.</p><p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>')}${section("Help keep the map useful.", '<p>A moved address, new opening, or changed schedule is worth sharing.</p><p><a class="button" href="/contact.html">Report an update</a></p>')}`,
     }),
   );
   write(
@@ -146,7 +163,7 @@ function buildPages(dist, list, summary = {}) {
         `<div class="content-grid"><section><form id="contact-form"><div class="form-field"><label for="contact-location">Location name <span class="muted">(optional)</span></label><input id="contact-location" name="location" maxlength="160" placeholder="e.g. Venice Space"></div><div class="form-field"><label for="contact-kind">What needs updating?</label><select id="contact-kind"><option>Location details</option><option>New location</option><option>Hours or temporary closure</option><option>Map or website issue</option><option>Other feedback</option></select></div><div class="form-field"><label for="contact-message">What should we know?</label><textarea id="contact-message" name="message" required maxlength="5000" placeholder="Tell us what changed and what the correct information should be."></textarea></div><div class="form-field"><label for="contact-source">Official source link <span class="muted">(optional)</span></label><input id="contact-source" type="url" name="source" placeholder="https://rivian.com/…"></div><button class="button primary" type="submit">Prepare email ${U.icon("arrow")}</button><p class="muted" style="font-size:.8rem;margin-top:12px">Opens a draft in your mail app. Review it there before sending.</p><p id="contact-status" class="notice" style="margin-top:20px" role="status" hidden>Your mail app should open with a draft. If it doesn’t, email support@rivianspotter.com directly. This form has not sent a message.</p></form></section><aside class="stack" style="align-content:start"><h2>Every good detail helps.</h2><p class="muted">An official link, complete address, or photo of posted hours can help us update the directory.</p><p class="muted">For vehicle support, service appointments, or booking changes, contact Rivian directly.</p><a href="mailto:support@rivianspotter.com">support@rivianspotter.com</a><a href="https://rivian.com/support" target="_blank" rel="noopener">Rivian support →</a></aside></div>`,
     }),
   );
-  const summaryBlock = `<div class="stat-strip"><div><strong>${list.length}</strong><span>Places in the directory</span></div><div><strong>${states.length}</strong><span>States & provinces</span></div><div><strong>${(summary.added || []).length}</strong><span>Places added this refresh</span></div></div>`;
+  const summaryBlock = `<div class="stat-strip"><div><strong>${list.length}</strong><span>Places in the directory</span></div><div><strong>${states.length}</strong><span>States & provinces</span></div><div><strong>${additions.length}</strong><span>Places added this refresh</span></div></div>`;
   write(
     "/updates.html",
     shell({
@@ -162,13 +179,14 @@ function buildPages(dist, list, summary = {}) {
           `Updated from Rivian on ${M.formatDate(latest)}. Explore new additions and the latest location details.`,
         ) +
         summaryBlock +
+        (summary.charging ? section("Rivian Charging, on the Map.", `<p>${summary.charging.counts.RAN} Rivian Adventure Network stations and ${summary.charging.counts.Waypoint} Waypoint locations. Charging data last refreshed ${M.formatDate(summary.charging.date)}.</p><div class="actions"><a class="button" href="/?type=RAN&view=map">Explore RAN</a><a class="button" href="/?type=Waypoint&view=map">Explore Waypoints</a></div>`) : "") +
         section(
-          "The October directory refresh.",
-          `<p>Reconciled the complete official location directory with Rivian’s service-location data and the previous Rivian Spotter inventory. Location pages now separate visiting hours from service hours, identify their source, and show when they were updated.</p><p>Duplicate entries have been consolidated while preserving historical links. A changed address is not treated as an opening, and a missing listing is not treated as a closure.</p><p><a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">View Rivian’s official directory →</a></p>`,
+          "The Latest Directory Refresh.",
+          `<p>The directory and charging map refresh automatically each day from Rivian’s published sources. A failed refresh keeps the last successful dataset in place.</p><p>Reconciled the complete official location directory with Rivian’s service-location data and the previous Rivian Spotter inventory. Location pages now separate visiting hours from service hours, identify their source, and show when they were updated.</p><p>Duplicate entries have been consolidated while preserving historical links. A changed address is not treated as an opening, and a missing listing is not treated as a closure.</p><p><a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">View Rivian’s official directory →</a></p>`,
         ) +
         section(
           "New to this directory.",
-          `<p>These are new records added in this refresh; they are not necessarily newly opened locations.</p><div>${(summary.added || []).map(item => list.find(p=>p.id===item.id)).filter(Boolean)
+          `${additions.length ? "<p>These are new records added in this refresh; they are not necessarily newly opened locations.</p>" : "<p>No new locations were added in this refresh.</p>"}<div>${additions.map(item => list.find(p=>p.id===item.id)).filter(Boolean)
             .map(linkRow)
             .join(
               "",
@@ -212,12 +230,12 @@ function buildPages(dist, list, summary = {}) {
         ),
     }),
   );
-  for (const p of list) {
+  for (const p of routable) {
     const url = M.locationUrl(p),
       official = M.getOfficialLink(p),
       directions = M.getDirectionsUrl(p),
       booking = M.safeUrl(p.bookingUrl, "rivian.com"),
-      description = `${p.name} in ${p.city}, ${regions[p.state] || p.state}. Published hours, address, official links and visit information.`,
+      description = M.isCharging(p) ? `${p.name}: ${p.network} charging in ${p.city}, ${regions[p.state] || p.state}. ${M.chargingSummary(p)}. Address, access and directions.` : `${p.name} in ${p.city}, ${regions[p.state] || p.state}. Published hours, address, official links and visit information.`,
       nearby = list
         .filter((x) => x.id !== p.id && x.state === p.state)
         .sort((a, b) => M.distanceMiles(p, a) - M.distanceMiles(p, b))
@@ -237,13 +255,13 @@ function buildPages(dist, list, summary = {}) {
         .join("; ");
     const structured = {
       "@context": "https://schema.org",
-      "@type": "Place",
+      "@type": M.isCharging(p) ? "ElectricVehicleChargingStation" : "Place",
       name: p.name,
       url: BASE + url,
       description,
       address: {
         "@type": "PostalAddress",
-        streetAddress: p.address,
+        streetAddress: p.displayAddress || p.address,
         addressLocality: p.city,
         addressRegion: p.state,
         addressCountry:
@@ -254,7 +272,7 @@ function buildPages(dist, list, summary = {}) {
               : p.country,
       },
       ...(p.phone ? { telephone: p.phone } : {}),
-      ...(p.coordinatePrecision === "exact" && M.coordinates(p)
+      ...(M.isMapped(p)
         ? {
             geo: {
               "@type": "GeoCoordinates",
@@ -274,7 +292,7 @@ function buildPages(dist, list, summary = {}) {
         page: "location",
         slug: p.slug,
         structured,
-        content: `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Explore</a><span>/</span><a href="/regions/${p.state.toLowerCase()}/">${e(regions[p.state] || p.state)}</a></nav><header class="page-header"><p class="eyebrow">${e(p.type)}</p><h1>${e(p.name)}</h1><address>${e(p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")} · ${p.country === "CA" ? "Canada" : p.country === "US" ? "United States" : e(p.country)}</address></header><div class="actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}<a class="button" href="/?location=${e(p.slug)}&view=map">${U.icon("map")}${p.coordinatePrecision === "exact" ? "Show on map" : "View in explorer"}</a>${booking ? `<a class="button" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="false">${U.icon("save")}Save</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${e(p.slug)}">Report an update</a></div><div class="content-grid"><section class="content-section"><h2>Plan your visit.</h2>${p.status === "planned" ? '<p class="notice">Coming soon.</p>' : ""}${p.status === "temporarily-closed" ? '<p class="notice">Temporarily closed. Check the official page for reopening information.</p>' : ""}<h3 style="margin:24px 0 12px">Visiting hours</h3><p class="hours-text">${e(p.hours || "Visiting hours not listed.")}</p>${p.serviceHours ? `<h3 style="margin:24px 0 12px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:20px">Service coming soon. The visiting hours above remain separate.</p>' : ""}${p.chargingHours ? `<h3 style="margin:24px 0 12px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${exceptionText ? `<p class="notice warning" style="margin-top:20px">Published schedule note: ${e(exceptionText)}. Check the official page for current exceptions.</p>` : ""}${p.timezone ? `<p style="font-size:.8rem;margin-top:16px">Times are local to ${e(p.timezone.replaceAll("_", " "))}.</p>` : ""}${(p.services || []).length ? `<h3 style="margin:32px 0 12px">At this location</h3><div class="actions">${p.services.map((s) => `<span class="tag">${e(s)}</span>`).join("")}</div>` : ""}${p.phone ? `<p style="margin-top:24px"><a href="tel:${e(p.phone.replace(/[^+\d]/g, ""))}">${e(p.phone)}</a></p>` : ""}</section><aside class="content-section"><h2>Know before you go.</h2>${p.lastVerified ? `<p class="source-date">Updated from Rivian · ${M.formatDate(p.lastVerified)}</p>` : ""}<p style="margin-top:20px">${p.type === "Service Center" ? "Service visits may require an appointment. Confirm availability directly with Rivian." : "Demo-drive availability and vehicle displays can vary. Use the official page to check before making a special trip."}</p>${official ? `<p><a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a></p>` : ""}<p style="font-size:.8rem"><a href="/about.html#sources">About our sources</a></p></aside></div>${nearby.length ? section("More places in " + e(regions[p.state] || p.state) + ".", nearby.map(linkRow).join("")) : ""}`,
+        content: `<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Explore</a><span>/</span><a href="/regions/${p.state.toLowerCase()}/">${e(regions[p.state] || p.state)}</a></nav><header class="page-header"><p class="eyebrow">${e(p.type)}</p><h1>${e(p.name)}</h1><address>${e(p.displayAddress || p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")} · ${p.country === "CA" ? "Canada" : p.country === "US" ? "United States" : e(p.country)}</address></header><div class="actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}<a class="button" href="/?location=${e(p.slug)}&view=map">${U.icon("map")}${M.isMapped(p) ? "Show on Map" : "View in explorer"}</a>${booking ? `<a class="button" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="false">${U.icon("save")}Save</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${e(p.slug)}">Report an update</a></div><div class="content-grid"><section class="content-section"><h2>Plan your visit.</h2>${p.status === "planned" ? '<p class="notice">Coming soon.</p>' : ""}${p.status === "temporarily-closed" ? '<p class="notice">Temporarily closed. Check the official page for reopening information.</p>' : ""}${M.isCharging(p) ? U.chargingDetails(p) : `<h3 style="margin:24px 0 12px">Visiting hours</h3><p class="hours-text">${e(p.hours || "Visiting hours not listed.")}</p>${p.serviceHours ? `<h3 style="margin:24px 0 12px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:20px">Service coming soon. The visiting hours above remain separate.</p>' : ""}${p.chargingHours ? `<h3 style="margin:24px 0 12px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${exceptionText ? `<p class="notice warning" style="margin-top:20px">Published schedule note: ${e(exceptionText)}. Check the official page for current exceptions.</p>` : ""}${p.timezone ? `<p style="font-size:.8rem;margin-top:16px">Times are local to ${e(p.timezone.replaceAll("_", " "))}.</p>` : ""}${(p.services || []).length ? `<h3 style="margin:32px 0 12px">At this location</h3><div class="actions">${p.services.map((s) => `<span class="tag">${e(s)}</span>`).join("")}</div>` : ""}${p.phone ? `<p style="margin-top:24px"><a href="tel:${e(p.phone.replace(/[^+\d]/g, ""))}">${e(p.phone)}</a></p>` : ""}${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}</section><aside class="content-section"><h2>Know before you go.</h2>${p.lastVerified ? `<p class="source-date">Updated from Rivian · ${M.formatDate(p.lastVerified)}</p>` : ""}<p style="margin-top:20px">${M.isCharging(p) ? "Charger count and maximum power are published station details. Hours, pricing and connector availability can vary by site." : p.type === "Service Center" ? "Service visits may require an appointment. Confirm availability directly with Rivian." : "Demo-drive availability and vehicle displays can vary. Use the official page to check before making a special trip."}</p>${official ? `<p><a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a></p>` : ""}<p style="font-size:.8rem"><a href="/about.html#sources">About our sources</a></p></aside></div>${nearby.length ? section("More places in " + e(regions[p.state] || p.state) + ".", nearby.map(linkRow).join("")) : ""}`,
       }),
     );
   }
@@ -304,7 +322,7 @@ function buildPages(dist, list, summary = {}) {
     shell({
       title: "Browse by region",
       description:
-        "Find Rivian Spaces, Demo Centers, Service Centers and Outposts by state or province.",
+        "Find Rivian Spaces, Demo Centers, Service Centers, Outposts, RAN and Waypoint charging by state or province.",
       url: "/regions/",
       content:
         header(

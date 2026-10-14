@@ -32,3 +32,9 @@ GitHub Actions runs behavioral tests, a static build and a production dependency
 The obsolete PHP/VPS administration path is retired. No repository write credentials belong in public JavaScript, environment files or browser storage. `/admin`, `/admin/`, and the legacy admin URLs route directly to GitHub’s authenticated inventory editor. No maintenance interface is hosted publicly.
 
 See [operations](docs/OPERATIONS.md), [testing](TESTING.md), [design](DESIGN.md) and [product brief](PRODUCT.md).
+
+## Charging and unattended refresh
+
+RAN and Waypoint stations live in `data/charging.json`, with source coverage and refresh counts in `data/charging-summary.json`. They join the existing directory in the browser and generated location/region pages. The importer intentionally omits volatile availability and score fields. Nearby places cross-link without combining hours or access.
+
+`npm run refresh:all` stages both official inventories, validates them, and only then replaces the source data and browser bundles. `npm run refresh:charging` refreshes charging alone. See [automatic refresh](docs/AUTOMATIC_REFRESH.md).

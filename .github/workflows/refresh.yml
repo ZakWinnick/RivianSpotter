@@ -1,0 +1,63 @@
+name: Refresh official location and charging data
+
+on:
+  schedule:
+    - cron: '23 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Share the publishing lock with ordinary releases. Never cancel an active Pages deployment.
+concurrency:
+  group: pages-refs/heads/main
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Fetch and validate both official inventories
+        run: npm run refresh:all
+      - name: Build and test the refreshed release
+        run: npm run build && npm test && npm audit --omit=dev
+      - name: Save the validated data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json js/locations.js js/charging.js about.html contact.html saved.html stats.html updates.html 404.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh official Rivian location and charging data'
+            # A concurrent human push makes this fail safely; do not overwrite or rebase unseen code.
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Record source coverage
+        run: |
+          node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} RAN stations, ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
