@@ -2,13 +2,11 @@
   {
     "version": "2026.42.13",
     "date": "2026-10-14",
-    "title": "More ways to explore Rivian locations",
+    "title": "A better way to explore",
     "changes": [
-      "Explore Charging and Rivian Places in separate views, with distinct filters and map symbols for each location type.",
-      "Find charging prices, connector types, charging speeds, and individual port details where available, with color-coded ratings beside location names.",
-      "Browse location details with a close button that stays visible as you scroll. Closing details returns to the full map overview.",
-      "Find nearby locations with the new crosshairs control, and save places for later.",
-      "Location information refreshes automatically, with dated charger issue reports available in location details."
+      "Redesigned map with dedicated views for charging and Rivian places.",
+      "Charging prices, connectors, speeds, and color-coded ratings.",
+      "Automatic location updates and charger issue reports."
     ]
   }
 ]
