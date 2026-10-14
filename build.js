@@ -9,7 +9,8 @@ const places = JSON.parse(
   fs.readFileSync(path.join(root, "data/locations.json"), "utf8"),
 );
 const charging = require('./scripts/generate-charging.cjs').generate();
-const locations = require('./js/location-model.js').combineLocations(places, charging);
+const roamer = require('./scripts/generate-roamer.cjs').generate();
+const locations = require('./js/location-model.js').combineLocations(places, charging, roamer.stations);
 // Data-only scheduled releases also invalidate bundled browser assets and offline snapshots.
 const release = require('./package.json').version + '-' + require('node:crypto').createHash('sha256')
   .update(JSON.stringify(locations)).digest('hex').slice(0, 12);
@@ -39,6 +40,8 @@ for (const file of [
   "js/config.js",
   "js/locations.js",
   "js/charging.js",
+  "js/roamer.js",
+  "data/roamer.json",
   "js/admin.js",
   "assets/spotter-mark.svg",
   "data/locations.json",
@@ -72,6 +75,7 @@ const summary = JSON.parse(
   fs.readFileSync(path.join(root, "data/refresh-summary.json"), "utf8"),
 );
 summary.charging = JSON.parse(fs.readFileSync(path.join(root, 'data/charging-summary.json'), 'utf8'));
+summary.roamer = roamer;
 const routes = buildPages(dist, locations, summary);
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 function versionAssets(dir) {

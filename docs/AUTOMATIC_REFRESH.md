@@ -30,3 +30,13 @@ Nearby Rivian places within 0.15 miles cross-link as **Nearby**, without asserti
 Inspect the failed Actions step. A temporary source failure can be retried manually or will be retried by the next scheduled run. A source schema change or legitimate major inventory reduction requires an importer/guard update before unattended publication resumes. Do not bypass the validators by publishing partial data.
 
 For local investigation, `node scripts/refresh-charging.mjs --cache-dir /tmp/spotter-charging-recovery` resumes a single interrupted snapshot. This cache must not be reused for a later day's refresh. Scheduled runs always use a fresh temporary cache.
+
+## Rivian Roamer enrichment
+
+The same daily workflow retrieves Roamer's public RAN network page once. It imports grades, prices, connector counts, average peak power, source IDs/pins, and explicit site condition reports. No private endpoints, credentials, live stall counts, or inferred failures are used. `data/roamer.json` joins official stations by exact source ID; official specifications and coordinates remain authoritative. Newly detected source IDs are recorded in the Updates page; map inventory continues to come from Rivian's official source.
+
+At most six individual detail pages are retrieved per run, oldest observations first, with 15 seconds between requests. These add rated port power, hours, amenities, idle fees, and individual connector/features. This rotating detail coverage takes about 27 days for 160 sites; the network page's grades/pricing/issue reports are checked daily. The UI dates network and detail observations separately.
+
+A 429 response stops requests immediately and persists a cooldown of at least 24 hours (or a longer Retry-After). A source error retains the previous facts; optional Roamer retrieval can fail without blocking valid official updates. Build, test and dependency audit failures always block publication. Network inventory loss over 15%, duplicate IDs, missing pins or incomplete cards are rejected. Grade, price, connector, explicit condition and detail changes are retained for 30 days (up to 200 events). A new source listing is not claimed as a newly opened station; an absent or unknown condition is not a charger outage.
+
+The initial October 14 snapshot includes 160 network cards and 17 detail pages. A rate-limit response stopped further detail collection and established the first cooldown. Scheduled runs use a fresh temporary cache and resume the rotating batch after that cooldown. For parser recovery only, `ROAMER_CACHE_DIR=/path/to/saved/html npm run refresh:roamer -- --cache-only` imports existing HTML without requesting the source.

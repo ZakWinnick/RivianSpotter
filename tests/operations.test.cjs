@@ -154,7 +154,10 @@ test('CI blocks on tests, build, and production dependency audit; Pages uses dis
   assert.match(workflows, /node --test tests\/\*\.test\.cjs/);
   assert.match(workflows, /npm run build/);
   assert.match(workflows, /npm audit --omit=dev/);
-  assert.ok(!/continue-on-error:\s*true|secrets\./.test(workflows));
+  // Only optional Roamer retrieval may retain its previous snapshot. Release gates remain blocking.
+  const optionalRoamer = 'id: roamer\n        continue-on-error: true\n        run: npm run refresh:roamer';
+  assert.equal(workflows.split(optionalRoamer).length, 2);
+  assert.ok(!/continue-on-error:\s*true|secrets\./.test(workflows.replace(optionalRoamer, '')));
   assert.doesNotMatch(read('.github/workflows/test.yml'), /contents:\s*write/);
   const refresh = read('.github/workflows/refresh.yml');
   assert.doesNotMatch(refresh, /pull_request|--force/);
@@ -194,32 +197,32 @@ test('denied cache storage cannot hide valid network assets', async () => {
   assert.equal(await response.text(), 'uncached stylesheet');
 });
 
-test('release 2026.42.9 installation fetches fresh versioned shell assets', async () => {
+test('release 2026.42.10 installation fetches fresh versioned shell assets', async () => {
   const requests = [];
   const w = worker(async req => { requests.push(req); return new Response('fresh shell'); });
   w.context.Request = Request;
   let completion;
   w.listeners.install({waitUntil: value => {completion = value;}});
   await completion;
-  assert.match(w.value('CACHE_VERSION'), /2026\.42\.9$/);
+  assert.match(w.value('CACHE_VERSION'), /2026\.42\.10$/);
   const assets = w.value('STATIC_ASSETS');
   assert.equal(requests.length, assets.length);
   assert.ok(requests.every(req => req.cache === 'reload' || req.cache === 'no-store'));
   assert.ok(assets.includes('/js/config.js'));
   for (const req of requests) {
     const url = new URL(req.url);
-    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.9');
+    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.10');
   }
 });
 
 test('versioned asset cache keys are distinct while data and page keys stay stable', () => {
   const w = worker();
   for (const pathname of ['/js/app.js', '/js/components.js', '/css/style.css', '/js/config.js']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.9`);
-    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.9`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.10`);
+    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.10`);
   }
   for (const pathname of ['/data/locations.json', '/index.html', '/regions/']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.9`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.10`);
     assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}`);
   }
 });

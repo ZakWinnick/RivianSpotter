@@ -1,0 +1,29 @@
+{
+  "joshua-tree": {
+    "name": "Joshua Tree, CA Charging Outpost",
+    "address": "61142 29 Palms Hwy",
+    "source": "https://rivian.com/spaces/joshua-tree",
+    "directions": "https://maps.app.goo.gl/dvkAangwEn3PMTFT9",
+    "lat": 34.1355508,
+    "lng": -116.3294995,
+    "state": "CA"
+  },
+  "yosemite": {
+    "name": "Yosemite, CA Charging Outpost",
+    "address": "18707 Main St",
+    "source": "https://rivian.com/spaces/yosemite",
+    "directions": "https://maps.app.goo.gl/j7niKFV2eSFJARwg6",
+    "lat": 37.8385665,
+    "lng": -120.2309664,
+    "state": "CA"
+  },
+  "hamptons": {
+    "name": "The Hamptons, NY Charging Outpost",
+    "address": "1 Montauk Hwy",
+    "source": "https://rivian.com/spaces/hamptons",
+    "directions": "https://maps.app.goo.gl/14FApiGJGjnd98LSA",
+    "lat": 40.8986727,
+    "lng": -72.3723695,
+    "state": "NY"
+  }
+}

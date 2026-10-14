@@ -32,7 +32,9 @@
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
-  function combineLocations(places, chargers) {
+  function combineLocations(places, chargers, observations = []) {
+    const byId = new Map(observations.map(p=>[p.sourceId,p]));
+    chargers = chargers.map(p=>({...p,roamer:byId.get(p.sourceId) || null}));
     const active = chargers.filter(p=>p.listed!==false);
     return [...places.map(p=>({...p, chargingStations: active.filter(c=>c.state===p.state && isMapped(p) && distanceMiles(p,c)<=0.15)
       .map(c=>({id:c.id,slug:c.slug,name:c.name,type:c.type,chargerCount:c.chargerCount,maxKw:c.maxKw}))})),
@@ -215,6 +217,7 @@
             .toLowerCase()
             .includes(w),
         ) &&
+        (!f.mode || f.mode === "all" || (f.mode === "charge" ? isCharging(p) : !isCharging(p))) &&
         (!f.type || p.type === f.type) &&
         (!f.state || p.state === f.state) &&
         (!f.intent || (p.capabilities || []).includes(f.intent)) &&

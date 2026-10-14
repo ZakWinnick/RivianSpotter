@@ -481,10 +481,10 @@ const rivianLocations = [
     "address": "61142 29 Palms Hwy",
     "city": "Joshua Tree",
     "postalCode": "92252",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.1355508,
+    "lng": -116.3294995,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/dvkAangwEn3PMTFT9",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sun: 9:00am - 5:00pm\n24-hour restroom access",
@@ -511,7 +511,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/dvkAangwEn3PMTFT9",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
   },
   {
     "id": 13,
@@ -1023,10 +1023,10 @@ const rivianLocations = [
     "address": "18707 Main St",
     "city": "Groveland",
     "postalCode": "95321",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 37.8385665,
+    "lng": -120.2309664,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/j7niKFV2eSFJARwg6",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sun: 9:00am–5:00pm\n24-hour restroom access",
@@ -1053,7 +1053,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/j7niKFV2eSFJARwg6",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
   },
   {
     "id": 26,
@@ -3129,10 +3129,10 @@ const rivianLocations = [
     "address": "1 Montauk Hwy",
     "city": "Southampton",
     "postalCode": "11968",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 40.8986727,
+    "lng": -72.3723695,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/14FApiGJGjnd98LSA",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sun: 9am–5pm\n24-hour restroom access",
@@ -3161,7 +3161,7 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/14FApiGJGjnd98LSA",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin resolved from the Directions link published on the official Rivian location page."
   },
   {
     "id": 76,

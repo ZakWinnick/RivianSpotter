@@ -31,13 +31,20 @@ jobs:
       - run: npm ci
       - name: Fetch and validate both official inventories
         run: npm run refresh:all
+      - name: Check Roamer grades, pricing, and charger reports
+        id: roamer
+        continue-on-error: true
+        run: npm run refresh:roamer
+      - name: Report a retained Roamer snapshot
+        if: steps.roamer.outcome == 'failure'
+        run: echo 'Roamer could not be refreshed; the previous snapshot is retained.' >> "$GITHUB_STEP_SUMMARY"
       - name: Build and test the refreshed release
         run: npm run build && npm test && npm audit --omit=dev
       - name: Save the validated data
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json js/locations.js js/charging.js about.html contact.html saved.html stats.html updates.html 404.html
+          git add data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json js/locations.js js/charging.js data/roamer.json js/roamer.js about.html contact.html saved.html stats.html updates.html 404.html
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh official Rivian location and charging data'
             # A concurrent human push makes this fail safely; do not overwrite or rebase unseen code.

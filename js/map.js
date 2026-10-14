@@ -95,13 +95,14 @@ window.SpotterMap = (() => {
         "circle-radius": [
           "case",
           ["boolean", ["feature-state", "selected"], false],
+          16,
           12,
-          8,
         ],
         "circle-stroke-width": 2.5,
         "circle-stroke-color": "#ffffff",
       },
     });
+    map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"text-field":["match",["get","type"],"Space","◇","Demo Center","↗","Service Center","+","Outpost","△","RAN","ϟ","Waypoint","↯","•"],"text-size":16,"text-font":["Arial Unicode MS Bold"],"text-allow-overlap":true},paint:{"text-color":"#fff"}});
     if (selected) mark(selected);
   }
   function init(callback) {
@@ -123,7 +124,7 @@ window.SpotterMap = (() => {
         style:
           document.documentElement.dataset.theme === "dark"
             ? "mapbox://styles/mapbox/dark-v11"
-            : "mapbox://styles/mapbox/outdoors-v12",
+            : "mapbox://styles/mapbox/light-v11",
         ...overview(),
         minZoom: 2,
         maxZoom: 18,
@@ -223,7 +224,7 @@ window.SpotterMap = (() => {
     map.flyTo({
       center: [p.lng, p.lat],
       zoom: 12,
-      offset: innerWidth > 760 ? [-160, 0] : [0, -90],
+      offset: [0, 0],
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? 0
         : 500,
@@ -241,6 +242,7 @@ window.SpotterMap = (() => {
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
     });
   }
+  function resetOverview() { detailFocused=true; clearFocus(); }
   function bounds() {
     if (!map || !ready) return null;
     const b = map.getBounds();
@@ -252,7 +254,7 @@ window.SpotterMap = (() => {
       map.setStyle(
         document.documentElement.dataset.theme === "dark"
           ? "mapbox://styles/mapbox/dark-v11"
-          : "mapbox://styles/mapbox/outdoors-v12",
+          : "mapbox://styles/mapbox/light-v11",
       );
     }
   }
@@ -262,6 +264,7 @@ window.SpotterMap = (() => {
     update,
     focus,
     clearFocus,
+    resetOverview,
     mark,
     bounds,
     fitAll,

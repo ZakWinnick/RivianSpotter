@@ -39,9 +39,21 @@
     if (!items?.length) return "";
     return `<section class="related-places"><h3>${heading}</h3>${items.map(p=>`<a class="link-row" href="/locations/${encodeURIComponent(p.slug)}/"><span><strong>${escape(p.name)}</strong><br><small>${escape(p.type)}${p.chargerCount != null ? ` · ${p.chargerCount} ${p.chargerCount===1?'charger':'chargers'}` : ''}</small></span>${icon('chevron')}</a>`).join('')}</section>`;
   }
+  function hasReportedIssue(status) {
+    return /^(?:inoperable|offline|out of service|maintenance|under maintenance|unavailable|downtime|outage|temporarily closed)$/i.test(status || "");
+  }
+  function roamerDetails(r) {
+    if(!r || !/^https:\/\/rivianroamer\.com\/charging\/sites\/US-RIV-L\d+$/.test(r.sourceUrl||"")) return "";
+    const date = value=>new Date(value).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"UTC"});
+    const observed = date(r.observedAt), detailsDate=r.detailsObservedAt?date(r.detailsObservedAt):null;
+    const issue = hasReportedIssue(r.reportedStatus);
+    const rates = Object.entries(r.rates||{}).map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value)}<small>/kWh</small></dd></div>`).join("");
+    const ports = (r.chargers||[]).map(p=>`<tr><td>${escape(p.name)}</td><td>${escape(p.connector)}</td><td>${p.powerKw?escape(p.powerKw)+" kW":"—"}</td><td>${(p.features||[]).map(f=>`<span title="${escape(f.description)}">${escape(f.label)}</span>`).join(" · ")}</td></tr>`).join("");
+    return `<section class="roamer-details"><h3>Charging Details${r.reliabilityGrade?`<span class="roamer-grade">Roamer Grade ${escape(r.reliabilityGrade)}</span>`:""}</h3><p class="charging-note">Snapshot from <a href="${escape(r.sourceUrl)}" target="_blank" rel="noopener">Rivian Roamer</a> · ${observed}</p>${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Roamer reported “${escape(r.reportedStatus)}” on ${observed}. This is a daily snapshot.</p>`:""}${r.connectorSummary?`<div class="charging-tags"><span class="tag">${escape(r.connectorSummary)}</span></div>`:""}${rates?`<h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl><p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p>`:""}${r.averagePeakKw?`<p class="power-observation"><strong>${escape(r.averagePeakKw)} kW</strong> average peak charging power reported by Roamer. Rated maximum power is listed separately above.</p>`:""}${r.hours?`<p><strong>Charging Hours:</strong> ${escape(r.hours)}</p>`:""}${r.detailRates?.Idle?`<p><strong>Idle Fee:</strong> ${escape(r.detailRates.Idle)}</p>`:""}${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:""}${ports?`<details class="charger-table"><summary>Individual Chargers (${r.chargers.length})</summary><div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div></details>`:""}${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
+  }
   function chargingDetails(p) {
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
-    return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
+    return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer)}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
   function header(active = "") {
     return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Rivian Spotter home"><img src="/assets/spotter-mark.svg" width="28" height="34" alt=""><span>RIVIAN <span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
@@ -101,5 +113,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { header, footer, icon, mount, chargingDetails, relatedPlaces };
+  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, relatedPlaces };
 });
