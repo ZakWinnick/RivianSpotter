@@ -255,7 +255,7 @@ function buildPages(dist, list, summary = {}) {
         .join("; ");
     const structured = {
       "@context": "https://schema.org",
-      "@type": M.isCharging(p) ? "ElectricVehicleChargingStation" : "Place",
+      "@type": "Place",
       name: p.name,
       url: BASE + url,
       description,
