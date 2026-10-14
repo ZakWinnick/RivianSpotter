@@ -9,5 +9,54 @@
       "Color-coded charging ratings appear in search results, map details, saved places, and location pages.",
       "Automatic data refreshes keep location information current, with dated maintenance and charger issue reports in location details."
     ]
+  },
+  {
+    "version": "2026.06",
+    "title": "Search, directions, and mobile improvements",
+    "changes": [
+      "Added King of Prussia Space (opening Feb 21, 2026)",
+      "Updated Seattle University Village Space to open status",
+      "Added 8 new Service Centers: Long Island City NY, Iselin NJ, Martinez CA, Olathe KS, Hazelwood MO, Vaughan ON, Niagara Falls NY, Stallings NC",
+      "Removed 4 duplicate Service Center entries",
+      "Updated color palette to official Rivian brand colors (Launch Green, Rivian Blue)",
+      "Added address and zip code search via Mapbox geocoding",
+      "Added distance badges on location cards when user location is enabled",
+      "Added \"Get Directions\" button with platform-aware deep links (Apple Maps on iOS, Google Maps elsewhere)",
+      "Redesigned filter buttons as horizontal scrolling chips",
+      "Improved mobile experience with bottom sheet and swipe gestures",
+      "Added resource preloading for faster initial load",
+      "Added image optimization to build pipeline (WebP conversion)"
+    ]
+  },
+  {
+    "version": "2025.52",
+    "title": "Service Centers and improved location information",
+    "changes": [
+      "Added 34 Service Center locations from official Rivian data",
+      "Added direct links to Rivian.com for all locations",
+      "Implemented automatic dark/light mode based on system preference",
+      "Fixed mobile PWA layout and safe area spacing",
+      "Updated location hours from Rivian.com",
+      "Added La Jolla Space and San Jose Service Center",
+      "Updated README and About page with changelog",
+      "Fixed GitHub Actions deprecation errors",
+      "Added Service Centers count to stats"
+    ]
+  },
+  {
+    "version": "2025.44",
+    "title": "Rivian Spotter launches",
+    "changes": [
+      "Initial launch with Spaces, Demo Centers, and Outposts",
+      "Interactive map with marker clustering",
+      "Search and filter by location type",
+      "Advanced filters (state, services, date range, distance)",
+      "Open Now / Coming Soon quick filters",
+      "Favorites and recent locations",
+      "Export to CSV/JSON",
+      "PWA support with offline caching",
+      "Statistics page",
+      "Mobile-responsive design"
+    ]
   }
 ]
