@@ -2,7 +2,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const M=require('../js/location-model.js'),U=require('../js/components.js'),api=require('../scripts/refresh-roamer.cjs'),refresh=require('../scripts/refresh-locations.cjs');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const row=(id,name,status='Operational')=>`<article><a href="/charging/sites/${id}">${name}</a><div><span>All EVs</span><span>${status}</span><span>Reliability B</span></div><p>6 chargers</p><p>4 NACS, 2 CCS</p><p>205 kW avg peak</p><dl><dt>Rivian</dt><dd>$0.40</dd><dt>Other EVs</dt><dd>$0.49</dd></dl></article>`;
-function network(status='Operational'){return `<div data-cluster-map-markers-value='${JSON.stringify([{url:'/charging/sites/US-RIV-L123',coordinates:[37,-120]}])}'></div>`+row('US-RIV-L123','A Place',status);}
+function network(status='Operational'){return `<span class="text-lime-500">B:100%</span><div data-cluster-map-markers-value='${JSON.stringify([{url:'/charging/sites/US-RIV-L123',coordinates:[37,-120]}])}'></div>`+row('US-RIV-L123','A Place',status);}
 test('mode, category and capability filters keep charging and mixed-purpose places distinct',()=>{
  const records=[{id:1,type:'RAN',sourceKind:'charging-map',capabilities:['charging']},{id:2,type:'Waypoint',sourceKind:'charging-map'},{id:3,type:'Demo Center',capabilities:['demo-drive','service']},{id:4,type:'Service Center',capabilities:['service']}];
  assert.deepEqual(M.filterLocations(records,{mode:'charge'}).map(p=>p.id),[1,2]);
@@ -10,7 +10,7 @@ test('mode, category and capability filters keep charging and mixed-purpose plac
  assert.deepEqual(M.filterLocations(records,{mode:'charge',type:'Waypoint'}).map(p=>p.id),[2]);
 });
 test('public network parser keeps prices, connectors, power and grades without inventing availability',()=>{
- const [r]=api.parseNetwork(network(),{minimum:1});assert.equal(r.connectorSummary,'4 NACS, 2 CCS');assert.equal(r.rates.Rivian,'$0.40');assert.equal(r.averagePeakKw,205);assert.equal(r.reliabilityGrade,'B');assert(!('available' in r));
+ const [r]=api.parseNetwork(network(),{minimum:1});assert.equal(r.connectorSummary,'4 NACS, 2 CCS');assert.equal(r.rates.Rivian,'$0.40');assert.equal(r.averagePeakKw,205);assert.equal(r.reliabilityGrade,'B');assert.equal(r.reliabilityTone,'lime');assert(!('available' in r));
  assert.throws(()=>api.parseNetwork(network()),/Incomplete/);assert.throws(()=>api.parseNetwork(network()+row('US-RIV-L123','Duplicate'),{minimum:1}),/duplicate/);
  assert.throws(()=>api.parseNetwork(network().replace('coordinates','badCoordinates'),{minimum:1}));
 });

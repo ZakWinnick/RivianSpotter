@@ -5,6 +5,7 @@ const NETWORK='https://rivianroamer.com/charging/networks/rivian-adventure-netwo
 const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
 function parseNetwork(html,{minimum=100}={}){
  const $=load(html),markers=JSON.parse($('[data-cluster-map-markers-value]').attr('data-cluster-map-markers-value')||'[]');
+ const gradeTones={};$('span').each((i,el)=>{const grade=clean($(el).text()).match(/^([A-F][+-]?):[\d.]+%$/)?.[1],tone=($(el).attr('class')||'').match(/(?:^|\s)text-(emerald|lime|yellow|amber|orange|red|rose)-500(?:\s|$)/)?.[1];if(grade&&tone)gradeTones[grade]=tone;});
  const byId=new Map(markers.map(m=>[m.url.split('/').pop(),m]));
  const rows=$('article').toArray().map(el=>{const a=$(el).find('a[href^="/charging/sites/"]').first(),sourceId=(a.attr('href')||'').split('/').pop();if(!/^US-RIV-L\d+$/.test(sourceId))return null;
  const card=$(el),paragraphs=card.find('p').toArray().map(x=>clean($(x).text())),badges=card.children('div').first().children('span').toArray().map(x=>clean($(x).text()));
@@ -13,6 +14,7 @@ function parseNetwork(html,{minimum=100}={}){
  return {sourceId,name:clean(a.text()),sourceUrl:new URL(a.attr('href'),NETWORK).href,lat:marker.coordinates[0],lng:marker.coordinates[1],reportedStatus:badges[1]||null,access:badges[0]||null,reliabilityGrade:(badges.find(x=>x.startsWith('Reliability '))||'').replace('Reliability ','')||null,chargerCount:Number((paragraphs.find(x=>/^\d+ chargers?$/.test(x))||'').match(/^\d+/)?.[0])||null,connectorSummary:paragraphs.find(x=>/\d+ (?:NACS|CCS|J1772)/.test(x))||null,averagePeakKw:Number((paragraphs.find(x=>/kW avg peak/.test(x))||'').match(/[\d.]+/)?.[0])||null,rates,firstTracked:paragraphs.find(x=>x.startsWith('First tracked '))?.replace('First tracked ','')||null};
  }).filter(Boolean);
  if(rows.length<minimum||new Set(rows.map(x=>x.sourceId)).size!==rows.length)throw Error('Incomplete or duplicate Roamer inventory');
+ for(const s of rows)s.reliabilityTone=gradeTones[s.reliabilityGrade] || null;
  for(const s of rows)if(!s.name || !s.reportedStatus || !s.connectorSummary || !Number.isInteger(s.chargerCount) || s.chargerCount<1 || s.chargerCount>1000)throw Error("Incomplete station card "+s.sourceId);
  return rows;
 }

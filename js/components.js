@@ -39,6 +39,13 @@
     if (!items?.length) return "";
     return `<section class="related-places"><h3>${heading}</h3>${items.map(p=>`<a class="link-row" href="/locations/${encodeURIComponent(p.slug)}/"><span><strong>${escape(p.name)}</strong><br><small>${escape(p.type)}${p.chargerCount != null ? ` · ${p.chargerCount} ${p.chargerCount===1?'charger':'chargers'}` : ''}</small></span>${icon('chevron')}</a>`).join('')}</section>`;
   }
+  function gradeBadge(record, compact = false) {
+    const grade = record?.reliabilityGrade;
+    if (!/^[A-F][+-]?$/.test(grade || "")) return "";
+    const allowed = ["emerald", "lime", "yellow", "amber", "orange", "red", "rose"];
+    const tone = allowed.includes(record.reliabilityTone) ? record.reliabilityTone : ({A:"emerald",B:"lime"}[grade] || "neutral");
+    return `<span class="reliability-badge reliability-${tone}${compact ? " reliability-compact" : ""}" role="img" aria-label="Reliability ${escape(grade)}"><span aria-hidden="true">${escape(grade)}</span></span>`;
+  }
   function hasReportedIssue(status) {
     return /^(?:inoperable|offline|out of service|maintenance|under maintenance|unavailable|downtime|outage|temporarily closed)$/i.test(status || "");
   }
@@ -49,7 +56,7 @@
     const issue = hasReportedIssue(r.reportedStatus);
     const rates = Object.entries(r.rates||{}).map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value)}<small>/kWh</small></dd></div>`).join("");
     const ports = (r.chargers||[]).map(p=>`<tr><td>${escape(p.name)}</td><td>${escape(p.connector)}</td><td>${p.powerKw?escape(p.powerKw)+" kW":"—"}</td><td>${(p.features||[]).map(f=>`<span title="${escape(f.description)}">${escape(f.label)}</span>`).join(" · ")}</td></tr>`).join("");
-    return `<section class="roamer-details"><h3>Charging Details${r.reliabilityGrade?`<span class="roamer-grade">Grade ${escape(r.reliabilityGrade)}</span>`:""}</h3><p class="charging-note">Charging snapshot · ${observed}</p>${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Reported as “${escape(r.reportedStatus)}” on ${observed}. This is a daily snapshot.</p>`:""}${r.connectorSummary?`<div class="charging-tags"><span class="tag">${escape(r.connectorSummary)}</span></div>`:""}${rates?`<h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl><p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p>`:""}${r.averagePeakKw?`<p class="power-observation"><strong>${escape(r.averagePeakKw)} kW</strong> reported average peak charging power. Rated maximum power is listed separately above.</p>`:""}${r.hours?`<p><strong>Charging Hours:</strong> ${escape(r.hours)}</p>`:""}${r.detailRates?.Idle?`<p><strong>Idle Fee:</strong> ${escape(r.detailRates.Idle)}</p>`:""}${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:""}${ports?`<details class="charger-table"><summary>Individual Chargers (${r.chargers.length})</summary><div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div></details>`:""}${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
+    return `<section class="roamer-details"><h3>Charging Details</h3><p class="charging-note">Charging snapshot · ${observed}</p>${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Reported as “${escape(r.reportedStatus)}” on ${observed}. This is a daily snapshot.</p>`:""}${r.connectorSummary?`<div class="charging-tags"><span class="tag">${escape(r.connectorSummary)}</span></div>`:""}${rates?`<h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl><p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p>`:""}${r.averagePeakKw?`<p class="power-observation"><strong>${escape(r.averagePeakKw)} kW</strong> reported average peak charging power. Rated maximum power is listed separately above.</p>`:""}${r.hours?`<p><strong>Charging Hours:</strong> ${escape(r.hours)}</p>`:""}${r.detailRates?.Idle?`<p><strong>Idle Fee:</strong> ${escape(r.detailRates.Idle)}</p>`:""}${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:""}${ports?`<details class="charger-table"><summary>Individual Chargers (${r.chargers.length})</summary><div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div></details>`:""}${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
   }
   function chargingDetails(p) {
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
@@ -113,5 +120,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, relatedPlaces };
+  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, relatedPlaces };
 });
