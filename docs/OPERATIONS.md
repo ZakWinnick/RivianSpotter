@@ -1,6 +1,6 @@
 # RivianSpotter operations
 
-Release: 2026.42.8 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.9 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
@@ -26,7 +26,7 @@ After publication, check the real public finder, a generated destination page, c
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.8-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.8-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.9-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.9-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
@@ -62,3 +62,9 @@ Public admin entry pages now immediately continue to GitHub’s editor. The brow
 ## Unattended refresh
 
 See [automatic refresh](AUTOMATIC_REFRESH.md) for the daily GitHub schedule, validation gates, bot commits and same-workflow deployment. Both place and charging inventories must pass before a refreshed release publishes.
+
+## 2026.42.9 map overview correction
+
+Closing a mapped location now returns to the full initial overview, even when the visitor previously zoomed into a cluster or region. The close action clears bearing, pitch, and detail offsets while retaining filters. Mobile uses a wider overview. Reduced-motion preferences skip animation. This supersedes the pre-selection camera restoration described in the historical 2026.42.5 release.
+
+Validation: 58 behavioral tests, including regional browsing, switching locations, map-pin charging coordinates, mobile overview, repeated close, and reduced motion.
