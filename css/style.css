@@ -687,14 +687,14 @@
     font-size: 0.9rem;
     line-height: 1.6;
   }
-  .verification {
+  .source-date {
     font-size: 0.75rem;
     line-height: 1.6;
     display: flex;
     gap: 8px;
     margin: 20px 0;
   }
-  .verification .icon {
+  .source-date .icon {
     width: 16px;
     height: 16px;
     margin-top: 2px;

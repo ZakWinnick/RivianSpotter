@@ -190,22 +190,22 @@
       (p) => M.coordinates(p) && p.coordinatePrecision === "exact",
     ).length;
     $("map-caption").textContent =
-      `${mapped} mapped ${mapped === 1 ? "place" : "places"}${mapped < filtered.length ? ` · ${filtered.length - mapped} awaiting map verification` : ""}`;
+      `${mapped} mapped ${mapped === 1 ? "place" : "places"}`;
     SpotterMap.update(filtered, fit);
     if (selected && !filtered.some((p) => p.id === selected.id))
       closeDetail(false);
     writeUrl();
   }
-  function verify(p) {
-    return `<div class="verification">${U.icon(p.verificationStatus === "verified" ? "check" : "clock")}<span>${p.verificationStatus === "verified" ? "Checked against official Rivian information" : "Details need confirmation"}${p.lastVerified ? "<br>" + M.formatDate(p.lastVerified) : ""}</span></div>`;
+  function sourceDate(p) {
+    return p.lastVerified ? `<div class="source-date"><span>Updated from Rivian · ${M.formatDate(p.lastVerified)}</span></div>` : "";
   }
   function detail(p) {
-    const official = M.safeUrl(p.rivianUrl || p.sourceUrl, "rivian.com"),
+    const official = M.getOfficialLink(p),
       booking = M.safeUrl(p.bookingUrl, "rivian.com"),
       directions = M.getDirectionsUrl(p),
       h = M.getHoursState(p),
       phone = String(p.phone || "").replace(/[^+\d]/g, "");
-    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.address || "Street address not confirmed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${verify(p)}${p.verificationStatus !== "verified" ? '<p class="notice warning">Confirm this location with Rivian before traveling.</p>' : ""}<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not published. Check with Rivian before visiting.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : '<p class="muted" style="font-size:.8rem">Map position is not confirmed. Use the official location page to plan your visit.</p>'}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a demo drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official)}" target="_blank" rel="noopener">Official location ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
+    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a demo drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
   }
   function select(id, { focus = true, push = true } = {}) {
     const p = find(id);
@@ -228,7 +228,7 @@
   }
   function closeDetail(write = true) {
     selected = null;
-    SpotterMap.mark(null);
+    SpotterMap.clearFocus();
     $("detail").hidden = true;
     document.querySelectorAll(".location-row.selected").forEach((el) => {
       el.classList.remove("selected");

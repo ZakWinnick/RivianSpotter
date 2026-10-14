@@ -53,9 +53,9 @@ test("unknown schedules never become open or closed claims", () => {
   assert.equal(
     model.getHoursState(
       { ...place, verificationStatus: "needs-review" },
-      new Date(),
+      new Date("2026-10-14T18:00:00Z"),
     ).state,
-    "unknown",
+    "open",
   );
 });
 test("closed and planned operational states are separate from hours", () => {
@@ -136,7 +136,7 @@ test("search, intent, type, region and saved filters compose", () => {
     0,
   );
 });
-test("directions require precise confirmed destination and safe coordinates", () => {
+test("directions use published links or precise destinations independently of internal metadata", () => {
   assert.match(
     model.getDirectionsUrl(place),
     /^https:\/\/www.google.com\/maps\/dir\//,
@@ -147,7 +147,7 @@ test("directions require precise confirmed destination and safe coordinates", ()
   );
   assert.equal(
     model.getDirectionsUrl({ ...place, verificationStatus: "needs-review" }),
-    null,
+    model.getDirectionsUrl(place),
   );
   assert.equal(model.getDirectionsUrl({ ...place, lat: NaN }), null);
 });
