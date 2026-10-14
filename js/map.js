@@ -6,8 +6,9 @@ window.SpotterMap = (() => {
     points = [],
     onSelect = () => {},
     selected = null,
-    browseCamera = null,
+    detailFocused = false,
     timeout;
+  const overview = () => ({center: [-98, 39], zoom: innerWidth > 760 ? 3.4 : 2, bearing: 0, pitch: 0});
   const colors = [
     "match",
     ["get", "type"],
@@ -111,7 +112,7 @@ window.SpotterMap = (() => {
       map = null;
     }
     ready = false;
-    browseCamera = null;
+    detailFocused = false;
     document.getElementById("map-failure").hidden = true;
     try {
       if (!window.mapboxgl || !window.RivianSpotterConfig?.mapboxToken)
@@ -123,8 +124,7 @@ window.SpotterMap = (() => {
           document.documentElement.dataset.theme === "dark"
             ? "mapbox://styles/mapbox/dark-v11"
             : "mapbox://styles/mapbox/outdoors-v12",
-        center: [-98, 39],
-        zoom: 3.4,
+        ...overview(),
         minZoom: 2,
         maxZoom: 18,
         attributionControl: true,
@@ -218,15 +218,8 @@ window.SpotterMap = (() => {
       !LocationModel.isMapped(p)
     )
       return;
-    if (!browseCamera) {
-      map.stop();
-      browseCamera = {
-        center: map.getCenter().toArray(),
-        zoom: map.getZoom(),
-        bearing: map.getBearing(),
-        pitch: map.getPitch(),
-      };
-    }
+    detailFocused = true;
+    map.stop();
     map.flyTo({
       center: [p.lng, p.lat],
       zoom: 12,
@@ -238,11 +231,12 @@ window.SpotterMap = (() => {
   }
   function clearFocus() {
     mark(null);
-    const camera = browseCamera;
-    browseCamera = null;
-    if (!map || !camera) return;
+    const shouldReset = detailFocused;
+    detailFocused = false;
+    if (!map || !shouldReset) return;
+    map.stop();
     map.flyTo({
-      ...camera,
+      ...overview(),
       offset: [0, 0],
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
     });
