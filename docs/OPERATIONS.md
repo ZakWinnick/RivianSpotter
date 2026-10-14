@@ -1,12 +1,12 @@
 # RivianSpotter operations
 
-Release: 2026.42.5. Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.6. Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
 `data/locations.json` is authoritative. `js/locations.js` and destination pages are generated, so edit the canonical inventory rather than those outputs. Read `docs/LOCATION_DATA.md` for the record schema, official-source refresh workflow, and evidence rules.
 
-Open `/admin.html` to find GitHub's authenticated inventory editor. The maintenance page has no login, repository write client, or browser credentials. Propose changes in a pull request, preserve established IDs, record sources, and keep unknown details empty. Use a GitHub account with the appropriate repository permissions on GitHub itself.
+Open `/admin` to continue directly to GitHub’s authenticated inventory editor. The extensionless, trailing-slash, `.html`, and legacy `admin-new` routes provide the same fixed handoff. No maintenance instructions, review queue, inventory editor, or browser credential form is published on these routes. GitHub enforces sign-in and repository write permissions; the public static redirect is not itself an authentication boundary. Propose changes in a pull request, preserve established IDs, record sources, and keep unknown details empty. Use a GitHub account with the appropriate repository permissions on GitHub itself.
 
 Corrections from visitors prepare an email in their email app. They must review and send the message themselves; the site does not claim to submit it, retain it, or send an automatic acknowledgement.
 
@@ -26,7 +26,7 @@ After publication, check the real public finder, a generated destination page, c
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.5`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.5` version. Static shell assets use the release cache; increment the release prefix and build asset version when changing these files.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.6`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.6` version. Static shell assets use the release cache; increment the release prefix and build asset version when changing these files.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
@@ -38,7 +38,7 @@ Activation deletes previous `rivianspotter-` cache versions, including the old m
 
 The old `api/*.php` and `contact-handler.php` files are inert retirement stubs: they respond with HTTP 410 and `Cache-Control: no-store` on a PHP host, without loading configuration, authenticating, writing, or sending email. GitHub Pages does not execute PHP and the static build excludes these files, so old endpoint requests there may return 404. Clients must load `/data/locations.json` instead.
 
-Legacy `js/admin/` scripts and generated maps were removed. The new maintenance script removes known legacy credential storage keys from local/session storage without reading their values. Existing browser credentials remain outside repository control until that device loads the maintenance page or clears site storage; repository maintainers can revoke any former access credentials on their issuing service. Historical Git commits are not rewritten by this change.
+Legacy `js/admin/` scripts and generated maps were removed. The admin handoff script removes known legacy credential storage keys from local/session storage without reading their values. Existing browser credentials remain outside repository control until that device loads the maintenance page or clears site storage; repository maintainers can revoke any former access credentials on their issuing service. Historical Git commits are not rewritten by this change.
 
 `.htaccess` is only a defensive configuration for an optional Apache mirror. It is not used by GitHub Pages. Apache copies should publish `dist/`; the rules retire the old endpoints, deny hidden and tooling files, and avoid long-lived caching of mutable HTML/data/scripts.
 
@@ -53,3 +53,7 @@ Rebuild and publish a previously reviewed static release through the same blocki
 - All 116 directory page URLs were compared with the live official directory on October 14; each returned HTTP 200 with its expected final URL and canonical URL. All 39 supplemental records use the shared service-center destination.
 - Closing a location restores the camera position from before selection, including after switching locations. Reduced-motion preferences skip animation.
 - Validation: 51 behavioral tests, 210 generated HTML pages with resolved internal links, and no production dependency vulnerabilities. Browser checks cover corrected links, absent public warnings, and camera restoration.
+
+## 2026.42.6 admin entry
+
+Public admin entry pages now immediately continue to GitHub’s editor. The browser script clears retired credential keys before redirecting. A meta refresh and a plain link provide fallbacks when scripting is disabled. All admin aliases bypass service-worker caching. No private administration content is served by GitHub Pages.

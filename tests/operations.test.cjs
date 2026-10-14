@@ -50,7 +50,7 @@ test('only public same-origin GET paths enter cache strategies', () => {
   assert.equal(w.value('typeof cachePolicy'), 'function');
   w.context.sampleRequest = request('/');
   assert.equal(w.value('cachePolicy(sampleRequest).strategy'), 'network-first');
-  for (const req of [request('/admin.html', {mode:'navigate'}), request('/admin-new.html'), request('/api/locations.php'), request('/contact-handler.php'), request('/data/contact_submissions.json'), request('/?token=secret'), request('https://api.mapbox.com/tiles'), request('/about.html',{method:'POST'}), request('/private.html',{mode:'navigate'})]) {
+  for (const req of [request('/admin', {mode:'navigate'}), request('/admin/', {mode:'navigate'}), request('/admin-new/'), request('/admin.html', {mode:'navigate'}), request('/admin-new.html'), request('/api/locations.php'), request('/contact-handler.php'), request('/data/contact_submissions.json'), request('/?token=secret'), request('https://api.mapbox.com/tiles'), request('/about.html',{method:'POST'}), request('/private.html',{mode:'navigate'})]) {
     w.context.sampleRequest = req;
     assert.equal(w.value('cachePolicy(sampleRequest)'), null, `excluded path ${req.url}`);
   }
@@ -118,15 +118,27 @@ test('activation removes legacy caches without touching unrelated sites', async 
   assert.ok(w.stores.has(w.value('STATIC_CACHE')));
 });
 
-test('maintenance pages send editing to GitHub and never ask for credentials', () => {
+test('admin routes hand off to GitHub without exposing a maintenance interface', () => {
+  const destination = 'https://github.com/ZakWinnick/RivianSpotter/edit/main/data/locations.json';
   for (const file of ['admin.html', 'admin-new.html']) {
     const html = read(file);
-    assert.ok(!/type=["']password|settings\/tokens|adminPassword|Authorization|ADMIN_TOKEN/i.test(html), `${file} has no credential flow`);
-    assert.match(html, /admin\.html|github\.com\/zakwinnick\/RivianSpotter\/edit\/main\/data\/locations\.json/);
+    assert.ok(!/type=["']password|settings\/tokens|adminPassword|Authorization|ADMIN_TOKEN|<form|review-queue|Update a place|canonical inventory/i.test(html));
+    assert.ok(html.includes(`content="0; url=${destination}"`));
+    assert.ok(html.includes(`href="${destination}"`));
   }
-  assert.doesNotMatch(read('admin.html'), /review-queue|need confirmation/);
   assert.ok(!fs.existsSync(path.join(root,'js/admin/auth.js')));
   assert.ok(!/Authorization|ADMIN_TOKEN|api\.github\.com|localStorage\.setItem/.test(read('js/admin.js')));
+  for (const deniedStorage of [false, true]) {
+    const removed = [], redirects = [];
+    const window = { location: { search: '?redirect=https://evil.example', replace: url => redirects.push(url) } };
+    for (const key of ['localStorage', 'sessionStorage']) Object.defineProperty(window, key, { get() {
+      if (deniedStorage) throw new Error('Storage denied');
+      return { removeItem: name => removed.push(name) };
+    }});
+    vm.runInNewContext(read('js/admin.js'), {window});
+    assert.deepEqual(redirects, [destination]);
+    if (!deniedStorage) assert(removed.includes('rivianAdminGitHubToken'));
+  }
 });
 
 test('retired PHP routes never read credentials, write files, or send email', () => {
@@ -157,8 +169,8 @@ test('shared branding and pinned local map vendor assets are public cache paths'
   }
 });
 
-test('maintenance and offline pages provide shared navigation insertion points', () => {
-  for (const file of ['admin.html', 'admin-new.html', 'offline.html']) {
+test('offline page provides shared navigation insertion points', () => {
+  for (const file of ['offline.html']) {
     const source = read(file);
     assert.ok(source.includes('data-site-header'), `${file} includes header`);
     assert.ok(source.includes('data-site-footer'), `${file} includes footer`);
@@ -175,32 +187,32 @@ test('denied cache storage cannot hide valid network assets', async () => {
   assert.equal(await response.text(), 'uncached stylesheet');
 });
 
-test('release 2026.42.5 installation fetches fresh versioned shell assets', async () => {
+test('release 2026.42.6 installation fetches fresh versioned shell assets', async () => {
   const requests = [];
   const w = worker(async req => { requests.push(req); return new Response('fresh shell'); });
   w.context.Request = Request;
   let completion;
   w.listeners.install({waitUntil: value => {completion = value;}});
   await completion;
-  assert.match(w.value('CACHE_VERSION'), /2026\.42\.5$/);
+  assert.match(w.value('CACHE_VERSION'), /2026\.42\.6$/);
   const assets = w.value('STATIC_ASSETS');
   assert.equal(requests.length, assets.length);
   assert.ok(requests.every(req => req.cache === 'reload' || req.cache === 'no-store'));
   assert.ok(assets.includes('/js/config.js'));
   for (const req of requests) {
     const url = new URL(req.url);
-    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.5');
+    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.6');
   }
 });
 
 test('versioned asset cache keys are distinct while data and page keys stay stable', () => {
   const w = worker();
   for (const pathname of ['/js/app.js', '/js/components.js', '/css/style.css', '/js/config.js']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.5`);
-    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.5`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.6`);
+    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.6`);
   }
   for (const pathname of ['/data/locations.json', '/index.html', '/regions/']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.5`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.6`);
     assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}`);
   }
 });
