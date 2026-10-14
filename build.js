@@ -5,7 +5,7 @@ const { buildPages } = require("./scripts/build-pages.cjs");
 const { header } = require("./js/components.js");
 const root = __dirname,
   dist = path.join(root, "dist");
-const release = "2026.42.6";
+const release = "2026.42.7";
 const locations = JSON.parse(
   fs.readFileSync(path.join(root, "data/locations.json"), "utf8"),
 );
