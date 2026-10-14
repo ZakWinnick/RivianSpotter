@@ -151,6 +151,11 @@ function directoryRecord(raw, detail, features, date) {
  }
  if (/Sat[–-]Sat:/i.test(result.serviceHours || '')) { result.notes.push('Published service hours contain “Sat–Sat”; Sunday service hours are unclear.'); result.verificationStatus = 'needs-review'; }
  if (detail.directionsUrl) result.officialDirectionsUrl = detail.directionsUrl;
+ const pin = require('./location-coordinate-pins.json')[result.slug];
+ if(result.coordinatePrecision==='unknown' && pin && result.state===pin.state && sameAddress(result.address,pin.address) && result.officialDirectionsUrl===pin.directions) {
+  result.lat=pin.lat; result.lng=pin.lng; result.coordinatePrecision='map-pin'; result.coordinateSource=pin.directions;
+ }
+
  if (feature && feature.properties.status === 'live' && result.serviceStatus !== 'planned' && !result.capabilities.includes('service')) { result.capabilities.push('service'); result.serviceStatus = 'open'; }
  result.services = result.capabilities.map(x => ({'see-vehicles':'See vehicles','demo-drive':'Demo drives',service:'Service appointments',outpost:'Charging outpost',charging:'Charging'})[x]);
  if (result.serviceStatus === 'planned') result.services.push('Service coming soon');

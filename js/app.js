@@ -12,6 +12,7 @@
     origin = null,
     area = null,
     view = "list",
+    mode = "all",
     saveIds = [],
     timer,
     lastTrigger = null;
@@ -83,6 +84,7 @@
   function filters() {
     return {
       query: $("search").value,
+      mode,
       type: $("type-filter").value,
       intent: $("intent-filter").value,
       state: $("state-filter").value,
@@ -97,6 +99,7 @@
       p = new URLSearchParams();
     for (const [key, value] of Object.entries({
       q: f.query,
+      mode: mode === "all" ? "" : mode,
       type: f.type,
       intent: f.intent,
       state: f.state,
@@ -130,6 +133,7 @@
       $("sort-filter").value = "name";
     $("open-filter").checked = p.get("open") === "1";
     $("saved-filter").checked = p.get("saved") === "1";
+    mode = ["charge", "visit"].includes(p.get("mode")) ? p.get("mode") : p.has("type") ? (["RAN","Waypoint"].includes(p.get("type")) ? "charge" : "visit") : "all";
     const b = (p.get("bounds") || "").split(",").map(Number);
     area =
       b.length === 4 && b.every(Number.isFinite) && b[0] < b[2] && b[1] < b[3]
@@ -152,7 +156,37 @@
         origin && M.coordinates(p)
           ? `${Math.round(M.distanceMiles(origin, p))} mi · `
           : "";
-    return `<article class="location-row${selected?.id === p.id ? " selected" : ""}" data-location="${p.id}">${saved ? `<a class="location-select" href="${M.locationUrl(p)}">` : `<button type="button" class="location-select" data-select="${p.id}" aria-label="View ${e(p.name)}, ${e(p.city)}, ${e(p.state)}" aria-pressed="${selected?.id === p.id}">`}${typeIcon(p)}<span class="row-text"><span class="row-name">${e(p.name)}</span><span class="row-meta">${e(p.type)} · ${e(p.city)}, ${e(p.state)}</span><span class="status ${h.state}">${dist}${e(M.isCharging(p) ? M.chargingSummary(p) : h.label)}</span></span>${U.icon("chevron", "row-arrow")}${saved ? "</a>" : "</button>"}${saved ? `<button class="icon-button remove-save" type="button" data-remove="${p.id}" aria-label="Remove ${e(p.name)} from saved places">${U.icon("close")}</button>` : ""}</article>`;
+    return `<article class="location-row${selected?.id === p.id ? " selected" : ""}" data-location="${p.id}">${saved ? `<a class="location-select" href="${M.locationUrl(p)}">` : `<button type="button" class="location-select" data-select="${p.id}" aria-label="View ${e(p.name)}, ${e(p.city)}, ${e(p.state)}" aria-pressed="${selected?.id === p.id}">`}${typeIcon(p)}<span class="row-text"><span class="row-name">${e(p.name)}</span><span class="row-meta">${e(p.type)} · ${e(p.city)}, ${e(p.state)}</span><span class="status ${h.state}">${dist}${e(M.isCharging(p) ? M.chargingSummary(p) : h.label)}</span>${p.roamer?.connectorSummary ? `<span class="row-meta">${e(p.roamer.connectorSummary)}${p.roamer.reliabilityGrade ? ` · Roamer Grade ${e(p.roamer.reliabilityGrade)}` : ""}</span>` : ""}</span>${U.icon("chevron", "row-arrow")}${saved ? "</a>" : "</button>"}${saved ? `<button class="icon-button remove-save" type="button" data-remove="${p.id}" aria-label="Remove ${e(p.name)} from saved places">${U.icon("close")}</button>` : ""}</article>`;
+  }
+  const categories = {
+    RAN: {name:"Adventure Network",short:"RAN",description:"DC fast charging"},
+    Waypoint: {name:"Waypoints",short:"Waypoint",description:"Level 2 charging"},
+    Space: {name:"Spaces",short:"Space",description:"Meet Rivian"},
+    "Demo Center": {name:"Demo Centers",short:"Demo",description:"Get behind the wheel"},
+    "Service Center": {name:"Service Centers",short:"Service",description:"Care for your vehicle"},
+    Outpost: {name:"Outposts",short:"Outpost",description:"Recharge and explore"}
+  };
+  function browseChrome() {
+    document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
+    const types = Object.keys(categories).filter(t=>mode==="all" || (mode==="charge") === ["RAN","Waypoint"].includes(t));
+    const chips = mode === "all" ? "" : `<button type="button" data-type="" aria-pressed="${!$("type-filter").value}">All</button>` + types.map(t=>`<button type="button" data-type="${e(t)}" aria-pressed="${$("type-filter").value===t}">${e(categories[t].short)}</button>`).join("");
+    if ($("type-chips").innerHTML !== chips) $("type-chips").innerHTML = chips;
+    const f=filters();
+    const overview = mode==="all" && !f.query.trim() && !f.type && !f.intent && !f.state && !f.openNow && !f.savedOnly && !area && !origin;
+    $("browse-overview").hidden = !overview || !!selected;
+    $("result-heading").hidden = overview || !!selected;
+    $("results").hidden = overview || !!selected;
+    if(overview){
+      const active=all.filter(p=>p.listed!==false);
+      const cards=keys=>keys.map(type=>`<button class="category-card" type="button" data-category="${e(type)}">${typeIcon({type})}<span class="category-count">${active.filter(p=>p.type===type).length}</span><strong>${e(categories[type].name)}</strong><small>${e(categories[type].description)}</small></button>`).join("");
+      $("browse-overview").innerHTML=`<div class="category-heading"><h2>Charging</h2><span>${active.filter(M.isCharging).length} locations</span></div><div class="category-grid">${cards(["RAN","Waypoint"])}</div><div class="category-heading"><h2>Rivian Places</h2><span>${active.filter(p=>!M.isCharging(p)).length} locations</span></div><div class="category-grid">${cards(["Space","Demo Center","Service Center","Outpost"])}</div>`;
+    }
+  }
+  function chooseMode(next,type="") {
+    if(selected) closeDetail(false);
+    mode=next; $("type-filter").value=type;
+    $("intent-filter").value=""; $("open-filter").checked=false; area=null;
+    render(); SpotterMap.resetOverview();
   }
   function render(fit = false) {
     const f = filters();
@@ -194,6 +228,7 @@
     SpotterMap.update(filtered, fit);
     if (selected && !filtered.some((p) => p.id === selected.id))
       closeDetail(false);
+    browseChrome();
     writeUrl();
   }
   function sourceDate(p) {
@@ -205,7 +240,7 @@
       directions = M.getDirectionsUrl(p),
       h = M.getHoursState(p),
       phone = String(p.phone || "").replace(/[^+\d]/g, "");
-    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.displayAddress || p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}<div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
+    return `<button class="text-button back-to-results" type="button" id="back-results">← Back to Results</button><div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.displayAddress || p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}<div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div>${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}<div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
   }
   function select(id, { focus = true, push = true } = {}) {
     const p = find(id);
@@ -217,6 +252,9 @@
     selected = p;
     $("detail").innerHTML = detail(p);
     $("detail").hidden = false;
+    $("detail").scrollTop = 0;
+    browseChrome();
+    if(innerWidth <= 760) setView("list", false);
     document.querySelectorAll(".location-row").forEach((el) => {
       const yes = Number(el.dataset.location) === p.id;
       el.classList.toggle("selected", yes);
@@ -230,6 +268,7 @@
     selected = null;
     SpotterMap.clearFocus();
     $("detail").hidden = true;
+    browseChrome();
     document.querySelectorAll(".location-row.selected").forEach((el) => {
       el.classList.remove("selected");
       el.querySelector("button")?.setAttribute("aria-pressed", "false");
@@ -246,6 +285,8 @@
     if (write) writeUrl();
   }
   function reset() {
+    mode = "all";
+    if(selected) closeDetail(false);
     for (const id of ["search", "type-filter", "intent-filter", "state-filter"])
       $(id).value = "";
     $("open-filter").checked = false;
@@ -373,7 +414,9 @@
       if (!Array.isArray(data) || !data.length) throw Error("Empty charging directory");
       chargers = data;
     } catch { /* Use the release's bundled charging snapshot when offline. */ }
-    all = M.combineLocations(all, chargers);
+    let roamer = typeof rivianRoamerSnapshot !== "undefined" ? rivianRoamerSnapshot.stations : [];
+    try { const response=await fetch("/data/roamer.json",{cache:"no-cache"}); if(response.ok){const snapshot=await response.json();if(Array.isArray(snapshot.stations))roamer=snapshot.stations;} } catch { /* Use the bundled snapshot when offline. */ }
+    all = M.combineLocations(all, chargers, roamer);
     normalizeSaved();
     if (page === "explore") {
       $("state-filter").innerHTML =
@@ -409,10 +452,13 @@
     if (b.dataset.share) share(b.dataset.share);
     if (b.hasAttribute("data-reset")) reset();
     if (b.hasAttribute("data-reload")) load();
-    if (b.id === "close-detail") closeDetail();
+    if (b.id === "close-detail" || b.id === "back-results") closeDetail();
+    if (b.dataset.mode) chooseMode(b.dataset.mode);
+    if (b.dataset.category) chooseMode(["RAN","Waypoint"].includes(b.dataset.category)?"charge":"visit",b.dataset.category);
+    if (b.hasAttribute("data-type")) { if(selected) closeDetail(false); $("type-filter").value=b.dataset.type; render(); }
   });
   if (page === "explore") {
-    $("search").addEventListener("input", () => render());
+    $("search").addEventListener("input", () => { if(selected) closeDetail(false); render(); });
     for (const id of [
       "type-filter",
       "intent-filter",
@@ -429,6 +475,7 @@
     });
     $("clear-filters").addEventListener("click", reset);
     $("near-me").addEventListener("click", near);
+    $("full-overview").addEventListener("click",()=>{if(selected) closeDetail(); SpotterMap.resetOverview();});
     $("map-mode").addEventListener("click", () => setView("map"));
     $("list-mode").addEventListener("click", () => setView("list"));
     $("retry-map").addEventListener("click", () => SpotterMap.init());

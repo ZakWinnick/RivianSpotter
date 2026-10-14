@@ -1,6 +1,6 @@
 # RivianSpotter operations
 
-Release: 2026.42.9 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.10 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
@@ -26,11 +26,11 @@ After publication, check the real public finder, a generated destination page, c
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.9-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.9-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.10-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.10-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
-The shell contains eleven source assets and at most nineteen cache entries including unversioned compatibility aliases (a 24-entry bound). The project logo is included; pinned local Mapbox vendor scripts/styles are eligible for runtime asset caching. Runtime pages are limited to 40 entries, public data to six, and other public assets to 40. Known responses larger than 2 MiB are excluded from runtime caching. When offline, cached place facts are last-known details; current opening hours, map resources, directions, and official booking destinations require a connection. No queued writes, administrator background sync, or arbitrary URL-cache command exists.
+The shell contains twelve source assets and at most twenty-one cache entries including unversioned compatibility aliases (a 24-entry bound). The project logo is included; pinned local Mapbox vendor scripts/styles are eligible for runtime asset caching. Runtime pages are limited to 40 entries, public data to six, and other public assets to 40. Known responses larger than 2 MiB are excluded from runtime caching. When offline, cached place facts are last-known details; current opening hours, map resources, directions, and official booking destinations require a connection. No queued writes, administrator background sync, or arbitrary URL-cache command exists.
 
 Activation deletes previous `rivianspotter-` cache versions, including the old map/admin/API caches, while preserving caches with unrelated names. To test an upgrade, install the previous worker, visit public pages, release the new worker, wait for activation, verify that old cache names disappear, then test a visited page and an unvisited destination offline. Repeat with denied cache storage and check that a valid network result still appears. Automated tests exercise the worker's actual policy and lifecycle in a simulated service-worker environment; a browser upgrade check remains part of release verification.
 
@@ -68,3 +68,9 @@ See [automatic refresh](AUTOMATIC_REFRESH.md) for the daily GitHub schedule, val
 Closing a mapped location now returns to the full initial overview, even when the visitor previously zoomed into a cluster or region. The close action clears bearing, pitch, and detail offsets while retaining filters. Mobile uses a wider overview. Reduced-motion preferences skip animation. This supersedes the pre-selection camera restoration described in the historical 2026.42.5 release.
 
 Validation: 58 behavioral tests, including regional browsing, switching locations, map-pin charging coordinates, mobile overview, repeated close, and reduced motion.
+
+## 2026.42.10 explorer and charging enrichment
+
+The explorer now separates Charging and Rivian Places, with six category cards, distinct map symbols, and details in the sidebar. Full Overview and closing details restore the complete map. Outpost pins use the official directions links and are retained during refresh only while their address and directions link still match.
+
+Roamer public-page snapshots enrich matching official RAN stations with pricing, connector counts, grades and observed average peak power. Rotating detail snapshots add hours, idle fees, amenities and individual ports. Explicit maintenance/downtime reports show the observation date; normal operating status and live availability are omitted. The daily schedule and conservative request limits are documented in AUTOMATIC_REFRESH.md.

@@ -1,15 +1,15 @@
 /* Public offline cache. Bump release for changes to shell assets. */
-const RELEASE = '2026.42.9';
+const RELEASE = '2026.42.10';
 const CACHE_VERSION = `rivianspotter-${RELEASE}`;
 const STATIC_CACHE = `${CACHE_VERSION}-shell`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 const CACHE_LIMITS = { [STATIC_CACHE]: 24, [PAGE_CACHE]: 40, [DATA_CACHE]: 6, [ASSET_CACHE]: 40 };
-const STATIC_ASSETS = ['/index.html', '/offline.html', '/css/style.css', '/js/components.js', '/js/config.js', '/js/location-model.js', '/js/map.js', '/js/app.js', '/js/locations.js', '/js/charging.js', '/assets/spotter-mark.svg'];
+const STATIC_ASSETS = ['/index.html', '/offline.html', '/css/style.css', '/js/components.js', '/js/config.js', '/js/location-model.js', '/js/map.js', '/js/app.js', '/js/locations.js', '/js/charging.js', '/js/roamer.js', '/assets/spotter-mark.svg'];
 const PUBLIC_PAGES = new Set(['/', '/index.html', '/offline.html', '/about.html', '/contact.html', '/stats.html', '/updates.html', '/saved.html', '/regions/']);
-const PUBLIC_DATA = new Set(['/data/locations.json', '/data/charging.json', '/data/charging-summary.json', '/data/refresh-summary.json', '/data/location-history.json', '/js/locations.js']);
-const PUBLIC_PARAMETERS = new Set(['q', 'type', 'intent', 'state', 'country', 'open', 'saved', 'location', 'view', 'bounds', 'near', 'sort', 'v']);
+const PUBLIC_DATA = new Set(['/data/locations.json', '/data/charging.json', '/data/roamer.json', '/data/charging-summary.json', '/data/refresh-summary.json', '/data/location-history.json', '/js/locations.js']);
+const PUBLIC_PARAMETERS = new Set(['q', 'mode', 'type', 'intent', 'state', 'country', 'open', 'saved', 'location', 'view', 'bounds', 'near', 'sort', 'v']);
 
 function cachePolicy(request) {
   const url = new URL(request.url);

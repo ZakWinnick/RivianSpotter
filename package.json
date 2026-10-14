@@ -1,6 +1,6 @@
 {
   "name": "rivian-spotter",
-  "version": "2026.42.9",
+  "version": "2026.42.10",
   "private": true,
   "description": "Independent directory of Rivian places across North America",
   "scripts": {
@@ -11,7 +11,8 @@
     "refresh:data": "node scripts/refresh-locations.cjs",
     "generate:data": "node scripts/generate-data.cjs",
     "refresh:charging": "node scripts/refresh-charging.mjs",
-    "refresh:all": "node scripts/refresh-all.mjs"
+    "refresh:all": "node scripts/refresh-all.mjs",
+    "refresh:roamer": "node scripts/refresh-roamer.cjs"
   },
   "engines": {
     "node": ">=22"
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@mapbox/vector-tile": "3.0.0",
+    "cheerio": "^1.2.0",
     "pbf": "5.1.2"
   }
 }
