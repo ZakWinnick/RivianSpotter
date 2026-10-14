@@ -220,11 +220,15 @@ window.SpotterMap = (() => {
     )
       return;
     detailFocused = true;
+    const popup = document.getElementById("detail")?.getBoundingClientRect?.();
+    const offset = innerWidth > 760
+      ? [-((popup?.width || 380) + 24) / 2, 0]
+      : [0, -(popup?.height || 360) / 2];
     map.stop();
     map.flyTo({
       center: [p.lng, p.lat],
       zoom: 12,
-      offset: [0, 0],
+      offset,
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? 0
         : 500,
