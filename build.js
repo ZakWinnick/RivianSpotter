@@ -5,13 +5,17 @@ const { buildPages } = require("./scripts/build-pages.cjs");
 const { header } = require("./js/components.js");
 const root = __dirname,
   dist = path.join(root, "dist");
-const release = "2026.42.7";
-const locations = JSON.parse(
+const places = JSON.parse(
   fs.readFileSync(path.join(root, "data/locations.json"), "utf8"),
 );
+const charging = require('./scripts/generate-charging.cjs').generate();
+const locations = require('./js/location-model.js').combineLocations(places, charging);
+// Data-only scheduled releases also invalidate bundled browser assets and offline snapshots.
+const release = require('./package.json').version + '-' + require('node:crypto').createHash('sha256')
+  .update(JSON.stringify(locations)).digest('hex').slice(0, 12);
 if (!Array.isArray(locations) || !locations.length)
   throw Error("Canonical location array is empty");
-require("./scripts/generate-data.cjs");
+require("./scripts/generate-data.cjs").generate();
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 function copy(file) {
@@ -34,13 +38,18 @@ for (const file of [
   "js/app.js",
   "js/config.js",
   "js/locations.js",
+  "js/charging.js",
   "js/admin.js",
   "assets/spotter-mark.svg",
   "data/locations.json",
+  "data/charging.json",
+  "data/charging-summary.json",
   "data/refresh-summary.json",
   "data/location-history.json",
 ])
   copy(file);
+const workerPath = path.join(dist, 'service-worker.js');
+fs.writeFileSync(workerPath, fs.readFileSync(workerPath, 'utf8').replace(/const RELEASE = '[^']+';/, `const RELEASE = '${release}';`));
 // Support both extensionless and legacy admin entry URLs. These pages contain
 // only an authentication handoff; no maintenance interface is published.
 for (const route of ["admin", "admin-new"]) {
@@ -62,6 +71,7 @@ for (const file of ["mapbox-gl.js", "mapbox-gl.css"])
 const summary = JSON.parse(
   fs.readFileSync(path.join(root, "data/refresh-summary.json"), "utf8"),
 );
+summary.charging = JSON.parse(fs.readFileSync(path.join(root, 'data/charging-summary.json'), 'utf8'));
 const routes = buildPages(dist, locations, summary);
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 function versionAssets(dir) {

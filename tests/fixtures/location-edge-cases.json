@@ -1,0 +1,44 @@
+[
+  {
+    "id": 2,
+    "slug": "scottsdale",
+    "name": "Scottsdale, AZ",
+    "type": "Space",
+    "state": "AZ",
+    "country": "US",
+    "address": "15051 North Kierland Boulevard 180F1B",
+    "city": "Scottsdale",
+    "postalCode": "85254",
+    "lat": null,
+    "lng": null,
+    "coordinatePrecision": "unknown",
+    "coordinateSource": null,
+    "timezone": "America/Phoenix",
+    "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
+    "hours": "Mon-Sat: 10:00am\u20138:00pm\nSun: 11:00am\u20136:00pm",
+    "serviceHours": null,
+    "phone": "(520) 338-2981",
+    "services": [
+      "See vehicles",
+      "Demo drives"
+    ],
+    "capabilities": [
+      "see-vehicles",
+      "demo-drive"
+    ],
+    "status": "open",
+    "rivianUrl": "https://rivian.com/spaces/scottsdale",
+    "bookingUrl": "https://rivian.com/demo-drive/book?locationId=3545c563-7c79-4506-8cb8-a882c59f2def",
+    "sourceUrl": "https://rivian.com/spaces/scottsdale",
+    "lastVerified": "2026-10-14",
+    "verificationStatus": "needs-review",
+    "notes": [
+      "Official detail structured data lists a different address (6502 E Monte Cristo Ave); its coordinates were withheld. The directory address is used."
+    ],
+    "hoursExceptions": [],
+    "sourceKind": "directory",
+    "serviceStatus": null,
+    "officialDirectionsUrl": "https://maps.app.goo.gl/9DPGFP9qNBmubS8R6",
+    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+  }
+]

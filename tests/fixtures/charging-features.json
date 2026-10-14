@@ -1,0 +1,49 @@
+[
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.54312133789062,
+        37.63380988687156
+      ]
+    },
+    "properties": {
+      "address": "18600 Corral Hallow Rd, Tracy, CA 95377, USA",
+      "city": "Tracy",
+      "state": "CA",
+      "available": 2,
+      "count": 2,
+      "id": "US-RIV-L15037338202950868811",
+      "name": "Carnegie SVRA",
+      "network": "Rivian Waypoints Network",
+      "maxkw": 11,
+      "rivianonly": false,
+      "image": "rivian"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -121.22932434082031,
+        37.78265474565738
+      ]
+    },
+    "properties": {
+      "address": "280 Lifestyle Street, Manteca, CA 95337, USA",
+      "city": "Manteca",
+      "state": "CA",
+      "available": 6,
+      "count": 6,
+      "id": "US-RIV-L16180912729239013297",
+      "name": "Manteca, CA",
+      "score": "A",
+      "network": "Rivian Adventure Network",
+      "maxkw": 300,
+      "rivianonly": false,
+      "image": "rivian"
+    }
+  }
+]

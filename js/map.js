@@ -19,6 +19,10 @@ window.SpotterMap = (() => {
     "#715a43",
     "Outpost",
     "#59612e",
+    "RAN",
+    "#b4621a",
+    "Waypoint",
+    "#7062a4",
     "#46514c",
   ];
   function geo(list) {
@@ -27,7 +31,7 @@ window.SpotterMap = (() => {
       features: list
         .filter(
           (p) =>
-            LocationModel.coordinates(p) && p.coordinatePrecision === "exact",
+            LocationModel.isMapped(p),
         )
         .map((p) => ({
           type: "Feature",
@@ -182,7 +186,7 @@ window.SpotterMap = (() => {
   function fitAll() {
     if (!map) return;
     const pts = points.filter(
-      (p) => LocationModel.coordinates(p) && p.coordinatePrecision === "exact",
+      (p) => LocationModel.isMapped(p),
     );
     if (!pts.length) return;
     const bounds = new mapboxgl.LngLatBounds();
@@ -211,8 +215,7 @@ window.SpotterMap = (() => {
     mark(p.id);
     if (
       !map ||
-      !LocationModel.coordinates(p) ||
-      p.coordinatePrecision !== "exact"
+      !LocationModel.isMapped(p)
     )
       return;
     if (!browseCamera) {

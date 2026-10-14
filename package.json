@@ -1,6 +1,6 @@
 {
   "name": "rivian-spotter",
-  "version": "2026.42.7",
+  "version": "2026.42.8",
   "private": true,
   "description": "Independent directory of Rivian places across North America",
   "scripts": {
@@ -9,9 +9,19 @@
     "test": "node --test tests/*.test.cjs",
     "test:ci": "npm test && npm run build",
     "refresh:data": "node scripts/refresh-locations.cjs",
-    "generate:data": "node scripts/generate-data.cjs"
+    "generate:data": "node scripts/generate-data.cjs",
+    "refresh:charging": "node scripts/refresh-charging.mjs",
+    "refresh:all": "node scripts/refresh-all.mjs"
   },
-  "engines": {"node": ">=22"},
+  "engines": {
+    "node": ">=22"
+  },
   "license": "MIT",
-  "dependencies": {"mapbox-gl": "3.33.0"}
+  "dependencies": {
+    "mapbox-gl": "3.33.0"
+  },
+  "devDependencies": {
+    "@mapbox/vector-tile": "3.0.0",
+    "pbf": "5.1.2"
+  }
 }

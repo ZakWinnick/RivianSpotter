@@ -1,6 +1,6 @@
 # RivianSpotter operations
 
-Release: 2026.42.6. Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.8 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
@@ -20,17 +20,17 @@ Corrections from visitors prepare an email in their email app. They must review 
 
 The checked-in GitHub Actions workflow runs these tests, the build, and the production dependency audit without ignoring failures. Pull requests and `develop` validate only. A successful push or manually dispatched run on `main` uploads `dist/` and deploys that artifact to GitHub Pages. Repository Pages settings must use GitHub Actions; an environment protection rule may require a repository maintainer to approve deployment. These repository settings are outside this local implementation.
 
-Build jobs have read-only repository permissions and do not persist checkout credentials. Only the deployment job receives `pages: write` and `id-token: write`. No personal access token, server upload credential, or Codecov secret is needed. Never publish the entire source checkout; the build should include only intended static assets, generated pages, and public data, excluding PHP, private configuration, tests, tools, source maps, and historical admin code.
+Ordinary validation jobs have read-only repository permissions and do not persist checkout credentials. The scheduled refresh job has scoped repository write permission to commit validated data. Only the deployment job receives `pages: write` and `id-token: write`. No personal access token, server upload credential, or Codecov secret is needed. Never publish the entire source checkout; the build should include only intended static assets, generated pages, and public data, excluding PHP, private configuration, tests, tools, source maps, and historical admin code.
 
 After publication, check the real public finder, a generated destination page, canonical data, and the service worker. A passing local build or Actions run does not establish that the public release is live.
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.6`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.6` version. Static shell assets use the release cache; increment the release prefix and build asset version when changing these files.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.8-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.8-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
-The shell contains ten source assets and at most seventeen cache entries including unversioned compatibility aliases (a 24-entry bound). The project logo is included; pinned local Mapbox vendor scripts/styles are eligible for runtime asset caching. Runtime pages are limited to 40 entries, public data to four, and other public assets to 40. Known responses larger than 2 MiB are excluded from runtime caching. When offline, cached place facts are last-known details; current opening hours, map resources, directions, and official booking destinations require a connection. No queued writes, administrator background sync, or arbitrary URL-cache command exists.
+The shell contains eleven source assets and at most nineteen cache entries including unversioned compatibility aliases (a 24-entry bound). The project logo is included; pinned local Mapbox vendor scripts/styles are eligible for runtime asset caching. Runtime pages are limited to 40 entries, public data to six, and other public assets to 40. Known responses larger than 2 MiB are excluded from runtime caching. When offline, cached place facts are last-known details; current opening hours, map resources, directions, and official booking destinations require a connection. No queued writes, administrator background sync, or arbitrary URL-cache command exists.
 
 Activation deletes previous `rivianspotter-` cache versions, including the old map/admin/API caches, while preserving caches with unrelated names. To test an upgrade, install the previous worker, visit public pages, release the new worker, wait for activation, verify that old cache names disappear, then test a visited page and an unvisited destination offline. Repeat with denied cache storage and check that a valid network result still appears. Automated tests exercise the worker's actual policy and lifecycle in a simulated service-worker environment; a browser upgrade check remains part of release verification.
 
@@ -49,7 +49,7 @@ Rebuild and publish a previously reviewed static release through the same blocki
 ## 2026.42.5 correction
 
 - Public views use Rivian's published facts without verification flags, review queues, or internal source-conflict notes. Missing schedules remain empty rather than invented.
-- Keep extraction provenance (`sourceUrl`) separate from visitor destinations (`rivianUrl`). Supplemental service-map records have no individual page URL; the UI links to `https://rivian.com/experience/service#map` as “Rivian service centers.” Never reuse the Calgary extraction page as another place's page or structured `sameAs` value.
+- Keep extraction provenance (`sourceUrl`) separate from visitor destinations (`rivianUrl`). Supplemental service-map records have no individual page URL; the UI links to `https://rivian.com/experience/service#map` as “Rivian Service Centers.” Never reuse the Calgary extraction page as another place's page or structured `sameAs` value.
 - All 116 directory page URLs were compared with the live official directory on October 14; each returned HTTP 200 with its expected final URL and canonical URL. All 39 supplemental records use the shared service-center destination.
 - Closing a location restores the camera position from before selection, including after switching locations. Reduced-motion preferences skip animation.
 - Validation: 51 behavioral tests, 210 generated HTML pages with resolved internal links, and no production dependency vulnerabilities. Browser checks cover corrected links, absent public warnings, and camera restoration.
@@ -57,3 +57,8 @@ Rebuild and publish a previously reviewed static release through the same blocki
 ## 2026.42.6 admin entry
 
 Public admin entry pages now immediately continue to GitHub’s editor. The browser script clears retired credential keys before redirecting. A meta refresh and a plain link provide fallbacks when scripting is disabled. All admin aliases bypass service-worker caching. No private administration content is served by GitHub Pages.
+
+
+## Unattended refresh
+
+See [automatic refresh](AUTOMATIC_REFRESH.md) for the daily GitHub schedule, validation gates, bot commits and same-workflow deployment. Both place and charging inventories must pass before a refreshed release publishes.

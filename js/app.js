@@ -51,7 +51,7 @@
     }
   }
   function typeIcon(p) {
-    return `<span class="type-icon type-${e(p.type.toLowerCase().replaceAll(" ", "-"))}">${U.icon({ Space: "space", "Demo Center": "drive", "Service Center": "service", Outpost: "outpost" }[p.type])}</span>`;
+    return `<span class="type-icon type-${e(p.type.toLowerCase().replaceAll(" ", "-"))}">${U.icon({ Space: "space", "Demo Center": "drive", "Service Center": "service", Outpost: "outpost", RAN: "bolt", Waypoint: "plug" }[p.type])}</span>`;
   }
   function find(id) {
     return all.find(
@@ -152,7 +152,7 @@
         origin && M.coordinates(p)
           ? `${Math.round(M.distanceMiles(origin, p))} mi · `
           : "";
-    return `<article class="location-row${selected?.id === p.id ? " selected" : ""}" data-location="${p.id}">${saved ? `<a class="location-select" href="${M.locationUrl(p)}">` : `<button type="button" class="location-select" data-select="${p.id}" aria-label="View ${e(p.name)}, ${e(p.city)}, ${e(p.state)}" aria-pressed="${selected?.id === p.id}">`}${typeIcon(p)}<span class="row-text"><span class="row-name">${e(p.name)}</span><span class="row-meta">${e(p.type)} · ${e(p.city)}, ${e(p.state)}</span><span class="status ${h.state}">${dist}${e(h.label)}</span></span>${U.icon("chevron", "row-arrow")}${saved ? "</a>" : "</button>"}${saved ? `<button class="icon-button remove-save" type="button" data-remove="${p.id}" aria-label="Remove ${e(p.name)} from saved places">${U.icon("close")}</button>` : ""}</article>`;
+    return `<article class="location-row${selected?.id === p.id ? " selected" : ""}" data-location="${p.id}">${saved ? `<a class="location-select" href="${M.locationUrl(p)}">` : `<button type="button" class="location-select" data-select="${p.id}" aria-label="View ${e(p.name)}, ${e(p.city)}, ${e(p.state)}" aria-pressed="${selected?.id === p.id}">`}${typeIcon(p)}<span class="row-text"><span class="row-name">${e(p.name)}</span><span class="row-meta">${e(p.type)} · ${e(p.city)}, ${e(p.state)}</span><span class="status ${h.state}">${dist}${e(M.isCharging(p) ? M.chargingSummary(p) : h.label)}</span></span>${U.icon("chevron", "row-arrow")}${saved ? "</a>" : "</button>"}${saved ? `<button class="icon-button remove-save" type="button" data-remove="${p.id}" aria-label="Remove ${e(p.name)} from saved places">${U.icon("close")}</button>` : ""}</article>`;
   }
   function render(fit = false) {
     const f = filters();
@@ -187,7 +187,7 @@
     $("filter-count").textContent = count ? `(${count})` : "";
     $("clear-area").hidden = !area;
     const mapped = filtered.filter(
-      (p) => M.coordinates(p) && p.coordinatePrecision === "exact",
+      (p) => M.isMapped(p),
     ).length;
     $("map-caption").textContent =
       `${mapped} mapped ${mapped === 1 ? "place" : "places"}`;
@@ -205,7 +205,7 @@
       directions = M.getDirectionsUrl(p),
       h = M.getHoursState(p),
       phone = String(p.phone || "").replace(/[^+\d]/g, "");
-    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
+    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(p.type)}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><h2 id="detail-title" tabindex="-1">${e(p.name)}</h2><address>${e(p.displayAddress || p.address || "Street address not listed")}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}<div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div><div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
   }
   function select(id, { focus = true, push = true } = {}) {
     const p = find(id);
@@ -273,7 +273,7 @@
         area = null;
         render();
         const nearest = filtered.find(
-          (p) => M.coordinates(p) && p.coordinatePrecision === "exact",
+          (p) => M.isMapped(p),
         );
         if (nearest) SpotterMap.focus(nearest);
         toast("Sorted by distance from your location.");
@@ -365,6 +365,15 @@
         "Showing the bundled location directory. Live refresh is unavailable.",
       );
     }
+    let chargers = typeof rivianChargingLocations !== "undefined" ? rivianChargingLocations : [];
+    try {
+      const response = await fetch("/data/charging.json", {cache:"no-cache"});
+      if (!response.ok) throw Error("Charging directory unavailable");
+      const data = await response.json();
+      if (!Array.isArray(data) || !data.length) throw Error("Empty charging directory");
+      chargers = data;
+    } catch { /* Use the release's bundled charging snapshot when offline. */ }
+    all = M.combineLocations(all, chargers);
     normalizeSaved();
     if (page === "explore") {
       $("state-filter").innerHTML =
