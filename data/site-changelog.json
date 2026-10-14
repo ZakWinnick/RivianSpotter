@@ -4,9 +4,10 @@
     "date": "2026-10-14",
     "title": "A better way to explore",
     "changes": [
-      "Redesigned map with dedicated views for charging and Rivian places.",
-      "Charging prices, connectors, speeds, and color-coded ratings.",
-      "Automatic location updates and charger issue reports."
+      "Redesigned map with dedicated Charging and Rivian Places views, category filters, and distinct markers for Spaces, Demo Centers, Service Centers, Outposts, RAN, and Waypoints.",
+      "Expanded charging details include pricing, connector types, charging speeds, and individual port information where available.",
+      "Color-coded charging ratings appear in search results, map details, saved places, and location pages.",
+      "Automatic data refreshes keep location information current, with dated maintenance and charger issue reports in location details."
     ]
   }
 ]
