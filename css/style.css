@@ -1149,11 +1149,11 @@
 .related-places { margin-top: 28px; }
 .related-places .link-row { font-size: .85rem; }
 .map-legend { flex-wrap: wrap; max-width: calc(100% - 48px); gap: 8px 14px; }
-/* Explorer: grouped overview, focused browsing, and a single sidebar for details. */
+/* Explorer: grouped browsing sidebar and location popups over the map. */
 .explorer{grid-template-columns:380px minmax(0,1fr)}
 .explorer .search-panel{padding:20px 22px 14px;border-bottom:1px solid var(--line);max-height:55%;overflow:auto}
 .explorer .search-panel h1{font-size:1.55rem;letter-spacing:-.7px;margin:0 0 16px}
-.explorer .near-me{padding:10px;min-width:42px}.explorer .near-me span:last-child{display:none}
+.explorer .near-me{padding:10px;min-width:44px}.explorer .near-me .icon{width:22px;height:22px}
 .explore-modes{display:flex;gap:3px;padding:4px;margin-top:14px;background:var(--tint);border:1px solid var(--line);border-radius:9px}
 .explore-modes button{flex:1;white-space:nowrap;border:0;border-radius:6px;background:transparent;color:var(--ink);font-size:.73rem;font-weight:650;padding:10px 3px}
 .explore-modes button[aria-pressed=true]{background:var(--surface);box-shadow:0 1px 5px #0001}
@@ -1172,14 +1172,14 @@
 .explorer .location-row{margin:0 18px 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:0}
 .explorer .location-select{padding:15px 12px}.explorer .row-name{font-size:.86rem}.explorer .row-meta{font-size:.72rem}.explorer .row-arrow{width:14px}
 .explorer .sidebar-footer{padding:12px 22px;font-size:.61rem}
-.explorer .detail-sheet{position:static;width:auto;max-height:none;min-height:0;flex:1;border:0;border-radius:0;box-shadow:none;padding:20px 22px 28px;overflow:auto}
-.explorer .detail-sheet h2{font-size:1.7rem}.explorer .detail-sheet::before{display:none}.back-to-results{margin-bottom:18px;font-size:.75rem}.explorer .detail-top{margin-bottom:16px}
+.explorer .detail-sheet{position:absolute;right:24px;bottom:32px;width:min(380px,calc(100% - 428px));max-height:min(760px,calc(100% - 112px));padding:20px 22px 28px;overflow:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.explorer .detail-sheet h2{font-size:1.7rem}.explorer .detail-sheet::before{display:none}.explorer .detail-top{margin-bottom:16px}
 .explorer .map-topbar{right:65px;flex-wrap:wrap}.explorer #full-overview{order:3;margin-left:auto;font-size:.75rem}.explorer .map-caption{font-size:.75rem}
 @media(max-width:760px){
  .explorer{display:block}.explorer .search-panel{padding:16px 18px 12px;max-height:50%}.explorer .search-panel h1{font-size:1.45rem}
  .explorer[data-view=map] .sidebar{display:none}.explorer[data-view=map] .map-area{visibility:visible}
  .explorer .browse-overview{padding:16px 18px 90px}.explorer .results{padding-bottom:90px}
- .explorer .detail-sheet{padding:18px 20px 100px}.explorer .map-topbar{top:18px;bottom:auto;left:16px;right:60px;justify-content:flex-start}
+ .explorer .detail-sheet{left:10px;right:10px;bottom:12px;width:auto;max-height:65%;padding:18px 20px 24px;border-radius:16px}.explorer .map-topbar{top:18px;bottom:auto;left:16px;right:60px;justify-content:flex-start}
  .explorer #full-overview{margin-left:0;order:0}.explorer .map-legend{bottom:100px;max-width:calc(100% - 24px)}
  .explorer .mapboxgl-ctrl-top-right{top:18px}.explorer .mobile-mode{z-index:20}.explorer .sidebar-footer{display:none}
 }
@@ -1194,3 +1194,5 @@
 .reliability-yellow{--rating-color:#eab308}.reliability-amber{--rating-color:#f59e0b}.reliability-orange{--rating-color:#f97316}.reliability-red{--rating-color:#ef4444}.reliability-rose{--rating-color:#f43f5e}
 .location-page .location-title .reliability-badge{width:64px;height:64px;font-size:2.2rem}
 @media(max-width:760px){.location-title{gap:12px}.location-page .location-title .reliability-badge{width:54px;height:54px;font-size:1.9rem}}
+
+.changelog{max-width:800px}.changelog-entry{padding:28px 0 32px;border-top:1px solid var(--line)}.changelog-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.8rem;margin-bottom:12px}.changelog-entry h2{font-size:1.5rem;margin:0 0 14px}.changelog-entry ul{padding-left:20px;color:var(--muted);line-height:1.7}.changelog-entry li+li{margin-top:8px}

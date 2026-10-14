@@ -33,7 +33,7 @@ For local investigation, `node scripts/refresh-charging.mjs --cache-dir /tmp/spo
 
 ## Rivian Roamer enrichment
 
-The same daily workflow retrieves Roamer's public RAN network page once. It imports Rivian-assigned location grades, prices, connector counts, average peak power, source IDs/pins, and explicit site condition reports. No private endpoints, credentials, live stall counts, or inferred failures are used. `data/roamer.json` joins official stations by exact source ID; official specifications and coordinates remain authoritative. Newly detected source IDs are recorded in the Updates page; map inventory continues to come from Rivian's official source.
+The same daily workflow retrieves Roamer's public RAN network page once. It imports Rivian-assigned location grades, prices, connector counts, average peak power, source IDs/pins, and explicit site condition reports. No private endpoints, credentials, live stall counts, or inferred failures are used. `data/roamer.json` joins official stations by exact source ID; official specifications and coordinates remain authoritative. Newly detected source IDs are retained in snapshot history; map inventory continues to come from Rivian's official source.
 
 At most six individual detail pages are retrieved per run, oldest observations first, with 15 seconds between requests. These add rated port power, hours, amenities, idle fees, and individual connector/features. This rotating detail coverage takes about 27 days for 160 sites; the network page's grades/pricing/issue reports are checked daily. The UI dates network and detail observations separately.
 

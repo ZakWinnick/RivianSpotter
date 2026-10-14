@@ -167,33 +167,12 @@ function buildPages(dist, list, summary = {}) {
   write(
     "/updates.html",
     shell({
-      title: "Directory updates",
-      description:
-        "See the latest Rivian location refresh, new locations and updated addresses, hours and services.",
+      title: "Site updates",
+      description: "New features, improvements, and fixes to Rivian Spotter.",
       url: "/updates.html",
       active: "Updates",
-      content:
-        header(
-          "A living directory",
-          "The latest from the map.",
-          `Updated from Rivian on ${M.formatDate(latest)}. Explore new additions and the latest location details.`,
-        ) +
-        summaryBlock +
-        (list.some(p=>p.roamer) ? section("Charging Network Reports", `<p>Location grades, connector details, pricing, and explicit charger issue reports are checked daily. These reports are snapshots, not live availability. Detailed charger pages are refreshed in a small rotating batch.</p>${list.filter(p=>U.hasReportedIssue(p.roamer?.reportedStatus)).map(p=>`<p><a href="${M.locationUrl(p)}">${e(p.name)}</a> — Reported as ${e(p.roamer.reportedStatus)} · ${M.formatDate(p.roamer.observedAt)}</p>`).join("")}`) : "") +
-        (summary.charging ? section("Rivian Charging, on the Map.", `<p>${summary.charging.counts.RAN} Rivian Adventure Network stations and ${summary.charging.counts.Waypoint} Waypoint locations. Charging data last refreshed ${M.formatDate(summary.charging.date)}.</p><div class="actions"><a class="button" href="/?type=RAN&view=map">Explore RAN</a><a class="button" href="/?type=Waypoint&view=map">Explore Waypoints</a></div>`) : "") +
-        (summary.roamer?.changes?.length ? section("Recent Charging Changes", `<div>${summary.roamer.changes.slice(-20).reverse().map(c=>{const p=list.find(p=>p.sourceId===c.sourceId);return `<p>${p?`<a href="${M.locationUrl(p)}">${e(c.name)}</a>`:e(c.name)} · ${c.kind==='newly-detected'?'New charging listing detected':e(({reliabilityGrade:'Grade',reportedStatus:'Reported condition',connectorSummary:'Connectors',chargerCount:'Charger count',rates:'Pricing',access:'EV access'})[c.field]||'Details')+' changed'} · ${M.formatDate(c.observedAt)}</p>`;}).join("")}</div>`) : "") +
-        section(
-          "The Latest Directory Refresh.",
-          `<p>The directory and charging map refresh automatically each day from Rivian’s published sources. A failed refresh keeps the last successful dataset in place.</p><p>Reconciled the complete official location directory with Rivian’s service-location data and the previous Rivian Spotter inventory. Location pages now separate visiting hours from service hours, identify their source, and show when they were updated.</p><p>Duplicate entries have been consolidated while preserving historical links. A changed address is not treated as an opening, and a missing listing is not treated as a closure.</p><p><a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">View Rivian’s official directory →</a></p>`,
-        ) +
-        section(
-          "New to this directory.",
-          `${additions.length ? "<p>These are new records added in this refresh; they are not necessarily newly opened locations.</p>" : "<p>No new locations were added in this refresh.</p>"}<div>${additions.map(item => list.find(p=>p.id===item.id)).filter(Boolean)
-            .map(linkRow)
-            .join(
-              "",
-            )}</div><p style="margin-top:20px"><a href="/regions/">Browse every location by region →</a></p>`,
-        ),
+      content: header("Site changelog", "What’s new.", "New features, improvements, and fixes to Rivian Spotter.") +
+        `<div class="changelog">${require("../data/site-changelog.json").map(entry=>`<article class="changelog-entry"><div class="changelog-meta"><time datetime="${e(entry.date)}">${M.formatDate(entry.date)}</time><span class="tag">${e(entry.version)}</span></div><h2>${e(entry.title)}</h2><ul>${entry.changes.map(change=>`<li>${e(change)}</li>`).join("")}</ul></article>`).join("")}</div>`,
     }),
   );
   write(
