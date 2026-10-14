@@ -246,3 +246,23 @@ test('installation rejects private shell responses without caching them', async 
   const shell = await w.caches.open(w.value('STATIC_CACHE'));
   assert.equal((await shell.keys()).length, 0);
 });
+
+test('crosshairs-only locator handles pending, granted and denied location requests without a text span', () => {
+  const app = read('js/app.js');
+  const near = app.slice(app.indexOf('  function near() {'), app.indexOf('  async function share('));
+  for (const allowed of [true, false]) {
+    const attributes = {}, messages = [], option = {disabled:true};
+    const button = {disabled:false,setAttribute:(name,value)=>attributes[name]=value};
+    const sort = {querySelector:()=>option};
+    let success, failure, rendered = false;
+    const ctx = {navigator:{geolocation:{getCurrentPosition:(yes,no)=>{success=yes;failure=no;}}},
+      $:id=>id==='near-me'?button:sort,toast:m=>messages.push(m),render:()=>rendered=true,
+      filtered:[],M:{isMapped:()=>true},SpotterMap:{focus(){}}};
+    vm.runInNewContext(near+'\nnear();',ctx);
+    assert.equal(button.disabled,true);assert.equal(attributes['aria-busy'],'true');
+    if (allowed) success({coords:{latitude:37,longitude:-122}});else failure({code:1});
+    assert.equal(button.disabled,false);assert.equal(attributes['aria-label'],'Locate me');assert.equal(attributes['aria-busy'],'false');
+    if (allowed) {assert.equal(rendered,true);assert.equal(sort.value,'nearest');assert.equal(option.disabled,false);}
+    else {assert.equal(rendered,false);assert.match(messages[0],/declined/);}
+  }
+});

@@ -303,12 +303,14 @@
     }
     const b = $("near-me");
     b.disabled = true;
-    b.querySelector("span:last-child").textContent = "Locating…";
+    b.setAttribute("aria-label", "Locating…");
+    b.setAttribute("aria-busy", "true");
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
         b.disabled = false;
-        b.querySelector("span:last-child").textContent = "Near me";
+        b.setAttribute("aria-label", "Locate me");
+        b.setAttribute("aria-busy", "false");
         $("sort-filter").querySelector("[value=nearest]").disabled = false;
         $("sort-filter").value = "nearest";
         area = null;
@@ -321,7 +323,8 @@
       },
       (err) => {
         b.disabled = false;
-        b.querySelector("span:last-child").textContent = "Near me";
+        b.setAttribute("aria-label", "Locate me");
+        b.setAttribute("aria-busy", "false");
         toast(
           err.code === 1
             ? "Location access was declined. Search by city or region instead."
