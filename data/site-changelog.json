@@ -1,13 +1,15 @@
 [
   {
-    "version": "2026.42.13",
+    "version": "2026.42.15",
     "date": "2026-10-14",
-    "title": "A better way to explore",
+    "title": "October 2026 update",
     "changes": [
-      "Redesigned map with dedicated Charging and Rivian Places views, category filters, and distinct markers for Spaces, Demo Centers, Service Centers, Outposts, RAN, and Waypoints.",
-      "Expanded charging details include pricing, connector types, charging speeds, and individual port information where available.",
-      "Color-coded charging ratings appear in search results, map details, saved places, and location pages.",
-      "Automatic data refreshes keep location information current, with dated maintenance and charger issue reports in location details."
+      "Added RAN and Waypoint charging locations.",
+      "Redesigned the map and sidebar with separate Charging and Rivian Places views, location-type filters, and distinct map markers.",
+      "Added new Rivian locations and updated existing addresses, hours, and official links.",
+      "Added charging prices, connector types, speeds, site features, and individual charger details where available.",
+      "Added color-coded charging ratings to location cards and detail pages.",
+      "Added automatic location-data refreshes and dated charger maintenance and issue reports."
     ]
   },
   {
