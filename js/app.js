@@ -12,6 +12,7 @@
     origin = null,
     area = null,
     view = "list",
+    detailReturnView = "list",
     mode = "all",
     saveIds = [],
     timer,
@@ -107,7 +108,7 @@
       saved: f.savedOnly ? "1" : "",
       sort: $("sort-filter").value === "name" ? "" : $("sort-filter").value,
       location: selected?.slug || "",
-      view: view === "map" ? "map" : "",
+      view: (selected ? detailReturnView : view) === "map" ? "map" : "",
       bounds: area?.map((x) => x.toFixed(5)).join(",") || "",
     }))
       if (value) p.set(key, value);
@@ -248,7 +249,10 @@
       toast("That location could not be found. Try searching by name.");
       return;
     }
-    lastTrigger = document.activeElement;
+    if (!selected) {
+      detailReturnView = view;
+      lastTrigger = document.activeElement;
+    }
     selected = p;
     $("detail").innerHTML = detail(p);
     $("detail").hidden = false;
@@ -265,9 +269,11 @@
     if (focus) $("detail-title").focus({ preventScroll: true });
   }
   function closeDetail(write = true) {
+    const returnView = selected ? detailReturnView : view;
     selected = null;
     SpotterMap.clearFocus();
     $("detail").hidden = true;
+    setView(returnView, false);
     browseChrome();
     document.querySelectorAll(".location-row.selected").forEach((el) => {
       el.classList.remove("selected");

@@ -1,4 +1,4 @@
-/* Public HTML only. Daily network snapshot and a small, paced rotating detail batch. */
+/* Public HTML only. Daily, paced detail coverage with resumable checkpoints. */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {load}=require('cheerio');
 const NETWORK='https://rivianroamer.com/charging/networks/rivian-adventure-network';
@@ -29,39 +29,46 @@ function parseDetail(html){
  if(!chargers.length||Number(metrics.Stations)!==chargers.length || chargers.some(c=>!c.name || !c.connector || !(c.powerKw>0 && c.powerKw<=2000)) || new Set(chargers.map(c=>c.name)).size!==chargers.length)throw Error('Incomplete station detail');
  return {address,amenities,maxKw:Number(metrics['Max kW'])||null,averageKw:Number(metrics['Avg kW'])||null,hours:metrics.Hours||null,detailRates:rates,chargers,sourceUpdatedText};
 }
-async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDetails=6}={}){
+async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDetails=Infinity,maxRunMs=45*60*1000,fetchImpl=fetch,pause=ms=>new Promise(r=>setTimeout(r,ms))}={}){
  cacheDir ||= fs.mkdtempSync(path.join(require('node:os').tmpdir(),'spotter-roamer-'));
  fs.mkdirSync(cacheDir,{recursive:true});let requests=0,rateLimited=false;
- const old=fs.existsSync(output)?JSON.parse(fs.readFileSync(output,'utf8')):null;
+ const started=Date.now(),old=fs.existsSync(output)?JSON.parse(fs.readFileSync(output,'utf8')):null;
  const previous=new Map((old?.stations||[]).map(s=>[s.sourceId,s]));
+ const persist=value=>{fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output+'.tmp',JSON.stringify(value,null,2)+'\n');fs.renameSync(output+'.tmp',output);return value;};
+ const retryAt=error=>{const seconds=Number(error.retryAfter),at=Date.parse(error.retryAfter||'');return new Date(Math.max(Date.now()+86400000,Number.isFinite(seconds)&&seconds>0?Date.now()+seconds*1000:Number.isFinite(at)?at:0)).toISOString();};
  async function get(url,key){
   const file=path.join(cacheDir,key+'.html');
   if(fs.existsSync(file))return {html:fs.readFileSync(file,'utf8'),observedAt:fs.statSync(file).mtime.toISOString()};
-  if(cacheOnly) return null;
-  if(requests)await new Promise(r=>setTimeout(r,15000));
-  const response=await fetch(url,{signal:AbortSignal.timeout(25000),headers:{'User-Agent':'RivianSpotter/1.0 (+https://rivianspotter.com/about.html)'}});requests++;
-  if(!response.ok){const error=Error(`Roamer returned ${response.status}; stopped without retrying`);error.rateLimited=response.status===429;error.retryAfter=response.headers.get('retry-after');throw error;}
+  if(cacheOnly)return null;
+  if(requests)await pause(15000);
+  const response=await fetchImpl(url,{signal:AbortSignal.timeout(25000),headers:{'User-Agent':'RivianSpotter/1.0 (+https://rivianspotter.com/about.html)'}});requests++;
+  if(!response.ok){const error=Error(`Source returned ${response.status}; no immediate retry`);error.status=response.status;error.rateLimited=response.status===429;error.retryAfter=response.headers.get('retry-after');throw error;}
   const html=await response.text();if(html.length>5e6)throw Error('Oversized response');fs.writeFileSync(file,html);return {html,observedAt:new Date().toISOString()};
  }
- if(!cacheOnly && old?.nextRequestAfter && Date.parse(old.nextRequestAfter)>Date.now()){console.log('Roamer cooldown active; retaining the last snapshot.');return old;}
- let network;try{network=await get(NETWORK,'network');}catch(error){if(error.rateLimited && old){const delay=Number(error.retryAfter),at=Date.parse(error.retryAfter||'');old.nextRequestAfter=new Date(Number.isFinite(delay)&&delay>0?Date.now()+Math.max(86400,delay)*1000:Number.isFinite(at)?Math.max(Date.now()+86400000,at):Date.now()+86400000).toISOString();old.rateLimited=true;fs.writeFileSync(output,JSON.stringify(old,null,2)+'\n');}throw error;}if(!network)throw Error('Network snapshot missing');
+ if(!cacheOnly && old?.nextRequestAfter && Date.parse(old.nextRequestAfter)>Date.now()){console.log(`Cooldown active until ${old.nextRequestAfter}; retaining the last snapshot.`);return old;}
+ let network;try{network=await get(NETWORK,'network');}catch(error){if(error.rateLimited && old)persist({...old,nextRequestAfter:retryAt(error),rateLimited:true});throw error;}if(!network)throw Error('Network snapshot missing');
  const stations=parseNetwork(network.html),observedAt=network.observedAt;
- if(previous.size && stations.length<previous.size*0.85)throw Error("Unexpected Roamer inventory loss; retaining previous snapshot");
+ if(previous.size && stations.length<previous.size*0.85)throw Error('Unexpected inventory loss; retaining previous snapshot');
  const detailKeys=['address','amenities','maxKw','averageKw','hours','detailRates','chargers','sourceUpdatedText','detailsObservedAt'];
  for(const s of stations){const prev=previous.get(s.sourceId);if(prev)for(const key of detailKeys)if(key in prev)s[key]=prev[key];s.observedAt=observedAt;}
- // Oldest details first. A daily pass refreshes only six pages, not the entire site.
- const queue=stations.slice().sort((a,b)=>(a.detailsObservedAt||'').localeCompare(b.detailsObservedAt||''));
- let fetchedDetails=0,nextRequestAfter=null;
- for(const s of queue){
-  const cached=fs.existsSync(path.join(cacheDir,s.sourceId+'.html'));if(!cached && (cacheOnly||fetchedDetails>=maxDetails))continue;
-  try{const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,parseDetail(result.html),{detailsObservedAt:result.observedAt});if(!cached)fetchedDetails++;}
-  catch(error){console.warn(error.message);if(error.rateLimited){rateLimited=true;const seconds=Number(error.retryAfter);const parsed=Date.parse(error.retryAfter||'');nextRequestAfter=new Date(Number.isFinite(seconds)&&seconds>0?Date.now()+Math.max(86400,seconds)*1000:Number.isFinite(parsed)?Math.max(Date.now()+86400000,parsed):Date.now()+86400000).toISOString();}break;}
- }
+ // Missing details first, then oldest. Each site is requested at most once per run.
+ const complete=s=>Array.isArray(s.chargers)&&s.chargers.length>0;
+ const queue=stations.slice().sort((a,b)=>Number(complete(a))-Number(complete(b)) || (a.detailsObservedAt||'').localeCompare(b.detailsObservedAt||''));
+ let fetchedDetails=0,nextRequestAfter=null;const detailErrors=[];
  const fields=['reportedStatus','reliabilityGrade','access','connectorSummary','chargerCount','rates','maxKw','averagePeakKw','hours','amenities','detailRates','chargers'];
- const currentChanges=old?stations.flatMap(s=>{const prev=previous.get(s.sourceId);return !prev?[{sourceId:s.sourceId,name:s.name,kind:'newly-detected',observedAt}]:fields.filter(k=>k in prev && JSON.stringify(s[k])!==JSON.stringify(prev[k])).map(field=>({sourceId:s.sourceId,name:s.name,kind:'changed',field,before:prev[field],after:s[field],observedAt}));}):[];
- const changes=[...(old?.changes||[]).filter(c=>Date.parse(c.observedAt)>Date.now()-30*86400000),...currentChanges].slice(-200);
- const result={sourceUrl:NETWORK,observedAt,completedAt:new Date().toISOString(),sourceHash:crypto.createHash('sha256').update(network.html).digest('hex'),stationCount:stations.length,detailCount:stations.filter(s=>s.chargers).length,scheduleEnabled:true,cadence:'Daily network check; up to six detail pages per day, spaced 15 seconds apart',rateLimited,nextRequestAfter,changes,stations};
- fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output+'.tmp',JSON.stringify(result,null,2)+'\n');fs.renameSync(output+'.tmp',output);console.log(`Saved ${stations.length} stations, ${result.detailCount} detail snapshots; ${requests} requests.`);return result;
+ function checkpoint(){
+  const currentChanges=old?stations.flatMap(s=>{const prev=previous.get(s.sourceId);return !prev?[{sourceId:s.sourceId,name:s.name,kind:'newly-detected',observedAt}]:fields.filter(k=>k in prev && JSON.stringify(s[k])!==JSON.stringify(prev[k])).map(field=>({sourceId:s.sourceId,name:s.name,kind:'changed',field,before:prev[field],after:s[field],observedAt}));}):[];
+  const changes=[...(old?.changes||[]).filter(c=>Date.parse(c.observedAt)>Date.now()-30*86400000),...currentChanges].slice(-200);
+  return persist({sourceUrl:NETWORK,observedAt,completedAt:new Date().toISOString(),sourceHash:crypto.createHash('sha256').update(network.html).digest('hex'),stationCount:stations.length,detailCount:stations.filter(complete).length,missingDetailIds:stations.filter(s=>!complete(s)).map(s=>s.sourceId),scheduleEnabled:true,cadence:'Daily network and station details, spaced 15 seconds apart; unfinished coverage resumes on the next run',rateLimited,nextRequestAfter,detailErrors,changes,stations});
+ }
+ checkpoint();
+ for(const s of queue){
+  if(Date.now()-started>=maxRunMs)break;
+  const cached=fs.existsSync(path.join(cacheDir,s.sourceId+'.html'));if(!cached && (cacheOnly||fetchedDetails>=maxDetails))continue;
+  try{if(!cached)fetchedDetails++;const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,parseDetail(result.html),{detailsObservedAt:result.observedAt});checkpoint();}
+  catch(error){detailErrors.push({sourceId:s.sourceId,message:error.message});console.warn(error.message);if(error.rateLimited){rateLimited=true;nextRequestAfter=retryAt(error);}checkpoint();if(error.rateLimited||!error.status&&/fetch|timeout|abort/i.test(error.message)||error.status>=500)break;}
+ }
+ const result=checkpoint();console.log(`Saved ${stations.length} stations, ${result.detailCount} detail snapshots; ${requests} requests.`);return result;
 }
 module.exports={parseNetwork,parseDetail,refresh};
 if(require.main===module)refresh({cacheDir:process.env.ROAMER_CACHE_DIR,cacheOnly:process.argv.includes('--cache-only')}).catch(e=>{console.error(e.message);process.exitCode=1;});

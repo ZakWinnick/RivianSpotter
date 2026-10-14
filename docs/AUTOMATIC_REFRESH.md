@@ -1,6 +1,6 @@
 # Automatic official-data refresh
 
-The `Refresh official location and charging data` GitHub Actions workflow runs daily at **13:23 UTC** (6:23 AM Pacific during daylight saving time, 5:23 AM in winter). It can also be run manually from Actions. No personal access token, external scheduler, or manual approval is required.
+The `Refresh official location and charging data` GitHub Actions workflow runs daily at **19:23 UTC** (12:23 PM Pacific during daylight saving time, 11:23 AM in winter). It can also be run manually from Actions. No personal access token, external scheduler, or manual approval is required.
 
 ## Lifecycle
 
@@ -19,7 +19,7 @@ Every build adds a deterministic data hash to the release cache version, so auto
 
 ## Source limits and identity
 
-The source is the public tile service used by `https://rivian.com/experience/charging#map`. It is a website implementation detail, not a guaranteed external API. Requests are throttled below its observed five-per-second limit, honor rate-limit backoff, and have bounded retries/timeouts. Expensive overview tiles may be subdivided; unresolved failures block publication. The job has a 45-minute ceiling.
+The source is the public tile service used by `https://rivian.com/experience/charging#map`. It is a website implementation detail, not a guaranteed external API. Requests are throttled below its observed five-per-second limit, honor rate-limit backoff, and have bounded retries/timeouts. Expensive overview tiles may be subdivided; unresolved failures block publication. The job has a 75-minute ceiling, including a 45-minute budget for charging-detail requests.
 
 Source IDs map to deterministic safe numeric IDs. Existing slugs and IDs survive station renames. Stations absent from a later complete snapshot retain their detail URL and saved-place identity but leave the default directory; their page says they are no longer listed, without claiming a closure. Charger pins are labeled internally `map-pin` rather than survey-accurate coordinates. Directions use a published address when present, falling back to the pin.
 
@@ -35,8 +35,8 @@ For local investigation, `node scripts/refresh-charging.mjs --cache-dir /tmp/spo
 
 The same daily workflow retrieves Roamer's public RAN network page once. It imports Rivian-assigned location grades, prices, connector counts, average peak power, source IDs/pins, and explicit site condition reports. No private endpoints, credentials, live stall counts, or inferred failures are used. `data/roamer.json` joins official stations by exact source ID; official specifications and coordinates remain authoritative. Newly detected source IDs are retained in snapshot history; map inventory continues to come from Rivian's official source.
 
-At most six individual detail pages are retrieved per run, oldest observations first, with 15 seconds between requests. These add rated port power, hours, amenities, idle fees, and individual connector/features. This rotating detail coverage takes about 27 days for 160 sites; the network page's grades/pricing/issue reports are checked daily. The UI dates network and detail observations separately.
+Each daily run works through all station detail pages, missing details first and then oldest observations, with 15 seconds between requests. These add rated port power, hours, amenities, idle fees, and individual connector/features. Each successful detail import is checkpointed. If the 45-minute budget expires or the source rate-limits requests, the next daily run resumes missing coverage first. A full 160-site pass takes about 40 minutes plus response time. The UI dates network and detail observations separately.
 
 A 429 response stops requests immediately and persists a cooldown of at least 24 hours (or a longer Retry-After). A source error retains the previous facts; optional Roamer retrieval can fail without blocking valid official updates. Build, test and dependency audit failures always block publication. Network inventory loss over 15%, duplicate IDs, missing pins or incomplete cards are rejected. Grade, price, connector, explicit condition and detail changes are retained for 30 days (up to 200 events). A new source listing is not claimed as a newly opened station; an absent or unknown condition is not a charger outage.
 
-The initial October 14 snapshot includes 160 network cards and 17 detail pages. A rate-limit response stopped further detail collection and established the first cooldown. Scheduled runs use a fresh temporary cache and resume the rotating batch after that cooldown. For parser recovery only, `ROAMER_CACHE_DIR=/path/to/saved/html npm run refresh:roamer -- --cache-only` imports existing HTML without requesting the source.
+The initial October 14 snapshot includes 160 network cards and 17 detail pages. A rate-limit response stopped further detail collection and established the first cooldown. Scheduled runs use a fresh temporary cache and resume missing detail coverage after that cooldown. For parser recovery only, `ROAMER_CACHE_DIR=/path/to/saved/html npm run refresh:roamer -- --cache-only` imports existing HTML without requesting the source.

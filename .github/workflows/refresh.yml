@@ -2,7 +2,7 @@ name: Refresh official location and charging data
 
 on:
   schedule:
-    - cron: '23 13 * * *'
+    - cron: '23 19 * * *'
   workflow_dispatch:
 
 permissions:
@@ -17,7 +17,7 @@ jobs:
   refresh:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     permissions:
       contents: write
     steps:
@@ -53,6 +53,9 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Record station detail coverage
+        run: |
+          node -e 'const s=require("./data/roamer.json"); console.log(`Individual charger details: ${s.detailCount}/${s.stationCount} sites. Missing details resume automatically. ${s.nextRequestAfter ? "Next eligible request: "+s.nextRequestAfter : ""}`)' >> "$GITHUB_STEP_SUMMARY"
       - name: Record source coverage
         run: |
           node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} RAN stations, ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"

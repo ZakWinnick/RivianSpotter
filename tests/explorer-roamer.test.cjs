@@ -72,3 +72,51 @@ test('HTTP rate limiting stops immediately and persists cooldown while retaining
  global.fetch=async()=>{calls++;return {ok:false,status:429,headers:new Headers({'retry-after':'172800'})};};
  try{await assert.rejects(api.refresh({output}),/429/);const retained=JSON.parse(fs.readFileSync(output));assert.deepEqual(retained.stations,old.stations);assert.equal(retained.observedAt,old.observedAt);assert(Date.parse(retained.nextRequestAfter)>Date.now()+47*3600000);await api.refresh({output});assert.equal(calls,1);}finally{global.fetch=original;fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('RAN cards keep the same information sections for full, partial and unmatched sites',()=>{
+ const partial=api.parseNetwork(network(),{minimum:1})[0];
+ const full={...partial,hours:'24/7',amenities:['Trailer OK'],detailsObservedAt:'2026-10-14',detailRates:{Idle:'$0.50/min'},chargers:[{name:'1A',connector:'NACS',powerKw:300,features:[]}]};
+ for(const roamer of [full,partial,null]){
+  const html=U.chargingDetails({type:'RAN',roamer,chargerCount:6,maxKw:300});
+  for(const label of ['Connectors','Pricing per kWh','Average Peak Power','Charging Hours','Idle Fee','Site Features','Individual Chargers'])assert(html.includes(label),label);
+  if(!roamer?.chargers)assert(html.includes('Individual charger details are not available yet.'));
+ }
+ assert.doesNotMatch(U.chargingDetails({type:'Waypoint',chargerCount:2,maxKw:11}),/Individual Chargers/);
+});
+
+const detailFixture='<main><h1>Station</h1><div class="text-center"><div><div>1</div><div>Stations</div></div><div><div>300</div><div>Max kW</div></div></div><table><tbody><tr><td>1A</td><td>300 kW</td><td>NACS</td><td></td></tr></tbody></table></main>';
+function detailImportFixture(){
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'roamer-coverage-')),cacheDir=path.join(dir,'cache'),output=path.join(dir,'snapshot.json');fs.mkdirSync(cacheDir);
+ const markers=Array.from({length:100},(_,i)=>({url:`/charging/sites/US-RIV-L${i}`,coordinates:[37,-120]}));
+ fs.writeFileSync(path.join(cacheDir,'network.html'),`<div data-cluster-map-markers-value='${JSON.stringify(markers)}'></div>`+markers.map((m,i)=>row(m.url.split('/').pop(),`Station ${i}`)).join(''));
+ return {dir,cacheDir,output};
+}
+test('detail coverage goes beyond six pages, checkpoints each success and resumes missing sites first',async()=>{
+ const f=detailImportFixture(),calls=[],pauses=[];
+ const fetchImpl=async url=>{const saved=JSON.parse(fs.readFileSync(f.output));assert.equal(saved.detailCount,calls.length);calls.push(url);return new Response(detailFixture);};
+ try{
+  const first=await api.refresh({...f,maxDetails:8,fetchImpl,pause:async ms=>pauses.push(ms)});
+  assert.equal(first.detailCount,8);assert.equal(first.missingDetailIds.length,92);assert.equal(pauses.length,7);assert(pauses.every(ms=>ms===15000));
+  const next=await api.refresh({...f,cacheDir:path.join(f.dir,'next'),maxDetails:0,cacheOnly:true}).catch(()=>null);
+  assert.equal(next,null); // No cached network cannot replace the saved coverage.
+  fs.mkdirSync(path.join(f.dir,'resume'));fs.copyFileSync(path.join(f.cacheDir,'network.html'),path.join(f.dir,'resume/network.html'));
+  const resumed=await api.refresh({...f,cacheDir:path.join(f.dir,'resume'),maxDetails:2,fetchImpl,pause:async()=>{}});
+  assert.equal(resumed.detailCount,10);assert(calls[8].endsWith('/US-RIV-L8'));assert(calls[9].endsWith('/US-RIV-L9'));
+ }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});
+test('detail rate limiting preserves partial progress and stops subsequent requests',async()=>{
+ const f=detailImportFixture();let calls=0;
+ try{
+  const result=await api.refresh({...f,fetchImpl:async()=>++calls===3?new Response('',{status:429,headers:{'Retry-After':'172800'}}):new Response(detailFixture),pause:async()=>{}});
+  assert.equal(calls,3);assert.equal(result.detailCount,2);assert.equal(result.rateLimited,true);assert(Date.parse(result.nextRequestAfter)>Date.now()+47*3600000);
+  const again=await api.refresh({...f,fetchImpl:async()=>{throw Error('Must honor cooldown');}});assert.equal(again.detailCount,2);
+ }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});
+
+test('default daily pass attempts every station detail instead of stopping at six',async()=>{
+ const f=detailImportFixture();let calls=0;
+ try{
+  const result=await api.refresh({...f,fetchImpl:async()=>{calls++;return new Response(detailFixture);},pause:async()=>{}});
+  assert.equal(calls,100);assert.equal(result.detailCount,100);assert.deepEqual(result.missingDetailIds,[]);
+ }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});

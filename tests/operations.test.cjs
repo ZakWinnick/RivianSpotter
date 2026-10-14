@@ -197,32 +197,32 @@ test('denied cache storage cannot hide valid network assets', async () => {
   assert.equal(await response.text(), 'uncached stylesheet');
 });
 
-test('release 2026.42.14 installation fetches fresh versioned shell assets', async () => {
+test('release 2026.42.15 installation fetches fresh versioned shell assets', async () => {
   const requests = [];
   const w = worker(async req => { requests.push(req); return new Response('fresh shell'); });
   w.context.Request = Request;
   let completion;
   w.listeners.install({waitUntil: value => {completion = value;}});
   await completion;
-  assert.match(w.value('CACHE_VERSION'), /2026\.42\.14$/);
+  assert.match(w.value('CACHE_VERSION'), /2026\.42\.15$/);
   const assets = w.value('STATIC_ASSETS');
   assert.equal(requests.length, assets.length);
   assert.ok(requests.every(req => req.cache === 'reload' || req.cache === 'no-store'));
   assert.ok(assets.includes('/js/config.js'));
   for (const req of requests) {
     const url = new URL(req.url);
-    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.14');
+    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.42.15');
   }
 });
 
 test('versioned asset cache keys are distinct while data and page keys stay stable', () => {
   const w = worker();
   for (const pathname of ['/js/app.js', '/js/components.js', '/css/style.css', '/js/config.js']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.14`);
-    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.14`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.15`);
+    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.42.15`);
   }
   for (const pathname of ['/data/locations.json', '/index.html', '/regions/']) {
-    w.context.sampleRequest = request(`${pathname}?v=2026.42.14`);
+    w.context.sampleRequest = request(`${pathname}?v=2026.42.15`);
     assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}`);
   }
 });
@@ -265,4 +265,18 @@ test('crosshairs-only locator handles pending, granted and denied location reque
     if (allowed) {assert.equal(rendered,true);assert.equal(sort.value,'nearest');assert.equal(option.disabled,false);}
     else {assert.equal(rendered,false);assert.match(messages[0],/declined/);}
   }
+});
+
+test('popup close restores its originating view, including switching locations and desktop resize',()=>{
+ const app=read('js/app.js'),flow=app.slice(app.indexOf('  function select(id,'),app.indexOf('  function reset()'));
+ for(const initial of ['list','map']){
+  const nodes=new Map(),get=id=>{if(!nodes.has(id))nodes.set(id,{dataset:{},setAttribute(){},focus(){},hidden:true});return nodes.get(id);};
+  let clearCount=0;const ctx={selected:null,view:initial,detailReturnView:'list',lastTrigger:null,innerWidth:390,
+   find:id=>({id:Number(id)}),detail:()=>'',toast(){},$:get,browseChrome(){},writeUrl(){},requestAnimationFrame:fn=>fn(),
+   document:{activeElement:{isConnected:true,focus(){}},querySelectorAll:()=>[]},SpotterMap:{focus(){},clearFocus(){clearCount++;},resize(){}}};
+  vm.runInNewContext(flow,ctx);vm.runInNewContext('select(1);select(2);',ctx);
+  assert.equal(ctx.view,'map');assert.equal(ctx.detailReturnView,initial);
+  vm.runInNewContext('closeDetail();',ctx);assert.equal(ctx.view,initial);assert.equal(get('detail').hidden,true);assert.equal(clearCount,1);
+  vm.runInNewContext('select(1);innerWidth=1280;closeDetail();',ctx);assert.equal(ctx.view,initial);
+ }
 });
