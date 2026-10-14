@@ -31,7 +31,7 @@ jobs:
       - run: npm ci
       - name: Fetch and validate both official inventories
         run: npm run refresh:all
-      - name: Check Roamer grades, pricing, and charger reports
+      - name: Check Rivian grades and charging details via Roamer
         id: roamer
         continue-on-error: true
         run: npm run refresh:roamer
