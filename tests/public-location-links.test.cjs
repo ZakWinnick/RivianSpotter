@@ -17,7 +17,7 @@ test('every location link points to its own official page or an accurately label
   }else{
    assert.equal(link.locationSpecific,false,p.slug);
    assert(!link.url.includes('/calgary'),p.slug);
-   assert.notEqual(link.label,'Official location');
+   assert.notEqual(link.label,'Official Location');
   }
  }
  const oldCached={...records.find(p=>p.sourceKind==='service-map'),rivianUrl:'https://rivian.com/spaces/calgary-service-demo-center'};

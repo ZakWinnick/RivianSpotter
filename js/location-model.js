@@ -224,14 +224,14 @@
     // A page containing shared map data is provenance, not this place's page.
     if (p.sourceKind === "service-map") return {
       url: "https://rivian.com/experience/service#map",
-      label: "Rivian service centers",
+      label: "Rivian Service Centers",
       locationSpecific: false,
     };
     const url = safeUrl(p.rivianUrl, "rivian.com");
     if (!url) return null;
     const locationSpecific = new URL(url).pathname.startsWith("/spaces/") &&
       new URL(url).pathname !== "/spaces/locations";
-    return { url, label: locationSpecific ? "Official location" : "Rivian location directory", locationSpecific };
+    return { url, label: locationSpecific ? "Official Location" : "Rivian Location Directory", locationSpecific };
   }
   function locationUrl(p) {
     return "/locations/" + encodeURIComponent(p.slug) + "/";
