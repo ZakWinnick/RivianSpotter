@@ -1196,3 +1196,7 @@
 @media(max-width:760px){.location-title{gap:12px}.location-page .location-title .reliability-badge{width:54px;height:54px;font-size:1.9rem}}
 
 .changelog{max-width:800px}.changelog-entry{padding:28px 0 32px;border-top:1px solid var(--line)}.changelog-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.8rem;margin-bottom:12px}.changelog-entry h2{font-size:1.5rem;margin:0 0 14px}.changelog-entry ul{padding-left:20px;color:var(--muted);line-height:1.7}.changelog-entry li+li{margin-top:8px}
+
+/* Keep the close control visible inside the scrolling map popup. */
+.explorer .detail-top{position:sticky;top:-20px;z-index:2;background:var(--surface);margin:-20px -22px 16px;padding:20px 22px 12px;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.explorer .detail-top{top:-18px;margin:-18px -20px 16px;padding:18px 20px 12px}}

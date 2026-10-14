@@ -25,12 +25,15 @@ test('every location link points to its own official page or an accurately label
  const imported=serviceRecord({properties:{name:'Sunnyvale',city:'Sunnyvale',stateOrProvince:'CA',address:'925 Morse Avenue',country:'US',status:'live'}},'2026-10-14');
  assert.equal(imported.rivianUrl,null);
 });
-test('generated pages contain no review warnings or cross-location official links',()=>{
+test('generated public pages retain analytics and contain no review warnings or cross-location official links',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-public-'));
  try{
   const routes=buildPages(dir,records,summary);
+  const analytics = /<script src="https:\/\/tinylytics\.app\/embed\/jj-9YE1ymyozj9wFfy7d\.js" defer><\/script>/g;
+  assert.equal((fs.readFileSync(path.join(__dirname,'../index.html'),'utf8').match(analytics)||[]).length,1,'explorer analytics');
   for(const route of routes){
    const html=fs.readFileSync(path.join(dir,route,route.endsWith('/')?'index.html':''),'utf8');
+   assert.equal((html.match(analytics)||[]).length,1,`${route} analytics`);
    assert.doesNotMatch(html,/needs? confirmation|need review|awaiting.*verification|verification queue|visible uncertainty|details need|no current source match/i,route);
   }
   for(const p of records){

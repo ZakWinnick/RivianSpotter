@@ -1,34 +1,13 @@
 [
   {
-    "version": "2026.42.12",
+    "version": "2026.42.13",
     "date": "2026-10-14",
-    "title": "Map popups are back",
+    "title": "A better way to explore",
     "changes": [
-      "Location details open over the map while the sidebar stays available for browsing.",
-      "Closing a popup returns to the full map view. Selected pins stay visible beside the popup.",
-      "A crosshairs icon makes the location finder easier to recognize.",
-      "Updates is now a changelog for site improvements and fixes."
-    ]
-  },
-  {
-    "version": "2026.42.11",
-    "date": "2026-10-14",
-    "title": "Charging ratings at a glance",
-    "changes": [
-      "Prominent color-coded rating badges appear beside charging location names.",
-      "Ratings are visible in search results, map details, saved places, and location pages.",
-      "Charging details use simpler labels and show when their information was captured."
-    ]
-  },
-  {
-    "version": "2026.42.10",
-    "date": "2026-10-14",
-    "title": "A new way to explore",
-    "changes": [
-      "Separate Charging and Rivian Places views, with six location categories and distinct map symbols.",
-      "Charging details include pricing, connector types, charging speeds, and individual port information where available.",
-      "Daily data refreshes keep the directory current, with dated charger issue reports on location pages.",
-      "Restored all three Outpost map pins and added a Full Overview control."
+      "Redesigned map with dedicated Charging and Rivian Places views, category filters, and distinct markers for Spaces, Demo Centers, Service Centers, Outposts, RAN, and Waypoints.",
+      "Expanded charging details include pricing, connector types, charging speeds, and individual port information where available.",
+      "Color-coded charging ratings appear in search results, map details, saved places, and location pages.",
+      "Automatic data refreshes keep location information current, with dated maintenance and charger issue reports in location details."
     ]
   }
 ]
