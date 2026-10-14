@@ -172,7 +172,7 @@ function buildPages(dist, list, summary = {}) {
       url: "/updates.html",
       active: "Updates",
       content: header("Site changelog", "What’s new.", "New features, improvements, and fixes to Rivian Spotter.") +
-        `<div class="changelog">${require("../data/site-changelog.json").map(entry=>`<article class="changelog-entry"><div class="changelog-meta"><time datetime="${e(entry.date)}">${M.formatDate(entry.date)}</time><span class="tag">${e(entry.version)}</span></div><h2>${e(entry.title)}</h2><ul>${entry.changes.map(change=>`<li>${e(change)}</li>`).join("")}</ul></article>`).join("")}</div>`,
+        `<div class="changelog">${require("../data/site-changelog.json").map(entry=>`<article class="changelog-entry"><div class="changelog-meta">${entry.date ? `<time datetime="${e(entry.date)}">${M.formatDate(entry.date)}</time>` : ""}<span class="tag">${e(entry.version)}</span></div><h2>${e(entry.title)}</h2><ul>${entry.changes.map(change=>`<li>${e(change)}</li>`).join("")}</ul></article>`).join("")}</div>`,
     }),
   );
   write(
