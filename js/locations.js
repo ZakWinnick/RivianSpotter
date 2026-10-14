@@ -1164,7 +1164,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -1286,7 +1286,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -1828,7 +1828,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -2805,7 +2805,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3612,7 +3612,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3694,7 +3694,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3815,7 +3815,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3854,7 +3854,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3893,7 +3893,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3932,7 +3932,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -3971,7 +3971,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4010,7 +4010,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4049,7 +4049,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4088,7 +4088,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4127,7 +4127,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4166,7 +4166,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4333,7 +4333,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4414,7 +4414,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4542,7 +4542,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4581,7 +4581,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4620,7 +4620,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4701,7 +4701,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4740,7 +4740,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4779,7 +4779,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4818,7 +4818,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4899,7 +4899,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4938,7 +4938,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -4977,7 +4977,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6239,7 +6239,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6278,7 +6278,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "planned",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6318,7 +6318,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6357,7 +6357,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6396,7 +6396,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6435,7 +6435,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6474,7 +6474,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6513,7 +6513,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6552,7 +6552,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "planned",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6592,7 +6592,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",
@@ -6631,7 +6631,7 @@ const rivianLocations = [
       "service"
     ],
     "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "lastVerified": "2026-10-14",

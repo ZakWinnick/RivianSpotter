@@ -1,12 +1,12 @@
 # RivianSpotter operations
 
-Release: 2026.42.4. Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.5. Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
 `data/locations.json` is authoritative. `js/locations.js` and destination pages are generated, so edit the canonical inventory rather than those outputs. Read `docs/LOCATION_DATA.md` for the record schema, official-source refresh workflow, and evidence rules.
 
-Open `/admin.html` to find the review queue and GitHub's authenticated inventory editor. The maintenance page has no login, repository write client, or browser credentials. Propose changes in a pull request, preserve established IDs, record sources, and keep unknown details empty. Use a GitHub account with the appropriate repository permissions on GitHub itself.
+Open `/admin.html` to find GitHub's authenticated inventory editor. The maintenance page has no login, repository write client, or browser credentials. Propose changes in a pull request, preserve established IDs, record sources, and keep unknown details empty. Use a GitHub account with the appropriate repository permissions on GitHub itself.
 
 Corrections from visitors prepare an email in their email app. They must review and send the message themselves; the site does not claim to submit it, retain it, or send an automatic acknowledgement.
 
@@ -26,7 +26,7 @@ After publication, check the real public finder, a generated destination page, c
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.4`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.4` version. Static shell assets use the release cache; increment the release prefix and build asset version when changing these files.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.5`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.5` version. Static shell assets use the release cache; increment the release prefix and build asset version when changing these files.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
@@ -45,3 +45,11 @@ Legacy `js/admin/` scripts and generated maps were removed. The new maintenance 
 ## Rollback
 
 Rebuild and publish a previously reviewed static release through the same blocking checks. Update the service-worker version when changing cached shell assets. Keep the static maintenance workflow and retired endpoints; restoring the credential-based administrator interface is not a supported rollback. Reopen the exact public pages after a rollback to confirm deployment propagation.
+
+## 2026.42.5 correction
+
+- Public views use Rivian's published facts without verification flags, review queues, or internal source-conflict notes. Missing schedules remain empty rather than invented.
+- Keep extraction provenance (`sourceUrl`) separate from visitor destinations (`rivianUrl`). Supplemental service-map records have no individual page URL; the UI links to `https://rivian.com/experience/service#map` as “Rivian service centers.” Never reuse the Calgary extraction page as another place's page or structured `sameAs` value.
+- All 116 directory page URLs were compared with the live official directory on October 14; each returned HTTP 200 with its expected final URL and canonical URL. All 39 supplemental records use the shared service-center destination.
+- Closing a location restores the camera position from before selection, including after switching locations. Reduced-motion preferences skip animation.
+- Validation: 51 behavioral tests, 210 generated HTML pages with resolved internal links, and no production dependency vulnerabilities. Browser checks cover corrected links, absent public warnings, and camera restoration.

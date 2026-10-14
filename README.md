@@ -29,6 +29,6 @@ Public visitors do not need an account. Saved places stay on-device. Correction 
 
 GitHub Actions runs behavioral tests, a static build and a production dependency audit. Successful pushes to `main` publish the explicit `dist` artifact to GitHub Pages. Pull requests run checks without publishing.
 
-The obsolete PHP/VPS administration path is retired. No repository write credentials belong in public JavaScript, environment files or browser storage. `/admin.html` links to GitHub's authenticated editor and the review queue.
+The obsolete PHP/VPS administration path is retired. No repository write credentials belong in public JavaScript, environment files or browser storage. `/admin.html` links to GitHub's authenticated inventory editor.
 
 See [operations](docs/OPERATIONS.md), [testing](TESTING.md), [design](DESIGN.md) and [product brief](PRODUCT.md).

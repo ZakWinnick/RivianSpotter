@@ -6,6 +6,7 @@ window.SpotterMap = (() => {
     points = [],
     onSelect = () => {},
     selected = null,
+    browseCamera = null,
     timeout;
   const colors = [
     "match",
@@ -47,7 +48,7 @@ window.SpotterMap = (() => {
     clearTimeout(timeout);
     document.getElementById("map-failure").hidden = true;
     const mapped = geo(points).features.length;
-    document.getElementById("map-caption").textContent = `${mapped} mapped ${mapped === 1 ? "place" : "places"}${mapped < points.length ? ` · ${points.length - mapped} awaiting map verification` : ""}`;
+    document.getElementById("map-caption").textContent = `${mapped} mapped ${mapped === 1 ? "place" : "places"}`;
     map.addSource("places", {
       type: "geojson",
       data: geo(points),
@@ -106,6 +107,7 @@ window.SpotterMap = (() => {
       map = null;
     }
     ready = false;
+    browseCamera = null;
     document.getElementById("map-failure").hidden = true;
     try {
       if (!window.mapboxgl || !window.RivianSpotterConfig?.mapboxToken)
@@ -213,6 +215,15 @@ window.SpotterMap = (() => {
       p.coordinatePrecision !== "exact"
     )
       return;
+    if (!browseCamera) {
+      map.stop();
+      browseCamera = {
+        center: map.getCenter().toArray(),
+        zoom: map.getZoom(),
+        bearing: map.getBearing(),
+        pitch: map.getPitch(),
+      };
+    }
     map.flyTo({
       center: [p.lng, p.lat],
       zoom: 12,
@@ -220,6 +231,17 @@ window.SpotterMap = (() => {
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? 0
         : 500,
+    });
+  }
+  function clearFocus() {
+    mark(null);
+    const camera = browseCamera;
+    browseCamera = null;
+    if (!map || !camera) return;
+    map.flyTo({
+      ...camera,
+      offset: [0, 0],
+      duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
     });
   }
   function bounds() {
@@ -242,6 +264,7 @@ window.SpotterMap = (() => {
     init,
     update,
     focus,
+    clearFocus,
     mark,
     bounds,
     fitAll,

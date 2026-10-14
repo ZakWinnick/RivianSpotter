@@ -27,10 +27,10 @@
     );
   }
   function formatDate(value) {
-    if (!value) return "Not checked";
+    if (!value) return "Date unavailable";
     const d = new Date(String(value).slice(0, 10) + "T12:00:00Z");
     return Number.isNaN(+d)
-      ? "Not checked"
+      ? "Date unavailable"
       : new Intl.DateTimeFormat("en-US", {
           month: "short",
           day: "numeric",
@@ -118,9 +118,8 @@
         state: p.serviceStatus,
         label: "Service " + labels[p.serviceStatus].toLowerCase(),
       };
-    const unknown = { state: "unknown", label: mode === "charging" ? "Confirm charging hours" : "Confirm hours" };
+    const unknown = { state: "unknown", label: mode === "charging" ? "Charging hours not listed" : "Hours not listed" };
     if (
-      p.verificationStatus !== "verified" ||
       !p.timezone ||
       p.status !== "open"
     )
@@ -214,11 +213,25 @@
     );
   }
   function getDirectionsUrl(p) {
-    return p.verificationStatus === "verified" &&
-      p.coordinatePrecision === "exact" &&
-      coordinates(p)
+    const published = safeUrl(p.officialDirectionsUrl);
+    if (published && p.coordinatePrecision === "exact" && new URL(published).hostname === "maps.app.goo.gl") return published;
+    return (p.sourceKind === "directory" && p.address && p.city && p.state) ||
+      (p.coordinatePrecision === "exact" && coordinates(p))
       ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(p.address + ", " + p.city + ", " + p.state)}&travelmode=driving`
       : null;
+  }
+  function getOfficialLink(p) {
+    // A page containing shared map data is provenance, not this place's page.
+    if (p.sourceKind === "service-map") return {
+      url: "https://rivian.com/experience/service#map",
+      label: "Rivian service centers",
+      locationSpecific: false,
+    };
+    const url = safeUrl(p.rivianUrl, "rivian.com");
+    if (!url) return null;
+    const locationSpecific = new URL(url).pathname.startsWith("/spaces/") &&
+      new URL(url).pathname !== "/spaces/locations";
+    return { url, label: locationSpecific ? "Official location" : "Rivian location directory", locationSpecific };
   }
   function locationUrl(p) {
     return "/locations/" + encodeURIComponent(p.slug) + "/";
@@ -245,6 +258,7 @@
     distanceMiles,
     filterLocations,
     getDirectionsUrl,
+    getOfficialLink,
     locationUrl,
     escapeHtml,
   };

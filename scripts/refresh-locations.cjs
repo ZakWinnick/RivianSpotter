@@ -160,6 +160,8 @@ function directoryRecord(raw, detail, features, date) {
 function serviceRecord(feature, date) {
  const p = feature.properties;
  const result = baseFields({slug:slugify(`${p.city}-${p.stateOrProvince}-${p.address}-service-center`),name:p.name,type:'Service Center',state:p.stateOrProvince,country:p.country,address:clean(p.address),city:p.city,postalCode:p.postalCode,sourceKind:'service-map',sourceUrl:SERVICE_SOURCE},date);
+ // The shared map is embedded on a location page, but that URL belongs only to Calgary.
+ result.rivianUrl = null;
  result.status = p.status === 'live' ? 'open' : p.status === 'in_the_works' ? 'planned' : 'unknown';
  result.serviceStatus = result.status;
  result.capabilities = ['service']; result.services = [result.status === 'planned' ? 'Service coming soon' : 'Service appointments']; result.phone = p.phone || '';
