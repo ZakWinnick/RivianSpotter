@@ -1,6 +1,6 @@
 # RivianSpotter operations
 
-Release: 2026.42.12 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
+Release: 2026.42.13 (plus a deterministic data hash). Supported hosting is a static GitHub Pages build of `dist/`.
 
 ## Inventory changes
 
@@ -26,7 +26,7 @@ After publication, check the real public finder, a generated destination page, c
 
 ## Offline behavior
 
-`service-worker.js` uses the version prefix `rivianspotter-2026.42.12-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.12-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
+`service-worker.js` uses the version prefix `rivianspotter-2026.42.13-<data hash>`. Navigation and canonical data use network-first retrieval: successful network content is returned, and previously cached content is available after a connection failure. The shell includes a real `/offline.html` fallback for unvisited public pages. Installation explicitly fetches every shell asset with `cache: 'reload'` to prevent an older browser HTTP-cache response from entering the new release cache. JavaScript/CSS requests carry the current `?v=2026.42.13-<data hash>` version. Static shell assets use the release cache; increment the package release for shell changes; data changes automatically alter the build hash.
 
 Caches are restricted to allowlisted same-origin public GET paths. They do not store administrator pages, PHP/API routes, arbitrary private pages, non-GET requests, authenticated requests, external map responses, opaque responses, redirects, or responses marked `private`/`no-store`. Unknown query parameter names bypass caching; permitted finder query strings share the static page's cache key, limiting duplication. Asset cache keys preserve the `v` version parameter, so different releases cannot share an asset key. Generated destination and regional pages use lowercase slug routes.
 
@@ -79,4 +79,8 @@ Roamer public-page snapshots enrich matching official RAN stations with pricing,
 
 Location details float over the map again; the sidebar remains available for browsing. Mobile selection opens the map with a scrollable popup. The camera offsets the selected pin away from the popup, and closing restores the full overview. The location finder uses a crosshairs icon with an accessible name and tooltip, without a visible text label.
 
-The Updates page renders curated product changes from `data/site-changelog.json`. Add an entry when releasing a feature or fix. Daily inventory changes and charger condition reports do not generate changelog entries; location details still show dated issue reports.
+The Updates page renders curated product changes from `data/site-changelog.json`. Group related improvements into concise release summaries; avoid separate entries for each small iteration. Daily inventory changes and charger condition reports do not generate changelog entries; location details still show dated issue reports.
+
+## 2026.42.13 popup close control and analytics
+
+The popup's header and close control remain sticky while its details scroll, on desktop and mobile. Public explorer and generated pages include the original Tinylytics embed jj-9YE1ymyozj9wFfy7d. Analytics is excluded from the service-worker allowlist and the fixed admin handoff routes.
