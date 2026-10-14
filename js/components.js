@@ -1,413 +1,92 @@
-// components.js - Reusable header and footer components for Rivian Spotter
-
-// Component initialization
-class RivianComponents {
-    constructor() {
-        this.currentPage = this.getCurrentPage();
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else {
+    root.SpotterUI = api;
+    api.mount();
+  }
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  "use strict";
+  const paths = {
+    search: "M21 21l-5-5m2-6a8 8 0 1 1-16 0 8 8 0 0 1 16 0",
+    pin: "M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0ZM15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0",
+    arrow: "m5 12 14-7-7 14-1-6-6-1Z",
+    close: "m6 6 12 12M18 6 6 18",
+    chevron: "m9 5 7 7-7 7",
+    save: "M6 3h12v18l-6-4-6 4V3Z",
+    share: "M12 16V2m-5 5 5-5 5 5M5 12H3v10h18V12h-2",
+    sun: "M12 3V1m0 22v-2M3 12H1m22 0h-2M5 5 3 3m18 18-2-2M5 19l-2 2M21 3l-2 2M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0",
+    filter: "M3 6h18M3 12h18M3 18h18M8 3v6m8 0v6m-8 0v6",
+    space: "M4 21V8l8-5 8 5v13M1 21h22M9 21v-7h6v7M8 9h1m6 0h1",
+    drive: "m3 11 2-6h14l2 6M2 11h20v8H2v-8Zm3 8v3m14-3v3M5 14h3m8 0h3",
+    service: "m14 3-3 4 2 4 4 2 4-3a7 7 0 0 1-9 9L5 23l-4-4 7-7a7 7 0 0 1 6-9Z",
+    outpost: "m2 21 10-18 10 18H2Zm6 0 4-7 4 7",
+    check: "m4 12 5 5L20 6",
+    clock: "M12 6v6l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0",
+    map: "m2 5 6-3 8 3 6-3v17l-6 3-8-3-6 3V5Zm6-3v17m8-14v17",
+    list: "M8 5h14M8 12h14M8 19h14M2 5h1m-1 7h1m-1 7h1",
+    external: "M14 2h8v8m0-8L10 14M10 3H2v19h19v-9",
+  };
+  function icon(name, cls = "") {
+    return `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name] || paths.pin}"/></svg>`;
+  }
+  function header(active = "") {
+    return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Rivian Spotter home"><img src="/assets/spotter-mark.svg" width="28" height="34" alt=""><span>RIVIAN <span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
+      ["Explore", "/"],
+      ["Saved", "/saved.html"],
+      ["Updates", "/updates.html"],
+      ["About", "/about.html"],
+    ]
+      .map(
+        ([n, h]) =>
+          `<a href="${h}"${active === n ? ' aria-current="page"' : ""}>${n}</a>`,
+      )
+      .join(
+        "",
+      )}</nav><button class="icon-button theme-toggle" type="button" aria-label="Switch to dark theme">${icon("sun")}</button></header>`;
+  }
+  function footer() {
+    return `<footer class="site-footer"><span>Independent. Community maintained.</span><span><a href="/contact.html">Report an update</a><a href="/about.html#sources">Sources & privacy</a></span></footer>`;
+  }
+  function mount() {
+    const h = document.querySelector("[data-site-header]");
+    if (h && !h.children.length) h.innerHTML = header(h.dataset.active || "");
+    const f = document.querySelector("[data-site-footer]");
+    if (f && !f.children.length) f.innerHTML = footer();
+    let theme;
+    try {
+      theme = localStorage.getItem("spotter-theme");
+    } catch {}
+    const media = matchMedia("(prefers-color-scheme: dark)");
+    function apply(value) {
+      document.documentElement.dataset.theme = value;
+      document.querySelectorAll(".theme-toggle").forEach((b) => {
+        b.setAttribute(
+          "aria-label",
+          `Switch to ${value === "dark" ? "light" : "dark"} theme`,
+        );
+        b.setAttribute("aria-pressed", String(value === "dark"));
+      });
+      document.dispatchEvent(new CustomEvent("themechange", { detail: value }));
     }
-
-    // Determine current page from URL
-    getCurrentPage() {
-        const path = window.location.pathname;
-        if (path === '/' || path.includes('index.html')) return 'map';
-        if (path.includes('about.html')) return 'about';
-        if (path.includes('contact.html')) return 'contact';
-        if (path.includes('stats.html')) return 'stats';
-        if (path.includes('admin.html')) return 'admin';
-        return 'map';
-    }
-
-    // Create header component
-    createHeader() {
-        const isAdmin = this.currentPage === 'admin';
-        
-        // Don't add header to admin page as it has its own auth system
-        if (isAdmin) return '';
-        
-        const header = `
-            <header class="header">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-                <a href="/" class="logo">
-                    <picture>
-                        <source srcset="/images/rivianspotter-logosolo-optimized.webp" type="image/webp">
-                        <img src="/images/rivianspotter-logosolo-optimized.png" alt="Rivian Spotter" class="logo-img">
-                    </picture>
-                    <span class="logo-text">Rivian Spotter</span>
-                </a>
-                <nav class="nav-links desktop">
-                    <a href="/" class="nav-link ${this.currentPage === 'map' ? 'active' : ''}">Map</a>
-                    <a href="/about.html" class="nav-link ${this.currentPage === 'about' ? 'active' : ''}">About</a>
-                    <a href="/stats.html" class="nav-link ${this.currentPage === 'stats' ? 'active' : ''}">Stats</a>
-                    <a href="/contact.html" class="nav-link ${this.currentPage === 'contact' ? 'active' : ''}">Contact</a>
-                    <a href="https://zak.codetoadventure.com/" class="nav-link" target="_blank">R1 Shop</a>
-                </nav>
-            </header>
-            
-            <!-- Mobile Navigation Dropdown -->
-            <div class="mobile-nav" id="mobileNav">
-                <a href="/">Map</a>
-                <a href="/about.html">About</a>
-                <a href="/stats.html">Stats</a>
-                <a href="/contact.html">Contact</a>
-                <a href="https://zak.codetoadventure.com/" target="_blank">R1 Shop</a>
-            </div>
-        `;
-        
-        return header;
-    }
-
-    // Create footer component
-    createFooter() {
-        const isAdmin = this.currentPage === 'admin';
-        
-        // Don't add footer to admin page
-        if (isAdmin) return '';
-        
-        const currentYear = new Date().getFullYear();
-        
-        const footer = `
-            <footer class="footer">
-                <p class="footer-text">
-                    © ${currentYear} Wyld Media • 
-                    <a href="/contact.html" style="color: #666;">Contact</a> • 
-                    <a href="/about.html" style="color: #666;">About</a> • 
-                    <a href="https://zak.codetoadventure.com" target="_blank">Zak's Referral Code</a>
-                </p>
-            </footer>
-        `;
-        
-        return footer;
-    }
-
-    // Initialize mobile menu functionality
-    initializeMobileMenu() {
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        if (mobileMenuBtn && mobileNav) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileNav.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (mobileNav && !mobileNav.contains(e.target) && mobileMenuBtn && !mobileMenuBtn.contains(e.target)) {
-                    mobileNav.classList.remove('active');
-                }
-            });
-        }
-    }
-
-    // Inject styles needed for components
-    injectStyles() {
-        if (document.getElementById('component-styles')) return; // Already injected
-        
-        const styles = `
-            <style id="component-styles">
-                /* Mobile-First Header Styles */
-                .header {
-                    background: var(--bg-primary, white);
-                    border-bottom: 1px solid var(--border-color, #e5e5e5);
-                    padding: 0.75rem 1rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    position: relative;
-                    z-index: 1000;
-                }
-                
-                .logo {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    text-decoration: none;
-                    color: var(--text-dark, #1a1a1a);
-                    font-weight: 600;
-                    font-size: 1.25rem;
-                    transition: opacity 0.2s;
-                }
-                
-                .logo:hover {
-                    opacity: 0.8;
-                }
-                
-                .logo-img {
-                    width: 64px;
-                    height: 64px;
-                    object-fit: contain;
-                    display: block;
-                }
-                
-                .logo-text {
-                    display: inline-block;
-                }
-                
-                /* Hide logo text on very small screens if needed */
-                @media (max-width: 360px) {
-                    .logo-text {
-                        display: none;
-                    }
-                    
-                    .logo {
-                        gap: 0;
-                    }
-                }
-                
-                .nav-links.desktop {
-                    display: none !important;
-                }
-                
-                .nav-link {
-                    color: var(--text-light, #666);
-                    text-decoration: none;
-                    font-weight: 500;
-                    transition: color 0.2s;
-                }
-
-                .nav-link:hover {
-                    color: var(--primary-color, #78BE21);
-                }
-
-                .nav-link.active {
-                    color: var(--primary-color, #78BE21);
-                    font-weight: 600;
-                }
-                
-                .mobile-menu-btn {
-                    display: flex;
-                    background: none;
-                    border: none;
-                    font-size: 1.5rem;
-                    cursor: pointer;
-                    padding: 0.5rem;
-                    align-items: center;
-                    justify-content: center;
-                }
-                
-                .hamburger {
-                    width: 24px;
-                    height: 18px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-                
-                .hamburger span {
-                    display: block;
-                    height: 2px;
-                    background: var(--text-dark, #333);
-                    border-radius: 2px;
-                    transition: all 0.3s ease;
-                }
-                
-                .mobile-nav {
-                    display: none;
-                    position: fixed;
-                    top: 88px;
-                    right: 0;
-                    background: var(--card-bg, white);
-                    border: 1px solid var(--border-color, #e5e5e5);
-                    border-radius: 8px;
-                    box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.15));
-                    z-index: 1500;
-                    margin: 0.5rem;
-                    min-width: 200px;
-                }
-
-                .mobile-nav.active {
-                    display: block;
-                }
-
-                .mobile-nav a {
-                    display: block;
-                    padding: 1rem 1.5rem;
-                    color: var(--text-light, #666);
-                    text-decoration: none;
-                    border-bottom: 1px solid var(--border-color, #e5e5e5);
-                    transition: background 0.2s;
-                }
-
-                .mobile-nav a:last-child {
-                    border-bottom: none;
-                }
-
-                .mobile-nav a:hover {
-                    background: var(--hover-bg, #f9f9f9);
-                }
-                
-                /* Footer Styles */
-                .footer {
-                    background: var(--bg-primary, white);
-                    border-top: 1px solid var(--border-color, #e5e5e5);
-                    padding: 2rem 1rem;
-                    text-align: center;
-                    margin-top: auto;
-                }
-
-                .footer-text {
-                    color: var(--text-light, #666);
-                    font-size: 0.875rem;
-                    line-height: 1.6;
-                }
-
-                .footer-text a {
-                    color: var(--text-light, #666);
-                    text-decoration: none;
-                }
-
-                .footer-text a:hover {
-                    color: var(--primary-color, #78BE21);
-                    text-decoration: underline;
-                }
-                
-                /* Tablet styles */
-                @media (min-width: 481px) and (max-width: 768px) {
-                    .logo-img {
-                        width: 80px;
-                        height: 80px;
-                    }
-                    
-                    .mobile-nav {
-                        top: 88px;
-                    }
-                }
-                
-                /* Desktop styles */
-                @media (min-width: 769px) {
-                    .header {
-                        padding: 0.5rem 1.5rem;
-                    }
-                    
-                    .logo {
-                        font-size: 1.5rem;
-                    }
-                    
-                    .logo-img {
-                        width: 120px;
-                        height: 120px;
-                    }
-                    
-                    .nav-links.desktop {
-                        display: flex !important;
-                        gap: 2rem;
-                        align-items: center;
-                    }
-                    
-                    .mobile-menu-btn {
-                        display: none !important;
-                    }
-                    
-                    .mobile-nav {
-                        display: none !important;
-                    }
-                    
-                    .footer {
-                        padding: 2rem;
-                    }
-                    
-                    .footer-text {
-                        font-size: 0.9rem;
-                    }
-                }
-                
-                /* Ensure proper layout */
-                body {
-                    margin: 0;
-                    padding: 0;
-                    min-height: 100vh;
-                    display: flex;
-                    flex-direction: column;
-                }
-                
-                .container {
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                    flex: 1;
-                }
-                
-                .page-content {
-                    flex: 1;
-                    padding: 1.5rem;
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    width: 100%;
-                    box-sizing: border-box;
-                }
-                
-                @media (min-width: 769px) {
-                    .page-content {
-                        padding: 2rem;
-                    }
-                }
-            </style>
-        `;
-        
-        document.head.insertAdjacentHTML('beforeend', styles);
-    }
-
-    // Main render method
-    render() {
-        // Skip for admin page entirely
-        if (this.currentPage === 'admin') return;
-        
-        // Inject styles
-        this.injectStyles();
-        
-        // Find container
-        const container = document.querySelector('.container');
-        if (!container) {
-            console.error('Container element not found');
-            return;
-        }
-        
-        // Create wrapper for proper structure
-        const existingContent = container.innerHTML;
-        
-        // Clear container
-        container.innerHTML = '';
-        
-        // Add header
-        container.innerHTML = this.createHeader();
-        
-        // Add main content wrapper
-        const mainContent = document.createElement('div');
-        mainContent.className = 'main-content-wrapper';
-        mainContent.style.flex = '1';
-        mainContent.innerHTML = existingContent;
-        container.appendChild(mainContent);
-        
-        // Add footer
-        container.insertAdjacentHTML('beforeend', this.createFooter());
-        
-        // Initialize mobile menu
-        this.initializeMobileMenu();
-        
-        // Initialize page-specific features
-        this.initializePageSpecific();
-    }
-
-    // Initialize page-specific functionality
-    initializePageSpecific() {
-        // No page-specific initialization needed currently
-    }
-}
-
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        const rivianComponents = new RivianComponents();
-        rivianComponents.render();
+    apply(theme || (media.matches ? "dark" : "light"));
+    document.querySelectorAll(".theme-toggle").forEach((b) =>
+      b.addEventListener("click", () => {
+        theme =
+          document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        try {
+          localStorage.setItem("spotter-theme", theme);
+        } catch {}
+        apply(theme);
+      }),
+    );
+    media.addEventListener("change", (e) => {
+      if (!theme) apply(e.matches ? "dark" : "light");
     });
-} else {
-    // DOM is already loaded
-    const rivianComponents = new RivianComponents();
-    rivianComponents.render();
-}
+    if ("serviceWorker" in navigator && window.isSecureContext)
+      navigator.serviceWorker
+        .register("/service-worker.js", { updateViaCache: "none" })
+        .catch(() => {});
+  }
+  return { header, footer, icon, mount };
+});
