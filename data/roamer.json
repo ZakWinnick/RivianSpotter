@@ -226,7 +226,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:16:51.342Z"
+      "detailsObservedAt": "2026-10-14T18:16:51.342Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15135988719474469754",
@@ -443,7 +444,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:16:53.461Z"
+      "detailsObservedAt": "2026-10-14T18:16:53.461Z",
+      "reliabilityTone": null
     },
     {
       "sourceId": "US-RIV-L7516200915009001275",
@@ -661,7 +663,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:16:55.519Z"
+      "detailsObservedAt": "2026-10-14T18:16:55.519Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L702957870126867115",
@@ -882,7 +885,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:16:57.583Z"
+      "detailsObservedAt": "2026-10-14T18:16:57.583Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9815295768790822562",
@@ -916,8 +920,8 @@
       "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
-        "Rivian": "$0.33\u20130.47/kWh Time-of-Use Rates Mon-Fri 1:00am-11:00am$0.33 Mon-Fri 11:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-11:00am$0.33 Sat-Sun 11:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
-        "Other": "$0.39\u20130.55/kWh Time-of-Use Rates Mon-Fri 1:00am-11:00am$0.39 Mon-Fri 11:00am-9:00pm$0.55 Mon-Fri 9:00pm-1:00am$0.51 Sat-Sun 1:00am-11:00am$0.39 Sat-Sun 11:00am-9:00pm$0.55 Sat-Sun 9:00pm-1:00am$0.51",
+        "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 1:00am-11:00am$0.33 Mon-Fri 11:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-11:00am$0.33 Sat-Sun 11:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
+        "Other": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 1:00am-11:00am$0.39 Mon-Fri 11:00am-9:00pm$0.55 Mon-Fri 9:00pm-1:00am$0.51 Sat-Sun 1:00am-11:00am$0.39 Sat-Sun 11:00am-9:00pm$0.55 Sat-Sun 9:00pm-1:00am$0.51",
         "Idle": "$0.50/min (after 10m)"
       },
       "chargers": [
@@ -1013,7 +1017,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:16:59.645Z"
+      "detailsObservedAt": "2026-10-14T18:16:59.645Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3069914869317071021",
@@ -1143,7 +1148,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:01.741Z"
+      "detailsObservedAt": "2026-10-14T18:17:01.741Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9580574407240181901",
@@ -1304,7 +1310,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:03.864Z"
+      "detailsObservedAt": "2026-10-14T18:17:03.864Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12405604048218838563",
@@ -1463,7 +1470,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:05.922Z"
+      "detailsObservedAt": "2026-10-14T18:17:05.922Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9309269417456666382",
@@ -1594,7 +1602,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:08.039Z"
+      "detailsObservedAt": "2026-10-14T18:17:08.039Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18307752973360333246",
@@ -1812,7 +1821,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:10.123Z"
+      "detailsObservedAt": "2026-10-14T18:17:10.123Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12968954152362062981",
@@ -1940,7 +1950,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:12.193Z"
+      "detailsObservedAt": "2026-10-14T18:17:12.193Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7795987714638529281",
@@ -2099,7 +2110,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:14.306Z"
+      "detailsObservedAt": "2026-10-14T18:17:14.306Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18130930869505269391",
@@ -2318,7 +2330,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:16.368Z"
+      "detailsObservedAt": "2026-10-14T18:17:16.368Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1536973069723518180",
@@ -2350,8 +2363,8 @@
       "averageKw": 194,
       "hours": "24/7",
       "detailRates": {
-        "Rivian": "$0.34\u20130.49/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.34 Mon-Fri 8:00am-8:00pm$0.49 Mon-Fri 8:00pm-12:00am$0.46 Sat-Sun 12:00am-8:00am$0.34 Sat-Sun 8:00am-8:00pm$0.49 Sat-Sun 8:00pm-12:00am$0.46",
-        "Other": "$0.40\u20130.58/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.40 Mon-Fri 8:00am-8:00pm$0.58 Mon-Fri 8:00pm-12:00am$0.54 Sat-Sun 12:00am-8:00am$0.40 Sat-Sun 8:00am-8:00pm$0.58 Sat-Sun 8:00pm-12:00am$0.54",
+        "Rivian": "$0.34–0.49/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.34 Mon-Fri 8:00am-8:00pm$0.49 Mon-Fri 8:00pm-12:00am$0.46 Sat-Sun 12:00am-8:00am$0.34 Sat-Sun 8:00am-8:00pm$0.49 Sat-Sun 8:00pm-12:00am$0.46",
+        "Other": "$0.40–0.58/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.40 Mon-Fri 8:00am-8:00pm$0.58 Mon-Fri 8:00pm-12:00am$0.54 Sat-Sun 12:00am-8:00am$0.40 Sat-Sun 8:00am-8:00pm$0.58 Sat-Sun 8:00pm-12:00am$0.54",
         "Idle": "$0.50/min (after 10m)"
       },
       "chargers": [
@@ -2507,7 +2520,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:18.430Z"
+      "detailsObservedAt": "2026-10-14T18:17:18.430Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3191419504072373751",
@@ -2697,7 +2711,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:20.543Z"
+      "detailsObservedAt": "2026-10-14T18:17:20.543Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6631153745463604715",
@@ -2917,7 +2932,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:22.601Z"
+      "detailsObservedAt": "2026-10-14T18:17:22.601Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10507911838236990683",
@@ -2948,8 +2964,8 @@
       "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
-        "Rivian": "$0.37\u20130.53/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.37 Mon-Fri 8:00am-8:00pm$0.53 Mon-Fri 8:00pm-12:00am$0.49 Sat-Sun 12:00am-8:00am$0.37 Sat-Sun 8:00am-8:00pm$0.53 Sat-Sun 8:00pm-12:00am$0.49",
-        "Other": "$0.44\u20130.62/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.44 Mon-Fri 8:00am-8:00pm$0.62 Mon-Fri 8:00pm-12:00am$0.58 Sat-Sun 12:00am-8:00am$0.44 Sat-Sun 8:00am-8:00pm$0.62 Sat-Sun 8:00pm-12:00am$0.58",
+        "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.37 Mon-Fri 8:00am-8:00pm$0.53 Mon-Fri 8:00pm-12:00am$0.49 Sat-Sun 12:00am-8:00am$0.37 Sat-Sun 8:00am-8:00pm$0.53 Sat-Sun 8:00pm-12:00am$0.49",
+        "Other": "$0.44–0.62/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.44 Mon-Fri 8:00am-8:00pm$0.62 Mon-Fri 8:00pm-12:00am$0.58 Sat-Sun 12:00am-8:00am$0.44 Sat-Sun 8:00am-8:00pm$0.62 Sat-Sun 8:00pm-12:00am$0.58",
         "Idle": "$0.50/min (after 10m)"
       },
       "chargers": [
@@ -3135,7 +3151,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 3 hours ago",
-      "detailsObservedAt": "2026-10-14T18:17:24.682Z"
+      "detailsObservedAt": "2026-10-14T18:17:24.682Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6744571973401894993",
@@ -3154,7 +3171,8 @@
         "Other EVs": "$0.56"
       },
       "firstTracked": "May 7, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4986586767162045956",
@@ -3173,7 +3191,8 @@
         "Other EVs": "$0.40-0.58"
       },
       "firstTracked": "Mar 27, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L2084433070517610626",
@@ -3192,7 +3211,8 @@
         "Other EVs": "$0.46"
       },
       "firstTracked": "Mar 26, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15487699439195265208",
@@ -3211,7 +3231,8 @@
         "Other EVs": "$0.32-0.46"
       },
       "firstTracked": "Mar 3, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L522379042628834090",
@@ -3230,7 +3251,8 @@
         "Other EVs": "$0.49"
       },
       "firstTracked": "Jan 30, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10291570024194613737",
@@ -3249,7 +3271,8 @@
         "Other EVs": "$0.45-0.65"
       },
       "firstTracked": "Jan 27, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L14261616079622453079",
@@ -3268,7 +3291,8 @@
         "Other EVs": "$0.33-0.46"
       },
       "firstTracked": "Jan 17, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1195453907241473386",
@@ -3287,7 +3311,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": "Jan 9, 2026",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5654322285721413519",
@@ -3306,7 +3331,8 @@
         "Other EVs": "$0.40-0.58"
       },
       "firstTracked": "Dec 31, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9367585392851189242",
@@ -3325,7 +3351,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": "Dec 18, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7988550135740307267",
@@ -3344,7 +3371,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": "Dec 3, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13498339696147909887",
@@ -3363,7 +3391,8 @@
         "Other EVs": "$0.46"
       },
       "firstTracked": "Nov 27, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7024502087325169943",
@@ -3382,7 +3411,8 @@
         "Other EVs": "$0.46"
       },
       "firstTracked": "Nov 20, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3863879270565540626",
@@ -3401,7 +3431,8 @@
         "Other EVs": "$0.30-0.44"
       },
       "firstTracked": "Nov 15, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16335459844764403943",
@@ -3420,7 +3451,8 @@
         "Other EVs": "$0.49"
       },
       "firstTracked": "Nov 14, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12432239427733940105",
@@ -3439,7 +3471,8 @@
         "Other EVs": "$0.34-0.49"
       },
       "firstTracked": "Nov 2, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18146895674242985745",
@@ -3458,7 +3491,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": "Oct 22, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13314659433195868777",
@@ -3476,7 +3510,8 @@
         "All EVs": "$0.47"
       },
       "firstTracked": "Sep 27, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7424041354615157638",
@@ -3495,7 +3530,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": "Sep 26, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16861839020131326021",
@@ -3514,7 +3550,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Sep 24, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11216328121520348963",
@@ -3533,7 +3570,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": "Sep 11, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L413722300118841968",
@@ -3552,7 +3590,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": "Sep 9, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4611788751077694388",
@@ -3571,7 +3610,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": "Sep 9, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "lime"
     },
     {
       "sourceId": "US-RIV-L18244789126233412697",
@@ -3590,7 +3630,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": "Aug 7, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10624299143766229312",
@@ -3609,7 +3650,8 @@
         "Other EVs": "$0.29-0.41"
       },
       "firstTracked": "Aug 1, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9570774573478610402",
@@ -3628,7 +3670,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": "Jul 19, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15981145294435373717",
@@ -3647,7 +3690,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": "Jul 19, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12972394923134340248",
@@ -3666,7 +3710,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": "Jul 17, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13702960079394213821",
@@ -3685,7 +3730,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "Jul 3, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L758249561344712266",
@@ -3704,7 +3750,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "Jun 20, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8523943087809503789",
@@ -3723,7 +3770,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": "Jun 18, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9142329312096486527",
@@ -3742,7 +3790,8 @@
         "Other EVs": "$0.29-0.41"
       },
       "firstTracked": "Jun 18, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8885168956190814694",
@@ -3761,7 +3810,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": "Jun 5, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4273991074800533419",
@@ -3780,7 +3830,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "May 23, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8740227313370960063",
@@ -3799,7 +3850,8 @@
         "Other EVs": "$0.47-0.67"
       },
       "firstTracked": "May 22, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4075861308012401216",
@@ -3818,7 +3870,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "Apr 26, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3147603436561039726",
@@ -3837,7 +3890,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Apr 18, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6789027387627861019",
@@ -3856,7 +3910,8 @@
         "Other EVs": "$0.33-0.46"
       },
       "firstTracked": "Apr 18, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1673231108792194467",
@@ -3875,7 +3930,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": "Apr 17, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3537975081978947957",
@@ -3894,7 +3950,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Feb 8, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12314948866156935967",
@@ -3913,7 +3970,8 @@
         "Other EVs": "$0.46"
       },
       "firstTracked": "Jan 17, 2025",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18445209299191994507",
@@ -3932,7 +3990,8 @@
         "Other EVs": "$0.65"
       },
       "firstTracked": "Dec 21, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13929179812369261194",
@@ -3951,7 +4010,8 @@
         "Other EVs": "$0.59"
       },
       "firstTracked": "Dec 21, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8243884661803372232",
@@ -3970,7 +4030,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "Dec 21, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7641288578487901879",
@@ -3989,7 +4050,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": "Dec 20, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3709380606941632482",
@@ -4008,7 +4070,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": "Dec 20, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17973641159010138748",
@@ -4027,7 +4090,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": "Dec 18, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1975542962906512256",
@@ -4046,7 +4110,8 @@
         "Other EVs": "$0.34-0.49"
       },
       "firstTracked": "Dec 18, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10353286583268794570",
@@ -4065,7 +4130,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": "Dec 13, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1485045838776646592",
@@ -4084,7 +4150,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": "Dec 11, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15829662372818057990",
@@ -4103,7 +4170,8 @@
         "Other EVs": "$0.33-0.46"
       },
       "firstTracked": "Dec 10, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9589799743002483697",
@@ -4122,7 +4190,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": "Dec 6, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16466370064849249099",
@@ -4141,7 +4210,8 @@
         "Other EVs": "$0.56"
       },
       "firstTracked": "Dec 5, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17006744989382365407",
@@ -4160,7 +4230,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Dec 3, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7662840825567723852",
@@ -4179,7 +4250,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": "Nov 26, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12472896150238355675",
@@ -4198,7 +4270,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Oct 28, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15229712559413049961",
@@ -4216,7 +4289,8 @@
         "Rivian": "$0.44"
       },
       "firstTracked": "Oct 4, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16185308077383208865",
@@ -4235,7 +4309,8 @@
         "Other EVs": "$0.40-0.58"
       },
       "firstTracked": "Sep 6, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1433263278942627264",
@@ -4254,7 +4329,8 @@
         "Other EVs": "$0.33-0.46"
       },
       "firstTracked": "Jul 20, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10652557770275483296",
@@ -4273,7 +4349,8 @@
         "Other EVs": "$0.57"
       },
       "firstTracked": "Jul 20, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5060331665286459380",
@@ -4292,7 +4369,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": "Jul 19, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3538771059152261983",
@@ -4311,7 +4389,8 @@
         "Other EVs": "$0.53"
       },
       "firstTracked": "Jul 19, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L14085821352242118384",
@@ -4330,7 +4409,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Jul 18, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15146476019938753049",
@@ -4349,7 +4429,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": "Jun 21, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15859044680188548619",
@@ -4368,7 +4449,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": "Jun 21, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5537974582577164941",
@@ -4387,7 +4469,8 @@
         "Other EVs": "$0.36-0.51"
       },
       "firstTracked": "Jun 19, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10427722039519689545",
@@ -4406,7 +4489,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": "Jun 19, 2024",
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18049577136964634071",
@@ -4425,7 +4509,8 @@
         "Other EVs": "$0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16930659329122367533",
@@ -4444,7 +4529,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1481328980808519155",
@@ -4463,7 +4549,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8478519600713924689",
@@ -4482,7 +4569,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18082194197590694481",
@@ -4501,7 +4589,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3893579330938555127",
@@ -4519,7 +4608,8 @@
         "Rivian": "$0.50"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L2517985733117554268",
@@ -4538,7 +4628,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5734501248498362119",
@@ -4557,7 +4648,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L18312310840345009620",
@@ -4576,7 +4668,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8973735727059233087",
@@ -4595,7 +4688,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16599132064429353474",
@@ -4614,7 +4708,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6161725981375120230",
@@ -4633,7 +4728,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6131509295739167154",
@@ -4652,7 +4748,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15997862222607707429",
@@ -4671,7 +4768,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11436858880889328402",
@@ -4690,7 +4788,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L2797438283583649266",
@@ -4709,7 +4808,8 @@
         "Other EVs": "$0.33-0.46"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16632393921841581148",
@@ -4728,7 +4828,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7132609490195715167",
@@ -4747,7 +4848,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L7953531635816439930",
@@ -4766,7 +4868,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13002215087692727396",
@@ -4785,7 +4888,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6905328069614466474",
@@ -4804,7 +4908,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L451425707649488557",
@@ -4823,7 +4928,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4126083133598127782",
@@ -4842,7 +4948,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3159334161514072739",
@@ -4861,7 +4968,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5993475900119536878",
@@ -4880,7 +4988,8 @@
         "Other EVs": "$0.40-0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10461199998633248139",
@@ -4899,7 +5008,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L14270338080788955338",
@@ -4918,7 +5028,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11403047073990046039",
@@ -4937,7 +5048,8 @@
         "Other EVs": "$0.45-0.65"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8384578670029334531",
@@ -4956,7 +5068,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L13160365438350136805",
@@ -4975,7 +5088,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11479343488048371684",
@@ -4994,7 +5108,8 @@
         "Other EVs": "$0.36-0.52"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10753662044676103876",
@@ -5013,7 +5128,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5678645418825622776",
@@ -5031,7 +5147,8 @@
         "Rivian": "$0.43"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16052092696909092589",
@@ -5050,7 +5167,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9690482648894021784",
@@ -5069,7 +5187,8 @@
         "Other EVs": "$0.32-0.46"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3046584760508613880",
@@ -5088,7 +5207,8 @@
         "Other EVs": "$0.28-0.40"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11857927989230157957",
@@ -5107,7 +5227,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17938202737814445982",
@@ -5126,7 +5247,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4368258503024005988",
@@ -5145,7 +5267,8 @@
         "Other EVs": "$0.35-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L8755147034765709304",
@@ -5164,7 +5287,8 @@
         "Other EVs": "$0.45-0.65"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L2203475084972246229",
@@ -5182,7 +5306,8 @@
         "Rivian": "$0.59"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17641453518864376760",
@@ -5201,7 +5326,8 @@
         "Other EVs": "$0.34-0.49"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11909426625037321337",
@@ -5220,7 +5346,8 @@
         "Other EVs": "$0.36-0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15018620690735454571",
@@ -5239,7 +5366,8 @@
         "Other EVs": "$0.39-0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16691258893957934011",
@@ -5258,7 +5386,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L5149488329460563001",
@@ -5277,7 +5406,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4414117162286468312",
@@ -5296,7 +5426,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15472195556443831857",
@@ -5315,7 +5446,8 @@
         "Other EVs": "$0.67"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16683122947996107049",
@@ -5334,7 +5466,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15367048680819249735",
@@ -5353,7 +5486,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6200260832041606775",
@@ -5372,7 +5506,8 @@
         "Other EVs": "$0.44-0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4843721662822998457",
@@ -5391,7 +5526,8 @@
         "Other EVs": "$0.45-0.64"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L12109742311651856363",
@@ -5410,7 +5546,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L10186351206568156344",
@@ -5429,7 +5566,8 @@
         "Other EVs": "$0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1821599963793729614",
@@ -5448,7 +5586,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1560410546772104724",
@@ -5467,7 +5606,8 @@
         "Other EVs": "$0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L11703884261784064412",
@@ -5486,7 +5626,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L15129032571483408438",
@@ -5505,7 +5646,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1501559582835047932",
@@ -5524,7 +5666,8 @@
         "Other EVs": "$0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17620489318147302052",
@@ -5543,7 +5686,8 @@
         "Other EVs": "$0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L1975044840395909413",
@@ -5562,7 +5706,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L616929346370577784",
@@ -5581,7 +5726,8 @@
         "Other EVs": "$0.46"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L6481507683470816561",
@@ -5600,7 +5746,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16442060602726540329",
@@ -5619,7 +5766,8 @@
         "Other EVs": "$0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17652440181098458760",
@@ -5638,7 +5786,8 @@
         "Other EVs": "$0.37-0.53"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16180912729239013297",
@@ -5657,7 +5806,8 @@
         "Other EVs": "$0.40-0.57"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L3542929152995317162",
@@ -5676,7 +5826,8 @@
         "Other EVs": "$0.51"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L432186029470666930",
@@ -5695,7 +5846,8 @@
         "Other EVs": "$0.36-0.52"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L16156613826762267113",
@@ -5714,7 +5866,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9726565561055182556",
@@ -5733,7 +5886,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L17370630439341751615",
@@ -5752,7 +5906,8 @@
         "Other EVs": "$0.42-0.59"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9890192377452929010",
@@ -5771,7 +5926,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L9424160446176239771",
@@ -5790,7 +5946,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L4713596931305309683",
@@ -5809,7 +5966,8 @@
         "Other EVs": "$0.55"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L14834864349385467",
@@ -5828,7 +5986,8 @@
         "Other EVs": "$0.58"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     },
     {
       "sourceId": "US-RIV-L59172885036745502",
@@ -5847,7 +6006,8 @@
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "observedAt": "2026-10-14T18:16:49.239Z"
+      "observedAt": "2026-10-14T18:16:49.239Z",
+      "reliabilityTone": "emerald"
     }
   ]
 }
