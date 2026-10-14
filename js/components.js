@@ -70,7 +70,7 @@
     return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
   function header(active = "") {
-    return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Rivian Spotter home"><img src="/assets/spotter-mark.svg" width="28" height="34" alt=""><span>RIVIAN <span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
+    return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="Rivian Spotter home"><img src="/assets/spotter-route.svg" width="36" height="36" alt=""><span>RIVIAN <span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
       ["Explore", "/"],
       ["Saved", "/saved.html"],
       ["Updates", "/updates.html"],
