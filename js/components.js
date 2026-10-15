@@ -35,9 +35,12 @@
   function escape(value) {
     return String(value ?? "").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
+  function typeLabel(type) {
+    return type === "RAN" ? "Rivian Adventure Network" : type;
+  }
   function relatedPlaces(items, heading) {
     if (!items?.length) return "";
-    return `<section class="related-places"><h3>${heading}</h3>${items.map(p=>`<a class="link-row" href="/locations/${encodeURIComponent(p.slug)}/"><span><strong>${escape(p.name)}</strong><br><small>${escape(p.type)}${p.chargerCount != null ? ` · ${p.chargerCount} ${p.chargerCount===1?'charger':'chargers'}` : ''}</small></span>${icon('chevron')}</a>`).join('')}</section>`;
+    return `<section class="related-places"><h3>${heading}</h3>${items.map(p=>`<a class="link-row" href="/locations/${encodeURIComponent(p.slug)}/"><span><strong>${escape(p.name)}</strong><br><small>${escape(typeLabel(p.type))}${p.chargerCount != null ? ` · ${p.chargerCount} ${p.chargerCount===1?'charger':'chargers'}` : ''}</small></span>${icon('chevron')}</a>`).join('')}</section>`;
   }
   function gradeBadge(record, compact = false) {
     const grade = record?.reliabilityGrade;
@@ -127,5 +130,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, locationGrade, relatedPlaces };
+  return { typeLabel, header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, locationGrade, relatedPlaces };
 });
