@@ -43,6 +43,8 @@ for (const file of [
   "js/roamer.js",
   "data/roamer.json",
   "js/admin.js",
+  "assets/spotter-social-card.png",
+  "assets/spotter-social-card.svg",
   "assets/spotter-route.svg",
   "assets/spotter-route-icon.svg",
   "data/locations.json",

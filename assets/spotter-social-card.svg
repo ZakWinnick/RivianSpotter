@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Rivian Spotter. Find your next stop. Your guide to Rivian places and charging.">
+<rect width="1200" height="630" fill="#244e3c"/>
+<g transform="translate(810 158) scale(.78)"><g transform="translate(12 32)"><defs><mask id="large-endpoint-gap"><rect width="424" height="384" fill="white"/><circle cx="360" cy="64" r="54" fill="black"/><circle cx="64" cy="320" r="54" fill="black"/></mask></defs><path d="M360 64H172C78 64 78 192 172 192H252C346 192 346 320 252 320H64" fill="none" stroke="#456b57" stroke-width="56" mask="url(#large-endpoint-gap)"/><g fill="#456b57"><circle cx="360" cy="64" r="44"/><circle cx="64" cy="320" r="44"/></g></g></g>
+<g transform="translate(76 65) scale(.15)"><g transform="translate(12 32)"><defs><mask id="endpoint-gap"><rect width="424" height="384" fill="white"/><circle cx="360" cy="64" r="54" fill="black"/><circle cx="64" cy="320" r="54" fill="black"/></mask></defs><path d="M360 64H172C78 64 78 192 172 192H252C346 192 346 320 252 320H64" fill="none" stroke="#f8f7f3" stroke-width="56" mask="url(#endpoint-gap)"/><g fill="#f8f7f3"><circle cx="360" cy="64" r="44"/><circle cx="64" cy="320" r="44"/></g></g></g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#f8f7f3">
+<text x="163" y="111" font-size="27" font-weight="700" letter-spacing="2">RIVIAN <tspan font-weight="400">SPOTTER</tspan></text>
+<text x="1120" y="108" text-anchor="end" font-size="22" fill="#d5dfd7">rivianspotter.com</text>
+<text x="80" y="283" font-size="86" font-weight="700" letter-spacing="-3">Find your</text>
+<text x="80" y="381" font-size="86" font-weight="700" letter-spacing="-3">next stop.</text>
+<path d="M80 493H1120" stroke="#698775" stroke-width="1"/>
+<text x="80" y="552" font-size="29" fill="#e5e9df">Your guide to Rivian places and charging.</text>
+</g>
+</svg>
