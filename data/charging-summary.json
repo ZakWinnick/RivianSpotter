@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,12 +32,18 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 905,
+  "requests": 900,
   "counts": {
-    "RAN": 161,
+    "RAN": 162,
     "Waypoint": 207
   },
-  "added": [],
+  "added": [
+    {
+      "id": 108504500787583,
+      "name": "Jacksonville, FL",
+      "slug": "ran-jacksonville-fl-62af2c2a97"
+    }
+  ],
   "removed": [],
-  "sha256": "f24d2aa38854c56f3905b9df3b8106c9962d6cda5ffec8cf24088b3a5223b6b0"
+  "sha256": "1cc43760a946349993773a8a808ba70803915482badaf722dc6baf9931454d8a"
 }
