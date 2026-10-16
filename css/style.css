@@ -1183,7 +1183,7 @@
  .explorer #full-overview{margin-left:0;order:0}.explorer .map-legend{bottom:32px;max-width:calc(100% - 24px)}
  .explorer .mapboxgl-ctrl-top-right{top:18px}.explorer .mobile-mode{z-index:20}.explorer .sidebar-footer{display:none}
 }
-.roamer-details{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}.roamer-details h3{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}.roamer-details h4{margin:18px 0 8px;font-size:.85rem}.charging-prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}.charging-prices div{padding:12px;border:1px solid var(--line);border-radius:8px}.charging-prices dt{font-size:.72rem;color:var(--muted)}.charging-prices dd{margin:4px 0 0;font-size:1.3rem;font-weight:650}.charging-prices small{font-size:.65rem;font-weight:400}.roamer-details p{font-size:.8rem;margin:10px 0}.roamer-details .charging-note{font-size:.68rem;color:var(--muted)}.power-observation{padding:12px;background:var(--tint);border-radius:8px}.charger-table{margin-top:16px;font-size:.76rem}.charger-table summary{cursor:pointer;padding:10px 0;font-weight:650}.table-scroll{overflow:auto}.charger-table table{border-collapse:collapse;width:100%;font-size:.7rem}.charger-table td,.charger-table th{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+.roamer-details{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}.roamer-details h3{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}.roamer-details h4{margin:18px 0 8px;font-size:.85rem}.charging-prices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:0}.charging-prices div{padding:12px;border:1px solid var(--line);border-radius:8px}.charging-prices dt{font-size:.72rem;color:var(--muted)}.charging-prices dd{margin:4px 0 0;font-size:1.1rem;font-weight:650;overflow-wrap:anywhere}.charging-prices small{display:block;font-size:.65rem;font-weight:400}.roamer-details p{font-size:.8rem;margin:10px 0}.roamer-details .charging-note{font-size:.68rem;color:var(--muted)}.power-observation{padding:12px;background:var(--tint);border-radius:8px}.charger-table{margin-top:16px;font-size:.76rem}.charger-table summary{cursor:pointer;padding:10px 0;font-weight:650}.table-scroll{overflow:auto}.charger-table table{border-collapse:collapse;width:100%;font-size:.7rem}.charger-table td,.charger-table th{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
 
 /* Source colors, promoted to the location heading and result cards. */
 .location-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
@@ -1206,3 +1206,19 @@
 .type-icon.type-planned{background:transparent;color:#b4621a;border:2px solid #b4621a}
 .status.planned{color:var(--text)}
 .coming-soon{border-left:3px solid #b4621a}
+
+/* Network-specific facts and readable time-of-use schedules. */
+.charging-network{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);min-width:0}
+.charging-network>h3{margin:0 0 16px;font-size:1rem}
+.rate-schedule{margin:12px 0;font-size:.78rem;overflow-wrap:anywhere}
+.rate-schedule summary{cursor:pointer;font-weight:650;padding:10px 0}
+.rate-schedule h5{font-size:.82rem;margin:16px 0 8px}
+.rate-schedule table{border-collapse:collapse;width:100%;font-size:.75rem}
+.rate-schedule th,.rate-schedule td{text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}
+.rate-schedule th:last-child,.rate-schedule td:last-child{text-align:right;white-space:nowrap}
+.rate-schedule td span{color:var(--muted);font-size:.7rem}
+
+.type-icon.type-combined{box-shadow:inset 0 0 0 2px #7062a4}
+.legend-dot.legend-combined{background:#b4621a;outline:2px solid #7062a4}
+.detail-top .category{min-width:0}
+#close-detail{flex-shrink:0}

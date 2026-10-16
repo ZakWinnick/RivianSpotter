@@ -38,7 +38,7 @@ window.SpotterMap = (() => {
           type: "Feature",
           id: p.id,
           geometry: { type: "Point", coordinates: [p.lng, p.lat] },
-          properties: { id: p.id, type: p.type, name: p.name, planned: p.status === "planned" },
+          properties: { id: p.id, type: p.type, name: p.name, planned: p.status === "planned", combined: !!p.chargingNetworks },
         })),
     };
   }
@@ -99,7 +99,7 @@ window.SpotterMap = (() => {
           12,
         ],
         "circle-stroke-width": 2.5,
-        "circle-stroke-color": ["case", ["==", ["get", "planned"], true], "#b4621a", "#ffffff"],
+        "circle-stroke-color": ["case", ["==", ["get", "planned"], true], "#b4621a", ["==", ["get", "combined"], true], "#7062a4", "#ffffff"],
       },
     });
     map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"text-field":["match",["get","type"],"Space","◇","Demo Center","↗","Service Center","+","Outpost","△","RAN","ϟ","Waypoint","↯","•"],"text-size":16,"text-font":["Arial Unicode MS Bold"],"text-allow-overlap":true},paint:{"text-color":["case",["==",["get","planned"],true],"#b4621a","#fff"]}});

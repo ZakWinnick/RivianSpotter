@@ -29,13 +29,33 @@
   function isCharging(p) { return p?.sourceKind === "charging-map"; }
   function isMapped(p) { return coordinates(p) && (["exact", "map-pin"].includes(p.coordinatePrecision) || (p.status === "planned" && p.coordinatePrecision === "city")); }
   function chargingSummary(p) {
+    if(p.chargingNetworks) return p.chargingNetworks.map(c=>`${c.chargerCount ?? "—"} ${c.type === "RAN" ? "fast" : "Level 2"} ${c.chargerCount===1?"charger":"chargers"}`).join(" · ");
     if(p.status === "planned") return "Coming Soon";
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
+  function locationTypes(p) { return p.chargingNetworks ? [...new Set(p.chargingNetworks.map(c=>c.type))] : [p.type]; }
+  function groupChargingSites(chargers) {
+    const key=p=>[p.country,p.state,(p.city||'').trim().toLowerCase(),(p.displayAddress||p.address||'').split(',')[0].toLowerCase().replace(/[^a-z0-9]/g,'')].join('|');
+    const eligible=p=>p.listed!==false && p.status!=='planned' && p.address && isMapped(p);
+    const buckets=new Map(), consumed=new Set(), groups=new Map();
+    for(const p of chargers.filter(eligible)){const k=key(p);if(!buckets.has(k))buckets.set(k,[]);buckets.get(k).push(p);}
+    for(const members of buckets.values()){
+      const ran=members.filter(p=>p.type==='RAN'),waypoints=members.filter(p=>p.type==='Waypoint');
+      // One fast-charging station and one Waypoint station at the same address.
+      // Ambiguous multi-station campuses and merely adjacent addresses stay separate.
+      if(ran.length!==1 || waypoints.length!==1 || distanceMiles(ran[0],waypoints[0])>0.15)continue;
+      const primary=ran[0],secondary=waypoints[0];
+      groups.set(primary.id,{...primary,chargingNetworks:[primary,secondary],
+        legacyIds:[...new Set([...(primary.legacyIds||[]),secondary.id,...(secondary.legacyIds||[])])],
+        legacySlugs:[...new Set([...(primary.legacySlugs||[]),secondary.slug,...(secondary.legacySlugs||[])])]});
+      consumed.add(secondary.id);
+    }
+    return chargers.filter(p=>!consumed.has(p.id)).map(p=>groups.get(p.id)||p);
+  }
   function combineLocations(places, chargers, observations = []) {
     const byId = new Map(observations.map(p=>[p.sourceId,p]));
-    chargers = chargers.map(p=>({...p,roamer:byId.get(p.sourceId) || null}));
+    chargers = groupChargingSites(chargers.map(p=>({...p,roamer:byId.get(p.sourceId) || null})));
     const active = chargers.filter(p=>p.listed!==false&&p.status!=="planned");
     return [...places.map(p=>({...p, chargingStations: active.filter(c=>c.state===p.state && isMapped(p) && distanceMiles(p,c)<=0.15)
       .map(c=>({id:c.id,slug:c.slug,name:c.name,type:c.type,chargerCount:c.chargerCount,maxKw:c.maxKw}))})),
@@ -212,6 +232,7 @@
             p.country,
             p.type,
             p.network,
+            ...(p.chargingNetworks || []).flatMap(c=>[c.name,c.type,c.network]),
             ...(p.services || []),
           ]
             .join(" ")
@@ -219,10 +240,10 @@
             .includes(w),
         ) &&
         (!f.mode || f.mode === "all" || (f.mode === "charge" ? isCharging(p) : !isCharging(p))) &&
-        (!f.type || p.type === f.type) &&
+        (!f.type || locationTypes(p).includes(f.type)) &&
         (!f.state || p.state === f.state) &&
         (!f.intent || (p.capabilities || []).includes(f.intent)) &&
-        (!f.savedOnly || (f.savedIds || []).includes(p.id)) &&
+        (!f.savedOnly || [p.id,...(p.legacyIds||[])].some(id=>(f.savedIds||[]).includes(id))) &&
         (!f.openNow ||
           getHoursState(
             p,
@@ -278,6 +299,8 @@
     isMapped,
     chargingSummary,
     combineLocations,
+    locationTypes,
+    groupChargingSites,
     safeUrl,
     coordinates,
     formatDate,
