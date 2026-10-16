@@ -44,3 +44,42 @@ test('future sites do not inflate detail coverage or hide active inventory losse
  assert.equal(roamer.coverage([],planned).officialStationCount,0);
  const {validateRefresh}=await import('../scripts/refresh-charging.mjs');assert.throws(()=>validateRefresh(planned,[],{minimum:1}),/Incomplete RAN/);
 });
+
+function activeFrom(p,overrides={}){
+ return {...p,id:123,slug:'ran-new-active',sourceId:'US-RIV-L123',planningSource:undefined,status:'unknown',address:'100 Main St',displayAddress:'100 Main St',coordinatePrecision:'map-pin',chargerCount:8,maxKw:300,firstSeen:'2026-10-18',...overrides};
+}
+test('retired announcement becomes a detailed station while preserving both published identities',async()=>{
+ const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0],active=activeFrom(p),report={};
+ const merged=mergePlanned([active],[],'2026-10-18',[p],report);assert.equal(merged.length,1);
+ const station=merged[0];assert.equal(station.id,p.id);assert.equal(station.slug,p.slug);assert.equal(station.sourceId,active.sourceId);assert.equal(station.address,'100 Main St');assert.equal(station.status,'unknown');assert.deepEqual(station.legacyIds,[active.id]);assert.deepEqual(station.legacySlugs,[active.slug]);assert.equal(report.promoted.length,1);
+ const combined=M.combineLocations([],merged,[{sourceId:active.sourceId,sourceUrl:'https://rivianroamer.com/charging/sites/'+active.sourceId,detailRates:{Energy:'$0.45/kWh'},hours:'24/7',chargers:[{name:'1',powerKw:300,connector:'NACS',features:[]}]}])[0];
+ const html=U.chargingDetails(combined);assert.match(html,/0.45/);assert.match(html,/NACS/);assert.doesNotMatch(html,/Coming Soon/);assert(M.getDirectionsUrl(combined));
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-promoted-page-'));
+ try{require('../scripts/build-pages.cjs').buildPages(dir,[combined]);const page=fs.readFileSync(path.join(dir,M.locationUrl(p),'index.html'),'utf8'),alias=fs.readFileSync(path.join(dir,M.locationUrl(active),'index.html'),'utf8');assert.equal(page,alias);assert(page.includes('https://rivianspotter.com'+M.locationUrl(p)));assert.match(page,/100 Main St/);assert.match(page,/0.45/);}finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+test('promotion is stable across repeated updates, source disappearance, and announcement reappearance',async()=>{
+ const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0],active=activeFrom(p);
+ // An active page can be published before the announcement disappears.
+ const overlap=mergePlanned([active],[rows[0]],'2026-10-18',[p]);assert.equal(overlap.length,2);
+ const promoted=mergePlanned([active],[],'2026-10-19',overlap);
+ const {normalize}=await import('../scripts/refresh-charging.mjs');
+ const refreshed=normalize({properties:{id:active.sourceId,network:'Rivian Adventure Network',city:p.city,state:p.state,address:'200 Main St',count:12,maxkw:300},geometry:{coordinates:[p.lng,p.lat]}},'2026-10-20',promoted[0]);
+ const next=mergePlanned([refreshed],[rows[0]],'2026-10-20',promoted);assert.equal(next.length,1);assert.equal(next[0].id,p.id);assert.equal(next[0].chargerCount,12);assert.equal(next[0].address,'200 Main St');assert.equal(next[0].promotion.activeFirstSeen,'2026-10-18');assert.equal(next[0].firstSeen,'2026-10-16');
+ const missing=mergePlanned([],[],'2026-10-21',next);assert.equal(missing[0].listed,false);assert.equal(missing[0].status,'unknown');
+ const restored=mergePlanned([active],[],'2026-10-22',missing);assert.equal(restored[0].id,p.id);assert.equal(restored[0].listed,true);assert.deepEqual(restored[0].legacySlugs,[active.slug]);
+ // A delayed active listing can also match an already-retired announcement.
+ const retired=mergePlanned([],[],'2026-10-17',[p]);assert.equal(mergePlanned([active],[],'2026-10-18',retired)[0].id,p.id);
+});
+test('matching rejects old stations, ambiguous candidates, incomplete details, and distant or different localities',async()=>{
+ const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0],active=activeFrom(p);
+ for(const candidates of [
+  [activeFrom(p,{firstSeen:'2026-10-15'})],[activeFrom(p,{firstSeen:p.firstSeen})],
+  [activeFrom(p,{address:null})],[activeFrom(p,{chargerCount:0})],
+  [activeFrom(p,{lat:p.lat+1})],[activeFrom(p,{state:'NY'})],
+  [activeFrom(p,{country:'CA'})],[activeFrom(p,{type:'Waypoint'})],
+  [active,{...active,id:456,slug:'second',sourceId:'US-RIV-L456'}],
+ ]){
+  const report={},result=mergePlanned(candidates,[],'2026-10-18',[p],report);
+  assert.equal(report.promoted.length,0);assert.equal(report.unresolved.length,1);assert.equal(result.find(a=>a.id===p.id).status,'planned');
+ }
+});
