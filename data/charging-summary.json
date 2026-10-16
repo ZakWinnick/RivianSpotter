@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -33,24 +33,18 @@
   "tilesScanned": 544,
   "splitTiles": 0,
   "requests": 900,
+  "comingSoon": {
+    "count": 36,
+    "observedAt": "2026-10-16T15:46:02.962Z",
+    "sourceUrl": "https://rivian.com/experience/charging#map",
+    "assetUrl": "https://rivian.com/root/_next/static/chunks/05s2an0bc_qt2.js",
+    "sha256": "5a363afcf4f716d455619fc5a081a213a3feb87b43e82cb3ee1f2d5a0051382f"
+  },
   "counts": {
     "RAN": 198,
     "Waypoint": 207
   },
-  "added": [
-    {
-      "id": 108504500787583,
-      "name": "Jacksonville, FL",
-      "slug": "ran-jacksonville-fl-62af2c2a97"
-    }
-  ],
+  "added": [],
   "removed": [],
-  "sha256": "1cc43760a946349993773a8a808ba70803915482badaf722dc6baf9931454d8a",
-  "comingSoon": {
-    "count": 36,
-    "observedAt": "2026-10-16T15:14:21.805Z",
-    "sourceUrl": "https://rivian.com/experience/charging#map",
-    "assetUrl": "https://rivian.com/root/_next/static/chunks/05s2an0bc_qt2.js",
-    "sha256": "5a363afcf4f716d455619fc5a081a213a3feb87b43e82cb3ee1f2d5a0051382f"
-  }
+  "sha256": "418eb440ed1cf05afa1c7eff5ee370ac9bcbc1c8418506af5f22de3cb51fe931"
 }

@@ -33,7 +33,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/calgary-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b1b4560d-d68d-4d05-a8cb-9fb4c1c098a4",
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published hours exception: Closed on 10/12 (year not specified)."
@@ -78,7 +78,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/scottsdale",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=3545c563-7c79-4506-8cb8-a882c59f2def",
     "sourceUrl": "https://rivian.com/spaces/scottsdale",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (6502 E Monte Cristo Ave); its coordinates were withheld. The directory address is used."
@@ -122,7 +122,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/tempe-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a6be7260-ea96-4e6d-aa7d-38e5d7ff58cb",
     "sourceUrl": "https://rivian.com/spaces/tempe-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -163,7 +163,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/vancouver",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=7714dfe5-4504-4047-9037-a253ccb932b8",
     "sourceUrl": "https://rivian.com/spaces/vancouver",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published hours exception: Closed on 10/12 (year not specified)."
@@ -210,7 +210,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/burbank-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=2824221f-aa30-4ee6-a1ec-a1a1ee42dfb2",
     "sourceUrl": "https://rivian.com/spaces/burbank-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -253,7 +253,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/costa-mesa-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=6de5e866-cf1f-452b-8a01-f35f6fdab810",
     "sourceUrl": "https://rivian.com/spaces/costa-mesa-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -294,7 +294,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/del-mar",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=35ab765a-1e45-4daa-bafc-ccd2a2e3e641",
     "sourceUrl": "https://rivian.com/spaces/del-mar",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -336,7 +336,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/eastvale-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=c29030de-3799-46bc-bc01-44c461ee1b10",
     "sourceUrl": "https://rivian.com/spaces/eastvale-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -379,7 +379,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/el-segundo-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b5c66426-0fb0-4ac5-9637-24517d1d28cd",
     "sourceUrl": "https://rivian.com/spaces/el-segundo-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -420,7 +420,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/el-segundo",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=747041e5-5864-4cce-aa1b-ad773b2a816c",
     "sourceUrl": "https://rivian.com/spaces/el-segundo",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (401 Coral Circle); its coordinates were withheld. The directory address is used."
@@ -462,7 +462,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/irvine",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=d0333eb8-9279-4d0c-b4d2-21107e3bd18a",
     "sourceUrl": "https://rivian.com/spaces/irvine",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -504,7 +504,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/joshua-tree",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f6d05b6d-0291-4d56-b0a4-b84443c91719",
     "sourceUrl": "https://rivian.com/spaces/joshua-tree",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -544,7 +544,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/laguna-beach",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=7335d20e-40d5-414a-9559-b4af1d34cb66",
     "sourceUrl": "https://rivian.com/spaces/laguna-beach",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -586,7 +586,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/lake-forest-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=aaa3ab5f-9423-4221-9cbd-b7078b2e03af",
     "sourceUrl": "https://rivian.com/spaces/lake-forest-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -627,7 +627,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/pasadena",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=ba482649-b217-4040-8910-95dfb23b2e56",
     "sourceUrl": "https://rivian.com/spaces/pasadena",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -669,7 +669,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/san-diego-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=ebc7995a-8858-421a-b9fb-e9f1035258be",
     "sourceUrl": "https://rivian.com/spaces/san-diego-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -710,7 +710,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/san-diego",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=6d39b5dd-13bc-43b7-a24a-6b7ac496e61b",
     "sourceUrl": "https://rivian.com/spaces/san-diego",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -752,7 +752,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/san-francisco",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=9e337dc3-2ca1-4605-b08f-30db507ff451",
     "sourceUrl": "https://rivian.com/spaces/san-francisco",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -793,7 +793,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/san-jose",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=21914a30-f9ab-433f-a8d7-e6975680232c",
     "sourceUrl": "https://rivian.com/spaces/san-jose",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (300 Santana Row , #105); its coordinates were withheld. The directory address is used."
@@ -837,7 +837,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/south-san-francisco-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a42468b7-77f7-4f75-89a4-ce899310b276",
     "sourceUrl": "https://rivian.com/spaces/south-san-francisco-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -880,7 +880,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/van-nuys-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=84fb3e58-f8df-4112-a088-b5796e902d8f",
     "sourceUrl": "https://rivian.com/spaces/van-nuys-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -921,7 +921,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/venice",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a214969c-563b-446c-90a1-ed472ced8b85",
     "sourceUrl": "https://rivian.com/spaces/venice",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -961,7 +961,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/walnut-creek",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=df5dc0c5-8b55-44b5-af8b-800d6edfef3d",
     "sourceUrl": "https://rivian.com/spaces/walnut-creek",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1003,7 +1003,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/west-sacramento-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=e2841a5a-ab6e-4c94-8576-8767733a9003",
     "sourceUrl": "https://rivian.com/spaces/west-sacramento-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1044,7 +1044,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/yosemite",
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/yosemite",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail FAQ says demo drives are not offered here; the directory also displays a booking link. Confirm with Rivian."
@@ -1088,7 +1088,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/colorado-springs-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=3b82132d-0d7c-449e-aa26-aaba568cf7ac",
     "sourceUrl": "https://rivian.com/spaces/colorado-springs-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1129,7 +1129,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/denver",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=1e87c177-efa8-4868-8b56-5a1b8f6c064d",
     "sourceUrl": "https://rivian.com/spaces/denver",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1167,7 +1167,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -1208,7 +1208,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/miami-aventura",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=23e75023-d5b3-4607-ae86-11d178662ef3",
     "sourceUrl": "https://rivian.com/spaces/miami-aventura",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1250,7 +1250,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/orlando-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=217dccea-19bc-43d4-8eaa-bb96b90959c6",
     "sourceUrl": "https://rivian.com/spaces/orlando-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1336,7 +1336,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/tampa-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=aac0dc75-b4d6-4468-818c-b31b5dd839a8",
     "sourceUrl": "https://rivian.com/spaces/tampa-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1377,7 +1377,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/alpharetta",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b78aa51d-1a04-4fec-bad9-b64a7893cb69",
     "sourceUrl": "https://rivian.com/spaces/alpharetta",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1417,7 +1417,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/atlanta",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=c56b86a1-07bc-4112-b00f-cb1af018811f",
     "sourceUrl": "https://rivian.com/spaces/atlanta",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1459,7 +1459,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/honolulu-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=abfe973d-6af9-4603-8c87-f6ce23b88829",
     "sourceUrl": "https://rivian.com/spaces/honolulu-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1502,7 +1502,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/boise-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=c5ed91b1-bb9a-4bec-9161-1d084eac5a75",
     "sourceUrl": "https://rivian.com/spaces/boise-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1543,7 +1543,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/chicago",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=e9350c8f-dc21-4cd8-8d76-f91fa0329374",
     "sourceUrl": "https://rivian.com/spaces/chicago",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1585,7 +1585,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/melrose-park-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b944c73a-dd40-4e4e-9bf6-b38886d370be",
     "sourceUrl": "https://rivian.com/spaces/melrose-park-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1626,7 +1626,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/skokie",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=54566955-0dcf-4347-8e0c-ec9d63de0909",
     "sourceUrl": "https://rivian.com/spaces/skokie",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (4999 Old Orchard Road, Suite M36); its coordinates were withheld. The directory address is used."
@@ -1670,7 +1670,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/kansas-city-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a5f7ad03-d6b6-4b9f-8d4a-66856692abdc",
     "sourceUrl": "https://rivian.com/spaces/kansas-city-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1713,7 +1713,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/gaithersburg-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f49021bb-58e2-4008-ad99-727bc2ffbb33",
     "sourceUrl": "https://rivian.com/spaces/gaithersburg-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1756,7 +1756,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/glen-burnie-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f21e514f-044d-4e71-96f9-a6064aa0f35a",
     "sourceUrl": "https://rivian.com/spaces/glen-burnie-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1797,7 +1797,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/boston",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f0a50f3e-433f-4a22-b4f7-376ee134c884",
     "sourceUrl": "https://rivian.com/spaces/boston",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1835,7 +1835,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -1878,7 +1878,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/caledonia-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=98caf26d-2321-403f-8b42-2023d2f7bab5",
     "sourceUrl": "https://rivian.com/spaces/caledonia-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Published service hours contain “Sat–Sat”; Sunday service hours are unclear."
@@ -1923,7 +1923,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/madison-heights-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=17881fd1-4881-490f-bb81-33762763c79f",
     "sourceUrl": "https://rivian.com/spaces/madison-heights-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -1966,7 +1966,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/st-louis-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b84f5b17-c15d-46cc-a27f-065b58d43c86",
     "sourceUrl": "https://rivian.com/spaces/st-louis-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2009,7 +2009,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/north-las-vegas-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=da8ae78c-80f7-4710-b4a9-593d057bb08d",
     "sourceUrl": "https://rivian.com/spaces/north-las-vegas-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2052,7 +2052,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/sparks-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=5098536a-10d4-4b09-a91b-a2e180337468",
     "sourceUrl": "https://rivian.com/spaces/sparks-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2095,7 +2095,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/woodbridge-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=28a98e1d-a921-41ec-9727-dc200eca919f",
     "sourceUrl": "https://rivian.com/spaces/woodbridge-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2138,7 +2138,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/blauvelt-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=cef2c86d-ce43-4c14-afca-d500ad0701c8",
     "sourceUrl": "https://rivian.com/spaces/blauvelt-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2179,7 +2179,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/brooklyn",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=330e2374-b804-449d-b89f-8a991ef3c55f",
     "sourceUrl": "https://rivian.com/spaces/brooklyn",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (366 Wyth Ave.); its coordinates were withheld. The directory address is used."
@@ -2220,7 +2220,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/new-york",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=49c745a1-7fe5-4eda-a878-9f7a0f56d206",
     "sourceUrl": "https://rivian.com/spaces/new-york",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2260,7 +2260,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/roslyn",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=64e0fdf1-52b4-4551-9010-85f181a4eff2",
     "sourceUrl": "https://rivian.com/spaces/roslyn",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2299,7 +2299,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/white-plains",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=826c83eb-e6f8-4920-a636-66575328a2c2",
     "sourceUrl": "https://rivian.com/spaces/white-plains",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2341,7 +2341,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/toronto-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=93219af1-4a7f-403d-893f-45bd00a83f4e",
     "sourceUrl": "https://rivian.com/spaces/toronto-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published hours exception: Closed on 10/12 (year not specified)."
@@ -2389,7 +2389,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/portland-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=c00d0fa1-4ab9-4899-9680-ea9bd560129f",
     "sourceUrl": "https://rivian.com/spaces/portland-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2430,7 +2430,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/tigard",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=759e9ef2-2a05-488e-8faf-a33bc2baea5f",
     "sourceUrl": "https://rivian.com/spaces/tigard",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2519,7 +2519,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/franklin-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a186be51-fe56-40ea-94f5-e5be1b37414f",
     "sourceUrl": "https://rivian.com/spaces/franklin-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2562,7 +2562,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/memphis-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=49697e80-9605-486a-a1af-9364cf143394",
     "sourceUrl": "https://rivian.com/spaces/memphis-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2603,7 +2603,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/nashville",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=bf38e811-ddf7-4aaa-bcac-41038d4c9ad2",
     "sourceUrl": "https://rivian.com/spaces/nashville",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (1808 West End Ave); its coordinates were withheld. The directory address is used."
@@ -2645,7 +2645,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/austin",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=ff396917-81cf-4a57-877b-60494a64d5b7",
     "sourceUrl": "https://rivian.com/spaces/austin",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2687,7 +2687,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/austin-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=482f6fe7-fd28-4593-b60c-2f1aed6a5c43",
     "sourceUrl": "https://rivian.com/spaces/austin-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2728,7 +2728,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/dallas",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=8c67f509-ccfe-478b-80dc-1511e2ba89b9",
     "sourceUrl": "https://rivian.com/spaces/dallas",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (310 Knox Street); its coordinates were withheld. The directory address is used."
@@ -2772,7 +2772,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/dallas-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f47dcd2c-0edf-42ca-a847-6c760ef4da38",
     "sourceUrl": "https://rivian.com/spaces/dallas-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (2512 Hawes); its coordinates were withheld. The directory address is used."
@@ -2812,7 +2812,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -2855,7 +2855,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/san-antonio-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=8a4bf08f-e265-41b4-b68b-59c7df6700ae",
     "sourceUrl": "https://rivian.com/spaces/san-antonio-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2898,7 +2898,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/salt-lake-city-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b472fc1d-9626-4dd9-9665-302fddae6833",
     "sourceUrl": "https://rivian.com/spaces/salt-lake-city-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2941,7 +2941,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/richmond-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f11e8813-47dc-4546-b22a-d6f7a674fb2d",
     "sourceUrl": "https://rivian.com/spaces/richmond-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -2984,7 +2984,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/bellevue-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=ebe365b8-bcd8-4b66-9020-16a8b1dcb794",
     "sourceUrl": "https://rivian.com/spaces/bellevue-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3027,7 +3027,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/fife-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=2bd59faa-a51c-4ec3-98de-22d39af7ef19",
     "sourceUrl": "https://rivian.com/spaces/fife-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3068,7 +3068,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/seattle",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b5858376-310c-4342-a6e0-f6c50838bbd8",
     "sourceUrl": "https://rivian.com/spaces/seattle",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3113,7 +3113,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/menomonee-falls-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=9bdd5aad-9ad0-4923-834a-1826410bb646",
     "sourceUrl": "https://rivian.com/spaces/menomonee-falls-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3156,7 +3156,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/hamptons",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=37835df7-2820-4c2c-883c-a0de2ab203c4",
     "sourceUrl": "https://rivian.com/spaces/hamptons",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (605 County Road 39); its coordinates were withheld. The directory address is used."
@@ -3198,7 +3198,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/miami-brickell",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f0515906-838f-4551-a824-5d6654e80dea",
     "sourceUrl": "https://rivian.com/spaces/miami-brickell",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3238,7 +3238,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/brea",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=3b97044a-35de-43b7-bda0-b877fd89f167",
     "sourceUrl": "https://rivian.com/spaces/brea",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3324,7 +3324,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/palo-alto",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=62c92c63-b1a3-4cb1-b0be-88aa9c2dd919",
     "sourceUrl": "https://rivian.com/spaces/palo-alto",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (3215 Porter Dr); its coordinates were withheld. The directory address is used."
@@ -3368,7 +3368,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/fort-myers-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=bd1b3f58-64c8-4c7f-9dc9-1b8ca662818a",
     "sourceUrl": "https://rivian.com/spaces/fort-myers-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3411,7 +3411,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/buffalo-grove-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=aef19ca5-2f78-49c7-8e38-21d898c6ef5c",
     "sourceUrl": "https://rivian.com/spaces/buffalo-grove-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3454,7 +3454,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/belgrade-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a99816c1-751d-41af-80da-1f272ff9bec3",
     "sourceUrl": "https://rivian.com/spaces/belgrade-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3497,7 +3497,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/ladson-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a8d1e931-c0ba-4d20-bb91-edb3b587beb8",
     "sourceUrl": "https://rivian.com/spaces/ladson-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3538,7 +3538,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/mclean",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=88dd024e-de29-40e5-a381-d6e5bc934695",
     "sourceUrl": "https://rivian.com/spaces/mclean",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3580,7 +3580,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/bothell-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f25e1fc6-40b0-419d-99b4-55db7d631e4a",
     "sourceUrl": "https://rivian.com/spaces/bothell-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3619,7 +3619,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3662,7 +3662,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/fresno-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f348a709-626c-4be6-81cd-15b21536819c",
     "sourceUrl": "https://rivian.com/spaces/fresno-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3701,7 +3701,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3742,7 +3742,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/la-jolla",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=6bc700a6-01ea-4d10-bb00-33f375959935",
     "sourceUrl": "https://rivian.com/spaces/la-jolla",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3784,7 +3784,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/milpitas-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=08bdc52c-38b4-443f-8f9e-6b8da8ae59d3",
     "sourceUrl": "https://rivian.com/spaces/milpitas-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -3822,7 +3822,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3861,7 +3861,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3900,7 +3900,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3939,7 +3939,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -3978,7 +3978,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4017,7 +4017,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4056,7 +4056,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4095,7 +4095,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4134,7 +4134,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4173,7 +4173,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4216,7 +4216,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/canton-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=e6c3df55-fdeb-46b9-b41c-883f40e5f20a",
     "sourceUrl": "https://rivian.com/spaces/canton-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4259,7 +4259,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/hudson-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=84931d3f-761b-4fcd-b699-5adc08f0db82",
     "sourceUrl": "https://rivian.com/spaces/hudson-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4302,7 +4302,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/trenton-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=80a3e634-a394-478c-a9c8-d96efe8723b1",
     "sourceUrl": "https://rivian.com/spaces/trenton-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4340,7 +4340,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4383,7 +4383,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/west-henrietta-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=daf60b62-647e-4403-8e4b-4265ed169f8a",
     "sourceUrl": "https://rivian.com/spaces/west-henrietta-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4421,7 +4421,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4467,7 +4467,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/woodbury-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=0eecd9ff-151e-4dcc-8d1c-e4fa72526ebd",
     "sourceUrl": "https://rivian.com/spaces/woodbury-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4510,7 +4510,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/knightdale-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=4ef4063f-3ee1-43b5-9051-4c3359b10446",
     "sourceUrl": "https://rivian.com/spaces/knightdale-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4549,7 +4549,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4588,7 +4588,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4627,7 +4627,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4670,7 +4670,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/oklahoma-city-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=938cfaf8-df74-4dc6-9a00-71ba0a1ddeee",
     "sourceUrl": "https://rivian.com/spaces/oklahoma-city-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4708,7 +4708,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4747,7 +4747,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4786,7 +4786,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4825,7 +4825,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4868,7 +4868,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/katy-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=6076a80c-c0ab-46d0-ae59-f70386944edf",
     "sourceUrl": "https://rivian.com/spaces/katy-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -4906,7 +4906,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4945,7 +4945,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -4984,7 +4984,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -5025,7 +5025,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/king-of-prussia",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a3048d7a-c06c-4414-92f0-627be8459acf",
     "sourceUrl": "https://rivian.com/spaces/king-of-prussia",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5203,7 +5203,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/calabasas",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=0f204427-2aa8-4e46-a9ec-9bcfa30888d9",
     "sourceUrl": "https://rivian.com/spaces/calabasas",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (4799 Commons Way); its coordinates were withheld. The directory address is used."
@@ -5244,7 +5244,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/boulder",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=4e5b8352-54c2-429b-b72f-91b31f4d0cbf",
     "sourceUrl": "https://rivian.com/spaces/boulder",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (2355 30th St); its coordinates were withheld. The directory address is used."
@@ -5287,7 +5287,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/fishers-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a2f1b795-9e2b-4688-bb54-4414d5dc00d9",
     "sourceUrl": "https://rivian.com/spaces/fishers-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5327,7 +5327,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/dedham",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=01644360-e53b-4d82-b3ed-6e279b2105e1",
     "sourceUrl": "https://rivian.com/spaces/dedham",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (480 Legacy Place); its coordinates were withheld. The directory address is used."
@@ -5369,7 +5369,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/minneapolis",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=7a3c8d81-779e-444d-aac7-5c6ca637d66c",
     "sourceUrl": "https://rivian.com/spaces/minneapolis",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (3601 Galleria); its coordinates were withheld. The directory address is used."
@@ -5410,7 +5410,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/east-rutherford",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=dc170a8b-37ba-423e-a11c-5665f2df44e7",
     "sourceUrl": "https://rivian.com/spaces/east-rutherford",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (1 American Dream Way, Space D240); its coordinates were withheld. The directory address is used."
@@ -5453,7 +5453,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/clifton-park-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=4c85cf0d-8829-4eff-bbcf-9d432cdf670b",
     "sourceUrl": "https://rivian.com/spaces/clifton-park-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5493,7 +5493,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/toronto",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=38e968e0-3c95-40db-80a8-949055a134bf",
     "sourceUrl": "https://rivian.com/spaces/toronto",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published hours exception: Closed on 10/12 (year not specified)."
@@ -5539,7 +5539,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/bethel-park-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a34bea94-8a8f-4408-8c84-67b269331645",
     "sourceUrl": "https://rivian.com/spaces/bethel-park-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5581,7 +5581,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/laval-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=407ac8a8-adb6-41bc-a180-d56f786590ad",
     "sourceUrl": "https://rivian.com/spaces/laval-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5623,7 +5623,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/appleton-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=cbd15326-ab17-4aa8-913e-21b1b7632b50",
     "sourceUrl": "https://rivian.com/spaces/appleton-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5665,7 +5665,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/colma-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=a05c5ff7-835b-4b48-91b2-25dc0f062be1",
     "sourceUrl": "https://rivian.com/spaces/colma-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "The directory publishes operating hours but the embedded service map labels this site in the works. Confirm current availability with Rivian."
@@ -5707,7 +5707,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/glendale",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=6d66d03f-2de8-4397-9734-26aca7623f58",
     "sourceUrl": "https://rivian.com/spaces/glendale",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5750,7 +5750,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/rocklin-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=9bdd5aad-9ad0-4923-834a-1826410bb646",
     "sourceUrl": "https://rivian.com/spaces/rocklin-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5794,7 +5794,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/ventura-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=01dc7dea-9fc1-4bd5-8531-194baea7edc8",
     "sourceUrl": "https://rivian.com/spaces/ventura-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (4880 Colt St); its coordinates were withheld. The directory address is used."
@@ -5837,7 +5837,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/vista-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=8b8b3f9a-4ee1-4009-bad1-e34ae6905c7d",
     "sourceUrl": "https://rivian.com/spaces/vista-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5877,7 +5877,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/lone-tree",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=3af2d888-f0ff-478a-9eeb-583b2a6f3f1f",
     "sourceUrl": "https://rivian.com/spaces/lone-tree",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5918,7 +5918,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/louisville-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f2d1e245-cd02-4265-9cd6-1f8fa6f294ec",
     "sourceUrl": "https://rivian.com/spaces/louisville-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -5959,7 +5959,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/miramar-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=b085d7f8-7974-45ae-bac2-f57d0151a09f",
     "sourceUrl": "https://rivian.com/spaces/miramar-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Service coming soon; the published general/demo hours apply to the currently operating visitor location.",
@@ -6003,7 +6003,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/st-augustine-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=66f8b7d0-a9a6-476f-abaa-3d82266539b3",
     "sourceUrl": "https://rivian.com/spaces/st-augustine-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -6043,7 +6043,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/west-palm-beach",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=05c5f4c1-cb1c-45cb-9b6f-defb00117e71",
     "sourceUrl": "https://rivian.com/spaces/west-palm-beach",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (713 S Rosemary Ave); its coordinates were withheld. The directory address is used."
@@ -6084,7 +6084,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/oakbrook",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=395c1f79-be43-4d32-843a-b29564b6aca5",
     "sourceUrl": "https://rivian.com/spaces/oakbrook",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -6123,7 +6123,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/lynnfield",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=30270b8b-5176-4a6a-853a-7fbad555c280",
     "sourceUrl": "https://rivian.com/spaces/lynnfield",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "needs-review",
     "notes": [
       "Official detail structured data lists a different address (600 Market Street); its coordinates were withheld. The directory address is used."
@@ -6166,7 +6166,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/houston-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=7f3b0c71-84e3-44ef-b05a-ef13317bbeae",
     "sourceUrl": "https://rivian.com/spaces/houston-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -6208,7 +6208,7 @@ const rivianLocations = [
     "rivianUrl": "https://rivian.com/spaces/seattle-service-demo-center",
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=94da48e8-4d7a-434e-9067-15e91b777efe",
     "sourceUrl": "https://rivian.com/spaces/seattle-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [],
     "hoursExceptions": [],
@@ -6246,7 +6246,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6285,7 +6285,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling.",
@@ -6325,7 +6325,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6364,7 +6364,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6403,7 +6403,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6442,7 +6442,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6481,7 +6481,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6520,7 +6520,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6559,7 +6559,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling.",
@@ -6599,7 +6599,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
@@ -6638,7 +6638,7 @@ const rivianLocations = [
     "rivianUrl": null,
     "bookingUrl": null,
     "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-15",
+    "lastVerified": "2026-10-16",
     "verificationStatus": "verified",
     "notes": [
       "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
