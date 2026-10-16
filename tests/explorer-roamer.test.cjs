@@ -85,6 +85,7 @@ test('RAN cards keep the same information sections for full, partial and unmatch
 });
 
 const detailFixture='<main><h1>Station</h1><div class="text-center"><div><div>1</div><div>Stations</div></div><div><div>300</div><div>Max kW</div></div></div><table><tbody><tr><td>1A</td><td>300 kW</td><td>NACS</td><td></td></tr></tbody></table></main>';
+const detailFor=url=>`<body data-navigation-page="charging_sites:show:${url.split('/').pop()}">${detailFixture}</body>`;
 function detailImportFixture(){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'roamer-coverage-')),cacheDir=path.join(dir,'cache'),output=path.join(dir,'snapshot.json');fs.mkdirSync(cacheDir);
  const markers=Array.from({length:100},(_,i)=>({url:`/charging/sites/US-RIV-L${i}`,coordinates:[37,-120]}));
@@ -93,7 +94,7 @@ function detailImportFixture(){
 }
 test('detail coverage goes beyond six pages, checkpoints each success and resumes missing sites first',async()=>{
  const f=detailImportFixture(),calls=[],pauses=[];
- const fetchImpl=async url=>{const saved=JSON.parse(fs.readFileSync(f.output));assert.equal(saved.detailCount,calls.length);calls.push(url);return new Response(detailFixture);};
+ const fetchImpl=async url=>{const saved=JSON.parse(fs.readFileSync(f.output));assert.equal(saved.detailCount,calls.length);calls.push(url);return new Response(detailFor(url));};
  try{
   const first=await api.refresh({...f,maxDetails:8,fetchImpl,pause:async ms=>pauses.push(ms)});
   assert.equal(first.detailCount,8);assert.equal(first.missingDetailIds.length,92);assert.equal(pauses.length,7);assert(pauses.every(ms=>ms===15000));
@@ -107,7 +108,7 @@ test('detail coverage goes beyond six pages, checkpoints each success and resume
 test('detail rate limiting preserves partial progress and stops subsequent requests',async()=>{
  const f=detailImportFixture();let calls=0;
  try{
-  const result=await api.refresh({...f,fetchImpl:async()=>++calls===3?new Response('',{status:429,headers:{'Retry-After':'172800'}}):new Response(detailFixture),pause:async()=>{}});
+  const result=await api.refresh({...f,fetchImpl:async url=>++calls===3?new Response('',{status:429,headers:{'Retry-After':'172800'}}):new Response(detailFor(url)),pause:async()=>{}});
   assert.equal(calls,3);assert.equal(result.detailCount,2);assert.equal(result.rateLimited,true);assert(Date.parse(result.nextRequestAfter)>Date.now()+47*3600000);
   const again=await api.refresh({...f,fetchImpl:async()=>{throw Error('Must honor cooldown');}});assert.equal(again.detailCount,2);
  }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
@@ -116,7 +117,52 @@ test('detail rate limiting preserves partial progress and stops subsequent reque
 test('default daily pass attempts every station detail instead of stopping at six',async()=>{
  const f=detailImportFixture();let calls=0;
  try{
-  const result=await api.refresh({...f,fetchImpl:async()=>{calls++;return new Response(detailFixture);},pause:async()=>{}});
+  const result=await api.refresh({...f,fetchImpl:async url=>{calls++;return new Response(detailFor(url));},pause:async()=>{}});
   assert.equal(calls,100);assert.equal(result.detailCount,100);assert.deepEqual(result.missingDetailIds,[]);
  }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});
+
+
+test('official sites absent from network listing are checked directly every day, including previously complete sites',async()=>{
+ const f=detailImportFixture(),sourceId='US-RIV-L999',officialStations=[{type:'RAN',listed:true,sourceId,name:'New Place',lat:37,lng:-120}];
+ const calls=[];
+ const fetchImpl=async url=>{calls.push(url);return new Response(detailFor(url).replace('</main>','<span>Energy</span><span>$0.59/kWh</span><span>Idle</span><span>$0.50/min</span></main>'));};
+ try{
+  const first=await api.refresh({...f,officialStations,fetchImpl,pause:async()=>{}});
+  assert.equal(calls.length,101);assert(calls.some(url=>url.endsWith(sourceId)));
+  assert.equal(first.networkCount,100);assert.equal(first.coverage.officialStationCount,1);assert.equal(first.coverage.checkedCount,1);assert.equal(first.coverage.freshDetailCount,1);
+  const station=first.stations.find(s=>s.sourceId===sourceId);
+  assert.equal(station.networkListed,false);assert.equal(station.connectorSummary,'1 NACS');assert.equal(station.detailRates.Energy,'$0.59/kWh');
+  const html=U.roamerDetails(station);assert.match(html,/Energy/);assert.match(html,/\$0.59<small>\/kWh/);assert.doesNotMatch(html,/\/kWh<small>/);
+  const nextCache=path.join(f.dir,'next');fs.mkdirSync(nextCache);fs.copyFileSync(path.join(f.cacheDir,'network.html'),path.join(nextCache,'network.html'));
+  calls.length=0;
+  const next=await api.refresh({...f,cacheDir:nextCache,officialStations,fetchImpl,pause:async()=>{}});
+  assert.equal(calls.length,101,'complete records must also be fetched again');assert.equal(next.coverage.checkedCount,1);
+ }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});
+
+test('unlisted detail failures retain dated facts and expose missing, stale and unchecked official coverage',async()=>{
+ const f=detailImportFixture(),sourceId='US-RIV-L999',officialStations=[{type:'RAN',sourceId,name:'Missing'},{type:'RAN',sourceId:'US-RIV-L998',name:'New'}];
+ const oldStation={sourceId,hours:'24/7',chargers:[{name:'1A',connector:'CCS',powerKw:300}],detailsObservedAt:'2020-01-01T00:00:00Z'};
+ fs.writeFileSync(f.output,JSON.stringify({networkCount:100,stations:[oldStation]}));
+ try{
+  const result=await api.refresh({...f,officialStations,fetchImpl:async()=>new Response('',{status:404}),pause:async()=>{}});
+  assert.deepEqual(result.coverage.missingDetailIds,['US-RIV-L998']);assert.deepEqual(result.coverage.staleDetailIds,[sourceId]);assert.equal(result.coverage.checkedCount,0);
+  assert.equal(result.stations.find(s=>s.sourceId===sourceId).detailsObservedAt,oldStation.detailsObservedAt);
+  assert.equal(result.coverage.detailCount,1);assert.equal(result.coverage.freshDetailCount,0);
+ }finally{fs.rmSync(f.dir,{recursive:true,force:true});}
+});
+
+test('detail identity prevents attaching the wrong station and newer detail pricing wins',()=>{
+ assert.throws(()=>api.parseDetail(detailFor('/US-RIV-L1'),{sourceId:'US-RIV-L2'}),/identity mismatch/);
+ assert.throws(()=>api.parseDetail(detailFixture,{sourceId:'US-RIV-L2'}),/identity mismatch/);
+ const r={sourceUrl:'https://rivianroamer.com/charging/sites/US-RIV-L1',observedAt:'2026-10-15T00:00:00Z',detailsObservedAt:'2026-10-15T01:00:00Z',rates:{Rivian:'$0.30'},detailRates:{Rivian:'$0.38/kWh'}};
+ assert.match(U.roamerDetails(r),/\$0.38<small>/);assert.doesNotMatch(U.roamerDetails(r),/\$0.30/);
+ r.observedAt='2026-10-16T00:00:00Z';assert.match(U.roamerDetails(r),/\$0.30<small>/);
+});
+
+test('a newer network condition supersedes an older detail warning',()=>{
+ const r={sourceUrl:'https://rivianroamer.com/charging/sites/US-RIV-L1',observedAt:'2026-10-16T00:00:00Z',detailsObservedAt:'2026-10-15T00:00:00Z',reportedStatus:'Operational',detailReportedStatus:'Offline'};
+ assert.doesNotMatch(U.roamerDetails(r),/Reported Charger Issue/);
+ r.detailsObservedAt='2026-10-16T01:00:00Z';assert.match(U.roamerDetails(r),/Reported Charger Issue/);
 });

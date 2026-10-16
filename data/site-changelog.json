@@ -1,5 +1,14 @@
 [
   {
+    "version": "2026.42.21",
+    "date": "2026-10-15",
+    "title": "Charging data improvements",
+    "changes": [
+      "Expanded daily charging-detail checks to cover every Rivian Adventure Network site in the directory, including newly added locations.",
+      "Filled missing charger, pricing, and hours information for Jacksonville and East Greenwich."
+    ]
+  },
+  {
     "version": "2026.42.20",
     "date": "2026-10-14",
     "title": "October 2026 update",
