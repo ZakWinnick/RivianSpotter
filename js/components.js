@@ -91,7 +91,7 @@
       )
       .join(
         "",
-      )}</nav><button class="icon-button theme-toggle" type="button" aria-label="Switch to dark theme">${icon("sun")}</button></header>`;
+      )}</nav></header>`;
   }
   function footer() {
     return `<footer class="site-footer"><span>Independent. Community maintained.</span><span><a href="/contact.html">Report an update</a><a href="/about.html#sources">Sources & privacy</a></span></footer>`;
@@ -101,36 +101,15 @@
     if (h && !h.children.length) h.innerHTML = header(h.dataset.active || "");
     const f = document.querySelector("[data-site-footer]");
     if (f && !f.children.length) f.innerHTML = footer();
-    let theme;
-    try {
-      theme = localStorage.getItem("spotter-theme");
-    } catch {}
     const media = matchMedia("(prefers-color-scheme: dark)");
-    function apply(value) {
+    function apply(dark) {
+      const value = dark ? "dark" : "light";
       document.documentElement.dataset.theme = value;
-      document.querySelectorAll(".theme-toggle").forEach((b) => {
-        b.setAttribute(
-          "aria-label",
-          `Switch to ${value === "dark" ? "light" : "dark"} theme`,
-        );
-        b.setAttribute("aria-pressed", String(value === "dark"));
-      });
       document.dispatchEvent(new CustomEvent("themechange", { detail: value }));
     }
-    apply(theme || (media.matches ? "dark" : "light"));
-    document.querySelectorAll(".theme-toggle").forEach((b) =>
-      b.addEventListener("click", () => {
-        theme =
-          document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        try {
-          localStorage.setItem("spotter-theme", theme);
-        } catch {}
-        apply(theme);
-      }),
-    );
-    media.addEventListener("change", (e) => {
-      if (!theme) apply(e.matches ? "dark" : "light");
-    });
+    // System appearance is authoritative, including for visitors with an old override.
+    apply(media.matches);
+    media.addEventListener("change", (e) => apply(e.matches));
     if ("serviceWorker" in navigator && window.isSecureContext)
       navigator.serviceWorker
         .register("/service-worker.js", { updateViaCache: "none" })
