@@ -57,6 +57,19 @@
   function hasReportedIssue(status) {
     return /^(?:inoperable|offline|out of service|maintenance|under maintenance|unavailable|downtime|outage|temporarily closed)$/i.test(status || "");
   }
+  function locationTypeLabel(p) {
+    return p.chargingNetworks ? p.chargingNetworks.map(c=>typeLabel(c.type)).join(' + ') : typeLabel(p.type);
+  }
+  function parseRate(value) {
+    if(!value)return {summary:null,periods:[],note:null};
+    const [headline,...rest]=String(value).split(/Time-of-Use Rates/i),schedule=rest.join(' ').trim();
+    const summary=headline.trim().replace(/\s*\/kWh$/i,'');
+    const periods=[],pattern=/([A-Za-z]{3}(?:\s*[-–]\s*[A-Za-z]{3})?)\s+(\d{1,2}:\d{2}\s*[ap]m)\s*[-–]\s*(\d{1,2}:\d{2}\s*[ap]m)\s*\$(\d+(?:\.\d+)?)/gi;
+    for(const match of schedule.matchAll(pattern))periods.push({days:match[1],start:match[2],end:match[3],rate:'$'+match[4]});
+    // If the published format changes, keep the entire schedule readable as text.
+    if(schedule.replace(pattern,'').trim())return {summary,periods:[],note:schedule};
+    return {summary,periods,note:null};
+  }
   function roamerDetails(r, {showUnavailable = false} = {}) {
     if(!r && !showUnavailable) return "";
     if(r && !/^https:\/\/rivianroamer\.com\/charging\/sites\/US-RIV-L\d+$/.test(r.sourceUrl||"")) return "";
@@ -69,11 +82,16 @@
     const issue = hasReportedIssue(reportedStatus), averageKw=r.averagePeakKw || r.averageKw;
     const price = (detail,network)=>detailPricesCurrent ? detail || network : network || detail;
     const priceRows = (detailPricesCurrent || !(r.rates?.Rivian || r.rates?.['Other EVs'])) && r.detailRates?.Energy && !r.detailRates?.Rivian && !r.detailRates?.Other ? [['Energy',r.detailRates.Energy]] : [['Rivian', price(r.detailRates?.Rivian,r.rates?.Rivian)], ['Other EVs', price(r.detailRates?.Other,r.rates?.['Other EVs'])]];
-    const rates = priceRows.map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${value ? escape(String(value).replace(/\s*\/kWh$/i,''))+'<small>/kWh</small>' : 'Not available'}</dd></div>`).join("");
+    const parsedPrices=priceRows.map(([label,value])=>({label,...parseRate(value)}));
+    const rates = parsedPrices.map(p=>`<div><dt>${escape(p.label)}</dt><dd>${p.summary ? escape(p.summary)+'<small>/kWh</small>' : 'Not available'}</dd></div>`).join("");
+    const schedules=parsedPrices.filter(p=>p.periods.length||p.note);
+    const scheduleHtml=schedules.length?`<details class="rate-schedule"><summary>Time-of-use rates</summary><p class="charging-note">Times are local to the charging site.</p>${schedules.map(p=>`<h5>${escape(p.label)}</h5>${p.note?`<p>${escape(p.note)}</p>`:`<table><thead><tr><th scope="col">When</th><th scope="col">Per kWh</th></tr></thead><tbody>${p.periods.map(t=>`<tr><td><span>${escape(t.days)}</span><br>${escape(t.start)} – ${escape(t.end)}</td><td>${escape(t.rate)}</td></tr>`).join('')}</tbody></table>`}`).join('')}</details>`:'';
     const ports = (r.chargers||[]).map(p=>`<tr><td>${escape(p.name)}</td><td>${escape(p.connector)}</td><td>${p.powerKw?escape(p.powerKw)+" kW":"—"}</td><td>${(p.features||[]).map(f=>`<span title="${escape(f.description)}">${escape(f.label)}</span>`).join(" · ") || 'None listed'}</td></tr>`).join("");
-    return `<section class="roamer-details"><h3>Charging Details</h3>${observed?`<p class="charging-note">Charging snapshot · ${observed}</p>`:""}${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Reported as “${escape(reportedStatus)}” on ${useDetailIssue?detailsDate:observed}. This is a daily snapshot.</p>`:""}<h4>Connectors</h4><div class="charging-tags"><span class="tag">${escape(r.connectorSummary || 'Not available')}</span></div><h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl><p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p><p class="power-observation"><strong>Average Peak Power:</strong> ${averageKw?escape(averageKw)+' kW':'Not available'}</p>${averageKw?'<p class="charging-note">Reported charging performance. Rated maximum power is listed separately above.</p>':''}<p><strong>Charging Hours:</strong> ${escape(r.hours || 'Not available')}</p><p><strong>Idle Fee:</strong> ${escape(r.detailRates?.Idle || 'Not available')}</p><h4>Site Features</h4>${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:`<p class="charging-note">${detailsDate?'None listed':'Not available'}</p>`}<details class="charger-table"><summary>Individual Chargers${ports?' ('+r.chargers.length+')':''}</summary>${ports?`<div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div>`:'<p class="charging-note">Individual charger details are not available yet.</p>'}</details>${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
+    return `<section class="roamer-details"><h3>Charging Details</h3>${observed?`<p class="charging-note">Charging snapshot · ${observed}</p>`:""}${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Reported as “${escape(reportedStatus)}” on ${useDetailIssue?detailsDate:observed}. This is a daily snapshot.</p>`:""}<h4>Connectors</h4><div class="charging-tags"><span class="tag">${escape(r.connectorSummary || 'Not available')}</span></div><h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl>${scheduleHtml}<p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p><p class="power-observation"><strong>Average Peak Power:</strong> ${averageKw?escape(averageKw)+' kW':'Not available'}</p>${averageKw?'<p class="charging-note">Reported charging performance. Rated maximum power is listed separately above.</p>':''}<p><strong>Charging Hours:</strong> ${escape(r.hours || 'Not available')}</p><p><strong>Idle Fee:</strong> ${escape(r.detailRates?.Idle || 'Not available')}</p><h4>Site Features</h4>${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:`<p class="charging-note">${detailsDate?'None listed':'Not available'}</p>`}<details class="charger-table"><summary>Individual Chargers${ports?' ('+r.chargers.length+')':''}</summary>${ports?`<div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div>`:'<p class="charging-note">Individual charger details are not available yet.</p>'}</details>${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
   }
   function chargingDetails(p) {
+    if(p.chargingNetworks)return `<p class="charging-note">Fast charging and Level 2 charging at this location.</p>${p.chargingNetworks.map(c=>`<section class="charging-network"><h3>${escape(typeLabel(c.type))}</h3>${chargingDetails(c)}</section>`).join('')}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
+
     if(p.status === "planned") return `<p class="notice coming-soon"><strong>${p.listed===false?'No Longer Listed as Coming Soon':'Coming Soon'}</strong></p><p>Rivian ${p.listed===false?'previously listed':'lists'} ${escape(p.city)}, ${escape(p.state)} as a future Rivian Adventure Network location. An opening date and station details have not been published.</p><p class="charging-note">Approximate location from Rivian’s map. The exact charging-site address is not yet listed.</p>`;
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
     return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
@@ -115,5 +133,5 @@
         .register("/service-worker.js", { updateViaCache: "none" })
         .catch(() => {});
   }
-  return { typeLabel, header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, locationGrade, relatedPlaces };
+  return { typeLabel, locationTypeLabel, parseRate, header, footer, icon, mount, chargingDetails, roamerDetails, hasReportedIssue, gradeBadge, locationGrade, relatedPlaces };
 });

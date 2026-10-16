@@ -1,5 +1,5 @@
 /* Public offline cache. Bump release for changes to shell assets. */
-const RELEASE = '2026.42.25';
+const RELEASE = '2026.42.26';
 const CACHE_VERSION = `rivianspotter-${RELEASE}`;
 const STATIC_CACHE = `${CACHE_VERSION}-shell`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
