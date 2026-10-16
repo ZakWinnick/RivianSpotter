@@ -20,7 +20,7 @@ export function validateSnapshot(places, summary, chargers, priorPlaces, priorCh
     if(!p.name||!p.state||!p.address||p.lastVerified!==summary.date) throw Error('Incomplete location record');
     if(!M.getOfficialLink(p))throw Error('Missing official location destination');
   }
-  for(const p of chargers) if(p.listed!==false && (!M.isMapped(p)||!M.getDirectionsUrl(p)))throw Error('Unusable charging station map pin');
+  for(const p of chargers) if(p.listed!==false && (!M.isMapped(p)||(p.status!=='planned'&&!M.getDirectionsUrl(p))))throw Error('Unusable charging station map pin');
 }
 export async function refreshAll({cacheDir}={}) {
   const stage=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-refresh-'));

@@ -59,7 +59,7 @@ jobs:
         run: node scripts/report-charging-coverage.cjs
       - name: Record source coverage
         run: |
-          node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} RAN stations, ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"
+          node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} Rivian Adventure Network locations (${s.comingSoon?.count || 0} coming soon), ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"
   deploy:
     needs: refresh
     runs-on: ubuntu-latest

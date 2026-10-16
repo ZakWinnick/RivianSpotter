@@ -34,7 +34,7 @@
   "splitTiles": 0,
   "requests": 900,
   "counts": {
-    "RAN": 162,
+    "RAN": 198,
     "Waypoint": 207
   },
   "added": [
@@ -45,5 +45,12 @@
     }
   ],
   "removed": [],
-  "sha256": "1cc43760a946349993773a8a808ba70803915482badaf722dc6baf9931454d8a"
+  "sha256": "1cc43760a946349993773a8a808ba70803915482badaf722dc6baf9931454d8a",
+  "comingSoon": {
+    "count": 36,
+    "observedAt": "2026-10-16T15:14:21.805Z",
+    "sourceUrl": "https://rivian.com/experience/charging#map",
+    "assetUrl": "https://rivian.com/root/_next/static/chunks/05s2an0bc_qt2.js",
+    "sha256": "5a363afcf4f716d455619fc5a081a213a3feb87b43e82cb3ee1f2d5a0051382f"
+  }
 }

@@ -55,7 +55,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  if(previous.size && stations.length<(old?.networkCount??previous.size)*0.85)throw Error('Unexpected inventory loss; retaining previous snapshot');
  const networkCount=stations.length;
  const listedIds=new Set(stations.map(s=>s.sourceId));
- for(const p of officialStations.filter(p=>p.type==='RAN'&&p.listed!==false)){
+ for(const p of officialStations.filter(p=>p.type==='RAN'&&p.listed!==false&&p.status!=='planned')){
   if(!/^US-RIV-L\d+$/.test(p.sourceId))throw Error('Invalid official station ID');
   if(!listedIds.has(p.sourceId))stations.push({...previous.get(p.sourceId),sourceId:p.sourceId,name:p.name,lat:p.lat,lng:p.lng,sourceUrl:`https://rivianroamer.com/charging/sites/${p.sourceId}`,networkListed:false});
  }
@@ -82,7 +82,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
 }
 // Capture freshness measures our retrieval, not when the upstream operator last changed a fact.
 function coverage(stations,officialStations,{checkedIds=[],now=Date.now(),maxAgeMs=36*60*60*1000}={}){
- const targets=officialStations.filter(s=>s.type==='RAN'&&s.listed!==false),byId=new Map(stations.map(s=>[s.sourceId,s])),checked=new Set(checkedIds);
+ const targets=officialStations.filter(s=>s.type==='RAN'&&s.listed!==false&&s.status!=='planned'),byId=new Map(stations.map(s=>[s.sourceId,s])),checked=new Set(checkedIds);
  const missingDetailIds=[],staleDetailIds=[],notCheckedIds=[],missingFields=[];
  for(const p of targets){
   const s=byId.get(p.sourceId);

@@ -27,18 +27,19 @@
     );
   }
   function isCharging(p) { return p?.sourceKind === "charging-map"; }
-  function isMapped(p) { return coordinates(p) && ["exact", "map-pin"].includes(p.coordinatePrecision); }
+  function isMapped(p) { return coordinates(p) && (["exact", "map-pin"].includes(p.coordinatePrecision) || (p.status === "planned" && p.coordinatePrecision === "city")); }
   function chargingSummary(p) {
+    if(p.status === "planned") return "Coming Soon";
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
   function combineLocations(places, chargers, observations = []) {
     const byId = new Map(observations.map(p=>[p.sourceId,p]));
     chargers = chargers.map(p=>({...p,roamer:byId.get(p.sourceId) || null}));
-    const active = chargers.filter(p=>p.listed!==false);
+    const active = chargers.filter(p=>p.listed!==false&&p.status!=="planned");
     return [...places.map(p=>({...p, chargingStations: active.filter(c=>c.state===p.state && isMapped(p) && distanceMiles(p,c)<=0.15)
       .map(c=>({id:c.id,slug:c.slug,name:c.name,type:c.type,chargerCount:c.chargerCount,maxKw:c.maxKw}))})),
-      ...chargers.map(c=>({...c, nearbyPlaces: places.filter(p=>p.state===c.state && isMapped(p) && distanceMiles(c,p)<=0.15)
+      ...chargers.map(c=>({...c, nearbyPlaces: places.filter(p=>c.status!=="planned" && p.state===c.state && isMapped(p) && distanceMiles(c,p)<=0.15)
         .map(p=>({id:p.id,slug:p.slug,name:p.name,type:p.type}))}))];
   }
   function formatDate(value) {
@@ -231,6 +232,7 @@
     );
   }
   function getDirectionsUrl(p) {
+    if(isCharging(p) && p.status === "planned") return null;
     if (isCharging(p) && isMapped(p)) {
       const destination = p.address || `${p.lat},${p.lng}`;
       return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;

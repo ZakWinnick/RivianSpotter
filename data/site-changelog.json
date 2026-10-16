@@ -1,5 +1,14 @@
 [
   {
+    "version": "2026.42.22",
+    "date": "2026-10-16",
+    "title": "Coming-soon charging locations",
+    "changes": [
+      "Added Rivian\u2019s announced future charging locations, including King City and Salinas, with Coming Soon labels and distinct map markers.",
+      "Added daily updates for coming-soon locations. City-level pins show approximate locations until station addresses are published."
+    ]
+  },
+  {
     "version": "2026.42.21",
     "date": "2026-10-15",
     "title": "Charging data improvements",

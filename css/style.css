@@ -1205,3 +1205,7 @@
 @media(max-width:760px){.explorer .detail-top{top:-18px;margin:-18px -20px 16px;padding:18px 20px 12px}}
 
 .explorer .location-title h2 a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.explorer .location-title h2 a:hover{text-decoration-thickness:2px}
+
+.type-icon.type-planned{background:transparent;color:#b4621a;border:2px solid #b4621a}
+.status.planned{color:var(--text)}
+.coming-soon{border-left:3px solid #b4621a}

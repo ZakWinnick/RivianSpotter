@@ -53,7 +53,7 @@
     }
   }
   function typeIcon(p) {
-    return `<span class="type-icon type-${e(p.type.toLowerCase().replaceAll(" ", "-"))}">${U.icon({ Space: "space", "Demo Center": "drive", "Service Center": "service", Outpost: "outpost", RAN: "bolt", Waypoint: "plug" }[p.type])}</span>`;
+    return `<span class="type-icon${p.status === "planned" ? " type-planned" : ""} type-${e(p.type.toLowerCase().replaceAll(" ", "-"))}">${U.icon({ Space: "space", "Demo Center": "drive", "Service Center": "service", Outpost: "outpost", RAN: "bolt", Waypoint: "plug" }[p.type])}</span>`;
   }
   function find(id) {
     return all.find(

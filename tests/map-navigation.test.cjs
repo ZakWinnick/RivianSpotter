@@ -30,3 +30,7 @@ test('closing an unmapped location preserves view and reduced motion skips anima
 test("mobile close uses a wider overview and clears the detail offset",()=>{
  const h=harness(false,390);h.setCamera({zoom:9});h.api.focus({...p,coordinatePrecision:"map-pin"});assert.deepEqual(Array.from(h.camera.offset),[0,-180]);h.api.clearFocus();assert.equal(h.camera.zoom,2);assert.deepEqual(Array.from(h.camera.offset),[0,0]);
 });
+
+test('coming-soon city pins focus at a city overview rather than a street address',()=>{
+ const h=harness();h.api.focus({...p,status:'planned',coordinatePrecision:'city'});assert.equal(h.camera.zoom,9);h.api.clearFocus();assert.equal(h.camera.zoom,3.4);
+});
