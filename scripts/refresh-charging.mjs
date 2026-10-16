@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {VectorTile} from '@mapbox/vector-tile';
 import {PbfReader} from 'pbf';
+import {fetchComingSoon,mergePlanned} from './refresh-coming-soon.mjs';
 
 export const SOURCE = 'https://rivian.com/experience/charging#map';
 export const TILES = 'https://api.rivianservices.com/map-chargers/tiles/chrg2';
@@ -64,9 +65,9 @@ export function normalize(feature, date, previous) {
     lastVerified:date,firstSeen:previous?.firstSeen || date};
 }
 export function validateRefresh(records, prior=[], {minimum=100,maxLoss=0.15}={}) {
-  const current=records.filter(p=>p.listed!==false);
+  const current=records.filter(p=>p.listed!==false&&p.status!=='planned');
   for(const type of ['RAN','Waypoint']) {
-    const n=current.filter(p=>p.type===type).length, old=prior.filter(p=>p.type===type&&p.listed!==false).length;
+    const n=current.filter(p=>p.type===type).length, old=prior.filter(p=>p.type===type&&p.listed!==false&&p.status!=='planned').length;
     if(n<minimum || (old && n<old*(1-maxLoss))) throw Error(`Incomplete ${type} inventory: ${n}, previously ${old}`);
   }
   for(const key of ['id','slug','sourceId']) if(new Set(records.map(p=>p[key])).size!==records.length) throw Error(`Duplicate charging ${key}`);
@@ -80,6 +81,7 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('Invalid refresh date');
   const scratch=cacheDir || fs.mkdtempSync(path.join(os.tmpdir(),'spotter-charging-'));
   fs.mkdirSync(scratch,{recursive:true});
+  const comingSoon=await fetchComingSoon({cacheDir:scratch});
   const memo=new Map(); let requests=0, splitTiles=0;
   let gate=Promise.resolve(), pauseUntil=0;
   function throttle() {
@@ -144,12 +146,12 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
   });
   const priorPath=path.join(ROOT,'data/charging.json'), prior=fs.existsSync(priorPath)?JSON.parse(fs.readFileSync(priorPath,'utf8')):[];
   const old=new Map(prior.map(p=>[p.sourceId,p]));
-  const records=[...refined.values()].map(f=>normalize(f,date,old.get(f.properties.id))).filter(Boolean);
-  const ids=new Set(records.map(p=>p.sourceId));
-  // Preserve shared URLs and saves for stations omitted from a later source snapshot.
-  records.push(...prior.filter(p=>!ids.has(p.sourceId)).map(p=>({...p,listed:false,status:'unknown'})));
-  records.sort((a,b)=>a.sourceId.localeCompare(b.sourceId));validateRefresh(records,prior);
+  const active=[...refined.values()].map(f=>normalize(f,date,old.get(f.properties.id))).filter(Boolean);
+  const records=mergePlanned(active,comingSoon.rows,date,prior);
+  const ids=new Set(records.filter(p=>p.listed!==false).map(p=>p.sourceId));
+  validateRefresh(records,prior);
   const summary={date,sourceUrl:SOURCE,tileSource:TILES,coverage:COVERAGE,discoveryZoom:6,pinZoom:12,tilesScanned:coverage.length,splitTiles,requests,
+    comingSoon:{count:comingSoon.rows.length,observedAt:new Date().toISOString(),sourceUrl:comingSoon.sourceUrl,assetUrl:comingSoon.assetUrl,sha256:comingSoon.sha256},
     counts:Object.fromEntries(['RAN','Waypoint'].map(t=>[t,records.filter(p=>p.type===t&&p.listed!==false).length])),
     added:records.filter(p=>!old.has(p.sourceId)).map(p=>({id:p.id,name:p.name,slug:p.slug})),
     removed:prior.filter(p=>p.listed!==false&&!ids.has(p.sourceId)).map(p=>({id:p.id,name:p.name,slug:p.slug})),

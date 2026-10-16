@@ -38,7 +38,7 @@ window.SpotterMap = (() => {
           type: "Feature",
           id: p.id,
           geometry: { type: "Point", coordinates: [p.lng, p.lat] },
-          properties: { id: p.id, type: p.type, name: p.name },
+          properties: { id: p.id, type: p.type, name: p.name, planned: p.status === "planned" },
         })),
     };
   }
@@ -91,7 +91,7 @@ window.SpotterMap = (() => {
       source: "places",
       filter: ["!", ["has", "point_count"]],
       paint: {
-        "circle-color": colors,
+        "circle-color": ["case", ["==", ["get", "planned"], true], "#f8f7f3", colors],
         "circle-radius": [
           "case",
           ["boolean", ["feature-state", "selected"], false],
@@ -99,10 +99,10 @@ window.SpotterMap = (() => {
           12,
         ],
         "circle-stroke-width": 2.5,
-        "circle-stroke-color": "#ffffff",
+        "circle-stroke-color": ["case", ["==", ["get", "planned"], true], "#b4621a", "#ffffff"],
       },
     });
-    map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"text-field":["match",["get","type"],"Space","◇","Demo Center","↗","Service Center","+","Outpost","△","RAN","ϟ","Waypoint","↯","•"],"text-size":16,"text-font":["Arial Unicode MS Bold"],"text-allow-overlap":true},paint:{"text-color":"#fff"}});
+    map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"text-field":["match",["get","type"],"Space","◇","Demo Center","↗","Service Center","+","Outpost","△","RAN","ϟ","Waypoint","↯","•"],"text-size":16,"text-font":["Arial Unicode MS Bold"],"text-allow-overlap":true},paint:{"text-color":["case",["==",["get","planned"],true],"#b4621a","#fff"]}});
     if (selected) mark(selected);
   }
   function init(callback) {
@@ -227,7 +227,7 @@ window.SpotterMap = (() => {
     map.stop();
     map.flyTo({
       center: [p.lng, p.lat],
-      zoom: 12,
+      zoom: p.status === "planned" ? 9 : 12,
       offset,
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? 0

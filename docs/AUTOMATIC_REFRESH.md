@@ -52,3 +52,11 @@ The Actions coverage report compares supplemental data against all active offici
 On October 15, the daily listing contained 160 sites while the official inventory contained 162. Direct public-page recovery filled Jacksonville and East Greenwich without repeating the other 160 requests. Both daily and recovery paths now include official-only IDs. Energy-only pricing is preserved as a general energy rate; it is not assigned to an unsupported vehicle category.
 
 Daily captures are not real-time status. A page retrieval time and the source's own “Updated” text describe different events; neither implies that a vehicle can use a stall now. Future live availability needs its own refresh policy and upstream agreement, separate from these daily metadata checks.
+
+## Coming-soon charging locations
+
+The 5 AM Pacific official refresh also reads the charging page's explicit `TEMP_COMING_SOON_LOCATIONS` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data stops the staged refresh without removing the prior inventory.
+
+Each announced city has a stable local identity, a Coming Soon label, and an approximate city pin using Rivian's published coordinates. No address, opening date, charger count, speed, pricing, or directions is inferred. Planned records are excluded from supplemental detail requests, active-inventory loss checks, and nearby available-charging links. The map uses outlined markers and a wider city zoom. The first import contains 36 announced locations, including King City and Salinas, California.
+
+A city-only announcement is not merged with an active site based solely on a shared city name: Rivian can list both, and these may be different locations. If an announcement disappears, its saved URL remains but it leaves normal results and says it is no longer listed as coming soon. Active inventory continues to import independently from the official tile source.

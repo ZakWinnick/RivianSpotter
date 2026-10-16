@@ -52,9 +52,9 @@ test('all imported chargers have unique IDs across both inventories and render s
  const chargers=require('../data/charging.json'),places=require('../data/locations.json'),summary=require('../data/charging-summary.json');
  const all=M.combineLocations(places,chargers);
  assert.equal(new Set(all.map(p=>p.id)).size,all.length);assert.equal(new Set(all.map(p=>p.slug)).size,all.length);
- for(const p of chargers){assert(M.isMapped(p));assert(!('available' in p));assert(M.getDirectionsUrl(p));}
+ for(const p of chargers){assert(M.isMapped(p));assert(!('available' in p));if(p.status==='planned')assert.equal(M.getDirectionsUrl(p),null);else assert(M.getDirectionsUrl(p));}
  for(const type of ['RAN','Waypoint'])assert.equal(chargers.filter(p=>p.type===type&&p.listed!==false).length,summary.counts[type]);
- const sample=all.find(p=>p.type==='RAN'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-charging-pages-'));
+ const sample=all.find(p=>p.type==='RAN'&&p.status!=='planned'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-charging-pages-'));
  try{
   require('../scripts/build-pages.cjs').buildPages(dir,[sample],{charging:summary});
   const html=fs.readFileSync(path.join(dir,M.locationUrl(sample),'index.html'),'utf8');
