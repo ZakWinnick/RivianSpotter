@@ -45,8 +45,41 @@ export function plannedRecords(rows,date,prior=[]){
   return {id:old?.id??parseInt(digest.slice(0,12),16)+1000000,slug:old?.slug||`ran-coming-soon-${key.toLowerCase()}-${digest.slice(0,10)}`,name:`${city}, ${p.state}`,type:'RAN',network:'Rivian Adventure Network',sourceId,sourceKind:'charging-map',sourceUrl:SOURCE+'#map',planningSource:'rivian-coming-soon',address:null,displayAddress:null,city,state:p.state,country:['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'].includes(p.state)?'CA':'US',lat:p.latitude,lng:p.longitude,coordinatePrecision:'city',coordinateSource:SOURCE+'#map',chargerCount:null,maxKw:null,maxPowerLabel:null,reliabilityGrade:null,rivianOnly:null,capabilities:['charging'],services:[],status:'planned',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,lastVerified:date,firstSeen:old?.firstSeen||date};
  });
 }
-export function mergePlanned(active,rows,date,prior=[]){
- const planned=plannedRecords(rows,date,prior),ids=new Set([...active,...planned].map(s=>s.sourceId));
- // City-only announcements cannot safely be matched to an active station by city alone.
- return [...active,...planned,...prior.filter(s=>!ids.has(s.sourceId)).map(s=>({...s,listed:false,status:s.planningSource?'planned':'unknown'}))].sort((a,b)=>a.sourceId.localeCompare(b.sourceId));
+const cityKey=p=>`${p.country}:${p.state}:${p.city.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}`;
+function distanceKm(a,b){
+ if(![a.lat,a.lng,b.lat,b.lng].every(Number.isFinite))return Infinity;
+ const rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLng=rad(b.lng-a.lng);
+ return 12742*Math.asin(Math.min(1,Math.sqrt(Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2)));
+}
+export function mergePlanned(active,rows,date,prior=[],report={}){
+ const oldBySource=new Map(prior.map(p=>[p.sourceId,p]));
+ // Preserve established identities even if a source temporarily removes a station.
+ active=active.map(p=>{
+  const old=oldBySource.get(p.sourceId);
+  return old?.promotion?{...p,id:old.id,slug:old.slug,firstSeen:old.firstSeen,legacyIds:old.legacyIds,legacySlugs:old.legacySlugs,promotion:old.promotion}:p;
+ });
+ const linked=new Set(prior.filter(p=>p.promotion).map(p=>p.promotion.plannedSourceId));
+ const planned=plannedRecords(rows,date,prior).filter(p=>!linked.has(p.sourceId));
+ const announced=new Set(planned.map(p=>p.sourceId));
+ const retired=prior.filter(p=>p.status==='planned'&&p.planningSource==='rivian-coming-soon'&&!announced.has(p.sourceId)&&!linked.has(p.sourceId));
+ const promoted=new Set();report.promoted=[];report.unresolved=[];
+ for(const p of retired){
+  // Require an announcement to disappear AND a fully addressed, later-observed
+  // RAN site in the same locality. Proximity alone or a shared city is insufficient.
+  const candidates=active.filter(a=>!a.promotion&&a.listed!==false&&a.type==='RAN'&&a.status!=='planned'&&a.address&&a.chargerCount>0&&cityKey(a)===cityKey(p)&&a.firstSeen>p.firstSeen);
+  const candidate=candidates.length===1?candidates[0]:null;
+  const competitors=retired.filter(other=>cityKey(other)===cityKey(p));
+  if(!candidate||competitors.length!==1||distanceKm(p,candidate)>10){
+   report.unresolved.push({sourceId:p.sourceId,candidateIds:candidates.map(a=>a.sourceId),reason:!candidate?'No unique new active site':competitors.length!==1?'Multiple announcements':'Station beyond 10 km matching radius'});
+   continue;
+  }
+  const evidence={plannedSourceId:p.sourceId,activeSourceId:candidate.sourceId,matchedAt:date,activeFirstSeen:candidate.firstSeen,method:'retired-announcement-new-local-station',distanceKm:Math.round(distanceKm(p,candidate)*100)/100};
+  const replacement={...candidate,id:p.id,slug:p.slug,firstSeen:p.firstSeen,
+   legacyIds:[...new Set([...(p.legacyIds||[]),...(candidate.legacyIds||[]),candidate.id])].filter(id=>id!==p.id),
+   legacySlugs:[...new Set([...(p.legacySlugs||[]),...(candidate.legacySlugs||[]),candidate.slug])].filter(slug=>slug!==p.slug),promotion:evidence};
+  active[active.indexOf(candidate)]=replacement;promoted.add(p.sourceId);report.promoted.push(evidence);
+ }
+ const ids=new Set([...active,...planned].map(s=>s.sourceId));
+ const retained=prior.filter(s=>!ids.has(s.sourceId)&&!promoted.has(s.sourceId)&&!linked.has(s.sourceId)).map(s=>({...s,listed:false,status:s.status==='planned'?'planned':'unknown'}));
+ return [...active,...planned,...retained].sort((a,b)=>a.sourceId.localeCompare(b.sourceId));
 }

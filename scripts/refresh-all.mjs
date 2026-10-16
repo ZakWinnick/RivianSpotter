@@ -15,6 +15,10 @@ export function validateSnapshot(places, summary, chargers, priorPlaces, priorCh
   validateRefresh(chargers,priorChargers);
   const all=[...places,...chargers];
   for(const key of ['id','slug']) if(new Set(all.map(p=>p[key])).size!==all.length) throw Error(`Duplicate location ${key}`);
+  for(const key of ['id','slug']) {
+    const values=all.flatMap(p=>[p[key],...(p[key==='id'?'legacyIds':'legacySlugs']||[])]);
+    if(new Set(values).size!==values.length)throw Error(`Conflicting location ${key} alias`);
+  }
   for(const p of places) {
     if(p.sourceKind==='legacy')continue;
     if(!p.name||!p.state||!p.address||p.lastVerified!==summary.date) throw Error('Incomplete location record');

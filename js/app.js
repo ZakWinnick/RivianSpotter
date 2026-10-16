@@ -60,7 +60,7 @@
       (p) =>
         p.id === Number(id) ||
         (p.legacyIds || []).includes(Number(id)) ||
-        p.slug === id,
+        p.slug === id || (p.legacySlugs || []).includes(id),
     );
   }
   function normalizeSaved() {
@@ -372,7 +372,7 @@
   }
   function contact() {
     const slug = params().get("location"),
-      loc = all.find((p) => p.slug === slug);
+      loc = find(slug);
     if (loc)
       $("contact-location").value =
         loc.name + " — " + loc.city + ", " + loc.state;

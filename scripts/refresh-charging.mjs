@@ -147,14 +147,16 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
   const priorPath=path.join(ROOT,'data/charging.json'), prior=fs.existsSync(priorPath)?JSON.parse(fs.readFileSync(priorPath,'utf8')):[];
   const old=new Map(prior.map(p=>[p.sourceId,p]));
   const active=[...refined.values()].map(f=>normalize(f,date,old.get(f.properties.id))).filter(Boolean);
-  const records=mergePlanned(active,comingSoon.rows,date,prior);
+  const promotionReport={};
+  const records=mergePlanned(active,comingSoon.rows,date,prior,promotionReport);
   const ids=new Set(records.filter(p=>p.listed!==false).map(p=>p.sourceId));
   validateRefresh(records,prior);
   const summary={date,sourceUrl:SOURCE,tileSource:TILES,coverage:COVERAGE,discoveryZoom:6,pinZoom:12,tilesScanned:coverage.length,splitTiles,requests,
     comingSoon:{count:comingSoon.rows.length,observedAt:new Date().toISOString(),sourceUrl:comingSoon.sourceUrl,assetUrl:comingSoon.assetUrl,sha256:comingSoon.sha256},
     counts:Object.fromEntries(['RAN','Waypoint'].map(t=>[t,records.filter(p=>p.type===t&&p.listed!==false).length])),
-    added:records.filter(p=>!old.has(p.sourceId)).map(p=>({id:p.id,name:p.name,slug:p.slug})),
-    removed:prior.filter(p=>p.listed!==false&&!ids.has(p.sourceId)).map(p=>({id:p.id,name:p.name,slug:p.slug})),
+    promotions:promotionReport,
+    added:records.filter(p=>!old.has(p.sourceId)&&!p.promotion).map(p=>({id:p.id,name:p.name,slug:p.slug})),
+    removed:prior.filter(p=>p.listed!==false&&!ids.has(p.sourceId)&&!promotionReport.promoted.some(m=>m.plannedSourceId===p.sourceId)).map(p=>({id:p.id,name:p.name,slug:p.slug})),
     sha256:createHash('sha256').update(JSON.stringify(records)).digest('hex')};
   fs.mkdirSync(path.join(outputDir,'data'),{recursive:true});
   for(const [name,data] of [['charging',records],['charging-summary',summary]]) fs.writeFileSync(path.join(outputDir,'data',`${name}.json`),JSON.stringify(data,null,2)+'\n');
