@@ -1,6 +1,6 @@
 # Automatic official-data refresh
 
-The `Refresh official location and charging data` GitHub Actions workflow runs daily at **19:23 UTC** (12:23 PM Pacific during daylight saving time, 11:23 AM in winter). It can also be run manually from Actions. No personal access token, external scheduler, or manual approval is required.
+The `Refresh official location and charging data` GitHub Actions workflow runs daily at **5:00 AM Pacific**, using `America/Los_Angeles` so daylight saving changes are handled automatically. GitHub may start scheduled jobs a little after the requested time. It can also be run manually from Actions. No personal access token, external scheduler, or manual approval is required.
 
 ## Lifecycle
 

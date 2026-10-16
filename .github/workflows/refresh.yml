@@ -2,7 +2,8 @@ name: Refresh official location and charging data
 
 on:
   schedule:
-    - cron: '23 19 * * *'
+    - cron: '0 5 * * *'
+      timezone: America/Los_Angeles
   workflow_dispatch:
 
 permissions:
