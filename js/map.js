@@ -6,7 +6,7 @@ window.SpotterMap = (() => {
     points = [],
     onSelect = () => {},
     selected = null,
-    detailFocused = false,
+    detailCenter = null,
     timeout;
   const overview = () => ({center: [-98, 39], zoom: innerWidth > 760 ? 3.4 : 2, bearing: 0, pitch: 0});
   const colors = [
@@ -113,7 +113,7 @@ window.SpotterMap = (() => {
       map = null;
     }
     ready = false;
-    detailFocused = false;
+    detailCenter = null;
     document.getElementById("map-failure").hidden = true;
     try {
       if (!window.mapboxgl || !window.RivianSpotterConfig?.mapboxToken)
@@ -219,7 +219,7 @@ window.SpotterMap = (() => {
       !LocationModel.isMapped(p)
     )
       return;
-    detailFocused = true;
+    detailCenter = [p.lng, p.lat];
     const popup = document.getElementById("detail")?.getBoundingClientRect?.();
     const offset = innerWidth > 760
       ? [-((popup?.width || 380) + 24) / 2, 0]
@@ -236,9 +236,23 @@ window.SpotterMap = (() => {
   }
   function clearFocus() {
     mark(null);
-    const shouldReset = detailFocused;
-    detailFocused = false;
-    if (!map || !shouldReset) return;
+    const center = detailCenter;
+    detailCenter = null;
+    if (!map || !center) return;
+    map.stop();
+    map.flyTo({
+      center,
+      zoom: innerWidth > 760 ? 7 : 6,
+      bearing: 0,
+      pitch: 0,
+      offset: [0, 0],
+      duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
+    });
+  }
+  function resetOverview() {
+    mark(null);
+    detailCenter = null;
+    if (!map) return;
     map.stop();
     map.flyTo({
       ...overview(),
@@ -246,7 +260,6 @@ window.SpotterMap = (() => {
       duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 500,
     });
   }
-  function resetOverview() { detailFocused=true; clearFocus(); }
   function bounds() {
     if (!map || !ready) return null;
     const b = map.getBounds();

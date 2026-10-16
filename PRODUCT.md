@@ -21,4 +21,4 @@ Avoid a giant promotional hero before the finder, endless pill stacks, ornamenta
 ## Accessibility
 Keyboard-operable location selection, visible focus, WCAG AA color contrast, zoom support, reduced motion, semantic pages, and usable touch targets. The result list must remain useful if the map cannot load.
 
-Closing a location returns the map to the browsing view from before selection. Official location links must identify that location; shared service-center links must be labeled as shared directories.
+Closing a mapped location zooms out to a regional view centered on that location. Initial page loads and Full Overview retain the full map; mobile closes preserve the originating List or Map view. Official location links must identify that location; shared service-center links must be labeled as shared directories.
