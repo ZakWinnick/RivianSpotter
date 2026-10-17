@@ -1,10 +1,10 @@
 {
   "refreshMode": "daily",
-  "startedAt": "2026-10-16T15:46:03.260Z",
+  "startedAt": "2026-10-17T12:29:47.421Z",
   "sourceUrl": "https://rivianroamer.com/charging/networks/rivian-adventure-network",
-  "observedAt": "2026-10-16T15:46:03.833Z",
-  "completedAt": "2026-10-16T16:27:01.894Z",
-  "sourceHash": "a082b8b011f0ff3ae7b40eb9f95af2131862ca5b22abfd652c8db505053fc649",
+  "observedAt": "2026-10-17T12:29:48.134Z",
+  "completedAt": "2026-10-17T13:10:45.910Z",
+  "sourceHash": "ecc2698527ea6df68b8f184c975e494927204b46e489660a9ac93fb92de61130",
   "networkCount": 161,
   "coverage": {
     "officialStationCount": 162,
@@ -838,6 +838,24 @@
         }
       ],
       "observedAt": "2026-10-16T15:46:03.833Z"
+    },
+    {
+      "sourceId": "US-RIV-L8973735727059233087",
+      "name": "Breezewood, PA",
+      "kind": "changed",
+      "field": "reportedStatus",
+      "before": "Inoperable",
+      "after": "Operational",
+      "observedAt": "2026-10-17T12:29:48.134Z"
+    },
+    {
+      "sourceId": "US-RIV-L8973735727059233087",
+      "name": "Breezewood, PA",
+      "kind": "changed",
+      "field": "detailReportedStatus",
+      "before": "Offline",
+      "after": null,
+      "observedAt": "2026-10-17T12:29:48.134Z"
     }
   ],
   "stations": [
@@ -996,9 +1014,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:26:46.665Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:10:30.747Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
       "networkListed": true
     },
     {
@@ -1019,6 +1037,7 @@
       },
       "firstTracked": "Oct 2, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1301 Weber Avenue, Ritzville, WA 99169, USA",
       "amenities": [
         "Open to All",
@@ -1219,11 +1238,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:22:28.462Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:06:12.856Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15135988719474469754",
@@ -1243,6 +1261,7 @@
       },
       "firstTracked": "Sep 30, 2026",
       "reliabilityTone": null,
+      "detailReportedStatus": null,
       "address": "48025 Five Mile Road, Plymouth, MI 48170, USA",
       "amenities": [
         "Open to All",
@@ -1439,11 +1458,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:22:43.698Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:06:28.001Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7516200915009001275",
@@ -1463,6 +1481,7 @@
       },
       "firstTracked": "Sep 3, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "9535 East County Line Road, Englewood, CO 80112, USA",
       "amenities": [
         "Open to All",
@@ -1660,11 +1679,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:22:58.880Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:06:43.225Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L702957870126867115",
@@ -1684,6 +1702,7 @@
       },
       "firstTracked": "Sep 3, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2410 West Main Street , Tremonton, UT 84337, USA",
       "amenities": [
         "Open to All",
@@ -1884,11 +1903,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:23:14.033Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:06:58.386Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9815295768790822562",
@@ -1908,6 +1926,7 @@
       },
       "firstTracked": "Aug 25, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "55 Basin St, Astoria, OR 97103, USA",
       "amenities": [
         "Open to All",
@@ -2018,11 +2037,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:23:29.198Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:07:13.546Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3069914869317071021",
@@ -2042,6 +2060,7 @@
       },
       "firstTracked": "Aug 19, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "205 Palm Bay Road NE, West Melbourne, FL 32904, USA",
       "amenities": [
         "Open to All",
@@ -2151,11 +2170,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:23:44.370Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:07:28.726Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9580574407240181901",
@@ -2175,6 +2193,7 @@
       },
       "firstTracked": "Jul 30, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "10288 Causeway Boulevard, Tampa, FL 33619, USA",
       "amenities": [
         "Open to All",
@@ -2315,11 +2334,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:23:59.571Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:07:43.910Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12405604048218838563",
@@ -2339,6 +2357,7 @@
       },
       "firstTracked": "Jul 23, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "549 Troy-Schenectady Rd, Latham, NY 12110, USA",
       "amenities": [
         "Open to All",
@@ -2477,11 +2496,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:24:14.727Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:07:59.066Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9309269417456666382",
@@ -2501,6 +2519,7 @@
       },
       "firstTracked": "Jun 30, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "120 N. Carbonville Road, Price, UT 84501, USA",
       "amenities": [
         "Open to All",
@@ -2611,11 +2630,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:24:29.963Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:08:14.220Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18307752973360333246",
@@ -2635,6 +2653,7 @@
       },
       "firstTracked": "Jun 30, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1494 Carrizo Gorge Rd., Ste. EV, Jacumba Hot Springs, CA 91934, USA",
       "amenities": [
         "Open to All",
@@ -2832,11 +2851,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:24:45.133Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:08:29.358Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12968954152362062981",
@@ -2856,6 +2874,7 @@
       },
       "firstTracked": "Jun 29, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "801 Walsen Avenue, Walsenburg, CO 81089, USA",
       "amenities": [
         "Open to All",
@@ -2963,11 +2982,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:25:00.317Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:08:44.500Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7795987714638529281",
@@ -2987,6 +3005,7 @@
       },
       "firstTracked": "Jun 24, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "780 E Big Beaver Rd, Troy, MI 48083, USA",
       "amenities": [
         "Open to All",
@@ -3125,11 +3144,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:25:15.472Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:08:59.657Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18130930869505269391",
@@ -3149,6 +3167,7 @@
       },
       "firstTracked": "Jun 19, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "515 South Street, Bow, NH 03304, USA",
       "amenities": [
         "Open to All",
@@ -3347,11 +3366,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:25:30.652Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:09:14.811Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1536973069723518180",
@@ -3371,6 +3389,7 @@
       },
       "firstTracked": "Jun 5, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "13672 Jamboree Rd, Irvine, CA 92602, USA",
       "amenities": [
         "Open to All",
@@ -3539,11 +3558,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:25:45.812Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:09:30.004Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3191419504072373751",
@@ -3563,6 +3581,7 @@
       },
       "firstTracked": "Jun 1, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "4011 South Bolger Road, Independence, MO 64055, USA",
       "amenities": [
         "Open to All",
@@ -3732,11 +3751,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:26:01.043Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:09:45.213Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6631153745463604715",
@@ -3756,6 +3774,7 @@
       },
       "firstTracked": "May 29, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "4401 Granite Drive, Rocklin, CA 95677, USA",
       "amenities": [
         "Open to All",
@@ -3955,11 +3974,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:26:16.218Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:10:00.381Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10507911838236990683",
@@ -3979,6 +3997,7 @@
       },
       "firstTracked": "May 15, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "40744 Winchester Rd, Temecula, CA 92591, USA",
       "amenities": [
         "Open to All",
@@ -4176,11 +4195,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:26:31.511Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:10:15.560Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6744571973401894993",
@@ -4200,6 +4218,7 @@
       },
       "firstTracked": "May 7, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "7455 SW Findlay Rd, Tigard, OR 97224, USA",
       "amenities": [
         "Open to All",
@@ -4368,11 +4387,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:46:19.084Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:30:03.436Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4986586767162045956",
@@ -4392,6 +4410,7 @@
       },
       "firstTracked": "Mar 27, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "126 Old Mammoth Rd, Mammoth Lakes, CA 93546, USA",
       "amenities": [
         "Open to All",
@@ -4502,11 +4521,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated 43 minutes ago",
-      "detailsObservedAt": "2026-10-16T15:46:34.263Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:30:18.583Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L2084433070517610626",
@@ -4526,6 +4544,7 @@
       },
       "firstTracked": "Mar 26, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1100 Granary Avenue , Bellingham, WA 98225, USA",
       "amenities": [
         "Open to All",
@@ -4665,11 +4684,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:46:49.424Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:30:33.743Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15487699439195265208",
@@ -4689,6 +4707,7 @@
       },
       "firstTracked": "Mar 3, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1500 Snow Creek Drive, Park City, UT 84060, USA",
       "amenities": [
         "Open to All",
@@ -4889,11 +4908,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:47:04.605Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:30:48.997Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L522379042628834090",
@@ -4913,6 +4931,7 @@
       },
       "firstTracked": "Jan 30, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2708 Triple L Loop, Ellensburg, WA 98926, USA",
       "amenities": [
         "Open to All",
@@ -5051,11 +5070,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated 44 minutes ago",
-      "detailsObservedAt": "2026-10-16T15:47:19.774Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:31:04.166Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10291570024194613737",
@@ -5075,6 +5093,7 @@
       },
       "firstTracked": "Jan 27, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "20 City Blvd W., Orange, CA 92868, USA",
       "amenities": [
         "Open to All",
@@ -5274,11 +5293,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated 43 minutes ago",
-      "detailsObservedAt": "2026-10-16T15:47:34.932Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:31:19.323Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L14261616079622453079",
@@ -5298,6 +5316,7 @@
       },
       "firstTracked": "Jan 17, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "14500 West Colfax Avenue, Lakewood, CO 80401, USA",
       "amenities": [
         "Open to All",
@@ -5497,11 +5516,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:47:50.171Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:31:34.485Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1195453907241473386",
@@ -5521,6 +5539,7 @@
       },
       "firstTracked": "Jan 9, 2026",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1429 Center Drive, Medford, OR 97501 , USA",
       "amenities": [
         "Open to All",
@@ -5690,11 +5709,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:48:05.327Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:31:49.734Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5654322285721413519",
@@ -5714,6 +5732,7 @@
       },
       "firstTracked": "Dec 31, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "6587 N Riverside Dr., Fresno, CA 93722, USA",
       "amenities": [
         "Open to All",
@@ -5883,11 +5902,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:48:20.527Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:32:04.974Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9367585392851189242",
@@ -5907,6 +5925,7 @@
       },
       "firstTracked": "Dec 18, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "165 South 500 West, Beaver, UT 84713, USA",
       "amenities": [
         "Open to All",
@@ -6075,11 +6094,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated 44 minutes ago",
-      "detailsObservedAt": "2026-10-16T15:48:35.683Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:32:20.135Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7988550135740307267",
@@ -6099,6 +6117,7 @@
       },
       "firstTracked": "Dec 3, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "64 West Center Street, Monticello, UT 84535, USA",
       "amenities": [
         "Open to All",
@@ -6178,11 +6197,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:48:50.891Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:32:35.294Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13498339696147909887",
@@ -6202,6 +6220,7 @@
       },
       "firstTracked": "Nov 27, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2325 Miner Street, Idaho Springs, CO 80452, USA",
       "amenities": [
         "Open to All",
@@ -6371,11 +6390,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:49:06.030Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:32:50.501Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7024502087325169943",
@@ -6395,6 +6413,7 @@
       },
       "firstTracked": "Nov 20, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "5 South Main Street, Brewer, ME 04412, USA",
       "amenities": [
         "Open to All",
@@ -6504,11 +6523,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:49:21.205Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:33:05.654Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3863879270565540626",
@@ -6528,6 +6546,7 @@
       },
       "firstTracked": "Nov 15, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1821 S Valley Mills Dr., Waco , TX 76711, USA",
       "amenities": [
         "Open to All",
@@ -6637,11 +6656,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:49:36.365Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:33:20.806Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16335459844764403943",
@@ -6661,6 +6679,7 @@
       },
       "firstTracked": "Nov 14, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2034 Green Acres Mall, Valley Stream, NY 11581 , USA",
       "amenities": [
         "Open to All",
@@ -6770,11 +6789,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:49:51.611Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:33:35.960Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12432239427733940105",
@@ -6794,6 +6812,7 @@
       },
       "firstTracked": "Nov 2, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1471 Timberlane Rd, Tallahassee, FL 32312, USA",
       "amenities": [
         "Open to All",
@@ -7024,11 +7043,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:50:06.770Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:33:51.129Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18146895674242985745",
@@ -7048,6 +7066,7 @@
       },
       "firstTracked": "Oct 22, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "7624 West Reno Avenue, Oklahoma City, OK 73127, USA",
       "amenities": [
         "Open to All",
@@ -7188,11 +7207,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:50:21.956Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:34:06.286Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13314659433195868777",
@@ -7211,6 +7229,7 @@
       },
       "firstTracked": "Sep 27, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1845 East Main Street, Green River, UT 84525, USA",
       "amenities": [
         "Open to All",
@@ -7470,11 +7489,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:50:37.109Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 9 hours ago",
+      "detailsObservedAt": "2026-10-17T12:34:21.442Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7424041354615157638",
@@ -7494,6 +7512,7 @@
       },
       "firstTracked": "Sep 26, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "980 U.S. 491, Gallup, NM 87301, USA",
       "amenities": [
         "Open to All",
@@ -7603,11 +7622,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:50:52.300Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:34:36.605Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16861839020131326021",
@@ -7627,6 +7645,7 @@
       },
       "firstTracked": "Sep 24, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "700 Paramus Park, Paramus, NJ 07652, USA",
       "amenities": [
         "Open to All",
@@ -7735,11 +7754,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:51:07.403Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:34:51.809Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11216328121520348963",
@@ -7759,6 +7777,7 @@
       },
       "firstTracked": "Sep 11, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "19860 7th Street, Bend, OR 97703, USA",
       "amenities": [
         "Open to All",
@@ -7868,11 +7887,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:51:22.546Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:35:06.963Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L413722300118841968",
@@ -7892,6 +7910,7 @@
       },
       "firstTracked": "Sep 9, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2181 Milam Street, Columbus, TX 78934, USA",
       "amenities": [
         "Open to All",
@@ -8002,11 +8021,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:51:37.650Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:35:22.102Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4611788751077694388",
@@ -8026,6 +8044,7 @@
       },
       "firstTracked": "Sep 9, 2025",
       "reliabilityTone": "lime",
+      "detailReportedStatus": null,
       "address": "8048 Park Ln, Dallas , TX 75231, USA",
       "amenities": [
         "Open to All",
@@ -8133,11 +8152,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:51:52.802Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:35:37.226Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18244789126233412697",
@@ -8157,6 +8175,7 @@
       },
       "firstTracked": "Aug 7, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1 Montauk Highway, Southampton, NY 11968, USA",
       "amenities": [
         "Open to All",
@@ -8266,11 +8285,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:52:07.955Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:35:52.449Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10624299143766229312",
@@ -8290,6 +8308,7 @@
       },
       "firstTracked": "Aug 1, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "100 Mullan Gulch Road, St. Regis, MT 59866, USA",
       "amenities": [
         "Open to All",
@@ -8399,11 +8418,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:52:23.161Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:36:07.599Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9570774573478610402",
@@ -8423,6 +8441,7 @@
       },
       "firstTracked": "Jul 19, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "40 Turner Drive, Durango, CO 81303, USA",
       "amenities": [
         "Open to All",
@@ -8561,11 +8580,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:52:38.313Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:36:22.755Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15981145294435373717",
@@ -8585,6 +8603,7 @@
       },
       "firstTracked": "Jul 19, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "12459 Elm Creek Boulevard North, Maple Grove, MN 55369, USA",
       "amenities": [
         "Open to All",
@@ -8784,11 +8803,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:52:53.489Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:36:37.916Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12972394923134340248",
@@ -8808,6 +8826,7 @@
       },
       "firstTracked": "Jul 17, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1600 Premium Outlets Blvd, Norfolk, VA 23502, USA",
       "amenities": [
         "Open to All",
@@ -8916,11 +8935,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:53:08.642Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:36:53.167Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13702960079394213821",
@@ -8940,6 +8958,7 @@
       },
       "firstTracked": "Jul 3, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1 Premium Outlet Boulevard, Tinton Falls, NJ 07753, USA",
       "amenities": [
         "Open to All",
@@ -9049,11 +9068,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:53:23.863Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:37:08.324Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L758249561344712266",
@@ -9073,6 +9091,7 @@
       },
       "firstTracked": "Jun 20, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1961 Chain Bridge Road , Tysons, VA 22102, USA",
       "amenities": [
         "Open to All",
@@ -9181,11 +9200,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:53:39.039Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:37:23.475Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8523943087809503789",
@@ -9205,6 +9223,7 @@
       },
       "firstTracked": "Jun 18, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "207 N Main St, Hailey, ID 83333, USA",
       "amenities": [
         "Open to All",
@@ -9315,11 +9334,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:53:54.214Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:37:38.592Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9142329312096486527",
@@ -9339,6 +9357,7 @@
       },
       "firstTracked": "Jun 18, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "5150 S Croatan Hwy, STE EV, Nags Head, NC 27959, USA",
       "amenities": [
         "Open to All",
@@ -9447,11 +9466,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:54:09.384Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:37:53.803Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8885168956190814694",
@@ -9471,6 +9489,7 @@
       },
       "firstTracked": "Jun 5, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "800 Brevard Road , Asheville, NC 28806, USA",
       "amenities": [
         "Open to All",
@@ -9581,11 +9600,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:54:24.546Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:38:08.959Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4273991074800533419",
@@ -9605,6 +9623,7 @@
       },
       "firstTracked": "May 23, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "680 West Dekalb Pike, King of Prussia, PA 19406, USA",
       "amenities": [
         "Open to All",
@@ -9744,11 +9763,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:54:39.699Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:38:24.111Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8740227313370960063",
@@ -9768,6 +9786,7 @@
       },
       "firstTracked": "May 22, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3301 E. Main Street, Ventura, CA 93003, USA",
       "amenities": [
         "Open to All",
@@ -9906,11 +9925,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:54:54.857Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:38:39.269Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4075861308012401216",
@@ -9930,6 +9948,7 @@
       },
       "firstTracked": "Apr 26, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "333 5 Cities Drive, Pismo Beach, CA 93449, USA",
       "amenities": [
         "Open to All",
@@ -10040,11 +10059,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:55:10.054Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:38:54.435Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3147603436561039726",
@@ -10064,6 +10082,7 @@
       },
       "firstTracked": "Apr 18, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1417 New Britain Ave, West Hartford, CT 06110, USA",
       "amenities": [
         "Open to All",
@@ -10171,11 +10190,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:55:25.230Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:39:09.596Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6789027387627861019",
@@ -10195,6 +10213,7 @@
       },
       "firstTracked": "Apr 18, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2200 Louisiana Blvd NE, Albuquerque, NM 87110, USA",
       "amenities": [
         "Open to All",
@@ -10303,11 +10322,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:55:40.381Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:39:24.778Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1673231108792194467",
@@ -10327,6 +10345,7 @@
       },
       "firstTracked": "Apr 17, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "147 East Apache Street, Wickenburg, AZ 85390, USA",
       "amenities": [
         "Open to All",
@@ -10437,11 +10456,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:55:55.591Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:39:39.934Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3537975081978947957",
@@ -10461,6 +10479,7 @@
       },
       "firstTracked": "Feb 8, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "4200 Conestoga Dr, Springfield, IL 62711, USA",
       "amenities": [
         "Open to All",
@@ -10599,11 +10618,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:56:10.760Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:39:55.142Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12314948866156935967",
@@ -10623,6 +10641,7 @@
       },
       "firstTracked": "Jan 17, 2025",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1610 Main Street, Chipley, FL 32428, USA",
       "amenities": [
         "Open to All",
@@ -10733,11 +10752,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:56:26.010Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:40:10.296Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18445209299191994507",
@@ -10757,6 +10775,7 @@
       },
       "firstTracked": "Dec 21, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "16851 I-20 Frontage STE EV, Cisco, TX 76437, USA",
       "amenities": [
         "Open to All",
@@ -10865,11 +10884,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:56:41.244Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:40:25.448Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13929179812369261194",
@@ -10889,6 +10907,7 @@
       },
       "firstTracked": "Dec 21, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "17044 County Road 5, Flagler, CO 80815, USA",
       "amenities": [
         "Open to All",
@@ -10999,11 +11018,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:56:56.403Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:40:40.601Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8243884661803372232",
@@ -11023,6 +11041,7 @@
       },
       "firstTracked": "Dec 21, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3968 Missouri Flat Road, Placerville, CA 95667, USA",
       "amenities": [
         "Open to All",
@@ -11161,11 +11180,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:57:11.523Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:40:55.802Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7641288578487901879",
@@ -11185,6 +11203,7 @@
       },
       "firstTracked": "Dec 20, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1750 Bradford Ln, Normal, IL 61761, USA",
       "amenities": [
         "Open to All",
@@ -11324,11 +11343,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:57:26.714Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:41:10.950Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3709380606941632482",
@@ -11348,6 +11366,7 @@
       },
       "firstTracked": "Dec 20, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "401 Scott St W, Gardiner, MT 59030, USA",
       "amenities": [
         "Open to All",
@@ -11427,11 +11446,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:57:41.932Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:41:26.126Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17973641159010138748",
@@ -11451,6 +11469,7 @@
       },
       "firstTracked": "Dec 18, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "5800 Peach Street. Suite EV, Erie, PA 16509, USA",
       "amenities": [
         "Open to All",
@@ -11559,11 +11578,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:57:57.030Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:41:41.280Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1975542962906512256",
@@ -11583,6 +11601,7 @@
       },
       "firstTracked": "Dec 18, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1771 North 19th Avenue, Bozeman, MT 59718, USA",
       "amenities": [
         "Open to All",
@@ -11722,11 +11741,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:58:12.198Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:41:56.479Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10353286583268794570",
@@ -11746,6 +11764,7 @@
       },
       "firstTracked": "Dec 13, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "518 Aviation Road, Queensbury, NY 12804, USA",
       "amenities": [
         "Open to All",
@@ -11916,11 +11935,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:58:27.404Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:42:11.640Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1485045838776646592",
@@ -11940,6 +11958,7 @@
       },
       "firstTracked": "Dec 11, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1215 Grand Avenue, Del Norte, CO 81132, USA",
       "amenities": [
         "Open to All",
@@ -12048,11 +12067,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:58:42.560Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:42:26.878Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15829662372818057990",
@@ -12072,6 +12090,7 @@
       },
       "firstTracked": "Dec 10, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "6200 South Pennsylvania Avenue, Lansing, MI 48911, USA",
       "amenities": [
         "Open to All",
@@ -12182,11 +12201,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:58:57.711Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:42:42.078Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9589799743002483697",
@@ -12206,6 +12224,7 @@
       },
       "firstTracked": "Dec 6, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "137 Spotsylvania Mall Dr , Fredericksburg, VA 22407, USA",
       "amenities": [
         "Open to All",
@@ -12314,11 +12333,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:59:12.866Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:42:57.291Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16466370064849249099",
@@ -12338,6 +12356,7 @@
       },
       "firstTracked": "Dec 5, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "491 State Highway 127, Shoshone, CA 92384, USA",
       "amenities": [
         "Open to All",
@@ -12448,11 +12467,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:59:28.109Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:43:12.492Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17006744989382365407",
@@ -12472,6 +12490,7 @@
       },
       "firstTracked": "Dec 3, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "61142 29 Palms Highway, Joshua Tree, CA 92252, USA",
       "amenities": [
         "Open to All",
@@ -12669,11 +12688,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:59:43.222Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:43:27.704Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7662840825567723852",
@@ -12693,6 +12711,7 @@
       },
       "firstTracked": "Nov 26, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3000 184th Street S, Lynnwood, WA 98037, USA",
       "amenities": [
         "Open to All",
@@ -12845,11 +12864,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T15:59:58.378Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:43:42.864Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12472896150238355675",
@@ -12869,6 +12887,7 @@
       },
       "firstTracked": "Oct 28, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "500 Inland Center Drive, San Bernardino, CA 92408, USA",
       "amenities": [
         "Open to All",
@@ -13023,11 +13042,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:00:13.532Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:43:58.044Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15229712559413049961",
@@ -13046,6 +13064,7 @@
       },
       "firstTracked": "Oct 4, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1758 w Prien Lake Rd, Lake Charles , LA 70601, USA",
       "amenities": [
         "Plug & Charge",
@@ -13154,11 +13173,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:00:28.765Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:44:13.160Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16185308077383208865",
@@ -13178,6 +13196,7 @@
       },
       "firstTracked": "Sep 6, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2425 Alpine Avenue Northwest, Walker, MI 49544, USA",
       "amenities": [
         "Open to All",
@@ -13287,11 +13306,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:00:43.947Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:44:28.337Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1433263278942627264",
@@ -13311,6 +13329,7 @@
       },
       "firstTracked": "Jul 20, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "240 East 5th Street North, Burley, ID 83318, USA",
       "amenities": [
         "Open to All",
@@ -13421,11 +13440,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:00:59.044Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:44:43.490Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10652557770275483296",
@@ -13445,6 +13463,7 @@
       },
       "firstTracked": "Jul 20, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "18707 Main Street, Groveland, CA 95321, USA",
       "amenities": [
         "Open to All",
@@ -13538,11 +13557,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:01:14.160Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:44:58.681Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5060331665286459380",
@@ -13562,6 +13580,7 @@
       },
       "firstTracked": "Jul 19, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "301 US Route 1 , Kittery, ME 03904, USA",
       "amenities": [
         "Open to All",
@@ -13671,11 +13690,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:01:44.520Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:45:28.996Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3538771059152261983",
@@ -13695,6 +13713,7 @@
       },
       "firstTracked": "Jul 19, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "14 Justins Way, Freeport, ME 04032, USA",
       "amenities": [
         "Open to All",
@@ -13803,11 +13822,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:01:29.371Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:45:13.825Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L14085821352242118384",
@@ -13827,6 +13845,7 @@
       },
       "firstTracked": "Jul 18, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2502 E Camelback Road, Phoenix, AZ 85016, USA",
       "amenities": [
         "Open to All",
@@ -13935,11 +13954,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:01:59.674Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:45:44.159Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15146476019938753049",
@@ -13959,6 +13977,7 @@
       },
       "firstTracked": "Jun 21, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1035 Shoppes Blvd, Moosic, PA 18507, USA",
       "amenities": [
         "Open to All",
@@ -14066,11 +14085,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:02:14.837Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:45:59.312Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15859044680188548619",
@@ -14090,6 +14108,7 @@
       },
       "firstTracked": "Jun 21, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1099 South Grand Avenue, Sun Prairie, WI 53590, USA",
       "amenities": [
         "Open to All",
@@ -14199,11 +14218,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:02:29.985Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:46:14.488Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10427722039519689545",
@@ -14223,6 +14241,7 @@
       },
       "firstTracked": "Jun 19, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "22 Vista Point Road, Lee Vining, CA 93541, USA",
       "amenities": [
         "Open to All",
@@ -14331,11 +14350,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:03:00.342Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:46:44.785Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5537974582577164941",
@@ -14355,6 +14373,7 @@
       },
       "firstTracked": "Jun 19, 2024",
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1790 Expo Way, Sacramento, CA 95815, USA",
       "amenities": [
         "Open to All",
@@ -14495,11 +14514,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:02:45.169Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:46:29.631Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18049577136964634071",
@@ -14519,6 +14537,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "10 Benning St, West Lebanon, NH 03784, USA",
       "amenities": [
         "Open to All",
@@ -14674,11 +14693,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:03:15.519Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:46:59.915Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16930659329122367533",
@@ -14698,6 +14716,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "580 Canal Street, Brattleboro, VT 05301, USA",
       "amenities": [
         "Open to All",
@@ -14868,11 +14887,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:03:30.738Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:47:15.128Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1481328980808519155",
@@ -14892,6 +14910,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "45 Holyoke Street, Holyoke, MA 01040, USA",
       "amenities": [
         "Open to All",
@@ -15046,11 +15065,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:03:45.893Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:47:30.307Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8478519600713924689",
@@ -15070,6 +15088,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1223 NY-300, Newburgh, NY 12550, USA",
       "amenities": [
         "Open to All",
@@ -15178,11 +15197,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:04:01.049Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:47:45.474Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18082194197590694481",
@@ -15202,6 +15220,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "132 Christiana Mall, Newark, DE 19702, USA",
       "amenities": [
         "Open to All",
@@ -15309,11 +15328,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:04:16.280Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:48:00.626Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3893579330938555127",
@@ -15332,6 +15350,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1100 Cornerstone Boulevard, Daytona Beach, FL 32117, USA",
       "amenities": [
         "Plug & Charge",
@@ -15483,11 +15502,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:04:31.523Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:48:15.805Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L2517985733117554268",
@@ -15507,6 +15525,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1321 Riverside Parkway, Belcamp, MD 21017, USA",
       "amenities": [
         "Open to All",
@@ -15616,11 +15635,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:04:46.687Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:48:31.007Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5734501248498362119",
@@ -15640,6 +15658,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1520 Dabney Dr., Henderson, NC 27536, USA",
       "amenities": [
         "Open to All",
@@ -15749,11 +15768,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:05:01.808Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:48:46.166Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L18312310840345009620",
@@ -15773,6 +15791,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "17301 Valley Mall Road, Hagerstown, MD 21740, USA",
       "amenities": [
         "Open to All",
@@ -15881,11 +15900,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:05:17.061Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:49:01.316Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8973735727059233087",
@@ -15893,7 +15911,7 @@
       "sourceUrl": "https://rivianroamer.com/charging/sites/US-RIV-L8973735727059233087",
       "lat": 39.99979,
       "lng": -78.2338,
-      "reportedStatus": "Inoperable",
+      "reportedStatus": "Operational",
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
@@ -15905,6 +15923,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "16567 Lincoln Highway, Breezewood, PA 15533, USA",
       "amenities": [
         "Open to All",
@@ -16015,11 +16034,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:05:32.268Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": "Offline"
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:49:16.470Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16599132064429353474",
@@ -16039,6 +16057,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "10 Riverton Commons Drive, Front Royal, VA 22630, USA",
       "amenities": [
         "Open to All",
@@ -16149,11 +16168,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:05:47.424Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:49:31.703Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6161725981375120230",
@@ -16173,6 +16191,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "200 Tanger Outlets Boulevard, Pooler, GA 31322, USA",
       "amenities": [
         "Open to All",
@@ -16282,11 +16301,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:06:02.560Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:49:46.856Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6131509295739167154",
@@ -16306,6 +16324,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "437 Tiffany Drive, Waynesboro, VA 22980, USA",
       "amenities": [
         "Open to All",
@@ -16414,11 +16433,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:06:17.685Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:50:02.012Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15997862222607707429",
@@ -16438,6 +16456,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2203 Franklin Road Southwest, Roanoke, VA 24014, USA",
       "amenities": [
         "Open to All",
@@ -16548,11 +16567,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:06:32.818Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:50:17.171Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11436858880889328402",
@@ -16572,6 +16590,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2577 Jeb Stuart Highway, Meadows of Dan, VA 24120, USA",
       "amenities": [
         "Open to All",
@@ -16681,11 +16700,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:06:47.924Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:50:32.348Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L2797438283583649266",
@@ -16705,6 +16723,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "9709 Northlake Centre Parkway, Charlotte, NC 28216, USA",
       "amenities": [
         "Open to All",
@@ -16812,11 +16831,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:07:03.077Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:50:47.504Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16632393921841581148",
@@ -16836,6 +16854,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "630 Crane Creek Drive, Augusta, GA 30907, USA",
       "amenities": [
         "Open to All",
@@ -16945,11 +16964,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:07:18.244Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:51:02.664Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7132609490195715167",
@@ -16969,6 +16987,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "278 Shoppes on the Parkway Road, Blowing Rock, NC 28605, USA",
       "amenities": [
         "Open to All",
@@ -17079,11 +17098,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:07:33.380Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:51:17.846Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L7953531635816439930",
@@ -17103,6 +17121,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3620 Pelham Road, Greenville, SC 29615, USA",
       "amenities": [
         "Open to All",
@@ -17212,11 +17231,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:07:48.528Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:51:33.012Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13002215087692727396",
@@ -17236,6 +17254,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "8913 Pearl Road, Strongsville, OH 44136, USA",
       "amenities": [
         "Open to All",
@@ -17346,11 +17365,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:08:03.732Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:51:48.194Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6905328069614466474",
@@ -17370,6 +17388,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "220 South Huron Avenue, Mackinaw City, MI 49701, USA",
       "amenities": [
         "Open to All",
@@ -17479,11 +17498,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:08:18.932Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:52:03.346Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L451425707649488557",
@@ -17503,6 +17521,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "5080 Riverside Drive, Macon, GA 31210, USA",
       "amenities": [
         "Open to All",
@@ -17610,11 +17629,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:08:34.046Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:52:18.529Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4126083133598127782",
@@ -17634,6 +17652,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "16 Cherokee Crossing Road, Whittier, NC 28789, USA",
       "amenities": [
         "Open to All",
@@ -17744,11 +17763,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:08:49.168Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:52:33.665Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3159334161514072739",
@@ -17768,6 +17786,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1391 Conant Street, Maumee, OH 43537, USA",
       "amenities": [
         "Open to All",
@@ -17877,11 +17896,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:09:04.378Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:52:48.822Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5993475900119536878",
@@ -17901,6 +17919,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2772 Tittabawasee Road, Saginaw, MI 48604, USA",
       "amenities": [
         "Open to All",
@@ -18010,11 +18029,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:09:19.589Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:53:03.979Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10461199998633248139",
@@ -18034,6 +18052,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "10401 South Clare Avenue, Clare, MI 48617, USA",
       "amenities": [
         "Open to All",
@@ -18144,11 +18163,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:09:34.696Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:53:19.158Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L14270338080788955338",
@@ -18168,6 +18186,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2384 I-75BL, Grayling, MI 49738, USA",
       "amenities": [
         "Open to All",
@@ -18278,11 +18297,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:09:49.798Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:53:34.337Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11403047073990046039",
@@ -18302,6 +18320,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3200 W South Airport Road, Traverse City, MI 49684, USA",
       "amenities": [
         "Open to All",
@@ -18410,11 +18429,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:10:04.969Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:53:49.512Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8384578670029334531",
@@ -18434,6 +18452,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1265 Interstate Dr, Cookeville, TN 38501, USA",
       "amenities": [
         "Open to All",
@@ -18542,11 +18561,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:10:20.111Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:54:04.642Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13160365438350136805",
@@ -18566,6 +18584,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2860 Cumberland Mall SE, Atlanta, GA 30339, USA",
       "amenities": [
         "Open to All",
@@ -18719,11 +18738,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:10:35.259Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:54:19.809Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11479343488048371684",
@@ -18743,6 +18761,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "7321 Heritage Square Drive, Granger, IN 46530, USA",
       "amenities": [
         "Open to All",
@@ -18853,11 +18872,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:10:50.409Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:54:34.983Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10753662044676103876",
@@ -18877,6 +18895,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2680 M-139, Benton Harbor, MI 49022, USA",
       "amenities": [
         "Open to All",
@@ -18986,11 +19005,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:11:05.569Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:54:50.100Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5678645418825622776",
@@ -19009,6 +19027,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "290 Town Center Pkwy, Slidell, LA 70458, USA",
       "amenities": [
         "Plug & Charge",
@@ -19099,11 +19118,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:11:20.769Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:55:05.331Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16052092696909092589",
@@ -19123,6 +19141,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3535 Perkins Road, Baton Rouge, LA 70808, USA",
       "amenities": [
         "Open to All",
@@ -19233,11 +19252,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:11:35.951Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:55:20.465Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9690482648894021784",
@@ -19257,6 +19275,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2300 Bernadette Drive, Columbia, MO 65203, USA",
       "amenities": [
         "Open to All",
@@ -19366,11 +19385,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:11:51.124Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:55:35.670Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3046584760508613880",
@@ -19390,6 +19408,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "947 West St. Mary's Street, Centerville, TX 75833, USA",
       "amenities": [
         "Open to All",
@@ -19499,11 +19518,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:12:06.243Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:55:50.822Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11857927989230157957",
@@ -19523,6 +19541,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2774 N Greenwich Ct, Wichita, KS 67226, USA",
       "amenities": [
         "Open to All",
@@ -19631,11 +19650,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:12:21.482Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:56:06.038Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17938202737814445982",
@@ -19655,6 +19673,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "383 Mopar Drive, Hays, KS 67601, USA",
       "amenities": [
         "Open to All",
@@ -19765,11 +19784,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:12:36.612Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:56:21.153Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4368258503024005988",
@@ -19789,6 +19807,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "15908 La Cantera Pky., San Antonio, TX 78256, USA",
       "amenities": [
         "Open to All",
@@ -19896,11 +19915,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:12:51.846Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:56:36.338Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L8755147034765709304",
@@ -19920,6 +19938,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1400 Dell Range Blvd., Cheyenne, WY 82009, USA",
       "amenities": [
         "Open to All",
@@ -20028,11 +20047,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:13:07.002Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:56:51.499Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L2203475084972246229",
@@ -20051,6 +20069,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "232 G Street, Salida, CO 81201, USA",
       "amenities": [
         "Plug & Charge",
@@ -20129,11 +20148,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:13:22.171Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:57:06.712Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17641453518864376760",
@@ -20153,6 +20171,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1 Flatiron Crossing, Broomfield, CO 80021, USA",
       "amenities": [
         "Open to All",
@@ -20261,11 +20280,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:13:37.322Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:57:21.877Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11909426625037321337",
@@ -20285,6 +20303,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3480 Wolverine Drive, Montrose, CO 81401, USA",
       "amenities": [
         "Open to All",
@@ -20394,11 +20413,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:13:52.542Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:57:37.078Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15018620690735454571",
@@ -20418,6 +20436,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2424 US Highway 6, Grand Junction, CO 81505, USA",
       "amenities": [
         "Open to All",
@@ -20525,11 +20544,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:14:07.702Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:57:52.237Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16691258893957934011",
@@ -20549,6 +20567,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1606 Navajo Boulevard, Holbrook, AZ 86025, USA",
       "amenities": [
         "Open to All",
@@ -20658,11 +20677,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:14:22.924Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:58:07.443Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L5149488329460563001",
@@ -20682,6 +20700,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2700 S Woodlands Village Boulevard, Flagstaff, AZ 86001, USA",
       "amenities": [
         "Open to All",
@@ -20792,11 +20811,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:14:38.084Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:58:22.604Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4414117162286468312",
@@ -20816,6 +20834,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "7000 AZ-179, Sedona, AZ 86351, USA",
       "amenities": [
         "Open to All",
@@ -20924,11 +20943,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:14:53.251Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:58:37.803Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15472195556443831857",
@@ -20948,6 +20966,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "942 East Pima Street, Gila Bend, AZ 85337, USA",
       "amenities": [
         "Open to All",
@@ -21057,11 +21076,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:15:08.369Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:58:52.954Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16683122947996107049",
@@ -21081,6 +21099,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "3320 Stockton Hill Road, Kingman, AZ 86409, USA",
       "amenities": [
         "Open to All",
@@ -21190,11 +21209,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:15:23.610Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:59:08.166Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15367048680819249735",
@@ -21214,6 +21232,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1349 W. Main Street, Quartzsite, AZ 85346, USA",
       "amenities": [
         "Open to All",
@@ -21324,11 +21343,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:15:38.765Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:59:23.322Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6200260832041606775",
@@ -21348,6 +21366,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "14700 East Indiana Avenue, Spokane Valley, WA 99216, USA",
       "amenities": [
         "Open to All",
@@ -21457,11 +21476,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:15:53.882Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:59:38.539Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4843721662822998457",
@@ -21481,6 +21499,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "6605 South Las Vegas Boulevard, Las Vegas, NV 89119, USA",
       "amenities": [
         "Open to All",
@@ -21590,11 +21609,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:16:09.042Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T12:59:53.692Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L12109742311651856363",
@@ -21614,6 +21632,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2835 Lenwood Rd, Barstow, CA 92311, USA",
       "amenities": [
         "Open to All",
@@ -21724,11 +21743,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:16:24.397Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:00:08.833Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L10186351206568156344",
@@ -21748,6 +21766,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "787 North Main Street, Bishop, CA 93514, USA",
       "amenities": [
         "Open to All",
@@ -21858,11 +21877,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:16:39.549Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:00:23.990Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1821599963793729614",
@@ -21882,6 +21900,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "6525 West Inyokern Road, Inyokern, CA 93527, USA",
       "amenities": [
         "Open to All",
@@ -21992,11 +22011,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:16:54.668Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:00:39.165Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1560410546772104724",
@@ -22016,6 +22034,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "601 US-395, Olancha, CA 93549, USA",
       "amenities": [
         "Open to All",
@@ -22078,11 +22097,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:17:09.791Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:00:54.319Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11703884261784064412",
@@ -22102,6 +22120,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "2750 Campus Drive , Klamath Falls, OR 97601, USA",
       "amenities": [
         "Open to All",
@@ -22211,11 +22230,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:17:24.986Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:01:09.513Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15129032571483408438",
@@ -22235,6 +22253,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "136590 The Dalles-California Hwy US-97, Crescent, OR 97733, USA",
       "amenities": [
         "Open to All",
@@ -22345,11 +22364,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:17:40.081Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:01:24.624Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1501559582835047932",
@@ -22369,6 +22387,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "215 North West Cherry Lane, Madras, OR 97741, USA",
       "amenities": [
         "Open to All",
@@ -22477,11 +22496,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:17:55.240Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:01:39.848Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17620489318147302052",
@@ -22501,6 +22519,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "20673 Tracy Avenue, Buttonwillow, CA 93206, USA",
       "amenities": [
         "Open to All",
@@ -22656,11 +22675,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:18:10.392Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:01:54.965Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L1975044840395909413",
@@ -22680,6 +22698,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "12047 Donner Pass, Truckee, CA 96161, USA",
       "amenities": [
         "Open to All",
@@ -22789,11 +22808,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:18:25.577Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:02:10.187Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L616929346370577784",
@@ -22813,6 +22831,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1400 West 6th Street, The Dalles, OR 97058, USA",
       "amenities": [
         "Open to All",
@@ -22922,11 +22941,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:18:40.783Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:02:25.333Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L6481507683470816561",
@@ -22946,6 +22964,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "111 Morgan Way, Mount Shasta, CA 96067, USA",
       "amenities": [
         "Open to All",
@@ -23056,11 +23075,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:18:55.943Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:02:40.520Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16442060602726540329",
@@ -23080,6 +23098,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "46365 West Panoche Road, Firebaugh, CA 93622, USA",
       "amenities": [
         "Open to All",
@@ -23220,11 +23239,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:19:11.099Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:02:55.641Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17652440181098458760",
@@ -23244,6 +23262,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "13070 CA-33, Santa Nella, CA 95322, USA",
       "amenities": [
         "Open to All",
@@ -23444,11 +23463,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:19:26.340Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:03:10.834Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16180912729239013297",
@@ -23468,6 +23486,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "280 Lifestyle Street, Manteca, CA 95337, USA",
       "amenities": [
         "Open to All",
@@ -23576,11 +23595,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:19:41.544Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:03:25.989Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L3542929152995317162",
@@ -23600,6 +23618,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1620 NW Mulholland Drive, Roseburg, OR 97470, USA",
       "amenities": [
         "Open to All",
@@ -23709,11 +23728,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:19:56.710Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:03:41.167Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L432186029470666930",
@@ -23733,6 +23751,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "12000 SE 82nd Ave, Happy Valley, OR 97086, USA",
       "amenities": [
         "Open to All",
@@ -23842,11 +23861,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:20:11.871Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:03:56.304Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L16156613826762267113",
@@ -23866,6 +23884,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "475 M Street, Crescent City, CA 95531, USA",
       "amenities": [
         "Open to All",
@@ -23976,11 +23995,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:20:27.048Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:04:11.507Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9726565561055182556",
@@ -24000,6 +24018,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "205 N Orchard Avenue, Ukiah, CA 95842, USA",
       "amenities": [
         "Open to All",
@@ -24109,11 +24128,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:20:42.371Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:04:26.660Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L17370630439341751615",
@@ -24133,6 +24151,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "100 Corte Madera Town Center, Corte Madera, CA 94925, USA",
       "amenities": [
         "Open to All",
@@ -24302,11 +24321,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:20:57.493Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:04:41.860Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9890192377452929010",
@@ -24326,6 +24344,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "735 South Fortuna Boulevard, Fortuna, CA 95540, USA",
       "amenities": [
         "Open to All",
@@ -24435,11 +24454,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:21:12.673Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:04:57.015Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L9424160446176239771",
@@ -24459,6 +24477,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1300 North Bayshore Drive, Coos Bay, OR 97420, USA",
       "amenities": [
         "Open to All",
@@ -24568,11 +24587,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:21:27.840Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:05:12.198Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L4713596931305309683",
@@ -24592,6 +24610,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "1500 Southeast East Devils Lake Road, Lincoln City, OR 97367, USA",
       "amenities": [
         "Open to All",
@@ -24701,11 +24720,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:21:43.028Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:05:27.353Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L14834864349385467",
@@ -24725,6 +24743,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "415 West Heron Street, Aberdeen, WA 98520, USA",
       "amenities": [
         "Open to All",
@@ -24835,11 +24854,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:21:58.150Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:05:42.531Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L59172885036745502",
@@ -24859,6 +24877,7 @@
       },
       "firstTracked": null,
       "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
       "address": "101 North Forks Avenue, Forks, WA 98331, USA",
       "amenities": [
         "Open to All",
@@ -24969,11 +24988,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 1 hour ago",
-      "detailsObservedAt": "2026-10-16T16:22:13.305Z",
-      "observedAt": "2026-10-16T15:46:03.833Z",
-      "networkListed": true,
-      "detailReportedStatus": null
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-17T13:05:57.694Z",
+      "observedAt": "2026-10-17T12:29:48.134Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L15121183632846050728",
@@ -25094,8 +25112,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 1 month ago",
-      "detailsObservedAt": "2026-10-16T16:27:01.882Z",
-      "observedAt": "2026-10-16T16:27:01.882Z"
+      "detailsObservedAt": "2026-10-17T13:10:45.896Z",
+      "observedAt": "2026-10-17T13:10:45.896Z"
     }
   ]
 }
