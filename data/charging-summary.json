@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 898,
+  "requests": 897,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-10-18T12:28:06.921Z",
+    "observedAt": "2026-10-19T12:28:26.482Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/05s2an0bc_qt2.js",
     "sha256": "5a363afcf4f716d455619fc5a081a213a3feb87b43e82cb3ee1f2d5a0051382f"
@@ -50,5 +50,5 @@
   },
   "added": [],
   "removed": [],
-  "sha256": "d7d431b5911dd521621377321c35cacd4e62fe607bc12aea13872a7d4c56d594"
+  "sha256": "40a359740d81efcfa3338d31174f1869a4985644cf9226062a272674865e6e6f"
 }
