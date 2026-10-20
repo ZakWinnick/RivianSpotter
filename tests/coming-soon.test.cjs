@@ -20,6 +20,17 @@ test('asset discovery follows page references on Rivian only and fails closed wh
  await assert.rejects(fetchComingSoon({fetchImpl:async()=>new Response('<html>changed</html>')}),/assets missing/);
  await assert.rejects(fetchComingSoon({fetchImpl:async()=>new Response('',{status:429})}),/HTTP 429/);
 });
+test('minified export names do not hide the explicit coming-soon source',async()=>{
+ const {parseComingSoon,fetchComingSoon}=await api();
+ // Rivian's October 20 build exports the array as "w" instead of its old name.
+ const minified=asset(rows).replace('exports=["TEMP_COMING_SOON_LOCATIONS",a]','e.s(["G",0,o,"w",0,a],817846)');
+ assert(!minified.includes('TEMP_COMING_SOON_LOCATIONS'));
+ assert.deepEqual(parseComingSoon(minified),rows);
+ const result=await fetchComingSoon({fetchImpl:async url=>new Response(url.endsWith('.js')?minified:'<script src="/root/_next/static/chunks/current.js"></script>')});
+ assert.deepEqual(result.rows,rows);
+ assert.throws(()=>parseComingSoon('let source="coming-soon-chargers-source"; let data=changed;'),/schema changed/);
+ assert.equal(parseComingSoon('const other='+JSON.stringify(rows)),null,'unrelated coordinates cannot establish planned locations');
+});
 test('planned pins are searchable and mappable but do not supply directions, port facts, or nearby charging',async()=>{
  const {plannedRecords}=await api(),p=plannedRecords(rows,'2026-10-16').find(p=>p.city==='King City');
  assert.equal(p.status,'planned');assert.equal(p.address,null);assert.equal(p.chargerCount,null);assert.equal(p.maxKw,null);

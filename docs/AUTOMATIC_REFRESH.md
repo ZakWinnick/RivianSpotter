@@ -55,7 +55,7 @@ Daily captures are not real-time status. A page retrieval time and the source's 
 
 ## Coming-soon charging locations
 
-The 5 AM Pacific official refresh also reads the charging page's explicit `TEMP_COMING_SOON_LOCATIONS` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data stops the staged refresh without removing the prior inventory.
+The 5 AM Pacific official refresh also reads the charging page's explicit `coming-soon-chargers-source` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. The map source name identifies the data independently of minified export names. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data stops the staged refresh without removing the prior inventory.
 
 Each announced city has a stable local identity, a Coming Soon label, and an approximate city pin using Rivian's published coordinates. No address, opening date, charger count, speed, pricing, or directions is inferred. Planned records are excluded from supplemental detail requests, active-inventory loss checks, and nearby available-charging links. The map uses outlined markers and a wider city zoom. The first import contains 36 announced locations, including King City and Salinas, California.
 
