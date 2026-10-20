@@ -7,7 +7,9 @@ import {load} from 'cheerio';
 export const SOURCE='https://rivian.com/experience/charging';
 const STATES=new Set('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY AB BC MB NB NL NS NT NU ON PE QC SK YT'.split(' '));
 export function parseComingSoon(source){
- if(!source.includes('TEMP_COMING_SOON_LOCATIONS'))return null;
+ // Export names are minified by upstream builds; identify the explicit map
+ // source instead. Keep recognizing the old name so malformed old assets fail.
+ if(!source.includes('coming-soon-chargers-source')&&!source.includes('TEMP_COMING_SOON_LOCATIONS'))return null;
  const raw=source.match(/["']coming-soon-chargers-source["'],\w+=(\[\{city:.*?\}\])/s)?.[1];
  if(!raw)throw Error('Coming-soon source schema changed');
  const rows=JSON.parse(raw.replace(/([{,])(city|state|latitude|longitude):/g,'$1"$2":'));
