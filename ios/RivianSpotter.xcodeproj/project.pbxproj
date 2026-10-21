@@ -1,0 +1,264 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */; };
+		5910984348D613FFD1FC23BE /* Sources/SpotterApp/SpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */; };
+		720ED399626A152C0B8010C6 /* Sources/SpotterApp/PlaceGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */; };
+		A10000000000000000000002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000001 /* Assets.xcassets */; };
+		A10000000000000000000004 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000003 /* PrivacyInfo.xcprivacy */; };
+		B3813A32900A1C13EFB47EA9 /* Sources/SpotterCore/Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */; };
+		B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */; };
+		D976E61445B8C8CFAD32638D /* Sources/SpotterCore/Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EF8EAD65CBA03925C29E8D /* Sources/SpotterCore/Place.swift */; };
+		FF9B561A7E11B8F44C943CB5 /* Sources/SpotterCore/Resources/catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BF40848688B6935FD74BCD7 /* Sources/SpotterCore/Resources/catalog.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/DeviceServices.swift; sourceTree = "<group>"; };
+		38A007151ABE87CC01A5B6E9 /* RivianSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = RivianSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/PlaceGallery.swift; sourceTree = "<group>"; };
+		5BF40848688B6935FD74BCD7 /* Sources/SpotterCore/Resources/catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Sources/SpotterCore/Resources/catalog.json; sourceTree = "<group>"; };
+		7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/SpotterApp.swift; sourceTree = "<group>"; };
+		92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/Journal.swift; sourceTree = "<group>"; };
+		A10000000000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000000000000000000003 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/CloudJournalStorage.swift; sourceTree = "<group>"; };
+		C7EF8EAD65CBA03925C29E8D /* Sources/SpotterCore/Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/Place.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7561BFB015D8F536760CB671 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B28B7AF69320201D1CF206EB = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000001 /* Assets.xcassets */,
+				A10000000000000000000003 /* PrivacyInfo.xcprivacy */,
+				592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */,
+				1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */,
+				AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */,
+				C7EF8EAD65CBA03925C29E8D /* Sources/SpotterCore/Place.swift */,
+				92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */,
+				7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */,
+				5BF40848688B6935FD74BCD7 /* Sources/SpotterCore/Resources/catalog.json */,
+				FBDC4F23F93125BBEEAE800C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBDC4F23F93125BBEEAE800C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38A007151ABE87CC01A5B6E9 /* RivianSpotter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E8A3AD980EC179856012B7E /* RivianSpotter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C57128001CE614BF8549D6BB /* Build configuration list for PBXNativeTarget "RivianSpotter" */;
+			buildPhases = (
+				BCE16DD0260827ECF338C787 /* Sources */,
+				7561BFB015D8F536760CB671 /* Frameworks */,
+				0189424A5A60FED329FA868E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RivianSpotter;
+			productName = RivianSpotter;
+			productReference = 38A007151ABE87CC01A5B6E9 /* RivianSpotter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 862894B703A6DEDF96A9DD6C /* Build configuration list for PBXProject "RivianSpotter" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B28B7AF69320201D1CF206EB;
+			productRefGroup = FBDC4F23F93125BBEEAE800C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E8A3AD980EC179856012B7E /* RivianSpotter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0189424A5A60FED329FA868E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF9B561A7E11B8F44C943CB5 /* Sources/SpotterCore/Resources/catalog.json in Resources */,
+				A10000000000000000000002 /* Assets.xcassets in Resources */,
+				A10000000000000000000004 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCE16DD0260827ECF338C787 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				720ED399626A152C0B8010C6 /* Sources/SpotterApp/PlaceGallery.swift in Sources */,
+				B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */,
+				3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */,
+				D976E61445B8C8CFAD32638D /* Sources/SpotterCore/Place.swift in Sources */,
+				B3813A32900A1C13EFB47EA9 /* Sources/SpotterCore/Journal.swift in Sources */,
+				5910984348D613FFD1FC23BE /* Sources/SpotterApp/SpotterApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		639A7CA24D39909E713B47F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RivianSpotter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9KV4L2R733;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppInfo.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you. Your location is used when you tap Near me and is not saved in your journal.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rivianspotter.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7082CC0B6FC1282FCEABD07A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RivianSpotter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9KV4L2R733;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppInfo.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you. Your location is used when you tap Near me and is not saved in your journal.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rivianspotter.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89E1FD6268CC0F221A2BE178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E6DE6C99132752C914FEF632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		862894B703A6DEDF96A9DD6C /* Build configuration list for PBXProject "RivianSpotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89E1FD6268CC0F221A2BE178 /* Debug */,
+				E6DE6C99132752C914FEF632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C57128001CE614BF8549D6BB /* Build configuration list for PBXNativeTarget "RivianSpotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7082CC0B6FC1282FCEABD07A /* Debug */,
+				639A7CA24D39909E713B47F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}
