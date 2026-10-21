@@ -112,6 +112,35 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     }
 }
 
+public enum PlaceClustering {
+    /// Greedy map clustering. Each cluster is anchored at its first place, and a place joins a
+    /// cluster only when it lies within one cell (span ÷ divisions) of that anchor on both axes.
+    /// Anchors therefore stay at least a cell apart, so markers drawn at anchors don't overlap.
+    public static func clusters(_ places: [Place], latitudeSpan: Double, longitudeSpan: Double,
+                                divisions: Double = 8) -> [[Place]] {
+        let latCell = max(latitudeSpan / divisions, 0.00001), lonCell = max(longitudeSpan / divisions, 0.00001)
+        let mapped = places.filter(\.hasPreciseCoordinates).sorted {
+            $0.latitude! == $1.latitude! ? $0.longitude! < $1.longitude! : $0.latitude! > $1.latitude!
+        }
+        var result: [[Place]] = []
+        for place in mapped {
+            if let index = result.firstIndex(where: {
+                abs($0[0].latitude! - place.latitude!) < latCell && abs($0[0].longitude! - place.longitude!) < lonCell
+            }) {
+                result[index].append(place)
+            } else { result.append([place]) }
+        }
+        return result
+    }
+
+    /// Places within roughly 50 m of each other can't be separated by zooming.
+    public static func isColocated(_ places: [Place]) -> Bool {
+        let lats = places.compactMap(\.latitude), lons = places.compactMap(\.longitude)
+        guard let minLat = lats.min(), let maxLat = lats.max(), let minLon = lons.min(), let maxLon = lons.max() else { return false }
+        return maxLat - minLat < 0.0005 && maxLon - minLon < 0.0005
+    }
+}
+
 public struct Catalog: Codable, Sendable {
     public let schemaVersion: Int
     public let places: [Place]

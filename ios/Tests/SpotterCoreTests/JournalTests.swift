@@ -198,6 +198,50 @@ final class JournalTests: XCTestCase {
             return try context.fetch(request).compactMap { $0.value(forKey: "payload") as? Data }
         }
     }
+    private func eventCount(_ storage: CloudJournalStorage) throws -> Int {
+        let context = storage.container.newBackgroundContext()
+        return try context.performAndWait { try context.count(for: NSFetchRequest<NSManagedObject>(entityName: "JournalEvent")) }
+    }
+    func testCloudHistoryKeepsOnlyTheNewestEventPerItem() throws {
+        let storage = try cloudStore(), repo = try JournalRepository(storage: storage), place = try place()
+        let visit = try repo.checkIn(at: place, type: .ran, date: .distantPast, note: "v1")
+        for index in 2...20 { try repo.update(visit, date: .distantPast, note: "v\(index)") }
+        for _ in 0..<50 { try repo.toggleSaved(place) }
+        // One visit event plus one bookmark event (a tombstone after an even number of toggles).
+        XCTAssertEqual(try eventCount(storage), 2)
+        XCTAssertEqual(try cloudStore().load().visits.first?.note, "v20")
+        XCTAssertTrue(try cloudStore().load().savedPlaces.isEmpty)
+        // The tombstone still prevents a stale snapshot from resurrecting the bookmark.
+        var stale = Journal(); stale.visits = repo.journal.visits; stale.savedPlaces = [place]
+        let other = try self.place(.space)
+        var unrelated = stale; unrelated.savedPlaces.append(other)
+        try storage.save(unrelated, replacing: stale)
+        XCTAssertEqual(try storage.load().savedPlaces, [other])
+        try repo.delete(visit)
+        XCTAssertTrue(try storage.load().visits.isEmpty)
+        XCTAssertEqual(try eventCount(storage), 3)
+    }
+    func testMapClustersStaySeparatedAndKeepColocatedPlacesTogether() throws {
+        let places = try Catalog.bundled().places
+        let mapped = places.filter(\.hasPreciseCoordinates)
+        for (latSpan, lonSpan) in [(38.0, 58.0), (4.0, 6.0), (0.3, 0.4)] {
+            let clusters = PlaceClustering.clusters(places, latitudeSpan: latSpan, longitudeSpan: lonSpan)
+            XCTAssertEqual(clusters.map(\.count).reduce(0, +), mapped.count)
+            let anchors = clusters.map { $0[0] }
+            for (i, a) in anchors.enumerated() {
+                for b in anchors[(i + 1)...] {
+                    XCTAssertTrue(abs(a.latitude! - b.latitude!) >= latSpan / 8 || abs(a.longitude! - b.longitude!) >= lonSpan / 8)
+                }
+            }
+        }
+        // Places sharing a pin land in one cluster that is opened as a list, not zoomed forever.
+        let byPin = Dictionary(grouping: mapped) { "\(($0.latitude! * 1e4).rounded()),\(($0.longitude! * 1e4).rounded())" }
+        let shared = try XCTUnwrap(byPin.values.first { $0.count > 1 })
+        XCTAssertTrue(PlaceClustering.isColocated(shared))
+        let close = PlaceClustering.clusters(shared, latitudeSpan: 0.001, longitudeSpan: 0.001)
+        XCTAssertEqual(close.count, 1)
+        XCTAssertFalse(PlaceClustering.isColocated(Array(mapped.prefix(2))))
+    }
     func testCloudLoadSkipsAndPreservesUnreadableRecords() throws {
         let storage = try cloudStore(), repo = try JournalRepository(storage: storage)
         let kept = try repo.checkIn(at: place(), type: .ran, date: .distantPast, note: "Readable")
