@@ -1,0 +1,44 @@
+// Reuse the website's identity/grouping rules; never edit the generated catalog.
+const fs = require('node:fs');
+const path = require('node:path');
+const { combineLocations, locationTypes } = require('../js/location-model.js');
+const root = path.resolve(__dirname, '..');
+const read = name => JSON.parse(fs.readFileSync(path.join(root, 'data', name), 'utf8'));
+const photos = read('location-photos.json');
+const { informationFor } = require('./ios-place-information.cjs');
+function photoFor(place) {
+  const own = [place.id, ...(place.legacyIds || [])].map(String).map(id => photos.locations[id]).find(Boolean);
+  if (own) return own;
+  const types = locationTypes(place);
+  // A Space without its own photograph must not inherit a charger photograph.
+  if (types.some(type => ['Space', 'Outpost'].includes(type))) return null;
+  return photos.categories[types.includes('RAN') ? 'RAN' : types.includes('Waypoint') ? 'Waypoint' : ''] || null;
+}
+function catalog() {
+  const places = combineLocations(read('locations.json'), read('charging.json'), read('roamer.json').stations);
+  return { schemaVersion: 1, places: places.map(p => ({
+    id: String(p.id), aliases: (p.legacyIds || []).map(String), slug: p.slug,
+    name: p.name, directoryTypes: locationTypes(p), types: [...new Set([...locationTypes(p),
+      ...(p.capabilities?.includes('service') ? ['Service Center'] : [])])],
+    city: p.city || '', region: p.state || '', country: p.country || '',
+    address: p.displayAddress || p.address || null,
+    latitude: p.lat ?? null, longitude: p.lng ?? null,
+    coordinatePrecision: p.coordinatePrecision || 'unknown',
+    status: p.status || 'unknown', listed: p.listed !== false,
+    hours: p.hours || null, serviceHours: p.serviceHours || null,
+    sourceURL: p.sourceUrl || null, checkedOn: p.lastVerified || null,
+    chargerCount: p.chargerCount ?? null, maxKw: p.maxKw ?? null,
+    photo: photoFor(p),
+    information: informationFor(p),
+    postalCode: p.postalCode || null,
+    relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]
+  })).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id)) };
+}
+if (require.main === module) {
+  const target = path.join(root, 'ios/Sources/SpotterCore/Resources/catalog.json');
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  const output = catalog();
+  fs.writeFileSync(target, JSON.stringify(output, null, 2) + '\n');
+  console.log(`Exported ${output.places.length} places for iOS.`);
+}
+module.exports = { catalog };
