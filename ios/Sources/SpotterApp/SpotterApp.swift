@@ -240,6 +240,7 @@ struct RootView: View {
     @Environment(\.colorScheme) private var scheme
     @Environment(\.scenePhase) private var scenePhase
     @State private var tab = GuideTab.explore
+    @State private var mapRequest = 0
     @State private var selectedCategory: PlaceType?
     @State private var selectedPlace: Place?
     @State private var placeHistory: [Place] = []
@@ -301,7 +302,7 @@ struct RootView: View {
                 .edgeSwipeBack(selectedPlace == nil ? { selectedCategory = nil } : nil)
         } else {
             switch shownTab(wide: wide) {
-            case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil)
+            case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil, mapRequest: mapRequest)
             case .explore: ExploreView(open: { selectedPlace = $0 }, choose: { selectedCategory = $0 })
             case .saved: SavedView(open: { selectedPlace = $0 }, explore: { select(.catalog) })
             case .journal: JournalView(explore: { select(.catalog) })
@@ -309,6 +310,7 @@ struct RootView: View {
         }
     }
     private func select(_ item: GuideTab) {
+        if item == .catalog { mapRequest += 1 }
         selectedPlace = nil; placeHistory = []; selectedCategory = nil; tab = item
     }
     private var sidebar: some View {
@@ -551,14 +553,16 @@ private struct CategoryBrowseView: View {
     @State private var search = ""
     @FocusState private var searchFocused: Bool
     @State private var showMap: Bool
+    @State private var unmappedOnly = false
+    let mapRequest: Int
     @State private var filters = PlaceFilter()
     @State private var showFilters = false
     @State private var nearby = false
     @State private var showSettings = false
     @ScaledMetric(relativeTo: .body) private var cardWidth = 160.0
     private var palette: GuidePalette { .init(scheme: scheme) }
-    init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?) {
-        self.kind = kind; self.open = open; self.back = back
+    init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?, mapRequest: Int = 0) {
+        self.kind = kind; self.open = open; self.back = back; self.mapRequest = mapRequest
         _showMap = State(initialValue: kind == nil)
     }
     private var places: [Place] {
@@ -570,15 +574,24 @@ private struct CategoryBrowseView: View {
             return first == second ? $0.name < $1.name : first < second
         }
     }
+    private var visiblePlaces: [Place] { unmappedOnly ? places.filter { !$0.hasMapCoordinates } : places }
+    private func returnToMap() {
+        searchFocused = false
+        unmappedOnly = false
+        showMap = true
+    }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
-                    if let back {
+                    if unmappedOnly {
+                        Button(action: returnToMap) { Label("Back to Map", systemImage: "chevron.left").font(.subheadline.weight(.semibold)).frame(minHeight: 44) }
+                            .buttonStyle(.plain)
+                    } else if let back {
                         Button(action: back) { Image(systemName: "chevron.left").frame(width: 32, height: 44) }
                             .buttonStyle(.plain).accessibilityLabel("Back to Browse")
                     }
-                    Text(kind?.browseTitle ?? "Map").guideFont(17, .semibold).lineLimit(1)
+                    if !unmappedOnly { Text(kind?.browseTitle ?? "Map").guideFont(17, .semibold).lineLimit(1) }
                     Spacer()
                     Button {
                         if nearby { nearby = false; location.cancel() } else { nearby = true; location.request() }
@@ -589,7 +602,9 @@ private struct CategoryBrowseView: View {
                     }.buttonStyle(.plain)
                         .accessibilityLabel(location.requesting ? "Locating, tap to stop" : "Near me")
                         .accessibilityAddTraits(nearby ? .isSelected : [])
-                    Button { searchFocused = false; showMap.toggle() } label: {
+                    Button {
+                        if showMap { searchFocused = false; showMap = false } else { returnToMap() }
+                    } label: {
                         Image(systemName: showMap ? (kind == nil ? "list.bullet" : "square.grid.2x2") : "map").frame(width: 44, height: 44)
                     }.buttonStyle(.plain).accessibilityLabel(showMap ? (kind == nil ? "Show list" : "Show gallery") : "Show map")
                     if kind == nil && !sidebarVisible {
@@ -610,13 +625,18 @@ private struct CategoryBrowseView: View {
                     .background(palette.surface, in: RoundedRectangle(cornerRadius: 10))
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(palette.line, lineWidth: 1))
                 HStack {
-                    Text(nearby && location.location != nil ? "\(places.count) \(places.count == 1 ? "location" : "locations") · Nearest first" : "\(places.count) \(places.count == 1 ? "location" : "locations")")
+                    Text(nearby && location.location != nil ? "\(visiblePlaces.count) \(visiblePlaces.count == 1 ? "location" : "locations") · Nearest first" : "\(visiblePlaces.count) \(visiblePlaces.count == 1 ? "location" : "locations")")
                         .guideFont(13).foregroundStyle(palette.secondary)
                     Spacer()
                     Button { searchFocused = false; showFilters = true } label: {
                         Label(filters.activeCount == 0 ? "Filters" : "Filters (\(filters.activeCount))", systemImage: "line.3.horizontal.decrease")
                             .font(.subheadline.weight(.semibold)).frame(minHeight: 36)
                     }.buttonStyle(.plain).accessibilityLabel("Filter locations")
+                }
+                if unmappedOnly {
+                    Text("Locations without map pins").font(.headline)
+                    Text("These listings do not have verified coordinates yet. Published addresses and other details are still available.")
+                        .font(.caption).foregroundStyle(palette.secondary)
                 }
                 if filters.activeCount > 0 {
                     HStack {
@@ -654,27 +674,20 @@ private struct CategoryBrowseView: View {
                     }
                 }
                 if places.contains(where: { !$0.hasMapCoordinates }) {
-                    Button { showMap = false } label: {
+                    Button { searchFocused = false; unmappedOnly = true; showMap = false } label: {
                         Text("\(places.filter { !$0.hasMapCoordinates }.count) without a map pin · View list")
                             .font(.caption).frame(maxWidth: .infinity, minHeight: 36)
                     }
                 }
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 14) {
-                        ForEach(PlaceType.allCases) { type in
-                            Label { Text(type.displayName) } icon: { Circle().fill(Color(hex: type.mapColorHex)).frame(width: 8, height: 8) }
-                        }
-                        Label("Coming Soon", systemImage: "circle")
-                    }.font(.caption2).padding(12)
-                }.background(palette.surface)
+                MapKey().padding(.horizontal, 12).padding(.vertical, 10).background(palette.surface)
             } else {
                 ScrollView {
-                    if places.isEmpty {
+                    if visiblePlaces.isEmpty {
                         Text("No locations match your search.").guideFont(15).foregroundStyle(palette.secondary)
                             .frame(maxWidth: .infinity).padding(24)
-                    } else if kind == nil {
+                    } else if kind == nil || unmappedOnly {
                         LazyVStack(spacing: 10) {
-                            ForEach(places) { place in
+                            ForEach(visiblePlaces) { place in
                                 Button { open(place) } label: {
                                     PlaceRow(place: place, distance: nearby ? location.distanceLabel(to: place) : nil)
                                         .padding(.horizontal, 14).background(palette.surface, in: RoundedRectangle(cornerRadius: 12))
@@ -684,7 +697,7 @@ private struct CategoryBrowseView: View {
                         }.padding(.horizontal, 16).padding(.bottom, 20)
                     } else {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: cardWidth), spacing: 7)], spacing: 7) {
-                            ForEach(places) { place in
+                            ForEach(visiblePlaces) { place in
                                 PlaceBrowseCard(place: place, title: place.guideName,
                                                 distance: nearby ? location.distanceLabel(to: place) : nil,
                                                 visited: !store.visits(to: place).isEmpty, open: { open(place) })
@@ -694,7 +707,8 @@ private struct CategoryBrowseView: View {
                 }.scrollDismissesKeyboard(.immediately)
                     .refreshable { await store.refreshCatalog(force: true) }
             }
-        }.sheet(isPresented: $showSettings) { SettingsView() }
+        }.onChange(of: mapRequest) { _, _ in returnToMap() }
+            .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showFilters) { filterSheet }
     }
     private var filterSheet: some View {
@@ -717,7 +731,7 @@ private struct CategoryBrowseView: View {
                 }
                 Toggle("Saved places only", isOn: $filters.savedOnly)
                 Section {
-                    Text("\(places.count) matching locations").foregroundStyle(.secondary)
+                    Text("\(visiblePlaces.count) matching locations").foregroundStyle(.secondary)
                     Button("Reset Filters") { filters = PlaceFilter() }
                 }
             }.navigationTitle("Filters")
