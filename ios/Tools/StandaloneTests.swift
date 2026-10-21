@@ -44,7 +44,9 @@ struct StandaloneTests {
             ("Independent item edits preserve other device changes", tests.testCloudChangesMergeWithoutReplacingOtherItems),
             ("Tombstones survive stale snapshots and repeat migration", tests.testCloudTombstonesPreventMigrationAndStaleSnapshotResurrection),
             ("Corrupt migration sources stay untouched and don't block the journal", tests.testCloudMigrationPreservesCorruptLegacy),
-            ("Unreadable records are skipped and preserved", tests.testCloudLoadSkipsAndPreservesUnreadableRecords)
+            ("Unreadable records are skipped and preserved", tests.testCloudLoadSkipsAndPreservesUnreadableRecords),
+            ("History keeps only the newest event per item", tests.testCloudHistoryKeepsOnlyTheNewestEventPerItem),
+            ("Map clusters stay separated; shared pins stay together", tests.testMapClustersStaySeparatedAndKeepColocatedPlacesTogether)
         ]
         for (name, run) in cases {
             let before = failures

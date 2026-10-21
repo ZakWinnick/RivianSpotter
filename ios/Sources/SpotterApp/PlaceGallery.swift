@@ -28,8 +28,10 @@ private final class PlaceArtworkCache {
         if active < 3 { active += 1; return }
         await withCheckedContinuation { waiters.append($0) }
     }
+    // Newest request first: after a fast scroll, the cards now on screen were requested last,
+    // so they load before cards that have already scrolled away.
     private func release() {
-        if waiters.isEmpty { active -= 1 } else { waiters.removeFirst().resume() }
+        if waiters.isEmpty { active -= 1 } else { waiters.removeLast().resume() }
     }
     private var pending: [URL: Task<PlaceArtwork?, Never>] = [:]
     private var failures: [URL: Date] = [:]
@@ -91,10 +93,10 @@ struct PlaceDetailPhoto: View {
                         .accessibilityLabel(photo.isCategory ? "Representative \(place.typeLabel) image" : photo.description)
                     if photo.isCategory {
                         Text("Representative charger photo · not this location")
-                            .font(.system(size: 12)).foregroundStyle(.secondary)
+                            .guideFont(12).foregroundStyle(.secondary)
                     }
                     if let url = photo.safeSourceURL {
-                        Link("\(photo.credit) ↗", destination: url).font(.system(size: 12))
+                        Link("\(photo.credit) ↗", destination: url).guideFont(12)
                     }
                 } else if !finished {
                     ProgressView().frame(maxWidth: .infinity).frame(height: 80).accessibilityLabel("Loading location photo")
@@ -119,6 +121,13 @@ struct PlaceBrowseCard: View {
     @State private var artwork: PlaceArtwork?
     @ScaledMetric(relativeTo: .body) private var cardHeight = 148.0
     @ScaledMetric(relativeTo: .body) private var titleSize = 14.0
+    private var accessibilityDescription: String {
+        var parts = [place.name, place.typeLabel, place.locality]
+        if let distance { parts.append(distance) }
+        if place.status == "planned" || !place.listed { parts.append(place.statusLabel) }
+        if visited { parts.append("visited") }
+        return parts.joined(separator: ", ")
+    }
     var body: some View {
         Button(action: open) {
             GeometryReader { geometry in
@@ -140,16 +149,16 @@ struct PlaceBrowseCard: View {
                     LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .center, endPoint: .bottom)
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
-                            if place.photo?.isCategory == true { Text("Category image").font(.system(size: 10)) }
+                            if place.photo?.isCategory == true { Text("Category image").guideFont(10) }
                             Spacer()
                             if visited { Image(systemName: "checkmark.circle.fill").foregroundStyle(.yellow) }
                         }
                         Spacer(minLength: 8)
                         Text(title).font(.system(size: titleSize, weight: .bold)).lineLimit(2)
-                        Text(distance.map { "\(place.region) · \($0)" } ?? "\(place.typeLabel) · \(place.region)")
-                            .font(.system(size: 12, weight: .medium)).lineLimit(1)
+                        Text(distance.map { "\($0) · \(place.typeLabel)" } ?? "\(place.typeLabel) · \(place.region)")
+                            .guideFont(12, .medium).lineLimit(1)
                         if place.status == "planned" || !place.listed {
-                            Text(place.statusLabel).font(.system(size: 11, weight: .medium))
+                            Text(place.statusLabel).guideFont(11, .medium)
                         }
                     }.foregroundStyle(.white).padding(10)
                 }.frame(width: geometry.size.width, height: cardHeight)
@@ -157,7 +166,7 @@ struct PlaceBrowseCard: View {
                     .contentShape(RoundedRectangle(cornerRadius: 10))
             }.frame(height: cardHeight)
         }.buttonStyle(.plain)
-            .accessibilityLabel("\(place.name)\(visited ? ", visited" : "")")
+            .accessibilityLabel(accessibilityDescription)
             .task(id: place.photo?.imageURL) {
                 artwork = nil
                 artwork = await PlaceArtworkCache.shared.artwork(for: place)

@@ -106,7 +106,20 @@ public final class CloudJournalStorage: JournalStorage {
                 let date = max(Date(), last.addingTimeInterval(0.001))
                 insert(key: key, payload: after[key], date: date, in: context)
             }
+            try compact(keys: changed, in: context)
             if context.hasChanges { try context.save() }
+        }
+    }
+
+    /// Only the newest event per key can ever win, so older events for the keys just written are
+    /// removed (the new event, including a tombstone, is kept). An event another device writes
+    /// later is a new record and still competes normally.
+    private func compact(keys: Set<String>, in context: NSManagedObjectContext) throws {
+        guard !keys.isEmpty else { return }
+        let request = NSFetchRequest<NSManagedObject>(entityName: "JournalEvent")
+        request.predicate = NSPredicate(format: "key IN %@", Array(keys))
+        for event in try context.fetch(request) where !event.isInserted {
+            context.delete(event)
         }
     }
 

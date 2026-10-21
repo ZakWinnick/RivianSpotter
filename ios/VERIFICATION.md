@@ -88,3 +88,15 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Built PR #32 at `5ae32ea` (`fix/ios-journal-resilience`), with only the local build-number increment to 3 before archiving. The PR was open at build time.
 - Thirteen core/storage checks passed, including skipping and preserving unreadable records and non-blocking damaged legacy migration. Three device-service checks and four catalog/detail checks passed.
 - Signed Release archive succeeded. Evidence: `.build/archive-build3.log` and `.build/upload-build3.log`.
+
+
+## Pressure-test follow-ups — October 20, 2026
+
+- Storage: each save keeps only the newest event for the items it changes (tombstones included), so 20 edits and 50 bookmark toggles leave 2 events. Stale snapshots still cannot resurrect a deleted bookmark.
+- Map: clusters are anchored at least one-eighth of the visible span apart, so markers no longer overlap. Tapping a cluster fits its members; places sharing a pin open as a list instead of requiring repeated zooms. Search in map view follows the results instead of resetting the camera.
+- Check In and visit editing: a Done control dismisses the note keyboard, and scrolling dismisses it too. The tab bar stays behind the keyboard.
+- Dynamic Type: Location Details, badges, cards and visit rows now scale. The tab bar keeps a fixed size with the large content viewer.
+- Navigation: a swipe from the leading edge goes back from place details and category galleries.
+- Smaller items: image requests serve the newest (on-screen) cards first; VoiceOver card labels include type, locality, distance and status; Near me can be turned off while locating; Locations and Browse tabs use distinct icons; "Added to Visited" copy; Near me card subtitles lead with distance and type; signed-out iCloud copy no longer promises the journal stays on the device.
+- Verified: 15 core cases (XCTest and standalone), 3 device-service checks, iOS simulator build, desktop preview build, `npm test` 100 passed. Observed on the iPhone 17e simulator: separated clusters and fit-to-cluster, Denver search in map view, edge swipe back, note Done button, and accessibility XXXL text on Location Details.
+- Not verified: VoiceOver with a screen reader running, iPad layout for these changes, and how NSPersistentCloudKitContainer treats local data after iCloud sign-out on a device.

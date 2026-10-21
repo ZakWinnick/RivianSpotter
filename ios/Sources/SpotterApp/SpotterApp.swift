@@ -175,7 +175,7 @@ struct RivianSpotterApp: App {
 private enum GuideTab: String, CaseIterable {
     case catalog = "Locations", explore = "Browse", saved = "Saved", journal = "Visited"
     var symbol: String {
-        switch self { case .catalog: "rectangle.grid.2x2"; case .explore: "square.grid.2x2"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
+        switch self { case .catalog: "square.grid.2x2"; case .explore: "list.bullet.rectangle"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
     }
 }
 
@@ -200,6 +200,7 @@ struct RootView: View {
                         PlaceDetail(place: place, back: { selectedPlace = placeHistory.popLast() }, open: { next in
                             placeHistory.append(place); selectedPlace = next
                         }).id(place.id).background(palette.paper)
+                            .edgeSwipeBack { selectedPlace = placeHistory.popLast() }
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -213,13 +214,15 @@ struct RootView: View {
                                     Text(item.rawValue).font(.system(size: 10, weight: .medium))
                                 }.foregroundStyle(tab == item ? palette.accent : palette.secondary)
                                     .frame(maxWidth: .infinity, minHeight: 52).contentShape(Rectangle())
-                            }.buttonStyle(.plain).accessibilityAddTraits(tab == item ? .isSelected : [])
+                            }.buttonStyle(.plain).accessibilityAddTraits(tab == item ? .isSelected : []).largeContentViewerIfAvailable()
                         }
                     }.padding(.horizontal, 12).background(.regularMaterial)
                         .overlay(alignment: .top) { Divider() }
                 }
             }
         }
+        // Keep the tab bar behind the keyboard, as a system tab bar does, instead of riding above it.
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
         .sheet(isPresented: $showSettings) { SettingsView() }
         .onChange(of: scenePhase) { _, phase in
@@ -232,6 +235,7 @@ struct RootView: View {
     @ViewBuilder private var browsing: some View {
         if let kind = selectedCategory {
             CategoryBrowseView(kind: kind, open: { selectedPlace = $0 }, back: { selectedCategory = nil })
+                .edgeSwipeBack(selectedPlace == nil ? { selectedCategory = nil } : nil)
         } else {
             switch tab {
             case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil)
@@ -436,7 +440,7 @@ struct ExploreView: View {
             HStack(spacing: 12) {
                 Image(systemName: kind.symbol).frame(width: 27, height: 27)
                     .foregroundStyle(.white).background(kind.browseColor(in: scheme), in: RoundedRectangle(cornerRadius: 6))
-                Text(kind.browseTitle).font(.system(size: 16))
+                Text(kind.browseTitle).guideFont(16)
                 Spacer()
                 Text("\(store.places.filter { $0.browseTypes.contains(kind) }.count)").foregroundStyle(.secondary)
                 Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold)).foregroundStyle(.tertiary)
@@ -475,16 +479,16 @@ private struct CategoryBrowseView: View {
                         Button(action: back) { Image(systemName: "chevron.left").frame(width: 32, height: 44) }
                             .buttonStyle(.plain).accessibilityLabel("Back to Browse")
                     }
-                    Text(kind?.browseTitle ?? "All Locations").font(.system(size: 17, weight: .semibold)).lineLimit(1)
+                    Text(kind?.browseTitle ?? "All Locations").guideFont(17, .semibold).lineLimit(1)
                     Spacer()
                     Button {
-                        if nearby { nearby = false } else { nearby = true; location.request() }
+                        if nearby { nearby = false; location.cancel() } else { nearby = true; location.request() }
                     } label: {
                         Image(systemName: nearby ? "location.fill" : "location").frame(width: 44, height: 44)
                             .foregroundStyle(nearby ? GuidePalette.charcoal : palette.ink)
                             .background(nearby ? GuidePalette.yellow : .clear, in: Circle())
-                    }.buttonStyle(.plain).disabled(location.requesting)
-                        .accessibilityLabel(location.requesting ? "Locating" : "Near me")
+                    }.buttonStyle(.plain)
+                        .accessibilityLabel(location.requesting ? "Locating, tap to stop" : "Near me")
                         .accessibilityAddTraits(nearby ? .isSelected : [])
                     Button { showMap.toggle() } label: {
                         Image(systemName: showMap ? "square.grid.2x2" : "map").frame(width: 44, height: 44)
@@ -496,7 +500,7 @@ private struct CategoryBrowseView: View {
                 }
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass").foregroundStyle(palette.secondary)
-                    TextField("Find a location", text: $search).textFieldStyle(.plain).guideFont(15)
+                    TextField("Find a location", text: $search).textFieldStyle(.plain).guideFont(15).submitLabel(.search)
                         .accessibilityLabel("Search \(kind?.browseTitle ?? "all locations")")
                     if !search.isEmpty {
                         Button { search = "" } label: { Image(systemName: "xmark.circle.fill") }
@@ -522,7 +526,7 @@ private struct CategoryBrowseView: View {
                 }
             }.padding(.horizontal, 16).padding(.top, 0).padding(.bottom, 10)
             if showMap {
-                PlacesMap(places: places, open: open, userLocation: nearby ? location.location : nil).id(search)
+                PlacesMap(places: places, open: open, userLocation: nearby ? location.location : nil)
             } else {
                 ScrollView {
                     if places.isEmpty {
@@ -537,7 +541,7 @@ private struct CategoryBrowseView: View {
                             }
                         }.padding(.horizontal, 16).padding(.bottom, 22)
                     }
-                }
+                }.scrollDismissesKeyboard(.immediately)
             }
         }.sheet(isPresented: $showSettings) { SettingsView() }
     }
@@ -575,12 +579,20 @@ struct PlaceRow: View {
 }
 
 private struct MapGroup: Identifiable {
-    let id: String
     let places: [Place]
+    var id: String { places[0].id }
+    // Drawn at the cluster anchor so markers keep their spacing; tapping fits every member.
     var coordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: places.compactMap(\.latitude).reduce(0, +) / Double(places.count),
-                               longitude: places.compactMap(\.longitude).reduce(0, +) / Double(places.count))
+        CLLocationCoordinate2D(latitude: places[0].latitude!, longitude: places[0].longitude!)
     }
+}
+
+private func fittedRegion(_ places: [Place]) -> MKCoordinateRegion? {
+    let mapped = places.filter(\.hasPreciseCoordinates)
+    let lats = mapped.compactMap(\.latitude), lons = mapped.compactMap(\.longitude)
+    guard let minLat = lats.min(), let maxLat = lats.max(), let minLon = lons.min(), let maxLon = lons.max() else { return nil }
+    return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLon + maxLon) / 2),
+        span: MKCoordinateSpan(latitudeDelta: max((maxLat - minLat) * 1.4, 0.02), longitudeDelta: max((maxLon - minLon) * 1.4, 0.02)))
 }
 
 struct PlacesMap: View {
@@ -593,12 +605,8 @@ struct PlacesMap: View {
     @State private var longitudeSpan = 58.0
     @State private var selectedGroup: MapGroup?
     private var groups: [MapGroup] {
-        let mapped = places.filter(\.hasPreciseCoordinates)
-        if closeUp { return mapped.map { MapGroup(id: $0.id, places: [$0]) } }
-        let latCell = max(latitudeSpan / 7, 0.0001), lonCell = max(longitudeSpan / 9, 0.0001)
-        return Dictionary(grouping: mapped) {
-            "\(Int(floor($0.latitude! / latCell))):\(Int(floor($0.longitude! / lonCell)))"
-        }.map { MapGroup(id: $0.key, places: $0.value) }.sorted { $0.id < $1.id }
+        if closeUp { return places.filter(\.hasPreciseCoordinates).map { MapGroup(places: [$0]) } }
+        return PlaceClustering.clusters(places, latitudeSpan: latitudeSpan, longitudeSpan: longitudeSpan).map(MapGroup.init)
     }
     var body: some View {
         Map(position: $position) {
@@ -612,11 +620,10 @@ struct PlacesMap: View {
                 Annotation(group.places.count == 1 ? group.places[0].guideName : "\(group.places.count) places", coordinate: group.coordinate) {
                     Button {
                         if group.places.count == 1 { open(group.places[0]) }
-                        else if latitudeSpan < 0.005 {
+                        else if latitudeSpan < 0.005 || PlaceClustering.isColocated(group.places) {
                             selectedGroup = group
-                        } else {
-                            position = .region(MKCoordinateRegion(center: group.coordinate,
-                                span: MKCoordinateSpan(latitudeDelta: latitudeSpan * 0.35, longitudeDelta: longitudeSpan * 0.35)))
+                        } else if let region = fittedRegion(group.places) {
+                            withAnimation { position = .region(region) }
                         }
                     } label: {
                         ZStack {
@@ -635,6 +642,11 @@ struct PlacesMap: View {
         }.mapStyle(.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll))
             .onAppear { position = initialPosition }
             .onChange(of: userLocation) { _, _ in position = initialPosition }
+            // Follow search results instead of resetting to the whole map on each keystroke.
+            .onChange(of: places.map(\.id)) { _, _ in
+                guard userLocation == nil, !closeUp, !places.isEmpty else { return }
+                withAnimation { position = initialPosition }
+            }
             .onMapCameraChange(frequency: .onEnd) { context in
                 latitudeSpan = context.region.span.latitudeDelta
                 longitudeSpan = context.region.span.longitudeDelta
@@ -662,6 +674,10 @@ struct PlacesMap: View {
             return .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude!, longitude: place.longitude!),
                 span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)))
         }
+        // Narrowed results fit to their pins; a continent-wide set keeps the familiar overview.
+        if let region = fittedRegion(places), region.span.latitudeDelta < 30, region.span.longitudeDelta < 50 {
+            return .region(region)
+        }
         return .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40, longitude: -100),
             span: MKCoordinateSpan(latitudeDelta: 38, longitudeDelta: 58)))
     }
@@ -683,7 +699,8 @@ struct PlaceDetail: View {
                 Button(action: back) { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
                     .buttonStyle(.plain).accessibilityLabel("Back")
                 Spacer()
-                Text("Location Details").font(.system(size: 17, weight: .semibold)).foregroundStyle(palette.ink)
+                Text("Location Details").guideFont(17, .semibold).foregroundStyle(palette.ink)
+                    .lineLimit(1).minimumScaleFactor(0.6)
                 Spacer()
                 Button {
                     if !store.perform({ try $0.toggleSaved(place) }) { actionError = store.takeError() }
@@ -696,7 +713,7 @@ struct PlaceDetail: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     PlaceDetailPhoto(place: place)
-                    Text(place.guideName).font(.system(size: 28, weight: .bold)).padding(.top, 2)
+                    Text(place.guideName).guideFont(28, .bold).padding(.top, 2)
                         .fixedSize(horizontal: false, vertical: true)
                     ViewThatFits(in: .horizontal) {
                         HStack(spacing: 6) { detailBadges }
@@ -704,10 +721,10 @@ struct PlaceDetail: View {
                     }.padding(.bottom, 5)
                     DetailPanel(title: "Address", symbol: "location.fill", color: .orange) {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text(place.address ?? "Street address not published").font(.system(size: 15, weight: .medium))
-                            Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "")").font(.system(size: 14))
+                            Text(place.address ?? "Street address not published").guideFont(15, .medium)
+                            Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "")").guideFont(14)
                             Text(place.country == "US" ? "United States" : place.country == "CA" ? "Canada" : place.country)
-                                .font(.system(size: 13)).foregroundStyle(palette.secondary)
+                                .guideFont(13).foregroundStyle(palette.secondary)
                         }.textSelection(.enabled)
                         if place.hasPreciseCoordinates {
                             PlacesMap(places: [place], open: { _ in }, closeUp: true)
@@ -716,7 +733,7 @@ struct PlaceDetail: View {
                             Text("A precise map pin is not available yet.").font(.footnote).foregroundStyle(.secondary)
                         }
                         if let url = place.directionsURL {
-                            Link(destination: url) { Label("Open in Maps", systemImage: "arrow.up.right").font(.system(size: 14, weight: .medium)) }
+                            Link(destination: url) { Label("Open in Maps", systemImage: "arrow.up.right").guideFont(14, .medium) }
                                 .padding(.top, 4)
                         }
                     }
@@ -730,7 +747,7 @@ struct PlaceDetail: View {
                         if section.expandable {
                             DisclosureGroup {
                                 informationFacts(section).padding(.top, 12)
-                            } label: { Label(section.title, systemImage: section.title.contains("charger") ? "ev.charger" : "clock").font(.system(size: 15, weight: .semibold)) }
+                            } label: { Label(section.title, systemImage: section.title.contains("charger") ? "ev.charger" : "clock").guideFont(15, .semibold) }
                                 .padding(14).background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
                         } else {
                             DetailPanel(title: section.title, symbol: sectionSymbol(section.title), color: palette.accent) {
@@ -743,7 +760,7 @@ struct PlaceDetail: View {
                         DetailPanel(title: "Nearby", symbol: "mappin.and.ellipse", color: .green) {
                             ForEach(related) { nearby in
                                 Button { open(nearby) } label: {
-                                    HStack { Text(nearby.guideName).font(.system(size: 15)); Spacer(); Image(systemName: "chevron.right").font(.caption) }
+                                    HStack { Text(nearby.guideName).guideFont(15); Spacer(); Image(systemName: "chevron.right").font(.caption) }
                                         .frame(minHeight: 38).contentShape(Rectangle())
                                 }.buttonStyle(.plain)
                             }
@@ -751,26 +768,26 @@ struct PlaceDetail: View {
                     }
                     DetailPanel(title: "Visits", symbol: "checkmark.seal.fill", color: palette.accent) {
                         if store.visits(to: place).isEmpty {
-                            Text("No visits recorded").font(.system(size: 14)).foregroundStyle(palette.secondary)
+                            Text("No visits recorded").guideFont(14).foregroundStyle(palette.secondary)
                         } else {
                             ForEach(store.visits(to: place)) { visit in
                                 Button { selectedVisit = visit } label: { VisitRow(visit: visit) }.buttonStyle(.plain)
                             }
                         }
-                        Button { showCheckIn = true } label: { Label("Add Visit", systemImage: "plus").font(.system(size: 14, weight: .medium)).frame(minHeight: 36) }
+                        Button { showCheckIn = true } label: { Label("Add Visit", systemImage: "plus").guideFont(14, .medium).frame(minHeight: 36) }
                             .buttonStyle(.plain).disabled(!store.ready)
                     }
                     DetailPanel(title: "Published Information", symbol: "info.circle.fill", color: .gray) {
                         Text("Checked \(place.checkedOn ?? "date unavailable"). Published information, not live availability.")
-                            .font(.system(size: 13)).foregroundStyle(palette.secondary)
+                            .guideFont(13).foregroundStyle(palette.secondary)
                         DisclosureGroup("Sources") {
                             VStack(alignment: .leading, spacing: 12) {
                                 if let url = place.safeSourceURL { Link("Rivian published source ↗", destination: url) }
                                 ForEach(Array(Set((place.information ?? []).compactMap { $0.safeSourceURL })).sorted { $0.absoluteString < $1.absoluteString }, id: \.self) { url in
                                     Link("Charging snapshot source ↗", destination: url)
                                 }
-                            }.font(.system(size: 13)).padding(.top, 8)
-                        }.font(.system(size: 13))
+                            }.guideFont(13).padding(.top, 8)
+                        }.guideFont(13)
                     }
                 }.padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 24)
                     .frame(maxWidth: 660).frame(maxWidth: .infinity)
@@ -781,15 +798,15 @@ struct PlaceDetail: View {
         .actionError($actionError)
     }
     @ViewBuilder private var detailBadges: some View {
-        Text(place.typeLabel).font(.system(size: 12, weight: .medium)).padding(.horizontal, 8).padding(.vertical, 4)
+        Text(place.typeLabel).guideFont(12, .medium).padding(.horizontal, 8).padding(.vertical, 4)
             .background(palette.accent.opacity(0.22), in: Capsule()).foregroundStyle(palette.accent)
         if place.status == "planned" || !place.listed {
-            Text(place.statusLabel).font(.system(size: 12)).padding(.horizontal, 8).padding(.vertical, 4)
+            Text(place.statusLabel).guideFont(12).padding(.horizontal, 8).padding(.vertical, 4)
                 .background(palette.secondary.opacity(0.16), in: Capsule())
         }
         Button { showCheckIn = true } label: {
             Label(store.visits(to: place).isEmpty ? "Visit" : "Visited", systemImage: store.visits(to: place).isEmpty ? "plus" : "checkmark")
-                .font(.system(size: 12, weight: .medium)).padding(.horizontal, 8).padding(.vertical, 4)
+                .guideFont(12, .medium).padding(.horizontal, 8).padding(.vertical, 4)
                 .background(palette.secondary.opacity(0.18), in: Capsule())
         }.buttonStyle(.plain).disabled(!store.ready).accessibilityLabel("Check In or add a visit")
     }
@@ -820,7 +837,7 @@ private struct DetailPanel<Content: View>: View {
             HStack(spacing: 6) {
                 Image(systemName: symbol).font(.system(size: 12, weight: .semibold)).foregroundStyle(.white)
                     .frame(width: 21, height: 21).background(color, in: RoundedRectangle(cornerRadius: 5))
-                Text(title).font(.system(size: 15, weight: .semibold))
+                Text(title).guideFont(15, .semibold)
             }
             content()
         }.frame(maxWidth: .infinity, alignment: .leading).padding(14)
@@ -952,10 +969,10 @@ struct VisitRow: View {
         HStack(alignment: .top, spacing: 18) {
             VStack(spacing: 3) {
                 Text(visit.visitedAt, format: .dateTime.month(.abbreviated)).textCase(.uppercase)
-                    .font(.system(size: 10, weight: .bold)).tracking(1)
-                Text(visit.visitedAt, format: .dateTime.day()).font(.system(size: 26, weight: .medium))
-                Text(visit.visitedAt, format: .dateTime.year()).font(.system(size: 10))
-            }.foregroundStyle(GuidePalette(scheme: scheme).secondary).frame(width: 40)
+                    .guideFont(10, .bold).tracking(1)
+                Text(visit.visitedAt, format: .dateTime.day()).guideFont(26, .medium)
+                Text(visit.visitedAt, format: .dateTime.year()).guideFont(10)
+            }.foregroundStyle(GuidePalette(scheme: scheme).secondary).frame(minWidth: 40)
             VStack(alignment: .leading, spacing: 7) {
                 Text(visit.place.guideTitle).guideFont(17, .semibold)
                 Text("\(visit.type.rawValue) · \(visit.place.city), \(visit.place.region)")
@@ -991,6 +1008,7 @@ private struct VisitFields: View {
     @Binding var type: PlaceType
     var allowTypeChange = true
     @Environment(\.colorScheme) private var scheme
+    @FocusState private var noteFocused: Bool
     private var palette: GuidePalette { .init(scheme: scheme) }
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -1015,9 +1033,15 @@ private struct VisitFields: View {
                 HStack {
                     Text("Notes").guideFont(15, .semibold)
                     Spacer()
-                    Text("Optional").guideFont(13).foregroundStyle(palette.secondary)
-                }
-                TextField("Add a private note", text: $note, axis: .vertical).textFieldStyle(.plain)
+                    // Return adds a line in a multi-line note, so give the keyboard an explicit exit.
+                    if noteFocused {
+                        Button("Done") { noteFocused = false }.guideFont(15, .semibold).buttonStyle(.plain)
+                            .foregroundStyle(palette.accent).frame(minHeight: 44)
+                    } else {
+                        Text("Optional").guideFont(13).foregroundStyle(palette.secondary)
+                    }
+                }.frame(minHeight: 44)
+                TextField("Add a private note", text: $note, axis: .vertical).textFieldStyle(.plain).focused($noteFocused)
                     .guideFont(17).lineLimit(5...8).padding(18)
                     .background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
                     .overlay(RoundedRectangle(cornerRadius: 14).stroke(palette.line, lineWidth: 1))
@@ -1052,7 +1076,7 @@ struct CheckInView: View {
                             Text("Visit saved").guideFont(34, .bold).tracking(-1)
                             Text(place.guideTitle).guideFont(17, .semibold).multilineTextAlignment(.center)
                             Text(date, format: .dateTime.month(.wide).day().year()).guideFont(15)
-                            Text("Added to My Visits.").guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                            Text("Added to Visited.").guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary)
                             Button("Done") { dismiss() }.buttonStyle(PrimaryAction()).padding(.top, 24)
                         }.frame(maxWidth: .infinity)
                     } else {
@@ -1066,7 +1090,7 @@ struct CheckInView: View {
                             .guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
                     }
                 }.padding(24)
-            }
+            }.scrollDismissesKeyboard(.interactively)
         }.background(GuidePalette(scheme: scheme).paper).foregroundStyle(GuidePalette(scheme: scheme).ink)
             .tint(GuidePalette(scheme: scheme).accent).actionError($actionError)
         #if os(macOS)
@@ -1105,7 +1129,7 @@ struct VisitEditor: View {
                     Button("Delete Visit", role: .destructive) { confirmDelete = true }
                         .buttonStyle(.plain).guideFont(15).padding(.vertical, 12)
                 }.padding(24)
-            }
+            }.scrollDismissesKeyboard(.interactively)
         }.background(GuidePalette(scheme: scheme).paper).foregroundStyle(GuidePalette(scheme: scheme).ink)
             .tint(GuidePalette(scheme: scheme).accent)
             .confirmationDialog("Delete this visit?", isPresented: $confirmDelete, titleVisibility: .visible) {
@@ -1151,8 +1175,24 @@ private struct GuideFont: ViewModifier {
     }
     func body(content: Content) -> some View { content.font(.system(size: size, weight: weight)) }
 }
-private extension View {
+extension View {
     func guideFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> some View {
         modifier(GuideFont(size, weight))
+    }
+    /// Fixed-size controls like the tab bar show an enlarged copy on long press at accessibility sizes.
+    @ViewBuilder func largeContentViewerIfAvailable() -> some View {
+        #if os(iOS)
+        accessibilityShowsLargeContentViewer()
+        #else
+        self
+        #endif
+    }
+    /// Screens use custom navigation, so restore the system's swipe from the leading edge to go back.
+    func edgeSwipeBack(_ back: (() -> Void)?) -> some View {
+        simultaneousGesture(DragGesture(minimumDistance: 20, coordinateSpace: .local).onEnded { value in
+            guard let back, value.startLocation.x < 28, value.translation.width > 80,
+                  abs(value.translation.height) < value.translation.width / 2 else { return }
+            back()
+        })
     }
 }

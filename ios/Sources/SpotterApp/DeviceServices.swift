@@ -45,6 +45,10 @@ final class LocationService: NSObject, ObservableObject, @preconcurrency CLLocat
             message = "Location is unavailable. Search by city instead."
         }
     }
+    /// Turning Near me off stops waiting, including while the permission prompt is still open.
+    func cancel() {
+        timeout?.cancel(); requesting = false; message = nil; needsSettings = false
+    }
     func refreshAuthorization() {
         if manager.authorizationStatus == .denied || manager.authorizationStatus == .restricted {
             location = nil
@@ -138,7 +142,7 @@ final class CloudSyncStatus: ObservableObject {
                         detail = "Your journal is stored locally and syncs privately through your iCloud account. The first sync may take a few minutes."
                     }
                 case .noAccount:
-                    title = "iCloud unavailable"; detail = "Sign in to iCloud in Settings to sync. Your journal stays available on this device."
+                    title = "iCloud unavailable"; detail = "Sign in to iCloud in Settings to sync your journal and keep it backed up across devices."
                 case .restricted:
                     title = "iCloud unavailable"; detail = "iCloud is restricted on this device. Your journal is saved locally."
                 default:
