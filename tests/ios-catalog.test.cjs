@@ -1,6 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { catalog } = require('../scripts/export-ios-catalog.cjs');
+const exporter = require('../scripts/export-ios-catalog.cjs');
+// Tests run in parallel processes, so they read the committed manifest and never write it.
+const catalog = () => exporter.catalog({ updateRevision: false });
 const { combineLocations, locationTypes } = require('../js/location-model.js');
 const places = require('../data/locations.json');
 const charging = require('../data/charging.json');
@@ -23,13 +25,54 @@ test('catalog revisions advance for same-day edits and removals, and persist for
   } finally { fs.rmSync(directory, { recursive: true, force: true }); }
 });
 
+test('the committed revision manifest matches the current location data', () => {
+  const fs = require('node:fs');
+  const { digestOf } = require('../scripts/catalog-revision.cjs');
+  const manifest = JSON.parse(fs.readFileSync(exporter.manifestPath, 'utf8'));
+  assert.equal(manifest.digest, digestOf(exporter.catalogContent()),
+    'data/catalog-revision.json is stale: run `node scripts/export-ios-catalog.cjs` and commit the manifest and bundled catalog. ' +
+    'Otherwise every CI deploy would publish a new, uncommitted revision.');
+});
+
+test('a stale manifest is rejected without writing when revisions may not be updated', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const { revisionFor } = require('../scripts/catalog-revision.cjs');
+  const directory = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'spotter-stale-'));
+  const file = path.join(directory, 'revision.json');
+  try {
+    assert.equal(revisionFor({ places: [1] }, file, 1000), 1000);
+    const before = fs.readFileSync(file, 'utf8');
+    assert.equal(revisionFor({ places: [1] }, file, 5000, { update: false }), 1000, 'Unchanged content is fine');
+    assert.throws(() => revisionFor({ places: [2] }, file, 5000, { update: false }), /out of date/);
+    assert.equal(fs.readFileSync(file, 'utf8'), before);
+  } finally { fs.rmSync(directory, { recursive: true, force: true }); }
+});
+
+test('the bundled iOS catalog never claims a newer revision than the manifest', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const bundled = JSON.parse(fs.readFileSync(path.join(__dirname, '../ios/Sources/SpotterCore/Resources/catalog.json'), 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(exporter.manifestPath, 'utf8'));
+  assert.ok(Number.isSafeInteger(bundled.revision) && bundled.revision > 0, 'Bundled catalog needs a revision');
+  // A bundle ahead of the published feed would make the app reject every download.
+  assert.ok(bundled.revision <= manifest.revision,
+    `Bundled revision ${bundled.revision} is newer than the manifest ${manifest.revision}; regenerate with node scripts/export-ios-catalog.cjs.`);
+  // Scheduled refreshes advance the manifest without touching the bundle, so an older bundle is fine.
+  // The same revision must mean the same content.
+  if (bundled.revision === manifest.revision) {
+    const { revision, ...content } = bundled;
+    assert.deepEqual(content, exporter.catalogContent(), 'Bundled catalog content differs from the manifest revision it claims');
+  }
+});
+
 test('public API export is deterministic and includes the complete canonical catalog', () => {
   const fs = require('node:fs');
   const path = require('node:path');
   const directory = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'spotter-api-'));
   try {
     const target = path.join(directory, 'api/v1/catalog.json');
-    const { writeCatalog } = require('../scripts/export-ios-catalog.cjs');
+    const writeCatalog = file => exporter.writeCatalog(file, { updateRevision: false });
     writeCatalog(target);
     const first = fs.readFileSync(target, 'utf8');
     assert.deepEqual(JSON.parse(first), catalog());
@@ -123,4 +166,31 @@ test('older charging detail rates cannot override a newer network snapshot', () 
   const text = JSON.stringify(details);
   assert.match(text, /0.44/);
   assert.doesNotMatch(text, /0.99|Offline/);
+});
+
+test('native presentation shares website grade selection, colors, booking links and charging labels', () => {
+  const { locationReliability, locationGrade, gradePresentation } = require('../js/components.js');
+  const { safeUrl } = require('../js/location-model.js');
+  const source = combineLocations(places, charging, require('../data/roamer.json').stations);
+  const exported = catalog().places;
+  for (const place of source) {
+    const native = exported.find(p => p.id === String(place.id));
+    assert.deepEqual(native.reliability, locationReliability(place));
+    assert.equal(native.bookingURL, safeUrl(place.bookingUrl, 'rivian.com'));
+    assert.equal(native.phone, place.phone || null);
+    if (native.reliability) {
+      assert.match(locationGrade(place), new RegExp(`reliability-${native.reliability.tone}`));
+      assert.match(require('node:fs').readFileSync(require('node:path').join(__dirname, '../css/style.css'), 'utf8'),
+        new RegExp(native.reliability.background, 'i'));
+    }
+    if (place.status === 'planned') assert.equal(native.reliability, null);
+  }
+  const combined = exported.find(p => p.name === 'Corte Madera, CA');
+  assert.ok(combined.information.some(s => s.tags?.includes('DC Fast Charging')));
+  assert.ok(combined.information.some(s => s.tags?.includes('Level 2 Charging')));
+  assert.ok(combined.information.filter(s => s.metrics).every(s => s.metrics.length === 2));
+  assert.equal(gradePresentation({reliabilityGrade:'A+'}).tone, 'neutral');
+  assert.equal(gradePresentation({reliabilityGrade:'B',reliabilityTone:'invalid'}).background, '#84cc16');
+  assert.equal(gradePresentation({reliabilityGrade:'unknown'}), null);
+  assert.equal(locationReliability({status:'planned',reliabilityGrade:'A'}), null);
 });

@@ -56,6 +56,8 @@ struct StandaloneTests {
         }
         let catalogTests = CatalogUpdateTests()
         do {
+            try catalogTests.testWebsitePresentationAndSafeDemoBooking()
+            try catalogTests.testMapFiltersAndApproximatePlannedPins()
             try catalogTests.testSavedPlaceFollowsNewDetailsAndAliasesWithoutChangingJournal()
             try catalogTests.testInvalidCatalogIsRejected()
             try catalogTests.testFeedFromANewerWebsiteStillUpdatesInstalledApps()
@@ -64,7 +66,7 @@ struct StandaloneTests {
             try await catalogTests.testStaleResponsesCannotReplaceBundleOrDownloadedSavedDetails()
             try await catalogTests.testDownloadCacheRevalidationAndFailurePreserveLatestDirectory()
         } catch { failure("Catalog updates: \(error)") }
-        print("\(cases.count + 7) cases, \(failures) failures")
+        print("\(cases.count + 9) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

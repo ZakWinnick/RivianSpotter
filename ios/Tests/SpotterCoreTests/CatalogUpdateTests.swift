@@ -208,4 +208,47 @@ final class CatalogUpdateTests: XCTestCase {
         try Data("corrupt".utf8).write(to: url)
         XCTAssertTrue(CatalogSnapshot.cached(at: url) == nil)
     }
+    func testWebsitePresentationAndSafeDemoBooking() throws {
+        let places = try Catalog.bundled().places
+        let barstow = try XCTUnwrap(places.first { $0.name == "Barstow, CA" })
+        XCTAssertEqual(barstow.reliability?.grade, "A")
+        XCTAssertEqual(barstow.reliability?.background, "#10b981")
+        XCTAssertEqual(barstow.typeLabel, "Rivian Adventure Network")
+        XCTAssertTrue(barstow.matches("RAN"))
+        XCTAssertTrue(barstow.information!.contains { $0.tags?.contains("Open to Other EVs") == true })
+        let demo = try XCTUnwrap(places.first { $0.bookingURL != nil })
+        XCTAssertTrue(demo.safeBookingURL != nil)
+        var json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(demo)) as! [String: Any]
+        for url in ["https://rivian.com.evil.example/book", "http://rivian.com/book", "https://user:password@rivian.com/book", "javascript:alert(1)"] {
+            json["bookingURL"] = url
+            let unsafe = try JSONDecoder().decode(Place.self, from: JSONSerialization.data(withJSONObject: json))
+            XCTAssertTrue(unsafe.safeBookingURL == nil)
+        }
+        json.removeValue(forKey: "bookingURL"); json.removeValue(forKey: "reliability"); json.removeValue(forKey: "phone")
+        let legacy = try JSONDecoder().decode(Place.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertTrue(legacy.safeBookingURL == nil)
+    }
+    func testMapFiltersAndApproximatePlannedPins() throws {
+        let places = try Catalog.bundled().places
+        let planned = try XCTUnwrap(places.first { $0.status == "planned" && $0.coordinatePrecision == "city" && $0.listed })
+        XCTAssertTrue(planned.hasMapCoordinates)
+        XCTAssertFalse(planned.hasPreciseCoordinates)
+        XCTAssertEqual(PlaceClustering.clusters([planned], latitudeSpan: 5, longitudeSpan: 5).count, 1)
+        var filter = PlaceFilter()
+        filter.type = .ran; filter.region = planned.region; filter.status = .planned; filter.savedOnly = true
+        XCTAssertEqual(filter.activeCount, 4)
+        XCTAssertTrue(filter.matches(planned, saved: true))
+        XCTAssertFalse(filter.matches(planned, saved: false))
+        filter.status = .operating
+        XCTAssertFalse(filter.matches(planned, saved: true))
+        filter = PlaceFilter()
+        XCTAssertEqual(filter.activeCount, 0)
+        XCTAssertTrue(filter.matches(planned, saved: false))
+        let combined = try XCTUnwrap(places.first { $0.name == "Corte Madera, CA" })
+        filter.type = .waypoint
+        XCTAssertTrue(filter.matches(combined, saved: false))
+        filter.type = .space
+        XCTAssertFalse(filter.matches(combined, saved: false))
+    }
+
 }

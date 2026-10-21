@@ -223,7 +223,7 @@ final class JournalTests: XCTestCase {
     }
     func testMapClustersStaySeparatedAndKeepColocatedPlacesTogether() throws {
         let places = try Catalog.bundled().places
-        let mapped = places.filter(\.hasPreciseCoordinates)
+        let mapped = places.filter(\.hasMapCoordinates)
         for (latSpan, lonSpan) in [(38.0, 58.0), (4.0, 6.0), (0.3, 0.4)] {
             let clusters = PlaceClustering.clusters(places, latitudeSpan: latSpan, longitudeSpan: lonSpan)
             XCTAssertEqual(clusters.map(\.count).reduce(0, +), mapped.count)

@@ -6,6 +6,8 @@ const root = path.resolve(__dirname, '..');
 const read = name => JSON.parse(fs.readFileSync(path.join(root, 'data', name), 'utf8'));
 const photos = read('location-photos.json');
 const { informationFor } = require('./ios-place-information.cjs');
+const { locationReliability } = require('../js/components.js');
+const { safeUrl } = require('../js/location-model.js');
 function photoFor(place) {
   const own = [place.id, ...(place.legacyIds || [])].map(String).map(id => photos.locations[id]).find(Boolean);
   if (own) return own;
@@ -14,7 +16,7 @@ function photoFor(place) {
   if (types.some(type => ['Space', 'Outpost'].includes(type))) return null;
   return photos.categories[types.includes('RAN') ? 'RAN' : types.includes('Waypoint') ? 'Waypoint' : ''] || null;
 }
-function catalog() {
+function catalogContent() {
   const places = combineLocations(read('locations.json'), read('charging.json'), read('roamer.json').stations);
   const output = { schemaVersion: 1, places: places.map(p => ({
     id: String(p.id), aliases: (p.legacyIds || []).map(String), slug: p.slug,
@@ -29,16 +31,27 @@ function catalog() {
     sourceURL: p.sourceUrl || null, checkedOn: p.lastVerified || null,
     chargerCount: p.chargerCount ?? null, maxKw: p.maxKw ?? null,
     photo: photoFor(p),
+    reliability: locationReliability(p),
+    bookingURL: safeUrl(p.bookingUrl, 'rivian.com'), phone: p.phone || null,
     information: informationFor(p),
     postalCode: p.postalCode || null,
     relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]
   })).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id)) };
-  return { ...output, revision: require('./catalog-revision.cjs').revisionFor(output,
-    path.join(root, 'data/catalog-revision.json')) };
+  return output;
 }
-function writeCatalog(target, { pretty = false } = {}) {
+const manifestPath = path.join(root, 'data/catalog-revision.json');
+// Local builds record a new revision for changed content. In CI the committed manifest must
+// already match, so every deploy of unchanged data publishes identical bytes. The scheduled
+// refresh, which commits the manifest it produces, opts in with CATALOG_REVISION_UPDATE=1.
+const mayUpdateRevision = () => !process.env.CI || process.env.CATALOG_REVISION_UPDATE === '1';
+function catalog({ updateRevision = mayUpdateRevision() } = {}) {
+  const output = catalogContent();
+  return { ...output, revision: require('./catalog-revision.cjs').revisionFor(output, manifestPath,
+    Date.now(), { update: updateRevision }) };
+}
+function writeCatalog(target, { pretty = false, updateRevision } = {}) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  const output = catalog();
+  const output = catalog({ updateRevision });
   const ids = output.places.map(p => p.id);
   if (!ids.length || ids.some(id => !id) || new Set(ids).size !== ids.length) throw Error('Invalid catalog identities');
   fs.writeFileSync(target, JSON.stringify(output, null, pretty ? 2 : undefined) + '\n');
@@ -48,4 +61,4 @@ if (require.main === module) {
   const output = writeCatalog(path.join(root, 'ios/Sources/SpotterCore/Resources/catalog.json'), { pretty: true });
   console.log(`Exported ${output.places.length} places for iOS.`);
 }
-module.exports = { catalog, writeCatalog };
+module.exports = { catalog, catalogContent, writeCatalog, manifestPath };

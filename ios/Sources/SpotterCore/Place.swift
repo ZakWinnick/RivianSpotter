@@ -4,6 +4,17 @@ public enum PlaceType: String, Codable, CaseIterable, Identifiable, Sendable {
     case ran = "RAN", waypoint = "Waypoint", space = "Space"
     case service = "Service Center", demo = "Demo Center", outpost = "Outpost"
     public var id: String { rawValue }
+    public var displayName: String { self == .ran ? "Rivian Adventure Network" : rawValue }
+    public var mapColorHex: String {
+        switch self {
+        case .ran: "#b4621a"
+        case .waypoint: "#7062a4"
+        case .space: "#244e3c"
+        case .demo: "#30536c"
+        case .service: "#715a43"
+        case .outpost: "#59612e"
+        }
+    }
     public var symbol: String {
         switch self {
         case .ran: "bolt.fill"
@@ -37,11 +48,20 @@ public struct PlacePhoto: Codable, Equatable, Sendable {
     }
 }
 
+public struct PlaceReliability: Codable, Equatable, Sendable {
+    public let grade: String
+    public let background: String
+    public let foreground: String
+}
+
 public struct PlaceInformation: Codable, Equatable, Sendable {
     public let title: String
     public let facts: [PlaceFact]
     public let expandable: Bool
     public let sourceURL: String?
+    public var reliability: PlaceReliability? = nil
+    public var metrics: [PlaceFact]? = nil
+    public var tags: [String]? = nil
     public var safeSourceURL: URL? {
         guard let sourceURL, let url = URL(string: sourceURL), url.scheme == "https",
               url.host == "rivianroamer.com", url.user == nil, url.password == nil else { return nil }
@@ -81,13 +101,33 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     public var information: [PlaceInformation]? = nil
     public var postalCode: String? = nil
     public var relatedPlaceIDs: [String]? = nil
+    public var reliability: PlaceReliability? = nil
+    public var bookingURL: String? = nil
+    public var phone: String? = nil
+
+    public var safeBookingURL: URL? {
+        guard let bookingURL, let url = URL(string: bookingURL), url.scheme == "https",
+              let host = url.host, host == "rivian.com" || host.hasSuffix(".rivian.com"),
+              url.user == nil, url.password == nil else { return nil }
+        return url
+    }
+    public var phoneURL: URL? {
+        guard let phone else { return nil }
+        let number = phone.filter { $0.isNumber || $0 == "+" }
+        return number.isEmpty ? nil : URL(string: "tel:\(number)")
+    }
 
     public var locality: String { [city, region, country].filter { !$0.isEmpty }.joined(separator: ", ") }
-    public var typeLabel: String { types.map(\.rawValue).joined(separator: " · ") }
+    public var typeLabel: String { types.map(\.displayName).joined(separator: " + ") }
     public var hasPreciseCoordinates: Bool {
         guard let latitude, let longitude else { return false }
         return latitude.isFinite && longitude.isFinite && abs(latitude) <= 90 && abs(longitude) <= 180
             && ["exact", "map-pin"].contains(coordinatePrecision)
+    }
+    public var hasMapCoordinates: Bool {
+        guard let latitude, let longitude, latitude.isFinite, longitude.isFinite,
+              abs(latitude) <= 90, abs(longitude) <= 180 else { return false }
+        return hasPreciseCoordinates || (status == "planned" && coordinatePrecision == "city")
     }
     public var statusLabel: String {
         if !listed { return "No longer listed" }
@@ -105,9 +145,31 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
         return url
     }
     public func matches(_ query: String) -> Bool {
-        let fields = "\(name) \(locality) \(address ?? "") \(typeLabel)"
+        let fields = "\(name) \(locality) \(address ?? "") \(typeLabel) \(types.map(\.rawValue).joined(separator: " "))"
         return query.split(whereSeparator: \.isWhitespace).allSatisfy {
             fields.localizedStandardContains(String($0))
+        }
+    }
+}
+
+public struct PlaceFilter: Sendable {
+    public enum Status: String, CaseIterable, Sendable {
+        case all = "All statuses", operating = "Operating", planned = "Coming Soon", unlisted = "No Longer Listed"
+    }
+    public var type: PlaceType? = nil
+    public var status: Status = .all
+    public var region = ""
+    public var savedOnly = false
+    public init() {}
+    public var activeCount: Int { (type == nil ? 0 : 1) + (status == .all ? 0 : 1) + (region.isEmpty ? 0 : 1) + (savedOnly ? 1 : 0) }
+    public func matches(_ place: Place, saved: Bool) -> Bool {
+        guard type == nil || place.browseTypes.contains(type!), region.isEmpty || region == place.region,
+              !savedOnly || saved else { return false }
+        switch status {
+        case .all: return true
+        case .operating: return place.listed && place.status == "open"
+        case .planned: return place.listed && place.status == "planned"
+        case .unlisted: return !place.listed
         }
     }
 }
@@ -119,7 +181,7 @@ public enum PlaceClustering {
     public static func clusters(_ places: [Place], latitudeSpan: Double, longitudeSpan: Double,
                                 divisions: Double = 8) -> [[Place]] {
         let latCell = max(latitudeSpan / divisions, 0.00001), lonCell = max(longitudeSpan / divisions, 0.00001)
-        let mapped = places.filter(\.hasPreciseCoordinates).sorted {
+        let mapped = places.filter(\.hasMapCoordinates).sorted {
             $0.latitude! == $1.latitude! ? $0.longitude! < $1.longitude! : $0.latitude! > $1.latitude!
         }
         var result: [[Place]] = []

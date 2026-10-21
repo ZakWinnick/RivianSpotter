@@ -1,4 +1,4 @@
-const { parseRate, hasReportedIssue } = require('../js/components.js');
+const { parseRate, hasReportedIssue, locationReliability } = require('../js/components.js');
 const { locationTypes } = require('../js/location-model.js');
 const day = value => value ? String(value).slice(0, 10) : 'Date unavailable';
 const fact = (title, value) => value == null || value === '' ? null : { title, value: String(value) };
@@ -18,7 +18,11 @@ function chargingInformation(p) {
   if (r?.chargerCount != null && r.chargerCount !== p.chargerCount) facts.push(fact('Charger count in community snapshot', `${r.chargerCount} reported on ${day(r.observedAt)}; Rivian lists ${p.chargerCount ?? 'an unpublished number'}. Sources differ.`));
   if (r?.averagePeakKw || r?.averageKw) facts.push(fact('Average peak power', `${r.averagePeakKw || r.averageKw} kW · reported charging performance, separate from maximum rated power.`));
   if (r?.observedAt) facts.push(fact('Charging snapshot', day(r.observedAt)));
-  const sections = [section(title, facts, false, r?.sourceUrl || null)];
+  const summary = section(title, facts, false, r?.sourceUrl || null);
+  summary.reliability = locationReliability(p);
+  summary.metrics = [fact(p.chargerCount === 1 ? 'Charger' : 'Chargers', p.chargerCount ?? '—'), fact('Maximum Power', p.maxKw > 0 ? `${p.maxKw} kW` : '—')];
+  summary.tags = [p.type === 'RAN' ? 'DC Fast Charging' : 'Level 2 Charging', p.rivianOnly === true ? 'Rivian Vehicles Only' : p.rivianOnly === false ? 'Open to Other EVs' : 'Access Not Listed'];
+  const sections = [summary];
   if (r) {
     const price = (detail, network) => detailsCurrent ? detail || network : network || detail;
     const priceRows = (detailsCurrent || !(r.rates?.Rivian || r.rates?.['Other EVs'])) && r.detailRates?.Energy && !r.detailRates?.Rivian && !r.detailRates?.Other
@@ -33,7 +37,7 @@ function chargingInformation(p) {
     prices.push(fact('Idle fee', r.detailRates?.Idle || 'Not published'), fact('Rate information', 'Prices may vary by time or vehicle. Confirm the rate before charging.'));
     sections.push(section(`${title} pricing`, prices));
     if (schedules.length) sections.push(section('Time-of-use rates', [fact('Schedule', 'Times are local to the charging site.'), ...schedules], true));
-    sections.push(section('Site features', [fact('Amenities', r.amenities?.length ? r.amenities.join(' · ') : 'None listed'), fact('Details captured', day(r.detailsObservedAt))]));
+    sections.push({...section('Site features', [fact('Amenities', r.amenities?.length ? r.amenities.join(' · ') : 'None listed'), fact('Details captured', day(r.detailsObservedAt))]), tags:r.amenities || []});
     sections.push(section('Individual chargers', r.chargers?.length ? r.chargers.map(c => fact(c.name, [c.connector, c.powerKw ? `${c.powerKw} kW` : 'Power not published', ...(c.features || []).map(f => f.description || f.label)].filter(Boolean).join(' · '))) : [fact('Ports', 'Individual charger details are not published.')], true));
   } else if (p.type === 'RAN') {
     sections.push(section('Pricing and site features', [fact('Details', 'Pricing, idle fees, amenities, and individual charger details are not available in this catalog snapshot.') ]));
@@ -46,6 +50,7 @@ function informationFor(p) {
     fact('At this location', p.services?.join(' · ')), fact('Charging hours', p.chargingHours), fact('Local time zone', p.timezone?.replaceAll('_', ' ')),
     fact('Phone', p.phone), fact('Charging support', p.chargingPhone), fact('Service status', p.serviceStatus === 'planned' ? 'Service coming soon. Visiting and demo-drive hours remain separate.' : null)
   ])];
+  if (!charging && p.services?.length) sections[0].tags = p.services;
   const notes = [...new Set([...(p.notes || []), ...(p.publishedHoursExceptions || []), ...(p.hoursExceptions || []).map(v => typeof v === 'string' ? v : v.note || v.raw || v.text || `${v.date}: ${v.closed ? 'Closed' : v.hours || 'Special hours'}`)])];
   if (notes.length) sections.push(section('Know before you go', notes.map((n,i) => fact(notes.length === 1 ? 'Published note' : `Note ${i+1}`, n))));
   if (p.listed === false) sections.push(section('Listing status', [fact('No longer listed', 'This location is no longer listed in the current source. Retained for your saved places and visit history.')]));

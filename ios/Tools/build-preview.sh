@@ -12,7 +12,7 @@ mkdir -p "$preview_app/Contents/MacOS" "$preview_app/Contents/Resources"
 swiftc -sdk "$preview_sdk" -target "$(uname -m)-apple-macos14.0" \
   -swift-version 5 -parse-as-library \
   Sources/SpotterCore/Place.swift Sources/SpotterCore/CatalogUpdates.swift Sources/SpotterCore/Journal.swift Sources/SpotterCore/CloudJournalStorage.swift \
-  Sources/SpotterApp/DeviceServices.swift Sources/SpotterApp/PlaceGallery.swift Sources/SpotterApp/SpotterApp.swift -o "$preview_app/Contents/MacOS/SpotterPreview"
+  Sources/SpotterApp/DeviceServices.swift Sources/SpotterApp/PlacePresentation.swift Sources/SpotterApp/PlaceGallery.swift Sources/SpotterApp/SpotterApp.swift -o "$preview_app/Contents/MacOS/SpotterPreview"
 cp Sources/SpotterCore/Resources/catalog.json "$preview_app/Contents/Resources/catalog.json"
 cat > "$preview_app/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -22,8 +22,8 @@ cat > "$preview_app/Contents/Info.plist" <<'PLIST'
 <key>CFBundleIdentifier</key><string>com.rivianspotter.preview</string>
 <key>CFBundleName</key><string>RivianSpotter Preview</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.1</string>
-<key>CFBundleVersion</key><string>1</string>
+<key>CFBundleShortVersionString</key><string>0.2.0</string>
+<key>CFBundleVersion</key><string>6</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSLocationUsageDescription</key><string>Find Rivian places near you. Your location is used only when you tap Near me and is not saved in your journal.</string>
 <key>NSHighResolutionCapable</key><true/>
