@@ -1,0 +1,822 @@
+{
+  "schemaVersion": 1,
+  "days": [
+    {
+      "date": "2026-10-21",
+      "entries": [
+        {
+          "id": "031b257bfda1ba0c0145f5bf27e7d168780b7c6933d99c443d580c6303b1c730",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3f9a4eadd278827c927217ce2c1960ee0deb936bdcd1835366fa33b653963c23",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "564cce8813149c7c993d23dc1bc47688c8c56157f19f6a9138745693254da7a7",
+          "locationId": "111861218646514",
+          "name": "Belcamp, MD",
+          "type": "Rivian Adventure Network",
+          "city": "Belcamp",
+          "region": "MD",
+          "url": "/locations/ran-belcamp-md-65bcb82457/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 201)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bc96c6b833c7e24f5fe5aadf8913a282184b9f0a347b77006a2606526a18b894",
+          "locationId": "110073077138684",
+          "name": "Benton Harbor, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Benton Harbor",
+          "region": "MI",
+          "url": "/locations/ran-benton-harbor-mi-641c629a42/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Restroom."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f3ebeb4cf9784609048a39819f7bb7ce3a2e0f9a60b9f21358dace91a3304f22",
+          "locationId": "215330668966219",
+          "name": "Burley, ID",
+          "type": "Rivian Adventure Network",
+          "city": "Burley",
+          "region": "ID",
+          "url": "/locations/ran-burley-id-c3d793f92f/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.33–0.46/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.33/kWh; Mon-Fri 8:00am–8:00pm: $0.46/kWh; Mon-Fri 8:00pm–11:59pm: $0.43/kWh; Sat-Sun 12:00am–8:00am: $0.33/kWh; Sat-Sun 8:00am–8:00pm: $0.46/kWh; Sat-Sun 8:00pm–11:59pm: $0.43/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.30–0.43/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.30/kWh; Mon-Fri 8:00am–8:00pm: $0.43/kWh; Mon-Fri 8:00pm–11:59pm: $0.40/kWh; Sat-Sun 12:00am–8:00am: $0.30/kWh; Sat-Sun 8:00am–8:00pm: $0.43/kWh; Sat-Sun 8:00pm–11:59pm: $0.40/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "95cd92f62a30588561a9a5a557b6f29ae559d456dd10fda6c6e77db2c3d41373",
+          "locationId": "71228648044313",
+          "name": "Centerville, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Centerville",
+          "region": "TX",
+          "url": "/locations/ran-centerville-tx-40c8363474/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.28–0.40/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.28/kWh; Mon-Fri 8:00am–8:00pm: $0.40/kWh; Mon-Fri 8:00pm–11:59pm: $0.37/kWh; Sat-Sun 12:00am–8:00am: $0.28/kWh; Sat-Sun 8:00am–8:00pm: $0.40/kWh; Sat-Sun 8:00pm–11:59pm: $0.37/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.26–0.37/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.26/kWh; Mon-Fri 8:00am–8:00pm: $0.37/kWh; Mon-Fri 8:00pm–11:59pm: $0.34/kWh; Sat-Sun 12:00am–8:00am: $0.26/kWh; Sat-Sun 8:00am–8:00pm: $0.37/kWh; Sat-Sun 8:00pm–11:59pm: $0.34/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "113eb6b245525032e14bb6f30ec42d7b29f594b2eba1337dd19785b427b3be3c",
+          "locationId": "152",
+          "name": "Charlotte - Service Center",
+          "type": "Service Center",
+          "city": "Charlotte",
+          "region": "NC",
+          "url": "/locations/charlotte-nc-9309-monroe-road-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +19803421261 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7529fcb839d31f6aeadd47c477581ed45c081507bf628873957649768fe6b6ef",
+          "locationId": "44",
+          "name": "Chelsea - Service Center",
+          "type": "Service Center",
+          "city": "Chelsea",
+          "region": "MA",
+          "url": "/locations/chelsea-ma-25-griffin-way-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +18576269833 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bde395153ebb991024ade1708651c55ab33dbd4f0aec0b1ddc2008fc11eb80f6",
+          "locationId": "84695766045675",
+          "name": "Cheyenne, WY",
+          "type": "Rivian Adventure Network",
+          "city": "Cheyenne",
+          "region": "WY",
+          "url": "/locations/ran-cheyenne-wy-4d07c4fd51/",
+          "kind": "changed",
+          "lines": [
+            "Site features: Added Coffee."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f0d5ecab7fdde691caee16f41cd794aa74236c4efde882121292f847a08be452",
+          "locationId": "77610361945526",
+          "name": "Cisco, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Cisco",
+          "region": "TX",
+          "url": "/locations/ran-cisco-tx-469611febb/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Restroom."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f9bc9b6f8c3cf3a4306cacc79d9119c8f8ed583b5de99aa2a10493a2f3da03d6",
+          "locationId": "217978262547294",
+          "name": "Columbia, MO",
+          "type": "Rivian Adventure Network",
+          "city": "Columbia",
+          "region": "MO",
+          "url": "/locations/ran-columbia-mo-c64004d929/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.32–0.46/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–6:00am: $0.32/kWh; Mon-Fri 6:00am–8:00pm: $0.46/kWh; Mon-Fri 8:00pm–11:59pm: $0.43/kWh; Sat-Sun 12:00am–6:00am: $0.32/kWh; Sat-Sun 6:00am–8:00pm: $0.46/kWh; Sat-Sun 8:00pm–11:59pm: $0.43/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.27–0.39/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–6:00am: $0.27/kWh; Mon-Fri 6:00am–8:00pm: $0.39/kWh; Mon-Fri 8:00pm–11:59pm: $0.36/kWh; Sat-Sun 12:00am–6:00am: $0.27/kWh; Sat-Sun 6:00am–8:00pm: $0.39/kWh; Sat-Sun 8:00pm–11:59pm: $0.36/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "def415e0ab585f62d572185d80cb636c46443d4da5bf9552ad157a8148ce020e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "06bd284d3987d1e75d97b3005ea5e7ca47a12f226309865c034b06227798e1dc",
+          "locationId": "105",
+          "name": "East Syracuse - Service Center",
+          "type": "Service Center",
+          "city": "East Syracuse",
+          "region": "NY",
+          "url": "/locations/east-syracuse-ny-6822-crossbow-drive-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +13156837405 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c125776b432f91f21ad1781c5b93ff5f76ccbda6334054a467a32255a666baab",
+          "locationId": "154",
+          "name": "Emeryville - Service Center",
+          "type": "Service Center",
+          "city": "Emeryville",
+          "region": "CA",
+          "url": "/locations/emeryville-ca-1483-67th-street-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +15104474759 (previously +1-888-748-4261)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "88020ae0267aa8b5c4349cdb785c6bde45f3c1ab4ff9fc0b26d3ee80f7ff8d70",
+          "locationId": "162077279640688",
+          "name": "Flagler, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Flagler",
+          "region": "CO",
+          "url": "/locations/ran-flagler-co-93688e9e9a/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eede91a9371567596a31e7240166235a43edb2eae366e6623aed2fc063efaf86",
+          "locationId": "47595949473056",
+          "name": "Forks, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Forks",
+          "region": "WA",
+          "url": "/locations/ran-forks-wa-2b49cb99fa/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 193 (previously 194)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "78a91eb4e928247abf25150dd730059177579b2865c478af3b01492803a9b2ec",
+          "locationId": "22233721676895",
+          "name": "Fresno, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fresno",
+          "region": "CA",
+          "url": "/locations/ran-fresno-ca-1438b105e2/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.58/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.40/kWh; Mon-Fri 8:00am–8:00pm: $0.58/kWh; Mon-Fri 8:00pm–11:59pm: $0.54/kWh; Sat-Sun 12:00am–8:00am: $0.40/kWh; Sat-Sun 8:00am–8:00pm: $0.58/kWh; Sat-Sun 8:00pm–11:59pm: $0.54/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.34–0.49/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.34/kWh; Mon-Fri 8:00am–8:00pm: $0.49/kWh; Mon-Fri 8:00pm–11:59pm: $0.46/kWh; Sat-Sun 12:00am–8:00am: $0.34/kWh; Sat-Sun 8:00am–8:00pm: $0.49/kWh; Sat-Sun 8:00pm–11:59pm: $0.46/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5a0df8ffda11a4e8d2639e966bf3ab3a604ac4a62aa7aa5fc37d9afba2ad585e",
+          "locationId": "183583970664712",
+          "name": "Greenville, SC",
+          "type": "Rivian Adventure Network",
+          "city": "Greenville",
+          "region": "SC",
+          "url": "/locations/ran-greenville-sc-a6f7f94c5e/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.35–0.51/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.35/kWh; Mon-Fri 8:00am–8:00pm: $0.51/kWh; Mon-Fri 8:00pm–11:59pm: $0.47/kWh; Sat-Sun 12:00am–8:00am: $0.35/kWh; Sat-Sun 8:00am–8:00pm: $0.51/kWh; Sat-Sun 8:00pm–11:59pm: $0.47/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.30–0.43/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.30/kWh; Mon-Fri 8:00am–8:00pm: $0.43/kWh; Mon-Fri 8:00pm–11:59pm: $0.40/kWh; Sat-Sun 12:00am–8:00am: $0.30/kWh; Sat-Sun 8:00am–8:00pm: $0.43/kWh; Sat-Sun 8:00pm–11:59pm: $0.40/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3b1e6d21e83e36d436fb516038e407a5d091d02e2fa08ac111978ed15489c479",
+          "locationId": "228259124219856",
+          "name": "Hagerstown, MD",
+          "type": "Rivian Adventure Network",
+          "city": "Hagerstown",
+          "region": "MD",
+          "url": "/locations/ran-hagerstown-md-cf99b7f4cd/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.39–0.55/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.39/kWh; Mon-Fri 8:00am–8:00pm: $0.55/kWh; Mon-Fri 8:00pm–11:59pm: $0.51/kWh; Sat-Sun 12:00am–8:00am: $0.39/kWh; Sat-Sun 8:00am–8:00pm: $0.55/kWh; Sat-Sun 8:00pm–11:59pm: $0.51/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.33–0.47/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.33/kWh; Mon-Fri 8:00am–8:00pm: $0.47/kWh; Mon-Fri 8:00pm–11:59pm: $0.44/kWh; Sat-Sun 12:00am–8:00am: $0.33/kWh; Sat-Sun 8:00am–8:00pm: $0.47/kWh; Sat-Sun 8:00pm–11:59pm: $0.44/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0f5e2fdb8e9f298611157faee37700160bebe67c46f1ff20b80845f797fab9eb",
+          "locationId": "89",
+          "name": "Hayward - Service Center",
+          "type": "Service Center",
+          "city": "Hayward",
+          "region": "CA",
+          "url": "/locations/hayward-ca-3375-arden-road-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +15106741239 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "874a8ecc489e50d3effb312b143e4e2ae9f8a50f3e3d40fb9a5f0ce097c7f52f",
+          "locationId": "19411687677695",
+          "name": "Holyoke, MA",
+          "type": "Rivian Adventure Network",
+          "city": "Holyoke",
+          "region": "MA",
+          "url": "/locations/ran-holyoke-ma-11a7a2b05c/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.39–0.55/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.39/kWh; Mon-Fri 8:00am–8:00pm: $0.55/kWh; Mon-Fri 8:00pm–11:59pm: $0.51/kWh; Sat-Sun 12:00am–8:00am: $0.39/kWh; Sat-Sun 8:00am–8:00pm: $0.55/kWh; Sat-Sun 8:00pm–11:59pm: $0.51/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.33–0.47/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.33/kWh; Mon-Fri 8:00am–8:00pm: $0.47/kWh; Mon-Fri 8:00pm–11:59pm: $0.44/kWh; Sat-Sun 12:00am–8:00am: $0.33/kWh; Sat-Sun 8:00am–8:00pm: $0.47/kWh; Sat-Sun 8:00pm–11:59pm: $0.44/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c3c3f36b5aa886c0476115dea033cc2973c1814b05f11dd69f8b08be12b11428",
+          "locationId": "149576742135264",
+          "name": "Irvine, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Irvine",
+          "region": "CA",
+          "url": "/locations/ran-irvine-ca-880a0c85a3/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.58/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.40/kWh; Mon-Fri 8:00am–8:00pm: $0.58/kWh; Mon-Fri 8:00pm–11:59pm: $0.54/kWh; Sat-Sun 12:00am–8:00am: $0.40/kWh; Sat-Sun 8:00am–8:00pm: $0.58/kWh; Sat-Sun 8:00pm–11:59pm: $0.54/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.34–0.49/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.34/kWh; Mon-Fri 8:00am–8:00pm: $0.49/kWh; Mon-Fri 8:00pm–11:59pm: $0.46/kWh; Sat-Sun 12:00am–8:00am: $0.34/kWh; Sat-Sun 8:00am–8:00pm: $0.49/kWh; Sat-Sun 8:00pm–11:59pm: $0.46/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "045bdae252121789fd5c3570321b39a6e2325af2b55d635c47e3a681f81654eb",
+          "locationId": "108504500787583",
+          "name": "Jacksonville, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Jacksonville",
+          "region": "FL",
+          "url": "/locations/ran-jacksonville-fl-62af2c2a97/",
+          "kind": "changed",
+          "lines": [
+            "Site features: Added Coffee, Food, Lodging, Restroom."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8154cc9eacf9c4f35a16472210949334d9aa33d4741da0608bd6bbe4fb187d92",
+          "locationId": "246277750444366",
+          "name": "Lakewood, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Lakewood",
+          "region": "CO",
+          "url": "/locations/ran-lakewood-co-dffd01c58f/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.33–0.46/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.33/kWh; Mon-Fri 8:00am–8:00pm: $0.46/kWh; Mon-Fri 8:00pm–11:59pm: $0.43/kWh; Sat-Sun 12:00am–8:00am: $0.33/kWh; Sat-Sun 8:00am–8:00pm: $0.46/kWh; Sat-Sun 8:00pm–11:59pm: $0.43/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.30–0.43/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.30/kWh; Mon-Fri 8:00am–8:00pm: $0.43/kWh; Mon-Fri 8:00pm–11:59pm: $0.40/kWh; Sat-Sun 12:00am–8:00am: $0.30/kWh; Sat-Sun 8:00am–8:00pm: $0.43/kWh; Sat-Sun 8:00pm–11:59pm: $0.40/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9234462e0f5a338a39ad916167830fe34ae19dd9b4f75696bfa7983b8a22e558",
+          "locationId": "85793015378558",
+          "name": "Macon, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Macon",
+          "region": "GA",
+          "url": "/locations/ran-macon-ga-4e073e2570/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.35–0.51/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–9:00am: $0.35/kWh; Mon-Fri 9:00am–8:00pm: $0.51/kWh; Mon-Fri 8:00pm–11:59pm: $0.47/kWh; Sat-Sun 12:00am–9:00am: $0.35/kWh; Sat-Sun 9:00am–8:00pm: $0.51/kWh; Sat-Sun 8:00pm–11:59pm: $0.47/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.30–0.43/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–9:00am: $0.30/kWh; Mon-Fri 9:00am–8:00pm: $0.43/kWh; Mon-Fri 8:00pm–11:59pm: $0.40/kWh; Sat-Sun 12:00am–9:00am: $0.30/kWh; Sat-Sun 9:00am–8:00pm: $0.43/kWh; Sat-Sun 8:00pm–11:59pm: $0.40/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "044488f9b709b5cf8c0308ced6e69848bb6825945ea7527c68ca8b476dedb65a",
+          "locationId": "31762405664723",
+          "name": "Mammoth Lakes, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Mammoth Lakes",
+          "region": "CA",
+          "url": "/locations/ran-mammoth-lakes-ca-1ce342d8e5/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.58/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.40/kWh; Mon-Fri 8:00am–8:00pm: $0.58/kWh; Mon-Fri 8:00pm–11:59pm: $0.54/kWh; Sat-Sun 12:00am–8:00am: $0.40/kWh; Sat-Sun 8:00am–8:00pm: $0.58/kWh; Sat-Sun 8:00pm–11:59pm: $0.54/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.34–0.49/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.34/kWh; Mon-Fri 8:00am–8:00pm: $0.49/kWh; Mon-Fri 8:00pm–11:59pm: $0.46/kWh; Sat-Sun 12:00am–8:00am: $0.34/kWh; Sat-Sun 8:00am–8:00pm: $0.49/kWh; Sat-Sun 8:00pm–11:59pm: $0.46/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b4f13fa1ae4a82c9effc16a5d16bf8d51cc4af2c1d9ccddab525301e1439e5c1",
+          "locationId": "36133846908052",
+          "name": "Manteca, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Manteca",
+          "region": "CA",
+          "url": "/locations/ran-manteca-ca-20dd110cba/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.57/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.40/kWh; Mon-Fri 8:00am–8:00pm: $0.57/kWh; Mon-Fri 8:00pm–11:59pm: $0.53/kWh; Sat-Sun 12:00am–8:00am: $0.40/kWh; Sat-Sun 8:00am–8:00pm: $0.57/kWh; Sat-Sun 8:00pm–11:59pm: $0.53/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2a61d17c13511b9a95824eeab0474f4d1f2613fc00544cc7aa4c28be8b41655c",
+          "locationId": "262367076666157",
+          "name": "Mount Shasta, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Mount Shasta",
+          "region": "CA",
+          "url": "/locations/ran-mount-shasta-ca-ee9f185888/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.57/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–6:00am: $0.40/kWh; Mon-Fri 6:00am–8:00pm: $0.57/kWh; Mon-Fri 8:00pm–11:59pm: $0.53/kWh; Sat-Sun 12:00am–6:00am: $0.40/kWh; Sat-Sun 6:00am–8:00pm: $0.57/kWh; Sat-Sun 8:00pm–11:59pm: $0.53/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–6:00am: $0.37/kWh; Mon-Fri 6:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–6:00am: $0.37/kWh; Sat-Sun 6:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "18cda5f5b882d0ebbe996f4aa3811a2d0949d6175ba3db9ab494155270e3d347",
+          "locationId": "53",
+          "name": "New York, NY Meatpacking District",
+          "type": "Space",
+          "city": "New York",
+          "region": "NY",
+          "url": "/locations/new-york/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: Mon–Sun: 10am–7pm (previously 10/14: 10am-3pm Mon–Sun: 10am–7pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "12141b6a17b91a7c8e7bdcaf29fa5c2c481cddc8e563b8ca62114bdfdc568730",
+          "locationId": "166744023368471",
+          "name": "Norfolk, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Norfolk",
+          "region": "VA",
+          "url": "/locations/ran-norfolk-va-97a71e38c0/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.32–0.45/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.32/kWh; Mon-Fri 8:00am–8:00pm: $0.45/kWh; Mon-Fri 8:00pm–11:59pm: $0.42/kWh; Sat-Sun 12:00am–8:00am: $0.32/kWh; Sat-Sun 8:00am–8:00pm: $0.45/kWh; Sat-Sun 8:00pm–11:59pm: $0.42/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "34265d1c0eb5ef70b4e46b7ef8d4f0617274f062ec3f301b93730b6eeea32576",
+          "locationId": "70307904233768",
+          "name": "Orange, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Orange",
+          "region": "CA",
+          "url": "/locations/ran-orange-ca-3ff1d598de/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.45–0.65/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.45/kWh; Mon-Fri 8:00am–8:00pm: $0.65/kWh; Mon-Fri 8:00pm–11:59pm: $0.60/kWh; Sat-Sun 12:00am–8:00am: $0.45/kWh; Sat-Sun 8:00am–8:00pm: $0.65/kWh; Sat-Sun 8:00pm–11:59pm: $0.60/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39–0.55/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.39/kWh; Mon-Fri 8:00am–8:00pm: $0.55/kWh; Mon-Fri 8:00pm–11:59pm: $0.51/kWh; Sat-Sun 12:00am–8:00am: $0.39/kWh; Sat-Sun 8:00am–8:00pm: $0.55/kWh; Sat-Sun 8:00pm–11:59pm: $0.51/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c01f6363aa2a008e4fddf9b80bbf1949b0845220aa1caa8c6c37229b6b7a6ca4",
+          "locationId": "197924104146020",
+          "name": "Paramus, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Paramus",
+          "region": "NJ",
+          "url": "/locations/ran-paramus-nj-b402cbdc4a/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.44/kWh; Mon-Fri 8:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–8:00am: $0.44/kWh; Sat-Sun 8:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "42d6e65ea4bdd695ed1d4db1b8e751d226a22ef97596985fc8fd6203efeeb3b9",
+          "locationId": "10013892171193",
+          "name": "Park City, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Park City",
+          "region": "UT",
+          "url": "/locations/ran-park-city-ut-091b8a6d13/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.32–0.46/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.32/kWh; Mon-Fri 8:00am–8:00pm: $0.46/kWh; Mon-Fri 8:00pm–11:59pm: $0.43/kWh; Sat-Sun 12:00am–8:00am: $0.32/kWh; Sat-Sun 8:00am–8:00pm: $0.46/kWh; Sat-Sun 8:00pm–11:59pm: $0.43/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.27–0.39/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.27/kWh; Mon-Fri 8:00am–8:00pm: $0.39/kWh; Mon-Fri 8:00pm–11:59pm: $0.36/kWh; Sat-Sun 12:00am–8:00am: $0.27/kWh; Sat-Sun 8:00am–8:00pm: $0.39/kWh; Sat-Sun 8:00pm–11:59pm: $0.36/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "78ab9969eecf0fa133c77e44c49d639796bf30cb229a0e6e3d031f1a78b9109c",
+          "locationId": "207532463807553",
+          "name": "Phoenix, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Phoenix",
+          "region": "AZ",
+          "url": "/locations/ran-phoenix-az-bcbfeab99a/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–7:00am: $0.44/kWh; Mon-Fri 7:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–7:00am: $0.44/kWh; Sat-Sun 7:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–7:00am: $0.37/kWh; Mon-Fri 7:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–7:00am: $0.37/kWh; Sat-Sun 7:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b13d85da13dde27680a76b99beba39afbac80d3b2e04a64b399e2bb10ddc8beb",
+          "locationId": "157",
+          "name": "Redwood City - Service Center",
+          "type": "Service Center",
+          "city": "Redwood City",
+          "region": "CA",
+          "url": "/locations/redwood-city-ca-860-charter-street-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +16507708669 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ed522605e9618eb2c09a48701dad55dc344cb014eadd01226865120d499e7090",
+          "locationId": "229446042890445",
+          "name": "Roanoke, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Roanoke",
+          "region": "VA",
+          "url": "/locations/ran-roanoke-va-d0ae11d26e/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Lodging."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "373ad3b13526cfb1d1273201c75f4d0b3a06398c77da1e7f4a29637c784875b1",
+          "locationId": "92",
+          "name": "Rohnert Park - Service Center",
+          "type": "Service Center",
+          "city": "Rohnert Park",
+          "region": "CA",
+          "url": "/locations/rohnert-park-ca-5000-dowdell-ave-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +17078873635 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "edc3ff70d319e7d96e469f92da8c39d16ea75c5b47ad467380d947d9510a0aa0",
+          "locationId": "95",
+          "name": "Roswell - Service Center",
+          "type": "Service Center",
+          "city": "Roswell",
+          "region": "GA",
+          "url": "/locations/roswell-ga-150-hembree-park-drive-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +14705361898 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2cc434573ef0d0f3f9eb151b3c4c6ef19e7ec65ccaa0f0f2c2f1708ff7f3dd0d",
+          "locationId": "272515155339162",
+          "name": "Sacramento, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Sacramento",
+          "region": "CA",
+          "url": "/locations/ran-sacramento-ca-f7d9e0f865/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.36–0.51/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.36/kWh; Mon-Fri 8:00am–8:00pm: $0.51/kWh; Mon-Fri 8:00pm–11:59pm: $0.47/kWh; Sat-Sun 12:00am–8:00am: $0.36/kWh; Sat-Sun 8:00am–8:00pm: $0.51/kWh; Sat-Sun 8:00pm–11:59pm: $0.47/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.33–0.47/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.33/kWh; Mon-Fri 8:00am–8:00pm: $0.47/kWh; Mon-Fri 8:00pm–11:59pm: $0.44/kWh; Sat-Sun 12:00am–8:00am: $0.33/kWh; Sat-Sun 8:00am–8:00pm: $0.47/kWh; Sat-Sun 8:00pm–11:59pm: $0.44/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2c3a2c3074b6cb30e6d76eed7a6f3d51b2acb2a14538df900ef970ab598ca0cd",
+          "locationId": "18906307910619",
+          "name": "Salida, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Salida",
+          "region": "CO",
+          "url": "/locations/ran-salida-co-1131f7b519/",
+          "kind": "changed",
+          "lines": [
+            "Charger update: Offline (previously operational)."
+          ],
+          "chargerReport": true
+        },
+        {
+          "id": "0166fc5181069f3a1bb6b03748aeb17c02c6e922fc0dd6d22db7504aabef7174",
+          "locationId": "121",
+          "name": "San Jose - Service Center",
+          "type": "Service Center",
+          "city": "San Jose",
+          "region": "CA",
+          "url": "/locations/san-jose-ca-660-north-king-road-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +16693123609 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "af698496f18d9a08711005dccd29c3d365cac3d19dcb422e8fa9bc6b5093c8cf",
+          "locationId": "55601172076096",
+          "name": "Sedona, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Sedona",
+          "region": "AZ",
+          "url": "/locations/ran-sedona-az-3291a80d14/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–9:00am: $0.44/kWh; Mon-Fri 9:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–9:00am: $0.44/kWh; Sat-Sun 9:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–9:00am: $0.37/kWh; Mon-Fri 9:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–9:00am: $0.37/kWh; Sat-Sun 9:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "13e0572a53b4427d6d09e191bd1b0f045eceb6d5c8190c424ad6c8f1e29821f2",
+          "locationId": "112674191113591",
+          "name": "Spokane, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Spokane Valley",
+          "region": "WA",
+          "url": "/locations/ran-spokane-wa-667a0113bb/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–10:00am: $0.44/kWh; Mon-Fri 10:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–10:00am: $0.44/kWh; Sat-Sun 10:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–10:00am: $0.37/kWh; Mon-Fri 10:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–10:00am: $0.37/kWh; Sat-Sun 10:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3fc7a8da1b7cb5d69ed1d67d26c24aa32af07bf1ee1e65501dcca8f5ae18df8b",
+          "locationId": "119830985676850",
+          "name": "Springfield, IL",
+          "type": "Rivian Adventure Network",
+          "city": "Springfield",
+          "region": "IL",
+          "url": "/locations/ran-springfield-il-6cfc534655/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Restroom."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2a9c5148cd65b4b6a4a59cee45298e310a5831c3707850ad25f76802b9a176a3",
+          "locationId": "93",
+          "name": "Sunnyvale - Service Center",
+          "type": "Service Center",
+          "city": "Sunnyvale",
+          "region": "CA",
+          "url": "/locations/sunnyvale-ca-925-morse-avenue-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +16693123901 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2ce98f32d6d3da3e18636eb1862c4738d2301ab8d478806728035d0bc3907dac",
+          "locationId": "178472444771548",
+          "name": "Temecula, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Temecula",
+          "region": "CA",
+          "url": "/locations/ran-temecula-ca-a251da9cfa/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.44/kWh; Mon-Fri 8:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–8:00am: $0.44/kWh; Sat-Sun 8:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2a77e804591ca88d5210ec92cdef4dd375d2dfce3700b73c8766bb3f2f979eb2",
+          "locationId": "160016829112304",
+          "name": "Tinton Falls, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Tinton Falls",
+          "region": "NJ",
+          "url": "/locations/ran-tinton-falls-nj-9188d2329d/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.40–0.57/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.40/kWh; Mon-Fri 8:00am–8:00pm: $0.57/kWh; Mon-Fri 8:00pm–11:59pm: $0.53/kWh; Sat-Sun 12:00am–8:00am: $0.40/kWh; Sat-Sun 8:00am–8:00pm: $0.57/kWh; Sat-Sun 8:00pm–11:59pm: $0.53/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a916af4777d2d2ee2368c260725401801f10a6611508d694ee9829cea94a553c",
+          "locationId": "242062678117749",
+          "name": "Ventura, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Ventura",
+          "region": "CA",
+          "url": "/locations/ran-ventura-ca-dc279be20b/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.47–0.67/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.47/kWh; Mon-Fri 8:00am–8:00pm: $0.67/kWh; Mon-Fri 8:00pm–11:59pm: $0.62/kWh; Sat-Sun 12:00am–8:00am: $0.47/kWh; Sat-Sun 8:00am–8:00pm: $0.67/kWh; Sat-Sun 8:00pm–11:59pm: $0.62/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.41–0.59/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.41/kWh; Mon-Fri 8:00am–8:00pm: $0.59/kWh; Mon-Fri 8:00pm–11:59pm: $0.55/kWh; Sat-Sun 12:00am–8:00am: $0.41/kWh; Sat-Sun 8:00am–8:00pm: $0.59/kWh; Sat-Sun 8:00pm–11:59pm: $0.55/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "59c1adb8c3b3fe365f969fae4cb68bf204e80da507255c7673c8be642f798a0f",
+          "locationId": "79115396918013",
+          "name": "West Hartford, CT",
+          "type": "Rivian Adventure Network",
+          "city": "West Hartford",
+          "region": "CT",
+          "url": "/locations/ran-west-hartford-ct-47f47d11e8/",
+          "kind": "changed",
+          "lines": [
+            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44–0.62/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.44/kWh; Mon-Fri 8:00am–8:00pm: $0.62/kWh; Mon-Fri 8:00pm–11:59pm: $0.58/kWh; Sat-Sun 12:00am–8:00am: $0.44/kWh; Sat-Sun 8:00am–8:00pm: $0.62/kWh; Sat-Sun 8:00pm–11:59pm: $0.58/kWh",
+            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37–0.53/kWh.",
+            "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.37/kWh; Mon-Fri 8:00am–8:00pm: $0.53/kWh; Mon-Fri 8:00pm–11:59pm: $0.49/kWh; Sat-Sun 12:00am–8:00am: $0.37/kWh; Sat-Sun 8:00am–8:00pm: $0.53/kWh; Sat-Sun 8:00pm–11:59pm: $0.49/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b2d9992fe92d54f23bd5ca8166fe420d78efecdfec933a8383c20c810c72c394",
+          "locationId": "106",
+          "name": "West Henrietta, NY - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "West Henrietta",
+          "region": "NY",
+          "url": "/locations/west-henrietta-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: (585) 648-0806 — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4a3154241b4cca8a695ab9d14b5dc5990c68664235460e097ebcc17d932c5322",
+          "locationId": "126495172544",
+          "name": "Wichita, KS",
+          "type": "Rivian Adventure Network",
+          "city": "Wichita",
+          "region": "KS",
+          "url": "/locations/ran-wichita-ks-001d73a3e5/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 201 (previously 203)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    }
+  ],
+  "latestCheck": {
+    "date": "2026-10-21",
+    "sourceDates": {
+      "places": "2026-10-21",
+      "charging": "2026-10-21",
+      "chargingDetails": "2026-10-21"
+    },
+    "partialDetails": false
+  }
+}

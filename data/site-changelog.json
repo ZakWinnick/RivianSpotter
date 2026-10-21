@@ -1,10 +1,20 @@
 [
   {
+    "version": "2026.43.1",
+    "date": "2026-10-21",
+    "title": "Follow changes across the map",
+    "changes": [
+      "Added a daily location update feed with new locations, coming-soon announcements, openings, and changes to charging and site details.",
+      "Search updates by location and filter by location type or kind of change.",
+      "Moved website release notes to Changelog, linked in the footer."
+    ]
+  },
+  {
     "version": "2026.42.26",
     "date": "2026-10-16",
     "title": "Charging locations and map improvements",
     "changes": [
-      "Added Rivian’s announced future charging locations, including King City and Salinas, with Coming Soon labels and distinct map markers.",
+      "Added Rivian\u2019s announced future charging locations, including King City and Salinas, with Coming Soon labels and distinct map markers.",
       "Added daily updates for coming-soon locations. City-level pins show approximate locations until station addresses are published.",
       "Coming-soon locations now carry their saved places and page links forward when a matching active station is identified, adding published station and charging details automatically.",
       "Light and dark appearance now follows your device automatically, with no separate theme switch.",
