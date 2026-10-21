@@ -21,7 +21,7 @@ public struct CatalogSnapshot: Codable, Sendable {
     /// download is deleted along with its validators, so the next check downloads in full.
     public static func cached(at url: URL, unlessOlderThan bundled: Catalog?) -> CatalogSnapshot? {
         guard let snapshot = cached(at: url) else { return nil }
-        if let bundled, snapshot.catalog.updatedOn < bundled.updatedOn {
+        if let bundled, (snapshot.catalog.revision ?? 0) < (bundled.revision ?? 0) {
             try? FileManager.default.removeItem(at: url)
             return nil
         }
@@ -35,6 +35,7 @@ public actor CatalogUpdates {
     private let cacheURL: URL
     private let fetch: Fetch
     private var snapshot: CatalogSnapshot?
+    private let minimumRevision: Int64
 
     public init(cacheURL: URL, fetch: @escaping Fetch = { try await CatalogUpdates.download($0) }) {
         self.init(cacheURL: cacheURL, snapshot: CatalogSnapshot.cached(at: cacheURL), fetch: fetch)
@@ -42,10 +43,12 @@ public actor CatalogUpdates {
 
     /// Starts from a snapshot the caller already read (or deliberately discarded, passing nil),
     /// so launch reads the cache file once.
-    public init(cacheURL: URL, snapshot: CatalogSnapshot?, fetch: @escaping Fetch = { try await CatalogUpdates.download($0) }) {
+    public init(cacheURL: URL, snapshot: CatalogSnapshot?, minimumRevision: Int64 = 0,
+                fetch: @escaping Fetch = { try await CatalogUpdates.download($0) }) {
         self.cacheURL = cacheURL
         self.fetch = fetch
         self.snapshot = snapshot
+        self.minimumRevision = minimumRevision
     }
 
     public func refresh() async throws -> CatalogSnapshot {
@@ -66,6 +69,12 @@ public actor CatalogUpdates {
                                    etag: response.value(forHTTPHeaderField: "ETag"),
                                    lastModified: response.value(forHTTPHeaderField: "Last-Modified"), checkedAt: Date())
         default: throw URLError(.badServerResponse)
+        }
+        // Reject a stale response before replacing either the data or its HTTP validators.
+        // Compare with the latest download too, including one accepted while this request waited.
+        guard let revision = next.catalog.revision,
+              revision >= max(minimumRevision, snapshot?.catalog.revision ?? 0) else {
+            throw URLError(.badServerResponse)
         }
         try Task.checkCancellation()
         try FileManager.default.createDirectory(at: cacheURL.deletingLastPathComponent(), withIntermediateDirectories: true)

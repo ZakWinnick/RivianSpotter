@@ -149,8 +149,11 @@ private struct Lenient<Value: Decodable>: Decodable {
 
 public struct Catalog: Codable, Sendable {
     public let schemaVersion: Int
+    public let revision: Int64?
     public let places: [Place]
-    public init(schemaVersion: Int, places: [Place]) { self.schemaVersion = schemaVersion; self.places = places }
+    public init(schemaVersion: Int, places: [Place], revision: Int64? = nil) {
+        self.schemaVersion = schemaVersion; self.places = places; self.revision = revision
+    }
     public static func bundled() throws -> Catalog {
         #if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -162,18 +165,16 @@ public struct Catalog: Codable, Sendable {
         }
         return try validated(Data(contentsOf: url))
     }
-    /// The newest source observation in the directory. It tells an old cached download from a
-    /// newer directory bundled with an app update; ISO dates compare correctly as strings.
-    public var updatedOn: String { places.compactMap(\.checkedOn).max() ?? "" }
-
     /// Reads a directory leniently so installed apps keep receiving updates as the website grows:
     /// location types this build doesn't know are dropped from a record, an out-of-range pin
     /// becomes "no pin", and an unreadable or ambiguous record is skipped. A response where
     /// most records are unusable is still rejected as a broken export.
     public static func validated(_ data: Data) throws -> Catalog {
+        struct Header: Decodable { let schemaVersion: Int; let revision: Int64 }
         guard data.count <= 20 * 1024 * 1024,
+              let header = try? JSONDecoder().decode(Header.self, from: data),
+              header.schemaVersion == 1, header.revision > 0, header.revision <= 9_007_199_254_740_991,
               let root = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-              root["schemaVersion"] as? Int == 1,
               let records = root["places"] as? [[String: Any]], !records.isEmpty else {
             throw CocoaError(.coderReadCorrupt)
         }
@@ -203,12 +204,13 @@ public struct Catalog: Codable, Sendable {
             places.append(place)
         }
         guard places.count * 2 > records.count else { throw CocoaError(.coderReadCorrupt) }
-        return Catalog(schemaVersion: 1, places: places)
+        return Catalog(schemaVersion: 1, places: places, revision: header.revision)
     }
 
     /// Light checks for a directory this app already validated and cached itself.
     var isWellFormed: Bool {
-        schemaVersion == 1 && !places.isEmpty && Set(places.map(\.id)).count == places.count
+        schemaVersion == 1 && (revision ?? 0) > 0 && (revision ?? 0) <= 9_007_199_254_740_991 &&
+        !places.isEmpty && Set(places.map(\.id)).count == places.count
     }
     public func place(for id: String) -> Place? {
         places.first { $0.id == id || $0.aliases.contains(id) }

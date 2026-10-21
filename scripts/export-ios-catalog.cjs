@@ -16,7 +16,7 @@ function photoFor(place) {
 }
 function catalog() {
   const places = combineLocations(read('locations.json'), read('charging.json'), read('roamer.json').stations);
-  return { schemaVersion: 1, places: places.map(p => ({
+  const output = { schemaVersion: 1, places: places.map(p => ({
     id: String(p.id), aliases: (p.legacyIds || []).map(String), slug: p.slug,
     name: p.name, directoryTypes: locationTypes(p), types: [...new Set([...locationTypes(p),
       ...(p.capabilities?.includes('service') ? ['Service Center'] : [])])],
@@ -33,6 +33,8 @@ function catalog() {
     postalCode: p.postalCode || null,
     relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]
   })).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id)) };
+  return { ...output, revision: require('./catalog-revision.cjs').revisionFor(output,
+    path.join(root, 'data/catalog-revision.json')) };
 }
 function writeCatalog(target, { pretty = false } = {}) {
   fs.mkdirSync(path.dirname(target), { recursive: true });

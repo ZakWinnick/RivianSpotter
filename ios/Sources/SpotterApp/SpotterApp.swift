@@ -17,7 +17,6 @@ final class SpotterStore: ObservableObject {
     private var catalogUpdates: CatalogUpdates?
     private var catalogCheck: Task<Void, Never>?
     private var lastCatalogAttempt: Date?
-    private var bundledUpdatedOn = ""
     @Published private(set) var updatingCatalog = false
     @Published private(set) var catalogCheckedAt: Date?
     /// The last failed check, shown in Settings. Automatic checks fail quietly (often just no
@@ -31,7 +30,6 @@ final class SpotterStore: ObservableObject {
     init() {
         // A damaged bundled directory must not take the journal down with it.
         let bundled = try? Catalog.bundled()
-        bundledUpdatedOn = bundled?.updatedOn ?? ""
         do {
             #if os(macOS)
             let storageName = "RivianSpotter-Preview"
@@ -45,7 +43,8 @@ final class SpotterStore: ObservableObject {
             let cached = CatalogSnapshot.cached(at: cacheURL, unlessOlderThan: bundled)
             places = cached?.catalog.places ?? bundled?.places ?? []
             catalogCheckedAt = cached?.checkedAt
-            catalogUpdates = CatalogUpdates(cacheURL: cacheURL, snapshot: cached)
+            catalogUpdates = CatalogUpdates(cacheURL: cacheURL, snapshot: cached,
+                                            minimumRevision: bundled?.revision ?? 0)
             #if os(iOS) && !targetEnvironment(simulator)
             let cloudEnabled = true
             #else
@@ -78,8 +77,7 @@ final class SpotterStore: ObservableObject {
         let check = Task {
             do {
                 let update = try await catalogUpdates.refresh()
-                // A server copy older than this build's bundled directory doesn't replace it.
-                if update.catalog.updatedOn >= bundledUpdatedOn { places = update.catalog.places }
+                places = update.catalog.places
                 catalogCheckedAt = update.checkedAt
                 catalogNotice = nil
                 catalogNoticeRequested = false

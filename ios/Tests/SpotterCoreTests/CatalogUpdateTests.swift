@@ -5,9 +5,10 @@ import XCTest
 #endif
 
 final class CatalogUpdateTests: XCTestCase {
-    private func changedCatalog() throws -> Data {
+    private func changedCatalog(revision: Int64? = nil) throws -> Data {
         let bundled = try Catalog.bundled()
         var json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(bundled)) as! [String: Any]
+        if let revision { json["revision"] = revision }
         var places = json["places"] as! [[String: Any]]
         places[0]["status"] = "open"
         places[0]["name"] = "Updated Space"
@@ -85,20 +86,85 @@ final class CatalogUpdateTests: XCTestCase {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let bundled = try Catalog.bundled()
-        func write(checkedOn: String) throws {
+        func write(revision: Int64) throws {
             var json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(bundled)) as! [String: Any]
-            json["places"] = (json["places"] as! [[String: Any]]).map { var p = $0; p["checkedOn"] = checkedOn; return p }
+            json["revision"] = revision // All per-site verification dates stay unchanged.
             let catalog = try Catalog.validated(JSONSerialization.data(withJSONObject: json))
             try JSONEncoder().encode(CatalogSnapshot(catalog: catalog, etag: "old", lastModified: nil, checkedAt: Date())).write(to: url)
         }
-        try write(checkedOn: "2020-01-01")
+        try write(revision: bundled.revision! - 1)
         XCTAssertTrue(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled) == nil)
         XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
-        try write(checkedOn: "2999-01-01")
+        try write(revision: bundled.revision! + 1)
         XCTAssertEqual(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled)?.etag, "old")
         // With no bundled directory, any valid download is used.
-        try write(checkedOn: "2020-01-01")
+        try write(revision: bundled.revision! - 1)
         XCTAssertEqual(CatalogSnapshot.cached(at: url, unlessOlderThan: nil)?.etag, "old")
+        // Pre-revision caches cannot outrank the bundle or contribute stale validators.
+        var legacy = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as! [String: Any]
+        var legacyCatalog = legacy["catalog"] as! [String: Any]
+        legacyCatalog.removeValue(forKey: "revision")
+        legacy["catalog"] = legacyCatalog
+        try JSONSerialization.data(withJSONObject: legacy).write(to: url)
+        XCTAssertTrue(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled) == nil)
+    }
+    func testRevisionIsRequiredAndIndependentOfSourceDates() throws {
+        var json = try JSONSerialization.jsonObject(with: changedCatalog()) as! [String: Any]
+        for invalid: Any in [NSNull(), true, "123", 0, -1, 1.5, 9_007_199_254_740_992] {
+            json["revision"] = invalid
+            XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
+        }
+        json.removeValue(forKey: "revision")
+        XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
+        json["revision"] = 42
+        json["places"] = (json["places"] as! [[String: Any]]).map { var p = $0; p["checkedOn"] = NSNull(); return p }
+        XCTAssertEqual(try Catalog.validated(JSONSerialization.data(withJSONObject: json)).revision, 42)
+    }
+    func testStaleResponsesCannotReplaceBundleOrDownloadedSavedDetails() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        let url = directory.appendingPathComponent("catalog-cache.json")
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let bundled = try Catalog.bundled()
+        let baseline = bundled.revision!
+        let old = try changedCatalog(revision: baseline - 1)
+        let current = try changedCatalog(revision: baseline + 2)
+        let intermediate = try changedCatalog(revision: baseline + 1)
+        let behindBundle = CatalogUpdates(cacheURL: url, snapshot: nil, minimumRevision: baseline) { request in
+            (old, HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil,
+                headerFields: ["Content-Type": "application/json", "ETag": "old"])!)
+        }
+        do { _ = try await behindBundle.refresh(); XCTAssertTrue(false) } catch {}
+        XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+
+        actor Feed {
+            var calls = 0
+            func next() -> Int { calls += 1; return calls }
+        }
+        let feed = Feed()
+        let client = CatalogUpdates(cacheURL: url, snapshot: nil, minimumRevision: baseline) { request in
+            switch await feed.next() {
+            case 1:
+                return (current, HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil,
+                    headerFields: ["Content-Type": "application/json", "ETag": "current"])!)
+            case 2:
+                XCTAssertEqual(request.value(forHTTPHeaderField: "If-None-Match"), "current")
+                return (intermediate, HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil,
+                    headerFields: ["Content-Type": "application/json", "ETag": "stale"])!)
+            default:
+                XCTAssertEqual(request.value(forHTTPHeaderField: "If-None-Match"), "current")
+                return (Data(), HTTPURLResponse(url: request.url!, statusCode: 304, httpVersion: nil, headerFields: nil)!)
+            }
+        }
+        let updated = try await client.refresh()
+        let before = try Data(contentsOf: url)
+        do { _ = try await client.refresh(); XCTAssertTrue(false) } catch {}
+        XCTAssertEqual(try Data(contentsOf: url), before)
+        let revalidated = try await client.refresh()
+        XCTAssertEqual(revalidated.catalog.revision, baseline + 2)
+        XCTAssertEqual(revalidated.catalog.resolving(bundled.places[0]).name, "Updated Space")
+        XCTAssertEqual(revalidated.catalog.places, updated.catalog.places)
+        // Relaunch retains the newest catalog even though all verification dates are unchanged.
+        XCTAssertEqual(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled)?.catalog.revision, baseline + 2)
     }
     func testDownloadCacheRevalidationAndFailurePreserveLatestDirectory() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

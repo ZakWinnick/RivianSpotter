@@ -127,3 +127,11 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Automatic checks fail quietly; Settings shows the last failure, and browsing screens show it only after a manual refresh. Pull-to-refresh during an automatic check waits for it.
 - Launch reads the cache once without re-encoding (about 70 ms to 34 ms on this Mac, release build). A damaged bundled directory no longer prevents the journal from opening.
 - Verified: 20 core cases (XCTest and standalone), device-service checks, iOS simulator and desktop preview builds, `npm test` 101 passed. On the iPhone 17e simulator with the endpoint not yet deployed (HTTP 404): no notice after launch; the notice appeared after pull-to-refresh in Browse.
+
+## Catalog revision ordering — October 20, 2026
+
+- Replaced source-verification-date comparisons with an explicit catalog revision, generated from the complete export and persisted with its content digest in `data/catalog-revision.json`. Same-day edits and removals advance the revision; unchanged exports keep it. Scheduled refresh commits preserve the manifest.
+- The refresh client rejects revisions older than either the bundle or its latest accepted download before writing data or HTTP validators. Revisionless caches fall back to the bundle. Source dates no longer control directory ordering.
+- All 22 XCTest cases passed. The standalone runner subsequently passed all 22 cases including the added legacy-cache assertion. Regression coverage includes same-day edits, unchanged source dates, newer bundles, stale 200 responses, retained validators on the next 304, relaunch, missing/invalid revisions, and unchanged private journal data.
+- All 102 website tests and the static build passed. The generated public and bundled catalogs match exactly, including their revision. The universal iOS simulator Release build passed; `git diff --check` passed.
+- This revision has not been deployed or uploaded to TestFlight. The earlier build 5 archive predates this fix and must be rebuilt before distribution.

@@ -5,6 +5,24 @@ const { combineLocations, locationTypes } = require('../js/location-model.js');
 const places = require('../data/locations.json');
 const charging = require('../data/charging.json');
 
+test('catalog revisions advance for same-day edits and removals, and persist for unchanged content', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const { revisionFor } = require('../scripts/catalog-revision.cjs');
+  const directory = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'spotter-revision-'));
+  const file = path.join(directory, 'revision.json');
+  try {
+    const original = { places: [{ id: 'saved', status: 'planned', checkedOn: '2026-10-20' }] };
+    const opened = { places: [{ id: 'saved', status: 'open', checkedOn: '2026-10-20' }] };
+    assert.equal(revisionFor(original, file, 1000), 1000);
+    assert.equal(revisionFor(original, file, 2000), 1000);
+    assert.equal(revisionFor(opened, file, 1000), 1001, 'Same clock tick still advances');
+    assert.equal(revisionFor({ places: [] }, file, 900), 1002, 'Removal and clock rollback still advance');
+    assert.equal(revisionFor(original, file, 1000), 1003, 'Intentional content rollback is a new revision');
+    assert.equal(revisionFor(original, file, 3000), 1003);
+  } finally { fs.rmSync(directory, { recursive: true, force: true }); }
+});
+
 test('public API export is deterministic and includes the complete canonical catalog', () => {
   const fs = require('node:fs');
   const path = require('node:path');
@@ -15,6 +33,8 @@ test('public API export is deterministic and includes the complete canonical cat
     writeCatalog(target);
     const first = fs.readFileSync(target, 'utf8');
     assert.deepEqual(JSON.parse(first), catalog());
+    assert.ok(Number.isSafeInteger(JSON.parse(first).revision));
+    assert.equal(JSON.parse(first).revision, require('../data/catalog-revision.json').revision);
     writeCatalog(target);
     assert.equal(fs.readFileSync(target, 'utf8'), first);
     assert.ok(Buffer.byteLength(first) < 20 * 1024 * 1024);
