@@ -18,6 +18,12 @@ The response has `schemaVersion: 1`, a positive integer `revision`, and `places:
 - Cache the catalog and HTTP validators in one atomic file. On failure retain existing data. Automatic checks fail quietly; the failure shows in Settings, and on browsing screens only after a manual refresh. A manual refresh during an automatic check waits for that check's result. Settings shows the last successful check; this is not a claim that every underlying source was checked then.
 - Resolve saved places and currently open detail pages by canonical ID or aliases against the current catalog. A planned site becoming open immediately updates the Saved row and details after refresh. Directory updates never rewrite bookmarks, visit dates, or notes. Historical visit snapshots stay historical. A removed listing retains its saved snapshot until a matching listing returns; it is never silently deleted from the journal.
 
+## Listed-address map pins
+
+`scripts/listed-address-pins.json` stores reviewed address lookups for listings without usable official coordinates. Each entry retains the exact directory address and locality, the matched address, lookup source, method, and review date. The refresh reconciler reapplies a pin only while that address and locality still match; newly supplied official coordinates take priority. Address changes require a fresh lookup. These are address-level `map-pin` coordinates, not surveyed entrances, and do not verify operating status or hours. Listings without a street address remain unpinned.
+
+After changing this cache, apply `applyListedAddressPin` from `scripts/listed-address-pins.cjs` to the canonical records, then run `node scripts/generate-data.cjs` and `node scripts/export-ios-catalog.cjs`. Commit the canonical data, generated browser data, catalog revision, and bundled catalog together. The website and installed API-capable app receive the same pins through the normal website deployment.
+
 ## Release
 
 Deploy the website endpoint first and verify HTTP 200, JSON content type, and a valid v1 document. Then release an app build containing CatalogUpdates. Earlier TestFlight builds 1–4 do not fetch this endpoint. Regenerate the bundled offline fallback with `node scripts/export-ios-catalog.cjs` before app releases, and commit `data/catalog-revision.json` alongside it. The API and bundled copy must be generated from the same source content and manifest.
