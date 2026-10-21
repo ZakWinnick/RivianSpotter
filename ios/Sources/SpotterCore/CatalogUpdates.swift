@@ -8,11 +8,23 @@ public struct CatalogSnapshot: Codable, Sendable {
     public let lastModified: String?
     public let checkedAt: Date
 
+    /// The cache only ever holds a directory this app validated before writing it, so reading it
+    /// back needs one decode plus light checks rather than a second full validation pass.
     public static func cached(at url: URL) -> CatalogSnapshot? {
         guard let data = try? Data(contentsOf: url), data.count <= 24 * 1024 * 1024,
               let snapshot = try? JSONDecoder().decode(Self.self, from: data),
-              let encoded = try? JSONEncoder().encode(snapshot.catalog),
-              (try? Catalog.validated(encoded)) != nil else { return nil }
+              snapshot.catalog.isWellFormed else { return nil }
+        return snapshot
+    }
+
+    /// The cached download, unless the directory bundled with this app build is newer. An older
+    /// download is deleted along with its validators, so the next check downloads in full.
+    public static func cached(at url: URL, unlessOlderThan bundled: Catalog?) -> CatalogSnapshot? {
+        guard let snapshot = cached(at: url) else { return nil }
+        if let bundled, snapshot.catalog.updatedOn < bundled.updatedOn {
+            try? FileManager.default.removeItem(at: url)
+            return nil
+        }
         return snapshot
     }
 }
@@ -25,9 +37,15 @@ public actor CatalogUpdates {
     private var snapshot: CatalogSnapshot?
 
     public init(cacheURL: URL, fetch: @escaping Fetch = { try await CatalogUpdates.download($0) }) {
+        self.init(cacheURL: cacheURL, snapshot: CatalogSnapshot.cached(at: cacheURL), fetch: fetch)
+    }
+
+    /// Starts from a snapshot the caller already read (or deliberately discarded, passing nil),
+    /// so launch reads the cache file once.
+    public init(cacheURL: URL, snapshot: CatalogSnapshot?, fetch: @escaping Fetch = { try await CatalogUpdates.download($0) }) {
         self.cacheURL = cacheURL
         self.fetch = fetch
-        snapshot = CatalogSnapshot.cached(at: cacheURL)
+        self.snapshot = snapshot
     }
 
     public func refresh() async throws -> CatalogSnapshot {

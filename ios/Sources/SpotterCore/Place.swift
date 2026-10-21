@@ -141,6 +141,12 @@ public enum PlaceClustering {
     }
 }
 
+/// Decodes one array element without failing the whole array.
+private struct Lenient<Value: Decodable>: Decodable {
+    let value: Value?
+    init(from decoder: Decoder) throws { value = try? Value(from: decoder) }
+}
+
 public struct Catalog: Codable, Sendable {
     public let schemaVersion: Int
     public let places: [Place]
@@ -156,27 +162,53 @@ public struct Catalog: Codable, Sendable {
         }
         return try validated(Data(contentsOf: url))
     }
+    /// The newest source observation in the directory. It tells an old cached download from a
+    /// newer directory bundled with an app update; ISO dates compare correctly as strings.
+    public var updatedOn: String { places.compactMap(\.checkedOn).max() ?? "" }
+
+    /// Reads a directory leniently so installed apps keep receiving updates as the website grows:
+    /// location types this build doesn't know are dropped from a record, an out-of-range pin
+    /// becomes "no pin", and an unreadable or ambiguous record is skipped. A response where
+    /// most records are unusable is still rejected as a broken export.
     public static func validated(_ data: Data) throws -> Catalog {
-        guard data.count <= 20 * 1024 * 1024 else { throw CocoaError(.coderReadCorrupt) }
-        let catalog = try JSONDecoder().decode(Catalog.self, from: data)
-        guard catalog.schemaVersion == 1, !catalog.places.isEmpty,
-              Set(catalog.places.map(\.id)).count == catalog.places.count,
-              catalog.places.allSatisfy({ !$0.id.isEmpty && !$0.name.isEmpty && !$0.types.isEmpty &&
-                  ($0.latitude.map { $0.isFinite && (-90...90).contains($0) } ?? true) &&
-                  ($0.longitude.map { $0.isFinite && (-180...180).contains($0) } ?? true) }) else {
+        guard data.count <= 20 * 1024 * 1024,
+              let root = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+              root["schemaVersion"] as? Int == 1,
+              let records = root["places"] as? [[String: Any]], !records.isEmpty else {
             throw CocoaError(.coderReadCorrupt)
         }
-        // An alias must identify just one place, including canonical IDs.
-        var identities: [String: String] = [:]
-        for place in catalog.places {
-            for identity in [place.id] + place.aliases {
-                guard !identity.isEmpty, identities[identity] == nil || identities[identity] == place.id else {
-                    throw CocoaError(.coderReadCorrupt)
-                }
-                identities[identity] = place.id
-            }
+        let known = Set(PlaceType.allCases.map(\.rawValue))
+        func outOfRange(_ value: Any?, _ limit: Double) -> Bool {
+            guard let value, !(value is NSNull) else { return false }
+            guard let number = value as? Double else { return true }
+            return !number.isFinite || abs(number) > limit
         }
-        return catalog
+        let repaired = records.map { original -> [String: Any] in
+            var record = original
+            for key in ["types", "directoryTypes"] {
+                if let values = record[key] as? [String] { record[key] = values.filter(known.contains) }
+            }
+            if outOfRange(record["latitude"], 90) || outOfRange(record["longitude"], 180) {
+                record["latitude"] = NSNull(); record["longitude"] = NSNull(); record["coordinatePrecision"] = "unknown"
+            }
+            return record
+        }
+        let decoded = try JSONDecoder().decode([Lenient<Place>].self, from: JSONSerialization.data(withJSONObject: repaired))
+        var identities = Set<String>(), places: [Place] = []
+        for case let place? in decoded.map(\.value) where !place.id.isEmpty && !place.name.isEmpty && !place.types.isEmpty {
+            // An identity claimed twice is ambiguous; the first record keeps it.
+            let claimed = [place.id] + place.aliases.filter { !$0.isEmpty }
+            guard identities.isDisjoint(with: claimed) else { continue }
+            identities.formUnion(claimed)
+            places.append(place)
+        }
+        guard places.count * 2 > records.count else { throw CocoaError(.coderReadCorrupt) }
+        return Catalog(schemaVersion: 1, places: places)
+    }
+
+    /// Light checks for a directory this app already validated and cached itself.
+    var isWellFormed: Bool {
+        schemaVersion == 1 && !places.isEmpty && Set(places.map(\.id)).count == places.count
     }
     public func place(for id: String) -> Place? {
         places.first { $0.id == id || $0.aliases.contains(id) }

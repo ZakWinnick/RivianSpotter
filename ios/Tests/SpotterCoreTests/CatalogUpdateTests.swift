@@ -50,12 +50,55 @@ final class CatalogUpdateTests: XCTestCase {
         XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
         json["places"] = []
         XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
-        var invalid = places[0]; invalid["latitude"] = 999
-        json["places"] = [invalid]
-        XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
         var aliased = places[1]; aliased["aliases"] = [places[0]["id"]!]
         json["places"] = [places[0], aliased]
         XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
+    }
+    func testFeedFromANewerWebsiteStillUpdatesInstalledApps() throws {
+        let bundled = try Catalog.bundled()
+        var json = try JSONSerialization.jsonObject(with: changedCatalog()) as! [String: Any]
+        var places = json["places"] as! [[String: Any]]
+        let mixedID = places[1]["id"] as! String, pinID = places[2]["id"] as! String
+        places[1]["types"] = (places[1]["types"] as! [String]) + ["Supercharger"]   // a type added later
+        places[1]["directoryTypes"] = ["Supercharger"]
+        places[2]["latitude"] = 999.0                                              // one bad pin
+        places[3]["types"] = ["Supercharger"]                                      // only unknown types
+        places[4]["name"] = 42                                                     // unreadable record
+        json["places"] = places
+        let catalog = try Catalog.validated(JSONSerialization.data(withJSONObject: json))
+        XCTAssertEqual(catalog.places.count, bundled.places.count - 2)
+        let mixed = try XCTUnwrap(catalog.place(for: mixedID))
+        XCTAssertFalse(mixed.types.isEmpty)
+        XCTAssertTrue(mixed.browseTypes.isEmpty)
+        let unpinned = try XCTUnwrap(catalog.place(for: pinID))
+        XCTAssertTrue(unpinned.latitude == nil)
+        XCTAssertFalse(unpinned.hasPreciseCoordinates)
+        // A response where most records are unusable is a broken export, not an update.
+        json["places"] = places.enumerated().map { index, place in
+            var place = place; if index % 3 != 0 { place["types"] = ["Supercharger"] }; return place
+        }
+        XCTAssertThrowsError(try Catalog.validated(JSONSerialization.data(withJSONObject: json)))
+    }
+    func testNewerBundledDirectoryReplacesAnOldDownload() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        let url = directory.appendingPathComponent("catalog-cache.json")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let bundled = try Catalog.bundled()
+        func write(checkedOn: String) throws {
+            var json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(bundled)) as! [String: Any]
+            json["places"] = (json["places"] as! [[String: Any]]).map { var p = $0; p["checkedOn"] = checkedOn; return p }
+            let catalog = try Catalog.validated(JSONSerialization.data(withJSONObject: json))
+            try JSONEncoder().encode(CatalogSnapshot(catalog: catalog, etag: "old", lastModified: nil, checkedAt: Date())).write(to: url)
+        }
+        try write(checkedOn: "2020-01-01")
+        XCTAssertTrue(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled) == nil)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+        try write(checkedOn: "2999-01-01")
+        XCTAssertEqual(CatalogSnapshot.cached(at: url, unlessOlderThan: bundled)?.etag, "old")
+        // With no bundled directory, any valid download is used.
+        try write(checkedOn: "2020-01-01")
+        XCTAssertEqual(CatalogSnapshot.cached(at: url, unlessOlderThan: nil)?.etag, "old")
     }
     func testDownloadCacheRevalidationAndFailurePreserveLatestDirectory() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

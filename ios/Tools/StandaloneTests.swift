@@ -58,9 +58,11 @@ struct StandaloneTests {
         do {
             try catalogTests.testSavedPlaceFollowsNewDetailsAndAliasesWithoutChangingJournal()
             try catalogTests.testInvalidCatalogIsRejected()
+            try catalogTests.testFeedFromANewerWebsiteStillUpdatesInstalledApps()
+            try catalogTests.testNewerBundledDirectoryReplacesAnOldDownload()
             try await catalogTests.testDownloadCacheRevalidationAndFailurePreserveLatestDirectory()
         } catch { failure("Catalog updates: \(error)") }
-        print("\(cases.count + 3) cases, \(failures) failures")
+        print("\(cases.count + 5) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

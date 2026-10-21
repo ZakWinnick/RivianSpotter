@@ -12,10 +12,10 @@ The response has `schemaVersion: 1` and `places: [...]`. Each place includes its
 
 ## App behavior
 
-- Start immediately from the last validated cached response, falling back to the bundled catalog if no valid cache exists.
+- Start immediately from the last validated cached response, falling back to the bundled catalog if no valid cache exists. If the bundled catalog is newer (by the latest `checkedOn` date), the old cache and its HTTP validators are discarded; a server response older than the bundled catalog doesn't replace it.
 - Check on launch and foreground, at most once per 15 minutes per running app session. Pull-to-refresh in Browse, galleries, and Saved, or Settings → Location Updates → Check for Updates, bypasses the interval.
-- Download over HTTPS with a 25-second request timeout. Validate the schema, record identities/aliases, nonempty records, and coordinate bounds before accepting a response. Reject payloads over 20 MiB, HTML/error responses, unsupported schemas, and invalid catalogs.
-- Cache the catalog and HTTP validators in one atomic file. On failure retain existing data and show a non-blocking notice. Settings shows the last successful check; this is not a claim that every underlying source was checked then.
+- Download over HTTPS with a 25-second request timeout. Validate the schema and records before accepting a response. Records are read individually so existing clients keep updating as the site grows: location types the client doesn't know are dropped from a record (a record left with none is skipped), out-of-range coordinates become "no pin", and unreadable records or records claiming an identity already taken are skipped. Reject payloads over 20 MiB, HTML/error responses, unsupported schemas, and any response where half or more of the records are unusable.
+- Cache the catalog and HTTP validators in one atomic file. On failure retain existing data. Automatic checks fail quietly; the failure shows in Settings, and on browsing screens only after a manual refresh. A manual refresh during an automatic check waits for that check's result. Settings shows the last successful check; this is not a claim that every underlying source was checked then.
 - Resolve saved places and currently open detail pages by canonical ID or aliases against the current catalog. A planned site becoming open immediately updates the Saved row and details after refresh. Directory updates never rewrite bookmarks, visit dates, or notes. Historical visit snapshots stay historical. A removed listing retains its saved snapshot until a matching listing returns; it is never silently deleted from the journal.
 
 ## Release

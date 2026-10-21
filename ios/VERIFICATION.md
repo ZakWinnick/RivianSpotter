@@ -118,3 +118,12 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Universal iOS Release simulator build succeeded. On a separate disposable iPhone 17e simulator, saved a bundled coming-soon location; seeded a clearly labeled test-only cached update, relaunched, and observed updated Saved/detail name, status, and hours with the bookmark still selected. This is a fixture test, not an assertion that the real location opened.
 - Observed Settings last-check time, manual refresh, and continued browsing after the still-unpublished endpoint failed. Production HTTP headers/response and physical-device behavior remain release checks.
 - Final checks: XCTest ran all 18 cases successfully; signed device Release archive succeeded for build 5. No TestFlight upload was performed for the catalog feature.
+
+
+## Catalog refresh review fixes — October 20, 2026
+
+- Feed parsing is per record: unknown location types are dropped from a record, out-of-range pins become "no pin", and unreadable or identity-conflicting records are skipped. A response with half or more unusable records is rejected. Previously one unknown type or bad pin rejected the whole feed.
+- A cached download older than the bundled directory (latest `checkedOn`) is deleted with its validators; an older server response doesn't replace the bundled directory.
+- Automatic checks fail quietly; Settings shows the last failure, and browsing screens show it only after a manual refresh. Pull-to-refresh during an automatic check waits for it.
+- Launch reads the cache once without re-encoding (about 70 ms to 34 ms on this Mac, release build). A damaged bundled directory no longer prevents the journal from opening.
+- Verified: 20 core cases (XCTest and standalone), device-service checks, iOS simulator and desktop preview builds, `npm test` 101 passed. On the iPhone 17e simulator with the endpoint not yet deployed (HTTP 404): no notice after launch; the notice appeared after pull-to-refresh in Browse.
