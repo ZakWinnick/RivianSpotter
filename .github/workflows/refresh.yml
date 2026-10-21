@@ -40,6 +40,9 @@ jobs:
         if: steps.roamer.outcome == 'failure'
         run: echo 'Roamer could not be refreshed; the previous snapshot is retained.' >> "$GITHUB_STEP_SUMMARY"
       - name: Build and test the refreshed release
+        # This run commits data/catalog-revision.json below, so it may record a new revision.
+        env:
+          CATALOG_REVISION_UPDATE: '1'
         run: npm run build && npm test && npm audit --omit=dev
       - name: Save the validated data
         run: |

@@ -226,6 +226,15 @@ private enum GuideTab: String, CaseIterable {
     }
 }
 
+private struct SidebarVisibleKey: EnvironmentKey { static let defaultValue = false }
+extension EnvironmentValues {
+    /// True in the wide layout, whose sidebar already offers Settings and the category list.
+    var sidebarVisible: Bool {
+        get { self[SidebarVisibleKey.self] }
+        set { self[SidebarVisibleKey.self] = newValue }
+    }
+}
+
 struct RootView: View {
     @EnvironmentObject private var store: SpotterStore
     @Environment(\.colorScheme) private var scheme
@@ -241,7 +250,7 @@ struct RootView: View {
             HStack(spacing: 0) {
                 if geometry.size.width >= 700 { sidebar.frame(width: 245) }
                 ZStack {
-                    browsing.opacity(selectedPlace == nil ? 1 : 0)
+                    browsing(wide: geometry.size.width >= 700).opacity(selectedPlace == nil ? 1 : 0)
                         .allowsHitTesting(selectedPlace == nil).accessibilityHidden(selectedPlace != nil)
                     if let place = selectedPlace {
                         PlaceDetail(place: store.currentPlace(place), back: { selectedPlace = placeHistory.popLast() }, open: { next in
@@ -250,6 +259,7 @@ struct RootView: View {
                             .edgeSwipeBack { selectedPlace = placeHistory.popLast() }
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .environment(\.sidebarVisible, geometry.size.width >= 700)
             }
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 if geometry.size.width < 700 {
@@ -283,12 +293,14 @@ struct RootView: View {
             Button("OK") { store.error = nil }
         } message: { Text(store.error ?? "") }
     }
-    @ViewBuilder private var browsing: some View {
+    /// The sidebar lists every category, so the wide layout skips the Browse page that repeats them.
+    private func shownTab(wide: Bool) -> GuideTab { wide && tab == .explore ? .catalog : tab }
+    @ViewBuilder private func browsing(wide: Bool) -> some View {
         if let kind = selectedCategory {
             CategoryBrowseView(kind: kind, open: { selectedPlace = $0 }, back: { selectedCategory = nil })
                 .edgeSwipeBack(selectedPlace == nil ? { selectedCategory = nil } : nil)
         } else {
-            switch tab {
+            switch shownTab(wide: wide) {
             case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil)
             case .explore: ExploreView(open: { selectedPlace = $0 }, choose: { selectedCategory = $0 })
             case .saved: SavedView(open: { selectedPlace = $0 }, explore: { select(.catalog) })
@@ -309,10 +321,10 @@ struct RootView: View {
             }.padding(18)
             List {
                 Section("\(store.places.count) Locations") {
-                    ForEach(GuideTab.allCases, id: \.self) { item in
+                    ForEach(GuideTab.allCases.filter { $0 != .explore }, id: \.self) { item in
                         Button { select(item) } label: { Label(item.rawValue, systemImage: item.symbol) }
                             .buttonStyle(.plain)
-                            .listRowBackground(tab == item && selectedCategory == nil ? palette.accent.opacity(0.18) : .clear)
+                            .listRowBackground(shownTab(wide: true) == item && selectedCategory == nil ? palette.accent.opacity(0.18) : .clear)
                     }
                 }
                 Section("Charging") { sidebarCategory(.ran); sidebarCategory(.waypoint) }
@@ -337,14 +349,17 @@ private struct GuideHeader: View {
     let title: String
     let subtitle: String
     @Environment(\.colorScheme) private var scheme
+    @Environment(\.sidebarVisible) private var sidebarVisible
     @State private var showSettings = false
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(title).font(.largeTitle.bold())
                 Spacer()
-                Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
-                    .buttonStyle(.plain).accessibilityLabel("Settings")
+                if !sidebarVisible {
+                    Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
+                        .buttonStyle(.plain).accessibilityLabel("Settings")
+                }
             }
             Text(subtitle).font(.subheadline).foregroundStyle(.secondary)
         }.sheet(isPresented: $showSettings) { SettingsView() }
@@ -385,7 +400,8 @@ private struct SettingsView: View {
                         if let notice = store.catalogNotice { Text(notice).guideFont(14).foregroundStyle(palette.secondary) }
                         Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
                             Task { await store.refreshCatalog(force: true) }
-                        }.disabled(store.updatingCatalog)
+                        }.buttonStyle(.plain).guideFont(15, .semibold).foregroundStyle(palette.accent)
+                            .frame(minHeight: 44).disabled(store.updatingCatalog)
                     }
                     Divider()
                     VStack(alignment: .leading, spacing: 12) {
@@ -398,6 +414,7 @@ private struct SettingsView: View {
                         }
                         Text("Visits, notes, and saved places are private. Nothing is published when you check in.")
                             .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
+                        ExportJournalButton()
                     }
                     Divider()
                     VStack(alignment: .leading, spacing: 12) {
@@ -527,6 +544,7 @@ private struct CategoryBrowseView: View {
     let kind: PlaceType?
     let open: (Place) -> Void
     let back: (() -> Void)?
+    @Environment(\.sidebarVisible) private var sidebarVisible
     @EnvironmentObject private var store: SpotterStore
     @EnvironmentObject private var location: LocationService
     @Environment(\.colorScheme) private var scheme
@@ -574,7 +592,7 @@ private struct CategoryBrowseView: View {
                     Button { searchFocused = false; showMap.toggle() } label: {
                         Image(systemName: showMap ? (kind == nil ? "list.bullet" : "square.grid.2x2") : "map").frame(width: 44, height: 44)
                     }.buttonStyle(.plain).accessibilityLabel(showMap ? (kind == nil ? "Show list" : "Show gallery") : "Show map")
-                    if kind == nil {
+                    if kind == nil && !sidebarVisible {
                         Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 36, height: 44) }
                             .buttonStyle(.plain).accessibilityLabel("Settings")
                     }
@@ -1050,9 +1068,7 @@ struct JournalView: View {
     @Environment(\.colorScheme) private var scheme
     @State private var selectedVisit: Visit?
     @EnvironmentObject private var sync: CloudSyncStatus
-    @State private var showExport = false
     @State private var showDetails = false
-    @State private var document = JournalDocument(data: Data())
     private var palette: GuidePalette { .init(scheme: scheme) }
     var body: some View {
         ScrollView {
@@ -1101,19 +1117,31 @@ struct JournalView: View {
                     if showDetails {
                         Text(sync.detail)
                             .guideFont(13).foregroundStyle(palette.secondary).lineSpacing(4)
-                        Button {
-                            if let data = store.export() { document = JournalDocument(data: data); showExport = true }
-                        } label: { Label("Export My Journal", systemImage: "square.and.arrow.up").guideFont(15) }
-                            .buttonStyle(.plain).disabled(!store.ready)
                     }
+                    if !store.visits.isEmpty || !store.journal.savedPlaces.isEmpty { ExportJournalButton() }
                 }.padding(.top, 8)
             }.padding(24)
         }
         .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
-        .fileExporter(isPresented: $showExport, document: document, contentType: .json,
-                      defaultFilename: "RivianSpotter-Journal") { result in
-            if case .failure(let error) = result { store.error = error.localizedDescription }
-        }
+    }
+}
+
+/// Saves the private journal (visits, notes, saved places) as a JSON backup.
+private struct ExportJournalButton: View {
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    @State private var showExport = false
+    @State private var document = JournalDocument(data: Data())
+    var body: some View {
+        Button {
+            if let data = store.export() { document = JournalDocument(data: data); showExport = true }
+        } label: { Label("Export My Journal", systemImage: "square.and.arrow.up").guideFont(15, .semibold) }
+            .buttonStyle(.plain).foregroundStyle(GuidePalette(scheme: scheme).accent)
+            .frame(minHeight: 44).disabled(!store.ready)
+            .fileExporter(isPresented: $showExport, document: document, contentType: .json,
+                          defaultFilename: "RivianSpotter-Journal") { result in
+                if case .failure(let error) = result { store.error = error.localizedDescription }
+            }
     }
 }
 
@@ -1278,11 +1306,12 @@ struct VisitEditor: View {
                         if store.perform({ try $0.update(visit, date: date, note: note) }) { dismiss() }
                         else { actionError = store.takeError() }
                     }.buttonStyle(PrimaryAction()).disabled(note.count > 4000)
-                    ShareLink(item: receipt) { Label("Share This Visit", systemImage: "square.and.arrow.up").guideFont(15) }
-                        .buttonStyle(.plain)
+                    ShareLink(item: receipt) { Label("Share This Visit", systemImage: "square.and.arrow.up").guideFont(15, .semibold) }
+                        .buttonStyle(.plain).foregroundStyle(GuidePalette(scheme: scheme).accent)
                     Text("Shares the place and date. Your note stays private.").guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                    // The sheet's ink foreground would otherwise override the destructive role's red.
                     Button("Delete Visit", role: .destructive) { confirmDelete = true }
-                        .buttonStyle(.plain).guideFont(15).padding(.vertical, 12)
+                        .buttonStyle(.plain).guideFont(15, .semibold).foregroundStyle(.red).padding(.vertical, 12)
                 }.padding(24)
             }.scrollDismissesKeyboard(.interactively)
         }.background(GuidePalette(scheme: scheme).paper).foregroundStyle(GuidePalette(scheme: scheme).ink)
