@@ -163,14 +163,18 @@ function buildPages(dist, list, summary = {}) {
         `<div class="content-grid"><section><form id="contact-form"><div class="form-field"><label for="contact-location">Location name <span class="muted">(optional)</span></label><input id="contact-location" name="location" maxlength="160" placeholder="e.g. Venice Space"></div><div class="form-field"><label for="contact-kind">What needs updating?</label><select id="contact-kind"><option>Location details</option><option>New location</option><option>Hours or temporary closure</option><option>Map or website issue</option><option>Other feedback</option></select></div><div class="form-field"><label for="contact-message">What should we know?</label><textarea id="contact-message" name="message" required maxlength="5000" placeholder="Tell us what changed and what the correct information should be."></textarea></div><div class="form-field"><label for="contact-source">Official source link <span class="muted">(optional)</span></label><input id="contact-source" type="url" name="source" placeholder="https://rivian.com/…"></div><button class="button primary" type="submit">Prepare email ${U.icon("arrow")}</button><p class="muted" style="font-size:.8rem;margin-top:12px">Opens a draft in your mail app. Review it there before sending.</p><p id="contact-status" class="notice" style="margin-top:20px" role="status" hidden>Your mail app should open with a draft. If it doesn’t, email support@rivianspotter.com directly. This form has not sent a message.</p></form></section><aside class="stack" style="align-content:start"><h2>Every good detail helps.</h2><p class="muted">An official link, complete address, or photo of posted hours can help us update the directory.</p><p class="muted">For vehicle support, service appointments, or booking changes, contact Rivian directly.</p><a href="mailto:support@rivianspotter.com">support@rivianspotter.com</a><a href="https://rivian.com/support" target="_blank" rel="noopener">Rivian support →</a></aside></div>`,
     }),
   );
+  write("/updates.html", shell({
+    title: "Location Updates", description: "New Rivian locations, coming-soon announcements, and changes to charging, hours, and site details.",
+    url: "/updates.html", active: "Updates",
+    content: require('./build-location-updates.cjs').renderFeed(JSON.parse(fs.readFileSync(path.join(__dirname,'../data/location-updates.json'),'utf8')))
+  }));
   const summaryBlock = `<div class="stat-strip"><div><strong>${list.length}</strong><span>Places in the directory</span></div><div><strong>${states.length}</strong><span>States & provinces</span></div><div><strong>${additions.length}</strong><span>Places added this refresh</span></div></div>`;
   write(
-    "/updates.html",
+    "/changelog.html",
     shell({
-      title: "Site updates",
+      title: "Changelog",
       description: "New features, improvements, and fixes to Rivian Spotter.",
-      url: "/updates.html",
-      active: "Updates",
+      url: "/changelog.html",
       content: header("Site changelog", "What’s new.", "New features, improvements, and fixes to Rivian Spotter.") +
         `<div class="changelog">${require("../data/site-changelog.json").map(entry=>`<article class="changelog-entry"><div class="changelog-meta">${entry.date ? `<time datetime="${e(entry.date)}">${M.formatDate(entry.date)}</time>` : ""}<span class="tag">${e(entry.version)}</span></div><h2>${e(entry.title)}</h2><ul>${entry.changes.map(change=>`<li>${e(change)}</li>`).join("")}</ul></article>`).join("")}</div>`,
     }),

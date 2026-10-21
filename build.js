@@ -40,6 +40,7 @@ for (const file of [
   "js/map.js",
   "js/app.js",
   "js/config.js",
+  "js/updates.js",
   "js/locations.js",
   "js/charging.js",
   "js/roamer.js",
@@ -54,6 +55,7 @@ for (const file of [
   "data/charging-summary.json",
   "data/refresh-summary.json",
   "data/location-history.json",
+  "data/location-updates.json",
 ])
   copy(file);
 const workerPath = path.join(dist, 'service-worker.js');
@@ -107,6 +109,7 @@ for (const file of [
   "stats.html",
   "saved.html",
   "updates.html",
+  "changelog.html",
   "404.html",
 ])
   fs.copyFileSync(path.join(dist, file), path.join(root, file));
