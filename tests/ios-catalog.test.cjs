@@ -134,18 +134,48 @@ test('curated photos match place identities and distinguish shared charger image
   assert.equal(new Set(siteImages).size, siteImages.length, 'A site photo must not be reused across unrelated places');
 });
 
-test('native details preserve both networks, schedules, ports and internal nearby identities', () => {
-  const output = catalog();
-  const site = output.places.find(p => p.name === 'Corte Madera, CA');
-  const text = JSON.stringify(site.information);
+test('native details preserve both networks, schedules and ports independently of refreshed station facts', () => {
+  const { informationFor } = require('../scripts/ios-place-information.cjs');
+  // Live charger counts, connectors and rate schedules change during daily refreshes.
+  // Exercise presentation using controlled inputs rather than a specific site's current facts.
+  const site = { type: 'RAN', chargingNetworks: [
+    { type: 'RAN', chargerCount: 10, maxKw: 300, roamer: {
+      chargerCount: 10, observedAt: '2026-10-20T00:00:00Z',
+      detailsObservedAt: '2026-10-20T00:00:00Z', reportedStatus: 'Operational',
+      connectorSummary: '10 NACS',
+      detailRates: { Rivian: '$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 7:00am-7:00pm$0.55' },
+      chargers: [{ name: '1A', connector: 'NACS', powerKw: 300 }]
+    } },
+    { type: 'Waypoint', chargerCount: 3, maxKw: 11 }
+  ] };
+  const text = JSON.stringify(informationFor(site));
   assert.match(text, /Rivian Adventure Network/);
   assert.match(text, /Waypoints/);
   assert.match(text, /Time-of-use rates/);
   assert.match(text, /7:00am/);
   assert.match(text, /NACS/);
   assert.match(text, /Individual chargers/);
-  assert.match(text, /Sources differ/);
+  assert.doesNotMatch(text, /Sources differ/);
   assert.match(text, /Not live availability/);
+});
+
+test('native charger-count discrepancy appears only when the published counts differ', () => {
+  const { chargingInformation } = require('../scripts/ios-place-information.cjs');
+  for (const [official, reported, differs] of [[8, 10, true], [10, 8, true], [10, 10, false], [10, null, false]]) {
+    const information = chargingInformation({ type: 'RAN', chargerCount: official,
+      roamer: { chargerCount: reported, observedAt: '2026-10-21T00:00:00Z' } });
+    const facts = information[0].facts;
+    assert.equal(facts.find(f => f.title === 'Chargers').value, String(official));
+    const discrepancy = facts.find(f => f.title === 'Charger count in community snapshot');
+    assert.equal(Boolean(discrepancy), differs, `Official ${official}, reported ${reported}`);
+    if (differs) {
+      assert.match(discrepancy.value, new RegExp(`${reported} reported.*Rivian lists ${official}.*Sources differ`));
+    } else assert.doesNotMatch(JSON.stringify(information), /Sources differ/);
+  }
+});
+
+test('native catalog preserves contact details, planned-site wording and internal nearby identities', () => {
+  const output = catalog();
   const laguna = output.places.find(p => p.id === '13');
   assert.match(JSON.stringify(laguna.information), /949/);
   assert.doesNotMatch(JSON.stringify(laguna.information), /No longer listed/);
