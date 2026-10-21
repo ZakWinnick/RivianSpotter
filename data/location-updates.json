@@ -19,6 +19,20 @@
           "chargerReport": false
         },
         {
+          "id": "3f9a4eadd278827c927217ce2c1960ee0deb936bdcd1835366fa33b653963c23",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
           "id": "564cce8813149c7c993d23dc1bc47688c8c56157f19f6a9138745693254da7a7",
           "locationId": "111861218646514",
           "name": "Belcamp, MD",
@@ -77,6 +91,20 @@
             "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.28/kWh; Mon-Fri 8:00am–8:00pm: $0.40/kWh; Mon-Fri 8:00pm–11:59pm: $0.37/kWh; Sat-Sun 12:00am–8:00am: $0.28/kWh; Sat-Sun 8:00am–8:00pm: $0.40/kWh; Sat-Sun 8:00pm–11:59pm: $0.37/kWh",
             "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.26–0.37/kWh.",
             "Current schedule (local time): Mon-Fri 12:00am–8:00am: $0.26/kWh; Mon-Fri 8:00am–8:00pm: $0.37/kWh; Mon-Fri 8:00pm–11:59pm: $0.34/kWh; Sat-Sun 12:00am–8:00am: $0.26/kWh; Sat-Sun 8:00am–8:00pm: $0.37/kWh; Sat-Sun 8:00pm–11:59pm: $0.34/kWh"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "113eb6b245525032e14bb6f30ec42d7b29f594b2eba1337dd19785b427b3be3c",
+          "locationId": "152",
+          "name": "Charlotte - Service Center",
+          "type": "Service Center",
+          "city": "Charlotte",
+          "region": "NC",
+          "url": "/locations/charlotte-nc-9309-monroe-road-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Phone: +19803421261 — details added."
           ],
           "chargerReport": false
         },
@@ -140,6 +168,34 @@
           "chargerReport": false
         },
         {
+          "id": "def415e0ab585f62d572185d80cb636c46443d4da5bf9552ad157a8148ce020e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
           "id": "06bd284d3987d1e75d97b3005ea5e7ca47a12f226309865c034b06227798e1dc",
           "locationId": "105",
           "name": "East Syracuse - Service Center",
@@ -164,6 +220,20 @@
           "kind": "changed",
           "lines": [
             "Phone: +15104474759 (previously +1-888-748-4261)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "88020ae0267aa8b5c4349cdb785c6bde45f3c1ab4ff9fc0b26d3ee80f7ff8d70",
+          "locationId": "162077279640688",
+          "name": "Flagler, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Flagler",
+          "region": "CO",
+          "url": "/locations/ran-flagler-co-93688e9e9a/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
           ],
           "chargerReport": false
         },
@@ -743,9 +813,9 @@
   "latestCheck": {
     "date": "2026-10-21",
     "sourceDates": {
-      "places": "2026-10-20",
-      "charging": "2026-10-20",
-      "chargingDetails": "2026-10-20"
+      "places": "2026-10-21",
+      "charging": "2026-10-21",
+      "chargingDetails": "2026-10-21"
     },
     "partialDetails": false
   }
