@@ -6,6 +6,8 @@ const root = path.resolve(__dirname, '..');
 const read = name => JSON.parse(fs.readFileSync(path.join(root, 'data', name), 'utf8'));
 const photos = read('location-photos.json');
 const { informationFor } = require('./ios-place-information.cjs');
+const { locationReliability } = require('../js/components.js');
+const { safeUrl } = require('../js/location-model.js');
 function photoFor(place) {
   const own = [place.id, ...(place.legacyIds || [])].map(String).map(id => photos.locations[id]).find(Boolean);
   if (own) return own;
@@ -29,6 +31,8 @@ function catalog() {
     sourceURL: p.sourceUrl || null, checkedOn: p.lastVerified || null,
     chargerCount: p.chargerCount ?? null, maxKw: p.maxKw ?? null,
     photo: photoFor(p),
+    reliability: locationReliability(p),
+    bookingURL: safeUrl(p.bookingUrl, 'rivian.com'), phone: p.phone || null,
     information: informationFor(p),
     postalCode: p.postalCode || null,
     relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]

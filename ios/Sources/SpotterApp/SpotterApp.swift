@@ -138,22 +138,22 @@ final class SpotterStore: ObservableObject {
 }
 
 // The same composition runs on iPhone and in the phone-sized desktop preview.
-private struct GuidePalette {
+struct GuidePalette {
     let scheme: ColorScheme
     var paper: Color { scheme == .dark ? Color(white: 0.115) : Color(red: 0.95, green: 0.95, blue: 0.97) }
     var surface: Color { scheme == .dark ? Color(white: 0.18) : .white }
     var ink: Color { scheme == .dark ? Color(white: 0.95) : Color(white: 0.10) }
     var secondary: Color { scheme == .dark ? Color(white: 0.65) : Color(white: 0.43) }
     var line: Color { ink.opacity(0.10) }
-    var accent: Color { scheme == .dark ? Color(red: 0.57, green: 0.53, blue: 1) : Color(red: 0.36, green: 0.31, blue: 0.86) }
+    var accent: Color { scheme == .dark ? .guide(0.80, 0.07, 150) : .guide(0.38, 0.055, 155) }
     static let charcoal = Color(white: 0.10)
-    static let forest = Color(red: 0.36, green: 0.31, blue: 0.86)
+    static let forest = Color(hex: "#244e3c")
     static let cream = Color(white: 0.96)
-    static let yellow = Color(red: 0.70, green: 0.67, blue: 1)
+    static let yellow = Color(hex: "#d8e7db")
 
 }
 
-private extension Color {
+extension Color {
     // OKLCH design tokens converted to sRGB for SwiftUI.
     static func guide(_ l: Double, _ c: Double, _ h: Double) -> Color {
         let a = c * cos(h * .pi / 180), b = c * sin(h * .pi / 180)
@@ -220,9 +220,9 @@ struct RivianSpotterApp: App {
 }
 
 private enum GuideTab: String, CaseIterable {
-    case catalog = "Locations", explore = "Browse", saved = "Saved", journal = "Visited"
+    case catalog = "Map", explore = "Browse", saved = "Saved", journal = "Visited"
     var symbol: String {
-        switch self { case .catalog: "square.grid.2x2"; case .explore: "list.bullet.rectangle"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
+        switch self { case .catalog: "map"; case .explore: "list.bullet.rectangle"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
     }
 }
 
@@ -310,7 +310,7 @@ struct RootView: View {
             List {
                 Section("\(store.places.count) Locations") {
                     ForEach(GuideTab.allCases, id: \.self) { item in
-                        Button { select(item) } label: { Label(item == .catalog ? "All Locations" : item.rawValue, systemImage: item.symbol) }
+                        Button { select(item) } label: { Label(item.rawValue, systemImage: item.symbol) }
                             .buttonStyle(.plain)
                             .listRowBackground(tab == item && selectedCategory == nil ? palette.accent.opacity(0.18) : .clear)
                     }
@@ -324,7 +324,11 @@ struct RootView: View {
     }
     private func sidebarCategory(_ kind: PlaceType) -> some View {
         Button { selectedPlace = nil; placeHistory = []; selectedCategory = kind; tab = .explore } label: {
-            Label(kind.browseTitle, systemImage: kind.symbol)
+            Label {
+                Text(kind.browseTitle)
+            } icon: {
+                Image(systemName: kind.symbol).foregroundStyle(kind.browseColor(in: scheme))
+            }
         }.buttonStyle(.plain).listRowBackground(selectedCategory == kind ? palette.accent.opacity(0.18) : .clear)
     }
 }
@@ -443,7 +447,7 @@ private enum ExploreMode: String, CaseIterable {
     case all = "All Locations", charging = "Charging", places = "Rivian Places"
 }
 
-private extension PlaceType {
+extension PlaceType {
     var browseTitle: String {
         switch self {
         case .ran: "Rivian Adventure Network"
@@ -465,14 +469,12 @@ private extension PlaceType {
         }
     }
     func browseColor(in scheme: ColorScheme) -> Color {
-        let lightness = scheme == .dark ? 0.76 : 0.44
         switch self {
-        case .ran: return .guide(scheme == .dark ? 0.74 : 0.51, 0.12, 58)
-        case .waypoint: return .guide(lightness, 0.08, 295)
-        case .space: return .guide(lightness, 0.07, 150)
-        case .demo: return .guide(lightness, 0.07, 240)
-        case .service: return .guide(lightness, 0.06, 65)
-        case .outpost: return .guide(lightness, 0.08, 105)
+        case .ran, .waypoint: return Color(hex: mapColorHex)
+        case .space: return scheme == .dark ? .guide(0.80, 0.07, 150) : .guide(0.38, 0.055, 155)
+        case .demo: return scheme == .dark ? .guide(0.79, 0.07, 240) : .guide(0.42, 0.06, 240)
+        case .service: return scheme == .dark ? .guide(0.79, 0.06, 55) : .guide(0.43, 0.04, 55)
+        case .outpost: return scheme == .dark ? .guide(0.82, 0.08, 105) : .guide(0.39, 0.08, 105)
         }
     }
 }
@@ -510,7 +512,8 @@ struct ExploreView: View {
         Button { choose(kind) } label: {
             HStack(spacing: 12) {
                 Image(systemName: kind.symbol).frame(width: 27, height: 27)
-                    .foregroundStyle(.white).background(kind.browseColor(in: scheme), in: RoundedRectangle(cornerRadius: 6))
+                    .foregroundStyle(kind.browseColor(in: scheme))
+                    .background(kind.browseColor(in: scheme).opacity(0.10), in: RoundedRectangle(cornerRadius: 6))
                 Text(kind.browseTitle).guideFont(16)
                 Spacer()
                 Text("\(store.places.filter { $0.browseTypes.contains(kind) }.count)").foregroundStyle(.secondary)
@@ -528,13 +531,20 @@ private struct CategoryBrowseView: View {
     @EnvironmentObject private var location: LocationService
     @Environment(\.colorScheme) private var scheme
     @State private var search = ""
-    @State private var showMap = false
+    @FocusState private var searchFocused: Bool
+    @State private var showMap: Bool
+    @State private var filters = PlaceFilter()
+    @State private var showFilters = false
     @State private var nearby = false
     @State private var showSettings = false
     @ScaledMetric(relativeTo: .body) private var cardWidth = 160.0
     private var palette: GuidePalette { .init(scheme: scheme) }
+    init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?) {
+        self.kind = kind; self.open = open; self.back = back
+        _showMap = State(initialValue: kind == nil)
+    }
     private var places: [Place] {
-        let matches = store.places.filter { (kind == nil || $0.browseTypes.contains(kind!)) && $0.matches(search) }
+        let matches = store.places.filter { (kind == nil || $0.browseTypes.contains(kind!)) && $0.matches(search) && filters.matches($0, saved: store.isSaved($0)) }
         guard nearby, location.location != nil else { return matches }
         return matches.sorted {
             let first = location.distance(to: $0) ?? .greatestFiniteMagnitude
@@ -550,7 +560,7 @@ private struct CategoryBrowseView: View {
                         Button(action: back) { Image(systemName: "chevron.left").frame(width: 32, height: 44) }
                             .buttonStyle(.plain).accessibilityLabel("Back to Browse")
                     }
-                    Text(kind?.browseTitle ?? "All Locations").guideFont(17, .semibold).lineLimit(1)
+                    Text(kind?.browseTitle ?? "Map").guideFont(17, .semibold).lineLimit(1)
                     Spacer()
                     Button {
                         if nearby { nearby = false; location.cancel() } else { nearby = true; location.request() }
@@ -561,9 +571,9 @@ private struct CategoryBrowseView: View {
                     }.buttonStyle(.plain)
                         .accessibilityLabel(location.requesting ? "Locating, tap to stop" : "Near me")
                         .accessibilityAddTraits(nearby ? .isSelected : [])
-                    Button { showMap.toggle() } label: {
-                        Image(systemName: showMap ? "square.grid.2x2" : "map").frame(width: 44, height: 44)
-                    }.buttonStyle(.plain).accessibilityLabel(showMap ? "Show gallery" : "Show map")
+                    Button { searchFocused = false; showMap.toggle() } label: {
+                        Image(systemName: showMap ? (kind == nil ? "list.bullet" : "square.grid.2x2") : "map").frame(width: 44, height: 44)
+                    }.buttonStyle(.plain).accessibilityLabel(showMap ? (kind == nil ? "Show list" : "Show gallery") : "Show map")
                     if kind == nil {
                         Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 36, height: 44) }
                             .buttonStyle(.plain).accessibilityLabel("Settings")
@@ -572,6 +582,7 @@ private struct CategoryBrowseView: View {
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass").foregroundStyle(palette.secondary)
                     TextField("Find a location", text: $search).textFieldStyle(.plain).guideFont(15).submitLabel(.search)
+                        .focused($searchFocused).onSubmit { searchFocused = false }
                         .accessibilityLabel("Search \(kind?.browseTitle ?? "all locations")")
                     if !search.isEmpty {
                         Button { search = "" } label: { Image(systemName: "xmark.circle.fill") }
@@ -580,8 +591,24 @@ private struct CategoryBrowseView: View {
                 }.padding(.horizontal, 12).frame(minHeight: 46)
                     .background(palette.surface, in: RoundedRectangle(cornerRadius: 10))
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(palette.line, lineWidth: 1))
-                Text(nearby && location.location != nil ? "\(places.count) locations · Nearest first" : "\(places.count) locations")
-                    .guideFont(13).foregroundStyle(palette.secondary)
+                HStack {
+                    Text(nearby && location.location != nil ? "\(places.count) \(places.count == 1 ? "location" : "locations") · Nearest first" : "\(places.count) \(places.count == 1 ? "location" : "locations")")
+                        .guideFont(13).foregroundStyle(palette.secondary)
+                    Spacer()
+                    Button { searchFocused = false; showFilters = true } label: {
+                        Label(filters.activeCount == 0 ? "Filters" : "Filters (\(filters.activeCount))", systemImage: "line.3.horizontal.decrease")
+                            .font(.subheadline.weight(.semibold)).frame(minHeight: 36)
+                    }.buttonStyle(.plain).accessibilityLabel("Filter locations")
+                }
+                if filters.activeCount > 0 {
+                    HStack {
+                        Text([filters.type?.displayName, filters.status == .all ? nil : filters.status.rawValue,
+                              filters.region.isEmpty ? nil : filters.region, filters.savedOnly ? "Saved" : nil].compactMap { $0 }.joined(separator: " · "))
+                            .font(.caption).foregroundStyle(palette.secondary)
+                        Spacer()
+                        Button("Clear") { filters = PlaceFilter() }.font(.caption.weight(.semibold))
+                    }
+                }
                 if let notice = store.catalogBanner { Text(notice).guideFont(13).foregroundStyle(palette.secondary) }
                 if nearby, let message = location.message {
                     VStack(alignment: .leading, spacing: 8) {
@@ -598,12 +625,45 @@ private struct CategoryBrowseView: View {
                 }
             }.padding(.horizontal, 16).padding(.top, 0).padding(.bottom, 10)
             if showMap {
-                PlacesMap(places: places, open: open, userLocation: nearby ? location.location : nil)
+                ZStack {
+                    PlacesMap(places: places, open: open, userLocation: nearby ? location.location : nil)
+                    if places.isEmpty {
+                        ContentUnavailableView("No matching locations", systemImage: "mappin.slash", description: Text("Try another search or clear your filters."))
+                            .background(.regularMaterial)
+                    } else if !places.contains(where: \.hasMapCoordinates) {
+                        ContentUnavailableView("No map pins available", systemImage: "mappin.slash", description: Text("Switch to the list to view these locations."))
+                            .background(.regularMaterial)
+                    }
+                }
+                if places.contains(where: { !$0.hasMapCoordinates }) {
+                    Button { showMap = false } label: {
+                        Text("\(places.filter { !$0.hasMapCoordinates }.count) without a map pin · View list")
+                            .font(.caption).frame(maxWidth: .infinity, minHeight: 36)
+                    }
+                }
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 14) {
+                        ForEach(PlaceType.allCases) { type in
+                            Label { Text(type.displayName) } icon: { Circle().fill(Color(hex: type.mapColorHex)).frame(width: 8, height: 8) }
+                        }
+                        Label("Coming Soon", systemImage: "circle")
+                    }.font(.caption2).padding(12)
+                }.background(palette.surface)
             } else {
                 ScrollView {
                     if places.isEmpty {
                         Text("No locations match your search.").guideFont(15).foregroundStyle(palette.secondary)
                             .frame(maxWidth: .infinity).padding(24)
+                    } else if kind == nil {
+                        LazyVStack(spacing: 10) {
+                            ForEach(places) { place in
+                                Button { open(place) } label: {
+                                    PlaceRow(place: place, distance: nearby ? location.distanceLabel(to: place) : nil)
+                                        .padding(.horizontal, 14).background(palette.surface, in: RoundedRectangle(cornerRadius: 12))
+                                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(palette.line))
+                                }.buttonStyle(.plain)
+                            }
+                        }.padding(.horizontal, 16).padding(.bottom, 20)
                     } else {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: cardWidth), spacing: 7)], spacing: 7) {
                             ForEach(places) { place in
@@ -617,6 +677,34 @@ private struct CategoryBrowseView: View {
                     .refreshable { await store.refreshCatalog(force: true) }
             }
         }.sheet(isPresented: $showSettings) { SettingsView() }
+            .sheet(isPresented: $showFilters) { filterSheet }
+    }
+    private var filterSheet: some View {
+        NavigationStack {
+            Form {
+                if kind == nil {
+                    Picker("Category", selection: $filters.type) {
+                        Text("All categories").tag(PlaceType?.none)
+                        ForEach(PlaceType.allCases) { Text($0.displayName).tag(Optional($0)) }
+                    }
+                }
+                Picker("Status", selection: $filters.status) {
+                    ForEach(PlaceFilter.Status.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                }
+                Picker("State or province", selection: $filters.region) {
+                    Text("All states and provinces").tag("")
+                    ForEach(Array(Set(store.places.filter { kind == nil || $0.browseTypes.contains(kind!) }.map(\.region))).sorted(), id: \.self) {
+                        Text($0).tag($0)
+                    }
+                }
+                Toggle("Saved places only", isOn: $filters.savedOnly)
+                Section {
+                    Text("\(places.count) matching locations").foregroundStyle(.secondary)
+                    Button("Reset Filters") { filters = PlaceFilter() }
+                }
+            }.navigationTitle("Filters")
+                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { showFilters = false } } }
+        }
     }
 }
 
@@ -624,30 +712,19 @@ struct PlaceRow: View {
     let place: Place
     var distance: String? = nil
     @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
     var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: place.types.first?.symbol ?? "mappin")
-                .font(.system(size: 23, weight: .regular)).frame(width: 36)
-                .foregroundStyle(GuidePalette(scheme: scheme).accent).accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 6) {
-                Text(place.guideName).guideFont(17, .semibold).lineLimit(2)
-                Text(place.typeLabel).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
-                Text(place.locality).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
-                if place.status == "planned" || !place.listed {
-                    Text(place.statusLabel).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
-                }
+        HStack(alignment: .top, spacing: 12) {
+            PlaceMapMarker(places: [place]).accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 8) {
+                Text(place.name).font(.headline).fixedSize(horizontal: false, vertical: true)
+                Text(place.locality).font(.subheadline).foregroundStyle(.secondary)
+                PlaceLabels(place: place)
+                if let distance { Text(distance).font(.caption).foregroundStyle(.secondary) }
+                if !store.visits(to: place).isEmpty { Label("Visited", systemImage: "checkmark.circle.fill").font(.caption).foregroundStyle(.secondary) }
             }
-            Spacer(minLength: 4)
-            if let distance { Text(distance).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary).fixedSize() }
-            if !store.visits(to: place).isEmpty {
-                Image(systemName: "checkmark.circle.fill").foregroundStyle(GuidePalette(scheme: scheme).accent)
-                    .accessibilityLabel("Visited")
-            } else {
-                Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(GuidePalette(scheme: scheme).secondary).accessibilityHidden(true)
-            }
-        }.padding(.vertical, 20).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+            Spacer(minLength: 0)
+            if let grade = place.reliability, place.status != "planned" { ReliabilityBadge(value: grade, compact: true) }
+        }.padding(.vertical, 16).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
     }
 }
 
@@ -661,7 +738,7 @@ private struct MapGroup: Identifiable {
 }
 
 private func fittedRegion(_ places: [Place]) -> MKCoordinateRegion? {
-    let mapped = places.filter(\.hasPreciseCoordinates)
+    let mapped = places.filter(\.hasMapCoordinates)
     let lats = mapped.compactMap(\.latitude), lons = mapped.compactMap(\.longitude)
     guard let minLat = lats.min(), let maxLat = lats.max(), let minLon = lons.min(), let maxLon = lons.max() else { return nil }
     return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2, longitude: (minLon + maxLon) / 2),
@@ -678,7 +755,7 @@ struct PlacesMap: View {
     @State private var longitudeSpan = 58.0
     @State private var selectedGroup: MapGroup?
     private var groups: [MapGroup] {
-        if closeUp { return places.filter(\.hasPreciseCoordinates).map { MapGroup(places: [$0]) } }
+        if closeUp { return places.filter(\.hasMapCoordinates).map { MapGroup(places: [$0]) } }
         return PlaceClustering.clusters(places, latitudeSpan: latitudeSpan, longitudeSpan: longitudeSpan).map(MapGroup.init)
     }
     var body: some View {
@@ -699,16 +776,8 @@ struct PlacesMap: View {
                             withAnimation { position = .region(region) }
                         }
                     } label: {
-                        ZStack {
-                            if group.places.count > 1 {
-                                Circle().fill(GuidePalette.forest).frame(width: 29, height: 29)
-                                    .overlay(Circle().stroke(GuidePalette.cream, lineWidth: 1.5))
-                                Text(String(group.places.count)).font(.system(size: 11, weight: .bold)).foregroundStyle(GuidePalette.cream)
-                            } else {
-                                Circle().fill(GuidePalette.forest).frame(width: 9, height: 9)
-                                    .overlay(Circle().stroke(GuidePalette.cream, lineWidth: 1.5))
-                            }
-                        }.frame(width: 44, height: 44).contentShape(Circle())
+                        PlaceMapMarker(places: group.places)
+                            .frame(width: 44, height: 44).contentShape(Circle())
                     }.buttonStyle(.plain).accessibilityLabel(group.places.count == 1 ? "Open \(group.places[0].name)" : "Zoom into \(group.places.count) places")
                 }.annotationTitles(.hidden)
             }
@@ -743,9 +812,9 @@ struct PlacesMap: View {
             return .region(MKCoordinateRegion(center: userLocation.coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.45, longitudeDelta: 0.45)))
         }
-        if closeUp, let place = places.first, place.hasPreciseCoordinates {
+        if closeUp, let place = places.first, place.hasMapCoordinates {
             return .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude!, longitude: place.longitude!),
-                span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)))
+                span: MKCoordinateSpan(latitudeDelta: place.hasPreciseCoordinates ? 0.015 : 0.25, longitudeDelta: place.hasPreciseCoordinates ? 0.015 : 0.25)))
         }
         // Narrowed results fit to their pins; a continent-wide set keeps the familiar overview.
         if let region = fittedRegion(places), region.span.latitudeDelta < 30, region.span.longitudeDelta < 50 {
@@ -785,29 +854,37 @@ struct PlaceDetail: View {
             }.foregroundStyle(palette.accent).padding(.horizontal, 6)
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-                    PlaceDetailPhoto(place: place)
-                    Text(place.guideName).guideFont(28, .bold).padding(.top, 2)
-                        .fixedSize(horizontal: false, vertical: true)
-                    ViewThatFits(in: .horizontal) {
-                        HStack(spacing: 6) { detailBadges }
-                        VStack(alignment: .leading, spacing: 6) { detailBadges }
-                    }.padding(.bottom, 5)
-                    DetailPanel(title: "Address", symbol: "location.fill", color: .orange) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(place.address ?? "Street address not published").guideFont(15, .medium)
-                            Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "")").guideFont(14)
-                            Text(place.country == "US" ? "United States" : place.country == "CA" ? "Canada" : place.country)
-                                .guideFont(13).foregroundStyle(palette.secondary)
-                        }.textSelection(.enabled)
-                        if place.hasPreciseCoordinates {
-                            PlacesMap(places: [place], open: { _ in }, closeUp: true)
-                                .frame(height: 180).clipShape(RoundedRectangle(cornerRadius: 8)).padding(.top, 6)
-                        } else {
-                            Text("A precise map pin is not available yet.").font(.footnote).foregroundStyle(.secondary)
-                        }
+                    PlaceLabels(place: place)
+                    HStack(alignment: .top, spacing: 16) {
+                        Text(place.name).guideFont(28, .bold).fixedSize(horizontal: false, vertical: true)
+                        Spacer(minLength: 0)
+                        if let grade = place.reliability, place.status != "planned" { ReliabilityBadge(value: grade) }
+                    }.padding(.top, 6)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(place.address ?? "Street address not published")
+                        Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "") · \(place.country == "US" ? "United States" : place.country == "CA" ? "Canada" : place.country)")
+                    }.font(.subheadline).foregroundStyle(palette.secondary).textSelection(.enabled)
+                    if let checked = place.checkedOn {
+                        Text("Updated from Rivian · \(checked)").font(.caption).foregroundStyle(palette.secondary).padding(.top, 4)
+                    }
+                    TagFlow(spacing: 10) {
                         if let url = place.directionsURL {
-                            Link(destination: url) { Label("Open in Maps", systemImage: "arrow.up.right").guideFont(14, .medium) }
-                                .padding(.top, 4)
+                            Link(destination: url) { Label("Directions", systemImage: "arrow.up.right").detailAction(primary: true) }
+                        }
+                        if let url = place.safeBookingURL { DemoBookingButton(url: url) }
+                        if let url = place.phoneURL {
+                            Link(destination: url) { Label("Call", systemImage: "phone").detailAction() }
+                        }
+                        Button { showCheckIn = true } label: {
+                            Label(store.visits(to: place).isEmpty ? "Add Visit" : "Visited", systemImage: "checkmark.seal").detailAction()
+                        }.buttonStyle(.plain).disabled(!store.ready)
+                    }.padding(.vertical, 8)
+                    PlaceDetailPhoto(place: place)
+                    if place.hasMapCoordinates {
+                        PlacesMap(places: [place], open: { _ in }, closeUp: true)
+                            .frame(height: 180).clipShape(RoundedRectangle(cornerRadius: 10))
+                        if !place.hasPreciseCoordinates {
+                            Text("Approximate area · exact address not published").font(.caption).foregroundStyle(palette.secondary)
                         }
                     }
                     if place.hours != nil || place.serviceHours != nil {
@@ -823,7 +900,7 @@ struct PlaceDetail: View {
                             } label: { Label(section.title, systemImage: section.title.contains("charger") ? "ev.charger" : "clock").guideFont(15, .semibold) }
                                 .padding(14).background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
                         } else {
-                            DetailPanel(title: section.title, symbol: sectionSymbol(section.title), color: palette.accent) {
+                            DetailPanel(title: section.title, symbol: sectionSymbol(section.title), color: palette.accent, reliability: (place.information ?? []).filter { $0.metrics != nil }.count > 1 ? section.reliability : nil) {
                                 informationFacts(section)
                             }
                         }
@@ -850,18 +927,7 @@ struct PlaceDetail: View {
                         Button { showCheckIn = true } label: { Label("Add Visit", systemImage: "plus").guideFont(14, .medium).frame(minHeight: 36) }
                             .buttonStyle(.plain).disabled(!store.ready)
                     }
-                    DetailPanel(title: "Published Information", symbol: "info.circle.fill", color: .gray) {
-                        Text("Checked \(place.checkedOn ?? "date unavailable"). Published information, not live availability.")
-                            .guideFont(13).foregroundStyle(palette.secondary)
-                        DisclosureGroup("Sources") {
-                            VStack(alignment: .leading, spacing: 12) {
-                                if let url = place.safeSourceURL { Link("Rivian published source ↗", destination: url) }
-                                ForEach(Array(Set((place.information ?? []).compactMap { $0.safeSourceURL })).sorted { $0.absoluteString < $1.absoluteString }, id: \.self) { url in
-                                    Link("Charging snapshot source ↗", destination: url)
-                                }
-                            }.guideFont(13).padding(.top, 8)
-                        }.guideFont(13)
-                    }
+
                 }.padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 24)
                     .frame(maxWidth: 660).frame(maxWidth: .infinity)
             }
@@ -870,19 +936,6 @@ struct PlaceDetail: View {
         .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
         .actionError($actionError)
     }
-    @ViewBuilder private var detailBadges: some View {
-        Text(place.typeLabel).guideFont(12, .medium).padding(.horizontal, 8).padding(.vertical, 4)
-            .background(palette.accent.opacity(0.22), in: Capsule()).foregroundStyle(palette.accent)
-        if place.status == "planned" || !place.listed {
-            Text(place.statusLabel).guideFont(12).padding(.horizontal, 8).padding(.vertical, 4)
-                .background(palette.secondary.opacity(0.16), in: Capsule())
-        }
-        Button { showCheckIn = true } label: {
-            Label(store.visits(to: place).isEmpty ? "Visit" : "Visited", systemImage: store.visits(to: place).isEmpty ? "plus" : "checkmark")
-                .guideFont(12, .medium).padding(.horizontal, 8).padding(.vertical, 4)
-                .background(palette.secondary.opacity(0.18), in: Capsule())
-        }.buttonStyle(.plain).disabled(!store.ready).accessibilityLabel("Check In or add a visit")
-    }
     private func sectionSymbol(_ title: String) -> String {
         if title.contains("pricing") { return "dollarsign.circle.fill" }
         if title == "Site features" { return "sparkles" }
@@ -890,30 +943,58 @@ struct PlaceDetail: View {
         return "info.circle.fill"
     }
     private func informationFacts(_ section: PlaceInformation) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ForEach(Array(section.facts.enumerated()), id: \.offset) { index, fact in
-                if index > 0 { Divider() }
-                DetailFact(title: fact.title, value: fact.value)
+        let pricing = section.title.hasSuffix(" pricing")
+        let metrics = section.metrics ?? (pricing ? Array(section.facts.prefix(2)) : nil)
+        let facts = section.facts.filter { fact in
+            if pricing && (metrics ?? []).contains(fact) { return false }
+            if section.reliability != nil && fact.title == "Published reliability grade" { return false }
+            if section.metrics != nil && ["Chargers", "Maximum rated power", "Vehicle access"].contains(fact.title) { return false }
+            if !(section.tags ?? []).isEmpty && ["Amenities", "At this location"].contains(fact.title) { return false }
+            return true
+        }
+        return VStack(alignment: .leading, spacing: 16) {
+            if let metrics {
+                HStack(alignment: .top, spacing: 20) {
+                    ForEach(Array(metrics.enumerated()), id: \.offset) { _, metric in
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(metric.value).font(.title.bold()).fixedSize(horizontal: false, vertical: true)
+                            Text(metric.title).font(.caption).foregroundStyle(palette.secondary)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(pricing ? 12 : 0)
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(pricing ? palette.line : .clear))
+                    }
+                }.padding(.vertical, 6)
+            }
+            if let tags = section.tags, !tags.isEmpty { WebsiteTags(values: tags) }
+            if section.metrics != nil {
+                Text("Station details, not live charger availability. Check connector compatibility and host access rules before visiting.")
+                    .font(.caption).foregroundStyle(palette.secondary)
+            }
+            ForEach(Array(facts.enumerated()), id: \.offset) { _, fact in
+                if fact.title == "Connectors" { WebsiteTags(values: [fact.value]) }
+                else { DetailFact(title: fact.title, value: fact.value) }
             }
         }.textSelection(.enabled)
     }
+
 }
 
 private struct DetailPanel<Content: View>: View {
     let title: String
     let symbol: String
     let color: Color
+    var reliability: PlaceReliability? = nil
     @ViewBuilder let content: () -> Content
     @Environment(\.colorScheme) private var scheme
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 6) {
-                Image(systemName: symbol).font(.system(size: 12, weight: .semibold)).foregroundStyle(.white)
-                    .frame(width: 21, height: 21).background(color, in: RoundedRectangle(cornerRadius: 5))
-                Text(title).guideFont(15, .semibold)
+            HStack(alignment: .top) {
+                Text(title).font(.headline).fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 4)
+                if let reliability { ReliabilityBadge(value: reliability, compact: true) }
             }
             content()
-        }.frame(maxWidth: .infinity, alignment: .leading).padding(14)
+        }.frame(maxWidth: .infinity, alignment: .leading).padding(18)
             .background(GuidePalette(scheme: scheme).surface, in: RoundedRectangle(cornerRadius: 14))
             .overlay(RoundedRectangle(cornerRadius: 14).stroke(GuidePalette(scheme: scheme).line, lineWidth: 0.5))
     }

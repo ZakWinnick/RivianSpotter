@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30000000000000000000002 /* PlacePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30000000000000000000001; };
 		A20000000000000000000002 /* CatalogUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001; };
 		3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */; };
 		5910984348D613FFD1FC23BE /* Sources/SpotterApp/SpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A30000000000000000000001 /* PlacePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/PlacePresentation.swift; sourceTree = "<group>"; };
 		A20000000000000000000001 /* CatalogUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/CatalogUpdates.swift; sourceTree = "<group>"; };
 		1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/DeviceServices.swift; sourceTree = "<group>"; };
 		38A007151ABE87CC01A5B6E9 /* RivianSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = RivianSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000000000000000000001 /* CatalogUpdates.swift */,
+				A30000000000000000000001 /* PlacePresentation.swift */,
 				A10000000000000000000001 /* Assets.xcassets */,
 				A10000000000000000000003 /* PrivacyInfo.xcprivacy */,
 				592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20000000000000000000002 /* CatalogUpdates.swift in Sources */,
+				A30000000000000000000002 /* PlacePresentation.swift in Sources */,
 				720ED399626A152C0B8010C6 /* Sources/SpotterApp/PlaceGallery.swift in Sources */,
 				B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */,
 				3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */,
@@ -154,7 +158,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RivianSpotter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9KV4L2R733;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -169,7 +173,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivianspotter.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -188,7 +192,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RivianSpotter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9KV4L2R733;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -203,7 +207,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivianspotter.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

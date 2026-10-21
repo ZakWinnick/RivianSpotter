@@ -125,46 +125,47 @@ struct PlaceBrowseCard: View {
         var parts = [place.name, place.typeLabel, place.locality]
         if let distance { parts.append(distance) }
         if place.status == "planned" || !place.listed { parts.append(place.statusLabel) }
+        if let grade = place.reliability, place.status != "planned" { parts.append("Reliability grade \(grade.grade)") }
         if visited { parts.append("visited") }
         return parts.joined(separator: ", ")
     }
     var body: some View {
         Button(action: open) {
-            GeometryReader { geometry in
-                ZStack(alignment: .bottomLeading) {
-                    Color(red: 0.16, green: 0.20, blue: 0.18)
-                    if let artwork {
-                        #if os(macOS)
-                        Image(nsImage: artwork.image).resizable().scaledToFill()
-                            .frame(width: geometry.size.width, height: cardHeight).clipped()
-                        #else
-                        Image(uiImage: artwork.image).resizable().scaledToFill()
-                            .frame(width: geometry.size.width, height: cardHeight).clipped()
-                        #endif
-                    } else {
-                        Image(systemName: place.types.first?.symbol ?? "mappin")
-                            .font(.system(size: 34, weight: .light)).foregroundStyle(.white.opacity(0.22))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .center, endPoint: .bottom)
-                    VStack(alignment: .leading, spacing: 5) {
-                        HStack {
-                            if place.photo?.isCategory == true { Text("Category image").guideFont(10) }
-                            Spacer()
-                            if visited { Image(systemName: "checkmark.circle.fill").foregroundStyle(.yellow) }
+            VStack(alignment: .leading, spacing: 0) {
+                GeometryReader { geometry in
+                    ZStack(alignment: .bottomLeading) {
+                        Color(hex: "#244e3c")
+                        if let artwork {
+                            #if os(macOS)
+                            Image(nsImage: artwork.image).resizable().scaledToFill()
+                                .frame(width: geometry.size.width, height: cardHeight).clipped()
+                            #else
+                            Image(uiImage: artwork.image).resizable().scaledToFill()
+                                .frame(width: geometry.size.width, height: cardHeight).clipped()
+                            #endif
+                        } else {
+                            Image(systemName: place.types.first?.symbol ?? "mappin")
+                                .font(.system(size: 34, weight: .light)).foregroundStyle(.white.opacity(0.3))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
-                        Spacer(minLength: 8)
-                        Text(title).font(.system(size: titleSize, weight: .bold)).lineLimit(2)
-                        Text(distance.map { "\($0) · \(place.typeLabel)" } ?? "\(place.typeLabel) · \(place.region)")
-                            .guideFont(12, .medium).lineLimit(1)
-                        if place.status == "planned" || !place.listed {
-                            Text(place.statusLabel).guideFont(11, .medium)
-                        }
-                    }.foregroundStyle(.white).padding(10)
-                }.frame(width: geometry.size.width, height: cardHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .contentShape(RoundedRectangle(cornerRadius: 10))
-            }.frame(height: cardHeight)
+                        LinearGradient(colors: [.clear, .black.opacity(0.85)], startPoint: .center, endPoint: .bottom)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(alignment: .top) {
+                                if visited { Image(systemName: "checkmark.circle.fill").foregroundStyle(.white) }
+                                Spacer()
+                                if let grade = place.reliability, place.status != "planned" { ReliabilityBadge(value: grade, compact: true) }
+                            }
+                            Spacer(minLength: 8)
+                            if place.photo?.isCategory == true { Text("Category image").font(.caption2) }
+                            Text(title).font(.system(size: titleSize, weight: .bold)).lineLimit(3)
+                            Text(distance.map { "\($0) · \(place.region)" } ?? place.locality).font(.caption).lineLimit(2)
+                        }.foregroundStyle(.white).padding(10)
+                    }.frame(width: geometry.size.width, height: cardHeight).clipped()
+                }.frame(height: cardHeight)
+                PlaceLabels(place: place).padding(10)
+            }.background(.background, in: RoundedRectangle(cornerRadius: 10))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(.secondary.opacity(0.15), lineWidth: 1))
         }.buttonStyle(.plain)
             .accessibilityLabel(accessibilityDescription)
             .task(id: place.photo?.imageURL) {

@@ -124,3 +124,30 @@ test('older charging detail rates cannot override a newer network snapshot', () 
   assert.match(text, /0.44/);
   assert.doesNotMatch(text, /0.99|Offline/);
 });
+
+test('native presentation shares website grade selection, colors, booking links and charging labels', () => {
+  const { locationReliability, locationGrade, gradePresentation } = require('../js/components.js');
+  const { safeUrl } = require('../js/location-model.js');
+  const source = combineLocations(places, charging, require('../data/roamer.json').stations);
+  const exported = catalog().places;
+  for (const place of source) {
+    const native = exported.find(p => p.id === String(place.id));
+    assert.deepEqual(native.reliability, locationReliability(place));
+    assert.equal(native.bookingURL, safeUrl(place.bookingUrl, 'rivian.com'));
+    assert.equal(native.phone, place.phone || null);
+    if (native.reliability) {
+      assert.match(locationGrade(place), new RegExp(`reliability-${native.reliability.tone}`));
+      assert.match(require('node:fs').readFileSync(require('node:path').join(__dirname, '../css/style.css'), 'utf8'),
+        new RegExp(native.reliability.background, 'i'));
+    }
+    if (place.status === 'planned') assert.equal(native.reliability, null);
+  }
+  const combined = exported.find(p => p.name === 'Corte Madera, CA');
+  assert.ok(combined.information.some(s => s.tags?.includes('DC Fast Charging')));
+  assert.ok(combined.information.some(s => s.tags?.includes('Level 2 Charging')));
+  assert.ok(combined.information.filter(s => s.metrics).every(s => s.metrics.length === 2));
+  assert.equal(gradePresentation({reliabilityGrade:'A+'}).tone, 'neutral');
+  assert.equal(gradePresentation({reliabilityGrade:'B',reliabilityTone:'invalid'}).background, '#84cc16');
+  assert.equal(gradePresentation({reliabilityGrade:'unknown'}), null);
+  assert.equal(locationReliability({status:'planned',reliabilityGrade:'A'}), null);
+});
