@@ -143,3 +143,19 @@ private struct DemoBookingPage: UIViewControllerRepresentable {
     func updateUIViewController(_ controller: SFSafariViewController, context: Context) {}
 }
 #endif
+
+/// The complete key stays visible at phone widths and wraps for larger text sizes.
+struct MapKey: View {
+    var body: some View {
+        TagFlow(spacing: 10) {
+            ForEach(PlaceType.allCases) { type in
+                Label {
+                    Text(type == .ran ? "RAN" : type.browseTitle)
+                } icon: {
+                    Circle().fill(Color(hex: type.mapColorHex)).frame(width: 9, height: 9)
+                }.accessibilityLabel(type.displayName)
+            }
+            Label("Coming Soon", systemImage: "circle")
+        }.font(.caption2)
+    }
+}
