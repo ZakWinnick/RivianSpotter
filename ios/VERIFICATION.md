@@ -81,3 +81,10 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Universal Release simulator build and signed Release archive succeeded. App Store Connect accepted version `0.1.0` build `2` at 18:28 Pacific.
 - Evidence: `.build/bookmark-build.log`, `.build/archive-build2.log`, and `.build/upload-build2.log`.
 - Apple completed processing build 2 and automatically assigned it to the existing internal Test group. Build 1 is Waiting for Review; Apple explicitly blocks submission of another build in version 0.1.0 until that review is approved. Build 2 is Ready to Submit for external review.
+
+
+## Journal resilience / build 3 — October 20, 2026
+
+- Built PR #32 at `5ae32ea` (`fix/ios-journal-resilience`), with only the local build-number increment to 3 before archiving. The PR was open at build time.
+- Thirteen core/storage checks passed, including skipping and preserving unreadable records and non-blocking damaged legacy migration. Three device-service checks and four catalog/detail checks passed.
+- Signed Release archive succeeded. Evidence: `.build/archive-build3.log` and `.build/upload-build3.log`.
