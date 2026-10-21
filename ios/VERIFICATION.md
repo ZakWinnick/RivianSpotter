@@ -100,3 +100,38 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Smaller items: image requests serve the newest (on-screen) cards first; VoiceOver card labels include type, locality, distance and status; Near me can be turned off while locating; Locations and Browse tabs use distinct icons; "Added to Visited" copy; Near me card subtitles lead with distance and type; signed-out iCloud copy no longer promises the journal stays on the device.
 - Verified: 15 core cases (XCTest and standalone), 3 device-service checks, iOS simulator build, desktop preview build, `npm test` 100 passed. Observed on the iPhone 17e simulator: separated clusters and fit-to-cluster, Denver search in map view, edge swipe back, note Done button, and accessibility XXXL text on Location Details.
 - Not verified: VoiceOver with a screen reader running, iPad layout for these changes, and how NSPersistentCloudKitContainer treats local data after iCloud sign-out on a device.
+
+
+## Usability follow-ups / build 4 — October 20, 2026
+
+- Built PR #33 at `9dadd0b`, with the local build number incremented to 4. Includes map clustering, navigation, keyboard, Dynamic Type, image loading, and journal event compaction changes.
+- Fifteen core/storage/clustering checks, three device-service checks, and four catalog/detail checks passed. Signed Release archive succeeded; Apple accepted version 0.1.0 (4) at 18:58 Pacific.
+- Evidence: `.build/archive-build4.log` and `.build/upload-build4.log`. Physical-device iCloud compaction behavior and full VoiceOver/iPad validation of these changes remain unverified.
+- Apple completed processing and assigned build 4 to the internal Test group. Testing notes saved. External review remains blocked by the pending build 1 review.
+
+
+## Public catalog refresh — October 20, 2026
+
+- Added `/api/v1/catalog.json` to the site build and an app refresh client with conditional HTTP requests, validated atomic caching, launch/foreground checks, and manual refresh. No public endpoint or new TestFlight build has been deployed for this change yet.
+- Saved entries and open details resolve current metadata by ID/alias while journal snapshots remain untouched. Removed listings retain the saved snapshot.
+- Core checks: 18 passed, including planned-to-open saved metadata, alias migration, journal preservation, 200/304 handling, restart cache, offline/server/invalid-response preservation, and corrupt-cache fallback. Website test/build: 101 passed and 628 generated pages plus the complete 546-place API feed.
+- Universal iOS Release simulator build succeeded. On a separate disposable iPhone 17e simulator, saved a bundled coming-soon location; seeded a clearly labeled test-only cached update, relaunched, and observed updated Saved/detail name, status, and hours with the bookmark still selected. This is a fixture test, not an assertion that the real location opened.
+- Observed Settings last-check time, manual refresh, and continued browsing after the still-unpublished endpoint failed. Production HTTP headers/response and physical-device behavior remain release checks.
+- Final checks: XCTest ran all 18 cases successfully; signed device Release archive succeeded for build 5. No TestFlight upload was performed for the catalog feature.
+
+
+## Catalog refresh review fixes — October 20, 2026
+
+- Feed parsing is per record: unknown location types are dropped from a record, out-of-range pins become "no pin", and unreadable or identity-conflicting records are skipped. A response with half or more unusable records is rejected. Previously one unknown type or bad pin rejected the whole feed.
+- A cached download older than the bundled directory (latest `checkedOn`) is deleted with its validators; an older server response doesn't replace the bundled directory.
+- Automatic checks fail quietly; Settings shows the last failure, and browsing screens show it only after a manual refresh. Pull-to-refresh during an automatic check waits for it.
+- Launch reads the cache once without re-encoding (about 70 ms to 34 ms on this Mac, release build). A damaged bundled directory no longer prevents the journal from opening.
+- Verified: 20 core cases (XCTest and standalone), device-service checks, iOS simulator and desktop preview builds, `npm test` 101 passed. On the iPhone 17e simulator with the endpoint not yet deployed (HTTP 404): no notice after launch; the notice appeared after pull-to-refresh in Browse.
+
+## Catalog revision ordering — October 20, 2026
+
+- Replaced source-verification-date comparisons with an explicit catalog revision, generated from the complete export and persisted with its content digest in `data/catalog-revision.json`. Same-day edits and removals advance the revision; unchanged exports keep it. Scheduled refresh commits preserve the manifest.
+- The refresh client rejects revisions older than either the bundle or its latest accepted download before writing data or HTTP validators. Revisionless caches fall back to the bundle. Source dates no longer control directory ordering.
+- All 22 XCTest cases passed. The standalone runner subsequently passed all 22 cases including the added legacy-cache assertion. Regression coverage includes same-day edits, unchanged source dates, newer bundles, stale 200 responses, retained validators on the next 304, relaunch, missing/invalid revisions, and unchanged private journal data.
+- All 102 website tests and the static build passed. The generated public and bundled catalogs match exactly, including their revision. The universal iOS simulator Release build passed; `git diff --check` passed.
+- This revision has not been deployed or uploaded to TestFlight. The earlier build 5 archive predates this fix and must be rebuilt before distribution.

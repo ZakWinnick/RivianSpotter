@@ -19,6 +19,8 @@ if (!Array.isArray(locations) || !locations.length)
 require("./scripts/generate-data.cjs").generate();
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
+// Public, versioned read API: both normal and scheduled releases publish it.
+require('./scripts/export-ios-catalog.cjs').writeCatalog(path.join(dist, 'api/v1/catalog.json'));
 function copy(file) {
   const target = path.join(dist, file);
   fs.mkdirSync(path.dirname(target), { recursive: true });

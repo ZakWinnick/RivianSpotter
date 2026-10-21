@@ -8,7 +8,7 @@ if [ -d /Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk ]; then
   service_sdk=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
 fi
 swiftc -sdk "$service_sdk" -swift-version 5 -parse-as-library \
-  Sources/SpotterCore/Place.swift Sources/SpotterCore/Journal.swift Sources/SpotterCore/CloudJournalStorage.swift \
+  Sources/SpotterCore/Place.swift Sources/SpotterCore/CatalogUpdates.swift Sources/SpotterCore/Journal.swift Sources/SpotterCore/CloudJournalStorage.swift \
   Sources/SpotterApp/DeviceServices.swift Tools/DeviceServiceChecks.swift \
   -o .build/device-checks/DeviceServiceChecks
 .build/device-checks/DeviceServiceChecks

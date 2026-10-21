@@ -1,6 +1,6 @@
 # RivianSpotter for iOS
 
-A native SwiftUI field guide and private visit journal for RANs, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts. Version 0.1.0 (build 2) was uploaded to TestFlight on October 20, 2026 under Zak Winnick’s personal developer account. Apple finished processing it and assigned it to the internal Test group. This build changes the location save control to an outline/filled bookmark. Build 1 is waiting for external beta review; Apple blocks another build’s review submission until that review is approved. No App Store release has been made.
+A native SwiftUI field guide and private visit journal for RANs, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts. The latest uploaded beta is version 0.1.0 (build 4). This branch prepares build 5 with automatic location-directory updates; its public feed and app build have not yet been deployed. Earlier betas keep their bundled directory.
 
 ## Open on an iPhone or iPad simulator
 
@@ -45,7 +45,7 @@ From the repository root:
 node scripts/export-ios-catalog.cjs
 ```
 
-This uses the website's existing location grouping and stable ID/alias rules. `Sources/SpotterCore/Resources/catalog.json` is a generated bundled snapshot; regenerate it before app builds after the site's inventory changes. The app does not yet download catalog updates. Source dates describe the underlying observations, not the export time. Shared locations retain all relevant categories; adjacent places are not silently merged.
+This uses the website's existing location grouping and stable ID/alias rules. `Sources/SpotterCore/Resources/catalog.json` is a generated bundled snapshot; regenerate it before app builds after the site's inventory changes. The app checks the public `/api/v1/catalog.json` feed on launch and foreground (at most every 15 minutes per session), with manual refresh in Browse, galleries, Saved, and Settings. It validates and atomically caches updates, retaining the last valid directory offline. Saved places and open detail pages resolve against the current directory by ID/alias; private journal records are unchanged. See [API contract](../docs/CATALOG_API.md). Source dates describe the underlying observations, not the export time. Shared locations retain all relevant categories; adjacent places are not silently merged.
 
 ## Verification
 
@@ -74,7 +74,7 @@ Manual acceptance before a beta: browse each category; search a place without a 
 
 ## Deliberately deferred
 
-Photo attachments, expanded place photography, image visit receipts, backup import UI, visitor notifications, automatic catalog refresh, and a public editorial/location timeline. These should be designed around the core journal after the first device review. The first beta includes the user-supplied Spotter icon, a privacy manifest, encryption declaration, and personal-team signing. External beta review and App Store release metadata are separate remaining distribution steps.
+Photo attachments, expanded place photography, image visit receipts, backup import UI, visitor notifications, and a public editorial/location timeline. These should be designed around the core journal after the first device review. The first beta includes the user-supplied Spotter icon, a privacy manifest, encryption declaration, and personal-team signing. External beta review and App Store release metadata are separate remaining distribution steps.
 
 The product references are [ifoAppleStore](https://ifoapplestore.com/) for independent reporting and preservation, and [Michael Steeber's introduction to Facades](https://michaelsteeber.substack.com/p/introducing-facades) for an enjoyable, browsable field guide. The current visual reference is the installed Facades app: neutral light/dark surfaces, purple controls, compact photo galleries, and grouped location cards. RivianSpotter uses its own inventory and does not fabricate opening histories or awards to mimic reference content. See [design reference](DESIGN_REFERENCE.md).
 

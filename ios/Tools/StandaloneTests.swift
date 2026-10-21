@@ -29,7 +29,7 @@ func XCTUnwrap<T>(_ value: T?) throws -> T {
 
 @main
 struct StandaloneTests {
-    static func main() {
+    static func main() async {
         let tests = JournalTests()
         let cases: [(String, () throws -> Void)] = [
             ("Catalog types, identities, aliases, and imprecise pins", tests.testBundledInventoryCoversEveryKindAndStableIDs),
@@ -54,7 +54,17 @@ struct StandaloneTests {
             do { try tests.tearDownWithError() } catch { failure("cleanup: \(error)") }
             if failures == before { print("PASS: \(name)") }
         }
-        print("\(cases.count) cases, \(failures) failures")
+        let catalogTests = CatalogUpdateTests()
+        do {
+            try catalogTests.testSavedPlaceFollowsNewDetailsAndAliasesWithoutChangingJournal()
+            try catalogTests.testInvalidCatalogIsRejected()
+            try catalogTests.testFeedFromANewerWebsiteStillUpdatesInstalledApps()
+            try catalogTests.testNewerBundledDirectoryReplacesAnOldDownload()
+            try catalogTests.testRevisionIsRequiredAndIndependentOfSourceDates()
+            try await catalogTests.testStaleResponsesCannotReplaceBundleOrDownloadedSavedDetails()
+            try await catalogTests.testDownloadCacheRevalidationAndFailurePreserveLatestDirectory()
+        } catch { failure("Catalog updates: \(error)") }
+        print("\(cases.count + 7) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

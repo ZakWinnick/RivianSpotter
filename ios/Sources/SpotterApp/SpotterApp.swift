@@ -14,12 +14,23 @@ final class SpotterStore: ObservableObject {
     @Published private(set) var unreadableRecordCount = 0
     private(set) var legacyJournalUnreadable = false
     private var repository: JournalRepository?
+    private var catalogUpdates: CatalogUpdates?
+    private var catalogCheck: Task<Void, Never>?
+    private var lastCatalogAttempt: Date?
+    @Published private(set) var updatingCatalog = false
+    @Published private(set) var catalogCheckedAt: Date?
+    /// The last failed check, shown in Settings. Automatic checks fail quietly (often just no
+    /// signal); browsing screens show it only after the person asked to refresh.
+    @Published private(set) var catalogNotice: String?
+    @Published private var catalogNoticeRequested = false
+    var catalogBanner: String? { catalogNoticeRequested ? catalogNotice : nil }
     let location = LocationService()
     let sync = CloudSyncStatus()
 
     init() {
+        // A damaged bundled directory must not take the journal down with it.
+        let bundled = try? Catalog.bundled()
         do {
-            places = try Catalog.bundled().places
             #if os(macOS)
             let storageName = "RivianSpotter-Preview"
             #else
@@ -28,6 +39,12 @@ final class SpotterStore: ObservableObject {
             let directory = try FileManager.default.url(for: .applicationSupportDirectory,
                 in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent(storageName, isDirectory: true)
+            let cacheURL = directory.appendingPathComponent("directory-cache.json")
+            let cached = CatalogSnapshot.cached(at: cacheURL, unlessOlderThan: bundled)
+            places = cached?.catalog.places ?? bundled?.places ?? []
+            catalogCheckedAt = cached?.checkedAt
+            catalogUpdates = CatalogUpdates(cacheURL: cacheURL, snapshot: cached,
+                                            minimumRevision: bundled?.revision ?? 0)
             #if os(iOS) && !targetEnvironment(simulator)
             let cloudEnabled = true
             #else
@@ -41,10 +58,40 @@ final class SpotterStore: ObservableObject {
             apply(repository)
             ready = true
         } catch { self.error = error.localizedDescription }
+        if places.isEmpty, error == nil {
+            error = "The location directory couldn’t be loaded. Your visits and notes are safe. Check for location updates in Settings."
+        }
     }
     func refresh() {
         do { try repository?.reload(); if let repository { apply(repository) } }
         catch { self.error = error.localizedDescription }
+    }
+    func refreshCatalog(force: Bool = false) async {
+        if force { catalogNoticeRequested = true }
+        // Pull-to-refresh during the launch check waits for that check instead of ending at once.
+        if let catalogCheck { await catalogCheck.value; return }
+        guard let catalogUpdates else { return }
+        if !force, let lastCatalogAttempt, Date().timeIntervalSince(lastCatalogAttempt) < 15 * 60 { return }
+        lastCatalogAttempt = Date()
+        updatingCatalog = true
+        let check = Task {
+            do {
+                let update = try await catalogUpdates.refresh()
+                places = update.catalog.places
+                catalogCheckedAt = update.checkedAt
+                catalogNotice = nil
+                catalogNoticeRequested = false
+            } catch {
+                catalogNotice = "Couldn’t check for location updates. Showing the directory you already have."
+            }
+        }
+        catalogCheck = check
+        await check.value
+        catalogCheck = nil
+        updatingCatalog = false
+    }
+    func currentPlace(_ saved: Place) -> Place {
+        Catalog(schemaVersion: 1, places: places).resolving(saved)
     }
     private func apply(_ repository: JournalRepository) {
         journal = repository.journal
@@ -197,7 +244,7 @@ struct RootView: View {
                     browsing.opacity(selectedPlace == nil ? 1 : 0)
                         .allowsHitTesting(selectedPlace == nil).accessibilityHidden(selectedPlace != nil)
                     if let place = selectedPlace {
-                        PlaceDetail(place: place, back: { selectedPlace = placeHistory.popLast() }, open: { next in
+                        PlaceDetail(place: store.currentPlace(place), back: { selectedPlace = placeHistory.popLast() }, open: { next in
                             placeHistory.append(place); selectedPlace = next
                         }).id(place.id).background(palette.paper)
                             .edgeSwipeBack { selectedPlace = placeHistory.popLast() }
@@ -225,8 +272,12 @@ struct RootView: View {
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
         .sheet(isPresented: $showSettings) { SettingsView() }
+        .task { await store.refreshCatalog() }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount() }
+            if phase == .active {
+                store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount()
+                Task { await store.refreshCatalog() }
+            }
         }
         .alert("Couldn’t complete that", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) {
             Button("OK") { store.error = nil }
@@ -315,6 +366,22 @@ private struct SettingsView: View {
                         }.pickerStyle(.segmented)
                         Text("System follows your device’s Light or Dark appearance.")
                             .guideFont(14).foregroundStyle(palette.secondary)
+                    }
+                    Divider()
+                    VStack(alignment: .leading, spacing: 12) {
+                        Label("Location Updates", systemImage: "arrow.triangle.2.circlepath").guideFont(20, .bold)
+                        if let date = store.catalogCheckedAt {
+                            Text("Last checked \(date.formatted(date: .abbreviated, time: .shortened))")
+                                .guideFont(14).foregroundStyle(palette.secondary)
+                        } else {
+                            Text("Using the location directory included with this app.").guideFont(14).foregroundStyle(palette.secondary)
+                        }
+                        Text("The directory updates from RivianSpotter when you open the app. Saved places show the latest details, and your visits and notes stay private.")
+                            .guideFont(14).foregroundStyle(palette.secondary)
+                        if let notice = store.catalogNotice { Text(notice).guideFont(14).foregroundStyle(palette.secondary) }
+                        Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
+                            Task { await store.refreshCatalog(force: true) }
+                        }.disabled(store.updatingCatalog)
                     }
                     Divider()
                     VStack(alignment: .leading, spacing: 12) {
@@ -427,7 +494,11 @@ struct ExploreView: View {
             List {
                 Section("Charging") { categoryRow(.ran); categoryRow(.waypoint) }
                 Section("Rivian Places") { categoryRow(.space); categoryRow(.demo); categoryRow(.service); categoryRow(.outpost) }
+                if let notice = store.catalogBanner {
+                    Section { Text(notice).font(.footnote).foregroundStyle(.secondary) }
+                }
             }.scrollContentBackground(.hidden)
+                .refreshable { await store.refreshCatalog(force: true) }
             #if os(iOS)
             .listStyle(.insetGrouped)
             #else
@@ -511,6 +582,7 @@ private struct CategoryBrowseView: View {
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(palette.line, lineWidth: 1))
                 Text(nearby && location.location != nil ? "\(places.count) locations · Nearest first" : "\(places.count) locations")
                     .guideFont(13).foregroundStyle(palette.secondary)
+                if let notice = store.catalogBanner { Text(notice).guideFont(13).foregroundStyle(palette.secondary) }
                 if nearby, let message = location.message {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(message).guideFont(12).foregroundStyle(palette.secondary)
@@ -542,6 +614,7 @@ private struct CategoryBrowseView: View {
                         }.padding(.horizontal, 16).padding(.bottom, 22)
                     }
                 }.scrollDismissesKeyboard(.immediately)
+                    .refreshable { await store.refreshCatalog(force: true) }
             }
         }.sheet(isPresented: $showSettings) { SettingsView() }
     }
@@ -867,6 +940,7 @@ struct SavedView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 32) {
                 GuideHeader(title: "Saved", subtitle: "Your saved places, ready when you are.")
+                if let notice = store.catalogBanner { Text(notice).guideFont(13).foregroundStyle(.secondary) }
                 if store.journal.savedPlaces.isEmpty {
                     VStack(alignment: .leading, spacing: 16) {
                         Rectangle().fill(GuidePalette(scheme: scheme).line).frame(height: 1)
@@ -878,14 +952,14 @@ struct SavedView: View {
                 } else {
                     LazyVStack(spacing: 0) {
                         ForEach(store.journal.savedPlaces) { saved in
-                            let place = store.places.first { $0.id == saved.id || $0.aliases.contains(saved.id) } ?? saved
+                            let place = store.currentPlace(saved)
                             Button { open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
                             Divider()
                         }
                     }
                 }
             }.padding(24)
-        }
+        }.refreshable { await store.refreshCatalog(force: true) }
     }
 }
 
