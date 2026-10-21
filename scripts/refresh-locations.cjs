@@ -215,7 +215,7 @@ function reconcile(records, legacy, date) {
   next.push(retained);
  }
  const ids=next.flatMap(x=>[x.id,...(x.legacyIds || [])]); if(new Set(ids).size!==ids.length)throw Error('Duplicate canonical/alias IDs');
- return { records:next.sort((a,b)=>a.id-b.id), duplicates };
+ return { records:next.map(record => require('./listed-address-pins.cjs').applyListedAddressPin(record)).sort((a,b)=>a.id-b.id), duplicates };
 }
 async function download(url) {
  const response = await fetch(url,{signal:AbortSignal.timeout(45000)});

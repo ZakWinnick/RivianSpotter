@@ -57,10 +57,10 @@ const rivianLocations = [
     "address": "15051 North Kierland Boulevard 180F1B",
     "city": "Scottsdale",
     "postalCode": "85254",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 33.6240909,
+    "lng": -111.9296121,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/9DPGFP9qNBmubS8R6",
     "timezone": "America/Phoenix",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am–8:00pm\nSun: 11:00am–6:00pm",
@@ -87,7 +87,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/9DPGFP9qNBmubS8R6",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 3,
@@ -142,10 +143,10 @@ const rivianLocations = [
     "address": "1038 Homer St.",
     "city": "Vancouver",
     "postalCode": "V6B 2X5",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 49.2768204,
+    "lng": -123.1206486,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/UWmZgyMmZQAXB3cVA",
     "timezone": "America/Vancouver",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sun: 9:00am-6:00pm",
@@ -175,7 +176,8 @@ const rivianLocations = [
       "Closed on 10/12"
     ],
     "officialDirectionsUrl": "https://maps.app.goo.gl/UWmZgyMmZQAXB3cVA",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 5,
@@ -273,10 +275,10 @@ const rivianLocations = [
     "address": "3725 Paseo Place Suite 980",
     "city": "San Diego",
     "postalCode": "92130",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 32.9521778,
+    "lng": -117.2353357,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/QKBpvrRR9sLkwJia6",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10:00am–8:00pm\nSun: 11:00am–7:00pm",
@@ -301,7 +303,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/QKBpvrRR9sLkwJia6",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 8,
@@ -399,10 +402,10 @@ const rivianLocations = [
     "address": "850 Pacific Coast Hwy #116",
     "city": "El Segundo",
     "postalCode": "90245",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 33.9030281,
+    "lng": -118.3950694,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/TvLn3sBzYiUdz3Cc8",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sun: 11am–6pm",
@@ -429,7 +432,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/TvLn3sBzYiUdz3Cc8",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 11,
@@ -606,10 +610,10 @@ const rivianLocations = [
     "address": "169 W Colorado Blvd",
     "city": "Pasadena",
     "postalCode": "91105",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.1460161,
+    "lng": -118.1540161,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/8AhJrF36twZbJLuZ7",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sun: 10:00am-7:00pm",
@@ -634,7 +638,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/8AhJrF36twZbJLuZ7",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 16,
@@ -772,10 +777,10 @@ const rivianLocations = [
     "address": "300 Santana Row Suite #105",
     "city": "San Jose",
     "postalCode": "95128",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 37.322787,
+    "lng": -121.9475555,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/y6krdNzUwtnqDYNaA",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Thur: 10:00am–8:00pm\n\nFri–Sat: 10:00am–9:00pm\n\nSun: 11:00am–7:00pm",
@@ -802,7 +807,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/y6krdNzUwtnqDYNaA",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 20,
@@ -1270,10 +1276,10 @@ const rivianLocations = [
     "address": "1026 Jetstream Dr",
     "city": "Orlando",
     "postalCode": "",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 28.40095575785,
+    "lng": -81.363093852854,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1026+Jetstream+Dr%2C+Orlando%2C+FL&benchmark=Public_AR_Current&format=json",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": null,
@@ -1301,7 +1307,9 @@ const rivianLocations = [
       "services": [
         "Service appointments"
       ]
-    }
+    },
+    "coordinateMethod": "listed-address",
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status."
   },
   {
     "id": 32,
@@ -1356,10 +1364,10 @@ const rivianLocations = [
     "address": "2820 Old Milton Pkwy",
     "city": "Alpharetta",
     "postalCode": "30009",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.0690609,
+    "lng": -84.2761266,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/zbXmbHa2eCLA1hnv8",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10:00am–8:00pm\nSun: 11:00am–7:00pm",
@@ -1384,7 +1392,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/zbXmbHa2eCLA1hnv8",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 34,
@@ -1605,10 +1614,10 @@ const rivianLocations = [
     "address": "4999 Old Orchard Suite M26",
     "city": "Skokie",
     "postalCode": "60077",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 42.0586026,
+    "lng": -87.7490232,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/qSFmFLVK7Yz9tunw5",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10am–8pm\nSun: Closed",
@@ -1635,7 +1644,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/qSFmFLVK7Yz9tunw5",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 40,
@@ -1776,10 +1786,10 @@ const rivianLocations = [
     "address": "400 Newbury Street Suite 900",
     "city": "Boston",
     "postalCode": "02215",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 42.3472823,
+    "lng": -71.0883237,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://www.google.com/maps/place/400+Newbury+St+Ste+900,+Boston,+MA+02215/data=!4m2!3m1!1s0x89e37a1ad86b215b:0x83b62f480ce91052",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am–7:00pm\nSun: 11:00am–7:00pm",
@@ -1804,7 +1814,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/T4e9NsicyBM3aEPCA",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 44,
@@ -2158,10 +2169,10 @@ const rivianLocations = [
     "address": "366 Wythe Ave",
     "city": "Brooklyn",
     "postalCode": "11249",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 40.713556679792,
+    "lng": -73.96555026965,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=366+Wythe+Ave%2C+Brooklyn%2C+NY&benchmark=Public_AR_Current&format=json",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sun: 10am-7pm",
@@ -2187,7 +2198,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 53,
@@ -2449,10 +2461,10 @@ const rivianLocations = [
     "address": "5720 Rue Ferrier",
     "city": "Mont Royal",
     "postalCode": "",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 45.48945,
+    "lng": -73.6666666667,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://www.demandesinfos.environnement.gouv.qc.ca/dossiers/demandes_regionales/9259_fiche.pdf",
     "timezone": "America/Toronto",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": null,
@@ -2484,7 +2496,9 @@ const rivianLocations = [
         "Parts"
       ],
       "isOpen": true
-    }
+    },
+    "coordinateMethod": "listed-address",
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status."
   },
   {
     "id": 60,
@@ -2582,10 +2596,10 @@ const rivianLocations = [
     "address": "905 Gleaves St.",
     "city": "Nashville",
     "postalCode": "37203",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 36.151681,
+    "lng": -86.7813426,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/PyTbnx36fAxXQXem7",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am–7:00pm\nSun: 11:00am–7:00pm",
@@ -2612,7 +2626,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/PyTbnx36fAxXQXem7",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 63,
@@ -2707,10 +2722,10 @@ const rivianLocations = [
     "address": "3010 Knox St",
     "city": "Dallas",
     "postalCode": "75205",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 32.822589,
+    "lng": -96.7867735,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/doNyP97q6Yxt6vNA7",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10:00am-7:00pm\nSun: 10:00am–6:00pm",
@@ -2737,7 +2752,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/doNyP97q6Yxt6vNA7",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 66,
@@ -2749,10 +2765,10 @@ const rivianLocations = [
     "address": "2512 Hawes Ave",
     "city": "Dallas",
     "postalCode": "75235",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 32.8293432,
+    "lng": -96.8448581,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/Xotjn1sFRaPVqUHC6",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Tue–Sat: 9:00am–5:00pm\nSun–Mon: Closed",
@@ -2781,7 +2797,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": "open",
     "officialDirectionsUrl": "https://maps.app.goo.gl/Xotjn1sFRaPVqUHC6",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 67,
@@ -3177,10 +3194,10 @@ const rivianLocations = [
     "address": "900 S Miami Ave Ste. 152",
     "city": "Miami",
     "postalCode": "33130",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 25.7653002,
+    "lng": -80.1939685,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/kMynQJTs22zJgAxR7",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10am–9pm\nSun: 11am–6pm",
@@ -3205,7 +3222,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/kMynQJTs22zJgAxR7",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 77,
@@ -3257,10 +3275,10 @@ const rivianLocations = [
     "address": "189 The Grove Drive",
     "city": "Los Angeles",
     "postalCode": "",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.071410569066,
+    "lng": -118.356475764765,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=189+The+Grove+Drive%2C+Los+Angeles%2C+CA&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": null,
@@ -3291,7 +3309,9 @@ const rivianLocations = [
         "Merchandise"
       ],
       "isOpen": true
-    }
+    },
+    "coordinateMethod": "listed-address",
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status."
   },
   {
     "id": 79,
@@ -3303,10 +3323,10 @@ const rivianLocations = [
     "address": "180 El Camino Real Suite 450B",
     "city": "Palo Alto",
     "postalCode": "94304",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 37.4445162,
+    "lng": -122.171361,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/73nSZrrZeHahQVkp6",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10:00am–7:00pm\n\nSun: 11:00am–6:00pm",
@@ -3333,7 +3353,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/73nSZrrZeHahQVkp6",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 80,
@@ -5044,10 +5065,10 @@ const rivianLocations = [
     "address": "5036 Blum Rd",
     "city": "Martinez",
     "postalCode": "",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 37.995187500051,
+    "lng": -122.074433153585,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=5036+Blum+Rd%2C+Martinez%2C+CA&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": null,
@@ -5078,7 +5099,9 @@ const rivianLocations = [
         "Parts"
       ],
       "isOpen": true
-    }
+    },
+    "coordinateMethod": "listed-address",
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status."
   },
   {
     "id": 125,
@@ -5182,10 +5205,10 @@ const rivianLocations = [
     "address": "4776 Commons Way Suite H",
     "city": "Calabasas",
     "postalCode": "91302",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.154738996788,
+    "lng": -118.643451960446,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4776+Commons+Way%2C+Calabasas%2C+CA&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Thur: 10:00am-7:00pm\nFri-Sat: 10:00am-8:00pm\nSun: 11:00am-7:00pm",
@@ -5211,7 +5234,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 128,
@@ -5223,10 +5247,10 @@ const rivianLocations = [
     "address": "1805 29th Street #1124",
     "city": "Boulder",
     "postalCode": "80301",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 40.01835509233,
+    "lng": -105.255981794853,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=1805+29th+Street%2C+Boulder%2C+CO&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Denver",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am–7:00pm\nSun: 11:00am–6:00pm",
@@ -5252,7 +5276,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 129,
@@ -5306,10 +5331,10 @@ const rivianLocations = [
     "address": "250 Legacy Place",
     "city": "Dedham",
     "postalCode": "02026",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 42.2311579,
+    "lng": -71.17906,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/LiCkxjxUjukZhBzM9",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10am–8pm\nSun: 11am–6pm",
@@ -5336,7 +5361,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": null,
     "officialDirectionsUrl": "https://maps.app.goo.gl/LiCkxjxUjukZhBzM9",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 131,
@@ -5348,10 +5374,10 @@ const rivianLocations = [
     "address": "1 W 69th Street Suite 3601",
     "city": "Edina",
     "postalCode": "55435",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 44.8771912,
+    "lng": -93.3258282,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://www.google.com/maps/place/1+W+69th+St+Ste+3601,+Edina,+MN+55435/data=!4m2!3m1!1s0x87f626a77daaaaab:0x79f04247b8952170",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am-7:00pm\nSun: Closed",
@@ -5377,7 +5403,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 132,
@@ -5389,10 +5416,10 @@ const rivianLocations = [
     "address": "1 American Dream Wy Space D240",
     "city": "East Rutherford",
     "postalCode": "07073",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 40.80762,
+    "lng": -74.07058,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://rivian.com/spaces/east-rutherford",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 11:00am-9:00pm\nSun: 11:00am-7:00pm",
@@ -5418,7 +5445,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 133,
@@ -5686,10 +5714,10 @@ const rivianLocations = [
     "address": "759 Americana Way",
     "city": "Glendale",
     "postalCode": "91210",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.144476930275,
+    "lng": -118.255251716735,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=759+Americana+Way%2C+Glendale%2C+CA&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am-9:00pm\nSun: 10:00am-7:00pm",
@@ -5713,7 +5741,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 140,
@@ -5771,10 +5800,10 @@ const rivianLocations = [
     "address": "6404 Auto Center Drive",
     "city": "Ventura",
     "postalCode": "93003",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 34.242930844066,
+    "lng": -119.19315457358,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=6404+Auto+Center+Drive%2C+Ventura%2C+CA&benchmark=Public_AR_Current&format=json",
     "timezone": "America/Los_Angeles",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sun: 9:00am–6:00pm",
@@ -5802,7 +5831,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": "open",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 142,
@@ -5937,10 +5967,10 @@ const rivianLocations = [
     "address": "15800 Southwest 25th Street Suite 100",
     "city": "Miramar",
     "postalCode": "33027",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 25.985841139422,
+    "lng": -80.359257942699,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=15800+Southwest+25th+Street%2C+Miramar%2C+FL&benchmark=Public_AR_Current&format=json",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sun: 9:00am–7:00pm",
@@ -5968,7 +5998,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": "planned",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 146,
@@ -6022,10 +6053,10 @@ const rivianLocations = [
     "address": "729 S Rosemary Avenue",
     "city": "West Palm Beach",
     "postalCode": "33401",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 26.707052781507,
+    "lng": -80.057257568294,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=729+S+Rosemary+Avenue%2C+West+Palm+Beach%2C+FL&benchmark=Public_AR_Current&format=json",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10:00am-7:00pm\nSun: 12:00pm–6:00pm",
@@ -6051,7 +6082,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 148,
@@ -6063,10 +6095,10 @@ const rivianLocations = [
     "address": "622 Oakbrook Center",
     "city": "Oak Brook",
     "postalCode": "60532",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 41.8500465,
+    "lng": -87.9518408,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://www.google.com/maps/place/622+Oakbrook+Center,+Oak+Brook,+IL+60523/data=!4m2!3m1!1s0x880e4c68478bffff:0xce6e6c493f44758a",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Sat: 10am–8pm\nSun: Closed",
@@ -6090,7 +6122,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 149,
@@ -6102,10 +6135,10 @@ const rivianLocations = [
     "address": "1200 Market Street",
     "city": "Lynnfield",
     "postalCode": "01940",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 42.5156001,
+    "lng": -71.0340084,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://www.google.com/maps/place/1200+Market+St,+Lynnfield,+MA+01940/data=!4m2!3m1!1s0x89e30d3c430941ef:0x2436da7ad13d5e03",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon-Sat: 10:00am–8:00pm\nSun: 11:00am–6:00pm",
@@ -6131,7 +6164,8 @@ const rivianLocations = [
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": null,
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 150,
@@ -6143,10 +6177,10 @@ const rivianLocations = [
     "address": "14820 North Freeway",
     "city": "Houston",
     "postalCode": "77090",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
+    "lat": 29.9797603,
+    "lng": -95.4210815,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://maps.app.goo.gl/RAovx8eDocdQbcd36",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Mon–Fri: 8:00am–5:00pm\nSat: 9:00am-5:00pm\nSun: Closed",
@@ -6173,7 +6207,8 @@ const rivianLocations = [
     "sourceKind": "directory",
     "serviceStatus": "open",
     "officialDirectionsUrl": "https://maps.app.goo.gl/RAovx8eDocdQbcd36",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
+    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
+    "coordinateMethod": "listed-address"
   },
   {
     "id": 151,
