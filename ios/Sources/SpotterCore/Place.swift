@@ -144,6 +144,7 @@ public enum PlaceClustering {
 public struct Catalog: Codable, Sendable {
     public let schemaVersion: Int
     public let places: [Place]
+    public init(schemaVersion: Int, places: [Place]) { self.schemaVersion = schemaVersion; self.places = places }
     public static func bundled() throws -> Catalog {
         #if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -153,14 +154,34 @@ public struct Catalog: Codable, Sendable {
         guard let url = bundle.url(forResource: "catalog", withExtension: "json") else {
             throw CocoaError(.fileNoSuchFile)
         }
-        let catalog = try JSONDecoder().decode(Catalog.self, from: Data(contentsOf: url))
+        return try validated(Data(contentsOf: url))
+    }
+    public static func validated(_ data: Data) throws -> Catalog {
+        guard data.count <= 20 * 1024 * 1024 else { throw CocoaError(.coderReadCorrupt) }
+        let catalog = try JSONDecoder().decode(Catalog.self, from: data)
         guard catalog.schemaVersion == 1, !catalog.places.isEmpty,
-              Set(catalog.places.map(\.id)).count == catalog.places.count else {
+              Set(catalog.places.map(\.id)).count == catalog.places.count,
+              catalog.places.allSatisfy({ !$0.id.isEmpty && !$0.name.isEmpty && !$0.types.isEmpty &&
+                  ($0.latitude.map { $0.isFinite && (-90...90).contains($0) } ?? true) &&
+                  ($0.longitude.map { $0.isFinite && (-180...180).contains($0) } ?? true) }) else {
             throw CocoaError(.coderReadCorrupt)
+        }
+        // An alias must identify just one place, including canonical IDs.
+        var identities: [String: String] = [:]
+        for place in catalog.places {
+            for identity in [place.id] + place.aliases {
+                guard !identity.isEmpty, identities[identity] == nil || identities[identity] == place.id else {
+                    throw CocoaError(.coderReadCorrupt)
+                }
+                identities[identity] = place.id
+            }
         }
         return catalog
     }
     public func place(for id: String) -> Place? {
         places.first { $0.id == id || $0.aliases.contains(id) }
+    }
+    public func resolving(_ saved: Place) -> Place {
+        place(for: saved.id) ?? saved.aliases.compactMap { place(for: $0) }.first ?? saved
     }
 }

@@ -5,6 +5,23 @@ const { combineLocations, locationTypes } = require('../js/location-model.js');
 const places = require('../data/locations.json');
 const charging = require('../data/charging.json');
 
+test('public API export is deterministic and includes the complete canonical catalog', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const directory = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'spotter-api-'));
+  try {
+    const target = path.join(directory, 'api/v1/catalog.json');
+    const { writeCatalog } = require('../scripts/export-ios-catalog.cjs');
+    writeCatalog(target);
+    const first = fs.readFileSync(target, 'utf8');
+    assert.deepEqual(JSON.parse(first), catalog());
+    writeCatalog(target);
+    assert.equal(fs.readFileSync(target, 'utf8'), first);
+    assert.ok(Buffer.byteLength(first) < 20 * 1024 * 1024);
+    assert.ok(!('visits' in JSON.parse(first)), 'No private journal data in the public feed');
+  } finally { fs.rmSync(directory, { recursive: true, force: true }); }
+});
+
 test('iOS catalog preserves website identities, aliases, and source dates', () => {
   const source = combineLocations(places, charging);
   const output = catalog();

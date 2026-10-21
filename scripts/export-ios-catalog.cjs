@@ -34,11 +34,16 @@ function catalog() {
     relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]
   })).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id)) };
 }
-if (require.main === module) {
-  const target = path.join(root, 'ios/Sources/SpotterCore/Resources/catalog.json');
+function writeCatalog(target, { pretty = false } = {}) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   const output = catalog();
-  fs.writeFileSync(target, JSON.stringify(output, null, 2) + '\n');
+  const ids = output.places.map(p => p.id);
+  if (!ids.length || ids.some(id => !id) || new Set(ids).size !== ids.length) throw Error('Invalid catalog identities');
+  fs.writeFileSync(target, JSON.stringify(output, null, pretty ? 2 : undefined) + '\n');
+  return output;
+}
+if (require.main === module) {
+  const output = writeCatalog(path.join(root, 'ios/Sources/SpotterCore/Resources/catalog.json'), { pretty: true });
   console.log(`Exported ${output.places.length} places for iOS.`);
 }
-module.exports = { catalog };
+module.exports = { catalog, writeCatalog };

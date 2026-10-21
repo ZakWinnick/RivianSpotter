@@ -14,6 +14,11 @@ final class SpotterStore: ObservableObject {
     @Published private(set) var unreadableRecordCount = 0
     private(set) var legacyJournalUnreadable = false
     private var repository: JournalRepository?
+    private var catalogUpdates: CatalogUpdates?
+    private var lastCatalogAttempt: Date?
+    @Published private(set) var updatingCatalog = false
+    @Published private(set) var catalogCheckedAt: Date?
+    @Published private(set) var catalogNotice: String?
     let location = LocationService()
     let sync = CloudSyncStatus()
 
@@ -28,6 +33,12 @@ final class SpotterStore: ObservableObject {
             let directory = try FileManager.default.url(for: .applicationSupportDirectory,
                 in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent(storageName, isDirectory: true)
+            let cacheURL = directory.appendingPathComponent("directory-cache.json")
+            if let cached = CatalogSnapshot.cached(at: cacheURL) {
+                places = cached.catalog.places
+                catalogCheckedAt = cached.checkedAt
+            }
+            catalogUpdates = CatalogUpdates(cacheURL: cacheURL)
             #if os(iOS) && !targetEnvironment(simulator)
             let cloudEnabled = true
             #else
@@ -45,6 +56,24 @@ final class SpotterStore: ObservableObject {
     func refresh() {
         do { try repository?.reload(); if let repository { apply(repository) } }
         catch { self.error = error.localizedDescription }
+    }
+    func refreshCatalog(force: Bool = false) async {
+        guard !updatingCatalog, let catalogUpdates else { return }
+        if !force, let lastCatalogAttempt, Date().timeIntervalSince(lastCatalogAttempt) < 15 * 60 { return }
+        lastCatalogAttempt = Date()
+        updatingCatalog = true
+        defer { updatingCatalog = false }
+        do {
+            let update = try await catalogUpdates.refresh()
+            places = update.catalog.places
+            catalogCheckedAt = update.checkedAt
+            catalogNotice = nil
+        } catch {
+            catalogNotice = "Couldn’t update locations. Showing the last available directory. Try again later."
+        }
+    }
+    func currentPlace(_ saved: Place) -> Place {
+        Catalog(schemaVersion: 1, places: places).resolving(saved)
     }
     private func apply(_ repository: JournalRepository) {
         journal = repository.journal
@@ -197,7 +226,7 @@ struct RootView: View {
                     browsing.opacity(selectedPlace == nil ? 1 : 0)
                         .allowsHitTesting(selectedPlace == nil).accessibilityHidden(selectedPlace != nil)
                     if let place = selectedPlace {
-                        PlaceDetail(place: place, back: { selectedPlace = placeHistory.popLast() }, open: { next in
+                        PlaceDetail(place: store.currentPlace(place), back: { selectedPlace = placeHistory.popLast() }, open: { next in
                             placeHistory.append(place); selectedPlace = next
                         }).id(place.id).background(palette.paper)
                             .edgeSwipeBack { selectedPlace = placeHistory.popLast() }
@@ -225,8 +254,12 @@ struct RootView: View {
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
         .sheet(isPresented: $showSettings) { SettingsView() }
+        .task { await store.refreshCatalog() }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount() }
+            if phase == .active {
+                store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount()
+                Task { await store.refreshCatalog() }
+            }
         }
         .alert("Couldn’t complete that", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) {
             Button("OK") { store.error = nil }
@@ -315,6 +348,22 @@ private struct SettingsView: View {
                         }.pickerStyle(.segmented)
                         Text("System follows your device’s Light or Dark appearance.")
                             .guideFont(14).foregroundStyle(palette.secondary)
+                    }
+                    Divider()
+                    VStack(alignment: .leading, spacing: 12) {
+                        Label("Location Updates", systemImage: "arrow.triangle.2.circlepath").guideFont(20, .bold)
+                        if let date = store.catalogCheckedAt {
+                            Text("Last checked \(date.formatted(date: .abbreviated, time: .shortened))")
+                                .guideFont(14).foregroundStyle(palette.secondary)
+                        } else {
+                            Text("Using the location directory included with this app.").guideFont(14).foregroundStyle(palette.secondary)
+                        }
+                        Text("The directory updates from RivianSpotter when you open the app. Saved places show the latest details, and your visits and notes stay private.")
+                            .guideFont(14).foregroundStyle(palette.secondary)
+                        if let notice = store.catalogNotice { Text(notice).guideFont(14).foregroundStyle(palette.secondary) }
+                        Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
+                            Task { await store.refreshCatalog(force: true) }
+                        }.disabled(store.updatingCatalog)
                     }
                     Divider()
                     VStack(alignment: .leading, spacing: 12) {
@@ -427,7 +476,11 @@ struct ExploreView: View {
             List {
                 Section("Charging") { categoryRow(.ran); categoryRow(.waypoint) }
                 Section("Rivian Places") { categoryRow(.space); categoryRow(.demo); categoryRow(.service); categoryRow(.outpost) }
+                if let notice = store.catalogNotice {
+                    Section { Text(notice).font(.footnote).foregroundStyle(.secondary) }
+                }
             }.scrollContentBackground(.hidden)
+                .refreshable { await store.refreshCatalog(force: true) }
             #if os(iOS)
             .listStyle(.insetGrouped)
             #else
@@ -511,6 +564,7 @@ private struct CategoryBrowseView: View {
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(palette.line, lineWidth: 1))
                 Text(nearby && location.location != nil ? "\(places.count) locations · Nearest first" : "\(places.count) locations")
                     .guideFont(13).foregroundStyle(palette.secondary)
+                if let notice = store.catalogNotice { Text(notice).guideFont(13).foregroundStyle(palette.secondary) }
                 if nearby, let message = location.message {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(message).guideFont(12).foregroundStyle(palette.secondary)
@@ -542,6 +596,7 @@ private struct CategoryBrowseView: View {
                         }.padding(.horizontal, 16).padding(.bottom, 22)
                     }
                 }.scrollDismissesKeyboard(.immediately)
+                    .refreshable { await store.refreshCatalog(force: true) }
             }
         }.sheet(isPresented: $showSettings) { SettingsView() }
     }
@@ -867,6 +922,7 @@ struct SavedView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 32) {
                 GuideHeader(title: "Saved", subtitle: "Your saved places, ready when you are.")
+                if let notice = store.catalogNotice { Text(notice).guideFont(13).foregroundStyle(.secondary) }
                 if store.journal.savedPlaces.isEmpty {
                     VStack(alignment: .leading, spacing: 16) {
                         Rectangle().fill(GuidePalette(scheme: scheme).line).frame(height: 1)
@@ -878,14 +934,14 @@ struct SavedView: View {
                 } else {
                     LazyVStack(spacing: 0) {
                         ForEach(store.journal.savedPlaces) { saved in
-                            let place = store.places.first { $0.id == saved.id || $0.aliases.contains(saved.id) } ?? saved
+                            let place = store.currentPlace(saved)
                             Button { open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
                             Divider()
                         }
                     }
                 }
             }.padding(24)
-        }
+        }.refreshable { await store.refreshCatalog(force: true) }
     }
 }
 
