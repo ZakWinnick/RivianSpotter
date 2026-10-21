@@ -1,0 +1,1158 @@
+import SwiftUI
+import MapKit
+import UniformTypeIdentifiers
+#if SWIFT_PACKAGE
+import SpotterCore
+#endif
+
+@MainActor
+final class SpotterStore: ObservableObject {
+    @Published private(set) var places: [Place] = []
+    @Published private(set) var journal = Journal()
+    @Published var error: String?
+    @Published private(set) var ready = false
+    @Published private(set) var unreadableRecordCount = 0
+    private(set) var legacyJournalUnreadable = false
+    private var repository: JournalRepository?
+    let location = LocationService()
+    let sync = CloudSyncStatus()
+
+    init() {
+        do {
+            places = try Catalog.bundled().places
+            #if os(macOS)
+            let storageName = "RivianSpotter-Preview"
+            #else
+            let storageName = "RivianSpotter"
+            #endif
+            let directory = try FileManager.default.url(for: .applicationSupportDirectory,
+                in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent(storageName, isDirectory: true)
+            #if os(iOS) && !targetEnvironment(simulator)
+            let cloudEnabled = true
+            #else
+            let cloudEnabled = false
+            #endif
+            let storage = try CloudJournalStorage(url: directory.appendingPathComponent("journal.sqlite"), cloudEnabled: cloudEnabled)
+            legacyJournalUnreadable = try storage.migrate(from: directory.appendingPathComponent("journal.json")) == .unreadable
+            let repository = try JournalRepository(storage: storage)
+            self.repository = repository
+            sync.start(storage: storage, enabled: cloudEnabled) { [weak self] in self?.refresh() }
+            apply(repository)
+            ready = true
+        } catch { self.error = error.localizedDescription }
+    }
+    func refresh() {
+        do { try repository?.reload(); if let repository { apply(repository) } }
+        catch { self.error = error.localizedDescription }
+    }
+    private func apply(_ repository: JournalRepository) {
+        journal = repository.journal
+        unreadableRecordCount = repository.unreadableRecordCount
+    }
+    /// Data that was kept but could not be shown. Informational: the journal stays usable.
+    var storageNotice: String? {
+        var parts: [String] = []
+        if unreadableRecordCount > 0 {
+            parts.append(unreadableRecordCount == 1
+                ? "1 visit or saved place couldn’t be read, possibly because it was added with a newer version of RivianSpotter. It’s kept and will appear after you update."
+                : "\(unreadableRecordCount) visits or saved places couldn’t be read, possibly because they were added with a newer version of RivianSpotter. They’re kept and will appear after you update.")
+        }
+        if legacyJournalUnreadable {
+            parts.append("An older visit file on this device couldn’t be read. It was left untouched, and new visits save normally.")
+        }
+        return parts.isEmpty ? nil : parts.joined(separator: " ")
+    }
+    var visits: [Visit] { journal.visits.sorted { $0.visitedAt > $1.visitedAt } }
+    func isSaved(_ place: Place) -> Bool {
+        journal.savedPlaces.contains { $0.id == place.id || place.aliases.contains($0.id) }
+    }
+    func visits(to place: Place) -> [Visit] {
+        visits.filter { $0.place.id == place.id || place.aliases.contains($0.place.id) }
+    }
+    @discardableResult
+    func perform(_ action: (JournalRepository) throws -> Void) -> Bool {
+        guard let repository else { error = JournalError.unreadable.localizedDescription; return false }
+        do {
+            try action(repository)
+            apply(repository)
+            return true
+        } catch { self.error = error.localizedDescription; return false }
+    }
+    func export() -> Data? {
+        do { return try repository?.export() }
+        catch { self.error = error.localizedDescription; return nil }
+    }
+    func takeError() -> String? {
+        let message = error
+        error = nil
+        return message
+    }
+}
+
+// The same composition runs on iPhone and in the phone-sized desktop preview.
+private struct GuidePalette {
+    let scheme: ColorScheme
+    var paper: Color { scheme == .dark ? Color(white: 0.115) : Color(red: 0.95, green: 0.95, blue: 0.97) }
+    var surface: Color { scheme == .dark ? Color(white: 0.18) : .white }
+    var ink: Color { scheme == .dark ? Color(white: 0.95) : Color(white: 0.10) }
+    var secondary: Color { scheme == .dark ? Color(white: 0.65) : Color(white: 0.43) }
+    var line: Color { ink.opacity(0.10) }
+    var accent: Color { scheme == .dark ? Color(red: 0.57, green: 0.53, blue: 1) : Color(red: 0.36, green: 0.31, blue: 0.86) }
+    static let charcoal = Color(white: 0.10)
+    static let forest = Color(red: 0.36, green: 0.31, blue: 0.86)
+    static let cream = Color(white: 0.96)
+    static let yellow = Color(red: 0.70, green: 0.67, blue: 1)
+
+}
+
+private extension Color {
+    // OKLCH design tokens converted to sRGB for SwiftUI.
+    static func guide(_ l: Double, _ c: Double, _ h: Double) -> Color {
+        let a = c * cos(h * .pi / 180), b = c * sin(h * .pi / 180)
+        let ll = pow(l + 0.3963377774 * a + 0.2158037573 * b, 3)
+        let mm = pow(l - 0.1055613458 * a - 0.0638541728 * b, 3)
+        let ss = pow(l - 0.0894841775 * a - 1.291485548 * b, 3)
+        func gamma(_ x: Double) -> Double {
+            min(1, max(0, x <= 0.0031308 ? 12.92 * x : 1.055 * pow(x, 1 / 2.4) - 0.055))
+        }
+        return Color(.sRGB, red: gamma(4.0767416621 * ll - 3.3077115913 * mm + 0.2309699292 * ss),
+                     green: gamma(-1.2684380046 * ll + 2.6097574011 * mm - 0.3413193965 * ss),
+                     blue: gamma(-0.0041960863 * ll - 0.7034186147 * mm + 1.707614701 * ss), opacity: 1)
+    }
+}
+
+private extension Place {
+    var guideTitle: String {
+        let prefix = "\(city), \(region)"
+        guard !city.isEmpty, guideName.hasPrefix(prefix) else { return guideName }
+        let suffix = guideName.dropFirst(prefix.count).trimmingCharacters(in: CharacterSet(charactersIn: " -"))
+        return suffix.isEmpty ? city : suffix
+    }
+    var guideName: String {
+        name.replacingOccurrences(of: " - Service + Demo Center", with: "")
+            .replacingOccurrences(of: " - Service Center", with: "")
+    }
+    var directionsURL: URL? {
+        guard status != "planned", listed else { return nil }
+        var parts = URLComponents(string: "https://maps.apple.com/")!
+        if hasPreciseCoordinates {
+            parts.queryItems = [URLQueryItem(name: "daddr", value: "\(latitude!),\(longitude!)")]
+        } else if let address {
+            parts.queryItems = [URLQueryItem(name: "daddr", value: "\(address), \(locality)")]
+        } else { return nil }
+        return parts.url
+    }
+}
+
+enum AppAppearance: String, CaseIterable, Identifiable {
+    case system = "System", light = "Light", dark = "Dark"
+    var id: String { rawValue }
+    var colorScheme: ColorScheme? {
+        switch self { case .system: nil; case .light: .light; case .dark: .dark }
+    }
+}
+
+@main
+struct RivianSpotterApp: App {
+    @StateObject private var store = SpotterStore()
+    @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
+    var body: some Scene {
+        WindowGroup {
+            RootView().environmentObject(store).environmentObject(store.location).environmentObject(store.sync)
+                .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
+            #if os(macOS)
+                .frame(width: 440, height: 820)
+            #endif
+        }
+        #if os(macOS)
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentSize)
+        #endif
+    }
+}
+
+private enum GuideTab: String, CaseIterable {
+    case catalog = "Locations", explore = "Browse", saved = "Saved", journal = "Visited"
+    var symbol: String {
+        switch self { case .catalog: "rectangle.grid.2x2"; case .explore: "square.grid.2x2"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
+    }
+}
+
+struct RootView: View {
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var tab = GuideTab.explore
+    @State private var selectedCategory: PlaceType?
+    @State private var selectedPlace: Place?
+    @State private var placeHistory: [Place] = []
+    @State private var showSettings = false
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    var body: some View {
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                if geometry.size.width >= 700 { sidebar.frame(width: 245) }
+                ZStack {
+                    browsing.opacity(selectedPlace == nil ? 1 : 0)
+                        .allowsHitTesting(selectedPlace == nil).accessibilityHidden(selectedPlace != nil)
+                    if let place = selectedPlace {
+                        PlaceDetail(place: place, back: { selectedPlace = placeHistory.popLast() }, open: { next in
+                            placeHistory.append(place); selectedPlace = next
+                        }).id(place.id).background(palette.paper)
+                    }
+                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                if geometry.size.width < 700 {
+                    HStack(spacing: 0) {
+                        ForEach(GuideTab.allCases, id: \.self) { item in
+                            Button { select(item) } label: {
+                                VStack(spacing: 4) {
+                                    Image(systemName: item.symbol).font(.system(size: 21))
+                                    Text(item.rawValue).font(.system(size: 10, weight: .medium))
+                                }.foregroundStyle(tab == item ? palette.accent : palette.secondary)
+                                    .frame(maxWidth: .infinity, minHeight: 52).contentShape(Rectangle())
+                            }.buttonStyle(.plain).accessibilityAddTraits(tab == item ? .isSelected : [])
+                        }
+                    }.padding(.horizontal, 12).background(.regularMaterial)
+                        .overlay(alignment: .top) { Divider() }
+                }
+            }
+        }
+        .background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
+        .sheet(isPresented: $showSettings) { SettingsView() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount() }
+        }
+        .alert("Couldn’t complete that", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) {
+            Button("OK") { store.error = nil }
+        } message: { Text(store.error ?? "") }
+    }
+    @ViewBuilder private var browsing: some View {
+        if let kind = selectedCategory {
+            CategoryBrowseView(kind: kind, open: { selectedPlace = $0 }, back: { selectedCategory = nil })
+        } else {
+            switch tab {
+            case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil)
+            case .explore: ExploreView(open: { selectedPlace = $0 }, choose: { selectedCategory = $0 })
+            case .saved: SavedView(open: { selectedPlace = $0 }, explore: { select(.catalog) })
+            case .journal: JournalView(explore: { select(.catalog) })
+            }
+        }
+    }
+    private func select(_ item: GuideTab) {
+        selectedPlace = nil; placeHistory = []; selectedCategory = nil; tab = item
+    }
+    private var sidebar: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("RivianSpotter").font(.headline)
+                Spacer()
+                Button { showSettings = true } label: { Image(systemName: "gearshape") }
+                    .buttonStyle(.plain).accessibilityLabel("Settings")
+            }.padding(18)
+            List {
+                Section("\(store.places.count) Locations") {
+                    ForEach(GuideTab.allCases, id: \.self) { item in
+                        Button { select(item) } label: { Label(item == .catalog ? "All Locations" : item.rawValue, systemImage: item.symbol) }
+                            .buttonStyle(.plain)
+                            .listRowBackground(tab == item && selectedCategory == nil ? palette.accent.opacity(0.18) : .clear)
+                    }
+                }
+                Section("Charging") { sidebarCategory(.ran); sidebarCategory(.waypoint) }
+                Section("Rivian Places") {
+                    sidebarCategory(.space); sidebarCategory(.demo); sidebarCategory(.service); sidebarCategory(.outpost)
+                }
+            }.listStyle(.sidebar).scrollContentBackground(.hidden)
+        }.background(palette.surface.opacity(0.35)).overlay(alignment: .trailing) { Divider() }
+    }
+    private func sidebarCategory(_ kind: PlaceType) -> some View {
+        Button { selectedPlace = nil; placeHistory = []; selectedCategory = kind; tab = .explore } label: {
+            Label(kind.browseTitle, systemImage: kind.symbol)
+        }.buttonStyle(.plain).listRowBackground(selectedCategory == kind ? palette.accent.opacity(0.18) : .clear)
+    }
+}
+
+private struct GuideHeader: View {
+    let title: String
+    let subtitle: String
+    @Environment(\.colorScheme) private var scheme
+    @State private var showSettings = false
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(title).font(.largeTitle.bold())
+                Spacer()
+                Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
+                    .buttonStyle(.plain).accessibilityLabel("Settings")
+            }
+            Text(subtitle).font(.subheadline).foregroundStyle(.secondary)
+        }.sheet(isPresented: $showSettings) { SettingsView() }
+    }
+}
+
+private struct SettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var sync: CloudSyncStatus
+    @EnvironmentObject private var store: SpotterStore
+    @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            SheetHeader(title: "Settings", close: { dismiss() }).padding(.horizontal, 24).padding(.top, 12)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 28) {
+                    VStack(alignment: .leading, spacing: 14) {
+                        Text("Appearance").guideFont(22, .bold)
+                        Picker("Appearance", selection: $appearance) {
+                            ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
+                        }.pickerStyle(.segmented)
+                        Text("System follows your device’s Light or Dark appearance.")
+                            .guideFont(14).foregroundStyle(palette.secondary)
+                    }
+                    Divider()
+                    VStack(alignment: .leading, spacing: 12) {
+                        Label("iCloud & Storage", systemImage: "icloud").guideFont(20, .bold)
+                        Text(sync.title).guideFont(15, .semibold)
+                        Text(sync.detail).guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
+                        if let notice = store.storageNotice {
+                            Label(notice, systemImage: "exclamationmark.triangle")
+                                .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
+                        }
+                        Text("Visits, notes, and saved places are private. Nothing is published when you check in.")
+                            .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
+                    }
+                    Divider()
+                    VStack(alignment: .leading, spacing: 12) {
+                        Label("Location", systemImage: "location").guideFont(20, .bold)
+                        Text("Tap Near me to find nearby places. Your device location is not saved or synced with your journal. You can record a visit without location access.")
+                            .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
+                        #if os(iOS)
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            Link("Location Settings", destination: url).guideFont(15, .semibold)
+                        }
+                        #endif
+                    }
+                }.padding(24)
+            }
+        }.background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
+            .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
+        #if os(macOS)
+            .frame(width: 420, height: 650)
+        #endif
+    }
+}
+
+private struct SectionLabel: View {
+    let title: String
+    var detail: String = ""
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        HStack {
+            Text(title).guideFont(17, .semibold)
+            Spacer()
+            Text(detail).guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+        }
+    }
+}
+
+private struct PrimaryAction: ButtonStyle {
+    @Environment(\.isEnabled) private var enabled
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.guideFont(17, .semibold)
+            .foregroundStyle(.white).frame(maxWidth: .infinity, minHeight: 48)
+            .background(GuidePalette.forest, in: RoundedRectangle(cornerRadius: 12))
+            .opacity(enabled ? (configuration.isPressed ? 0.75 : 1) : 0.4)
+    }
+}
+
+private enum ExploreMode: String, CaseIterable {
+    case all = "All Locations", charging = "Charging", places = "Rivian Places"
+}
+
+private extension PlaceType {
+    var browseTitle: String {
+        switch self {
+        case .ran: "Rivian Adventure Network"
+        case .waypoint: "Waypoints"
+        case .space: "Spaces"
+        case .demo: "Demo Centers"
+        case .service: "Service Centers"
+        case .outpost: "Outposts"
+        }
+    }
+    var browseSubtitle: String {
+        switch self {
+        case .ran: "DC fast charging"
+        case .waypoint: "Level 2 charging"
+        case .space: "Meet Rivian"
+        case .demo: "Get behind the wheel"
+        case .service: "Care for your vehicle"
+        case .outpost: "Recharge and explore"
+        }
+    }
+    func browseColor(in scheme: ColorScheme) -> Color {
+        let lightness = scheme == .dark ? 0.76 : 0.44
+        switch self {
+        case .ran: return .guide(scheme == .dark ? 0.74 : 0.51, 0.12, 58)
+        case .waypoint: return .guide(lightness, 0.08, 295)
+        case .space: return .guide(lightness, 0.07, 150)
+        case .demo: return .guide(lightness, 0.07, 240)
+        case .service: return .guide(lightness, 0.06, 65)
+        case .outpost: return .guide(lightness, 0.08, 105)
+        }
+    }
+}
+
+struct ExploreView: View {
+    let open: (Place) -> Void
+    let choose: (PlaceType) -> Void
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    @State private var showSettings = false
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                Text("Browse").font(.largeTitle.bold())
+                Spacer()
+                Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
+                    .buttonStyle(.plain).accessibilityLabel("Settings")
+            }.padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 8)
+            List {
+                Section("Charging") { categoryRow(.ran); categoryRow(.waypoint) }
+                Section("Rivian Places") { categoryRow(.space); categoryRow(.demo); categoryRow(.service); categoryRow(.outpost) }
+            }.scrollContentBackground(.hidden)
+            #if os(iOS)
+            .listStyle(.insetGrouped)
+            #else
+            .listStyle(.inset)
+            #endif
+        }.sheet(isPresented: $showSettings) { SettingsView() }
+    }
+    private func categoryRow(_ kind: PlaceType) -> some View {
+        Button { choose(kind) } label: {
+            HStack(spacing: 12) {
+                Image(systemName: kind.symbol).frame(width: 27, height: 27)
+                    .foregroundStyle(.white).background(kind.browseColor(in: scheme), in: RoundedRectangle(cornerRadius: 6))
+                Text(kind.browseTitle).font(.system(size: 16))
+                Spacer()
+                Text("\(store.places.filter { $0.browseTypes.contains(kind) }.count)").foregroundStyle(.secondary)
+                Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold)).foregroundStyle(.tertiary)
+            }.padding(.vertical, 5).contentShape(Rectangle())
+        }.buttonStyle(.plain)
+    }
+}
+
+private struct CategoryBrowseView: View {
+    let kind: PlaceType?
+    let open: (Place) -> Void
+    let back: (() -> Void)?
+    @EnvironmentObject private var store: SpotterStore
+    @EnvironmentObject private var location: LocationService
+    @Environment(\.colorScheme) private var scheme
+    @State private var search = ""
+    @State private var showMap = false
+    @State private var nearby = false
+    @State private var showSettings = false
+    @ScaledMetric(relativeTo: .body) private var cardWidth = 160.0
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    private var places: [Place] {
+        let matches = store.places.filter { (kind == nil || $0.browseTypes.contains(kind!)) && $0.matches(search) }
+        guard nearby, location.location != nil else { return matches }
+        return matches.sorted {
+            let first = location.distance(to: $0) ?? .greatestFiniteMagnitude
+            let second = location.distance(to: $1) ?? .greatestFiniteMagnitude
+            return first == second ? $0.name < $1.name : first < second
+        }
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack {
+                    if let back {
+                        Button(action: back) { Image(systemName: "chevron.left").frame(width: 32, height: 44) }
+                            .buttonStyle(.plain).accessibilityLabel("Back to Browse")
+                    }
+                    Text(kind?.browseTitle ?? "All Locations").font(.system(size: 17, weight: .semibold)).lineLimit(1)
+                    Spacer()
+                    Button {
+                        if nearby { nearby = false } else { nearby = true; location.request() }
+                    } label: {
+                        Image(systemName: nearby ? "location.fill" : "location").frame(width: 44, height: 44)
+                            .foregroundStyle(nearby ? GuidePalette.charcoal : palette.ink)
+                            .background(nearby ? GuidePalette.yellow : .clear, in: Circle())
+                    }.buttonStyle(.plain).disabled(location.requesting)
+                        .accessibilityLabel(location.requesting ? "Locating" : "Near me")
+                        .accessibilityAddTraits(nearby ? .isSelected : [])
+                    Button { showMap.toggle() } label: {
+                        Image(systemName: showMap ? "square.grid.2x2" : "map").frame(width: 44, height: 44)
+                    }.buttonStyle(.plain).accessibilityLabel(showMap ? "Show gallery" : "Show map")
+                    if kind == nil {
+                        Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 36, height: 44) }
+                            .buttonStyle(.plain).accessibilityLabel("Settings")
+                    }
+                }
+                HStack(spacing: 10) {
+                    Image(systemName: "magnifyingglass").foregroundStyle(palette.secondary)
+                    TextField("Find a location", text: $search).textFieldStyle(.plain).guideFont(15)
+                        .accessibilityLabel("Search \(kind?.browseTitle ?? "all locations")")
+                    if !search.isEmpty {
+                        Button { search = "" } label: { Image(systemName: "xmark.circle.fill") }
+                            .buttonStyle(.plain).accessibilityLabel("Clear category search")
+                    }
+                }.padding(.horizontal, 12).frame(minHeight: 46)
+                    .background(palette.surface, in: RoundedRectangle(cornerRadius: 10))
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(palette.line, lineWidth: 1))
+                Text(nearby && location.location != nil ? "\(places.count) locations · Nearest first" : "\(places.count) locations")
+                    .guideFont(13).foregroundStyle(palette.secondary)
+                if nearby, let message = location.message {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(message).guideFont(12).foregroundStyle(palette.secondary)
+                        HStack {
+                            Button("Try Again") { location.request() }.buttonStyle(.plain)
+                            #if os(iOS)
+                            if location.needsSettings, let url = URL(string: UIApplication.openSettingsURLString) {
+                                Link("Open Settings", destination: url)
+                            }
+                            #endif
+                        }.guideFont(12, .semibold)
+                    }
+                }
+            }.padding(.horizontal, 16).padding(.top, 0).padding(.bottom, 10)
+            if showMap {
+                PlacesMap(places: places, open: open, userLocation: nearby ? location.location : nil).id(search)
+            } else {
+                ScrollView {
+                    if places.isEmpty {
+                        Text("No locations match your search.").guideFont(15).foregroundStyle(palette.secondary)
+                            .frame(maxWidth: .infinity).padding(24)
+                    } else {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: cardWidth), spacing: 7)], spacing: 7) {
+                            ForEach(places) { place in
+                                PlaceBrowseCard(place: place, title: place.guideName,
+                                                distance: nearby ? location.distanceLabel(to: place) : nil,
+                                                visited: !store.visits(to: place).isEmpty, open: { open(place) })
+                            }
+                        }.padding(.horizontal, 16).padding(.bottom, 22)
+                    }
+                }
+            }
+        }.sheet(isPresented: $showSettings) { SettingsView() }
+    }
+}
+
+struct PlaceRow: View {
+    let place: Place
+    var distance: String? = nil
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        HStack(spacing: 16) {
+            Image(systemName: place.types.first?.symbol ?? "mappin")
+                .font(.system(size: 23, weight: .regular)).frame(width: 36)
+                .foregroundStyle(GuidePalette(scheme: scheme).accent).accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(place.guideName).guideFont(17, .semibold).lineLimit(2)
+                Text(place.typeLabel).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                Text(place.locality).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                if place.status == "planned" || !place.listed {
+                    Text(place.statusLabel).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                }
+            }
+            Spacer(minLength: 4)
+            if let distance { Text(distance).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary).fixedSize() }
+            if !store.visits(to: place).isEmpty {
+                Image(systemName: "checkmark.circle.fill").foregroundStyle(GuidePalette(scheme: scheme).accent)
+                    .accessibilityLabel("Visited")
+            } else {
+                Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(GuidePalette(scheme: scheme).secondary).accessibilityHidden(true)
+            }
+        }.padding(.vertical, 20).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+    }
+}
+
+private struct MapGroup: Identifiable {
+    let id: String
+    let places: [Place]
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: places.compactMap(\.latitude).reduce(0, +) / Double(places.count),
+                               longitude: places.compactMap(\.longitude).reduce(0, +) / Double(places.count))
+    }
+}
+
+struct PlacesMap: View {
+    let places: [Place]
+    let open: (Place) -> Void
+    var closeUp = false
+    var userLocation: CLLocation? = nil
+    @State private var position = MapCameraPosition.automatic
+    @State private var latitudeSpan = 38.0
+    @State private var longitudeSpan = 58.0
+    @State private var selectedGroup: MapGroup?
+    private var groups: [MapGroup] {
+        let mapped = places.filter(\.hasPreciseCoordinates)
+        if closeUp { return mapped.map { MapGroup(id: $0.id, places: [$0]) } }
+        let latCell = max(latitudeSpan / 7, 0.0001), lonCell = max(longitudeSpan / 9, 0.0001)
+        return Dictionary(grouping: mapped) {
+            "\(Int(floor($0.latitude! / latCell))):\(Int(floor($0.longitude! / lonCell)))"
+        }.map { MapGroup(id: $0.key, places: $0.value) }.sorted { $0.id < $1.id }
+    }
+    var body: some View {
+        Map(position: $position) {
+            if let userLocation {
+                Annotation("Your approximate location", coordinate: userLocation.coordinate) {
+                    Circle().fill(.blue).frame(width: 12, height: 12)
+                        .overlay(Circle().stroke(.white, lineWidth: 2)).accessibilityLabel("Your location")
+                }.annotationTitles(.hidden)
+            }
+            ForEach(groups) { group in
+                Annotation(group.places.count == 1 ? group.places[0].guideName : "\(group.places.count) places", coordinate: group.coordinate) {
+                    Button {
+                        if group.places.count == 1 { open(group.places[0]) }
+                        else if latitudeSpan < 0.005 {
+                            selectedGroup = group
+                        } else {
+                            position = .region(MKCoordinateRegion(center: group.coordinate,
+                                span: MKCoordinateSpan(latitudeDelta: latitudeSpan * 0.35, longitudeDelta: longitudeSpan * 0.35)))
+                        }
+                    } label: {
+                        ZStack {
+                            if group.places.count > 1 {
+                                Circle().fill(GuidePalette.forest).frame(width: 29, height: 29)
+                                    .overlay(Circle().stroke(GuidePalette.cream, lineWidth: 1.5))
+                                Text(String(group.places.count)).font(.system(size: 11, weight: .bold)).foregroundStyle(GuidePalette.cream)
+                            } else {
+                                Circle().fill(GuidePalette.forest).frame(width: 9, height: 9)
+                                    .overlay(Circle().stroke(GuidePalette.cream, lineWidth: 1.5))
+                            }
+                        }.frame(width: 44, height: 44).contentShape(Circle())
+                    }.buttonStyle(.plain).accessibilityLabel(group.places.count == 1 ? "Open \(group.places[0].name)" : "Zoom into \(group.places.count) places")
+                }.annotationTitles(.hidden)
+            }
+        }.mapStyle(.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll))
+            .onAppear { position = initialPosition }
+            .onChange(of: userLocation) { _, _ in position = initialPosition }
+            .onMapCameraChange(frequency: .onEnd) { context in
+                latitudeSpan = context.region.span.latitudeDelta
+                longitudeSpan = context.region.span.longitudeDelta
+            }
+            .sheet(item: $selectedGroup) { group in
+                VStack(alignment: .leading, spacing: 16) {
+                    SheetHeader(title: "Places here", close: { selectedGroup = nil })
+                    ScrollView {
+                        ForEach(group.places) { place in
+                            Button { selectedGroup = nil; open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
+                        }
+                    }
+                }.padding(24)
+                #if os(macOS)
+                .frame(width: 400, height: 480)
+                #endif
+            }
+    }
+    private var initialPosition: MapCameraPosition {
+        if let userLocation {
+            return .region(MKCoordinateRegion(center: userLocation.coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.45, longitudeDelta: 0.45)))
+        }
+        if closeUp, let place = places.first, place.hasPreciseCoordinates {
+            return .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: place.latitude!, longitude: place.longitude!),
+                span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)))
+        }
+        return .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40, longitude: -100),
+            span: MKCoordinateSpan(latitudeDelta: 38, longitudeDelta: 58)))
+    }
+}
+
+struct PlaceDetail: View {
+    let place: Place
+    let back: () -> Void
+    let open: (Place) -> Void
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    @State private var showCheckIn = false
+    @State private var selectedVisit: Visit?
+    @State private var actionError: String?
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Button(action: back) { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
+                    .buttonStyle(.plain).accessibilityLabel("Back")
+                Spacer()
+                Text("Location Details").font(.system(size: 17, weight: .semibold)).foregroundStyle(palette.ink)
+                Spacer()
+                Button {
+                    if !store.perform({ try $0.toggleSaved(place) }) { actionError = store.takeError() }
+                } label: {
+                    Image(systemName: store.isSaved(place) ? "bookmark.fill" : "bookmark").font(.system(size: 20))
+                        .frame(width: 44, height: 44)
+                }.buttonStyle(.plain).disabled(!store.ready)
+                    .accessibilityLabel(store.isSaved(place) ? "Remove from Saved" : "Save location")
+            }.foregroundStyle(palette.accent).padding(.horizontal, 6)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    PlaceDetailPhoto(place: place)
+                    Text(place.guideName).font(.system(size: 28, weight: .bold)).padding(.top, 2)
+                        .fixedSize(horizontal: false, vertical: true)
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 6) { detailBadges }
+                        VStack(alignment: .leading, spacing: 6) { detailBadges }
+                    }.padding(.bottom, 5)
+                    DetailPanel(title: "Address", symbol: "location.fill", color: .orange) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(place.address ?? "Street address not published").font(.system(size: 15, weight: .medium))
+                            Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "")").font(.system(size: 14))
+                            Text(place.country == "US" ? "United States" : place.country == "CA" ? "Canada" : place.country)
+                                .font(.system(size: 13)).foregroundStyle(palette.secondary)
+                        }.textSelection(.enabled)
+                        if place.hasPreciseCoordinates {
+                            PlacesMap(places: [place], open: { _ in }, closeUp: true)
+                                .frame(height: 180).clipShape(RoundedRectangle(cornerRadius: 8)).padding(.top, 6)
+                        } else {
+                            Text("A precise map pin is not available yet.").font(.footnote).foregroundStyle(.secondary)
+                        }
+                        if let url = place.directionsURL {
+                            Link(destination: url) { Label("Open in Maps", systemImage: "arrow.up.right").font(.system(size: 14, weight: .medium)) }
+                                .padding(.top, 4)
+                        }
+                    }
+                    if place.hours != nil || place.serviceHours != nil {
+                        DetailPanel(title: "Hours", symbol: "clock.fill", color: .blue) {
+                            if let hours = place.hours { DetailFact(title: "Visiting hours", value: hours) }
+                            if let hours = place.serviceHours { DetailFact(title: "Service hours", value: hours) }
+                        }
+                    }
+                    ForEach(Array((place.information ?? []).enumerated()), id: \.offset) { _, section in
+                        if section.expandable {
+                            DisclosureGroup {
+                                informationFacts(section).padding(.top, 12)
+                            } label: { Label(section.title, systemImage: section.title.contains("charger") ? "ev.charger" : "clock").font(.system(size: 15, weight: .semibold)) }
+                                .padding(14).background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
+                        } else {
+                            DetailPanel(title: section.title, symbol: sectionSymbol(section.title), color: palette.accent) {
+                                informationFacts(section)
+                            }
+                        }
+                    }
+                    let related = (place.relatedPlaceIDs ?? []).compactMap { id in store.places.first { $0.id == id || $0.aliases.contains(id) } }
+                    if !related.isEmpty {
+                        DetailPanel(title: "Nearby", symbol: "mappin.and.ellipse", color: .green) {
+                            ForEach(related) { nearby in
+                                Button { open(nearby) } label: {
+                                    HStack { Text(nearby.guideName).font(.system(size: 15)); Spacer(); Image(systemName: "chevron.right").font(.caption) }
+                                        .frame(minHeight: 38).contentShape(Rectangle())
+                                }.buttonStyle(.plain)
+                            }
+                        }
+                    }
+                    DetailPanel(title: "Visits", symbol: "checkmark.seal.fill", color: palette.accent) {
+                        if store.visits(to: place).isEmpty {
+                            Text("No visits recorded").font(.system(size: 14)).foregroundStyle(palette.secondary)
+                        } else {
+                            ForEach(store.visits(to: place)) { visit in
+                                Button { selectedVisit = visit } label: { VisitRow(visit: visit) }.buttonStyle(.plain)
+                            }
+                        }
+                        Button { showCheckIn = true } label: { Label("Add Visit", systemImage: "plus").font(.system(size: 14, weight: .medium)).frame(minHeight: 36) }
+                            .buttonStyle(.plain).disabled(!store.ready)
+                    }
+                    DetailPanel(title: "Published Information", symbol: "info.circle.fill", color: .gray) {
+                        Text("Checked \(place.checkedOn ?? "date unavailable"). Published information, not live availability.")
+                            .font(.system(size: 13)).foregroundStyle(palette.secondary)
+                        DisclosureGroup("Sources") {
+                            VStack(alignment: .leading, spacing: 12) {
+                                if let url = place.safeSourceURL { Link("Rivian published source ↗", destination: url) }
+                                ForEach(Array(Set((place.information ?? []).compactMap { $0.safeSourceURL })).sorted { $0.absoluteString < $1.absoluteString }, id: \.self) { url in
+                                    Link("Charging snapshot source ↗", destination: url)
+                                }
+                            }.font(.system(size: 13)).padding(.top, 8)
+                        }.font(.system(size: 13))
+                    }
+                }.padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 24)
+                    .frame(maxWidth: 660).frame(maxWidth: .infinity)
+            }
+        }
+        .sheet(isPresented: $showCheckIn) { CheckInView(place: place) }
+        .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
+        .actionError($actionError)
+    }
+    @ViewBuilder private var detailBadges: some View {
+        Text(place.typeLabel).font(.system(size: 12, weight: .medium)).padding(.horizontal, 8).padding(.vertical, 4)
+            .background(palette.accent.opacity(0.22), in: Capsule()).foregroundStyle(palette.accent)
+        if place.status == "planned" || !place.listed {
+            Text(place.statusLabel).font(.system(size: 12)).padding(.horizontal, 8).padding(.vertical, 4)
+                .background(palette.secondary.opacity(0.16), in: Capsule())
+        }
+        Button { showCheckIn = true } label: {
+            Label(store.visits(to: place).isEmpty ? "Visit" : "Visited", systemImage: store.visits(to: place).isEmpty ? "plus" : "checkmark")
+                .font(.system(size: 12, weight: .medium)).padding(.horizontal, 8).padding(.vertical, 4)
+                .background(palette.secondary.opacity(0.18), in: Capsule())
+        }.buttonStyle(.plain).disabled(!store.ready).accessibilityLabel("Check In or add a visit")
+    }
+    private func sectionSymbol(_ title: String) -> String {
+        if title.contains("pricing") { return "dollarsign.circle.fill" }
+        if title == "Site features" { return "sparkles" }
+        if title.contains("Network") || title == "Waypoints" { return "bolt.fill" }
+        return "info.circle.fill"
+    }
+    private func informationFacts(_ section: PlaceInformation) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            ForEach(Array(section.facts.enumerated()), id: \.offset) { index, fact in
+                if index > 0 { Divider() }
+                DetailFact(title: fact.title, value: fact.value)
+            }
+        }.textSelection(.enabled)
+    }
+}
+
+private struct DetailPanel<Content: View>: View {
+    let title: String
+    let symbol: String
+    let color: Color
+    @ViewBuilder let content: () -> Content
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: symbol).font(.system(size: 12, weight: .semibold)).foregroundStyle(.white)
+                    .frame(width: 21, height: 21).background(color, in: RoundedRectangle(cornerRadius: 5))
+                Text(title).font(.system(size: 15, weight: .semibold))
+            }
+            content()
+        }.frame(maxWidth: .infinity, alignment: .leading).padding(14)
+            .background(GuidePalette(scheme: scheme).surface, in: RoundedRectangle(cornerRadius: 14))
+            .overlay(RoundedRectangle(cornerRadius: 14).stroke(GuidePalette(scheme: scheme).line, lineWidth: 0.5))
+    }
+}
+
+private struct DetailFact: View {
+    let title: String
+    let value: String
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(title).guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+            Text(value).guideFont(14).lineSpacing(3)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+struct SavedView: View {
+    let open: (Place) -> Void
+    let explore: () -> Void
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 32) {
+                GuideHeader(title: "Saved", subtitle: "Your saved places, ready when you are.")
+                if store.journal.savedPlaces.isEmpty {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Rectangle().fill(GuidePalette(scheme: scheme).line).frame(height: 1)
+                        Text("No saved places yet").guideFont(22, .bold).padding(.top, 20)
+                        Text("Tap the bookmark on any place to save it here.")
+                            .guideFont(16).foregroundStyle(GuidePalette(scheme: scheme).secondary).lineSpacing(4)
+                        Button("Explore Places", action: explore).buttonStyle(PrimaryAction()).padding(.top, 12)
+                    }
+                } else {
+                    LazyVStack(spacing: 0) {
+                        ForEach(store.journal.savedPlaces) { saved in
+                            let place = store.places.first { $0.id == saved.id || $0.aliases.contains(saved.id) } ?? saved
+                            Button { open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
+                            Divider()
+                        }
+                    }
+                }
+            }.padding(24)
+        }
+    }
+}
+
+struct JournalView: View {
+    let explore: () -> Void
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.colorScheme) private var scheme
+    @State private var selectedVisit: Visit?
+    @EnvironmentObject private var sync: CloudSyncStatus
+    @State private var showExport = false
+    @State private var showDetails = false
+    @State private var document = JournalDocument(data: Data())
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 28) {
+                GuideHeader(title: "Visited", subtitle: "Your check-ins and private notes.")
+                if let notice = store.storageNotice {
+                    Label(notice, systemImage: "exclamationmark.triangle")
+                        .guideFont(13).foregroundStyle(palette.secondary).lineSpacing(3)
+                }
+                if store.visits.isEmpty {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Rectangle().fill(palette.line).frame(height: 1)
+                        Text("No visits recorded").guideFont(22, .bold).padding(.top, 20)
+                        Text("Find a place and check in. You can add past visits and notes, too.")
+                            .guideFont(16).foregroundStyle(palette.secondary).lineSpacing(4)
+                        Button("Find a Place", action: explore).buttonStyle(PrimaryAction()).padding(.top, 12)
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    HStack(spacing: 8) {
+                        Image(systemName: "checkmark.seal")
+                        Text("\(store.visits.count) \(store.visits.count == 1 ? "visit" : "visits") to \(store.journal.uniquePlaceCount) \(store.journal.uniquePlaceCount == 1 ? "place" : "places")")
+                            .guideFont(15, .medium)
+                    }.foregroundStyle(palette.accent)
+                    VStack(spacing: 0) {
+                        ForEach(store.visits) { visit in
+                            Button { selectedVisit = visit } label: { VisitRow(visit: visit) }.buttonStyle(.plain)
+                            Rectangle().fill(palette.line).frame(height: 0.5)
+                        }
+                    }
+                    DisclosureGroup("Places by kind") {
+                        VStack(spacing: 14) {
+                            ForEach(PlaceType.allCases) { type in
+                                HStack {
+                                    Label(type.rawValue, systemImage: type.symbol)
+                                    Spacer()
+                                    Text(String(store.journal.count(for: type)))
+                                }.guideFont(15)
+                            }
+                        }.padding(.top, 16)
+                    }.guideFont(15)
+                }
+                VStack(alignment: .leading, spacing: 12) {
+                    Button { showDetails.toggle() } label: {
+                        Label(sync.title, systemImage: "icloud").guideFont(13)
+                    }.buttonStyle(.plain).foregroundStyle(palette.secondary)
+                    if showDetails {
+                        Text(sync.detail)
+                            .guideFont(13).foregroundStyle(palette.secondary).lineSpacing(4)
+                        Button {
+                            if let data = store.export() { document = JournalDocument(data: data); showExport = true }
+                        } label: { Label("Export My Journal", systemImage: "square.and.arrow.up").guideFont(15) }
+                            .buttonStyle(.plain).disabled(!store.ready)
+                    }
+                }.padding(.top, 8)
+            }.padding(24)
+        }
+        .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
+        .fileExporter(isPresented: $showExport, document: document, contentType: .json,
+                      defaultFilename: "RivianSpotter-Journal") { result in
+            if case .failure(let error) = result { store.error = error.localizedDescription }
+        }
+    }
+}
+
+struct VisitRow: View {
+    let visit: Visit
+    @Environment(\.colorScheme) private var scheme
+    var body: some View {
+        HStack(alignment: .top, spacing: 18) {
+            VStack(spacing: 3) {
+                Text(visit.visitedAt, format: .dateTime.month(.abbreviated)).textCase(.uppercase)
+                    .font(.system(size: 10, weight: .bold)).tracking(1)
+                Text(visit.visitedAt, format: .dateTime.day()).font(.system(size: 26, weight: .medium))
+                Text(visit.visitedAt, format: .dateTime.year()).font(.system(size: 10))
+            }.foregroundStyle(GuidePalette(scheme: scheme).secondary).frame(width: 40)
+            VStack(alignment: .leading, spacing: 7) {
+                Text(visit.place.guideTitle).guideFont(17, .semibold)
+                Text("\(visit.type.rawValue) · \(visit.place.city), \(visit.place.region)")
+                    .guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).accent)
+                if !visit.note.isEmpty {
+                    Text(visit.note).guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary).lineLimit(3).lineSpacing(3)
+                }
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right").font(.caption2).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+        }.padding(.vertical, 20).frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
+    }
+}
+
+private struct SheetHeader: View {
+    let title: String
+    let close: () -> Void
+    var body: some View {
+        HStack {
+            Text(title).guideFont(17, .semibold)
+            Spacer()
+            Button(action: close) {
+                Image(systemName: "xmark").font(.system(size: 14, weight: .semibold)).frame(width: 44, height: 44)
+            }.buttonStyle(.plain).accessibilityLabel("Close")
+        }
+    }
+}
+
+private struct VisitFields: View {
+    let place: Place
+    @Binding var date: Date
+    @Binding var note: String
+    @Binding var type: PlaceType
+    var allowTypeChange = true
+    @Environment(\.colorScheme) private var scheme
+    private var palette: GuidePalette { .init(scheme: scheme) }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 8) {
+                Label(place.typeLabel, systemImage: place.types.first?.symbol ?? "mappin").guideFont(15).foregroundStyle(palette.accent)
+                Text(place.guideTitle).guideFont(28, .bold).tracking(-0.5)
+                Text(place.locality).guideFont(15).foregroundStyle(palette.secondary)
+            }
+            if place.status == "planned" || !place.listed {
+                Text("Listed as \(place.statusLabel.lowercased()). Record a visit you actually made; this won’t change its published status.")
+                    .guideFont(13).foregroundStyle(palette.secondary)
+            }
+            VStack(spacing: 18) {
+                DatePicker("Visit date", selection: $date, in: ...Date(), displayedComponents: .date)
+                if place.types.count > 1 && allowTypeChange {
+                    Picker("Visited as", selection: $type) {
+                        ForEach(place.types) { Text($0.rawValue).tag($0) }
+                    }
+                }
+            }.guideFont(15).frame(maxWidth: .infinity).padding(18).background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text("Notes").guideFont(15, .semibold)
+                    Spacer()
+                    Text("Optional").guideFont(13).foregroundStyle(palette.secondary)
+                }
+                TextField("Add a private note", text: $note, axis: .vertical).textFieldStyle(.plain)
+                    .guideFont(17).lineLimit(5...8).padding(18)
+                    .background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
+                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(palette.line, lineWidth: 1))
+                if note.count > 3500 {
+                    Text("\(note.count) / 4,000").guideFont(13).foregroundStyle(note.count > 4000 ? .red : palette.secondary)
+                }
+            }
+        }
+    }
+}
+
+struct CheckInView: View {
+    let place: Place
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var scheme
+    @State private var date = Date()
+    @State private var note = ""
+    @State private var type: PlaceType
+    @State private var saved = false
+    @State private var actionError: String?
+    init(place: Place) { self.place = place; _type = State(initialValue: place.types.first ?? .space) }
+    var body: some View {
+        VStack(spacing: 0) {
+            SheetHeader(title: saved ? "Visit Saved" : "Check In", close: { dismiss() }).padding(.horizontal, 24).padding(.top, 12)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 28) {
+                    if saved {
+                        VStack(spacing: 22) {
+                            Image(systemName: "checkmark.seal").font(.system(size: 64, weight: .ultraLight))
+                                .foregroundStyle(GuidePalette(scheme: scheme).accent).padding(.top, 48)
+                            Text("Visit saved").guideFont(34, .bold).tracking(-1)
+                            Text(place.guideTitle).guideFont(17, .semibold).multilineTextAlignment(.center)
+                            Text(date, format: .dateTime.month(.wide).day().year()).guideFont(15)
+                            Text("Added to My Visits.").guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                            Button("Done") { dismiss() }.buttonStyle(PrimaryAction()).padding(.top, 24)
+                        }.frame(maxWidth: .infinity)
+                    } else {
+                        VisitFields(place: place, date: $date, note: $note, type: $type)
+                        Button {
+                            saved = store.perform { _ = try $0.checkIn(at: place, type: type, date: date, note: note) }
+                            if !saved { actionError = store.takeError() }
+                        } label: { Label("Save Visit", systemImage: "checkmark") }
+                            .buttonStyle(PrimaryAction()).disabled(note.count > 4000 || !store.ready)
+                        Label("Visits and notes are private.", systemImage: "lock")
+                            .guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                    }
+                }.padding(24)
+            }
+        }.background(GuidePalette(scheme: scheme).paper).foregroundStyle(GuidePalette(scheme: scheme).ink)
+            .tint(GuidePalette(scheme: scheme).accent).actionError($actionError)
+        #if os(macOS)
+            .frame(width: 420, height: 640)
+        #endif
+    }
+}
+
+struct VisitEditor: View {
+    let visit: Visit
+    @EnvironmentObject private var store: SpotterStore
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var scheme
+    @State private var date: Date
+    @State private var note: String
+    @State private var type: PlaceType
+    @State private var confirmDelete = false
+    @State private var actionError: String?
+    init(visit: Visit) {
+        self.visit = visit
+        _date = State(initialValue: visit.visitedAt); _note = State(initialValue: visit.note); _type = State(initialValue: visit.type)
+    }
+    var body: some View {
+        VStack(spacing: 0) {
+            SheetHeader(title: "Your Visit", close: { dismiss() }).padding(.horizontal, 24).padding(.top, 12)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    VisitFields(place: visit.place, date: $date, note: $note, type: $type, allowTypeChange: false)
+                    Button("Save Changes") {
+                        if store.perform({ try $0.update(visit, date: date, note: note) }) { dismiss() }
+                        else { actionError = store.takeError() }
+                    }.buttonStyle(PrimaryAction()).disabled(note.count > 4000)
+                    ShareLink(item: receipt) { Label("Share This Visit", systemImage: "square.and.arrow.up").guideFont(15) }
+                        .buttonStyle(.plain)
+                    Text("Shares the place and date. Your note stays private.").guideFont(13).foregroundStyle(GuidePalette(scheme: scheme).secondary)
+                    Button("Delete Visit", role: .destructive) { confirmDelete = true }
+                        .buttonStyle(.plain).guideFont(15).padding(.vertical, 12)
+                }.padding(24)
+            }
+        }.background(GuidePalette(scheme: scheme).paper).foregroundStyle(GuidePalette(scheme: scheme).ink)
+            .tint(GuidePalette(scheme: scheme).accent)
+            .confirmationDialog("Delete this visit?", isPresented: $confirmDelete, titleVisibility: .visible) {
+                Button("Delete Visit", role: .destructive) {
+                    if store.perform({ try $0.delete(visit) }) { dismiss() }
+                    else { actionError = store.takeError() }
+                }
+            } message: { Text("This removes the visit and its note from your journal.") }
+            .actionError($actionError)
+        #if os(macOS)
+            .frame(width: 420, height: 680)
+        #endif
+    }
+    private var receipt: String {
+        "I visited \(visit.place.name) · \(visit.type.rawValue)\n\(visit.visitedAt.formatted(date: .long, time: .omitted))\n\(visit.place.websiteURL?.absoluteString ?? "https://rivianspotter.com")"
+    }
+}
+
+struct JournalDocument: FileDocument {
+    static var readableContentTypes: [UTType] { [.json] }
+    var data: Data
+    init(data: Data) { self.data = data }
+    init(configuration: ReadConfiguration) throws { data = configuration.file.regularFileContents ?? Data() }
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper { FileWrapper(regularFileWithContents: data) }
+}
+
+private extension View {
+    func actionError(_ message: Binding<String?>) -> some View {
+        alert("Couldn’t save your change", isPresented: Binding(
+            get: { message.wrappedValue != nil },
+            set: { if !$0 { message.wrappedValue = nil } })) {
+                Button("OK") { message.wrappedValue = nil }
+            } message: { Text(message.wrappedValue ?? "") }
+    }
+}
+
+private struct GuideFont: ViewModifier {
+    @ScaledMetric private var size: CGFloat
+    let weight: Font.Weight
+    init(_ size: CGFloat, _ weight: Font.Weight) {
+        _size = ScaledMetric(wrappedValue: size, relativeTo: .body)
+        self.weight = weight
+    }
+    func body(content: Content) -> some View { content.font(.system(size: size, weight: weight)) }
+}
+private extension View {
+    func guideFont(_ size: CGFloat, _ weight: Font.Weight = .regular) -> some View {
+        modifier(GuideFont(size, weight))
+    }
+}

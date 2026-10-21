@@ -41,3 +41,10 @@ coverage/
 # Test results
 test-results/
 junit.xml
+
+# Native app build products and local signing/user settings
+ios/.build/
+ios/.swiftpm/
+ios/DerivedData/
+**/xcuserdata/
+*.xcuserstate
