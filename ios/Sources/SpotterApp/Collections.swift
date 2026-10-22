@@ -178,14 +178,13 @@ struct LocationDataView: View {
                         AxisMarks(values: regions.enumerated().filter { $0.offset % 3 == 0 }.map(\.element.code))
                     }.frame(height: 180)
                 }
-                chartCard("By Published Status") {
+                chartCard("Listed and Coming Soon") {
                     let groups = PlaceStatusGroup.allCases.map { status in (status: status, count: places.filter { $0.statusGroup == status }.count) }.filter { $0.count > 0 }
                     Chart(groups, id: \.status) { item in
                         BarMark(x: .value("Locations", item.count), y: .value("Status", item.status.rawValue))
-                            .foregroundStyle(item.status == .comingSoon ? Color(hex: "#b4621a") : item.status == .operating ? palette.accent : .gray)
+                            .foregroundStyle(item.status == .comingSoon ? Color(hex: "#b4621a") : item.status == .listed ? palette.accent : .gray)
                             .annotation(position: .trailing) { Text("\(item.count)").font(.caption2).foregroundStyle(.secondary) }
                     }.frame(height: CGFloat(groups.count) * 44 + 20)
-                    Text("Unconfirmed means Rivian lists the location without a current open or closed status.").font(.caption).foregroundStyle(.secondary)
                 }
                 heading("Rivian Adventure Network", "Published station details, not live availability.")
                 let power = Dictionary(grouping: fast.compactMap(\.maxKw), by: { $0 }).map { (kw: Int($0.key), count: $0.value.count) }.sorted { $0.kw < $1.kw }
@@ -306,8 +305,10 @@ struct SettingsView: View {
             .navigationTitle("Settings").inlineNavigationTitle()
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
-        .tint(GuidePalette(scheme: (AppAppearance(rawValue: appearance) ?? .system).colorScheme ?? scheme).accent)
+        .tint(GuidePalette(scheme: scheme).accent)
+        #if os(macOS)
         .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
+        #endif
         .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
         #if os(macOS)
         .frame(width: 440, height: 680)

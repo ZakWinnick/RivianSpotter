@@ -138,7 +138,7 @@ final class JournalTests: XCTestCase {
             let tags = Set((place.information ?? []).flatMap { $0.tags ?? [] })
             XCTAssertEqual(Set(place.siteFeatures), tags)
             if place.status == "planned" && place.listed { XCTAssertEqual(place.statusGroup, .comingSoon) }
-            if place.status == "unknown" && place.listed { XCTAssertEqual(place.statusGroup, .unconfirmed) }
+            if ["open", "unknown"].contains(place.status) && place.listed { XCTAssertEqual(place.statusGroup, .listed) }
         }
         XCTAssertTrue(catalog.places.contains { !$0.siteFeatures.isEmpty })
     }

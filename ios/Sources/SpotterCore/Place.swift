@@ -136,7 +136,7 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
         case "open": return "Operating location"
         case "temporarily-closed": return "Temporarily closed"
         case "closed": return "Closed"
-        default: return "Current availability unconfirmed"
+        default: return "Listed by Rivian"
         }
     }
     public var websiteURL: URL? { URL(string: "https://rivianspotter.com/locations/\(slug)/") }
@@ -152,19 +152,19 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     }
 }
 
-/// Published status, grouped for browsing. Unknown availability stays "Unconfirmed", never open.
+/// Published status, grouped for browsing. Every current Rivian listing is "Listed"; only
+/// coming-soon, closed, and removed listings get a group of their own.
 public enum PlaceStatusGroup: String, CaseIterable, Identifiable, Sendable {
-    case operating = "Operating", comingSoon = "Coming Soon", unconfirmed = "Unconfirmed"
+    case listed = "Listed", comingSoon = "Coming Soon"
     case temporarilyClosed = "Temporarily Closed", closed = "Closed", unlisted = "No Longer Listed"
     public var id: String { rawValue }
     public init(_ place: Place) {
         if !place.listed { self = .unlisted; return }
         switch place.status {
-        case "open": self = .operating
         case "planned": self = .comingSoon
         case "temporarily-closed": self = .temporarilyClosed
         case "closed": self = .closed
-        default: self = .unconfirmed
+        default: self = .listed
         }
     }
 }
@@ -182,7 +182,7 @@ public extension Place {
 
 public struct PlaceFilter: Sendable {
     public enum Status: String, CaseIterable, Sendable {
-        case all = "All statuses", operating = "Operating", planned = "Coming Soon", unlisted = "No Longer Listed"
+        case all = "All statuses", listed = "Listed", planned = "Coming Soon", unlisted = "No Longer Listed"
     }
     public var type: PlaceType? = nil
     public var status: Status = .all
@@ -195,7 +195,7 @@ public struct PlaceFilter: Sendable {
               !savedOnly || saved else { return false }
         switch status {
         case .all: return true
-        case .operating: return place.listed && place.status == "open"
+        case .listed: return place.statusGroup == .listed
         case .planned: return place.listed && place.status == "planned"
         case .unlisted: return !place.listed
         }

@@ -169,7 +169,8 @@ private struct DirectoryRows: View {
             }
         }
         Section("Status") {
-            ForEach(PlaceStatusGroup.allCases) { status in
+            // Current listings are the whole directory, so only the exceptions get a row.
+            ForEach(PlaceStatusGroup.allCases.filter { $0 != .listed }) { status in
                 let count = places.filter { $0.statusGroup == status }.count
                 if count > 0 { row(.status(status), status.rawValue, status.symbol, count: count) }
             }
@@ -202,9 +203,8 @@ private struct DirectoryRows: View {
 extension PlaceStatusGroup {
     var symbol: String {
         switch self {
-        case .operating: "checkmark.circle"
+        case .listed: "checkmark.circle"
         case .comingSoon: "sparkles"
-        case .unconfirmed: "questionmark.circle"
         case .temporarilyClosed: "pause.circle"
         case .closed: "xmark.circle"
         case .unlisted: "archivebox"
@@ -480,7 +480,7 @@ private struct FilterSheet: View {
                     group("Location Type", PlaceType.allCases.filter { type in places.contains { $0.browseTypes.contains(type) } },
                           title: { $0.browseTitle }, selected: \.types)
                     group("Site Feature", GlossaryEntry.features(in: places), title: { $0 }, selected: \.features)
-                    group("Status", PlaceStatusGroup.allCases.filter { status in places.contains { $0.statusGroup == status } },
+                    group("Status", PlaceStatusGroup.allCases.filter { status in status != .listed && places.contains { $0.statusGroup == status } },
                           title: { $0.rawValue }, selected: \.statuses)
                     group("State or Province", Array(Set(places.map(\.region))).sorted(), title: { RegionNames.name($0) }, selected: \.regions)
                 }.padding(16)

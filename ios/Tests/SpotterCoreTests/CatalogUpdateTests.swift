@@ -239,7 +239,7 @@ final class CatalogUpdateTests: XCTestCase {
         XCTAssertEqual(filter.activeCount, 4)
         XCTAssertTrue(filter.matches(planned, saved: true))
         XCTAssertFalse(filter.matches(planned, saved: false))
-        filter.status = .operating
+        filter.status = .listed
         XCTAssertFalse(filter.matches(planned, saved: true))
         filter = PlaceFilter()
         XCTAssertEqual(filter.activeCount, 0)

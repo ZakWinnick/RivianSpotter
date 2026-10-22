@@ -130,7 +130,7 @@ private struct PlaceDetailContent: View {
                     Pill(text: type == .ran ? "RAN" : type.rawValue, style: .filled(Color(hex: type.mapColorHex)))
                 }.buttonStyle(.plain).accessibilityLabel(type.displayName).accessibilityHint("Shows what this location type is")
             }
-            if ![.operating, .unconfirmed].contains(place.statusGroup) {
+            if place.statusGroup != .listed {
                 Pill(text: place.statusLabel, style: .outlined(place.statusGroup == .comingSoon ? Color(hex: "#b4621a") : .secondary))
             }
             if store.isBaseCamp(place) { Pill(text: "Base Camp", symbol: "tent.fill", style: .filled(GuidePalette.forest)) }
@@ -178,14 +178,7 @@ private struct PlaceDetailContent: View {
     private var recordCard: some View {
         InfoCard(title: "Record", symbol: "calendar", color: .indigo) {
             VStack(alignment: .leading, spacing: 10) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Listing status: \(place.statusGroup == .unconfirmed ? "Not published" : place.statusLabel)")
-                        .font(.subheadline.weight(.semibold))
-                    if place.statusGroup == .unconfirmed {
-                        Text("Rivian’s listing doesn’t say whether this location is open. Any reported charging status appears in the cards below.")
-                            .font(.caption).foregroundStyle(.secondary)
-                    }
-                }
+                Text("Status: \(place.statusLabel)").font(.subheadline.weight(.semibold))
                 if let checked = place.checkedOn, let date = Self.isoDay.date(from: checked) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Listing checked: \(date.formatted(date: .long, time: .omitted))").font(.subheadline.weight(.semibold))
