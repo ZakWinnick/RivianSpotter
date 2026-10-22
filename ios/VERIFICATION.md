@@ -142,3 +142,10 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Before merge: 26 XCTest and standalone core cases, device-service checks, iOS simulator and desktop preview builds, and `npm test` (131) passed. Checked on iPhone 17 Pro and iPad Pro 11-inch simulators in light and dark mode.
 - Signed Release archive succeeded. Apple accepted 0.2.0 (8) at 17:47 Pacific ("Upload succeeded"); processing was still pending when this was recorded.
 - Not verified: two-device iCloud sync of Base Camp, VoiceOver, and physical-device behavior.
+
+## Appearance and status fixes / build 9 — October 21, 2026
+
+- Merged PR #43: visible Light/Dark/System control applied at the window so open sheets update immediately; current listings grouped as Listed (no "Unconfirmed"); repeated tags kept out of Site Feature browsing; public README description and `RELEASE_NOTES.md`.
+- Before merge: 26 XCTest and standalone core cases passed; iOS simulator and desktop preview builds succeeded. On the iPhone 17 Pro simulator, Dark → System with Settings open switched the sheet to light immediately.
+- Signed Release archive (build 9) succeeded. Apple accepted 0.2.0 (9) at 18:22 Pacific ("Upload succeeded"); processing was pending when recorded.
+- Not verified: iPad layout for these changes, two-device Base Camp sync, VoiceOver.
