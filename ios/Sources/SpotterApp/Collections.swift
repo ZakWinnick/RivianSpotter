@@ -237,8 +237,8 @@ struct LocationDataView: View {
 
 // MARK: - Settings
 
-/// A standard grouped settings list. Each section holds one setting, and its explanation sits
-/// directly under it as the section footer.
+/// Facades' Settings sheet: the app, then one grouped section per setting, each with its
+/// explanation directly beneath it.
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var scheme
@@ -248,85 +248,77 @@ struct SettingsView: View {
     @State private var showBaseCampPicker = false
     private var version: String {
         let info = Bundle.main.infoDictionary
-        let short = info?["CFBundleShortVersionString"] as? String ?? ""
-        let build = info?["CFBundleVersion"] as? String
-        return build.map { "\(short) (\($0))" } ?? short
+        return [info?["CFBundleShortVersionString"] as? String, (info?["CFBundleVersion"] as? String).map { "(\($0))" }]
+            .compactMap { $0 }.joined(separator: " ")
     }
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    Picker("Appearance", selection: $appearance) {
-                        ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
-                    }.pickerStyle(.inline).labelsHidden()
-                } header: {
-                    Text("Appearance")
-                } footer: {
-                    Text("System matches your device’s Light or Dark setting.")
+                    VStack(spacing: 6) {
+                        IconTile(symbol: "binoculars.fill", color: .guide(0.38, 0.055, 155), size: 64)
+                        Text("RivianSpotter").font(.title2.bold())
+                        if !version.isEmpty { Text("Version \(version)").font(.footnote).foregroundStyle(.secondary) }
+                    }.frame(maxWidth: .infinity).padding(.vertical, 6)
                 }
-
+                Section {
+                    VStack(alignment: .leading, spacing: 10) {
+                        settingLabel("Appearance", "circle.lefthalf.filled", .indigo)
+                        Picker("Appearance", selection: $appearance) {
+                            ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
+                        }.pickerStyle(.segmented).labelsHidden()
+                    }.padding(.vertical, 4)
+                } footer: { Text("System follows your device’s Light or Dark appearance.") }
                 Section {
                     Button { showBaseCampPicker = true } label: {
-                        LabeledContent("Base Camp") {
-                            HStack(spacing: 6) {
-                                Text(store.baseCamp?.guideName ?? "Choose").lineLimit(1)
-                                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
-                            }
+                        HStack {
+                            settingLabel("Base Camp", "tent.fill", .brown)
+                            Spacer()
+                            Text(store.baseCamp?.guideName ?? "Choose").foregroundStyle(.secondary).lineLimit(1)
+                            Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
                         }
                     }.foregroundStyle(.primary)
-                } footer: {
-                    Text("The location you think of as home. It syncs privately with iCloud.")
-                }
-
+                } footer: { Text("The location you think of as home. It syncs privately with iCloud.") }
                 Section {
-                    LabeledContent("Last Checked") {
-                        Text(store.catalogCheckedAt?.formatted(date: .abbreviated, time: .shortened) ?? "Not yet")
-                    }
+                    settingLabel("Location Updates", "arrow.triangle.2.circlepath", .blue)
+                    Text(store.catalogCheckedAt.map { "Last checked \($0.formatted(date: .abbreviated, time: .shortened))" }
+                         ?? "Using the location directory included with this app.").font(.footnote).foregroundStyle(.secondary)
+                    if let notice = store.catalogNotice { Text(notice).font(.footnote).foregroundStyle(.secondary) }
                     Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
                         Task { await store.refreshCatalog(force: true) }
                     }.disabled(store.updatingCatalog)
-                } header: {
-                    Text("Location Updates")
-                } footer: {
-                    Text(store.catalogNotice ?? "New and changed locations download from RivianSpotter.com when you open the app.")
-                }
-
+                } footer: { Text("The directory updates from RivianSpotter when you open the app. Your visits and notes stay private.") }
                 Section {
-                    LabeledContent("Status", value: sync.title)
-                    ExportJournalButton()
-                } header: {
-                    Text("iCloud")
-                } footer: {
-                    Text([sync.detail, store.storageNotice,
-                          "Visits, notes, saved places, and Base Camp are private. Nothing is published when you check in."]
-                        .compactMap { $0 }.joined(separator: "\n\n"))
-                }
-
-                #if os(iOS)
-                Section {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        Link("Location Access", destination: url)
+                    settingLabel("iCloud & Storage", "icloud.fill", .cyan)
+                    Text(sync.title).font(.subheadline.weight(.semibold))
+                    Text(sync.detail).font(.footnote).foregroundStyle(.secondary)
+                    if let notice = store.storageNotice {
+                        Label(notice, systemImage: "exclamationmark.triangle").font(.footnote).foregroundStyle(.secondary)
                     }
-                } footer: {
-                    Text("Sorting by Nearest asks for your location once. It isn’t saved or synced, and you can record visits without it.")
-                }
-                #endif
-
+                    ExportJournalButton()
+                } footer: { Text("Visits, notes, saved places, and Base Camp are private. Nothing is published when you check in.") }
                 Section {
-                    LabeledContent("Version", value: version)
-                } footer: {
-                    Text("RivianSpotter isn’t affiliated with Rivian.")
+                    settingLabel("Location", "location.fill", .green)
+                    Text("Sort by Nearest asks for your location once. It isn’t saved or synced. You can record a visit without location access.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                    #if os(iOS)
+                    if let url = URL(string: UIApplication.openSettingsURLString) { Link("Location Settings", destination: url) }
+                    #endif
                 }
             }
             .navigationTitle("Settings").inlineNavigationTitle()
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
-        // Sheets don't inherit the app's tint, so set the website accent here.
         .tint(GuidePalette(scheme: scheme).accent)
-        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
         #if os(macOS)
         .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
+        #endif
+        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
+        #if os(macOS)
         .frame(width: 440, height: 680)
         #endif
+    }
+    private func settingLabel(_ title: String, _ symbol: String, _ color: Color) -> some View {
+        Label { Text(title).font(.body.weight(.semibold)) } icon: { IconTile(symbol: symbol, color: color, size: 28) }
     }
 }
