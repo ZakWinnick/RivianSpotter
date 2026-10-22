@@ -85,7 +85,29 @@ extension PlaceArtwork {
 
 /// Loads a place's photo for views that render offline, such as a shared visit receipt.
 @MainActor func loadPlaceImage(_ place: Place) async -> Image? {
-    await PlaceArtworkCache.shared.artwork(for: place)?.swiftUIImage
+    if let image = place.categoryImage { return image }
+    return await PlaceArtworkCache.shared.artwork(for: place)?.swiftUIImage
+}
+
+extension Place {
+    /// The bundled RAN or Waypoint charger image, used only when the directory has no photo of
+    /// this site itself (no PlugShare, Loc8NearMe, or Rivian location photo).
+    var categoryAsset: String? {
+        guard photo?.isCategory ?? true else { return nil }
+        if browseTypes.contains(.ran) { return "CategoryRAN" }
+        if browseTypes.contains(.waypoint) { return "CategoryWaypoint" }
+        return nil
+    }
+    var categoryImage: Image? {
+        guard let name = categoryAsset else { return nil }
+        #if os(macOS)
+        return NSImage(named: name).map { Image(nsImage: $0) }
+        #else
+        return UIImage(named: name).map { Image(uiImage: $0) }
+        #endif
+    }
+    /// True when the picture shown is a representative image rather than this location.
+    var showsCategoryPhoto: Bool { categoryImage != nil || photo?.isCategory == true }
 }
 
 /// Fills its frame with the place's photo. Without one, the location type's color and symbol
@@ -99,7 +121,12 @@ struct PlaceImageView: View {
             ZStack {
                 LinearGradient(colors: [Color(hex: type.mapColorHex), Color(hex: type.mapColorHex).opacity(0.7)],
                                startPoint: .topLeading, endPoint: .bottomTrailing)
-                if let artwork {
+                if let bundled = place.categoryImage {
+                    // A centered crop keeps the landscape band and the charger crossing it.
+                    Color.white
+                    bundled.resizable().scaledToFill()
+                        .frame(width: geometry.size.width, height: geometry.size.height).clipped()
+                } else if let artwork {
                     artwork.swiftUIImage.resizable().scaledToFill()
                         .frame(width: geometry.size.width, height: geometry.size.height).clipped()
                 } else {
@@ -110,6 +137,7 @@ struct PlaceImageView: View {
         }.accessibilityHidden(true)
             .task(id: place.photo?.imageURL) {
                 artwork = nil
+                guard place.categoryImage == nil else { return }
                 artwork = await PlaceArtworkCache.shared.artwork(for: place)
             }
     }
@@ -122,9 +150,12 @@ struct PlaceDetailPhoto: View {
         VStack(alignment: .leading, spacing: 6) {
             PlaceImageView(place: place).aspectRatio(16 / 9, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                .overlay(alignment: .topLeading) { if place.photo?.isCategory == true { CategoryPhotoTag().padding(10) } }
-                .accessibilityElement().accessibilityLabel(place.photo.map { $0.isCategory ? "Representative \(place.typeLabel) image, not this location" : $0.description } ?? "No photo")
-            if let photo = place.photo {
+                .overlay(alignment: .topLeading) { if place.showsCategoryPhoto { CategoryPhotoTag().padding(10) } }
+                .accessibilityElement().accessibilityLabel(place.showsCategoryPhoto ? "Representative \(place.typeLabel) charger, not this location"
+                                                           : place.photo?.description ?? "No photo")
+            if place.categoryImage != nil {
+                Text("Representative Rivian charger, not this location.").font(.caption2).foregroundStyle(.secondary)
+            } else if let photo = place.photo {
                 HStack(spacing: 4) {
                     if photo.isCategory { Text("Representative photo, not this location.") }
                     if let url = photo.safeSourceURL { Link("\(photo.credit) ↗", destination: url) } else { Text(photo.credit) }
@@ -165,7 +196,7 @@ struct PlaceCard: View {
             .overlay(alignment: .bottomTrailing) {
                 if visited { VisitedSeal().padding(10) }
             }
-            .overlay(alignment: .topLeading) { if place.photo?.isCategory == true { CategoryPhotoTag().padding(8) } }
+            .overlay(alignment: .topLeading) { if place.showsCategoryPhoto { CategoryPhotoTag().padding(8) } }
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .accessibilityElement(children: .ignore)
