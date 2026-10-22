@@ -155,3 +155,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #44: Settings as a standard grouped list (inline Light/Dark/System with its own footer, one setting per section), icon tiles that scale symbols to fit, and the public What's New rewrite.
 - Checked on the iPhone 17 Pro simulator in light and dark; `test-core.sh` (26) passed; iOS simulator and desktop preview builds succeeded.
 - Signed Release archive of `87e08b2` succeeded. Apple accepted 0.2.0 (10) at 18:37 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Settings design, category images / build 11 — October 21, 2026
+
+- Merged PR #45: the previous Settings design restored with its fixes (one section per setting, fitted icon tiles, live appearance switching); Settings gear on Browse only; bundled RAN and Waypoint charger images for the 237 sites without their own photo, with no category label; the same images hosted at `/assets/charger-*.jpg` for the catalog feed; bundled catalog regenerated with October 21 data.
+- Before merge: `npm test` 131 passed, `npm run build` succeeded, `test-core.sh` 26 passed, iOS simulator and desktop preview builds succeeded. PR CI failed only at `npm audit` because the npm audit endpoint returned 503/400 (registry outage), not from these changes.
+- Signed Release archive of `193a935` succeeded. Apple accepted 0.2.0 (11) at 20:01 Pacific ("Upload succeeded"); processing was pending when recorded.
