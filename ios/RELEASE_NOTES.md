@@ -10,6 +10,7 @@ Newest first. Add an entry for every build that ships to TestFlight or the App S
 - **Settings is easier to find.** On iPhone, it’s one tap away from the gear in the corner of Locations, Lists, and Browse.
 - **Switching back to System works immediately**, even with Settings still open.
 - **No more “Unconfirmed.”** Every location Rivian lists is simply listed. The Status section now shows only Coming Soon, plus closed locations if any appear.
+- **Tidier Site Features.** “Charging,” “Charging outpost,” and “Service coming soon” no longer appear as features to browse; they repeat the location type or its status. “Rivian Vehicles Only” stays and now says plainly that other EVs can’t charge there.
 
 ## 0.2.0 (8): The field guide update
 

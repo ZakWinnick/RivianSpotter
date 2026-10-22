@@ -705,7 +705,9 @@ struct GlossaryEntry: Identifiable, Hashable {
         case "DC Fast Charging": ("bolt.fill", Color(hex: PlaceType.ran.mapColorHex), "Direct-current fast charging for quick road-trip stops.")
         case "Level 2 Charging": ("powerplug.fill", Color(hex: PlaceType.waypoint.mapColorHex), "Alternating-current charging suited to longer stops, such as an overnight stay or a meal.")
         case "Open to Other EVs", "Open to All": ("car.2.fill", .teal, "Listed as open to EVs from other makers. Check connector compatibility and the host’s access rules.")
-        case "Rivian Vehicles Only": ("lock.fill", .gray, "Listed as reserved for Rivian vehicles.")
+        case "Rivian Vehicles Only": ("lock.fill", .gray, "Rivian lists these chargers for Rivian vehicles only. Other EVs can’t charge here.")
+        case "Charging", "Charging outpost": ("bolt.fill", Color(hex: PlaceType.outpost.mapColorHex), "Rivian lists charging at this location.")
+        case "Service coming soon": ("wrench.and.screwdriver", Color(hex: PlaceType.service.mapColorHex), "Rivian lists service at this location as coming soon.")
         case "Plug & Charge": ("cable.connector", .blue, "Charging starts when a supported vehicle with a linked account plugs in, without a card or app.")
         case "Trailer OK": ("arrow.left.and.right", .brown, "Listed as accommodating vehicles towing a trailer.")
         case "Coffee": ("cup.and.saucer.fill", .brown, "Coffee is listed at or near this location.")
@@ -721,10 +723,14 @@ struct GlossaryEntry: Identifiable, Hashable {
                              text: text, destination: .feature(feature))
     }
 
-    /// Features present in the directory, most common first.
+    /// Tags that stay on place pages but aren't browsable features: "Charging" and "Charging outpost"
+    /// repeat what the location type already says, and "Service coming soon" is a status.
+    static let notBrowsable: Set<String> = ["Charging", "Charging outpost", "Service coming soon"]
+
+    /// Browsable features present in the directory, most common first.
     static func features(in places: [Place]) -> [String] {
         var counts: [String: Int] = [:]
-        for feature in places.flatMap(\.siteFeatures) { counts[feature, default: 0] += 1 }
+        for feature in places.flatMap(\.siteFeatures) where !notBrowsable.contains(feature) { counts[feature, default: 0] += 1 }
         return counts.keys.sorted { counts[$0]! == counts[$1]! ? $0 < $1 : counts[$0]! > counts[$1]! }
     }
 }
