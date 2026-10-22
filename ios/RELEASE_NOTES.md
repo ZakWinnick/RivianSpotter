@@ -18,6 +18,8 @@ A field guide to Rivian, built to be browsed.
 
 **Your look, your call.** Choose Light, Dark, or System in Settings, at the bottom of Browse.
 
+**Fixes.** Settings opens reliably when you run RivianSpotter on a Mac, and your Base Camp now sits neatly on its own line in the sidebar.
+
 ## Version 0.1
 
 Hello, world. RivianSpotter arrives on iPhone and iPad.

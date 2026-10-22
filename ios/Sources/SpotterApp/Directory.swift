@@ -57,8 +57,8 @@ struct RootView: View {
             }.environment(\.sidebarVisible, geometry.size.width >= 700)
         }
         .background(palette.paper).tint(palette.accent)
-        .sheet(isPresented: $showSettings) { SettingsView() }
-        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
+        .sheet(isPresented: $showSettings) { SettingsView().spotterEnvironment(store) }
+        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker().spotterEnvironment(store) }
         .task { await store.refreshCatalog() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
@@ -369,7 +369,7 @@ struct GalleryView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) { optionsMenu }
         }
-        .sheet(isPresented: $showFilter) { FilterSheet(filter: $filter, places: base) }
+        .sheet(isPresented: $showFilter) { FilterSheet(filter: $filter, places: base).spotterEnvironment(store) }
     }
 
     @ViewBuilder private func content(_ places: [Place]) -> some View {
@@ -554,7 +554,7 @@ struct ListsView: View {
         }
         .background(palette.paper)
         .navigationTitle("Lists").inlineNavigationTitle()
-        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
+        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker().spotterEnvironment(store) }
     }
     private func listRow(_ destination: Destination, _ title: String, _ symbol: String, _ color: Color, _ count: Int) -> some View {
         NavigationLink(value: Route.destination(destination)) { collectionLabel(title, symbol, color, count: count) }.buttonStyle(.plain)
