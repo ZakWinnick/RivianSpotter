@@ -74,7 +74,7 @@ struct ReceiptsView: View {
         }.background(GuidePalette(scheme: scheme).paper)
             .navigationTitle("Visit Receipts").inlineNavigationTitle()
             .sheet(item: $opened) { selection in
-                ReceiptSheet(visits: store.visits, start: selection.id)
+                ReceiptSheet(visits: store.visits, start: selection.id).spotterEnvironment(store)
             }
     }
 }
@@ -130,7 +130,7 @@ struct ReceiptSheet: View {
                 }
         }
         .onAppear { current = start ?? visits.first?.id }
-        .sheet(item: $editing) { VisitEditor(visit: $0) }
+        .sheet(item: $editing) { VisitEditor(visit: $0).spotterEnvironment(store) }
         .onChange(of: store.visits) { _, now in
             // Close when the last receipt shown here was deleted.
             if !visits.contains(where: { visit in now.contains { $0.id == visit.id } }) { dismiss() }
@@ -313,7 +313,7 @@ struct SettingsView: View {
         #if os(macOS)
         .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
         #endif
-        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
+        .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker().spotterEnvironment(store) }
         #if os(macOS)
         .frame(width: 440, height: 680)
         #endif

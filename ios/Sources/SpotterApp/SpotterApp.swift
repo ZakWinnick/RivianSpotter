@@ -485,7 +485,7 @@ struct CategoryBrowseView: View {
                     .refreshable { await store.refreshCatalog(force: true) }
             }
         }.onChange(of: mapRequest) { _, _ in returnToMap() }
-            .sheet(isPresented: $showFilters) { filterSheet }
+            .sheet(isPresented: $showFilters) { filterSheet.spotterEnvironment(store) }
     }
     private var filterSheet: some View {
         NavigationStack {
@@ -558,6 +558,7 @@ struct PlacesMap: View {
     let open: (Place) -> Void
     var closeUp = false
     var userLocation: CLLocation? = nil
+    @EnvironmentObject private var store: SpotterStore
     @State private var position = MapCameraPosition.automatic
     @State private var latitudeSpan = 38.0
     @State private var longitudeSpan = 58.0
@@ -609,7 +610,7 @@ struct PlacesMap: View {
                             Button { selectedGroup = nil; open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
                         }
                     }
-                }.padding(24)
+                }.padding(24).spotterEnvironment(store)
                 #if os(macOS)
                 .frame(width: 400, height: 480)
                 #endif
@@ -859,6 +860,12 @@ struct JournalDocument: FileDocument {
 }
 
 extension View {
+    /// Hands the app's shared objects to a sheet explicitly. On iPhone and iPad sheets inherit
+    /// them, but the iPad app running on a Mac presents some sheets without them, and reading a
+    /// missing environment object crashes.
+    func spotterEnvironment(_ store: SpotterStore) -> some View {
+        environmentObject(store).environmentObject(store.location).environmentObject(store.sync)
+    }
     func actionError(_ message: Binding<String?>) -> some View {
         alert("Couldn’t save your change", isPresented: Binding(
             get: { message.wrappedValue != nil },

@@ -109,13 +109,15 @@ private struct PlaceDetailContent: View {
             }
         }
         .sheet(item: $sheet) { item in
-            switch item {
-            case .address: AddressSheet(place: place)
-            case .checkIn: CheckInView(place: place)
-            case .receipts: ReceiptSheet(visits: visits, addVisit: { sheet = .checkIn })
-            case .info(let entry): GlossarySheet(entry: entry)
-            case .edit(let visit): VisitEditor(visit: visit)
-            }
+            Group {
+                switch item {
+                case .address: AddressSheet(place: place)
+                case .checkIn: CheckInView(place: place)
+                case .receipts: ReceiptSheet(visits: visits, addVisit: { sheet = .checkIn })
+                case .info(let entry): GlossarySheet(entry: entry)
+                case .edit(let visit): VisitEditor(visit: visit)
+                }
+            }.spotterEnvironment(store)
         }
         .actionError($actionError)
     }
