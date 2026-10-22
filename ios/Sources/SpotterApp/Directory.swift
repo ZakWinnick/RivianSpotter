@@ -110,7 +110,17 @@ struct RootView: View {
 
     private func stack<Content: View>(_ tab: Tab, @ViewBuilder _ content: () -> Content) -> some View {
         let path = Binding(get: { paths[tab] ?? NavigationPath() }, set: { paths[tab] = $0 })
-        return NavigationStack(path: path) { content().routeDestinations() }
+        return NavigationStack(path: path) {
+            content().routeDestinations().toolbar {
+                // Map has its own controls; the other tabs keep Settings (appearance, Base Camp,
+                // iCloud) one tap away, as the iPad sidebar does.
+                if tab != .map {
+                    ToolbarItem(placement: .settingsPlacement) {
+                        Button { showSettings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings")
+                    }
+                }
+            }
+        }
             .environment(\.navigate) { route in paths[tab, default: NavigationPath()].append(route) }
     }
 
@@ -219,6 +229,16 @@ struct DestinationView: View {
                 .navigationTitle("Map").hiddenNavigationBar()
         default: GalleryView(destination: destination)
         }
+    }
+}
+
+extension ToolbarItemPlacement {
+    static var settingsPlacement: ToolbarItemPlacement {
+        #if os(iOS)
+        .topBarLeading
+        #else
+        .navigation
+        #endif
     }
 }
 

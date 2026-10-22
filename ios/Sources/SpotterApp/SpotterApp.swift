@@ -235,7 +235,7 @@ extension Place {
 }
 
 enum AppAppearance: String, CaseIterable, Identifiable {
-    case system = "System", light = "Light", dark = "Dark"
+    case light = "Light", dark = "Dark", system = "System"
     var id: String { rawValue }
     var colorScheme: ColorScheme? {
         switch self { case .system: nil; case .light: .light; case .dark: .dark }

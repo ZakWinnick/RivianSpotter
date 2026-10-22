@@ -241,6 +241,7 @@ struct LocationDataView: View {
 /// Facades' Settings sheet: the app, then grouped options.
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var sync: CloudSyncStatus
     @EnvironmentObject private var store: SpotterStore
     @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
@@ -261,9 +262,12 @@ struct SettingsView: View {
                     }.frame(maxWidth: .infinity).padding(.vertical, 6)
                 }
                 Section {
-                    Picker(selection: $appearance) {
-                        ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
-                    } label: { settingLabel("Appearance", "circle.lefthalf.filled", .indigo) }
+                    VStack(alignment: .leading, spacing: 10) {
+                        settingLabel("Appearance", "circle.lefthalf.filled", .indigo)
+                        Picker("Appearance", selection: $appearance) {
+                            ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
+                        }.pickerStyle(.segmented).labelsHidden()
+                    }.padding(.vertical, 4)
                     Button { showBaseCampPicker = true } label: {
                         HStack {
                             settingLabel("Base Camp", "tent.fill", .brown)
@@ -302,6 +306,7 @@ struct SettingsView: View {
             .navigationTitle("Settings").inlineNavigationTitle()
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
+        .tint(GuidePalette(scheme: (AppAppearance(rawValue: appearance) ?? .system).colorScheme ?? scheme).accent)
         .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
         .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker() }
         #if os(macOS)
