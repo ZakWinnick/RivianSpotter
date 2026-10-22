@@ -653,8 +653,8 @@ struct ExportJournalButton: View {
     var body: some View {
         Button {
             if let data = store.export() { document = JournalDocument(data: data); showExport = true }
-        } label: { Label("Export My Journal", systemImage: "square.and.arrow.up").guideFont(15, .semibold) }
-            .buttonStyle(.plain).foregroundStyle(GuidePalette(scheme: scheme).accent)
+        } label: { Text("Export My Journal") }
+            .foregroundStyle(GuidePalette(scheme: scheme).accent)
             .frame(minHeight: 44).disabled(!store.ready)
             .fileExporter(isPresented: $showExport, document: document, contentType: .json,
                           defaultFilename: "RivianSpotter-Journal") { result in

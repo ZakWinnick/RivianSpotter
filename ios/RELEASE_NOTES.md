@@ -2,6 +2,13 @@
 
 Newest first. Add an entry for every build that ships to TestFlight or the App Store, written for the people using the app. Build-by-build test evidence lives in [VERIFICATION.md](VERIFICATION.md).
 
+## 0.2.0 (10): Settings, settled
+
+*Not yet uploaded.*
+
+- **A cleaner Settings screen.** It’s now a familiar iOS settings list: Light, Dark, and System are three simple choices with a checkmark, and each setting’s explanation sits right under it.
+- **Icons fit their tiles.** The Base Camp tent no longer pokes out of its square.
+
 ## 0.2.0 (9): Lights, please
 
 *October 21, 2026*
