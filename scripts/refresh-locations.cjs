@@ -251,6 +251,33 @@ function reconcile(records, legacy, date) {
  const ids=next.flatMap(x=>[x.id,...(x.legacyIds || [])]); if(new Set(ids).size!==ids.length)throw Error('Duplicate canonical/alias IDs');
  return { records:next.map(record => require('./listed-address-pins.cjs').applyListedAddressPin(record)).sort((a,b)=>a.id-b.id), duplicates };
 }
+const EMPTY_DETAIL = Object.freeze({ business: null, faq: [], badges: [], directionsUrl: null, features: [], sha256: null });
+// A few unreadable detail pages (a transient error or one page's markup change) must not block
+// the whole refresh. More than this many means the source format changed and needs a fix.
+const maxDetailFailures = count => Math.max(3, Math.ceil(count * 0.1));
+// The service map is embedded on every detail page; prefer the usual page, else any complete copy.
+function serviceMapSource(details) {
+ const preferred = details.get('calgary-service-demo-center');
+ if (preferred && preferred.features.length >= 100) return { slug: 'calgary-service-demo-center', detail: preferred };
+ const fallback = [...details].find(([, d]) => d.features.length >= 100);
+ return fallback ? { slug: fallback[0], detail: fallback[1] } : null;
+}
+// Build directory records. A location whose detail page could not be read keeps its last published
+// record unchanged, including its original verification date, rather than losing coordinates or
+// services it had yesterday. A new location without a prior record uses the directory facts alone.
+function officialRecords(raw, details, features, date, canonical, failures) {
+ return raw.map(x => {
+  const detail = details.get(x.slug);
+  if (detail) return directoryRecord(x, detail, features, date);
+  const failure = failures.find(f => f.slug === x.slug);
+  const prior = canonical.find(p => p.slug === x.slug && p.sourceKind === 'directory');
+  if (prior) return { ...prior, retainedDetail: { since: prior.retainedDetail?.since || prior.lastVerified, reason: failure?.error || 'Detail page unavailable' } };
+  const record = directoryRecord(x, EMPTY_DETAIL, features, date);
+  record.verificationStatus = 'needs-review';
+  record.notes.push('The official detail page could not be read on this refresh; only directory facts are shown.');
+  return record;
+ });
+}
 async function download(url) {
  const response = await fetch(url,{signal:AbortSignal.timeout(45000)});
  if (!response.ok || !response.url.startsWith('https://rivian.com/')) throw Error(`Official fetch failed ${response.status}: ${url}`);
@@ -260,11 +287,13 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('Use ISO verification date');
  const directoryHtml = directoryFile ? fs.readFileSync(directoryFile,'utf8') : await download(DIRECTORY);
  const raw = parseDirectory(directoryHtml);
- const details = new Map(); let cursor=0;
- async function worker(){while(cursor<raw.length){const record=raw[cursor++];const html=detailsDir?fs.readFileSync(path.join(detailsDir,record.slug+'.html'),'utf8'):await download(record.sourceUrl);details.set(record.slug,parseDetail(html,record.sourceUrl));}}
+ const details = new Map(), failures = []; let cursor=0;
+ async function worker(){while(cursor<raw.length){const record=raw[cursor++];try{const html=detailsDir?fs.readFileSync(path.join(detailsDir,record.slug+'.html'),'utf8'):await download(record.sourceUrl);details.set(record.slug,parseDetail(html,record.sourceUrl));}catch(e){failures.push({slug:record.slug,url:record.sourceUrl,error:e.message});}}}
  await Promise.all(Array.from({length:4},worker));
- const sourceDetail = details.get('calgary-service-demo-center');
- if (!sourceDetail || sourceDetail.features.length < 100) throw Error('Complete supplemental official service map missing');
+ if (failures.length > maxDetailFailures(raw.length)) throw Error(`Too many unreadable official detail pages (${failures.length} of ${raw.length}); the source format may have changed:\n${failures.map(f=>`${f.url}: ${f.error}`).join('\n')}`);
+ const mapSource = serviceMapSource(details);
+ if (!mapSource) throw Error('Complete supplemental official service map missing');
+ const sourceDetail = mapSource.detail;
  const unique = new Map();
  for (const feature of sourceDetail.features) {
   const p=feature.properties; if(!['US','CA'].includes(p.country))continue;
@@ -273,9 +302,11 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
   unique.set(key,feature);
  }
  const features=[...unique.values()];
- const official=raw.map(x=>directoryRecord(x,details.get(x.slug),features,date));
- const supplemental=features.filter(f=>!official.some(x=>x.state===f.properties.stateOrProvince&&sameAddress(x.address,f.properties.address))).map(f=>serviceRecord(f,date));
  const canonical=JSON.parse(fs.readFileSync(baselineCanonicalFile || path.join(ROOT,'data/locations.json'),'utf8'));
+ const official=officialRecords(raw,details,features,date,canonical,failures);
+ const supplemental=features.filter(f=>!official.some(x=>x.state===f.properties.stateOrProvince&&sameAddress(x.address,f.properties.address))).map(f=>serviceRecord(f,date));
+ const warnings=[...failures.map(f=>`Kept the last published record for ${f.slug}: its official detail page could not be read (${f.error}).`),
+  ...(mapSource.slug!=='calgary-service-demo-center'?[`Read the official service map from ${mapSource.slug} because the usual page was unavailable.`]:[])];
  delete require.cache[require.resolve(path.join(ROOT,'js/locations.js'))];
  const browser=baselineBrowserFile ? JSON.parse(fs.readFileSync(baselineBrowserFile,'utf8')) : require(path.join(ROOT,'js/locations.js'));
  const legacy=legacyUnion(canonical,browser);
@@ -283,7 +314,7 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
  if (new Set(records.map(x=>x.slug)).size !== records.length) throw Error('Duplicate canonical slugs');
  const added=records.filter(x=>!legacy.some(y=>y.id===x.id)).map(x=>({id:x.id,name:x.name,slug:x.slug,sourceKind:x.sourceKind}));
  const changed=records.filter(x=>legacy.some(y=>y.id===x.id)).map(x=>{const before=legacy.find(y=>y.id===x.id);const fields=Object.keys(x).filter(k=>JSON.stringify(before[k])!==JSON.stringify(x[k]));return {id:x.id,name:x.name,fields};}).filter(x=>x.fields.length);
- const summary={date,sourceUrl:DIRECTORY,directorySha256:hash(directoryHtml),directoryCount:raw.length,directorySlugs:raw.map(x=>x.slug),supplementalSourceUrl:SERVICE_SOURCE,supplementalMapSha256:sourceDetail.sha256,supplementalMapFeatureCount:features.length,supplementalAddedCount:supplemental.length,legacyCanonicalCount:canonical.length,legacyBrowserCount:browser.length,legacyUnionCount:legacy.length,totalCount:records.length,added,changed,mergedLegacyIds:duplicates,unmatchedLegacy:records.filter(x=>x.sourceKind==='legacy').map(x=>({id:x.id,name:x.name})),needsReview:records.filter(x=>x.verificationStatus==='needs-review').map(x=>({id:x.id,name:x.name,notes:x.notes})),coordinateCounts:records.reduce((a,x)=>(a[x.coordinatePrecision]=(a[x.coordinatePrecision]||0)+1,a),{}),officialDirectory:raw,detailSources:raw.map(x=>({url:x.sourceUrl,sha256:details.get(x.slug).sha256})),limitations:['Verification date records public source retrieval, not an on-site visit.','Directory hours take precedence over detail JSON-LD; structured coordinates require a matching address.','Supplemental service-map statuses and schedules are official embedded data, not confirmation of appointment availability.','Legacy unmatched claims are preserved only in legacySnapshot and excluded from current operating facts.','Timezone is derived from published locality; hours exceptions retain exact published dates without assuming a year.','Official photos are not copied; galleries are available via official detail links.']};
+ const summary={date,sourceUrl:DIRECTORY,directorySha256:hash(directoryHtml),directoryCount:raw.length,directorySlugs:raw.map(x=>x.slug),supplementalSourceUrl:SERVICE_SOURCE,supplementalMapPage:mapSource.slug,warnings,detailFailures:failures,supplementalMapSha256:sourceDetail.sha256,supplementalMapFeatureCount:features.length,supplementalAddedCount:supplemental.length,legacyCanonicalCount:canonical.length,legacyBrowserCount:browser.length,legacyUnionCount:legacy.length,totalCount:records.length,added,changed,mergedLegacyIds:duplicates,unmatchedLegacy:records.filter(x=>x.sourceKind==='legacy').map(x=>({id:x.id,name:x.name})),needsReview:records.filter(x=>x.verificationStatus==='needs-review').map(x=>({id:x.id,name:x.name,notes:x.notes})),coordinateCounts:records.reduce((a,x)=>(a[x.coordinatePrecision]=(a[x.coordinatePrecision]||0)+1,a),{}),officialDirectory:raw,detailSources:raw.map(x=>({url:x.sourceUrl,sha256:details.get(x.slug)?.sha256??null})),limitations:['Verification date records public source retrieval, not an on-site visit.','Directory hours take precedence over detail JSON-LD; structured coordinates require a matching address.','Supplemental service-map statuses and schedules are official embedded data, not confirmation of appointment availability.','Legacy unmatched claims are preserved only in legacySnapshot and excluded from current operating facts.','Timezone is derived from published locality; hours exceptions retain exact published dates without assuming a year.','Official photos are not copied; galleries are available via official detail links.']};
  const priorPath=path.join(ROOT,'data/location-history.json');
  const history=fs.existsSync(priorPath)?JSON.parse(fs.readFileSync(priorPath,'utf8')):{schemaVersion:1,baseline:{canonical,browser},events:[]};
  const eventIndex=history.events.findIndex(x=>x.date===date&&x.directorySha256===summary.directorySha256&&x.supplementalMapSha256===summary.supplementalMapSha256);
@@ -294,4 +325,4 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
  return summary;
 }
 if(require.main===module){const args=process.argv.slice(2);const value=flag=>{const i=args.indexOf(flag);return i<0?undefined:args[i+1];};refresh({date:value('--date'),directoryFile:value('--directory-file'),detailsDir:value('--details-dir'),apply:args.includes('--apply'),outputDir:value('--output-dir'),baselineCanonicalFile:value('--baseline-canonical-file'),baselineBrowserFile:value('--baseline-browser-file')}).then(x=>console.log(JSON.stringify({date:x.date,directoryCount:x.directoryCount,supplementalMapFeatureCount:x.supplementalMapFeatureCount,supplementalAddedCount:x.supplementalAddedCount,totalCount:x.totalCount,added:x.added.length,merged:x.mergedLegacyIds.length,unmatchedLegacy:x.unmatchedLegacy,coordinateCounts:x.coordinateCounts,needsReview:x.needsReview.length,applied:args.includes('--apply')},null,2))).catch(e=>{console.error(e.message);process.exitCode=1;});}
-module.exports={parseDirectory,parseDetail,addressKey,sameAddress,officialUrl,hoursFields,timezoneFor,legacyUnion,reconcile,directoryRecord,serviceRecord,refresh};
+module.exports={officialRecords,serviceMapSource,maxDetailFailures,parseDirectory,parseDetail,addressKey,sameAddress,officialUrl,hoursFields,timezoneFor,legacyUnion,reconcile,directoryRecord,serviceRecord,refresh};

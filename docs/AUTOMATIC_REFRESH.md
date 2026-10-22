@@ -29,6 +29,18 @@ Nearby Rivian places within 0.15 miles cross-link as **Nearby**, without asserti
 
 Inspect the failed Actions step. A temporary source failure can be retried manually or will be retried by the next scheduled run. A source schema change or legitimate major inventory reduction requires an importer/guard update before unattended publication resumes. Do not bypass the validators by publishing partial data.
 
+### Per-source fallbacks
+
+Rivian's pages change often, and one unreadable source used to stop the entire refresh. Each source now falls back on its own to the last published, validated data, which is never partial:
+
+- **Location detail pages.** A page that can't be downloaded or parsed keeps that location's last published record unchanged, including its original `lastVerified` date, with `retainedDetail: {since, reason}`. A new location without a prior record uses directory facts only and is marked for review. More than `max(3, 10%)` failed pages still stops the run, because that indicates a format change.
+- **Service map.** It is embedded on every detail page. If the usual page lacks a complete copy, any other page's complete copy is used. No complete copy stops the run.
+- **Coming-soon layer.** If the layer can't be found or parsed, the previous announcements are kept with their original dates (`comingSoon.retained` in the charging summary). If there are no previous announcements, the run stops.
+
+Every fallback is written to `warnings` in `refresh-summary.json` or `charging-summary.json`. After publishing, `scripts/report-refresh-warnings.cjs` lists the fallbacks in the run summary and as Actions warnings, and opens or comments on the issue "Daily data refresh kept some previous data". The next clean refresh closes the issue. A fallback that repeats on consecutive days means the parser needs an update.
+
+The production dependency audit runs through `scripts/audit-dependencies.cjs` in both workflows. Known vulnerabilities still block publication. An unavailable npm audit service, after three attempts, produces a warning instead of a failure.
+
 For local investigation, `node scripts/refresh-charging.mjs --cache-dir /tmp/spotter-charging-recovery` resumes a single interrupted snapshot. This cache must not be reused for a later day's refresh. Scheduled runs always use a fresh temporary cache.
 
 ## Rivian Roamer enrichment
@@ -37,7 +49,7 @@ The same daily workflow retrieves Roamer's public RAN network page once. It impo
 
 Each daily run checks the union of network-listing IDs and every active official Rivian Adventure Network ID. An official site absent from the listing is requested directly at its public detail URL; the page identity must match before importing facts. Previously complete pages are fetched again every day. Each daily run works through all station detail pages, missing details first and then oldest observations, with 15 seconds between requests. These add rated port power, hours, amenities, idle fees, and individual connector/features. Each successful detail import is checkpointed. If the 60-minute budget expires or the source rate-limits requests, the next daily run resumes missing coverage first. A full 160-site pass takes about 40 minutes plus response time. The UI dates network and detail observations separately.
 
-A 429 response stops requests immediately and persists a cooldown of at least 24 hours (or a longer Retry-After). A source error retains the previous facts; optional Roamer retrieval can fail without blocking valid official updates. Build, test and dependency audit failures always block publication. Network inventory loss over 15%, duplicate IDs, missing pins or incomplete cards are rejected. Grade, price, connector, explicit condition and detail changes are retained for 30 days (up to 200 events). A new source listing is not claimed as a newly opened station; an absent or unknown condition is not a charger outage.
+A 429 response stops requests immediately and persists a cooldown of at least 24 hours (or a longer Retry-After). A source error retains the previous facts; optional Roamer retrieval can fail without blocking valid official updates. Build and test failures, and known dependency vulnerabilities, always block publication. Network inventory loss over 15%, duplicate IDs, missing pins or incomplete cards are rejected. Grade, price, connector, explicit condition and detail changes are retained for 30 days (up to 200 events). A new source listing is not claimed as a newly opened station; an absent or unknown condition is not a charger outage.
 
 The initial October 14 snapshot includes 160 network cards and 17 detail pages. A rate-limit response stopped further detail collection and established the first cooldown. Scheduled runs use a fresh temporary cache and resume missing detail coverage after that cooldown. For parser recovery only, `ROAMER_CACHE_DIR=/path/to/saved/html npm run refresh:roamer -- --cache-only` imports existing HTML without requesting the source.
 
@@ -55,7 +67,7 @@ Daily captures are not real-time status. A page retrieval time and the source's 
 
 ## Coming-soon charging locations
 
-The 5 AM Pacific official refresh also reads the charging page's explicit `coming-soon-chargers-source` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. The map source name identifies the data independently of minified export names. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data stops the staged refresh without removing the prior inventory.
+The 5 AM Pacific official refresh also reads the charging page's explicit `coming-soon-chargers-source` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. The map source name identifies the data independently of minified export names. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data keeps the prior announcements and reports a warning (see Per-source fallbacks).
 
 Each announced city has a stable local identity, a Coming Soon label, and an approximate city pin using Rivian's published coordinates. No address, opening date, charger count, speed, pricing, or directions is inferred. Planned records are excluded from supplemental detail requests, active-inventory loss checks, and nearby available-charging links. The map uses outlined markers and a wider city zoom. The first import contains 36 announced locations, including King City and Salinas, California.
 

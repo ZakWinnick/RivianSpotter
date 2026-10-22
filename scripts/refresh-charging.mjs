@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {VectorTile} from '@mapbox/vector-tile';
 import {PbfReader} from 'pbf';
-import {fetchComingSoon,mergePlanned} from './refresh-coming-soon.mjs';
+import {fetchComingSoon,mergePlanned,retainedComingSoonRows} from './refresh-coming-soon.mjs';
 
 export const SOURCE = 'https://rivian.com/experience/charging#map';
 export const TILES = 'https://api.rivianservices.com/map-chargers/tiles/chrg2';
@@ -81,7 +81,17 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('Invalid refresh date');
   const scratch=cacheDir || fs.mkdtempSync(path.join(os.tmpdir(),'spotter-charging-'));
   fs.mkdirSync(scratch,{recursive:true});
-  const comingSoon=await fetchComingSoon({cacheDir:scratch});
+  const priorPath=path.join(ROOT,'data/charging.json'), prior=fs.existsSync(priorPath)?JSON.parse(fs.readFileSync(priorPath,'utf8')):[];
+  // The coming-soon layer lives in Rivian's minified page assets and changes shape often. If it
+  // can't be read, keep yesterday's announcements rather than blocking the whole refresh.
+  let comingSoon, warnings=[];
+  try {comingSoon=await fetchComingSoon({cacheDir:scratch});}
+  catch(e) {
+    const rows=retainedComingSoonRows(prior);
+    if(!rows.length) throw e;
+    comingSoon={rows,retained:true,error:e.message,sourceUrl:SOURCE,assetUrl:null,sha256:null};
+    warnings.push(`Kept the previous ${rows.length} coming-soon locations: the coming-soon source could not be read (${e.message}).`);
+  }
   const memo=new Map(); let requests=0, splitTiles=0;
   let gate=Promise.resolve(), pauseUntil=0;
   function throttle() {
@@ -144,15 +154,15 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
     refined.set(f.properties.id,match);
     if(++completed%100===0) console.log(`Refined ${completed}/${discovered.size}`);
   });
-  const priorPath=path.join(ROOT,'data/charging.json'), prior=fs.existsSync(priorPath)?JSON.parse(fs.readFileSync(priorPath,'utf8')):[];
   const old=new Map(prior.map(p=>[p.sourceId,p]));
   const active=[...refined.values()].map(f=>normalize(f,date,old.get(f.properties.id))).filter(Boolean);
   const promotionReport={};
-  const records=mergePlanned(active,comingSoon.rows,date,prior,promotionReport);
+  const records=mergePlanned(active,comingSoon.rows,date,prior,promotionReport,{retained:!!comingSoon.retained});
   const ids=new Set(records.filter(p=>p.listed!==false).map(p=>p.sourceId));
   validateRefresh(records,prior);
   const summary={date,sourceUrl:SOURCE,tileSource:TILES,coverage:COVERAGE,discoveryZoom:6,pinZoom:12,tilesScanned:coverage.length,splitTiles,requests,
-    comingSoon:{count:comingSoon.rows.length,observedAt:new Date().toISOString(),sourceUrl:comingSoon.sourceUrl,assetUrl:comingSoon.assetUrl,sha256:comingSoon.sha256},
+    comingSoon:{count:comingSoon.rows.length,observedAt:new Date().toISOString(),sourceUrl:comingSoon.sourceUrl,assetUrl:comingSoon.assetUrl,sha256:comingSoon.sha256,...(comingSoon.retained?{retained:true,error:comingSoon.error}:{})},
+    warnings,
     counts:Object.fromEntries(['RAN','Waypoint'].map(t=>[t,records.filter(p=>p.type===t&&p.listed!==false).length])),
     promotions:promotionReport,
     added:records.filter(p=>!old.has(p.sourceId)&&!p.promotion).map(p=>({id:p.id,name:p.name,slug:p.slug})),
