@@ -150,25 +150,14 @@ struct PlaceDetailPhoto: View {
         VStack(alignment: .leading, spacing: 6) {
             PlaceImageView(place: place).aspectRatio(16 / 9, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                .overlay(alignment: .topLeading) { if place.showsCategoryPhoto { CategoryPhotoTag().padding(10) } }
-                .accessibilityElement().accessibilityLabel(place.showsCategoryPhoto ? "Representative \(place.typeLabel) charger, not this location"
+                .accessibilityElement().accessibilityLabel(place.showsCategoryPhoto ? "Rivian \(place.typeLabel) charger"
                                                            : place.photo?.description ?? "No photo")
-            if place.categoryImage != nil {
-                Text("Representative Rivian charger, not this location.").font(.caption2).foregroundStyle(.secondary)
-            } else if let photo = place.photo {
+            if place.categoryImage == nil, let photo = place.photo {
                 HStack(spacing: 4) {
-                    if photo.isCategory { Text("Representative photo, not this location.") }
                     if let url = photo.safeSourceURL { Link("\(photo.credit) ↗", destination: url) } else { Text(photo.credit) }
                 }.font(.caption2).foregroundStyle(.secondary)
             }
         }
-    }
-}
-
-struct CategoryPhotoTag: View {
-    var body: some View {
-        Text("Category photo").font(.caption2.weight(.semibold)).foregroundStyle(.white)
-            .padding(.horizontal, 7).padding(.vertical, 3).background(.black.opacity(0.55), in: Capsule())
     }
 }
 
@@ -196,7 +185,6 @@ struct PlaceCard: View {
             .overlay(alignment: .bottomTrailing) {
                 if visited { VisitedSeal().padding(10) }
             }
-            .overlay(alignment: .topLeading) { if place.showsCategoryPhoto { CategoryPhotoTag().padding(8) } }
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .accessibilityElement(children: .ignore)
