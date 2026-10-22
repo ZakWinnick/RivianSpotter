@@ -160,15 +160,17 @@ private struct DirectoryRows: View {
         }
         Section {
             Button(action: baseCamp) {
-                // "Base Camp" never wraps; in a narrow sidebar the chosen place's name truncates instead.
-                HStack {
-                    Label { Text("Base Camp").lineLimit(1).fixedSize() } icon: { Image(systemName: "tent") }
-                        .layoutPriority(1)
-                    Spacer(minLength: 8)
-                    if let place = store.baseCamp {
-                        Text(place.guideName).font(.footnote).foregroundStyle(.secondary).lineLimit(1).truncationMode(.tail)
+                // The chosen place goes on its own line under "Base Camp", in full, so neither wraps
+                // into the other in a narrow sidebar.
+                Label {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Base Camp").lineLimit(1)
+                        if let place = store.baseCamp {
+                            Text(place.guideName).font(.footnote).foregroundStyle(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
                     }
-                }
+                } icon: { Image(systemName: "tent") }
             }.foregroundStyle(.primary)
             Button(action: settings) { Label("Settings", systemImage: "gearshape") }.foregroundStyle(.primary)
         } footer: {
