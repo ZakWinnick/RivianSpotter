@@ -60,6 +60,9 @@ struct RootView: View {
         .sheet(isPresented: $showSettings) { SettingsView().spotterEnvironment(store) }
         .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker().spotterEnvironment(store) }
         .task { await store.refreshCatalog() }
+        #if DEBUG
+        .onAppear(perform: openScreenshotRoute)
+        #endif
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount()
@@ -70,6 +73,31 @@ struct RootView: View {
             Button("OK") { store.error = nil }
         } message: { Text(store.error ?? "") }
     }
+
+    #if DEBUG
+    /// App Store screenshots: `-ScreenshotTab lists|map|browse` selects a tab or sidebar item, and
+    /// `-ScreenshotOpen place:<id>|data|receipts|regions|glossary` pushes a screen. Debug builds only.
+    private func openScreenshotRoute() {
+        let defaults = UserDefaults.standard
+        switch defaults.string(forKey: "ScreenshotTab") {
+        case "lists": tab = .lists; selection = .lists
+        case "map": tab = .map; selection = .map
+        case "browse": tab = .browse
+        default: break
+        }
+        guard let open = defaults.string(forKey: "ScreenshotOpen") else { return }
+        let route: Route
+        switch open {
+        case "data": route = .destination(.data)
+        case "receipts": route = .destination(.receipts)
+        case "regions": route = .destination(.regions)
+        case "glossary": route = .destination(.glossary)
+        default: route = .place(String(open.dropFirst("place:".count)))
+        }
+        widePath.append(route)
+        paths[tab, default: NavigationPath()].append(route)
+    }
+    #endif
 
     private var wide: some View {
         NavigationSplitView {
@@ -273,6 +301,7 @@ struct GalleryView: View {
     @State private var showFilter = false
     @State private var showOther = false
     @State private var width: CGFloat = 400
+    @Environment(\.dynamicTypeSize) private var typeSize
     private var palette: GuidePalette { .init(scheme: scheme) }
     init(destination: Destination) {
         self.destination = destination
@@ -376,7 +405,7 @@ struct GalleryView: View {
         switch GalleryLayout(rawValue: layout) ?? .grid {
         case .grid:
             // Two columns on phones and narrow panes, like Facades; wider panes add a column per ~340 pt.
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: max(2, Int((width - 32) / 340))), spacing: 8) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: typeSize.isAccessibilitySize ? max(1, Int((width - 32) / 520)) : max(2, Int((width - 32) / 340))), spacing: 8) {
                 ForEach(places) { place in link(place) { PlaceCard(place: place, subtitle: subtitle(place)) } }
             }
         case .thumbnails:

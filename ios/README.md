@@ -8,7 +8,7 @@ When you visit somewhere, check in. Your visits become a collection, with stats,
 
 The directory refreshes on its own from rivianspotter.com, so new and coming-soon locations show up without an app update. RivianSpotter shows only what Rivian and its sources publish. It doesn’t guess opening dates, invent history, or claim a site is open when the listing doesn’t say.
 
-Runs on iPhone and iPad (iOS 17 or later), in Light, Dark, or System appearance. Current version: **0.2.0**. See [What’s New](RELEASE_NOTES.md).
+Runs on iPhone and iPad (iOS 17 or later), in Light, Dark, or System appearance. Current version: **1.0.0**. Privacy policy: [rivianspotter.com/privacy.html](https://rivianspotter.com/privacy.html). See [What’s New](RELEASE_NOTES.md).
 
 ## Open on an iPhone or iPad simulator
 

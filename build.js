@@ -107,6 +107,7 @@ versionAssets(dist);
 // These top-level entry pages are generated from scripts/build-pages.cjs, never hand edited.
 for (const file of [
   "about.html",
+  "privacy.html",
   "contact.html",
   "stats.html",
   "saved.html",

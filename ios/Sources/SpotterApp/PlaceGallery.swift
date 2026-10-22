@@ -168,29 +168,46 @@ struct PlaceCard: View {
     var subtitle: String? = nil
     var aspect: CGFloat = 1.6
     @EnvironmentObject private var store: SpotterStore
+    @Environment(\.dynamicTypeSize) private var typeSize
+    @Environment(\.colorScheme) private var scheme
     private var visited: Bool { !store.visits(to: place).isEmpty }
     var body: some View {
-        PlaceImageView(place: place).aspectRatio(aspect, contentMode: .fit)
-            .overlay {
-                LinearGradient(stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.82), location: 1)],
-                               startPoint: .top, endPoint: .bottom)
+        Group {
+            // At accessibility text sizes the text moves below the photo so names aren't cut off.
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 0) {
+                    PlaceImageView(place: place).aspectRatio(aspect, contentMode: .fit)
+                        .overlay(alignment: .bottomTrailing) { if visited { VisitedSeal().padding(10) } }
+                    labels.foregroundStyle(.primary).padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }.background(GuidePalette(scheme: scheme).surface)
+            } else {
+                PlaceImageView(place: place).aspectRatio(aspect, contentMode: .fit)
+                    .overlay {
+                        LinearGradient(stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.82), location: 1)],
+                                       startPoint: .top, endPoint: .bottom)
+                    }
+                    .overlay(alignment: .bottomLeading) {
+                        labels.foregroundStyle(.white).padding(10).padding(.trailing, visited ? 24 : 0)
+                    }
+                    .overlay(alignment: .bottomTrailing) {
+                        if visited { VisitedSeal().padding(10) }
+                    }
             }
-            .overlay(alignment: .bottomLeading) {
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(place.cardCaption).font(.caption2.weight(.semibold)).opacity(0.85)
-                    Text(place.guideName).font(.subheadline.weight(.bold)).lineLimit(2)
-                    Text(subtitle ?? place.cardSubtitle).font(.caption.weight(.semibold)).lineLimit(1)
-                }.foregroundStyle(.white).padding(10).padding(.trailing, visited ? 24 : 0)
-            }
-            .overlay(alignment: .bottomTrailing) {
-                if visited { VisitedSeal().padding(10) }
-            }
+        }
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .accessibilityElement(children: .ignore)
             .accessibilityLabel([place.name, place.typeLabel, subtitle ?? place.cardSubtitle,
                                  place.statusGroup == .comingSoon ? "Coming soon" : nil, visited ? "Visited" : nil]
                 .compactMap { $0 }.joined(separator: ", "))
+    }
+    private var labels: some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(place.cardCaption).font(.caption2.weight(.semibold)).opacity(0.85)
+            Text(place.guideName).font(.subheadline.weight(.bold)).lineLimit(typeSize.isAccessibilitySize ? nil : 2)
+            Text(subtitle ?? place.cardSubtitle).font(.caption.weight(.semibold)).lineLimit(typeSize.isAccessibilitySize ? nil : 1)
+        }
     }
 }
 
