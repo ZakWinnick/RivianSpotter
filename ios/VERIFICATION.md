@@ -135,3 +135,10 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - All 22 XCTest cases passed. The standalone runner subsequently passed all 22 cases including the added legacy-cache assertion. Regression coverage includes same-day edits, unchanged source dates, newer bundles, stale 200 responses, retained validators on the next 304, relaunch, missing/invalid revisions, and unchanged private journal data.
 - All 102 website tests and the static build passed. The generated public and bundled catalogs match exactly, including their revision. The universal iOS simulator Release build passed; `git diff --check` passed.
 - This revision has not been deployed or uploaded to TestFlight. The earlier build 5 archive predates this fix and must be rebuilt before distribution.
+
+## Facades redesign / build 8 — October 21, 2026
+
+- Merged PR #42 (Facades-style redesign and synced Base Camp) and bumped to version 0.2.0 (8).
+- Before merge: 26 XCTest and standalone core cases, device-service checks, iOS simulator and desktop preview builds, and `npm test` (131) passed. Checked on iPhone 17 Pro and iPad Pro 11-inch simulators in light and dark mode.
+- Signed Release archive succeeded. Apple accepted 0.2.0 (8) at 17:47 Pacific ("Upload succeeded"); processing was still pending when this was recorded.
+- Not verified: two-device iCloud sync of Base Camp, VoiceOver, and physical-device behavior.
