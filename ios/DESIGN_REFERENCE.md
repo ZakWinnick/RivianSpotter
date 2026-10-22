@@ -12,7 +12,7 @@ Every Facades screen was reviewed in the installed app without changing its data
 |---|---|
 | All Stores | All Locations |
 | Design Style / Store Feature | Location Type / Site Feature (published tags) |
-| Extras (Moved, Closed…) | Status (Coming Soon, Unconfirmed, and others when present) |
+| Extras (Moved, Closed…) | Status (Coming Soon, plus closed or removed listings when present) |
 | Store number pill | Location type pill |
 | Timeline | Record: published listing status and the date it was checked |
 | Regions / United States | States & Provinces |
@@ -26,7 +26,7 @@ Left out: opening dates and the Years page, store numbers, Moved/Rebuilt/Renamed
 
 ## Rules
 
-- Never invent coordinates, history, or open/closed claims. "Unconfirmed" means Rivian's listing gives no status.
+- Never invent coordinates or history. Every current Rivian listing is shown as listed; only Coming Soon and closed or removed listings get a status of their own.
 - Category photos are labeled on cards and place pages. A place without a photo shows its type color and symbol.
 - Orange is only for the person's own visits. Accent fills use dark text in Dark mode.
 - System text styles throughout, so Dynamic Type scales every screen.

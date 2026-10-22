@@ -110,7 +110,17 @@ struct RootView: View {
 
     private func stack<Content: View>(_ tab: Tab, @ViewBuilder _ content: () -> Content) -> some View {
         let path = Binding(get: { paths[tab] ?? NavigationPath() }, set: { paths[tab] = $0 })
-        return NavigationStack(path: path) { content().routeDestinations() }
+        return NavigationStack(path: path) {
+            content().routeDestinations().toolbar {
+                // Map has its own controls; the other tabs keep Settings (appearance, Base Camp,
+                // iCloud) one tap away, as the iPad sidebar does.
+                if tab != .map {
+                    ToolbarItem(placement: .settingsPlacement) {
+                        Button { showSettings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings")
+                    }
+                }
+            }
+        }
             .environment(\.navigate) { route in paths[tab, default: NavigationPath()].append(route) }
     }
 
@@ -159,7 +169,8 @@ private struct DirectoryRows: View {
             }
         }
         Section("Status") {
-            ForEach(PlaceStatusGroup.allCases) { status in
+            // Current listings are the whole directory, so only the exceptions get a row.
+            ForEach(PlaceStatusGroup.allCases.filter { $0 != .listed }) { status in
                 let count = places.filter { $0.statusGroup == status }.count
                 if count > 0 { row(.status(status), status.rawValue, status.symbol, count: count) }
             }
@@ -192,9 +203,8 @@ private struct DirectoryRows: View {
 extension PlaceStatusGroup {
     var symbol: String {
         switch self {
-        case .operating: "checkmark.circle"
+        case .listed: "checkmark.circle"
         case .comingSoon: "sparkles"
-        case .unconfirmed: "questionmark.circle"
         case .temporarilyClosed: "pause.circle"
         case .closed: "xmark.circle"
         case .unlisted: "archivebox"
@@ -219,6 +229,16 @@ struct DestinationView: View {
                 .navigationTitle("Map").hiddenNavigationBar()
         default: GalleryView(destination: destination)
         }
+    }
+}
+
+extension ToolbarItemPlacement {
+    static var settingsPlacement: ToolbarItemPlacement {
+        #if os(iOS)
+        .topBarLeading
+        #else
+        .navigation
+        #endif
     }
 }
 
@@ -460,7 +480,7 @@ private struct FilterSheet: View {
                     group("Location Type", PlaceType.allCases.filter { type in places.contains { $0.browseTypes.contains(type) } },
                           title: { $0.browseTitle }, selected: \.types)
                     group("Site Feature", GlossaryEntry.features(in: places), title: { $0 }, selected: \.features)
-                    group("Status", PlaceStatusGroup.allCases.filter { status in places.contains { $0.statusGroup == status } },
+                    group("Status", PlaceStatusGroup.allCases.filter { status in status != .listed && places.contains { $0.statusGroup == status } },
                           title: { $0.rawValue }, selected: \.statuses)
                     group("State or Province", Array(Set(places.map(\.region))).sorted(), title: { RegionNames.name($0) }, selected: \.regions)
                 }.padding(16)
@@ -685,7 +705,9 @@ struct GlossaryEntry: Identifiable, Hashable {
         case "DC Fast Charging": ("bolt.fill", Color(hex: PlaceType.ran.mapColorHex), "Direct-current fast charging for quick road-trip stops.")
         case "Level 2 Charging": ("powerplug.fill", Color(hex: PlaceType.waypoint.mapColorHex), "Alternating-current charging suited to longer stops, such as an overnight stay or a meal.")
         case "Open to Other EVs", "Open to All": ("car.2.fill", .teal, "Listed as open to EVs from other makers. Check connector compatibility and the host’s access rules.")
-        case "Rivian Vehicles Only": ("lock.fill", .gray, "Listed as reserved for Rivian vehicles.")
+        case "Rivian Vehicles Only": ("lock.fill", .gray, "Rivian lists these chargers for Rivian vehicles only. Other EVs can’t charge here.")
+        case "Charging", "Charging outpost": ("bolt.fill", Color(hex: PlaceType.outpost.mapColorHex), "Rivian lists charging at this location.")
+        case "Service coming soon": ("wrench.and.screwdriver", Color(hex: PlaceType.service.mapColorHex), "Rivian lists service at this location as coming soon.")
         case "Plug & Charge": ("cable.connector", .blue, "Charging starts when a supported vehicle with a linked account plugs in, without a card or app.")
         case "Trailer OK": ("arrow.left.and.right", .brown, "Listed as accommodating vehicles towing a trailer.")
         case "Coffee": ("cup.and.saucer.fill", .brown, "Coffee is listed at or near this location.")
@@ -701,10 +723,14 @@ struct GlossaryEntry: Identifiable, Hashable {
                              text: text, destination: .feature(feature))
     }
 
-    /// Features present in the directory, most common first.
+    /// Tags that stay on place pages but aren't browsable features: "Charging" and "Charging outpost"
+    /// repeat what the location type already says, and "Service coming soon" is a status.
+    static let notBrowsable: Set<String> = ["Charging", "Charging outpost", "Service coming soon"]
+
+    /// Browsable features present in the directory, most common first.
     static func features(in places: [Place]) -> [String] {
         var counts: [String: Int] = [:]
-        for feature in places.flatMap(\.siteFeatures) { counts[feature, default: 0] += 1 }
+        for feature in places.flatMap(\.siteFeatures) where !notBrowsable.contains(feature) { counts[feature, default: 0] += 1 }
         return counts.keys.sorted { counts[$0]! == counts[$1]! ? $0 < $1 : counts[$0]! > counts[$1]! }
     }
 }

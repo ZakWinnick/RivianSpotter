@@ -1,6 +1,14 @@
 # RivianSpotter for iOS
 
-A native SwiftUI field guide and private visit journal for RANs, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts. The latest uploaded beta is version 0.1.0 (build 4). This branch prepares build 5 with automatic location-directory updates; its public feed and app build have not yet been deployed. Earlier betas keep their bundled directory.
+**A field guide to every Rivian place, and a private record of the ones you’ve been to.**
+
+RivianSpotter puts the whole Rivian map in your pocket: Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada. Browse them as a photo gallery, by state, by type, or by what’s there: Plug & Charge, a trailer-friendly stall, coffee while you wait. Every place page has the address, directions, hours, published charging details and prices, and where the listing came from.
+
+When you visit somewhere, check in. Your visits become a collection, with stats, visited badges across the app, and a receipt card you can save or share. Pick a Base Camp, the place you think of as home. Visits, notes, saved places, and Base Camp are private and sync through your own iCloud account. Nothing is posted publicly.
+
+The directory refreshes on its own from rivianspotter.com, so new and coming-soon locations show up without an app update. RivianSpotter shows only what Rivian and its sources publish. It doesn’t guess opening dates, invent history, or claim a site is open when the listing doesn’t say.
+
+Runs on iPhone and iPad (iOS 17 or later), in Light, Dark, or System appearance. Current version: **0.2.0**. See [release notes](RELEASE_NOTES.md).
 
 ## Open on an iPhone or iPad simulator
 

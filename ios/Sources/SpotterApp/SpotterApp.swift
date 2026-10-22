@@ -235,11 +235,20 @@ extension Place {
 }
 
 enum AppAppearance: String, CaseIterable, Identifiable {
-    case system = "System", light = "Light", dark = "Dark"
+    case light = "Light", dark = "Dark", system = "System"
     var id: String { rawValue }
     var colorScheme: ColorScheme? {
         switch self { case .system: nil; case .light: .light; case .dark: .dark }
     }
+    #if os(iOS)
+    /// Applies to every window, including presented sheets, and takes effect immediately.
+    @MainActor func applyToWindows() {
+        let style: UIUserInterfaceStyle = switch self { case .system: .unspecified; case .light: .light; case .dark: .dark }
+        for case let scene as UIWindowScene in UIApplication.shared.connectedScenes {
+            for window in scene.windows { window.overrideUserInterfaceStyle = style }
+        }
+    }
+    #endif
 }
 
 @main
@@ -249,9 +258,13 @@ struct RivianSpotterApp: App {
     var body: some Scene {
         WindowGroup {
             RootView().environmentObject(store).environmentObject(store.location).environmentObject(store.sync)
-                .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
             #if os(macOS)
+                .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
                 .frame(width: 440, height: 820)
+            #else
+                // Set on the window, not with preferredColorScheme: SwiftUI doesn't release a forced
+                // Light or Dark on an open sheet when the choice returns to System.
+                .onChange(of: appearance, initial: true) { _, value in AppAppearance(rawValue: value)?.applyToWindows() }
             #endif
         }
         #if os(macOS)
