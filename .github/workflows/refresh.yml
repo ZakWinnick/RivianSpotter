@@ -53,15 +53,33 @@ jobs:
           CATALOG_REVISION_UPDATE: '1'
         run: npm run build && npm test && node scripts/audit-dependencies.cjs
       - name: Save the validated data
+        env:
+          CATALOG_REVISION_UPDATE: '1'
+          DATA_FILES: data/location-updates.json data/catalog-revision.json data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json data/roamer.json
+          GENERATED_FILES: js/locations.js js/charging.js js/roamer.js about.html privacy.html contact.html saved.html stats.html updates.html changelog.html 404.html
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/location-updates.json data/catalog-revision.json data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json js/locations.js js/charging.js data/roamer.json js/roamer.js about.html contact.html saved.html stats.html updates.html changelog.html 404.html
-          if ! git diff --cached --quiet; then
-            git commit -m 'Refresh official Rivian location and charging data'
-            # A concurrent human push makes this fail safely; do not overwrite or rebase unseen code.
-            git push origin HEAD:main
+          git add $DATA_FILES $GENERATED_FILES
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh official Rivian location and charging data'
+          git push origin HEAD:main && exit 0
+          # main moved during this hour-long run (usually a merged PR). The refresh owns only the
+          # data files, so if nobody else changed them, re-apply today's data on top of the new
+          # main, regenerate, re-test, and push. Code is never rebased or overwritten.
+          git fetch origin main
+          if git diff --name-only HEAD~1 origin/main -- $DATA_FILES | grep -q .; then
+            echo '::error::main changed refreshed data files during this run; not overwriting them. The collected data is saved as a recovery artifact.'
+            exit 1
           fi
+          stash=$(mktemp -d) && tar -cf "$stash/data.tar" $DATA_FILES
+          git reset --hard origin/main
+          tar -xf "$stash/data.tar"
+          node -e "require('./scripts/generate-data.cjs').generate();require('./scripts/generate-charging.cjs').generate();require('./scripts/generate-roamer.cjs').generate()"
+          npm ci && npm run build && npm test
+          git add $DATA_FILES $GENERATED_FILES
+          git commit -m 'Refresh official Rivian location and charging data'
+          git push origin HEAD:main
       - name: Report sources kept from the last release
         # The release still publishes; an open issue flags any fallback until a clean run closes it.
         env:
