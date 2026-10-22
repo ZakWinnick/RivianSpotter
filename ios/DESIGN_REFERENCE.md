@@ -1,21 +1,32 @@
-# Native design reference — October 20, 2026
+# Native design reference — October 21, 2026
 
-The latest user direction is to closely follow Facades on iPhone and iPad. This supersedes the earlier website-sidebar tile and cream/yellow visual experiments, while keeping complete website information in native place pages.
+The app follows Facades 2.0.8 (Michael Steeber's Apple Store field guide) on iPhone and iPad, with the website's colors: forest/sage accent, neutral surfaces, and the per-type map colors.
 
 ## Reference inspected
 
-Inspected the installed Facades application, not only marketing screenshots: All Stores gallery; Apple Del Amo and Apple The Exchange TRX detail pages; the Address/map sheet; and the Timeline sheet. No reference-app visits or bookmarks were changed.
+Every Facades screen was reviewed in the installed app without changing its data: All Stores (grid, thumbnails, list, view options, filter), store details (address, timeline, design-style and feature sheets), Lists, Visited, Bookmarks, visit receipts, Regions, United States, Years, Store Data, Global Map, design-style and feature pages, Extras, Home Store, Glossary, and Settings.
 
-## Implementation
+## Mapping
 
-- Compact: four bottom tabs, centered gallery title, search, two-column photographic cards, Near me and map controls.
-- Wide (700 points or more): persistent 245-point sidebar and an adaptive gallery/detail pane. Narrow iPad windows use the compact arrangement.
-- Detail: 16:9 photo above the name, small type/status and Visit pills, grouped address/map and information cards. Use actual Rivian data; no invented history, dates, or awards.
-- Information: hours, separate network facts, reported status dates, current rate summaries, expandable schedules and chargers, internal nearby-site navigation, visit records, and source references.
-- Appearance: System default; Light and Dark overrides. Neutral backgrounds and cards, purple controls, system typography. No green-black light background.
-- Photos: exact-site images first; category fallbacks labeled. Source credit retained.
-- Location: every category supports one-shot Near me, distance sorting, and map centering. Unknown coordinates stay unknown.
+| Facades | RivianSpotter |
+|---|---|
+| All Stores | All Locations |
+| Design Style / Store Feature | Location Type / Site Feature (published tags) |
+| Extras (Moved, Closed…) | Status (Coming Soon, Unconfirmed, and others when present) |
+| Store number pill | Location type pill |
+| Timeline | Record: published listing status and the date it was checked |
+| Regions / United States | States & Provinces |
+| Store Data | Location Data |
+| Global Map | Map |
+| Bookmarks | Saved |
+| Home Store | Base Camp (synced) |
+| Visit receipts | Visit receipts (no notes) |
 
-## Verification boundary
+Left out: opening dates and the Years page, store numbers, Moved/Rebuilt/Renamed, Favorites/Wish List/custom lists, and Look Around. The directory doesn't publish the data, or the feature would need a journal schema change.
 
-Universal iPhone/iPad simulator build succeeds. Compact and expanded layouts have been inspected on the available iPhone Duo simulator. A dedicated iPad simulator run remains pending installation of a compatible runtime. Signed two-device iCloud transfers remain unverified.
+## Rules
+
+- Never invent coordinates, history, or open/closed claims. "Unconfirmed" means Rivian's listing gives no status.
+- Category photos are labeled on cards and place pages. A place without a photo shows its type color and symbol.
+- Orange is only for the person's own visits. Accent fills use dark text in Dark mode.
+- System text styles throughout, so Dynamic Type scales every screen.

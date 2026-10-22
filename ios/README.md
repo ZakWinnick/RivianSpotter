@@ -13,13 +13,18 @@ Minimum deployment target: iOS 17. The universal target supports iPhone and iPad
 
 ## First experience
 
-- **Locations:** Facades-style photo gallery, compact toolbar, search, Near me, and map. The gallery adapts to the available window width.
-- **Browse:** The default tab on launch. Grouped Charging and Rivian Places categories. Each opens its own photo gallery with search, Near me, and a map. The wide layout places these categories directly in the sidebar.
-- **Place:** Photo first, title and compact type/status/Visit badges, then grouped address/map, hours, and information cards. Includes network-specific charging details, prices and time-of-use schedules, amenities, individual chargers, dated reports, and related places that open inside the app. Sources are collapsed at the bottom. Directions open Apple Maps. Individual photos cover 188 locations; unverified charging photos use an explicitly labeled category image. City-level planned pins stay off maps but remain searchable.
-- **Check In:** Record today's visit or a past visit with an optional private note. Return visits are separate entries. For a combined site, choose which location type you visited.
-- **Saved:** A private list, separate from visits.
-- **Settings:** System appearance by default, with persistent Light and Dark overrides, private iCloud storage status, and location explanation. Appearance is a device preference.
-- **Visited:** Journal, total visits, unique places, and unique places visited by the selected type. Edit dates/notes, delete individual visits with confirmation, share a text receipt without the private note, or export the journal as JSON.
+The app follows Facades, Michael Steeber's Apple Store field guide, using RivianSpotter's own directory. See [design reference](DESIGN_REFERENCE.md).
+
+- **iPhone:** four tabs: Locations, Map, Lists, and Browse. **iPad (700 points or wider):** a Facades-style sidebar with collections (All Locations, Lists, Visited, Saved), Browse (States & Provinces, Location Data, Map, Glossary), Location Type, Site Feature, Status, Base Camp, and Settings.
+- **Galleries:** centered title, search, and a "…" menu with sort (Name, State, Nearest, or Recently Visited), layout (Grid, Thumbnails, List), and a Facades-style filter sheet. Photo cards show the type, name, and city or street. Category photos are labeled. Visited places carry an orange seal. Type, feature, and status pages add a "This (n) | Other (n)" switch.
+- **Place:** photo, name, type and visit pills, site-feature chips (each opens a glossary sheet), then an Address card with a map sheet (Open in Maps, Copy Address), Directions/Call/Book Demo, hours, a Record card (published listing status and the date the listing was checked), charging, pricing, chargers, related places, and your visits. Website and Share close the page.
+- **Lists:** places visited and the share of all locations, then Visit Receipts, Visited, Saved, Base Camp, and visits by type.
+- **Visit receipts:** a card with the place, city, visit date, and type, saved or shared as an image. Notes are never included.
+- **Base Camp:** the one location you think of as home. It syncs privately through the iCloud journal.
+- **Location Data:** charts of the published directory: types, states, status, Rivian Adventure Network power and charger counts, and site features.
+- **Settings:** appearance, Base Camp, location updates, iCloud status, export, and location access.
+
+There is no opening history, store number, or Look Around equivalent: the directory doesn't publish them, and the app doesn't invent them.
 
 Check-ins are self-reported visits; they do not establish opening status, charging activity, or verified physical presence. Visits, notes, and saved places are stored in a local SQLite database and mirrored to the user’s private CloudKit database in the signed iOS app. The desktop preview and unsigned simulator builds use the same database without CloudKit. Existing JSON journals migrate without modifying the original file. A damaged legacy journal is left untouched, retried on the next launch, and reported as a notice in Visited and Settings; it does not block the journal. Records that can't be read (for example, items synced from a newer app version) are skipped, kept in the store unchanged, and counted in the same notice. Nothing is posted publicly.
 

@@ -128,10 +128,10 @@ struct DemoBookingButton: View {
     @State private var showingBooking = false
     var body: some View {
         #if os(iOS)
-        Button { showingBooking = true } label: { Label("Book a Demo Drive", systemImage: "arrow.up.right").detailAction() }
+        Button { showingBooking = true } label: { Label("Book Demo", systemImage: "steeringwheel").cardButton() }
             .buttonStyle(.plain).sheet(isPresented: $showingBooking) { DemoBookingPage(url: url).ignoresSafeArea() }
         #else
-        Link(destination: url) { Label("Book a Demo Drive", systemImage: "arrow.up.right").detailAction() }
+        Link(destination: url) { Label("Book Demo", systemImage: "steeringwheel").cardButton() }
         #endif
     }
 }

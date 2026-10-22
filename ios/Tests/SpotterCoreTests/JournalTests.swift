@@ -131,6 +131,17 @@ final class JournalTests: XCTestCase {
         try JournalRepository(storage: storage).setBaseCamp(nil)
         XCTAssertTrue(try cloudStore().load().baseCamp == nil)
     }
+    func testStatusGroupsAndSiteFeaturesComeFromPublishedData() throws {
+        let catalog = try Catalog.bundled()
+        for place in catalog.places {
+            XCTAssertEqual(Set(place.siteFeatures).count, place.siteFeatures.count)
+            let tags = Set((place.information ?? []).flatMap { $0.tags ?? [] })
+            XCTAssertEqual(Set(place.siteFeatures), tags)
+            if place.status == "planned" && place.listed { XCTAssertEqual(place.statusGroup, .comingSoon) }
+            if place.status == "unknown" && place.listed { XCTAssertEqual(place.statusGroup, .unconfirmed) }
+        }
+        XCTAssertTrue(catalog.places.contains { !$0.siteFeatures.isEmpty })
+    }
     func testSearchUsesAllTermsAndDoesNotRequireCoordinates() throws {
         let catalog = try Catalog.bundled()
         let place = try XCTUnwrap(catalog.places.first { !$0.hasPreciseCoordinates && !$0.city.isEmpty })
