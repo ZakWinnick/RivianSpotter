@@ -110,16 +110,7 @@ struct RootView: View {
 
     private func stack<Content: View>(_ tab: Tab, @ViewBuilder _ content: () -> Content) -> some View {
         let path = Binding(get: { paths[tab] ?? NavigationPath() }, set: { paths[tab] = $0 })
-        return NavigationStack(path: path) {
-            content().routeDestinations().toolbar {
-                // Settings lives on Browse, next to the rest of the directory menu.
-                if tab == .browse {
-                    ToolbarItem(placement: .settingsPlacement) {
-                        Button { showSettings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings")
-                    }
-                }
-            }
-        }
+        return NavigationStack(path: path) { content().routeDestinations() }
             .environment(\.navigate) { route in paths[tab, default: NavigationPath()].append(route) }
     }
 
@@ -158,13 +149,6 @@ private struct DirectoryRows: View {
             ForEach(PlaceType.allCases) { type in
                 row(.type(type), type.browseTitle, type.symbol, color: type.browseColor(in: scheme),
                     count: places.filter { $0.browseTypes.contains(type) }.count)
-            }
-        }
-        Section("Site Feature") {
-            ForEach(GlossaryEntry.features(in: places), id: \.self) { feature in
-                let entry = GlossaryEntry.feature(feature)
-                row(.feature(feature), feature, entry.symbol, color: entry.color,
-                    count: places.filter { $0.siteFeatures.contains(feature) }.count)
             }
         }
         Section("Status") {
@@ -228,16 +212,6 @@ struct DestinationView: View {
                 .navigationTitle("Map").hiddenNavigationBar()
         default: GalleryView(destination: destination)
         }
-    }
-}
-
-extension ToolbarItemPlacement {
-    static var settingsPlacement: ToolbarItemPlacement {
-        #if os(iOS)
-        .topBarLeading
-        #else
-        .navigation
-        #endif
     }
 }
 

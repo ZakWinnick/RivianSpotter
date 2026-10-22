@@ -11,7 +11,7 @@ Every Facades screen was reviewed in the installed app without changing its data
 | Facades | RivianSpotter |
 |---|---|
 | All Stores | All Locations |
-| Design Style / Store Feature | Location Type / Site Feature (published tags) |
+| Design Style / Store Feature | Location Type / Site Feature (published tags; features open from chips, the glossary, and filters, not the sidebar) |
 | Extras (Moved, Closed…) | Status (Coming Soon, plus closed or removed listings when present) |
 | Store number pill | Location type pill |
 | Timeline | Record: published listing status and the date it was checked |
