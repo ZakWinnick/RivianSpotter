@@ -50,6 +50,8 @@ for (const file of [
   "assets/spotter-social-card.svg",
   "assets/spotter-route.svg",
   "assets/spotter-route-icon.svg",
+  "assets/charger-ran.jpg",
+  "assets/charger-waypoint.jpg",
   "data/locations.json",
   "data/charging.json",
   "data/charging-summary.json",

@@ -2540,17 +2540,17 @@
   },
   "categories": {
     "RAN": {
-      "imageURL": "https://media.rivian.com/image/upload/c_limit,w_1920/c_limit,w_1920/f_webp/q_75/v1/rivian-com/spaces/j-tree-tile-01",
-      "sourceURL": "https://rivian.com/spaces/joshua-tree",
+      "imageURL": "https://rivianspotter.com/assets/charger-ran.jpg",
+      "sourceURL": "https://rivian.com/charging",
       "credit": "Rivian",
-      "description": "Rivian Adventure Network chargers at Joshua Tree",
+      "description": "Rivian Adventure Network DC fast charger",
       "scope": "category"
     },
     "Waypoint": {
-      "imageURL": "https://media.rivian.com/image/upload/w_1920,f_auto,q_auto,c_lfill/papyrus/stories/electrifying-americas-back-yard-original-2be43ce7",
-      "sourceURL": "https://rivian.com/stories/electrifying-americas-back-yard",
+      "imageURL": "https://rivianspotter.com/assets/charger-waypoint.jpg",
+      "sourceURL": "https://rivian.com/charging",
       "credit": "Rivian",
-      "description": "Rivian Waypoint charger on the TransAmerica Trail",
+      "description": "Rivian Waypoint Level 2 charger",
       "scope": "category"
     }
   }

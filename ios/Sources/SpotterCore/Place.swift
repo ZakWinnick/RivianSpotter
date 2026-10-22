@@ -37,7 +37,8 @@ public struct PlacePhoto: Codable, Equatable, Sendable {
     public var safeImageURL: URL? {
         guard let url = URL(string: imageURL), url.scheme == "https",
               url.user == nil, url.password == nil,
-              ["media.rivian.com", "photos.plugshare.com", "cdn10.localdatacdn.com", "cdn8.localdatacdn.com"].contains(url.host ?? "") else { return nil }
+              ["media.rivian.com", "photos.plugshare.com", "cdn10.localdatacdn.com", "cdn8.localdatacdn.com",
+               "rivianspotter.com"].contains(url.host ?? "") else { return nil }
         return url
     }
     public var safeSourceURL: URL? {
