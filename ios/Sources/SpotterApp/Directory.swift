@@ -112,9 +112,8 @@ struct RootView: View {
         let path = Binding(get: { paths[tab] ?? NavigationPath() }, set: { paths[tab] = $0 })
         return NavigationStack(path: path) {
             content().routeDestinations().toolbar {
-                // Map has its own controls; the other tabs keep Settings (appearance, Base Camp,
-                // iCloud) one tap away, as the iPad sidebar does.
-                if tab != .map {
+                // Settings lives on Browse, next to the rest of the directory menu.
+                if tab == .browse {
                     ToolbarItem(placement: .settingsPlacement) {
                         Button { showSettings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings")
                     }

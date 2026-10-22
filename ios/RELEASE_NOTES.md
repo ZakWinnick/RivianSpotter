@@ -16,7 +16,7 @@ A field guide to Rivian, built to be browsed.
 
 **Always current.** New and coming-soon locations arrive from RivianSpotter.com on their own, with richer charging details: prices, time-of-use schedules, individual chargers, and reliability grades.
 
-**Your look, your call.** Choose Light, Dark, or System in Settings, now tidier and one tap away from the gear button.
+**Your look, your call.** Choose Light, Dark, or System in Settings, one tap away from the gear in Browse.
 
 ## Version 0.1
 
