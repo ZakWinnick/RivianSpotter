@@ -337,7 +337,9 @@ struct IconTile: View {
     var size: CGFloat = 24
     @ScaledMetric(relativeTo: .body) private var scale = 1.0
     var body: some View {
-        Image(systemName: symbol).font(.system(size: size * 0.55 * scale, weight: .semibold)).foregroundStyle(.white)
+        // Scale the symbol to fit the tile so wide glyphs (a tent, a car) never spill past its edges.
+        Image(systemName: symbol).resizable().scaledToFit().fontWeight(.semibold).foregroundStyle(.white)
+            .frame(width: size * 0.6 * scale, height: size * 0.6 * scale)
             .frame(width: size * scale, height: size * scale)
             .background(color.gradient, in: RoundedRectangle(cornerRadius: size * 0.27 * scale))
             .accessibilityHidden(true)

@@ -8,7 +8,7 @@ When you visit somewhere, check in. Your visits become a collection, with stats,
 
 The directory refreshes on its own from rivianspotter.com, so new and coming-soon locations show up without an app update. RivianSpotter shows only what Rivian and its sources publish. It doesn’t guess opening dates, invent history, or claim a site is open when the listing doesn’t say.
 
-Runs on iPhone and iPad (iOS 17 or later), in Light, Dark, or System appearance. Current version: **0.2.0**. See [release notes](RELEASE_NOTES.md).
+Runs on iPhone and iPad (iOS 17 or later), in Light, Dark, or System appearance. Current version: **0.2.0**. See [What’s New](RELEASE_NOTES.md).
 
 ## Open on an iPhone or iPad simulator
 
@@ -82,6 +82,8 @@ open 'ios/.build/RivianSpotter Preview.app'
 ```
 
 The standalone test runner executes the same persistence/catalog tests as XCTest, using small assertion adapters because Command Line Tools do not include XCTest. The desktop preview compiles the shared SwiftUI screens for macOS in a 440 × 820 content window with the same bottom navigation; that is not a substitute for iPhone simulator testing. Its journal is stored separately under `~/Library/Application Support/RivianSpotter-Preview/`. The preview script prefers an installed macOS 26.5 SDK because the macOS 27 Command Line Tools on this machine omit SwiftUI's new macro plugin. If Xcode is selected but its first-launch setup is unfinished, prefix the preview build command with `DEVELOPER_DIR=/Library/Developer/CommandLineTools` to use the existing Command Line Tools installation.
+
+Before each App Store or TestFlight release, update [What’s New](RELEASE_NOTES.md) for the people using the app; keep build-by-build test evidence in [VERIFICATION.md](VERIFICATION.md).
 
 Manual acceptance before each release: browse each category; search a place without a map pin; switch gallery/map; save and remove a future stop; record two visits to one place; relaunch and confirm persistence; edit and delete one visit; confirm the other remains; inspect an exported backup and shared receipt; test large text, VoiceOver, dark mode, airplane mode, and a narrow iPhone display.
 
