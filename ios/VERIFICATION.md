@@ -173,3 +173,10 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #47: the Base Camp row keeps "Base Camp" on one line and shows the chosen place in full on the line below (no truncation), in the iPad/macOS sidebar and the iPhone Browse list.
 - PR CI passed; iOS simulator and desktop preview builds succeeded; checked on the iPad Pro 11-inch simulator with a long Base Camp name.
 - Signed Release archive of `66f20a4` succeeded. Apple accepted 0.2.0 (13) at 21:53 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Mac Settings fix / build 14 — October 21, 2026
+
+- Merged PR #48: explicitly provide the shared store, location service, and sync status to sheets, fixing the missing environment object behind the Mac Settings crash. Includes the Base Camp row already merged through PR #47.
+- 26 standalone core checks passed; iOS simulator and desktop preview builds succeeded. PR validation and release-source GitHub checks passed.
+- Signed Release archive of `de5c64d` succeeded. Apple accepted 0.2.0 (14) at 22:08 Pacific. Processing completed; App Store Connect confirms the Internal group with one tester has access. The supplied two-item release notes were saved under What to Test.
+- Build ID: `0e815c68-1673-4445-82b6-450d0413c980`. Actual Settings behavior in the installed Designed for iPad Mac app remains unverified.
