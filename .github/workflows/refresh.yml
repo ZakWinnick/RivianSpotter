@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 100
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,7 +51,7 @@ jobs:
         # This run commits data/catalog-revision.json below, so it may record a new revision.
         env:
           CATALOG_REVISION_UPDATE: '1'
-        run: npm run build && npm test && npm audit --omit=dev
+        run: npm run build && npm test && node scripts/audit-dependencies.cjs
       - name: Save the validated data
         run: |
           git config user.name 'github-actions[bot]'
@@ -61,6 +62,11 @@ jobs:
             # A concurrent human push makes this fail safely; do not overwrite or rebase unseen code.
             git push origin HEAD:main
           fi
+      - name: Report sources kept from the last release
+        # The release still publishes; an open issue flags any fallback until a clean run closes it.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/report-refresh-warnings.cjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

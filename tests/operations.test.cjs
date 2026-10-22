@@ -153,7 +153,8 @@ test('CI blocks on tests, build, and production dependency audit; Pages uses dis
   const workflows = fs.readdirSync(path.join(root,'.github/workflows')).filter(f => /\.ya?ml$/.test(f)).map(f => read(`.github/workflows/${f}`)).join('\n');
   assert.match(workflows, /node --test tests\/\*\.test\.cjs/);
   assert.match(workflows, /npm run build/);
-  assert.match(workflows, /npm audit --omit=dev/);
+  assert.match(workflows, /node scripts\/audit-dependencies\.cjs/);
+  assert.match(fs.readFileSync(path.join(__dirname, '../scripts/audit-dependencies.cjs'), 'utf8'), /'audit', '--omit=dev'/);
   // Only optional Roamer retrieval may retain its previous snapshot. Release gates remain blocking.
   const optionalRoamer = 'id: roamer\n        continue-on-error: true\n        run: npm run refresh:roamer';
   assert.equal(workflows.split(optionalRoamer).length, 2);

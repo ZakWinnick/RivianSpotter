@@ -40,11 +40,17 @@ export async function fetchComingSoon({cacheDir,fetchImpl=fetch}={}){
  }
  throw Error('Explicit coming-soon layer not found; retaining previous inventory');
 }
-export function plannedRecords(rows,date,prior=[]){
+// Rebuild yesterday's announcement rows from the published inventory, so a coming-soon source
+// change keeps the announced cities (with their original verification dates) instead of failing.
+export function retainedComingSoonRows(prior){
+ return prior.filter(p=>p.planningSource==='rivian-coming-soon'&&p.status==='planned'&&p.listed!==false&&!p.promotion)
+  .map(p=>({city:p.city,state:p.state,latitude:p.lat,longitude:p.lng}));
+}
+export function plannedRecords(rows,date,prior=[],{retained=false}={}){
  return rows.map(p=>{
   const city=p.city.trim(),key=`${p.state}-${city.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-')}`;
   const sourceId='RIVIAN-PLANNED-'+key,digest=createHash('sha256').update(sourceId).digest('hex'),old=prior.find(x=>x.sourceId===sourceId);
-  return {id:old?.id??parseInt(digest.slice(0,12),16)+1000000,slug:old?.slug||`ran-coming-soon-${key.toLowerCase()}-${digest.slice(0,10)}`,name:`${city}, ${p.state}`,type:'RAN',network:'Rivian Adventure Network',sourceId,sourceKind:'charging-map',sourceUrl:SOURCE+'#map',planningSource:'rivian-coming-soon',address:null,displayAddress:null,city,state:p.state,country:['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'].includes(p.state)?'CA':'US',lat:p.latitude,lng:p.longitude,coordinatePrecision:'city',coordinateSource:SOURCE+'#map',chargerCount:null,maxKw:null,maxPowerLabel:null,reliabilityGrade:null,rivianOnly:null,capabilities:['charging'],services:[],status:'planned',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,lastVerified:date,firstSeen:old?.firstSeen||date};
+  return {id:old?.id??parseInt(digest.slice(0,12),16)+1000000,slug:old?.slug||`ran-coming-soon-${key.toLowerCase()}-${digest.slice(0,10)}`,name:`${city}, ${p.state}`,type:'RAN',network:'Rivian Adventure Network',sourceId,sourceKind:'charging-map',sourceUrl:SOURCE+'#map',planningSource:'rivian-coming-soon',address:null,displayAddress:null,city,state:p.state,country:['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'].includes(p.state)?'CA':'US',lat:p.latitude,lng:p.longitude,coordinatePrecision:'city',coordinateSource:SOURCE+'#map',chargerCount:null,maxKw:null,maxPowerLabel:null,reliabilityGrade:null,rivianOnly:null,capabilities:['charging'],services:[],status:'planned',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,lastVerified:retained&&old?.lastVerified||date,firstSeen:old?.firstSeen||date};
  });
 }
 const cityKey=p=>`${p.country}:${p.state}:${p.city.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}`;
@@ -53,7 +59,7 @@ function distanceKm(a,b){
  const rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLng=rad(b.lng-a.lng);
  return 12742*Math.asin(Math.min(1,Math.sqrt(Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2)));
 }
-export function mergePlanned(active,rows,date,prior=[],report={}){
+export function mergePlanned(active,rows,date,prior=[],report={},{retained: keepDates=false}={}){
  const oldBySource=new Map(prior.map(p=>[p.sourceId,p]));
  // Preserve established identities even if a source temporarily removes a station.
  active=active.map(p=>{
@@ -61,7 +67,7 @@ export function mergePlanned(active,rows,date,prior=[],report={}){
   return old?.promotion?{...p,id:old.id,slug:old.slug,firstSeen:old.firstSeen,legacyIds:old.legacyIds,legacySlugs:old.legacySlugs,promotion:old.promotion}:p;
  });
  const linked=new Set(prior.filter(p=>p.promotion).map(p=>p.promotion.plannedSourceId));
- const planned=plannedRecords(rows,date,prior).filter(p=>!linked.has(p.sourceId));
+ const planned=plannedRecords(rows,date,prior,{retained:keepDates}).filter(p=>!linked.has(p.sourceId));
  const announced=new Set(planned.map(p=>p.sourceId));
  const retired=prior.filter(p=>p.status==='planned'&&p.planningSource==='rivian-coming-soon'&&!announced.has(p.sourceId)&&!linked.has(p.sourceId));
  const promoted=new Set();report.promoted=[];report.unresolved=[];
