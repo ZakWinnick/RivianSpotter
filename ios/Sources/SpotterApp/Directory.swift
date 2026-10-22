@@ -151,13 +151,6 @@ private struct DirectoryRows: View {
                     count: places.filter { $0.browseTypes.contains(type) }.count)
             }
         }
-        Section("Site Feature") {
-            ForEach(GlossaryEntry.features(in: places), id: \.self) { feature in
-                let entry = GlossaryEntry.feature(feature)
-                row(.feature(feature), feature, entry.symbol, color: entry.color,
-                    count: places.filter { $0.siteFeatures.contains(feature) }.count)
-            }
-        }
         Section("Status") {
             // Current listings are the whole directory, so only the exceptions get a row.
             ForEach(PlaceStatusGroup.allCases.filter { $0 != .listed }) { status in

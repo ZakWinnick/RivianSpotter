@@ -23,7 +23,7 @@ Minimum deployment target: iOS 17. The universal target supports iPhone and iPad
 
 The app follows Facades, Michael Steeber's Apple Store field guide, using RivianSpotter's own directory. See [design reference](DESIGN_REFERENCE.md).
 
-- **iPhone:** four tabs: Locations, Map, Lists, and Browse. **iPad (700 points or wider):** a Facades-style sidebar with collections (All Locations, Lists, Visited, Saved), Browse (States & Provinces, Location Data, Map, Glossary), Location Type, Site Feature, Status, Base Camp, and Settings.
+- **iPhone:** four tabs: Locations, Map, Lists, and Browse. **iPad (700 points or wider):** a Facades-style sidebar with collections (All Locations, Lists, Visited, Saved), Browse (States & Provinces, Location Data, Map, Glossary), Location Type, Status, Base Camp, and Settings. Site features are reached from feature chips, the glossary, and filters.
 - **Galleries:** centered title, search, and a "…" menu with sort (Name, State, Nearest, or Recently Visited), layout (Grid, Thumbnails, List), and a Facades-style filter sheet. Photo cards show the type, name, and city or street. Category photos are labeled. Visited places carry an orange seal. Type, feature, and status pages add a "This (n) | Other (n)" switch.
 - **Place:** photo, name, type and visit pills, site-feature chips (each opens a glossary sheet), then an Address card with a map sheet (Open in Maps, Copy Address), Directions/Call/Book Demo, hours, a Record card (published listing status and the date the listing was checked), charging, pricing, chargers, related places, and your visits. Website and Share close the page.
 - **Lists:** places visited and the share of all locations, then Visit Receipts, Visited, Saved, Base Camp, and visits by type.
