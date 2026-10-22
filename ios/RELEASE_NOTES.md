@@ -39,7 +39,7 @@ RivianSpotter now feels like a proper field guide, with a layout inspired by Fac
 
 *October 20, 2026*
 
-The first beta. RivianSpotter arrives on iPhone and iPad.
+RivianSpotter arrives on iPhone and iPad.
 
 - Browse every Rivian Adventure Network site, Waypoint, Space, Service Center, Demo Center, and Outpost, with photos where we have them.
 - Check in to record a visit, add a private note, and look back at everywhere you’ve been.
