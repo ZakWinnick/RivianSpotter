@@ -124,7 +124,7 @@
       )}</nav></header>`;
   }
   function footer() {
-    return `<footer class="site-footer"><span>Independent. Community maintained.</span><span><a href="/changelog.html">Changelog</a><a href="/contact.html">Report an update</a><a href="/about.html#sources">Sources & privacy</a></span></footer>`;
+    return `<footer class="site-footer"><span>Independent. Community maintained.</span><span><a href="/changelog.html">Changelog</a><a href="/contact.html">Report an update</a><a href="/about.html#sources">Sources</a><a href="/privacy.html">Privacy</a></span></footer>`;
   }
   function mount() {
     const h = document.querySelector("[data-site-header]");

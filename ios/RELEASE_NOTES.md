@@ -1,5 +1,19 @@
 # What’s New in RivianSpotter
 
+## Version 1.0
+
+RivianSpotter 1.0 is here: a field guide to every Rivian place, and a private record of the ones you’ve been to.
+
+**The whole map, in your pocket.** Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada, each with its address, hours, charging details, prices, and directions.
+
+**Built to be browsed.** Photo cards in a grid, thumbnails, or a list. Sort by name, state, or what’s nearest, filter down to exactly the stop you want, or explore by state, location type, charts, and the glossary.
+
+**Your collection.** Check in when you visit, keep private notes, and watch your Visited count grow. Every visit becomes a receipt you can save or share, and Base Camp marks the place you call home.
+
+**Private by design.** No accounts, no ads, no tracking. Your visits sync only through your own iCloud. Read the details at rivianspotter.com/privacy.html.
+
+**Everywhere you are.** iPhone, iPad, and Mac, in Light, Dark, or System appearance, with new and coming-soon locations arriving on their own.
+
 ## Version 0.2
 
 A field guide to Rivian, built to be browsed.

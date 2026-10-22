@@ -40,6 +40,7 @@ private struct PlaceDetailContent: View {
     let place: Place
     @EnvironmentObject private var store: SpotterStore
     @Environment(\.colorScheme) private var scheme
+    @Environment(\.dynamicTypeSize) private var typeSize
     @State private var sheet: DetailSheet?
     @State private var actionError: String?
     private var palette: GuidePalette { .init(scheme: scheme) }
@@ -77,7 +78,7 @@ private struct PlaceDetailContent: View {
                 }
                 nearbyCard
                 visitsCard
-                HStack(spacing: 10) {
+                buttonRow {
                     if let url = place.websiteURL {
                         Link(destination: url) { Label("Website", systemImage: "link").cardButton() }
                     }
@@ -121,6 +122,10 @@ private struct PlaceDetailContent: View {
         }
         .actionError($actionError)
     }
+    /// Side by side normally; stacked at accessibility text sizes so labels stay readable.
+    private var buttonRow: AnyLayout {
+        typeSize.isAccessibilitySize ? AnyLayout(VStackLayout(spacing: 10)) : AnyLayout(HStackLayout(spacing: 10))
+    }
     private func setBaseCamp(_ value: Place?) {
         if !store.perform({ try $0.setBaseCamp(value) }) { actionError = store.takeError() }
     }
@@ -163,7 +168,7 @@ private struct PlaceDetailContent: View {
     @ViewBuilder private var actions: some View {
         let directions = place.directionsURL
         if directions != nil || place.phoneURL != nil || place.safeBookingURL != nil {
-            HStack(spacing: 10) {
+            buttonRow {
                 if let directions {
                     Link(destination: directions) { Label("Directions", systemImage: "arrow.triangle.turn.up.right.diamond.fill").cardButton(prominent: true) }
                 }

@@ -147,6 +147,42 @@ function buildPages(dist, list, summary = {}) {
     }),
   );
   write(
+    "/privacy.html",
+    shell({
+      title: "Privacy",
+      description:
+        "How the Rivian Spotter website and iOS app handle your location, saved places, visits, and data.",
+      url: "/privacy.html",
+      content:
+        header(
+          "Privacy policy",
+          "Your trips are yours.",
+          "Rivian Spotter has no accounts, no advertising, and no tracking across apps or sites. Here is exactly what the website and the iOS app do with your information.",
+        ) +
+        section(
+          "The iOS app.",
+          "<p><strong>Visits, notes, saved places, and Base Camp</strong> are stored on your device. When you’re signed in to iCloud, they also sync through your own private iCloud database, which only you can access. Rivian Spotter never receives or sees them. Exporting your journal creates a file you choose where to save.</p>" +
+            "<p><strong>Location.</strong> The app asks for your location only when you sort by Nearest or tap Near me on the map. It takes a single reading to sort places and center the map. Your location is not saved, synced, or sent to Rivian Spotter.</p>" +
+            "<p><strong>Network requests.</strong> The app downloads the public location directory from rivianspotter.com and loads location photos from their hosts (Rivian, PlugShare, and Loc8NearMe). Maps and directions use Apple Maps. These requests include standard information such as your IP address, as any internet request does.</p>" +
+            "<p><strong>Visit receipts</strong> show the place and date, never your notes, and are shared only when you choose to share them.</p>" +
+            "<p>The app contains no analytics, advertising, or tracking code.</p>",
+        ) +
+        section(
+          "The website.",
+          "<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used in your browser to sort places and are not saved by Rivian Spotter.</p>" +
+            '<p>Maps are provided by Mapbox and its data partners, whose <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We use Tinylytics for privacy-friendly site-usage counts. A service worker stores public pages and location data on your device for faster repeat visits and offline access.</p>' +
+            "<p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>",
+        ) +
+        section(
+          "Your choices.",
+          "<p>You can delete visits, saved places, or Base Camp in the app at any time; deleting the app removes its data from your device, and you can remove its iCloud data in your device’s iCloud settings. Location access can be changed in Settings.</p>" +
+            '<p>Questions? Email <a href="mailto:support@rivianspotter.com">support@rivianspotter.com</a>.</p>' +
+            "<p>Rivian Spotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive.</p>" +
+            '<p class="muted">Effective October 21, 2026.</p>',
+        ),
+    }),
+  );
+  write(
     "/contact.html",
     shell({
       title: "Report an update",
