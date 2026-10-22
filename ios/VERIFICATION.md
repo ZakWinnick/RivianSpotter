@@ -149,3 +149,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Before merge: 26 XCTest and standalone core cases passed; iOS simulator and desktop preview builds succeeded. On the iPhone 17 Pro simulator, Dark → System with Settings open switched the sheet to light immediately.
 - Signed Release archive (build 9) succeeded. Apple accepted 0.2.0 (9) at 18:22 Pacific ("Upload succeeded"); processing was pending when recorded.
 - Not verified: iPad layout for these changes, two-device Base Camp sync, VoiceOver.
+
+## Settings rewrite / build 10 — October 21, 2026
+
+- Merged PR #44: Settings as a standard grouped list (inline Light/Dark/System with its own footer, one setting per section), icon tiles that scale symbols to fit, and the public What's New rewrite.
+- Checked on the iPhone 17 Pro simulator in light and dark; `test-core.sh` (26) passed; iOS simulator and desktop preview builds succeeded.
+- Signed Release archive of `87e08b2` succeeded. Apple accepted 0.2.0 (10) at 18:37 Pacific ("Upload succeeded"); processing was pending when recorded.
