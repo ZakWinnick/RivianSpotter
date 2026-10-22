@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A30000000000000000000002 /* PlacePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30000000000000000000001; };
+		A40000000000000000000002 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40000000000000000000001; };
+		A50000000000000000000002 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50000000000000000000001; };
+		A60000000000000000000002 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60000000000000000000001; };
 		A20000000000000000000002 /* CatalogUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001; };
 		3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */; };
 		5910984348D613FFD1FC23BE /* Sources/SpotterApp/SpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		A30000000000000000000001 /* PlacePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/PlacePresentation.swift; sourceTree = "<group>"; };
+		A40000000000000000000001 /* Directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/Directory.swift; sourceTree = "<group>"; };
+		A50000000000000000000001 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/PlaceDetailView.swift; sourceTree = "<group>"; };
+		A60000000000000000000001 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/Collections.swift; sourceTree = "<group>"; };
 		A20000000000000000000001 /* CatalogUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/CatalogUpdates.swift; sourceTree = "<group>"; };
 		1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/DeviceServices.swift; sourceTree = "<group>"; };
 		38A007151ABE87CC01A5B6E9 /* RivianSpotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = RivianSpotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +57,9 @@
 			children = (
 				A20000000000000000000001 /* CatalogUpdates.swift */,
 				A30000000000000000000001 /* PlacePresentation.swift */,
+				A40000000000000000000001 /* Directory.swift */,
+				A50000000000000000000001 /* PlaceDetailView.swift */,
+				A60000000000000000000001 /* Collections.swift */,
 				A10000000000000000000001 /* Assets.xcassets */,
 				A10000000000000000000003 /* PrivacyInfo.xcprivacy */,
 				592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */,
@@ -139,6 +148,9 @@
 			files = (
 				A20000000000000000000002 /* CatalogUpdates.swift in Sources */,
 				A30000000000000000000002 /* PlacePresentation.swift in Sources */,
+				A40000000000000000000002 /* Directory.swift in Sources */,
+				A50000000000000000000002 /* PlaceDetailView.swift in Sources */,
+				A60000000000000000000002 /* Collections.swift in Sources */,
 				720ED399626A152C0B8010C6 /* Sources/SpotterApp/PlaceGallery.swift in Sources */,
 				B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */,
 				3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */,

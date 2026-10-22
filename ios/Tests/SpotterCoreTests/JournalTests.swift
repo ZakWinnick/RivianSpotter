@@ -109,6 +109,39 @@ final class JournalTests: XCTestCase {
         XCTAssertTrue(try self.repository().journal.visits.isEmpty)
         XCTAssertTrue(try self.repository().journal.savedPlaces.isEmpty)
     }
+    func testBaseCampPersistsSyncsAndClears() throws {
+        let repository = try repository(), home = try place(), other = try place(.space)
+        try repository.setBaseCamp(home)
+        XCTAssertEqual(try self.repository().journal.baseCamp, home)
+        // Journals written before Base Camp existed still decode.
+        var legacy = try XCTUnwrap(JSONSerialization.jsonObject(with: repository.export()) as? [String: Any])
+        legacy.removeValue(forKey: "baseCamp")
+        XCTAssertTrue(try JSONDecoder().decode(Journal.self, from: JSONSerialization.data(withJSONObject: legacy)).baseCamp == nil)
+
+        let storage = try cloudStore(), cloud = try JournalRepository(storage: storage)
+        _ = try cloud.checkIn(at: home, type: .ran, date: .distantPast, note: "")
+        try cloud.setBaseCamp(home)
+        let stale = try storage.load()
+        var otherDevice = stale
+        otherDevice.baseCamp = other
+        try storage.save(otherDevice, replacing: stale)
+        XCTAssertEqual(try cloudStore().load().baseCamp, other)
+        XCTAssertEqual(try storage.load().visits.count, 1)
+        XCTAssertEqual(storage.unreadableRecordCount, 0)
+        try JournalRepository(storage: storage).setBaseCamp(nil)
+        XCTAssertTrue(try cloudStore().load().baseCamp == nil)
+    }
+    func testStatusGroupsAndSiteFeaturesComeFromPublishedData() throws {
+        let catalog = try Catalog.bundled()
+        for place in catalog.places {
+            XCTAssertEqual(Set(place.siteFeatures).count, place.siteFeatures.count)
+            let tags = Set((place.information ?? []).flatMap { $0.tags ?? [] })
+            XCTAssertEqual(Set(place.siteFeatures), tags)
+            if place.status == "planned" && place.listed { XCTAssertEqual(place.statusGroup, .comingSoon) }
+            if place.status == "unknown" && place.listed { XCTAssertEqual(place.statusGroup, .unconfirmed) }
+        }
+        XCTAssertTrue(catalog.places.contains { !$0.siteFeatures.isEmpty })
+    }
     func testSearchUsesAllTermsAndDoesNotRequireCoordinates() throws {
         let catalog = try Catalog.bundled()
         let place = try XCTUnwrap(catalog.places.first { !$0.hasPreciseCoordinates && !$0.city.isEmpty })

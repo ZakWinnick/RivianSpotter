@@ -39,6 +39,8 @@ struct StandaloneTests {
             ("Write failures cannot create phantom visits", tests.testSaveFailureDoesNotCreatePhantomVisit),
             ("Corrupt journals remain untouched", tests.testCorruptFileIsPreserved),
             ("Edit, delete, bookmark, and export round trip", tests.testEditingDeletionBookmarksAndExportRoundTrip),
+            ("Base Camp persists, syncs as one item, and clears", tests.testBaseCampPersistsSyncsAndClears),
+            ("Status groups and site features use published data", tests.testStatusGroupsAndSiteFeaturesComeFromPublishedData),
             ("Search includes places without map pins", tests.testSearchUsesAllTermsAndDoesNotRequireCoordinates),
             ("Cloud local store migrates and reopens offline", tests.testCloudStoreOfflineRoundTripAndMigration),
             ("Independent item edits preserve other device changes", tests.testCloudChangesMergeWithoutReplacingOtherItems),

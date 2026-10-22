@@ -117,6 +117,27 @@ final class SpotterStore: ObservableObject {
     func visits(to place: Place) -> [Visit] {
         visits.filter { $0.place.id == place.id || place.aliases.contains($0.place.id) }
     }
+    /// A place by ID or alias: the current directory first, then the copy kept with a visit,
+    /// saved place, or Base Camp so journal entries still open after a listing is removed.
+    func place(id: String) -> Place? {
+        if let place = places.first(where: { $0.id == id || $0.aliases.contains(id) }) { return place }
+        let kept = journal.visits.map(\.place) + journal.savedPlaces + [journal.baseCamp].compactMap { $0 }
+        return kept.first { $0.id == id || $0.aliases.contains(id) }
+    }
+    var baseCamp: Place? { journal.baseCamp.map(currentPlace) }
+    func isBaseCamp(_ place: Place) -> Bool {
+        guard let id = journal.baseCamp?.id else { return false }
+        return place.id == id || place.aliases.contains(id)
+    }
+    /// Directory places with at least one recorded visit, most recent visit first.
+    var visitedPlaces: [Place] {
+        var seen = Set<String>(), result: [Place] = []
+        for visit in visits {
+            let place = currentPlace(visit.place)
+            if seen.insert(place.id).inserted { result.append(place) }
+        }
+        return result
+    }
     @discardableResult
     func perform(_ action: (JournalRepository) throws -> Void) -> Bool {
         guard let repository else { error = JournalError.unreadable.localizedDescription; return false }
@@ -145,6 +166,8 @@ struct GuidePalette {
     var ink: Color { scheme == .dark ? Color(white: 0.95) : Color(white: 0.10) }
     var secondary: Color { scheme == .dark ? Color(white: 0.65) : Color(white: 0.43) }
     var line: Color { ink.opacity(0.10) }
+    /// Text on an accent fill: the dark-mode accent is light, so it takes dark text, as on the website.
+    var onAccent: Color { scheme == .dark ? Color(hex: "#17231b") : .white }
     var accent: Color { scheme == .dark ? .guide(0.80, 0.07, 150) : .guide(0.38, 0.055, 155) }
     static let charcoal = Color(white: 0.10)
     static let forest = Color(hex: "#244e3c")
@@ -154,6 +177,8 @@ struct GuidePalette {
 }
 
 extension Color {
+    /// Facades marks visits in orange; it is used only for the person's own visits.
+    static let visited = Color(red: 0.96, green: 0.62, blue: 0.04)
     // OKLCH design tokens converted to sRGB for SwiftUI.
     static func guide(_ l: Double, _ c: Double, _ h: Double) -> Color {
         let a = c * cos(h * .pi / 180), b = c * sin(h * .pi / 180)
@@ -169,7 +194,24 @@ extension Color {
     }
 }
 
-private extension Place {
+extension Place {
+    /// The small line above a card's name, where Facades shows the store number.
+    var cardCaption: String {
+        let types = browseTypes.map { $0 == .ran ? "RAN" : $0.rawValue }.joined(separator: " + ")
+        return statusGroup == .comingSoon ? "\(types) · Coming Soon" : types
+    }
+    var cardLocality: String { [city, region].filter { !$0.isEmpty }.joined(separator: ", ") }
+    /// The detail line under a card's name. Many charging sites are named for their city, so
+    /// those show the street address instead of repeating the name.
+    var cardSubtitle: String {
+        guard guideName.localizedCaseInsensitiveContains(city), let address, !address.isEmpty else { return cardLocality }
+        return address
+    }
+    var postalAddress: String {
+        let country = country == "US" ? "United States" : country == "CA" ? "Canada" : country
+        return [address, "\(city), \(region)\(postalCode.map { " " + $0 } ?? "")", country]
+            .compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: "\n")
+    }
     var guideTitle: String {
         let prefix = "\(city), \(region)"
         guard !city.isEmpty, guideName.hasPrefix(prefix) else { return guideName }
@@ -219,13 +261,6 @@ struct RivianSpotterApp: App {
     }
 }
 
-private enum GuideTab: String, CaseIterable {
-    case catalog = "Map", explore = "Browse", saved = "Saved", journal = "Visited"
-    var symbol: String {
-        switch self { case .catalog: "map"; case .explore: "list.bullet.rectangle"; case .saved: "bookmark"; case .journal: "checkmark.seal" }
-    }
-}
-
 private struct SidebarVisibleKey: EnvironmentKey { static let defaultValue = false }
 extension EnvironmentValues {
     /// True in the wide layout, whose sidebar already offers Settings and the category list.
@@ -235,224 +270,7 @@ extension EnvironmentValues {
     }
 }
 
-struct RootView: View {
-    @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
-    @Environment(\.scenePhase) private var scenePhase
-    @State private var tab = GuideTab.explore
-    @State private var mapRequest = 0
-    @State private var selectedCategory: PlaceType?
-    @State private var selectedPlace: Place?
-    @State private var placeHistory: [Place] = []
-    @State private var showSettings = false
-    private var palette: GuidePalette { .init(scheme: scheme) }
-    var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                if geometry.size.width >= 700 { sidebar.frame(width: 245) }
-                ZStack {
-                    browsing(wide: geometry.size.width >= 700).opacity(selectedPlace == nil ? 1 : 0)
-                        .allowsHitTesting(selectedPlace == nil).accessibilityHidden(selectedPlace != nil)
-                    if let place = selectedPlace {
-                        PlaceDetail(place: store.currentPlace(place), back: { selectedPlace = placeHistory.popLast() }, open: { next in
-                            placeHistory.append(place); selectedPlace = next
-                        }).id(place.id).background(palette.paper)
-                            .edgeSwipeBack { selectedPlace = placeHistory.popLast() }
-                    }
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .environment(\.sidebarVisible, geometry.size.width >= 700)
-            }
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                if geometry.size.width < 700 {
-                    HStack(spacing: 0) {
-                        ForEach(GuideTab.allCases, id: \.self) { item in
-                            Button { select(item) } label: {
-                                VStack(spacing: 4) {
-                                    Image(systemName: item.symbol).font(.system(size: 21))
-                                    Text(item.rawValue).font(.system(size: 10, weight: .medium))
-                                }.foregroundStyle(tab == item ? palette.accent : palette.secondary)
-                                    .frame(maxWidth: .infinity, minHeight: 52).contentShape(Rectangle())
-                            }.buttonStyle(.plain).accessibilityAddTraits(tab == item ? .isSelected : []).largeContentViewerIfAvailable()
-                        }
-                    }.padding(.horizontal, 12).background(.regularMaterial)
-                        .overlay(alignment: .top) { Divider() }
-                }
-            }
-        }
-        // Keep the tab bar behind the keyboard, as a system tab bar does, instead of riding above it.
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
-        .sheet(isPresented: $showSettings) { SettingsView() }
-        .task { await store.refreshCatalog() }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .active {
-                store.refresh(); store.location.refreshAuthorization(); store.sync.refreshAccount()
-                Task { await store.refreshCatalog() }
-            }
-        }
-        .alert("Couldn’t complete that", isPresented: Binding(get: { store.error != nil }, set: { if !$0 { store.error = nil } })) {
-            Button("OK") { store.error = nil }
-        } message: { Text(store.error ?? "") }
-    }
-    /// The sidebar lists every category, so the wide layout skips the Browse page that repeats them.
-    private func shownTab(wide: Bool) -> GuideTab { wide && tab == .explore ? .catalog : tab }
-    @ViewBuilder private func browsing(wide: Bool) -> some View {
-        if let kind = selectedCategory {
-            CategoryBrowseView(kind: kind, open: { selectedPlace = $0 }, back: { selectedCategory = nil })
-                .edgeSwipeBack(selectedPlace == nil ? { selectedCategory = nil } : nil)
-        } else {
-            switch shownTab(wide: wide) {
-            case .catalog: CategoryBrowseView(kind: nil, open: { selectedPlace = $0 }, back: nil, mapRequest: mapRequest)
-            case .explore: ExploreView(open: { selectedPlace = $0 }, choose: { selectedCategory = $0 })
-            case .saved: SavedView(open: { selectedPlace = $0 }, explore: { select(.catalog) })
-            case .journal: JournalView(explore: { select(.catalog) })
-            }
-        }
-    }
-    private func select(_ item: GuideTab) {
-        if item == .catalog { mapRequest += 1 }
-        selectedPlace = nil; placeHistory = []; selectedCategory = nil; tab = item
-    }
-    private var sidebar: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("RivianSpotter").font(.headline)
-                Spacer()
-                Button { showSettings = true } label: { Image(systemName: "gearshape") }
-                    .buttonStyle(.plain).accessibilityLabel("Settings")
-            }.padding(18)
-            List {
-                Section("\(store.places.count) Locations") {
-                    ForEach(GuideTab.allCases.filter { $0 != .explore }, id: \.self) { item in
-                        Button { select(item) } label: { Label(item.rawValue, systemImage: item.symbol) }
-                            .buttonStyle(.plain)
-                            .listRowBackground(shownTab(wide: true) == item && selectedCategory == nil ? palette.accent.opacity(0.18) : .clear)
-                    }
-                }
-                Section("Charging") { sidebarCategory(.ran); sidebarCategory(.waypoint) }
-                Section("Rivian Places") {
-                    sidebarCategory(.space); sidebarCategory(.demo); sidebarCategory(.service); sidebarCategory(.outpost)
-                }
-            }.listStyle(.sidebar).scrollContentBackground(.hidden)
-        }.background(palette.surface.opacity(0.35)).overlay(alignment: .trailing) { Divider() }
-    }
-    private func sidebarCategory(_ kind: PlaceType) -> some View {
-        Button { selectedPlace = nil; placeHistory = []; selectedCategory = kind; tab = .explore } label: {
-            Label {
-                Text(kind.browseTitle)
-            } icon: {
-                Image(systemName: kind.symbol).foregroundStyle(kind.browseColor(in: scheme))
-            }
-        }.buttonStyle(.plain).listRowBackground(selectedCategory == kind ? palette.accent.opacity(0.18) : .clear)
-    }
-}
-
-private struct GuideHeader: View {
-    let title: String
-    let subtitle: String
-    @Environment(\.colorScheme) private var scheme
-    @Environment(\.sidebarVisible) private var sidebarVisible
-    @State private var showSettings = false
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Text(title).font(.largeTitle.bold())
-                Spacer()
-                if !sidebarVisible {
-                    Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
-                        .buttonStyle(.plain).accessibilityLabel("Settings")
-                }
-            }
-            Text(subtitle).font(.subheadline).foregroundStyle(.secondary)
-        }.sheet(isPresented: $showSettings) { SettingsView() }
-    }
-}
-
-private struct SettingsView: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var scheme
-    @EnvironmentObject private var sync: CloudSyncStatus
-    @EnvironmentObject private var store: SpotterStore
-    @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
-    private var palette: GuidePalette { .init(scheme: scheme) }
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            SheetHeader(title: "Settings", close: { dismiss() }).padding(.horizontal, 24).padding(.top, 12)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
-                    VStack(alignment: .leading, spacing: 14) {
-                        Text("Appearance").guideFont(22, .bold)
-                        Picker("Appearance", selection: $appearance) {
-                            ForEach(AppAppearance.allCases) { Text($0.rawValue).tag($0.rawValue) }
-                        }.pickerStyle(.segmented)
-                        Text("System follows your device’s Light or Dark appearance.")
-                            .guideFont(14).foregroundStyle(palette.secondary)
-                    }
-                    Divider()
-                    VStack(alignment: .leading, spacing: 12) {
-                        Label("Location Updates", systemImage: "arrow.triangle.2.circlepath").guideFont(20, .bold)
-                        if let date = store.catalogCheckedAt {
-                            Text("Last checked \(date.formatted(date: .abbreviated, time: .shortened))")
-                                .guideFont(14).foregroundStyle(palette.secondary)
-                        } else {
-                            Text("Using the location directory included with this app.").guideFont(14).foregroundStyle(palette.secondary)
-                        }
-                        Text("The directory updates from RivianSpotter when you open the app. Saved places show the latest details, and your visits and notes stay private.")
-                            .guideFont(14).foregroundStyle(palette.secondary)
-                        if let notice = store.catalogNotice { Text(notice).guideFont(14).foregroundStyle(palette.secondary) }
-                        Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
-                            Task { await store.refreshCatalog(force: true) }
-                        }.buttonStyle(.plain).guideFont(15, .semibold).foregroundStyle(palette.accent)
-                            .frame(minHeight: 44).disabled(store.updatingCatalog)
-                    }
-                    Divider()
-                    VStack(alignment: .leading, spacing: 12) {
-                        Label("iCloud & Storage", systemImage: "icloud").guideFont(20, .bold)
-                        Text(sync.title).guideFont(15, .semibold)
-                        Text(sync.detail).guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
-                        if let notice = store.storageNotice {
-                            Label(notice, systemImage: "exclamationmark.triangle")
-                                .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
-                        }
-                        Text("Visits, notes, and saved places are private. Nothing is published when you check in.")
-                            .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
-                        ExportJournalButton()
-                    }
-                    Divider()
-                    VStack(alignment: .leading, spacing: 12) {
-                        Label("Location", systemImage: "location").guideFont(20, .bold)
-                        Text("Tap Near me to find nearby places. Your device location is not saved or synced with your journal. You can record a visit without location access.")
-                            .guideFont(14).foregroundStyle(palette.secondary).lineSpacing(4)
-                        #if os(iOS)
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            Link("Location Settings", destination: url).guideFont(15, .semibold)
-                        }
-                        #endif
-                    }
-                }.padding(24)
-            }
-        }.background(palette.paper).foregroundStyle(palette.ink).tint(palette.accent)
-            .preferredColorScheme((AppAppearance(rawValue: appearance) ?? .system).colorScheme)
-        #if os(macOS)
-            .frame(width: 420, height: 650)
-        #endif
-    }
-}
-
-private struct SectionLabel: View {
-    let title: String
-    var detail: String = ""
-    @Environment(\.colorScheme) private var scheme
-    var body: some View {
-        HStack {
-            Text(title).guideFont(17, .semibold)
-            Spacer()
-            Text(detail).guideFont(15).foregroundStyle(GuidePalette(scheme: scheme).secondary)
-        }
-    }
-}
-
-private struct PrimaryAction: ButtonStyle {
+struct PrimaryAction: ButtonStyle {
     @Environment(\.isEnabled) private var enabled
     func makeBody(configuration: Configuration) -> some View {
         configuration.label.guideFont(17, .semibold)
@@ -460,10 +278,6 @@ private struct PrimaryAction: ButtonStyle {
             .background(GuidePalette.forest, in: RoundedRectangle(cornerRadius: 12))
             .opacity(enabled ? (configuration.isPressed ? 0.75 : 1) : 0.4)
     }
-}
-
-private enum ExploreMode: String, CaseIterable {
-    case all = "All Locations", charging = "Charging", places = "Rivian Places"
 }
 
 extension PlaceType {
@@ -498,55 +312,10 @@ extension PlaceType {
     }
 }
 
-struct ExploreView: View {
-    let open: (Place) -> Void
-    let choose: (PlaceType) -> Void
-    @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
-    @State private var showSettings = false
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text("Browse").font(.largeTitle.bold())
-                Spacer()
-                Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 44, height: 44) }
-                    .buttonStyle(.plain).accessibilityLabel("Settings")
-            }.padding(.horizontal, 20).padding(.top, 12).padding(.bottom, 8)
-            List {
-                Section("Charging") { categoryRow(.ran); categoryRow(.waypoint) }
-                Section("Rivian Places") { categoryRow(.space); categoryRow(.demo); categoryRow(.service); categoryRow(.outpost) }
-                if let notice = store.catalogBanner {
-                    Section { Text(notice).font(.footnote).foregroundStyle(.secondary) }
-                }
-            }.scrollContentBackground(.hidden)
-                .refreshable { await store.refreshCatalog(force: true) }
-            #if os(iOS)
-            .listStyle(.insetGrouped)
-            #else
-            .listStyle(.inset)
-            #endif
-        }.sheet(isPresented: $showSettings) { SettingsView() }
-    }
-    private func categoryRow(_ kind: PlaceType) -> some View {
-        Button { choose(kind) } label: {
-            HStack(spacing: 12) {
-                Image(systemName: kind.symbol).frame(width: 27, height: 27)
-                    .foregroundStyle(kind.browseColor(in: scheme))
-                    .background(kind.browseColor(in: scheme).opacity(0.10), in: RoundedRectangle(cornerRadius: 6))
-                Text(kind.browseTitle).guideFont(16)
-                Spacer()
-                Text("\(store.places.filter { $0.browseTypes.contains(kind) }.count)").foregroundStyle(.secondary)
-                Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold)).foregroundStyle(.tertiary)
-            }.padding(.vertical, 5).contentShape(Rectangle())
-        }.buttonStyle(.plain)
-    }
-}
-
-private struct CategoryBrowseView: View {
+struct CategoryBrowseView: View {
     let kind: PlaceType?
     let open: (Place) -> Void
     let back: (() -> Void)?
-    @Environment(\.sidebarVisible) private var sidebarVisible
     @EnvironmentObject private var store: SpotterStore
     @EnvironmentObject private var location: LocationService
     @Environment(\.colorScheme) private var scheme
@@ -558,7 +327,6 @@ private struct CategoryBrowseView: View {
     @State private var filters = PlaceFilter()
     @State private var showFilters = false
     @State private var nearby = false
-    @State private var showSettings = false
     @ScaledMetric(relativeTo: .body) private var cardWidth = 160.0
     private var palette: GuidePalette { .init(scheme: scheme) }
     init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?, mapRequest: Int = 0) {
@@ -607,10 +375,6 @@ private struct CategoryBrowseView: View {
                     } label: {
                         Image(systemName: showMap ? (kind == nil ? "list.bullet" : "square.grid.2x2") : "map").frame(width: 44, height: 44)
                     }.buttonStyle(.plain).accessibilityLabel(showMap ? (kind == nil ? "Show list" : "Show gallery") : "Show map")
-                    if kind == nil && !sidebarVisible {
-                        Button { showSettings = true } label: { Image(systemName: "gearshape").frame(width: 36, height: 44) }
-                            .buttonStyle(.plain).accessibilityLabel("Settings")
-                    }
                 }
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass").foregroundStyle(palette.secondary)
@@ -698,9 +462,9 @@ private struct CategoryBrowseView: View {
                     } else {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: cardWidth), spacing: 7)], spacing: 7) {
                             ForEach(visiblePlaces) { place in
-                                PlaceBrowseCard(place: place, title: place.guideName,
-                                                distance: nearby ? location.distanceLabel(to: place) : nil,
-                                                visited: !store.visits(to: place).isEmpty, open: { open(place) })
+                                Button { open(place) } label: {
+                                    PlaceCard(place: place, subtitle: nearby ? location.distanceLabel(to: place) : nil)
+                                }.buttonStyle(.plain)
                             }
                         }.padding(.horizontal, 16).padding(.bottom, 22)
                     }
@@ -708,7 +472,6 @@ private struct CategoryBrowseView: View {
                     .refreshable { await store.refreshCatalog(force: true) }
             }
         }.onChange(of: mapRequest) { _, _ in returnToMap() }
-            .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showFilters) { filterSheet }
     }
     private var filterSheet: some View {
@@ -857,182 +620,7 @@ struct PlacesMap: View {
     }
 }
 
-struct PlaceDetail: View {
-    let place: Place
-    let back: () -> Void
-    let open: (Place) -> Void
-    @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
-    @State private var showCheckIn = false
-    @State private var selectedVisit: Visit?
-    @State private var actionError: String?
-    private var palette: GuidePalette { .init(scheme: scheme) }
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Button(action: back) { Image(systemName: "chevron.left").frame(width: 44, height: 44) }
-                    .buttonStyle(.plain).accessibilityLabel("Back")
-                Spacer()
-                Text("Location Details").guideFont(17, .semibold).foregroundStyle(palette.ink)
-                    .lineLimit(1).minimumScaleFactor(0.6)
-                Spacer()
-                Button {
-                    if !store.perform({ try $0.toggleSaved(place) }) { actionError = store.takeError() }
-                } label: {
-                    Image(systemName: store.isSaved(place) ? "bookmark.fill" : "bookmark").font(.system(size: 20))
-                        .frame(width: 44, height: 44)
-                }.buttonStyle(.plain).disabled(!store.ready)
-                    .accessibilityLabel(store.isSaved(place) ? "Remove from Saved" : "Save location")
-            }.foregroundStyle(palette.accent).padding(.horizontal, 6)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
-                    PlaceLabels(place: place)
-                    HStack(alignment: .top, spacing: 16) {
-                        Text(place.name).guideFont(28, .bold).fixedSize(horizontal: false, vertical: true)
-                        Spacer(minLength: 0)
-                        if let grade = place.reliability, place.status != "planned" { ReliabilityBadge(value: grade) }
-                    }.padding(.top, 6)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(place.address ?? "Street address not published")
-                        Text("\(place.city), \(place.region)\(place.postalCode.map { " " + $0 } ?? "") · \(place.country == "US" ? "United States" : place.country == "CA" ? "Canada" : place.country)")
-                    }.font(.subheadline).foregroundStyle(palette.secondary).textSelection(.enabled)
-                    if let checked = place.checkedOn {
-                        Text("Updated from Rivian · \(checked)").font(.caption).foregroundStyle(palette.secondary).padding(.top, 4)
-                    }
-                    TagFlow(spacing: 10) {
-                        if let url = place.directionsURL {
-                            Link(destination: url) { Label("Directions", systemImage: "arrow.up.right").detailAction(primary: true) }
-                        }
-                        if let url = place.safeBookingURL { DemoBookingButton(url: url) }
-                        if let url = place.phoneURL {
-                            Link(destination: url) { Label("Call", systemImage: "phone").detailAction() }
-                        }
-                        Button { showCheckIn = true } label: {
-                            Label(store.visits(to: place).isEmpty ? "Add Visit" : "Visited", systemImage: "checkmark.seal").detailAction()
-                        }.buttonStyle(.plain).disabled(!store.ready)
-                    }.padding(.vertical, 8)
-                    PlaceDetailPhoto(place: place)
-                    if place.hasMapCoordinates {
-                        PlacesMap(places: [place], open: { _ in }, closeUp: true)
-                            .frame(height: 180).clipShape(RoundedRectangle(cornerRadius: 10))
-                        if !place.hasPreciseCoordinates {
-                            Text("Approximate area · exact address not published").font(.caption).foregroundStyle(palette.secondary)
-                        }
-                    }
-                    if place.hours != nil || place.serviceHours != nil {
-                        DetailPanel(title: "Hours", symbol: "clock.fill", color: .blue) {
-                            if let hours = place.hours { DetailFact(title: "Visiting hours", value: hours) }
-                            if let hours = place.serviceHours { DetailFact(title: "Service hours", value: hours) }
-                        }
-                    }
-                    ForEach(Array((place.information ?? []).enumerated()), id: \.offset) { _, section in
-                        if section.expandable {
-                            DisclosureGroup {
-                                informationFacts(section).padding(.top, 12)
-                            } label: { Label(section.title, systemImage: section.title.contains("charger") ? "ev.charger" : "clock").guideFont(15, .semibold) }
-                                .padding(14).background(palette.surface, in: RoundedRectangle(cornerRadius: 14))
-                        } else {
-                            DetailPanel(title: section.title, symbol: sectionSymbol(section.title), color: palette.accent, reliability: (place.information ?? []).filter { $0.metrics != nil }.count > 1 ? section.reliability : nil) {
-                                informationFacts(section)
-                            }
-                        }
-                    }
-                    let related = (place.relatedPlaceIDs ?? []).compactMap { id in store.places.first { $0.id == id || $0.aliases.contains(id) } }
-                    if !related.isEmpty {
-                        DetailPanel(title: "Nearby", symbol: "mappin.and.ellipse", color: .green) {
-                            ForEach(related) { nearby in
-                                Button { open(nearby) } label: {
-                                    HStack { Text(nearby.guideName).guideFont(15); Spacer(); Image(systemName: "chevron.right").font(.caption) }
-                                        .frame(minHeight: 38).contentShape(Rectangle())
-                                }.buttonStyle(.plain)
-                            }
-                        }
-                    }
-                    DetailPanel(title: "Visits", symbol: "checkmark.seal.fill", color: palette.accent) {
-                        if store.visits(to: place).isEmpty {
-                            Text("No visits recorded").guideFont(14).foregroundStyle(palette.secondary)
-                        } else {
-                            ForEach(store.visits(to: place)) { visit in
-                                Button { selectedVisit = visit } label: { VisitRow(visit: visit) }.buttonStyle(.plain)
-                            }
-                        }
-                        Button { showCheckIn = true } label: { Label("Add Visit", systemImage: "plus").guideFont(14, .medium).frame(minHeight: 36) }
-                            .buttonStyle(.plain).disabled(!store.ready)
-                    }
-
-                }.padding(.horizontal, 16).padding(.top, 12).padding(.bottom, 24)
-                    .frame(maxWidth: 660).frame(maxWidth: .infinity)
-            }
-        }
-        .sheet(isPresented: $showCheckIn) { CheckInView(place: place) }
-        .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
-        .actionError($actionError)
-    }
-    private func sectionSymbol(_ title: String) -> String {
-        if title.contains("pricing") { return "dollarsign.circle.fill" }
-        if title == "Site features" { return "sparkles" }
-        if title.contains("Network") || title == "Waypoints" { return "bolt.fill" }
-        return "info.circle.fill"
-    }
-    private func informationFacts(_ section: PlaceInformation) -> some View {
-        let pricing = section.title.hasSuffix(" pricing")
-        let metrics = section.metrics ?? (pricing ? Array(section.facts.prefix(2)) : nil)
-        let facts = section.facts.filter { fact in
-            if pricing && (metrics ?? []).contains(fact) { return false }
-            if section.reliability != nil && fact.title == "Published reliability grade" { return false }
-            if section.metrics != nil && ["Chargers", "Maximum rated power", "Vehicle access"].contains(fact.title) { return false }
-            if !(section.tags ?? []).isEmpty && ["Amenities", "At this location"].contains(fact.title) { return false }
-            return true
-        }
-        return VStack(alignment: .leading, spacing: 16) {
-            if let metrics {
-                HStack(alignment: .top, spacing: 20) {
-                    ForEach(Array(metrics.enumerated()), id: \.offset) { _, metric in
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(metric.value).font(.title.bold()).fixedSize(horizontal: false, vertical: true)
-                            Text(metric.title).font(.caption).foregroundStyle(palette.secondary)
-                        }.frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(pricing ? 12 : 0)
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(pricing ? palette.line : .clear))
-                    }
-                }.padding(.vertical, 6)
-            }
-            if let tags = section.tags, !tags.isEmpty { WebsiteTags(values: tags) }
-            if section.metrics != nil {
-                Text("Station details, not live charger availability. Check connector compatibility and host access rules before visiting.")
-                    .font(.caption).foregroundStyle(palette.secondary)
-            }
-            ForEach(Array(facts.enumerated()), id: \.offset) { _, fact in
-                if fact.title == "Connectors" { WebsiteTags(values: [fact.value]) }
-                else { DetailFact(title: fact.title, value: fact.value) }
-            }
-        }.textSelection(.enabled)
-    }
-
-}
-
-private struct DetailPanel<Content: View>: View {
-    let title: String
-    let symbol: String
-    let color: Color
-    var reliability: PlaceReliability? = nil
-    @ViewBuilder let content: () -> Content
-    @Environment(\.colorScheme) private var scheme
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .top) {
-                Text(title).font(.headline).fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 4)
-                if let reliability { ReliabilityBadge(value: reliability, compact: true) }
-            }
-            content()
-        }.frame(maxWidth: .infinity, alignment: .leading).padding(18)
-            .background(GuidePalette(scheme: scheme).surface, in: RoundedRectangle(cornerRadius: 14))
-            .overlay(RoundedRectangle(cornerRadius: 14).stroke(GuidePalette(scheme: scheme).line, lineWidth: 0.5))
-    }
-}
-
-private struct DetailFact: View {
+struct DetailFact: View {
     let title: String
     let value: String
     @Environment(\.colorScheme) private var scheme
@@ -1044,104 +632,7 @@ private struct DetailFact: View {
     }
 }
 
-struct SavedView: View {
-    let open: (Place) -> Void
-    let explore: () -> Void
-    @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 32) {
-                GuideHeader(title: "Saved", subtitle: "Your saved places, ready when you are.")
-                if let notice = store.catalogBanner { Text(notice).guideFont(13).foregroundStyle(.secondary) }
-                if store.journal.savedPlaces.isEmpty {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Rectangle().fill(GuidePalette(scheme: scheme).line).frame(height: 1)
-                        Text("No saved places yet").guideFont(22, .bold).padding(.top, 20)
-                        Text("Tap the bookmark on any place to save it here.")
-                            .guideFont(16).foregroundStyle(GuidePalette(scheme: scheme).secondary).lineSpacing(4)
-                        Button("Explore Places", action: explore).buttonStyle(PrimaryAction()).padding(.top, 12)
-                    }
-                } else {
-                    LazyVStack(spacing: 0) {
-                        ForEach(store.journal.savedPlaces) { saved in
-                            let place = store.currentPlace(saved)
-                            Button { open(place) } label: { PlaceRow(place: place) }.buttonStyle(.plain)
-                            Divider()
-                        }
-                    }
-                }
-            }.padding(24)
-        }.refreshable { await store.refreshCatalog(force: true) }
-    }
-}
-
-struct JournalView: View {
-    let explore: () -> Void
-    @EnvironmentObject private var store: SpotterStore
-    @Environment(\.colorScheme) private var scheme
-    @State private var selectedVisit: Visit?
-    @EnvironmentObject private var sync: CloudSyncStatus
-    @State private var showDetails = false
-    private var palette: GuidePalette { .init(scheme: scheme) }
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
-                GuideHeader(title: "Visited", subtitle: "Your check-ins and private notes.")
-                if let notice = store.storageNotice {
-                    Label(notice, systemImage: "exclamationmark.triangle")
-                        .guideFont(13).foregroundStyle(palette.secondary).lineSpacing(3)
-                }
-                if store.visits.isEmpty {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Rectangle().fill(palette.line).frame(height: 1)
-                        Text("No visits recorded").guideFont(22, .bold).padding(.top, 20)
-                        Text("Find a place and check in. You can add past visits and notes, too.")
-                            .guideFont(16).foregroundStyle(palette.secondary).lineSpacing(4)
-                        Button("Find a Place", action: explore).buttonStyle(PrimaryAction()).padding(.top, 12)
-                    }.frame(maxWidth: .infinity, alignment: .leading)
-                } else {
-                    HStack(spacing: 8) {
-                        Image(systemName: "checkmark.seal")
-                        Text("\(store.visits.count) \(store.visits.count == 1 ? "visit" : "visits") to \(store.journal.uniquePlaceCount) \(store.journal.uniquePlaceCount == 1 ? "place" : "places")")
-                            .guideFont(15, .medium)
-                    }.foregroundStyle(palette.accent)
-                    VStack(spacing: 0) {
-                        ForEach(store.visits) { visit in
-                            Button { selectedVisit = visit } label: { VisitRow(visit: visit) }.buttonStyle(.plain)
-                            Rectangle().fill(palette.line).frame(height: 0.5)
-                        }
-                    }
-                    DisclosureGroup("Places by kind") {
-                        VStack(spacing: 14) {
-                            ForEach(PlaceType.allCases) { type in
-                                HStack {
-                                    Label(type.rawValue, systemImage: type.symbol)
-                                    Spacer()
-                                    Text(String(store.journal.count(for: type)))
-                                }.guideFont(15)
-                            }
-                        }.padding(.top, 16)
-                    }.guideFont(15)
-                }
-                VStack(alignment: .leading, spacing: 12) {
-                    Button { showDetails.toggle() } label: {
-                        Label(sync.title, systemImage: "icloud").guideFont(13)
-                    }.buttonStyle(.plain).foregroundStyle(palette.secondary)
-                    if showDetails {
-                        Text(sync.detail)
-                            .guideFont(13).foregroundStyle(palette.secondary).lineSpacing(4)
-                    }
-                    if !store.visits.isEmpty || !store.journal.savedPlaces.isEmpty { ExportJournalButton() }
-                }.padding(.top, 8)
-            }.padding(24)
-        }
-        .sheet(item: $selectedVisit) { VisitEditor(visit: $0) }
-    }
-}
-
-/// Saves the private journal (visits, notes, saved places) as a JSON backup.
-private struct ExportJournalButton: View {
+struct ExportJournalButton: View {
     @EnvironmentObject private var store: SpotterStore
     @Environment(\.colorScheme) private var scheme
     @State private var showExport = false
@@ -1184,7 +675,7 @@ struct VisitRow: View {
     }
 }
 
-private struct SheetHeader: View {
+struct SheetHeader: View {
     let title: String
     let close: () -> Void
     var body: some View {
@@ -1354,7 +845,7 @@ struct JournalDocument: FileDocument {
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper { FileWrapper(regularFileWithContents: data) }
 }
 
-private extension View {
+extension View {
     func actionError(_ message: Binding<String?>) -> some View {
         alert("Couldn’t save your change", isPresented: Binding(
             get: { message.wrappedValue != nil },

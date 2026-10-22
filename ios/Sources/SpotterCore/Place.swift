@@ -152,6 +152,34 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     }
 }
 
+/// Published status, grouped for browsing. Unknown availability stays "Unconfirmed", never open.
+public enum PlaceStatusGroup: String, CaseIterable, Identifiable, Sendable {
+    case operating = "Operating", comingSoon = "Coming Soon", unconfirmed = "Unconfirmed"
+    case temporarilyClosed = "Temporarily Closed", closed = "Closed", unlisted = "No Longer Listed"
+    public var id: String { rawValue }
+    public init(_ place: Place) {
+        if !place.listed { self = .unlisted; return }
+        switch place.status {
+        case "open": self = .operating
+        case "planned": self = .comingSoon
+        case "temporarily-closed": self = .temporarilyClosed
+        case "closed": self = .closed
+        default: self = .unconfirmed
+        }
+    }
+}
+
+public extension Place {
+    var statusGroup: PlaceStatusGroup { PlaceStatusGroup(self) }
+    /// Site features the directory publishes for this place (amenities, access, services), in
+    /// published order without repeats. Nothing is inferred from the location type.
+    var siteFeatures: [String] {
+        var seen = Set<String>(), result: [String] = []
+        for tag in (information ?? []).flatMap({ $0.tags ?? [] }) where seen.insert(tag).inserted { result.append(tag) }
+        return result
+    }
+}
+
 public struct PlaceFilter: Sendable {
     public enum Status: String, CaseIterable, Sendable {
         case all = "All statuses", operating = "Operating", planned = "Coming Soon", unlisted = "No Longer Listed"

@@ -8,6 +8,7 @@ import CloudKit
 /// event timestamp, then revision UUID as a deterministic tie breaker.
 public final class CloudJournalStorage: JournalStorage {
     public static let containerID = "iCloud.com.rivianspotter.app"
+    static let baseCampKey = "basecamp"
     public let url: URL
     public let container: NSPersistentCloudKitContainer
 
@@ -76,6 +77,8 @@ public final class CloudJournalStorage: JournalStorage {
                 } else if key.hasPrefix("saved:"), let place = try? decoder.decode(Place.self, from: payload),
                           key == "saved:\(place.id)" {
                     journal.savedPlaces.append(place)
+                } else if key == Self.baseCampKey, let place = try? decoder.decode(Place.self, from: payload) {
+                    journal.baseCamp = place
                 } else { skipped += 1 }
             }
             journal.visits.sort { $0.id.uuidString < $1.id.uuidString }
@@ -91,6 +94,8 @@ public final class CloudJournalStorage: JournalStorage {
         var entries: [String: Data] = [:]
         for visit in journal.visits { entries["visit:\(visit.id.uuidString)"] = try encoder.encode(visit) }
         for place in journal.savedPlaces { entries["saved:\(place.id)"] = try encoder.encode(place) }
+        // A single key, so choosing a new Base Camp on one device replaces the other's choice.
+        if let place = journal.baseCamp { entries[Self.baseCampKey] = try encoder.encode(place) }
         return entries
     }
 

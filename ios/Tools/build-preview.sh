@@ -12,7 +12,8 @@ mkdir -p "$preview_app/Contents/MacOS" "$preview_app/Contents/Resources"
 swiftc -sdk "$preview_sdk" -target "$(uname -m)-apple-macos14.0" \
   -swift-version 5 -parse-as-library \
   Sources/SpotterCore/Place.swift Sources/SpotterCore/CatalogUpdates.swift Sources/SpotterCore/Journal.swift Sources/SpotterCore/CloudJournalStorage.swift \
-  Sources/SpotterApp/DeviceServices.swift Sources/SpotterApp/PlacePresentation.swift Sources/SpotterApp/PlaceGallery.swift Sources/SpotterApp/SpotterApp.swift -o "$preview_app/Contents/MacOS/SpotterPreview"
+  Sources/SpotterApp/DeviceServices.swift Sources/SpotterApp/PlacePresentation.swift Sources/SpotterApp/PlaceGallery.swift Sources/SpotterApp/PlaceDetailView.swift \
+  Sources/SpotterApp/Directory.swift Sources/SpotterApp/Collections.swift Sources/SpotterApp/SpotterApp.swift -o "$preview_app/Contents/MacOS/SpotterPreview"
 cp Sources/SpotterCore/Resources/catalog.json "$preview_app/Contents/Resources/catalog.json"
 cat > "$preview_app/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
