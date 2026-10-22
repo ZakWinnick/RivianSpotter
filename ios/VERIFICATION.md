@@ -167,3 +167,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #46: removed the Settings gear from Browse (Settings remains the last Browse row and in the iPad sidebar) and removed the Site Feature section from Browse and the sidebar; feature pages stay reachable from chips, the glossary, and filters.
 - PR CI passed; iOS simulator and desktop preview builds succeeded; checked Browse on the iPhone 17 Pro simulator.
 - Signed Release archive of `f9f911d` succeeded. Apple accepted 0.2.0 (12) at 21:10 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Base Camp sidebar row / build 13 — October 21, 2026
+
+- Merged PR #47: the Base Camp row keeps "Base Camp" on one line and shows the chosen place in full on the line below (no truncation), in the iPad/macOS sidebar and the iPhone Browse list.
+- PR CI passed; iOS simulator and desktop preview builds succeeded; checked on the iPad Pro 11-inch simulator with a long Base Camp name.
+- Signed Release archive of `66f20a4` succeeded. Apple accepted 0.2.0 (13) at 21:53 Pacific ("Upload succeeded"); processing was pending when recorded.
