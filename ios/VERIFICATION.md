@@ -180,3 +180,13 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - 26 standalone core checks passed; iOS simulator and desktop preview builds succeeded. PR validation and release-source GitHub checks passed.
 - Signed Release archive of `de5c64d` succeeded. Apple accepted 0.2.0 (14) at 22:08 Pacific. Processing completed; App Store Connect confirms the Internal group with one tester has access. The supplied two-item release notes were saved under What to Test.
 - Build ID: `0e815c68-1673-4445-82b6-450d0413c980`. Actual Settings behavior in the installed Designed for iPad Mac app remains unverified.
+
+## Version 1.0 beta / build 15 — October 21, 2026
+
+- Merged PR #49 at `035823f`: privacy policy and footer links, 1.0 listing/screenshots, accessibility-size gallery and action-row layouts, and Debug-only screenshot routes. Archived PR head `ac69a77`; its tree matches the merge commit.
+- 131 website tests and 26 standalone app checks passed. Static build generated 630 pages with all route/asset references resolving. iOS simulator, desktop preview, and signed Release archive builds succeeded.
+- GitHub deployment run `39730435046` succeeded. Verified the public privacy page returns HTTP 200 and renders the new policy at https://rivianspotter.com/privacy.html.
+- Apple accepted 1.0.0 (15) at 22:52 Pacific. Processing completed; the Internal group has one tester. Saved the Version 1.0 entry from `RELEASE_NOTES.md` as What to Test (plain text, preserving paragraphs) and the privacy URL in beta test information.
+- Added the External group and submitted for beta review. App Store Connect confirms **Waiting for Review**; external testing is not approved yet. The External group currently has no testers.
+- Build ID: `c6a1fdce-cd68-4550-b394-ea710e1d9f96`. Evidence is saved locally in `.build/testflight-build15-notes.png`, `.build/testflight-build15-review.png`, and `.build/privacy-live-build15.png`.
+- No public App Store submission was made. VoiceOver execution and physical-device iCloud behavior were not independently retested in this release pass.
