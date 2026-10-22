@@ -13,6 +13,8 @@ public struct Journal: Codable, Equatable, Sendable {
     public var schemaVersion = 1
     public var visits: [Visit] = []
     public var savedPlaces: [Place] = []
+    /// The person's chosen home location. Optional so earlier journals and exports still decode.
+    public var baseCamp: Place? = nil
     public init() {}
     public var uniquePlaceCount: Int { Set(visits.map { $0.place.id }).count }
     public func count(for type: PlaceType) -> Int {
@@ -116,6 +118,13 @@ public final class JournalRepository {
         if next.savedPlaces.contains(where: { identities.contains($0.id) }) {
             next.savedPlaces.removeAll { identities.contains($0.id) }
         } else { next.savedPlaces.append(place) }
+        try commit(next)
+    }
+    /// Choose a Base Camp, or pass nil to clear it. Only one place can be Base Camp.
+    public func setBaseCamp(_ place: Place?) throws {
+        try reload()
+        var next = journal
+        next.baseCamp = place
         try commit(next)
     }
     public func export() throws -> Data {
