@@ -30,9 +30,12 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Test refresh logic before collecting data
+        run: npm test
       - name: Capture previous published location facts
         run: node scripts/update-location-feed.cjs snapshot "$RUNNER_TEMP/location-before.json"
       - name: Fetch and validate both official inventories
+        id: inventory
         run: npm run refresh:all
       - name: Check Rivian grades and charging details via Roamer
         id: roamer
@@ -61,6 +64,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Preserve collected data after a later failure
+        if: ${{ failure() && steps.inventory.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: refresh-recovery-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 7
+          path: |
+            data/
+            ${{ runner.temp }}/location-before.json
       - name: Record station detail coverage
         if: always()
         run: node scripts/report-charging-coverage.cjs
