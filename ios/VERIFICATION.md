@@ -161,3 +161,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #45: the previous Settings design restored with its fixes (one section per setting, fitted icon tiles, live appearance switching); Settings gear on Browse only; bundled RAN and Waypoint charger images for the 237 sites without their own photo, with no category label; the same images hosted at `/assets/charger-*.jpg` for the catalog feed; bundled catalog regenerated with October 21 data.
 - Before merge: `npm test` 131 passed, `npm run build` succeeded, `test-core.sh` 26 passed, iOS simulator and desktop preview builds succeeded. PR CI failed only at `npm audit` because the npm audit endpoint returned 503/400 (registry outage), not from these changes.
 - Signed Release archive of `193a935` succeeded. Apple accepted 0.2.0 (11) at 20:01 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Browse cleanup / build 12 — October 21, 2026
+
+- Merged PR #46: removed the Settings gear from Browse (Settings remains the last Browse row and in the iPad sidebar) and removed the Site Feature section from Browse and the sidebar; feature pages stay reachable from chips, the glossary, and filters.
+- PR CI passed; iOS simulator and desktop preview builds succeeded; checked Browse on the iPhone 17 Pro simulator.
+- Signed Release archive of `f9f911d` succeeded. Apple accepted 0.2.0 (12) at 21:10 Pacific ("Upload succeeded"); processing was pending when recorded.
