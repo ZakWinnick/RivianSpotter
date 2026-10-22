@@ -53,6 +53,40 @@ function parseDirectory(html, { minimum = 100 } = {}) {
  if (new Set(result.map(x => x.slug)).size !== articles.length) throw Error('Duplicate directory slugs');
  return result;
 }
+// Read only JSON arguments; never execute source-page JavaScript. Delimiters inside
+// quoted payloads (for example Tailwind's [body:has([data-footer-hidden])]) are data.
+function flightText(html, url) {
+ const chunks = [];
+ for (const script of html.matchAll(/<script\b[^>]*>(.*?)<\/script>/gs)) {
+  const source = script[1], calls = /\bself\.__next_f\.push\s*\(\s*/g;
+  let call;
+  while ((call = calls.exec(source))) {
+   const start = calls.lastIndex;
+   let depth = 0, quoted = false, escaped = false, end = -1;
+   if (source[start] !== '[') throw Error(`Invalid official Flight data: ${url}`);
+   for (let i = start; i < source.length; i++) {
+    const c = source[i];
+    if (quoted) {
+     if (escaped) escaped = false;
+     else if (c === '\\') escaped = true;
+     else if (c === '"') quoted = false;
+    } else if (c === '"') quoted = true;
+    else if (c === '[') depth++;
+    else if (c === ']' && --depth === 0) {end = i + 1; break;}
+   }
+   if (end < 0 || !/^\s*\)/.test(source.slice(end))) throw Error(`Incomplete official Flight data: ${url}`);
+   let value;
+   try {value = JSON.parse(source.slice(start, end));}
+   catch {throw Error(`Invalid official Flight data: ${url}`);}
+   if (value[0] === 1) {
+    if (typeof value[1] !== 'string') throw Error(`Invalid official Flight text: ${url}`);
+    chunks.push(value[1]);
+   }
+   calls.lastIndex = end;
+  }
+ }
+ return chunks.join('');
+}
 function parseDetail(html, url) {
  const objects = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(m => {
   try { return JSON.parse(decode(m[1])); } catch { throw Error(`Invalid official structured data: ${url}`); }
@@ -61,7 +95,7 @@ function parseDetail(html, url) {
  const faq = objects.filter(x => x['@type'] === 'FAQPage').flatMap(x => x.mainEntity || []);
  const badges = [...html.matchAll(/<li[^>]*rounded-nano[^>]*>(.*?)<\/li>/gs)].map(m => clean(m[1]));
  const directionsUrl = [...html.matchAll(/href="([^\"]+)"/g)].map(m => decode(m[1])).find(u => /^https:\/\/maps\.app\.goo\.gl\//.test(u)) || null;
- const flight = [...html.matchAll(/self\.__next_f\.push\(\[(.*?)\]\)/gs)].filter(m => m[1].startsWith('1,')).map(m => JSON.parse('[' + m[1] + ']')[1]).join('');
+ const flight = flightText(html, url);
  let features = [];
  function walk(x) {
   if (!x || typeof x !== 'object') return;

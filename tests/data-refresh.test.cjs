@@ -25,3 +25,23 @@ test('every current field follows schema and all action/source URLs use safe off
 test('Rocklin source-supported service and charging capabilities are independent of headline wording',()=>{const x=api.directoryRecord(require('./fixtures/directory-edge-inputs.json').find(x=>x.slug==='rocklin-service-demo-center'),{faq:[]},[],'2026-10-14');assert.equal(x.type,'Demo Center');assert(x.capabilities.includes('service'));assert(x.capabilities.includes('charging'));assert.equal(x.serviceStatus,'open');assert.equal(x.chargingHours,'Open 24/7');assert.equal(x.chargingPhone,'(833) 748-4267');assert(!x.serviceHours.includes('RAN'));assert(!x.serviceHours.includes('24/7'));});
 test('Miramar visitor/demo operations remain open while service is explicitly upcoming',()=>{const x=api.directoryRecord(require('./fixtures/directory-edge-inputs.json').find(x=>x.slug==='miramar-service-demo-center'),{faq:[]},[],'2026-10-14');assert.equal(x.status,'open');assert.equal(x.serviceStatus,'planned');assert.equal(x.hours,'Mon–Sun: 9:00am–7:00pm');assert.equal(x.serviceHours,null);assert(!x.capabilities.includes('service'));assert(x.capabilities.includes('demo-drive'));assert(x.services.includes('Service coming soon'));assert(!x.services.includes('Service appointments'));});
 test('source verification and coordinate unknown are explicitly distinguished',()=>{const x=api.directoryRecord(require('./fixtures/directory-edge-inputs.json').find(x=>x.slug==='joshua-tree'),{faq:[]},[],'2026-10-14');assert.equal(x.coordinatePrecision,'unknown');assert.equal(x.verificationStatus,'verified');assert.match(x.verificationNote,/matching coordinate point is not available/);});
+
+test('Flight payload delimiters inside CSS and escaped text do not truncate service map data',()=>{
+ const feature={type:'Feature',properties:{name:'Test service center'},geometry:{type:'Point',coordinates:[-120,40]}};
+ const row='4f:'+JSON.stringify({className:'[body:has([data-footer-hidden])]:hidden',note:'Quoted "text" and a backslash \\ before ])',serviceCenterGeoJson:{features:[feature]}})+'\n';
+ const push=payload=>'<script>self.__next_f.push('+JSON.stringify([1,payload])+')</script>';
+ const html='<script>(self.__next_f=self.__next_f||[]).push([0])</script>'+push(row.slice(0,100))+push(row.slice(100));
+ assert.deepEqual(api.parseDetail(html,'https://rivian.com/spaces/test').features,[feature]);
+});
+test('multiple Flight chunks in one script retain complete JSON and ignore other channels',()=>{
+ const feature={properties:{name:'Brackets ] and parentheses ) in a name'}};
+ const row='a:'+JSON.stringify({serviceCenterGeoJson:{features:[feature]}})+'\n';
+ const html='<script>self.__next_f.push([0]);self.__next_f.push([2,null]);self.__next_f.push( '+JSON.stringify([1,row])+' );</script>';
+ assert.deepEqual(api.parseDetail(html,'https://rivian.com/spaces/test').features,[feature]);
+});
+test('malformed Flight data fails with the page URL instead of silently losing service locations',()=>{
+ const url='https://rivian.com/spaces/test';
+ for(const payload of ['[1,"unfinished','[1,"bad\\q"]','[1,{}]','[1,"ok"] + malicious()']){
+  assert.throws(()=>api.parseDetail('<script>self.__next_f.push('+payload+')</script>',url),e=>/official Flight/.test(e.message)&&e.message.includes(url));
+ }
+});
