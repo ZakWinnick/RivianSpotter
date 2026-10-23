@@ -196,3 +196,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #53: the RivianSpotter route mark appears beside the app name in the iPad/Mac sidebar and in the top-left corner of each iPhone tab's first screen.
 - PR CI passed; iOS simulator and desktop preview builds succeeded; checked on iPhone 17 Pro and iPad Pro 11-inch simulators in light and dark.
 - Signed Release archive of `e6be7a9` succeeded. Apple accepted 1.0.0 (16) at 17:48 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Map gestures / build 17 — October 23, 2026
+
+- Merged PR #58: a pinch that starts on a map marker now zooms the map, and returning from a place keeps the map's zoom and position instead of resetting to the full map.
+- PR CI passed. Checked on the iPhone 17 Pro simulator: pinch centered on a cluster zoomed; tapping a cluster zoomed into it; opening Price, UT, going back, then opening nearby Big Mountain Lodge kept the same zoom throughout. iPad, Mac and VoiceOver were not retested.
+- Signed Release archive of `0bad611` succeeded. Apple accepted 1.0.0 (17) at 13:07 Pacific ("Upload succeeded"); processing was pending when recorded.
