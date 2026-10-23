@@ -190,3 +190,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Added the External group and submitted for beta review. App Store Connect confirms **Waiting for Review**; external testing is not approved yet. The External group currently has no testers.
 - Build ID: `c6a1fdce-cd68-4550-b394-ea710e1d9f96`. Evidence is saved locally in `.build/testflight-build15-notes.png`, `.build/testflight-build15-review.png`, and `.build/privacy-live-build15.png`.
 - No public App Store submission was made. VoiceOver execution and physical-device iCloud behavior were not independently retested in this release pass.
+
+## Brand mark / build 16 — October 22, 2026
+
+- Merged PR #53: the RivianSpotter route mark appears beside the app name in the iPad/Mac sidebar and in the top-left corner of each iPhone tab's first screen.
+- PR CI passed; iOS simulator and desktop preview builds succeeded; checked on iPhone 17 Pro and iPad Pro 11-inch simulators in light and dark.
+- Signed Release archive of `e6be7a9` succeeded. Apple accepted 1.0.0 (16) at 17:48 Pacific ("Upload succeeded"); processing was pending when recorded.
