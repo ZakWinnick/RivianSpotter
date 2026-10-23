@@ -70,9 +70,13 @@ test('retired announcement becomes a detailed station while preserving both publ
 });
 test('promotion is stable across repeated updates, source disappearance, and announcement reappearance',async()=>{
  const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0],active=activeFrom(p);
- // An active page can be published before the announcement disappears.
- const overlap=mergePlanned([active],[rows[0]],'2026-10-18',[p]);assert.equal(overlap.length,2);
- const promoted=mergePlanned([active],[],'2026-10-19',overlap);
+ // Rivian can publish the operating station while still announcing the city (Jackson, WY on
+ // 2026-10-23); the announcement is promoted immediately instead of showing both.
+ const report={},promoted=mergePlanned([active],[rows[0]],'2026-10-18',[p],report);
+ assert.equal(promoted.length,1);assert.equal(promoted[0].id,p.id);assert.equal(promoted[0].sourceId,active.sourceId);
+ assert.equal(report.promoted[0].method,'announced-city-new-local-station');assert.equal(report.unresolved.length,0);
+ // Once linked, a still-listed announcement does not reappear as a second record.
+ assert.equal(mergePlanned([active],[rows[0]],'2026-10-19',promoted).length,1);
  const {normalize}=await import('../scripts/refresh-charging.mjs');
  const refreshed=normalize({properties:{id:active.sourceId,network:'Rivian Adventure Network',city:p.city,state:p.state,address:'200 Main St',count:12,maxkw:300},geometry:{coordinates:[p.lng,p.lat]}},'2026-10-20',promoted[0]);
  const next=mergePlanned([refreshed],[rows[0]],'2026-10-20',promoted);assert.equal(next.length,1);assert.equal(next[0].id,p.id);assert.equal(next[0].chargerCount,12);assert.equal(next[0].address,'200 Main St');assert.equal(next[0].promotion.activeFirstSeen,'2026-10-18');assert.equal(next[0].firstSeen,'2026-10-16');
@@ -93,4 +97,11 @@ test('matching rejects old stations, ambiguous candidates, incomplete details, a
   const report={},result=mergePlanned(candidates,[],'2026-10-18',[p],report);
   assert.equal(report.promoted.length,0);assert.equal(report.unresolved.length,1);assert.equal(result.find(a=>a.id===p.id).status,'planned');
  }
+});
+
+test('a still-announced city keeps its announcement beside an older existing station',async()=>{
+ const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0];
+ const report={},merged=mergePlanned([activeFrom(p,{firstSeen:'2026-10-01'})],[rows[0]],'2026-10-18',[p],report);
+ assert.equal(merged.length,2);assert.equal(merged.find(x=>x.id===p.id).status,'planned');
+ assert.equal(report.promoted.length,0);assert.equal(report.unresolved.length,0);
 });

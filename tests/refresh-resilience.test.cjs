@@ -6,7 +6,7 @@ const os = require('node:os');
 const path = require('node:path');
 const api = require('../scripts/refresh-locations.cjs');
 const { classify } = require('../scripts/audit-dependencies.cjs');
-const { collectWarnings, issueBody } = require('../scripts/report-refresh-warnings.cjs');
+const { collectWarnings, unmatchedRoamerStations, issueBody } = require('../scripts/report-refresh-warnings.cjs');
 const load = file => JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', file), 'utf8'));
 
 test('an unreadable detail page keeps that location’s last published record and date', () => {
@@ -77,5 +77,22 @@ test('refresh warnings are gathered from both summaries and listed in the issue'
   const warnings = collectWarnings(dir);
   assert.deepEqual(warnings, ['Kept A']);
   assert.match(issueBody(warnings, 'https://example.test/run'), /- Kept A[\s\S]*Run: https:\/\/example.test\/run/);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('a Roamer station missing from the official map is flagged, matched ones are not', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'spotter-roamer-'));
+  fs.mkdirSync(path.join(dir, 'data'));
+  fs.writeFileSync(path.join(dir, 'data', 'charging.json'), JSON.stringify([{ sourceId: 'US-RIV-A', listed: true }, { sourceId: 'US-RIV-B', listed: false }]));
+  fs.writeFileSync(path.join(dir, 'data', 'roamer.json'), JSON.stringify({ stations: [
+    { sourceId: 'US-RIV-A', name: 'Matched', networkListed: true },
+    { sourceId: 'US-RIV-B', name: 'Delisted officially', networkListed: true, reportedStatus: 'Operational' },
+    { sourceId: 'US-RIV-C', name: 'Jackson, WY', networkListed: true, reportedStatus: 'Operational' },
+    { sourceId: 'US-RIV-D', name: 'Gone from Roamer', networkListed: false },
+  ] }));
+  const flagged = unmatchedRoamerStations(dir);
+  assert.equal(flagged.length, 2);
+  assert.match(flagged.join('\n'), /Jackson, WY \(US-RIV-C\) as operational/);
+  assert.doesNotMatch(flagged.join('\n'), /Matched|Gone from Roamer/);
   fs.rmSync(dir, { recursive: true, force: true });
 });
