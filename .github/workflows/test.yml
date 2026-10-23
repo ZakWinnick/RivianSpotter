@@ -34,7 +34,7 @@ jobs:
       - name: Build static output
         run: npm run build
       - name: Audit production dependencies
-        run: npm audit --omit=dev
+        run: node scripts/audit-dependencies.cjs
       - name: Upload static site
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

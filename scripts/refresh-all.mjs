@@ -21,7 +21,8 @@ export function validateSnapshot(places, summary, chargers, priorPlaces, priorCh
   }
   for(const p of places) {
     if(p.sourceKind==='legacy')continue;
-    if(!p.name||!p.state||!p.address||p.lastVerified!==summary.date) throw Error('Incomplete location record');
+    // A record kept from the last release after its detail page failed retains its original date.
+    if(!p.name||!p.state||!p.address||(p.retainedDetail?!p.lastVerified:p.lastVerified!==summary.date)) throw Error('Incomplete location record');
     if(!M.getOfficialLink(p))throw Error('Missing official location destination');
   }
   for(const p of chargers) if(p.listed!==false && (!M.isMapped(p)||(p.status!=='planned'&&!M.getDirectionsUrl(p))))throw Error('Unusable charging station map pin');

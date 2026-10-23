@@ -153,7 +153,8 @@ test('CI blocks on tests, build, and production dependency audit; Pages uses dis
   const workflows = fs.readdirSync(path.join(root,'.github/workflows')).filter(f => /\.ya?ml$/.test(f)).map(f => read(`.github/workflows/${f}`)).join('\n');
   assert.match(workflows, /node --test tests\/\*\.test\.cjs/);
   assert.match(workflows, /npm run build/);
-  assert.match(workflows, /npm audit --omit=dev/);
+  assert.match(workflows, /node scripts\/audit-dependencies\.cjs/);
+  assert.match(fs.readFileSync(path.join(__dirname, '../scripts/audit-dependencies.cjs'), 'utf8'), /'audit', '--omit=dev'/);
   // Only optional Roamer retrieval may retain its previous snapshot. Release gates remain blocking.
   const optionalRoamer = 'id: roamer\n        continue-on-error: true\n        run: npm run refresh:roamer';
   assert.equal(workflows.split(optionalRoamer).length, 2);
@@ -163,6 +164,12 @@ test('CI blocks on tests, build, and production dependency audit; Pages uses dis
   assert.doesNotMatch(refresh, /pull_request|--force/);
   assert.match(refresh, /if: github.ref == 'refs\/heads\/main'/);
   assert(refresh.indexOf('npm run build && npm test') < refresh.indexOf('git push'));
+  // If main moves mid-run, data is re-applied only when nobody else changed the data files,
+  // and the result is rebuilt and re-tested before the second push.
+  const guard = refresh.indexOf('git diff --name-only HEAD~1 origin/main -- $DATA_FILES');
+  assert(guard > 0 && guard < refresh.indexOf('git reset --hard origin/main'));
+  assert(refresh.indexOf('git reset --hard origin/main') < refresh.lastIndexOf('npm ci && npm run build && npm test'));
+  assert(refresh.lastIndexOf('npm ci && npm run build && npm test') < refresh.lastIndexOf('git push origin HEAD:main'));
   assert.match(refresh, /needs: refresh/);
   assert.match(refresh, /cancel-in-progress: false/);
   assert.match(workflows, /actions\/deploy-pages@/);
