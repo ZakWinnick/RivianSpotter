@@ -113,7 +113,13 @@ node scripts/add-permit-site.mjs --city Bozeman --state MT --address "100 Main S
   --stage permit-filed --reported 2026-10-20 --source https://x.com/rantracker/status/123
 ```
 
-The helper geocodes the address with OpenStreetMap Nominatim; pass `--lat` and `--lng` to enter coordinates yourself. The file is validated, and the next daily refresh publishes it.
+The helper geocodes the address with OpenStreetMap Nominatim; pass `--lat` and `--lng` to enter coordinates yourself. Then apply the change to the published data, which fetches nothing and takes seconds:
+
+```sh
+npm run refresh:permits && npm run build && npm test
+```
+
+Commit the changed data files with `data/permit-sites.json`; merging the PR publishes the change without waiting for the daily refresh. CI fails if `data/permit-sites.json` changes without this step. Operating stations and Rivian's announcements stay exactly as the last refresh left them. Don't merge a data change while a refresh is running: the refresh won't overwrite data changed under it, so that run fails and the next one picks it up.
 
 - **A city Rivian already announces as coming soon:** the announcement gets the permit facts, and its pin moves from Rivian's approximate city point to the permit address (`coordinatePrecision: permit-address`).
 - **A city Rivian hasn't announced:** the site is listed on its own as Coming Soon (`planningSource: permit-filing`), labeled as found in permit filings rather than announced by Rivian. If Rivian later announces the city, the announcement takes over that site's ID and link.
