@@ -2,6 +2,39 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-10-23",
+      "entries": [
+        {
+          "id": "3f9a4eadd278827c927217ce2c1960ee0deb936bdcd1835366fa33b653963c23",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "66570ce6bbbe6d22b5f5dfce5ecc743802a7b3c6ddacc5afd3b408f93c1acabf",
+          "locationId": "162077279640688",
+          "name": "Flagler, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Flagler",
+          "region": "CO",
+          "url": "/locations/ran-flagler-co-93688e9e9a/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-10-22",
       "entries": [
         {
@@ -2589,11 +2622,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "sourceDates": {
-      "places": "2026-10-22",
-      "charging": "2026-10-22",
-      "chargingDetails": "2026-10-22"
+      "places": "2026-10-23",
+      "charging": "2026-10-23",
+      "chargingDetails": "2026-10-23"
     },
     "partialDetails": false
   }
