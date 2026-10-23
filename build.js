@@ -52,6 +52,7 @@ for (const file of [
   "assets/spotter-route-icon.svg",
   "assets/charger-ran.jpg",
   "assets/charger-waypoint.jpg",
+  "assets/jackson-wy-ran.jpg",
   "data/locations.json",
   "data/charging.json",
   "data/charging-summary.json",

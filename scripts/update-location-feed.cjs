@@ -27,7 +27,9 @@ function publicEntry(event) {
   const details = event.details || {};
   const lines = [];
   if (['added','relisted'].includes(event.kind)) lines.push(...newLocationLines(event));
-  if (event.kind === 'now-active') lines.push('Previously marked coming soon; the location is now listed as open.');
+  if (event.kind === 'now-active') lines.push(event.changes?.some(c=>c.field==='Location status'&&c.after==='open')
+    ? 'Previously marked coming soon; the location is now listed as open.'
+    : 'Previously marked coming soon; now on Rivian’s charging map with station details. Rivian doesn’t publish whether a charging site is open.');
   if (event.kind === 'no-longer-listed') lines.push('This location is no longer listed. That does not necessarily mean it has closed.');
   for (const change of changes) lines.push(...changeLines(change));
   const comingSoon = details['Location status'] === 'planned' || event.changes?.some(c=>c.field==='Location status'&&c.after==='planned');

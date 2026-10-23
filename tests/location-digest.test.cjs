@@ -30,10 +30,13 @@ test('promotion consumes both old aliases without inventing an addition or remov
  const promoted={...p,aliases:['2'],fields:{...p.fields,'Location status':'open'}};
  const events=compare([planned,active],[promoted]);assert.equal(events.length,1);assert.equal(events[0].kind,'now-active');
 });
-test('an unknown status after planned is not an opening',()=>{
- const p=normalize(data)[0],planned={...p,fields:{...p.fields,'Location status':'planned'}};
- const unknown={...p,fields:{...p.fields,'Location status':'unknown'}};
+test('an unknown status after planned is not an opening without station details',()=>{
+ const p=normalize(data)[0],planned={...p,fields:{...p.fields,'Location status':'planned','Charger count':null}};
+ const unknown={...p,fields:{...p.fields,'Location status':'unknown','Charger count':null}};
  assert.equal(compare([planned],[unknown])[0].kind,'changed');
+ // Jackson, WY on 2026-10-23: on Rivian's charging map with 8 chargers, status not published.
+ const listed={...p,fields:{...p.fields,'Location status':'unknown','Charger count':8}};
+ assert.equal(compare([planned],[listed])[0].kind,'now-active');
 });
 test('price freshness follows the public UI and ignores captures alone',()=>{
  const x=structuredClone(data);x.locations=[];x.charging=[{id:3,slug:'ran',name:'Charger',type:'RAN',sourceId:'s'}];x.roamer.stations=[{sourceId:'s',observedAt:'2026-10-20',detailsObservedAt:'2026-10-19',rates:{Rivian:'$0.40'},detailRates:{Rivian:'$0.30/kWh'}}];
