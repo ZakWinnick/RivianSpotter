@@ -5,7 +5,7 @@
      --stage permit-filed --reported 2026-10-20 --source https://x.com/rantracker/status/123
 
    The pin comes from geocoding the permit address with OpenStreetMap Nominatim. Pass --lat and
-   --lng instead to enter coordinates yourself. The next daily refresh publishes the change. */
+   --lng instead to enter coordinates yourself. Then run `npm run refresh:permits` so merging publishes it. */
 import fs from 'node:fs';
 import {PERMIT_FILE,STAGES,validatePermitSites} from './permit-sites.mjs';
 
@@ -35,6 +35,6 @@ async function main(){
   if(!pin)throw Error(`Couldn’t find “${site.address}, ${site.city}, ${site.state}” on the map. Check the address, or pass --lat and --lng.`);
   const data=upsertSite(JSON.parse(fs.readFileSync(PERMIT_FILE,'utf8')),{...site,...pin});
   fs.writeFileSync(PERMIT_FILE,JSON.stringify(data,null,2)+'\n');
-  console.log(`Saved ${site.city}, ${site.state} (${STAGES[site.stage]}) at ${pin.lat}, ${pin.lng}. It publishes with the next refresh.`);
+  console.log(`Saved ${site.city}, ${site.state} (${STAGES[site.stage]}) at ${pin.lat}, ${pin.lng}. Run npm run refresh:permits to publish it with your change.`);
 }
 if(process.argv[1]&&import.meta.url.endsWith(process.argv[1].split('/').pop()))main().catch(e=>{console.error(e.message);process.exitCode=1;});

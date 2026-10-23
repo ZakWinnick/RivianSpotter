@@ -127,3 +127,24 @@ test('funding-awarded sites explain NEVI funding, and map-only sites cite the tr
   assert.match(html, /NEVI/);
   assert.match(html, /RAN Tracker’s map/);
 });
+
+test('the published inventory includes every change in the permit file', async () => {
+  // Fails when data/permit-sites.json changes without `npm run refresh:permits`, which would leave
+  // the change unpublished until the next daily refresh.
+  const { applyPermitSites } = await import('../scripts/apply-permit-sites.mjs'), { loadPermitSites } = await permits();
+  const published = require('../data/charging.json');
+  const facts = list => list.filter(p => p.status === 'planned').map(p => JSON.stringify([p.sourceId, p.lat, p.lng, p.coordinatePrecision,
+    p.permit && [p.permit.stage, p.permit.address, p.permit.reportedOn, p.permit.sourceUrl, p.permit.siteName, p.permit.addressNote]])).sort();
+  assert.deepEqual(facts(published), facts(applyPermitSites(published, loadPermitSites().sites, new Date().toISOString().slice(0, 10))),
+    'Run npm run refresh:permits && npm run build, then commit the data files');
+});
+
+test('applying permit sites leaves operating stations and announcement dates alone', async () => {
+  const { applyPermitSites } = await import('../scripts/apply-permit-sites.mjs');
+  const published = require('../data/charging.json');
+  const applied = applyPermitSites(published, [], '2099-01-01');
+  const operating = list => list.filter(p => p.status !== 'planned');
+  assert.deepEqual(operating(applied), operating(published));
+  for (const p of applied.filter(p => p.planningSource === 'rivian-coming-soon'))
+    assert.equal(p.lastVerified, published.find(o => o.sourceId === p.sourceId).lastVerified);
+});

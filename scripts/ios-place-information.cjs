@@ -16,7 +16,7 @@ function chargingInformation(p) {
       fact('Address', permit.address + (permit.addressNote ? ` (${permit.addressNote})` : '')),
       permit.firstReported && permit.firstReported !== permit.reportedOn ? fact('First reported', permit.firstReported) : null,
       fact('Last update', permit.reportedOn),
-      fact('About this information', `Reported by ${permit.sourceName}${permit.fromMap ? '’s map' : ''}. The map pin is at the address above. Plans can change before a station opens.`),
+      fact('About this information', `Reported by ${permit.sourceName}${permit.fromMap ? '’s map' : ''}. ${permit.stage === 'reported-open' ? 'Until Rivian lists it, treat this as not an available charging stop.' : 'This is a planned location, not an available charging stop.'} The map pin is at the address above. Plans can change before a station opens.`),
     ], false, p.permit.sourceUrl)];
   }
   const r = p.roamer;

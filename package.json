@@ -12,7 +12,8 @@
     "generate:data": "node scripts/generate-data.cjs",
     "refresh:charging": "node scripts/refresh-charging.mjs",
     "refresh:all": "node scripts/refresh-all.mjs",
-    "refresh:roamer": "node scripts/refresh-roamer.cjs"
+    "refresh:roamer": "node scripts/refresh-roamer.cjs",
+    "refresh:permits": "node scripts/apply-permit-sites.mjs"
   },
   "engines": {
     "node": ">=22"
