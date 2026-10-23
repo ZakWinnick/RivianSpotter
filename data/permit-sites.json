@@ -2,7 +2,8 @@
   "schemaVersion": 1,
   "source": {
     "name": "RAN Tracker",
-    "url": "https://x.com/rantracker"
+    "url": "https://x.com/rantracker",
+    "mapUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ"
   },
   "sites": [
     {
@@ -61,6 +62,18 @@
       "addressNote": "from RAN Tracker’s map"
     },
     {
+      "city": "Big Sur",
+      "state": "CA",
+      "address": "46840 CA-1",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 36.270232,
+      "lng": -121.808337,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Cabazon",
       "state": "CA",
       "address": "48400 Seminole Dr",
@@ -72,6 +85,18 @@
       "sourceUrl": "https://x.com/RANtracker/status/1948125713800016025",
       "lat": 33.930076,
       "lng": -116.816838,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
+      "city": "Coachella",
+      "state": "CA",
+      "address": "48055 Grapefruit Blvd",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 33.699918,
+      "lng": -116.191933,
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
@@ -87,6 +112,18 @@
       "lat": 37.025301,
       "lng": -121.565375,
       "coordinateSource": "OpenStreetMap Nominatim geocode (© OpenStreetMap contributors)"
+    },
+    {
+      "city": "Kettleman City",
+      "state": "CA",
+      "address": "33453 Bernard Dr",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "permit-filed",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 35.985286,
+      "lng": -119.958802,
+      "coordinateSource": "RAN Tracker’s map pin"
     },
     {
       "city": "King City",
@@ -117,6 +154,18 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Marina Del Rey",
+      "state": "CA",
+      "address": "4700 Admiralty Way",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 33.979825,
+      "lng": -118.438951,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Orland",
       "state": "CA",
       "address": "Orland, CA",
@@ -141,6 +190,30 @@
       "sourceUrl": "https://x.com/RANtracker/status/2102871637465149649",
       "lat": 34.047635,
       "lng": -118.524869,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
+      "city": "Petaluma",
+      "state": "CA",
+      "address": "429 N McDowell Blvd",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 38.252781,
+      "lng": -122.636085,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
+      "city": "Redding",
+      "state": "CA",
+      "address": "1385 Churn Creek Rd",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 40.586989,
+      "lng": -122.350379,
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
@@ -228,6 +301,30 @@
       "coordinateSource": "OpenStreetMap Nominatim geocode (© OpenStreetMap contributors)"
     },
     {
+      "city": "Tulare",
+      "state": "CA",
+      "address": "1407 Retherford St",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 36.229009,
+      "lng": -119.33593,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
+      "city": "Willow Creek",
+      "state": "CA",
+      "address": "38915 CA-299",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "funding-awarded",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 40.940235,
+      "lng": -123.632783,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Castle Rock",
       "state": "CO",
       "address": "5050 Factory Shops Blvd",
@@ -284,6 +381,18 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Lutz",
+      "state": "FL",
+      "address": "2972 Creek Grass Way",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "permit-filed",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 28.190354,
+      "lng": -82.3906,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Boise",
       "state": "ID",
       "address": "8655 W Franklin Rd",
@@ -312,15 +421,27 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Pontiac",
+      "state": "IL",
+      "address": "1 Holiday Road",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "under-construction",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 40.870597,
+      "lng": -88.668602,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Metairie",
       "state": "LA",
       "address": "3301 Veterans Memorial Blvd",
       "addressNote": "from RAN Tracker’s map",
       "siteName": "Lakeside Shopping Center (near Dick's)",
-      "stage": "permit-filed",
+      "stage": "under-construction",
       "firstReported": "2026-05-28",
-      "reportedOn": "2026-05-28",
-      "sourceUrl": "https://x.com/RANtracker/status/2060078666848297049",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
       "lat": 30.008839,
       "lng": -90.157852,
       "coordinateSource": "RAN Tracker’s map pin"
@@ -451,6 +572,18 @@
       "coordinateSource": "OpenStreetMap Nominatim geocode (© OpenStreetMap contributors)"
     },
     {
+      "city": "Brenham",
+      "state": "TX",
+      "address": "2508 S Day St",
+      "addressNote": "from RAN Tracker’s map",
+      "stage": "permit-filed",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
+      "lat": 30.144605,
+      "lng": -96.396217,
+      "coordinateSource": "RAN Tracker’s map pin"
+    },
+    {
       "city": "Corsicana",
       "state": "TX",
       "address": "201 S 15th St",
@@ -564,10 +697,10 @@
       "address": "52888 Rockport Park Rd",
       "addressNote": "from RAN Tracker’s map",
       "siteName": "Howard Miller Steelhead Park",
-      "stage": "reported",
+      "stage": "permit-filed",
       "firstReported": "2025-01-09",
-      "reportedOn": "2025-01-09",
-      "sourceUrl": "https://x.com/RANtracker/status/1877464979063914546",
+      "reportedOn": "2026-10-23",
+      "sourceUrl": "https://www.google.com/maps/d/view?mid=1F-jpeAQfTwoHqy4dYtOStXLckGA714TJ",
       "lat": 48.484885,
       "lng": -121.595185,
       "coordinateSource": "RAN Tracker’s map pin"
