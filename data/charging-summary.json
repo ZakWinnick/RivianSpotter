@@ -42,7 +42,7 @@
   },
   "warnings": [],
   "counts": {
-    "RAN": 198,
+    "RAN": 235,
     "Waypoint": 207
   },
   "promotions": {
@@ -60,5 +60,9 @@
   },
   "added": [],
   "removed": [],
-  "sha256": "e8a421554c3e0c601d3aa8a514b451c1e28ccc857c0067518ab69df42a91d56d"
+  "sha256": "b615be89b2f628eea66a18bb4557444043150d6bbffca1cde76ede573224c6a6",
+  "permitSites": {
+    "count": 53,
+    "sourceUrl": "https://x.com/rantracker"
+  }
 }
