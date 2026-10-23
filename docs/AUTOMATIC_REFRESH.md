@@ -101,3 +101,28 @@ The initial October 21 report was seeded from the verified daily digest, excludi
 The refresh runs its test suite before collection and again against the refreshed release. Official Next.js data is parsed as JSON with string-aware bracket boundaries; delimiters embedded in CSS or text do not truncate a payload. Invalid payloads fail with the source page URL, and source JavaScript is never executed. Regression fixtures cover embedded delimiters, escaping, split chunks and malformed input.
 
 If official collection succeeds but a later refresh-job step fails, GitHub saves the collected `data/` files and pre-refresh comparison snapshot as a `refresh-recovery-RUN-ATTEMPT` artifact for seven days. These are recovery inputs, not necessarily a validated or published release. Inspect the source dates and failure, then rerun validation/build before restoring any data. This allows recovery from a downstream build or push error without requesting all source pages again. An early inventory failure still retains the last published data.
+
+## Permit sites (RAN Tracker)
+
+[RAN Tracker](https://x.com/rantracker) follows public permit filings for Rivian Adventure Network sites, usually with street addresses before Rivian publishes them. X doesn't allow scraping, so these are curated by hand in `data/permit-sites.json`. Each entry has the city, state or province, filed street address, stage (`permit-filed`, `permit-approved`, `under-construction`, `reported` for a post that names the site without a stage, or `reported-open` for a site reported open that Rivian's map doesn't list), the date reported, the source post URL on X, and coordinates for the address.
+
+Add or update an entry with:
+
+```sh
+node scripts/add-permit-site.mjs --city Bozeman --state MT --address "100 Main St" \
+  --stage permit-filed --reported 2026-10-20 --source https://x.com/rantracker/status/123
+```
+
+The helper geocodes the address with OpenStreetMap Nominatim; pass `--lat` and `--lng` to enter coordinates yourself. The file is validated, and the next daily refresh publishes it.
+
+- **A city Rivian already announces as coming soon:** the announcement gets the permit facts, and its pin moves from Rivian's approximate city point to the permit address (`coordinatePrecision: permit-address`).
+- **A city Rivian hasn't announced:** the site is listed on its own as Coming Soon (`planningSource: permit-filing`), labeled as found in permit filings rather than announced by Rivian. If Rivian later announces the city, the announcement takes over that site's ID and link.
+- **Two filings in one announced city:** each is listed separately, and the announcement stays generic.
+- **When the station opens:** a permit site is promoted to the operating station under the same rules as a Rivian announcement.
+- **When an entry is removed from the file:** the site leaves the directory as "No Longer Listed as Coming Soon".
+
+Optional fields are `siteName`, `firstReported`, and `addressNote`. `addressNote` explains an address that isn't from the post, such as "main address of Gilroy Premium Outlets", "exact spot on this road not given", or "city only".
+
+A site with no update for 18 months shows "<stage> · No update since <month year>" with a warning that plans may have changed, instead of "Coming Soon". Tracker-only sites are attributed "Reported by RAN Tracker", never "Updated from Rivian". Every page shows the status, site, address, first and last report dates, and a link to the latest source post. Permit sites never get directions, charger counts, or an opening date.
+
+The October 23, 2026 seed came from a CSV of all RAN Tracker posts (March 2022–October 2026, 216 sites). Each site was reconciled against Rivian's charging map and coming-soon list. 154 matched built stations. Eight more were built under another name: Bow (Concord), West Lebanon (Lebanon), Oklahoma City Outlets, Norfolk, Sedona (Village of Oak Creek), Charlotte Northlake (REI), Happy Valley (Clackamas), and East Greenwich (Warwick). The remaining 42 not-built sites were geocoded with OpenStreetMap: the post's street address, else the named site's main address, else the road, else the city center.

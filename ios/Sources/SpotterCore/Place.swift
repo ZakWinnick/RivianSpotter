@@ -65,7 +65,27 @@ public struct PlaceInformation: Codable, Equatable, Sendable {
     public var tags: [String]? = nil
     public var safeSourceURL: URL? {
         guard let sourceURL, let url = URL(string: sourceURL), url.scheme == "https",
-              url.host == "rivianroamer.com", url.user == nil, url.password == nil else { return nil }
+              ["rivianroamer.com", "x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""), url.user == nil, url.password == nil else { return nil }
+        return url
+    }
+}
+
+/// A coming-soon site's permit filing, as reported publicly (for example by RAN Tracker).
+public struct PlacePermit: Codable, Equatable, Sendable {
+    public let stage: String
+    public let stageLabel: String
+    /// The full status line, such as "Coming Soon · Permit filed" or "Permit filed · No update since Oct 2022".
+    public var label: String? = nil
+    public let address: String
+    public var addressNote: String? = nil
+    public var siteName: String? = nil
+    public var stalled: Bool? = nil
+    public let reportedOn: String
+    public let sourceURL: String
+    public let sourceName: String
+    public var safeSourceURL: URL? {
+        guard let url = URL(string: sourceURL), url.scheme == "https", ["x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""),
+              url.user == nil, url.password == nil else { return nil }
         return url
     }
 }
@@ -105,6 +125,9 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     public var reliability: PlaceReliability? = nil
     public var bookingURL: String? = nil
     public var phone: String? = nil
+    public var permit: PlacePermit? = nil
+    /// "rivian-coming-soon" or "permit-filing" for planned sites.
+    public var planningSource: String? = nil
 
     public var safeBookingURL: URL? {
         guard let bookingURL, let url = URL(string: bookingURL), url.scheme == "https",
@@ -128,12 +151,12 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     public var hasMapCoordinates: Bool {
         guard let latitude, let longitude, latitude.isFinite, longitude.isFinite,
               abs(latitude) <= 90, abs(longitude) <= 180 else { return false }
-        return hasPreciseCoordinates || (status == "planned" && coordinatePrecision == "city")
+        return hasPreciseCoordinates || (status == "planned" && ["city", "permit-address"].contains(coordinatePrecision))
     }
     public var statusLabel: String {
         if !listed { return "No longer listed" }
         switch status {
-        case "planned": return "Coming soon"
+        case "planned": return permit.map { $0.label ?? "Coming soon · \($0.stageLabel)" } ?? "Coming soon"
         case "open": return "Operating location"
         case "temporarily-closed": return "Temporarily closed"
         case "closed": return "Closed"
@@ -146,7 +169,7 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
         return url
     }
     public func matches(_ query: String) -> Bool {
-        let fields = "\(name) \(locality) \(address ?? "") \(typeLabel) \(types.map(\.rawValue).joined(separator: " "))"
+        let fields = "\(name) \(locality) \(address ?? "") \(permit?.address ?? "") \(typeLabel) \(types.map(\.rawValue).joined(separator: " "))"
         return query.split(whereSeparator: \.isWhitespace).allSatisfy {
             fields.localizedStandardContains(String($0))
         }

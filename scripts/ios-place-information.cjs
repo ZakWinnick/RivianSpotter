@@ -5,7 +5,20 @@ const fact = (title, value) => value == null || value === '' ? null : { title, v
 const section = (title, facts, expandable = false, sourceURL = null) => ({title, facts: facts.filter(Boolean), expandable, sourceURL});
 function chargingInformation(p) {
   const title = p.type === 'RAN' ? 'Rivian Adventure Network' : 'Waypoints';
-  if (p.status === 'planned') return [section(title, [fact('Coming soon', 'This is a planned location, not an available charging stop. An opening date and station details have not been published. The map position is approximate until an exact address is available.')])];
+  if (p.status === 'planned') {
+    if (!p.permit) return [section(title, [fact('Coming soon', 'This is a planned location, not an available charging stop. An opening date and station details have not been published. The map position is approximate until an exact address is available.')])];
+    const announced = p.planningSource !== 'permit-filing', permit = p.permit;
+    return [section('Site status', [
+      fact(announced ? 'Coming soon' : 'About this site', announced ? 'Rivian has announced this location. An opening date and station details have not been published.'
+        : permit.stage === 'reported-open' ? `${permit.sourceName} reported this site open, but Rivian’s charging map doesn’t list it.` : `Rivian hasn’t announced this location. ${permit.sourceName} reported a Rivian Adventure Network site here.`),
+      permit.stalled ? fact('No recent update', `Last update ${permit.reportedOn}. Plans for this site may have changed or stopped.`) : null,
+      fact('Status', permit.stageLabel), permit.stage === 'funding-awarded' ? fact('Funding', 'Awarded federal NEVI (National Electric Vehicle Infrastructure) charging funds, an early step before permits and construction.') : null, fact('Site', permit.siteName),
+      fact('Address', permit.address + (permit.addressNote ? ` (${permit.addressNote})` : '')),
+      permit.firstReported && permit.firstReported !== permit.reportedOn ? fact('First reported', permit.firstReported) : null,
+      fact('Last update', permit.reportedOn),
+      fact('About this information', `Reported by ${permit.sourceName}${permit.fromMap ? '’s map' : ''}. The map pin is at the address above. Plans can change before a station opens.`),
+    ], false, p.permit.sourceUrl)];
+  }
   const r = p.roamer;
   const detailsCurrent = r && (!r.observedAt || Date.parse(r.detailsObservedAt) >= Date.parse(r.observedAt));
   const useDetailStatus = r?.detailReportedStatus && (detailsCurrent || !r.reportedStatus);

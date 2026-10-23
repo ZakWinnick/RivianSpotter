@@ -1206,6 +1206,7 @@
 .type-icon.type-planned{background:transparent;color:#b4621a;border:2px solid #b4621a}
 .status.planned{color:var(--text)}
 .coming-soon{border-left:3px solid #b4621a}
+.content-section h3.permit-heading,.permit-heading{margin:22px 0 8px}.permit-facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;margin:8px 0 10px;font-size:.85rem}.permit-facts dt{color:var(--muted)}.permit-facts dd{margin:0;overflow-wrap:anywhere}
 
 /* Network-specific facts and readable time-of-use schedules. */
 .charging-network{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);min-width:0}

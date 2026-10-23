@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {VectorTile} from '@mapbox/vector-tile';
 import {PbfReader} from 'pbf';
 import {fetchComingSoon,mergePlanned,retainedComingSoonRows} from './refresh-coming-soon.mjs';
+import {loadPermitSites} from './permit-sites.mjs';
 
 export const SOURCE = 'https://rivian.com/experience/charging#map';
 export const TILES = 'https://api.rivianservices.com/map-chargers/tiles/chrg2';
@@ -157,11 +158,13 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
   const old=new Map(prior.map(p=>[p.sourceId,p]));
   const active=[...refined.values()].map(f=>normalize(f,date,old.get(f.properties.id))).filter(Boolean);
   const promotionReport={};
-  const records=mergePlanned(active,comingSoon.rows,date,prior,promotionReport,{retained:!!comingSoon.retained});
+  const permits=loadPermitSites();
+  const records=mergePlanned(active,comingSoon.rows,date,prior,promotionReport,{retained:!!comingSoon.retained,permits:permits.sites});
   const ids=new Set(records.filter(p=>p.listed!==false).map(p=>p.sourceId));
   validateRefresh(records,prior);
   const summary={date,sourceUrl:SOURCE,tileSource:TILES,coverage:COVERAGE,discoveryZoom:6,pinZoom:12,tilesScanned:coverage.length,splitTiles,requests,
     comingSoon:{count:comingSoon.rows.length,observedAt:new Date().toISOString(),sourceUrl:comingSoon.sourceUrl,assetUrl:comingSoon.assetUrl,sha256:comingSoon.sha256,...(comingSoon.retained?{retained:true,error:comingSoon.error}:{})},
+    permitSites:{count:permits.sites.length,sourceUrl:permits.source?.url||null},
     warnings,
     counts:Object.fromEntries(['RAN','Waypoint'].map(t=>[t,records.filter(p=>p.type===t&&p.listed!==false).length])),
     promotions:promotionReport,

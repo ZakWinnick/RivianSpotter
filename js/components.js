@@ -101,10 +101,33 @@
     const ports = (r.chargers||[]).map(p=>`<tr><td>${escape(p.name)}</td><td>${escape(p.connector)}</td><td>${p.powerKw?escape(p.powerKw)+" kW":"—"}</td><td>${(p.features||[]).map(f=>`<span title="${escape(f.description)}">${escape(f.label)}</span>`).join(" · ") || 'None listed'}</td></tr>`).join("");
     return `<section class="roamer-details"><h3>Charging Details</h3>${observed?`<p class="charging-note">Charging snapshot · ${observed}</p>`:""}${issue?`<p class="notice warning"><strong>Reported Charger Issue</strong><br>Reported as “${escape(reportedStatus)}” on ${useDetailIssue?detailsDate:observed}. This is a daily snapshot.</p>`:""}<h4>Connectors</h4><div class="charging-tags"><span class="tag">${escape(r.connectorSummary || 'Not available')}</span></div><h4>Pricing per kWh</h4><dl class="charging-prices">${rates}</dl>${scheduleHtml}<p class="charging-note">Prices may vary by time or vehicle. Confirm the rate before charging.</p><p class="power-observation"><strong>Average Peak Power:</strong> ${averageKw?escape(averageKw)+' kW':'Not available'}</p>${averageKw?'<p class="charging-note">Reported charging performance. Rated maximum power is listed separately above.</p>':''}<p><strong>Charging Hours:</strong> ${escape(r.hours || 'Not available')}</p><p><strong>Idle Fee:</strong> ${escape(r.detailRates?.Idle || 'Not available')}</p><h4>Site Features</h4>${r.amenities?.length?`<div class="charging-tags">${r.amenities.map(a=>`<span class="tag">${escape(a)}</span>`).join("")}</div>`:`<p class="charging-note">${detailsDate?'None listed':'Not available'}</p>`}<details class="charger-table"><summary>Individual Chargers${ports?' ('+r.chargers.length+')':''}</summary>${ports?`<div class="table-scroll"><table><thead><tr><th>Port</th><th>Connector</th><th>Rated Power</th><th>Features</th></tr></thead><tbody>${ports}</tbody></table></div>`:'<p class="charging-note">Individual charger details are not available yet.</p>'}</details>${detailsDate?`<p class="charging-note">Hours, amenities, idle fees, and individual charger details captured ${detailsDate}.</p>`:""}</section>`;
   }
+  function permitDate(value) {
+    return new Intl.DateTimeFormat("en-US", {month: "long", day: "numeric", year: "numeric", timeZone: "UTC"}).format(new Date(value + "T12:00:00Z"));
+  }
+  // Coming-soon sites: Rivian's announcement, a site reported by RAN Tracker, or both.
+  function plannedDetails(p) {
+    const M = typeof LocationModel !== "undefined" ? LocationModel : require("./location-model.js");
+    const gone = p.listed === false, permit = p.permit;
+    const fromTracker = p.planningSource === "permit-filing";
+    const heading = gone ? "No Longer Listed as Coming Soon" : M.permitLabel(p);
+    const place = `${escape(p.city)}, ${escape(p.state)}`;
+    const intro = fromTracker
+      ? (permit.stage === "reported-open"
+        ? `${escape(permit.sourceName)} reported a Rivian Adventure Network site open in ${place}, but Rivian’s charging map doesn’t list it.`
+        : `Rivian hasn’t announced ${place}. ${escape(permit.sourceName)} reported a Rivian Adventure Network site here${permit.stage === "reported" ? "" : " from permit filings and site visits"}.`)
+      : `Rivian ${gone ? "previously listed" : "lists"} ${place} as a future Rivian Adventure Network location. An opening date and station details have not been published.`;
+    const funding = permit?.stage === "funding-awarded" ? `<p class="charging-note">This site was awarded federal NEVI (National Electric Vehicle Infrastructure) charging funds, an early step before permits and construction.</p>` : "";
+    const stalled = permit?.stalled ? `<p class="notice warning">No update since ${escape(permitDate(permit.reportedOn))}. Plans for this site may have changed or stopped.</p>` : "";
+    const facts = permit ? [["Status", permit.stageLabel], permit.siteName ? ["Site", permit.siteName] : null, ["Address", permit.address + (permit.addressNote ? ` (${permit.addressNote})` : "")],
+      permit.firstReported && permit.firstReported !== permit.reportedOn ? ["First reported", permitDate(permit.firstReported)] : null, ["Last update", permitDate(permit.reportedOn)]].filter(Boolean) : [];
+    const permitHtml = permit ? `<h3 class="permit-heading">Site Status</h3><dl class="permit-facts">${facts.map(([k, v]) => `<dt>${escape(k)}</dt><dd>${escape(v)}</dd>`).join("")}</dl><p class="charging-note">Reported by <a href="${escape(permit.sourceUrl)}" target="_blank" rel="noopener">${escape(permit.sourceName)}${permit.fromMap ? "’s map" : ""}</a>. The map pin is at the address above. Plans can change before a station opens.</p>` : "";
+    const pinNote = permit ? "" : `<p class="charging-note">Approximate location from Rivian’s map. The exact charging-site address is not yet listed.</p>`;
+    return `<p class="notice coming-soon"><strong>${escape(heading)}</strong></p>${stalled}<p>${intro}</p>${funding}${permitHtml}${pinNote}`;
+  }
   function chargingDetails(p) {
     if(p.chargingNetworks)return `<p class="charging-note">Fast charging and Level 2 charging at this location.</p>${p.chargingNetworks.map(c=>`<section class="charging-network"><h3>${escape(typeLabel(c.type))}</h3>${chargingDetails(c)}</section>`).join('')}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
 
-    if(p.status === "planned") return `<p class="notice coming-soon"><strong>${p.listed===false?'No Longer Listed as Coming Soon':'Coming Soon'}</strong></p><p>Rivian ${p.listed===false?'previously listed':'lists'} ${escape(p.city)}, ${escape(p.state)} as a future Rivian Adventure Network location. An opening date and station details have not been published.</p><p class="charging-note">Approximate location from Rivian’s map. The exact charging-site address is not yet listed.</p>`;
+    if(p.status === "planned") return plannedDetails(p);
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
     return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
