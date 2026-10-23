@@ -10432,7 +10432,7 @@
     "lng": -122.51850128173828,
     "coordinatePrecision": "map-pin",
     "coordinateSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
-    "chargerCount": 7,
+    "chargerCount": 10,
     "maxKw": 300,
     "maxPowerLabel": "Up to 300 kW",
     "reliabilityGrade": "A",
@@ -18152,10 +18152,10 @@
     "lng": -118.36966037750244,
     "coordinatePrecision": "map-pin",
     "coordinateSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
-    "chargerCount": 10,
+    "chargerCount": 12,
     "maxKw": 300,
     "maxPowerLabel": "Up to 300 kW",
-    "reliabilityGrade": null,
+    "reliabilityGrade": "A",
     "rivianOnly": false,
     "capabilities": [
       "charging"
