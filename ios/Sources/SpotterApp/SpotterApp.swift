@@ -564,12 +564,17 @@ struct PlacesMap: View {
     @State private var latitudeSpan = 38.0
     @State private var longitudeSpan = 58.0
     @State private var selectedGroup: MapGroup?
+    // Markers are selected through the map rather than buttons, so a pinch that starts on a marker
+    // still zooms the map.
+    @State private var selection: String?
+    // Set once, so coming back from a place keeps the map where the person left it.
+    @State private var placed = false
     private var groups: [MapGroup] {
         if closeUp { return places.filter(\.hasMapCoordinates).map { MapGroup(places: [$0]) } }
         return PlaceClustering.clusters(places, latitudeSpan: latitudeSpan, longitudeSpan: longitudeSpan).map(MapGroup.init)
     }
     var body: some View {
-        Map(position: $position) {
+        Map(position: $position, selection: $selection) {
             if let userLocation {
                 Annotation("Your approximate location", coordinate: userLocation.coordinate) {
                     Circle().fill(.blue).frame(width: 12, height: 12)
@@ -578,21 +583,22 @@ struct PlacesMap: View {
             }
             ForEach(groups) { group in
                 Annotation(group.places.count == 1 ? group.places[0].guideName : "\(group.places.count) places", coordinate: group.coordinate) {
-                    Button {
-                        if group.places.count == 1 { open(group.places[0]) }
-                        else if latitudeSpan < 0.005 || PlaceClustering.isColocated(group.places) {
-                            selectedGroup = group
-                        } else if let region = fittedRegion(group.places) {
-                            withAnimation { position = .region(region) }
-                        }
-                    } label: {
-                        PlaceMapMarker(places: group.places)
-                            .frame(width: 44, height: 44).contentShape(Circle())
-                    }.buttonStyle(.plain).accessibilityLabel(group.places.count == 1 ? "Open \(group.places[0].name)" : "Zoom into \(group.places.count) places")
-                }.annotationTitles(.hidden)
+                    PlaceMapMarker(places: group.places)
+                        .frame(width: 44, height: 44).contentShape(Circle()).allowsHitTesting(false)
+                        .accessibilityLabel(group.places.count == 1 ? "Open \(group.places[0].name)" : "Zoom into \(group.places.count) places")
+                        .accessibilityAddTraits(.isButton)
+                }.tag(group.id).annotationTitles(.hidden)
             }
         }.mapStyle(.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll))
-            .onAppear { position = initialPosition }
+            .onAppear {
+                guard !placed else { return }
+                placed = true; position = initialPosition
+            }
+            .onChange(of: selection) { _, id in
+                guard let id else { return }
+                selection = nil
+                if let group = groups.first(where: { $0.id == id }) { activate(group) }
+            }
             .onChange(of: userLocation) { _, _ in position = initialPosition }
             // Follow search results instead of resetting to the whole map on each keystroke.
             .onChange(of: places.map(\.id)) { _, _ in
@@ -616,6 +622,14 @@ struct PlacesMap: View {
                 .frame(width: 400, height: 480)
                 #endif
             }
+    }
+    private func activate(_ group: MapGroup) {
+        if group.places.count == 1 { open(group.places[0]) }
+        else if latitudeSpan < 0.005 || PlaceClustering.isColocated(group.places) {
+            selectedGroup = group
+        } else if let region = fittedRegion(group.places) {
+            withAnimation { position = .region(region) }
+        }
     }
     private var initialPosition: MapCameraPosition {
         if let userLocation {
