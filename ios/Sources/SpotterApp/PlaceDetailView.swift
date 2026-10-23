@@ -155,7 +155,8 @@ private struct PlaceDetailContent: View {
                 VStack(alignment: .leading, spacing: 2) {
                     if let permit = place.permit, place.address == nil {
                         Text("\(permit.address)\n\(place.cardLocality)").font(.subheadline).fixedSize(horizontal: false, vertical: true)
-                        Text("Permit address from public filings").font(.caption).foregroundStyle(.secondary).padding(.top, 4)
+                        Text(permit.addressNote.map { "\($0.prefix(1).uppercased())\($0.dropFirst())" } ?? "Address reported by \(permit.sourceName)")
+                            .font(.caption).foregroundStyle(.secondary).padding(.top, 4)
                     } else {
                         Text(place.address == nil ? "Street address not published\n\(place.postalAddress)" : place.postalAddress)
                             .font(.subheadline).fixedSize(horizontal: false, vertical: true)

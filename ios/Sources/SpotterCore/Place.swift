@@ -74,7 +74,12 @@ public struct PlaceInformation: Codable, Equatable, Sendable {
 public struct PlacePermit: Codable, Equatable, Sendable {
     public let stage: String
     public let stageLabel: String
+    /// The full status line, such as "Coming Soon · Permit filed" or "Permit filed · No update since Oct 2022".
+    public var label: String? = nil
     public let address: String
+    public var addressNote: String? = nil
+    public var siteName: String? = nil
+    public var stalled: Bool? = nil
     public let reportedOn: String
     public let sourceURL: String
     public let sourceName: String
@@ -151,7 +156,7 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     public var statusLabel: String {
         if !listed { return "No longer listed" }
         switch status {
-        case "planned": return permit.map { "Coming soon · \($0.stageLabel)" } ?? "Coming soon"
+        case "planned": return permit.map { $0.label ?? "Coming soon · \($0.stageLabel)" } ?? "Coming soon"
         case "open": return "Operating location"
         case "temporarily-closed": return "Temporarily closed"
         case "closed": return "Closed"

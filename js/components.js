@@ -104,17 +104,24 @@
   function permitDate(value) {
     return new Intl.DateTimeFormat("en-US", {month: "long", day: "numeric", year: "numeric", timeZone: "UTC"}).format(new Date(value + "T12:00:00Z"));
   }
-  // Coming-soon sites: Rivian's announcement, a permit filing reported by RAN Tracker, or both.
+  // Coming-soon sites: Rivian's announcement, a site reported by RAN Tracker, or both.
   function plannedDetails(p) {
+    const M = typeof LocationModel !== "undefined" ? LocationModel : require("./location-model.js");
     const gone = p.listed === false, permit = p.permit;
-    const fromPermit = p.planningSource === "permit-filing";
-    const heading = gone ? "No Longer Listed as Coming Soon" : permit ? `Coming Soon · ${permit.stageLabel}` : "Coming Soon";
-    const intro = fromPermit
-      ? `Rivian hasn’t announced ${escape(p.city)}, ${escape(p.state)} yet. Permit filings for a Rivian Adventure Network site here were reported by ${escape(permit?.sourceName || "a permit tracker")}.`
-      : `Rivian ${gone ? "previously listed" : "lists"} ${escape(p.city)}, ${escape(p.state)} as a future Rivian Adventure Network location. An opening date and station details have not been published.`;
-    const permitHtml = permit ? `<h3>Permit Status</h3><dl class="permit-facts"><dt>Stage</dt><dd>${escape(permit.stageLabel)}</dd><dt>Permit address</dt><dd>${escape(permit.address)}</dd><dt>Reported</dt><dd>${escape(permitDate(permit.reportedOn))}</dd></dl><p class="charging-note">From public permit filings reported by <a href="${escape(permit.sourceUrl)}" target="_blank" rel="noopener">${escape(permit.sourceName)}</a>. The map pin is at the permit address. Plans can change before a station opens.</p>` : "";
+    const fromTracker = p.planningSource === "permit-filing";
+    const heading = gone ? "No Longer Listed as Coming Soon" : M.permitLabel(p);
+    const place = `${escape(p.city)}, ${escape(p.state)}`;
+    const intro = fromTracker
+      ? (permit.stage === "reported-open"
+        ? `${escape(permit.sourceName)} reported a Rivian Adventure Network site open in ${place}, but Rivian’s charging map doesn’t list it.`
+        : `Rivian hasn’t announced ${place}. ${escape(permit.sourceName)} reported a Rivian Adventure Network site here${permit.stage === "reported" ? "" : " from permit filings and site visits"}.`)
+      : `Rivian ${gone ? "previously listed" : "lists"} ${place} as a future Rivian Adventure Network location. An opening date and station details have not been published.`;
+    const stalled = permit?.stalled ? `<p class="notice warning">No update since ${escape(permitDate(permit.reportedOn))}. Plans for this site may have changed or stopped.</p>` : "";
+    const facts = permit ? [["Status", permit.stageLabel], permit.siteName ? ["Site", permit.siteName] : null, ["Address", permit.address + (permit.addressNote ? ` (${permit.addressNote})` : "")],
+      permit.firstReported && permit.firstReported !== permit.reportedOn ? ["First reported", permitDate(permit.firstReported)] : null, ["Last update", permitDate(permit.reportedOn)]].filter(Boolean) : [];
+    const permitHtml = permit ? `<h3 class="permit-heading">Site Status</h3><dl class="permit-facts">${facts.map(([k, v]) => `<dt>${escape(k)}</dt><dd>${escape(v)}</dd>`).join("")}</dl><p class="charging-note">Reported by <a href="${escape(permit.sourceUrl)}" target="_blank" rel="noopener">${escape(permit.sourceName)}</a>. The map pin is at the address above. Plans can change before a station opens.</p>` : "";
     const pinNote = permit ? "" : `<p class="charging-note">Approximate location from Rivian’s map. The exact charging-site address is not yet listed.</p>`;
-    return `<p class="notice coming-soon"><strong>${heading}</strong></p><p>${intro}</p>${permitHtml}${pinNote}`;
+    return `<p class="notice coming-soon"><strong>${escape(heading)}</strong></p>${stalled}<p>${intro}</p>${permitHtml}${pinNote}`;
   }
   function chargingDetails(p) {
     if(p.chargingNetworks)return `<p class="charging-note">Fast charging and Level 2 charging at this location.</p>${p.chargingNetworks.map(c=>`<section class="charging-network"><h3>${escape(typeLabel(c.type))}</h3>${chargingDetails(c)}</section>`).join('')}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;

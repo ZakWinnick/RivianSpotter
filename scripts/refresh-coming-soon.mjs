@@ -68,13 +68,13 @@ export function plannedRecords(rows,date,prior=[],{retained=false}={}){
 }
 // Pins a planned site at its permit address and records the permit facts. A Rivian announcement
 // takes the permit only when exactly one permit site is in that city.
-function attachPermits(planned,permits){
+function attachPermits(planned,permits,date){
  return planned.map(p=>{
   const matches=p.planningSource==='permit-filing'?permits.filter(s=>p.sourceId.endsWith(createHash('sha256').update(s.address.toLowerCase()).digest('hex').slice(0,8))&&placeKey(s)===placeKey(p))
    :permits.filter(s=>placeKey(s)===placeKey(p));
   if(matches.length!==1)return p;
   const site=matches[0];
-  return {...p,lat:site.lat,lng:site.lng,coordinatePrecision:'permit-address',coordinateSource:site.coordinateSource,permit:permitDetails(site)};
+  return {...p,lat:site.lat,lng:site.lng,coordinatePrecision:'permit-address',coordinateSource:site.coordinateSource,permit:permitDetails(site,date)};
  });
 }
 const cityKey=p=>`${p.country}:${p.state}:${p.city.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}`;
@@ -96,7 +96,7 @@ export function mergePlanned(active,rows,date,prior=[],report={},{retained: keep
  const announcedCities=rows.map(placeKey);
  const permitOnly=permits.filter(s=>!announcedCities.includes(placeKey(s))||permits.filter(o=>placeKey(o)===placeKey(s)).length>1)
   .map(s=>({city:s.city,state:s.state,latitude:s.lat,longitude:s.lng,permitOnly:true,address:s.address,sourceUrl:s.sourceUrl,coordinateSource:s.coordinateSource}));
- let planned=attachPermits(plannedRecords([...rows,...permitOnly],date,prior,{retained:keepDates}),permits).filter(p=>!linked.has(p.sourceId));
+ let planned=attachPermits(plannedRecords([...rows,...permitOnly],date,prior,{retained:keepDates}),permits,date).filter(p=>!linked.has(p.sourceId));
  const absorbed=new Set(planned.map(p=>p.absorbedSourceId).filter(Boolean));
  planned=planned.map(({absorbedSourceId,...p})=>p);
  const announced=new Set(planned.map(p=>p.sourceId));

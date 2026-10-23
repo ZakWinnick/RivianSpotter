@@ -199,7 +199,7 @@ extension Place {
     var cardCaption: String {
         let types = browseTypes.map { $0 == .ran ? "RAN" : $0.rawValue }.joined(separator: " + ")
         guard statusGroup == .comingSoon else { return types }
-        return permit.map { "\(types) · \($0.stageLabel)" } ?? "\(types) · Coming Soon"
+        return permit.map { "\(types) · \($0.label ?? $0.stageLabel)" } ?? "\(types) · Coming Soon"
     }
     var cardLocality: String { [city, region].filter { !$0.isEmpty }.joined(separator: ", ") }
     /// The detail line under a card's name. Many charging sites are named for their city, so

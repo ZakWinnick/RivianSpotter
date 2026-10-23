@@ -104,7 +104,7 @@ If official collection succeeds but a later refresh-job step fails, GitHub saves
 
 ## Permit sites (RAN Tracker)
 
-[RAN Tracker](https://x.com/rantracker) follows public permit filings for Rivian Adventure Network sites, usually with street addresses before Rivian publishes them. X doesn't allow scraping, so these are curated by hand in `data/permit-sites.json`. Each entry has the city, state or province, filed street address, stage (`permit-filed`, `permit-approved`, or `under-construction`), the date reported, the source post URL on X, and coordinates for the address.
+[RAN Tracker](https://x.com/rantracker) follows public permit filings for Rivian Adventure Network sites, usually with street addresses before Rivian publishes them. X doesn't allow scraping, so these are curated by hand in `data/permit-sites.json`. Each entry has the city, state or province, filed street address, stage (`permit-filed`, `permit-approved`, `under-construction`, `reported` for a post that names the site without a stage, or `reported-open` for a site reported open that Rivian's map doesn't list), the date reported, the source post URL on X, and coordinates for the address.
 
 Add or update an entry with:
 
@@ -121,4 +121,8 @@ The helper geocodes the address with OpenStreetMap Nominatim; pass `--lat` and `
 - **When the station opens:** a permit site is promoted to the operating station under the same rules as a Rivian announcement.
 - **When an entry is removed from the file:** the site leaves the directory as "No Longer Listed as Coming Soon".
 
-Every page shows the stage, the permit address, the report date, and a link to the source post, and notes that plans can change. Permit sites never get directions, charger counts, or an opening date.
+Optional fields are `siteName`, `firstReported`, and `addressNote`. `addressNote` explains an address that isn't from the post, such as "main address of Gilroy Premium Outlets", "exact spot on this road not given", or "city only".
+
+A site with no update for 18 months shows "<stage> · No update since <month year>" with a warning that plans may have changed, instead of "Coming Soon". Tracker-only sites are attributed "Reported by RAN Tracker", never "Updated from Rivian". Every page shows the status, site, address, first and last report dates, and a link to the latest source post. Permit sites never get directions, charger counts, or an opening date.
+
+The October 23, 2026 seed came from a CSV of all RAN Tracker posts (March 2022–October 2026, 216 sites). Each site was reconciled against Rivian's charging map and coming-soon list. 154 matched built stations. Six more were built under a neighboring name: Bow (Concord), West Lebanon (Lebanon), Oklahoma City Outlets, Norfolk, Sedona (Village of Oak Creek), Charlotte Northlake (REI), Happy Valley (Clackamas), and East Greenwich (Warwick). The remaining 42 not-built sites were geocoded with OpenStreetMap: the post's street address, else the named site's main address, else the road, else the city center.

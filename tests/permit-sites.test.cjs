@@ -83,10 +83,10 @@ test('the app gets the permit facts, source link, and pin', async () => {
   const { mergePlanned } = await api();
   const [p] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site()] });
   const [section] = informationFor(p);
-  assert.equal(section.title, 'Permit status');
+  assert.equal(section.title, 'Site status');
   assert.equal(section.sourceURL, 'https://x.com/rantracker/status/1');
-  assert.deepEqual(section.facts.find(f => f.title === 'Stage'), { title: 'Stage', value: 'Permit filed' });
-  assert.deepEqual(section.facts.find(f => f.title === 'Permit address'), { title: 'Permit address', value: '100 Main St' });
+  assert.deepEqual(section.facts.find(f => f.title === 'Status'), { title: 'Status', value: 'Permit filed' });
+  assert.deepEqual(section.facts.find(f => f.title === 'Address'), { title: 'Address', value: '100 Main St' });
 });
 
 test('adding a permit site through the helper validates and replaces the same address', async () => {
@@ -98,4 +98,19 @@ test('adding a permit site through the helper validates and replaces the same ad
   assert.equal(twice.sites.length, 1);
   assert.equal(twice.sites[0].stage, 'permit-approved');
   assert.throws(() => upsertSite(empty, { ...entry, stage: 'rumored' }));
+});
+
+test('old reports read as no recent update, and reported-open sites say Rivian doesn’t list them', async () => {
+  const { mergePlanned } = await api();
+  const [old] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ reportedOn: '2023-06-07' })] });
+  assert.equal(old.permit.stalled, true);
+  assert.equal(M.permitLabel(old), 'Permit filed · No update since Jun 2023');
+  assert.match(U.chargingDetails(old), /No update since June 7, 2023/);
+  const [recent] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ reportedOn: '2026-01-01' })] });
+  assert.equal(recent.permit.stalled, undefined);
+  const [open] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ stage: 'reported-open', reportedOn: '2026-05-08' })] });
+  assert.equal(M.permitLabel(open), 'Reported open · Not on Rivian’s map');
+  assert.match(U.chargingDetails(open), /Rivian’s charging map doesn’t list it/);
+  const [named] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ siteName: 'Palisades Village', addressNote: 'main address of Palisades Village' })] });
+  assert.match(U.chargingDetails(named), /Palisades Village[\s\S]*main address of Palisades Village/);
 });

@@ -28,9 +28,23 @@
   }
   function isCharging(p) { return p?.sourceKind === "charging-map"; }
   function isMapped(p) { return coordinates(p) && (["exact", "map-pin"].includes(p.coordinatePrecision) || (p.status === "planned" && ["city", "permit-address"].includes(p.coordinatePrecision))); }
+  // The status line for a planned site with a permit or tracker report.
+  function permitLabel(p) {
+    const permit = p.permit;
+    if (!permit) return "Coming Soon";
+    if (permit.stage === "reported-open") return "Reported open · Not on Rivian’s map";
+    if (permit.stalled) return `${permit.stageLabel} · No update since ${new Intl.DateTimeFormat("en-US", {month: "short", year: "numeric", timeZone: "UTC"}).format(new Date(permit.reportedOn + "T12:00:00Z"))}`;
+    return permit.stage === "reported" ? "Coming Soon" : `Coming Soon · ${permit.stageLabel}`;
+  }
+  function addressLine(p) { return p.displayAddress || p.address || p.permit?.address || "Street address not listed"; }
+  // Who published the record: Rivian, or (for a site Rivian hasn't announced) the tracker.
+  function sourceLine(p) {
+    if (p.planningSource === "permit-filing" && p.permit) return `Reported by ${p.permit.sourceName} · ${formatDate(p.permit.reportedOn)}`;
+    return p.lastVerified ? `Updated from Rivian · ${formatDate(p.lastVerified)}` : "";
+  }
   function chargingSummary(p) {
     if(p.chargingNetworks) return p.chargingNetworks.map(c=>`${c.chargerCount ?? "—"} ${c.type === "RAN" ? "fast" : "Level 2"} ${c.chargerCount===1?"charger":"chargers"}`).join(" · ");
-    if(p.status === "planned") return p.permit ? `Coming Soon · ${p.permit.stageLabel}` : "Coming Soon";
+    if(p.status === "planned") return permitLabel(p);
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
@@ -297,6 +311,9 @@
   return {
     isCharging,
     isMapped,
+    permitLabel,
+    addressLine,
+    sourceLine,
     chargingSummary,
     combineLocations,
     locationTypes,
