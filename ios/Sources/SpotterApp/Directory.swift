@@ -105,6 +105,7 @@ struct RootView: View {
                 DirectoryRows(wide: true, settings: { showSettings = true }, baseCamp: { openBaseCamp(wide: true) })
             }.listStyle(.sidebar)
                 .navigationTitle("RivianSpotter")
+                .brandHeader(showsName: true)
                 .navigationSplitViewColumnWidth(min: 230, ideal: 260)
         } detail: {
             NavigationStack(path: $widePath) {
@@ -138,7 +139,7 @@ struct RootView: View {
 
     private func stack<Content: View>(_ tab: Tab, @ViewBuilder _ content: () -> Content) -> some View {
         let path = Binding(get: { paths[tab] ?? NavigationPath() }, set: { paths[tab] = $0 })
-        return NavigationStack(path: path) { content().routeDestinations() }
+        return NavigationStack(path: path) { content().brandHeader(showsName: false).routeDestinations() }
             .environment(\.navigate) { route in paths[tab, default: NavigationPath()].append(route) }
     }
 
@@ -249,7 +250,41 @@ struct DestinationView: View {
     }
 }
 
+/// The RivianSpotter route mark from the app icon. The desktop preview has no asset catalog,
+/// so it shows nothing there.
+struct BrandMark: View {
+    var size: CGFloat = 28
+    var body: some View {
+        #if os(iOS)
+        if let image = UIImage(named: "BrandMark") {
+            Image(uiImage: image).resizable().scaledToFit()
+                .frame(width: size, height: size)
+                .clipShape(RoundedRectangle(cornerRadius: size * 0.24, style: .continuous))
+                .accessibilityHidden(true)
+        }
+        #endif
+    }
+}
+
 extension View {
+    /// Adds the brand mark: beside the app name at the top of the iPad and Mac sidebar, and on its
+    /// own in the top-left corner of each iPhone tab's first screen.
+    func brandHeader(showsName: Bool) -> some View {
+        #if os(iOS)
+        toolbar {
+            if showsName {
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 8) { BrandMark(size: 26); Text("RivianSpotter").font(.headline) }
+                        .accessibilityElement(children: .combine).accessibilityLabel("RivianSpotter")
+                }
+            } else {
+                ToolbarItem(placement: .topBarLeading) { BrandMark().accessibilityLabel("RivianSpotter") }
+            }
+        }
+        #else
+        self
+        #endif
+    }
     func hiddenNavigationBar() -> some View {
         #if os(iOS)
         toolbar(.hidden, for: .navigationBar)
