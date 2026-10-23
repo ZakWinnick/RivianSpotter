@@ -35,6 +35,7 @@ function catalogContent() {
     bookingURL: safeUrl(p.bookingUrl, 'rivian.com'), phone: p.phone || null,
     information: informationFor(p),
     postalCode: p.postalCode || null,
+    ...(p.permit ? { permit: { stage: p.permit.stage, stageLabel: p.permit.stageLabel, address: p.permit.address, reportedOn: p.permit.reportedOn, sourceURL: p.permit.sourceUrl, sourceName: p.permit.sourceName }, planningSource: p.planningSource } : {}),
     relatedPlaceIDs: [...new Set([...(p.chargingStations || []), ...(p.nearbyPlaces || [])].map(x => String(x.id)))]
   })).sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id)) };
   return output;

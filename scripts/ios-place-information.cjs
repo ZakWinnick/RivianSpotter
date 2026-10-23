@@ -5,7 +5,15 @@ const fact = (title, value) => value == null || value === '' ? null : { title, v
 const section = (title, facts, expandable = false, sourceURL = null) => ({title, facts: facts.filter(Boolean), expandable, sourceURL});
 function chargingInformation(p) {
   const title = p.type === 'RAN' ? 'Rivian Adventure Network' : 'Waypoints';
-  if (p.status === 'planned') return [section(title, [fact('Coming soon', 'This is a planned location, not an available charging stop. An opening date and station details have not been published. The map position is approximate until an exact address is available.')])];
+  if (p.status === 'planned') {
+    if (!p.permit) return [section(title, [fact('Coming soon', 'This is a planned location, not an available charging stop. An opening date and station details have not been published. The map position is approximate until an exact address is available.')])];
+    const announced = p.planningSource !== 'permit-filing';
+    return [section('Permit status', [
+      fact('Coming soon', announced ? 'Rivian has announced this location. An opening date and station details have not been published.' : 'Rivian hasn’t announced this location. Permit filings for a Rivian Adventure Network site here were reported publicly.'),
+      fact('Stage', p.permit.stageLabel), fact('Permit address', p.permit.address), fact('Reported', p.permit.reportedOn),
+      fact('About this information', `From public permit filings reported by ${p.permit.sourceName}. The map pin is at the permit address. Plans can change before a station opens.`),
+    ], false, p.permit.sourceUrl)];
+  }
   const r = p.roamer;
   const detailsCurrent = r && (!r.observedAt || Date.parse(r.detailsObservedAt) >= Date.parse(r.observedAt));
   const useDetailStatus = r?.detailReportedStatus && (detailsCurrent || !r.reportedStatus);

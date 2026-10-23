@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {load} from 'cheerio';
+import {permitDetails} from './permit-sites.mjs';
 export const SOURCE='https://rivian.com/experience/charging';
 const STATES=new Set('AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY AB BC MB NB NL NS NT NU ON PE QC SK YT'.split(' '));
 export function parseComingSoon(source){
@@ -46,11 +47,34 @@ export function retainedComingSoonRows(prior){
  return prior.filter(p=>p.planningSource==='rivian-coming-soon'&&p.status==='planned'&&p.listed!==false&&!p.promotion)
   .map(p=>({city:p.city,state:p.state,latitude:p.lat,longitude:p.lng}));
 }
+const CANADA=['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'];
+const placeKey=p=>`${p.state}-${p.city.trim().toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-')}`;
+// Rows are Rivian announcements ({city,state,latitude,longitude}) or, with permitOnly, permit
+// sites Rivian hasn't announced. A permit-only site is keyed by its address so two filings in one
+// city stay separate. When Rivian later announces a city that had one permit-only site, the
+// announcement takes over that site's identity so saved places and links keep working.
 export function plannedRecords(rows,date,prior=[],{retained=false}={}){
  return rows.map(p=>{
-  const city=p.city.trim(),key=`${p.state}-${city.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-')}`;
-  const sourceId='RIVIAN-PLANNED-'+key,digest=createHash('sha256').update(sourceId).digest('hex'),old=prior.find(x=>x.sourceId===sourceId);
-  return {id:old?.id??parseInt(digest.slice(0,12),16)+1000000,slug:old?.slug||`ran-coming-soon-${key.toLowerCase()}-${digest.slice(0,10)}`,name:`${city}, ${p.state}`,type:'RAN',network:'Rivian Adventure Network',sourceId,sourceKind:'charging-map',sourceUrl:SOURCE+'#map',planningSource:'rivian-coming-soon',address:null,displayAddress:null,city,state:p.state,country:['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'].includes(p.state)?'CA':'US',lat:p.latitude,lng:p.longitude,coordinatePrecision:'city',coordinateSource:SOURCE+'#map',chargerCount:null,maxKw:null,maxPowerLabel:null,reliabilityGrade:null,rivianOnly:null,capabilities:['charging'],services:[],status:'planned',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,lastVerified:retained&&old?.lastVerified||date,firstSeen:old?.firstSeen||date};
+  const city=p.city.trim(),key=placeKey(p);
+  const sourceId=p.permitOnly?`PERMIT-${key}-${createHash('sha256').update(p.address.toLowerCase()).digest('hex').slice(0,8)}`:'RIVIAN-PLANNED-'+key;
+  const digest=createHash('sha256').update(sourceId).digest('hex');
+  const permitPrior=prior.filter(x=>x.planningSource==='permit-filing'&&x.status==='planned'&&!x.promotion&&placeKey(x)===key);
+  const old=prior.find(x=>x.sourceId===sourceId)||(!p.permitOnly&&permitPrior.length===1?permitPrior[0]:undefined);
+  return {id:old?.id??parseInt(digest.slice(0,12),16)+1000000,slug:old?.slug||`ran-${p.permitOnly?'permit':'coming-soon'}-${key.toLowerCase()}-${digest.slice(0,10)}`,name:`${city}, ${p.state}`,type:'RAN',network:'Rivian Adventure Network',sourceId,sourceKind:'charging-map',
+   sourceUrl:p.permitOnly?p.sourceUrl:SOURCE+'#map',planningSource:p.permitOnly?'permit-filing':'rivian-coming-soon',
+   ...(old&&old.sourceId!==sourceId?{absorbedSourceId:old.sourceId}:{}),
+   address:null,displayAddress:null,city,state:p.state,country:CANADA.includes(p.state)?'CA':'US',lat:p.latitude,lng:p.longitude,coordinatePrecision:p.permitOnly?'permit-address':'city',coordinateSource:p.permitOnly?p.coordinateSource:SOURCE+'#map',chargerCount:null,maxKw:null,maxPowerLabel:null,reliabilityGrade:null,rivianOnly:null,capabilities:['charging'],services:[],status:'planned',listed:true,hours:null,chargingHours:null,timezone:null,phone:null,rivianUrl:null,bookingUrl:null,lastVerified:retained&&old?.lastVerified||date,firstSeen:old?.firstSeen||date};
+ });
+}
+// Pins a planned site at its permit address and records the permit facts. A Rivian announcement
+// takes the permit only when exactly one permit site is in that city.
+function attachPermits(planned,permits){
+ return planned.map(p=>{
+  const matches=p.planningSource==='permit-filing'?permits.filter(s=>p.sourceId.endsWith(createHash('sha256').update(s.address.toLowerCase()).digest('hex').slice(0,8))&&placeKey(s)===placeKey(p))
+   :permits.filter(s=>placeKey(s)===placeKey(p));
+  if(matches.length!==1)return p;
+  const site=matches[0];
+  return {...p,lat:site.lat,lng:site.lng,coordinatePrecision:'permit-address',coordinateSource:site.coordinateSource,permit:permitDetails(site)};
  });
 }
 const cityKey=p=>`${p.country}:${p.state}:${p.city.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}`;
@@ -59,7 +83,7 @@ function distanceKm(a,b){
  const rad=x=>x*Math.PI/180,dLat=rad(b.lat-a.lat),dLng=rad(b.lng-a.lng);
  return 12742*Math.asin(Math.min(1,Math.sqrt(Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2)));
 }
-export function mergePlanned(active,rows,date,prior=[],report={},{retained: keepDates=false}={}){
+export function mergePlanned(active,rows,date,prior=[],report={},{retained: keepDates=false,permits=[]}={}){
  const oldBySource=new Map(prior.map(p=>[p.sourceId,p]));
  // Preserve established identities even if a source temporarily removes a station.
  active=active.map(p=>{
@@ -67,9 +91,16 @@ export function mergePlanned(active,rows,date,prior=[],report={},{retained: keep
   return old?.promotion?{...p,id:old.id,slug:old.slug,firstSeen:old.firstSeen,legacyIds:old.legacyIds,legacySlugs:old.legacySlugs,promotion:old.promotion}:p;
  });
  const linked=new Set(prior.filter(p=>p.promotion).map(p=>p.promotion.plannedSourceId));
- let planned=plannedRecords(rows,date,prior,{retained:keepDates}).filter(p=>!linked.has(p.sourceId));
+ // A permit site in a city Rivian has announced enriches that announcement; any other permit site
+ // (including a second filing in an announced city) is listed on its own.
+ const announcedCities=rows.map(placeKey);
+ const permitOnly=permits.filter(s=>!announcedCities.includes(placeKey(s))||permits.filter(o=>placeKey(o)===placeKey(s)).length>1)
+  .map(s=>({city:s.city,state:s.state,latitude:s.lat,longitude:s.lng,permitOnly:true,address:s.address,sourceUrl:s.sourceUrl,coordinateSource:s.coordinateSource}));
+ let planned=attachPermits(plannedRecords([...rows,...permitOnly],date,prior,{retained:keepDates}),permits).filter(p=>!linked.has(p.sourceId));
+ const absorbed=new Set(planned.map(p=>p.absorbedSourceId).filter(Boolean));
+ planned=planned.map(({absorbedSourceId,...p})=>p);
  const announced=new Set(planned.map(p=>p.sourceId));
- const retired=prior.filter(p=>p.status==='planned'&&p.planningSource==='rivian-coming-soon'&&!announced.has(p.sourceId)&&!linked.has(p.sourceId));
+ const retired=prior.filter(p=>p.status==='planned'&&['rivian-coming-soon','permit-filing'].includes(p.planningSource)&&!announced.has(p.sourceId)&&!linked.has(p.sourceId)&&!absorbed.has(p.sourceId));
  // Rivian can publish an operating station while still announcing that city as coming soon, so a
  // still-listed announcement is matched the same way as a retired one; otherwise both appear.
  const pending=[...retired.map(p=>({p,stillAnnounced:false})),...planned.map(p=>({p,stillAnnounced:true}))];
@@ -93,6 +124,6 @@ export function mergePlanned(active,rows,date,prior=[],report={},{retained: keep
  }
  planned=planned.filter(p=>!promoted.has(p.sourceId));
  const ids=new Set([...active,...planned].map(s=>s.sourceId));
- const retained=prior.filter(s=>!ids.has(s.sourceId)&&!promoted.has(s.sourceId)&&!linked.has(s.sourceId)).map(s=>({...s,listed:false,status:s.status==='planned'?'planned':'unknown'}));
+ const retained=prior.filter(s=>!ids.has(s.sourceId)&&!promoted.has(s.sourceId)&&!linked.has(s.sourceId)&&!absorbed.has(s.sourceId)).map(s=>({...s,listed:false,status:s.status==='planned'?'planned':'unknown'}));
  return [...active,...planned,...retained].sort((a,b)=>a.sourceId.localeCompare(b.sourceId));
 }

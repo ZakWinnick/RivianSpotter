@@ -153,9 +153,16 @@ private struct PlaceDetailContent: View {
         Button { sheet = .address } label: {
             InfoCard(title: "Address", symbol: "location.fill", color: .orange, chevron: true) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(place.address == nil ? "Street address not published\n\(place.postalAddress)" : place.postalAddress)
-                        .font(.subheadline).fixedSize(horizontal: false, vertical: true)
-                    if !place.hasMapCoordinates {
+                    if let permit = place.permit, place.address == nil {
+                        Text("\(permit.address)\n\(place.cardLocality)").font(.subheadline).fixedSize(horizontal: false, vertical: true)
+                        Text("Permit address from public filings").font(.caption).foregroundStyle(.secondary).padding(.top, 4)
+                    } else {
+                        Text(place.address == nil ? "Street address not published\n\(place.postalAddress)" : place.postalAddress)
+                            .font(.subheadline).fixedSize(horizontal: false, vertical: true)
+                    }
+                    if place.permit != nil {
+                        EmptyView()
+                    } else if !place.hasMapCoordinates {
                         Text("No map pin published").font(.caption).foregroundStyle(.secondary).padding(.top, 4)
                     } else if !place.hasPreciseCoordinates {
                         Text("Approximate area · exact location not published").font(.caption).foregroundStyle(.secondary).padding(.top, 4)

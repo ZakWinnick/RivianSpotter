@@ -27,10 +27,10 @@
     );
   }
   function isCharging(p) { return p?.sourceKind === "charging-map"; }
-  function isMapped(p) { return coordinates(p) && (["exact", "map-pin"].includes(p.coordinatePrecision) || (p.status === "planned" && p.coordinatePrecision === "city")); }
+  function isMapped(p) { return coordinates(p) && (["exact", "map-pin"].includes(p.coordinatePrecision) || (p.status === "planned" && ["city", "permit-address"].includes(p.coordinatePrecision))); }
   function chargingSummary(p) {
     if(p.chargingNetworks) return p.chargingNetworks.map(c=>`${c.chargerCount ?? "—"} ${c.type === "RAN" ? "fast" : "Level 2"} ${c.chargerCount===1?"charger":"chargers"}`).join(" · ");
-    if(p.status === "planned") return "Coming Soon";
+    if(p.status === "planned") return p.permit ? `Coming Soon · ${p.permit.stageLabel}` : "Coming Soon";
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
