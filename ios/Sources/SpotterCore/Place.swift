@@ -65,7 +65,7 @@ public struct PlaceInformation: Codable, Equatable, Sendable {
     public var tags: [String]? = nil
     public var safeSourceURL: URL? {
         guard let sourceURL, let url = URL(string: sourceURL), url.scheme == "https",
-              ["rivianroamer.com", "x.com", "twitter.com"].contains(url.host ?? ""), url.user == nil, url.password == nil else { return nil }
+              ["rivianroamer.com", "x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""), url.user == nil, url.password == nil else { return nil }
         return url
     }
 }
@@ -84,7 +84,7 @@ public struct PlacePermit: Codable, Equatable, Sendable {
     public let sourceURL: String
     public let sourceName: String
     public var safeSourceURL: URL? {
-        guard let url = URL(string: sourceURL), url.scheme == "https", ["x.com", "twitter.com"].contains(url.host ?? ""),
+        guard let url = URL(string: sourceURL), url.scheme == "https", ["x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""),
               url.user == nil, url.password == nil else { return nil }
         return url
     }

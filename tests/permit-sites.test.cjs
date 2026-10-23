@@ -114,3 +114,16 @@ test('old reports read as no recent update, and reported-open sites say Rivian d
   const [named] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ siteName: 'Palisades Village', addressNote: 'main address of Palisades Village' })] });
   assert.match(U.chargingDetails(named), /Palisades Village[\s\S]*main address of Palisades Village/);
 });
+
+test('funding-awarded sites explain NEVI funding, and map-only sites cite the tracker’s map', async () => {
+  const { mergePlanned } = await api(), { validatePermitSites } = await permits();
+  const mapUrl = 'https://www.google.com/maps/d/viewer?mid=example';
+  const file = s => ({ schemaVersion: 1, source: { name: 'RAN Tracker', url: 'https://x.com/rantracker', mapUrl }, sites: [s] });
+  assert.doesNotThrow(() => validatePermitSites(file(site({ stage: 'funding-awarded', sourceUrl: mapUrl }))));
+  assert.throws(() => validatePermitSites({ ...file(site()), source: { name: 'RAN Tracker', url: 'https://x.com/rantracker', mapUrl: 'https://example.com/map' } }));
+  const [p] = mergePlanned([], [], '2026-10-23', [], {}, { permits: [site({ stage: 'funding-awarded', sourceUrl: mapUrl, fromMap: true })] });
+  assert.equal(M.permitLabel(p), 'Coming Soon · Funding awarded');
+  const html = U.chargingDetails(p);
+  assert.match(html, /NEVI/);
+  assert.match(html, /RAN Tracker’s map/);
+});
