@@ -1,5 +1,5 @@
 const M=require('../js/location-model.js'),e=M.escapeHtml;
-const labels={added:'Added to the map','coming-soon':'Coming soon','now-active':'Now open',changed:'Details updated',relisted:'Back on the map','no-longer-listed':'No longer listed'};
+const labels={added:'Added to the map','coming-soon':'Coming soon','now-active':'Now active',changed:'Details updated',relisted:'Back on the map','no-longer-listed':'No longer listed'};
 function renderFeed(feed) {
   const entries=feed.days.flatMap(d=>d.entries),types=[...new Set(entries.map(x=>x.type))].sort();
   const latest=feed.latestCheck;

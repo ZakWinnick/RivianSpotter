@@ -123,7 +123,7 @@ test('curated photos match place identities and distinguish shared charger image
   assert.equal(places.find(p => p.id === '77').photo, null, 'Brea should not show a generic car as its building');
   for (const p of places.filter(p => p.photo)) {
     assert.ok(['media.rivian.com', 'photos.plugshare.com', 'cdn10.localdatacdn.com', 'cdn8.localdatacdn.com', 'rivianspotter.com'].includes(new URL(p.photo.imageURL).hostname));
-    assert.ok(['rivian.com', 'www.plugshare.com', 'www.loc8nearme.com'].includes(new URL(p.photo.sourceURL).hostname));
+    assert.ok(['rivian.com', 'www.plugshare.com', 'www.loc8nearme.com', 'rivianspotter.com'].includes(new URL(p.photo.sourceURL).hostname));
     assert.equal(new URL(p.photo.imageURL).protocol, 'https:');
     assert.ok(p.photo.credit && p.photo.description);
   }

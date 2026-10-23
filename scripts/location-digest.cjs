@@ -51,7 +51,10 @@ function compare(before,after){
   else {
    changes=[...new Set([...Object.keys(previous.fields),...Object.keys(p.fields)])].filter(k=>JSON.stringify(comparable(k,previous.fields[k]))!==JSON.stringify(comparable(k,p.fields[k]))).map(field=>({field,before:previous.fields[field]??null,after:p.fields[field]??null}));
    if(!changes.length)continue;
-   kind=previous.fields['Location status']==='planned'&&p.fields['Location status']==='open'?'now-active':'changed';
+   // Rivian's charging map never says "open", so a coming-soon station counts as active once it
+   // appears there with station details; an unknown status alone is not an opening.
+   const nowActive=previous.fields['Location status']==='planned'&&(p.fields['Location status']==='open'||(p.fields['Location status']==='unknown'&&p.fields['Charger count']!=null));
+   kind=nowActive?'now-active':'changed';
   }
   events.push({eventId:hash({id:p.id,kind,changes,fields:kind==='added'?p.fields:undefined}),kind,id:p.id,name:p.name,type:p.type,city:p.city,state:p.state,url:p.url,changes,...(kind==='added'||kind==='relisted'?{details:p.fields}:{})});
  }
@@ -141,7 +144,7 @@ function body(report){
    lines.push(`${md(e.type)}${locality&&!e.name.includes(locality)?' · '+md(locality):''}`,'');
    if(kind==='added'||kind==='relisted')lines.push(...newLocationLines(e),'');
    if(kind==='no-longer-listed')lines.push('This location has been removed from the directory. That does not necessarily mean it has closed.','');
-   if(kind==='now-active')lines.push('Previously marked coming soon; station details are now available.','');
+   if(kind==='now-active')lines.push(p.fields['Location status']==='open'?'Previously marked coming soon; station details are now available.':'Previously marked coming soon; now on Rivian’s charging map with station details.','');
    for(const d of e.changes)lines.push(...changeLines(d));
    lines.push('',`[View location](${e.url})`,'');
   }
