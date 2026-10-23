@@ -1,16 +1,16 @@
 {
   "refreshMode": "daily",
-  "startedAt": "2026-10-23T12:29:44.351Z",
+  "startedAt": "2026-10-23T14:35:29.884Z",
   "sourceUrl": "https://rivianroamer.com/charging/networks/rivian-adventure-network",
-  "observedAt": "2026-10-23T12:29:44.727Z",
-  "completedAt": "2026-10-23T13:11:14.061Z",
-  "sourceHash": "668def713a6efb426fd8778dc428888ce332ec15d3c86f785c8e843c5ad012ef",
+  "observedAt": "2026-10-23T14:35:30.392Z",
+  "completedAt": "2026-10-23T15:16:39.604Z",
+  "sourceHash": "1066bf69b75ced4fcb4db51365b6f96f51beea2f814ed0cb7184a17c6a17925c",
   "networkCount": 162,
   "coverage": {
-    "officialStationCount": 162,
-    "detailCount": 162,
-    "freshDetailCount": 162,
-    "checkedCount": 162,
+    "officialStationCount": 163,
+    "detailCount": 163,
+    "freshDetailCount": 163,
+    "checkedCount": 163,
     "missingDetailIds": [],
     "staleDetailIds": [],
     "notCheckedIds": [],
@@ -12194,8 +12194,6 @@
       },
       "firstTracked": "Oct 22, 2026",
       "reliabilityTone": null,
-      "observedAt": "2026-10-23T12:29:44.727Z",
-      "networkListed": true,
       "detailReportedStatus": null,
       "address": "520 West Broadway, Jackson, WY 83001, USA",
       "amenities": [
@@ -12337,8 +12335,10 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:30:00.609Z"
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:35:45.735Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L13914547768396721542",
@@ -12499,9 +12499,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:10:58.732Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 11 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:16:24.426Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -12534,7 +12534,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 205,
+      "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37/kWh",
@@ -12723,9 +12723,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:06:39.103Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 11 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:12:06.965Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -12943,9 +12943,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:06:54.382Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 11 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:12:22.095Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -12975,7 +12975,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 189,
+      "averageKw": 188,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39/kWh",
@@ -13164,9 +13164,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:07:09.761Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 11 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:12:37.296Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -13199,7 +13199,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 206,
+      "averageKw": 205,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -13388,9 +13388,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:07:24.984Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 12 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:12:52.438Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -13423,7 +13423,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 189,
+      "averageKw": 186,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 1:00am-11:00am$0.33 Mon-Fri 11:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-11:00am$0.33 Sat-Sun 11:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
@@ -13522,9 +13522,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:07:40.156Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 13 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:13:07.563Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -13655,9 +13655,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:07:55.271Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 13 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:13:22.779Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -13690,7 +13690,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 209,
+      "averageKw": 210,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.38/kWh",
@@ -13819,9 +13819,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:08:10.611Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 10 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:13:37.923Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -13981,9 +13981,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:08:25.893Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 14 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:13:53.093Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -14016,7 +14016,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 197,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39/kWh",
@@ -14115,9 +14115,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:08:41.173Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 13 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:14:08.235Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -14336,9 +14336,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:08:56.454Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 14 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:14:23.344Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -14368,7 +14368,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 203,
+      "averageKw": 201,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.58/kWh",
@@ -14467,9 +14467,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:09:11.755Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 12 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:14:38.475Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -14500,7 +14500,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 178,
+      "averageKw": 179,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -14629,9 +14629,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:09:27.056Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 15 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:14:53.634Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -14662,7 +14662,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 197,
+      "averageKw": 198,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -14851,9 +14851,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:09:42.385Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 12 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:15:08.773Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -15043,9 +15043,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:09:57.700Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 14 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:15:23.954Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -15077,7 +15077,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 202,
+      "averageKw": 203,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.38/kWh",
@@ -15236,9 +15236,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:10:13.014Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 15 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:15:39.087Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -15459,9 +15459,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:10:28.311Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 13 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:15:54.235Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -15680,9 +15680,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:10:43.456Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 14 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:16:09.345Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -15872,9 +15872,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:30:15.958Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:36:00.926Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -16006,9 +16006,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:30:31.173Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:36:16.051Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -16169,9 +16169,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:30:46.334Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:36:31.194Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -16393,9 +16393,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:31:01.453Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:36:46.329Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -16555,9 +16555,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:31:16.735Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:37:01.464Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -16778,9 +16778,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:31:32.073Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:37:16.597Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17001,9 +17001,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:31:47.238Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:37:31.783Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17194,9 +17194,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:32:02.412Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:37:46.917Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17387,9 +17387,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:32:17.729Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:38:02.060Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17579,9 +17579,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:32:32.959Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:38:17.273Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17682,9 +17682,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:32:48.257Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:38:32.469Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -17875,9 +17875,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:33:03.393Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:38:47.592Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18008,9 +18008,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:33:18.716Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:39:02.725Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18141,9 +18141,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:33:34.020Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:39:17.870Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18274,9 +18274,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:33:49.312Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:39:33.044Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18528,9 +18528,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:34:04.664Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:39:48.171Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18692,9 +18692,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:34:19.998Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:40:03.259Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -18974,9 +18974,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-23T12:34:35.301Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:40:18.433Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19107,9 +19107,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:34:50.607Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:40:33.578Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19239,9 +19239,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:35:05.764Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:40:48.703Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19372,9 +19372,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:35:21.093Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:41:03.826Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19506,9 +19506,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:35:36.378Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:41:18.991Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19637,9 +19637,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:35:51.562Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:41:34.174Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19770,9 +19770,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:36:06.766Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:41:49.302Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -19903,9 +19903,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:36:22.100Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:42:04.426Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20065,9 +20065,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:36:37.282Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:42:19.594Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20288,9 +20288,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:36:52.530Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:42:34.711Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20420,9 +20420,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:37:07.697Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:42:49.838Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20553,9 +20553,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:37:22.857Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:43:05.108Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20685,9 +20685,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:37:38.167Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:43:20.278Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20819,9 +20819,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:37:53.487Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:43:35.451Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -20951,9 +20951,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:38:08.804Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:43:50.577Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21085,9 +21085,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:38:23.992Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:44:05.700Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21248,9 +21248,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:38:39.225Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:44:20.885Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21410,9 +21410,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:38:54.515Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:44:36.051Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21544,9 +21544,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:39:09.870Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:44:51.185Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21675,9 +21675,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:39:25.154Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:45:06.314Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21807,9 +21807,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:39:40.432Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:45:21.423Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -21941,9 +21941,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:39:55.597Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:45:36.621Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22102,9 +22102,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:40:10.811Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:45:51.749Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22236,9 +22236,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:40:26.095Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:46:06.878Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22367,9 +22367,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:40:41.376Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:46:22.043Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22501,9 +22501,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:40:56.665Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:46:37.157Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22663,9 +22663,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:41:12.010Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:46:52.293Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22826,9 +22826,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:41:27.335Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:47:07.417Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -22929,9 +22929,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:41:42.623Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:47:22.536Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23061,9 +23061,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:41:57.735Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:47:37.711Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23224,9 +23224,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:42:13.085Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:47:52.892Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23418,9 +23418,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:42:28.416Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:48:08.027Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23550,9 +23550,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:42:43.705Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:48:23.166Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23684,9 +23684,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:42:58.871Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:48:38.343Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23816,9 +23816,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:43:13.995Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:48:53.502Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -23950,9 +23950,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:43:29.340Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:49:08.611Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24171,9 +24171,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:43:44.587Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:49:23.746Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24347,9 +24347,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:43:59.708Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:49:38.914Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24525,9 +24525,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:44:15.045Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:49:54.121Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24656,9 +24656,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:44:30.377Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:50:09.214Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24789,9 +24789,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:44:45.707Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:50:24.340Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -24923,9 +24923,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:45:00.993Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:50:39.544Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25040,9 +25040,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:45:16.349Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:50:54.690Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25173,9 +25173,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:45:46.855Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:51:24.956Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25305,9 +25305,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:45:31.570Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:51:09.815Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25437,9 +25437,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:46:01.987Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:51:40.268Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25568,9 +25568,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:46:17.176Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:51:55.412Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25701,9 +25701,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:46:32.497Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:52:10.538Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25833,9 +25833,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:47:03.064Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:52:40.757Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -25997,9 +25997,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:46:47.670Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:52:25.631Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26176,9 +26176,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:47:18.400Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:52:55.861Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26370,9 +26370,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:47:33.572Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:53:11.114Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26548,9 +26548,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:47:48.857Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:53:26.267Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26680,9 +26680,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:48:04.187Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:53:41.358Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26811,9 +26811,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:48:19.518Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:53:56.608Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -26985,9 +26985,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:48:34.629Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:54:11.729Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27118,9 +27118,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:48:49.964Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:54:26.836Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27251,9 +27251,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:49:05.132Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:54:41.964Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27383,9 +27383,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:49:20.448Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:54:57.189Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27517,9 +27517,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:49:35.736Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:55:12.324Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27651,9 +27651,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:49:51.042Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:55:27.446Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27784,9 +27784,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:50:06.221Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:55:42.584Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -27916,9 +27916,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:50:21.531Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:55:57.726Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28049,9 +28049,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:50:36.711Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:56:12.817Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28182,9 +28182,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:50:52.011Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:56:27.996Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28313,9 +28313,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:51:07.300Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:56:43.086Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28446,9 +28446,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:51:22.588Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:56:58.194Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28580,9 +28580,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:51:37.917Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:57:13.329Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28713,9 +28713,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:51:53.092Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:57:28.453Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28847,9 +28847,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:52:08.263Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:57:43.568Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -28980,9 +28980,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:52:23.617Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:57:58.745Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29111,9 +29111,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:52:38.897Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:58:13.894Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29245,9 +29245,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:52:54.080Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:58:29.022Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29378,9 +29378,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:53:09.260Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:58:44.249Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29511,9 +29511,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:53:24.558Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:58:59.488Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29645,9 +29645,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:53:39.890Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:59:14.678Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29779,9 +29779,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:53:55.223Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:59:29.834Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -29911,9 +29911,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:54:10.538Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T14:59:45.003Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30043,9 +30043,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:54:25.704Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:00:00.328Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30220,9 +30220,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:54:40.868Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:00:15.456Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30354,9 +30354,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:54:56.229Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated less than a minute ago",
+      "detailsObservedAt": "2026-10-23T15:00:30.580Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30387,7 +30387,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 197,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -30486,9 +30486,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:55:11.538Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated less than a minute ago",
+      "detailsObservedAt": "2026-10-23T15:00:45.749Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30599,9 +30599,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:55:26.661Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:01:00.907Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30733,9 +30733,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:55:41.989Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:01:16.031Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30767,7 +30767,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 190,
+      "averageKw": 191,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.27–0.39/kWh Time-of-Use Rates Mon-Fri 12:00am-6:00am$0.27 Mon-Fri 6:00am-8:00pm$0.39 Mon-Fri 8:00pm-11:59pm$0.36 Sat-Sun 12:00am-6:00am$0.27 Sat-Sun 6:00am-8:00pm$0.39 Sat-Sun 8:00pm-11:59pm$0.36",
@@ -30866,9 +30866,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:55:57.379Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:01:31.118Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -30999,9 +30999,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:56:12.656Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:01:46.307Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31131,9 +31131,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:56:27.971Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:02:01.458Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31265,9 +31265,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:56:43.120Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:02:16.587Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31396,9 +31396,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:56:58.280Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:02:31.658Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31430,7 +31430,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 1:00am-9:00am$0.39 Mon-Fri 9:00am-9:00pm$0.55 Mon-Fri 9:00pm-1:00am$0.51 Sat-Sun 1:00am-9:00am$0.39 Sat-Sun 9:00am-9:00pm$0.55 Sat-Sun 9:00pm-1:00am$0.51",
@@ -31529,9 +31529,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:57:13.596Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:02:46.799Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31630,9 +31630,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:57:28.923Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:03:01.985Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31762,9 +31762,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:57:44.226Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated about 12 hours ago",
+      "detailsObservedAt": "2026-10-23T15:03:17.119Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -31796,7 +31796,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 190,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 1:00am-9:00am$0.33 Mon-Fri 9:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-9:00am$0.33 Sat-Sun 9:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
@@ -31895,9 +31895,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:57:59.581Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated less than a minute ago",
+      "detailsObservedAt": "2026-10-23T15:03:32.261Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32026,9 +32026,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:58:14.876Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 2 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:03:47.450Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32159,9 +32159,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:58:30.209Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:04:02.575Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32293,9 +32293,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:58:45.391Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:04:17.704Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32326,7 +32326,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 193,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-9:00am$0.37 Mon-Fri 9:00am-8:00pm$0.53 Mon-Fri 8:00pm-11:59pm$0.49 Sat-Sun 12:00am-9:00am$0.37 Sat-Sun 9:00am-8:00pm$0.53 Sat-Sun 8:00pm-11:59pm$0.49",
@@ -32425,9 +32425,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:59:00.680Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 2 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:04:32.881Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32459,7 +32459,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 206,
+      "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.65/kWh",
@@ -32558,9 +32558,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:59:15.965Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:04:48.083Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32592,7 +32592,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 142,
+      "averageKw": 140,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -32691,9 +32691,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:59:31.326Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:05:03.317Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32726,7 +32726,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 198,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -32825,9 +32825,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T12:59:46.615Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:05:18.438Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -32859,7 +32859,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-10:00am$0.37 Mon-Fri 10:00am-8:00pm$0.53 Mon-Fri 8:00pm-11:59pm$0.49 Sat-Sun 12:00am-10:00am$0.37 Sat-Sun 10:00am-8:00pm$0.53 Sat-Sun 8:00pm-11:59pm$0.49",
@@ -32958,9 +32958,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:00:01.991Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:05:33.586Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33091,9 +33091,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:00:17.298Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:05:48.723Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33225,9 +33225,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:00:32.512Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 2 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:06:03.851Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33260,7 +33260,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 193,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -33359,9 +33359,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:00:47.687Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 1 minute ago",
+      "detailsObservedAt": "2026-10-23T15:06:18.984Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33394,7 +33394,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 204,
+      "averageKw": 203,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 8:00am-6:00pm$0.53 Mon-Fri 6:00pm-10:00pm$0.49 Mon-Fri 10:00pm-8:00am$0.37 Sat-Sun 8:00am-6:00pm$0.53 Sat-Sun 6:00pm-10:00pm$0.49 Sat-Sun 10:00pm-8:00am$0.37",
@@ -33493,9 +33493,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:01:02.888Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 2 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:06:34.163Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33525,7 +33525,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 209,
+      "averageKw": 210,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -33579,9 +33579,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:01:18.054Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:06:49.252Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33712,9 +33712,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:01:33.368Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 3 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:07:04.337Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33846,9 +33846,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:01:48.669Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 2 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:07:19.410Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -33879,7 +33879,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.49/kWh",
@@ -33978,9 +33978,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:02:04.019Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 5 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:07:34.567Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34157,9 +34157,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:02:19.357Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 4 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:07:49.679Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34290,9 +34290,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:02:34.645Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 8 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:08:04.812Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34324,7 +34324,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 195,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -34423,9 +34423,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:02:49.951Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 5 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:08:19.885Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34458,7 +34458,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-6:00am$0.37 Mon-Fri 6:00am-8:00pm$0.53 Mon-Fri 8:00pm-11:59pm$0.49 Sat-Sun 12:00am-6:00am$0.37 Sat-Sun 6:00am-8:00pm$0.53 Sat-Sun 8:00pm-11:59pm$0.49",
@@ -34557,9 +34557,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:03:05.244Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 4 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:08:34.981Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34721,9 +34721,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:03:20.596Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 5 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:08:50.188Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34945,9 +34945,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:03:35.893Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 6 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:09:05.281Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -34978,7 +34978,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 200,
+      "averageKw": 199,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.37 Mon-Fri 8:00am-8:00pm$0.53 Mon-Fri 8:00pm-11:59pm$0.49 Sat-Sun 12:00am-8:00am$0.37 Sat-Sun 8:00am-8:00pm$0.53 Sat-Sun 8:00pm-11:59pm$0.49",
@@ -35077,9 +35077,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:03:51.202Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 7 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:09:20.410Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35210,9 +35210,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:04:06.515Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 9 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:09:35.556Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35244,7 +35244,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 183,
+      "averageKw": 184,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.48/kWh Time-of-Use Rates Mon-Fri 8:00am-7:00pm$0.48 Mon-Fri 7:00pm-11:00pm$0.45 Mon-Fri 11:00pm-8:00am$0.34 Sat-Sun 8:00am-7:00pm$0.48 Sat-Sun 7:00pm-11:00pm$0.45 Sat-Sun 11:00pm-8:00am$0.34",
@@ -35343,9 +35343,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:04:21.827Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 10 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:09:50.690Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35378,7 +35378,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 180,
+      "averageKw": 177,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -35477,9 +35477,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:04:37.155Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 9 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:10:05.815Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35511,7 +35511,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 197,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.49/kWh",
@@ -35610,9 +35610,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:04:52.465Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 8 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:10:20.947Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35644,7 +35644,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 176,
+      "averageKw": 177,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 7:00am-7:00pm$0.55 Mon-Fri 7:00pm-11:00pm$0.51 Mon-Fri 11:00pm-7:00am$0.39 Sat-Sun 7:00am-7:00pm$0.55 Sat-Sun 7:00pm-11:00pm$0.51 Sat-Sun 11:00pm-7:00am$0.39",
@@ -35803,9 +35803,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:05:07.597Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 7 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:10:36.073Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35936,9 +35936,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:05:22.884Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 10 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:10:51.264Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -35970,7 +35970,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 192,
+      "averageKw": 189,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -36069,9 +36069,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:05:38.215Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 8 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:11:06.410Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -36103,7 +36103,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 185,
+      "averageKw": 182,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -36202,9 +36202,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:05:53.334Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 11 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:11:21.541Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -36336,9 +36336,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:06:08.582Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 8 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:11:36.682Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -36470,9 +36470,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-23T13:06:23.769Z",
-      "observedAt": "2026-10-23T12:29:44.727Z",
+      "sourceUpdatedText": "Updated 9 minutes ago",
+      "detailsObservedAt": "2026-10-23T15:11:51.837Z",
+      "observedAt": "2026-10-23T14:35:30.392Z",
       "networkListed": true
     },
     {
@@ -36594,8 +36594,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 1 month ago",
-      "detailsObservedAt": "2026-10-23T13:11:14.040Z",
-      "observedAt": "2026-10-23T13:11:14.040Z"
+      "detailsObservedAt": "2026-10-23T15:16:39.584Z",
+      "observedAt": "2026-10-23T15:16:39.584Z"
     }
   ]
 }

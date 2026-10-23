@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 903,
+  "requests": 898,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-10-23T12:29:43.940Z",
+    "observedAt": "2026-10-23T14:35:29.511Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/0ujzbfo4yvr16.js",
     "sha256": "b9fea71f7e74b67ab118815557168312e9d5cd056c29afd404a0ba020a831862"
@@ -46,10 +46,19 @@
     "Waypoint": 207
   },
   "promotions": {
-    "promoted": [],
+    "promoted": [
+      {
+        "plannedSourceId": "RIVIAN-PLANNED-WY-jackson",
+        "activeSourceId": "US-RIV-L11239378122582441769",
+        "matchedAt": "2026-10-23",
+        "activeFirstSeen": "2026-10-23",
+        "method": "announced-city-new-local-station",
+        "distanceKm": 0.68
+      }
+    ],
     "unresolved": []
   },
   "added": [],
   "removed": [],
-  "sha256": "fe0e15ed459543b1c53e7de0449af446c3c397f4e4f7945d32fb05281ea2d7a3"
+  "sha256": "e8a421554c3e0c601d3aa8a514b451c1e28ccc857c0067518ab69df42a91d56d"
 }

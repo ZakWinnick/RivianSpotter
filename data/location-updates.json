@@ -19,6 +19,34 @@
           "chargerReport": false
         },
         {
+          "id": "33fcbeba71292cb53e1aeda4fd129d0790ede3f18908faa6eb62398238b2b88e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 7 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
           "id": "66570ce6bbbe6d22b5f5dfce5ecc743802a7b3c6ddacc5afd3b408f93c1acabf",
           "locationId": "162077279640688",
           "name": "Flagler, CO",
@@ -29,6 +57,69 @@
           "kind": "changed",
           "lines": [
             "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6f3caacad7f27b894d827311106a71f943d9f80d9b51605144272e113212e840",
+          "locationId": "138138533074609",
+          "name": "Fortuna, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fortuna",
+          "region": "CA",
+          "url": "/locations/ran-fortuna-ca-7da2e22254/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1a8c0798644669280625fc4284741e586a77dea983d01899490882a35824d518",
+          "locationId": "36004817709429",
+          "name": "Jackson, WY",
+          "type": "Rivian Adventure Network",
+          "city": "Jackson",
+          "region": "WY",
+          "url": "/locations/ran-coming-soon-wy-jackson-20bf064f67/",
+          "kind": "changed",
+          "lines": [
+            "Address: 520 West Broadway, Jackson, WY 83001, USA — details added.",
+            "Services: Added DC Fast Charging.",
+            "Location status: Not confirmed (previously Coming soon).",
+            "Charger count: 8 — details added.",
+            "Maximum power (kW): 300 — details added.",
+            "Vehicle access: Open to other EVs.",
+            "Connector types: 8 NACS — details added.",
+            "Charger access hours: 24/7 — details added.",
+            "Site features: Added Coffee, Food, Lodging, Open to All, Plug & Charge, Restroom, Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 2B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 3A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 4A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 4B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Reported vehicle access: All EVs — details added.",
+            "Charger update: Reported as working again.",
+            "Charging prices: Other EVs: $0.59/kWh (previously not published).",
+            "Charging prices: Rivian vehicles: $0.55/kWh (previously not published).",
+            "Idle fee: $0.50/min (after 10m) — details added."
+          ],
+          "chargerReport": true
+        },
+        {
+          "id": "f98d371a4c445aa44a549eb679da103448dad5c957fce3fad23087f0b857a297",
+          "locationId": "11418482790177",
+          "name": "Ritzville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Ritzville",
+          "region": "WA",
+          "url": "/locations/ran-ritzville-wa-0a62928d0c/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 12)."
           ],
           "chargerReport": false
         }
