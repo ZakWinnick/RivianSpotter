@@ -67,26 +67,31 @@ export function mergePlanned(active,rows,date,prior=[],report={},{retained: keep
   return old?.promotion?{...p,id:old.id,slug:old.slug,firstSeen:old.firstSeen,legacyIds:old.legacyIds,legacySlugs:old.legacySlugs,promotion:old.promotion}:p;
  });
  const linked=new Set(prior.filter(p=>p.promotion).map(p=>p.promotion.plannedSourceId));
- const planned=plannedRecords(rows,date,prior,{retained:keepDates}).filter(p=>!linked.has(p.sourceId));
+ let planned=plannedRecords(rows,date,prior,{retained:keepDates}).filter(p=>!linked.has(p.sourceId));
  const announced=new Set(planned.map(p=>p.sourceId));
  const retired=prior.filter(p=>p.status==='planned'&&p.planningSource==='rivian-coming-soon'&&!announced.has(p.sourceId)&&!linked.has(p.sourceId));
+ // Rivian can publish an operating station while still announcing that city as coming soon, so a
+ // still-listed announcement is matched the same way as a retired one; otherwise both appear.
+ const pending=[...retired.map(p=>({p,stillAnnounced:false})),...planned.map(p=>({p,stillAnnounced:true}))];
  const promoted=new Set();report.promoted=[];report.unresolved=[];
- for(const p of retired){
-  // Require an announcement to disappear AND a fully addressed, later-observed
-  // RAN site in the same locality. Proximity alone or a shared city is insufficient.
+ for(const {p,stillAnnounced} of pending){
+  // Require a fully addressed RAN site in the same locality, first observed after the
+  // announcement, within 10 km, and the only candidate. Proximity alone is insufficient.
   const candidates=active.filter(a=>!a.promotion&&a.listed!==false&&a.type==='RAN'&&a.status!=='planned'&&a.address&&a.chargerCount>0&&cityKey(a)===cityKey(p)&&a.firstSeen>p.firstSeen);
   const candidate=candidates.length===1?candidates[0]:null;
-  const competitors=retired.filter(other=>cityKey(other)===cityKey(p));
+  const competitors=pending.filter(other=>cityKey(other.p)===cityKey(p));
   if(!candidate||competitors.length!==1||distanceKm(p,candidate)>10){
-   report.unresolved.push({sourceId:p.sourceId,candidateIds:candidates.map(a=>a.sourceId),reason:!candidate?'No unique new active site':competitors.length!==1?'Multiple announcements':'Station beyond 10 km matching radius'});
+   // A listed announcement without any new local station is simply still coming soon.
+   if(!stillAnnounced||candidates.length)report.unresolved.push({sourceId:p.sourceId,candidateIds:candidates.map(a=>a.sourceId),reason:!candidate?'No unique new active site':competitors.length!==1?'Multiple announcements':'Station beyond 10 km matching radius'});
    continue;
   }
-  const evidence={plannedSourceId:p.sourceId,activeSourceId:candidate.sourceId,matchedAt:date,activeFirstSeen:candidate.firstSeen,method:'retired-announcement-new-local-station',distanceKm:Math.round(distanceKm(p,candidate)*100)/100};
+  const evidence={plannedSourceId:p.sourceId,activeSourceId:candidate.sourceId,matchedAt:date,activeFirstSeen:candidate.firstSeen,method:stillAnnounced?'announced-city-new-local-station':'retired-announcement-new-local-station',distanceKm:Math.round(distanceKm(p,candidate)*100)/100};
   const replacement={...candidate,id:p.id,slug:p.slug,firstSeen:p.firstSeen,
    legacyIds:[...new Set([...(p.legacyIds||[]),...(candidate.legacyIds||[]),candidate.id])].filter(id=>id!==p.id),
    legacySlugs:[...new Set([...(p.legacySlugs||[]),...(candidate.legacySlugs||[]),candidate.slug])].filter(slug=>slug!==p.slug),promotion:evidence};
   active[active.indexOf(candidate)]=replacement;promoted.add(p.sourceId);report.promoted.push(evidence);
  }
+ planned=planned.filter(p=>!promoted.has(p.sourceId));
  const ids=new Set([...active,...planned].map(s=>s.sourceId));
  const retained=prior.filter(s=>!ids.has(s.sourceId)&&!promoted.has(s.sourceId)&&!linked.has(s.sourceId)).map(s=>({...s,listed:false,status:s.status==='planned'?'planned':'unknown'}));
  return [...active,...planned,...retained].sort((a,b)=>a.sourceId.localeCompare(b.sourceId));

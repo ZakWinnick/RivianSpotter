@@ -37,7 +37,7 @@ Rivian's pages change often, and one unreadable source used to stop the entire r
 - **Service map.** It is embedded on every detail page. If the usual page lacks a complete copy, any other page's complete copy is used. No complete copy stops the run.
 - **Coming-soon layer.** If the layer can't be found or parsed, the previous announcements are kept with their original dates (`comingSoon.retained` in the charging summary). If there are no previous announcements, the run stops.
 
-Every fallback is written to `warnings` in `refresh-summary.json` or `charging-summary.json`. After publishing, `scripts/report-refresh-warnings.cjs` lists the fallbacks in the run summary and as Actions warnings, and opens or comments on the issue "Daily data refresh kept some previous data". The next clean refresh closes the issue. A fallback that repeats on consecutive days means the parser needs an update.
+Every fallback is written to `warnings` in `refresh-summary.json` or `charging-summary.json`. The report also flags any Roamer station that has no matching active station on Rivian's official map (joined by exact source ID). Such a station otherwise gets no page; on October 23, Jackson, WY appeared in Roamer about a day before the official map cache. After publishing, `scripts/report-refresh-warnings.cjs` lists these in the run summary and as Actions warnings, and opens or comments on the issue "Daily data refresh needs a look". The next clean refresh closes the issue.
 
 The production dependency audit runs through `scripts/audit-dependencies.cjs` in both workflows. Known vulnerabilities still block publication. An unavailable npm audit service, after three attempts, produces a warning instead of a failure.
 
@@ -68,6 +68,8 @@ Daily captures are not real-time status. A page retrieval time and the source's 
 ## Coming-soon charging locations
 
 The 5 AM Pacific official refresh also reads the charging page's explicit `coming-soon-chargers-source` layer. These announcements live in a referenced public JavaScript asset rather than the active-charger tiles. The map source name identifies the data independently of minified export names. Asset URLs are discovered from the page on every run; only the literal location data is parsed, and downloaded code is never executed. Missing or malformed source data keeps the prior announcements and reports a warning (see Per-source fallbacks).
+
+A coming-soon announcement is promoted to the operating station when a fully addressed RAN site appears in the same locality, first observed after the announcement, within 10 km, and is the only candidate. This happens whether or not Rivian still lists the announcement, because Rivian can publish the operating station before removing the coming-soon entry. The promoted station keeps the announcement's ID, slug, and first-seen date, plus both old identities as aliases, so saved places and links carry over and the location feed records an opening.
 
 Each announced city has a stable local identity, a Coming Soon label, and an approximate city pin using Rivian's published coordinates. No address, opening date, charger count, speed, pricing, or directions is inferred. Planned records are excluded from supplemental detail requests, active-inventory loss checks, and nearby available-charging links. The map uses outlined markers and a wider city zoom. The first import contains 36 announced locations, including King City and Salinas, California.
 
