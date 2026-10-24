@@ -12,9 +12,12 @@ public final class CloudJournalStorage: JournalStorage {
     public let url: URL
     public let container: NSPersistentCloudKitContainer
 
-    public init(url: URL, cloudEnabled: Bool) throws {
-        self.url = url
-        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+    /// The options every open of the store uses, with or without CloudKit. A store copy
+    /// (`replacePersistentStore`) passes them too, so history tracking carries over.
+    static var storeOptions: [String: NSObject] { [NSPersistentHistoryTrackingKey: true as NSNumber,
+                                                   NSPersistentStoreRemoteChangeNotificationPostOptionKey: true as NSNumber] }
+
+    static func makeModel() -> NSManagedObjectModel {
         let model = NSManagedObjectModel()
         let event = NSEntityDescription()
         event.name = "JournalEvent"
@@ -30,11 +33,16 @@ public final class CloudJournalStorage: JournalStorage {
                             attribute("modifiedAt", .dateAttributeType), attribute("payload", .binaryDataAttributeType),
                             attribute("isTombstone", .booleanAttributeType, false)]
         model.entities = [event]
-        container = NSPersistentCloudKitContainer(name: "RivianSpotter", managedObjectModel: model)
+        return model
+    }
+
+    public init(url: URL, cloudEnabled: Bool) throws {
+        self.url = url
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        container = NSPersistentCloudKitContainer(name: "RivianSpotter", managedObjectModel: Self.makeModel())
         let description = NSPersistentStoreDescription(url: url)
         description.shouldAddStoreAsynchronously = false
-        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        for (key, value) in Self.storeOptions { description.setOption(value, forKey: key) }
         if cloudEnabled {
             let options = NSPersistentCloudKitContainerOptions(containerIdentifier: Self.containerID)
             options.databaseScope = .private
@@ -45,6 +53,12 @@ public final class CloudJournalStorage: JournalStorage {
         container.loadPersistentStores { _, error in loadError = error }
         if let loadError { throw loadError }
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+
+    /// Releases the SQLite files so they can be copied, replaced or deleted.
+    func close() throws {
+        let coordinator = container.persistentStoreCoordinator
+        for store in coordinator.persistentStores { try coordinator.remove(store) }
     }
 
     public private(set) var unreadableRecordCount = 0

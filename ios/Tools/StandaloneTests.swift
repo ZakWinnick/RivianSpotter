@@ -79,7 +79,22 @@ struct StandaloneTests {
             try checkInTests.testRejectsStaleImpreciseOrReducedFixes()
             checkInTests.testEmptyCatalog()
         } catch { failure("Check-in suggestion: \(error)") }
-        print("\(cases.count + 15) cases, \(failures) failures")
+        let sharedStoreTests = SharedStoreTests()
+        let moves: [(String, () throws -> Void)] = [
+            ("Journal move keeps visits and Base Camp", sharedStoreTests.testMovePreservesVisitsAndBaseCamp),
+            ("Second journal move is a no-op", sharedStoreTests.testSecondRunIsNoOp),
+            ("Half-copied destination is replaced", sharedStoreTests.testHalfCopiedDestinationIsReplaced),
+            ("Unwritable destination keeps the old journal", sharedStoreTests.testUnwritableDestinationKeepsOld),
+            ("Visits only in the destination are never overwritten", sharedStoreTests.testDestinationVisitsMissingFromOldAreNeverOverwritten),
+            ("Legacy files move without an old store", sharedStoreTests.testNoOldStoreStillMovesLegacyFiles)
+        ]
+        for (name, run) in moves {
+            let before = failures
+            do { try sharedStoreTests.setUpWithError(); try run() } catch { failure("\(name): \(error)") }
+            do { try sharedStoreTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
+            if failures == before { print("PASS: \(name)") }
+        }
+        print("\(cases.count + moves.count + 15) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }
