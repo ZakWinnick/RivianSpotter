@@ -115,7 +115,7 @@ final class SpotterStore: ObservableObject {
         journal.savedPlaces.contains { $0.id == place.id || place.aliases.contains($0.id) }
     }
     func visits(to place: Place) -> [Visit] {
-        visits.filter { $0.place.id == place.id || place.aliases.contains($0.place.id) }
+        journal.visits(to: place)
     }
     /// A place by ID or alias: the current directory first, then the copy kept with a visit,
     /// saved place, or Base Camp so journal entries still open after a listing is removed.

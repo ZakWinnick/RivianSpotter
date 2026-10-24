@@ -33,6 +33,8 @@ struct StandaloneTests {
         let tests = JournalTests()
         let cases: [(String, () throws -> Void)] = [
             ("Catalog types, identities, aliases, and imprecise pins", tests.testBundledInventoryCoversEveryKindAndStableIDs),
+            ("Visit lookup matches place aliases", tests.testVisitsMatchPlaceAliases),
+            ("Repeat check-ins have no daily limit, newest first", tests.testRepeatCheckInsHaveNoDailyLimit),
             ("Repeat visits persist; unique places count once", tests.testRepeatVisitsPersistAndCountUniquePlacesSeparately),
             ("Every location type supports check-ins", tests.testAllPlaceTypesAcceptCheckIns),
             ("Invalid visits leave storage unchanged", tests.testInvalidVisitDoesNotAlterJournal),

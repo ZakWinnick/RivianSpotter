@@ -22,6 +22,16 @@ public struct Journal: Codable, Equatable, Sendable {
     }
 }
 
+public extension Journal {
+    /// Visits to a place, newest first. Matches by ID or alias in either direction, so visits still
+    /// count after a listing is renumbered.
+    func visits(to place: Place) -> [Visit] {
+        let ids = Set([place.id] + place.aliases)
+        return visits.filter { !ids.isDisjoint(with: [$0.place.id] + $0.place.aliases) }
+            .sorted { $0.visitedAt > $1.visitedAt }
+    }
+}
+
 public enum JournalError: LocalizedError {
     case futureDate, invalidType, noteTooLong, unreadable, unknownVisit
     public var errorDescription: String? {
