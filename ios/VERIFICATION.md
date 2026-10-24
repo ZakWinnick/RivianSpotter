@@ -213,3 +213,8 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Not verified: physical device, iCloud sync of widget check-ins, the Mac "Designed for iPad" build, and VoiceOver.
 - Merged PR #61. Signed Release archive of `eeffb71` succeeded with SpotterWidget.appex embedded and the App Group entitlement. Apple accepted 1.0.0 (18) at 12:59 Pacific ("Upload succeeded"); processing was pending when recorded.
 - Device check by the maintainer on an iPhone, build 18: widget check-in synced through iCloud to their other devices; with arrival updates on, the widget offered Check In on arrival at about 0.2 mi from the site. Mac "Designed for iPad" and VoiceOver remain unverified.
+
+## Widget copy / build 19 — October 24, 2026
+
+- Merged PR #62: after a widget check-in the Home Screen widget shows only the place and "✓ Checked In" (no visit number or note hint). Widget harness 0 failures, core tests 43/0, simulator build succeeded.
+- Signed Release archive of `c74672e` succeeded. Apple accepted 1.0.0 (19) at 14:05 Pacific ("Upload succeeded"); processing was pending when recorded.
