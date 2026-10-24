@@ -2,6 +2,85 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-10-24",
+      "entries": [
+        {
+          "id": "44989f4b18cbd7c12b1423dbf44731c4275c3b1f87d606a2341487320aecee5d",
+          "locationId": "81",
+          "name": "Buffalo Grove, IL - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Buffalo Grove",
+          "region": "IL",
+          "url": "/locations/buffalo-grove-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: Mon–Sat: 9:00am–6:00pm Sun: Closed (previously Mon–Sat: 9am–6pm Sun: Closed).",
+            "Service hours: Mon–Fri: 8:00am–6:00pm Sat–Sun: Closed (previously Mon–Fri: 8am–5pm Sat–Sun: Closed)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e0cc4d5044e0d724bc132206731d67189856ef2ba332d8ffb5035b1da55145b3",
+          "locationId": "268040868869126",
+          "name": "Buttonwillow, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Buttonwillow",
+          "region": "CA",
+          "url": "/locations/ran-buttonwillow-ca-f3c820b6f1/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0ef26ec60f116948fff93cbd4b5344acdf90134eef03af39a2c0c9dfbafc9936",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 7 (previously 10)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f27dfdb8570f0b6988d53e7a083687bf0fadcf43dc0ec0556025fce95b3c65e4",
+          "locationId": "114705372878349",
+          "name": "Gila Bend, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Gila Bend",
+          "region": "AZ",
+          "url": "/locations/ran-gila-bend-az-6852ecf1d3/",
+          "kind": "changed",
+          "lines": [
+            "Connector types: 3 CCS, 3 NACS (previously 5 CCS, 1 NACS).",
+            "Average peak power (kW): 203 (previously 204).",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "63f08ced8acc8082668a37090f916ad1dff1a1844639ed4034d6e5c8e143b1ab",
+          "locationId": "149450316288872",
+          "name": "Plymouth, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Plymouth",
+          "region": "MI",
+          "url": "/locations/ran-plymouth-mi-87ec9cf451/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 11 (previously 12)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-10-23",
       "entries": [
         {
@@ -4535,11 +4614,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-10-23",
+    "date": "2026-10-24",
     "sourceDates": {
-      "places": "2026-10-23",
-      "charging": "2026-10-23",
-      "chargingDetails": "2026-10-23"
+      "places": "2026-10-24",
+      "charging": "2026-10-24",
+      "chargingDetails": "2026-10-24"
     },
     "partialDetails": false
   }
