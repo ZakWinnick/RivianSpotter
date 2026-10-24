@@ -29,6 +29,10 @@ final class SpotterStore: ObservableObject {
     var catalogBanner: String? { catalogNoticeRequested ? catalogNotice : nil }
     let location = LocationService()
     let sync = CloudSyncStatus()
+    #if os(iOS)
+    /// Created at launch so iOS can deliver a region entry to a relaunched app.
+    let arrival = ArrivalMonitor()
+    #endif
     /// The App Group folder the widget reads, set only while the app uses the journal there.
     private var widgetDirectory: URL?
     private var snapshotWrite: Task<Void, Never>?
@@ -94,6 +98,9 @@ final class SpotterStore: ObservableObject {
     /// Writes the checkable places for the widget off the main thread, one write after another so
     /// an older directory never lands last.
     private func publishPlaces() {
+        #if os(iOS)
+        arrival.update(places: places)
+        #endif
         guard let directory = widgetDirectory, repository != nil else { return }
         let places = places, previous = snapshotWrite
         snapshotWrite = Task.detached(priority: .utility) {
