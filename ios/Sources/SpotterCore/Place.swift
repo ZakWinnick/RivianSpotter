@@ -44,7 +44,7 @@ public struct PlacePhoto: Codable, Equatable, Sendable {
     public var safeSourceURL: URL? {
         guard let url = URL(string: sourceURL), url.scheme == "https",
               url.user == nil, url.password == nil,
-              ["rivian.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
+              ["rivian.com", "rivianspotter.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
         return url
     }
 }
