@@ -302,7 +302,7 @@ struct SettingsView: View {
                 #endif
                 Section {
                     settingLabel("Location", "location.fill", .green)
-                    Text("Sort by Nearest and the check-in widget use your location to find places near you. It stays on this device and isn’t saved or synced. You can record a visit without location access.")
+                    Text("Sort by Nearest and the check-in widget use your location to find places near you. Your location stays on this device and isn’t saved or synced. You can record a visit without location access.")
                         .font(.footnote).foregroundStyle(.secondary)
                     #if os(iOS)
                     if let url = URL(string: UIApplication.openSettingsURLString) { Link("Location Settings", destination: url) }
