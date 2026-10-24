@@ -82,12 +82,28 @@ struct WidgetHarness {
         try render(before, .lock, "lock-1-at-site", to: output)
         try render(entry(closest), .lock, "lock-2-nothing-close", to: output)
         try render(entry(locationOff), .lock, "lock-3-location-off", to: output)
+        let unavailable = CheckInEntry.make(locationOff, directory: folder, defaults: defaults, locationAllowed: true, now: now)
+        try render(unavailable, .small, "small-8-location-unavailable", to: output)
+        try render(unavailable, .medium, "medium-6-location-unavailable", to: output)
+        try render(unavailable, .lock, "lock-5-location-unavailable", to: output)
+        check(WidgetLink.url(for: locationOff)?.absoluteString == "rivianspotter://location", "unavailable opens location")
+
+        // The gallery example: Price, UT from the snapshot, or the built-in copy without one.
+        let gallery = GallerySample.entry(places: places), builtIn = GallerySample.entry(places: [])
+        check({ if case .nearby(let p, _, _) = gallery.suggestion { return p.id == price.id }; return false }(), "gallery uses the snapshot's Price, UT")
+        check({ if case .nearby(let p, _, _) = builtIn.suggestion { return p.id == price.id && p.isCheckable }; return false }(), "built-in gallery sample is Price, UT")
+        check(CheckInCopy(entry: builtIn).visitLine == "Last visit 3 weeks ago", "gallery line: \(CheckInCopy(entry: builtIn).visitLine)")
+        try render(builtIn, .small, "gallery-small", to: output)
+        try render(builtIn, .medium, "gallery-medium", to: output)
+        try render(CheckInEntry.placeholder, .small, "gallery-placeholder-small", to: output)
 
         // The intent's check-in path.
         check(WidgetStore.checkIn(placeID: price.id, in: folder, defaults: defaults, now: now), "check-in succeeds")
+        check(WidgetStore.checkIn(placeID: price.id, in: folder, defaults: defaults, now: now.addingTimeInterval(1)),
+              "a second tap right after reports success")
         let reopened = try CloudJournalStorage(url: WidgetStore.journalURL(in: folder), cloudEnabled: false).load()
         let visits = reopened.visits(to: price)
-        check(visits.count == 4, "journal now has 4 visits to Price (\(visits.count))")
+        check(visits.count == 4, "two taps in a row log one visit: 4 visits to Price (\(visits.count))")
         check(visits.first.map { $0.type == .ran && $0.note.isEmpty && abs($0.visitedAt.timeIntervalSince(now)) < 1 } ?? false,
               "newest visit: RAN, no note, now")
         let after = entry(atSite)
@@ -98,6 +114,17 @@ struct WidgetHarness {
         try render(after, .lock, "lock-4-checked-in", to: output)
         let later = CheckInEntry.make(atSite, directory: folder, defaults: defaults, now: now.addingTimeInterval(16 * 60))
         check(!later.justCheckedIn && CheckInCopy(entry: later).visitLine == "Last visit just now", "after 15 min: Check In with Last visit just now")
+        // The timeline's second entry ends the confirmation exactly 15 minutes after the tap.
+        let reloadedLater = CheckInEntry.make(atSite, directory: folder, defaults: defaults, now: now.addingTimeInterval(5 * 60))
+        let expiry = reloadedLater.afterConfirmation
+        check(reloadedLater.justCheckedIn && abs((expiry?.date ?? .distantPast).timeIntervalSince(now.addingTimeInterval(15 * 60))) < 0.001, "expiry entry at tap + 15 min")
+        check(expiry.map { !$0.justCheckedIn && CheckInCopy(entry: $0).visitLine == "Last visit just now" } ?? false,
+              "expiry entry shows Check In with Last visit just now")
+        check(entry(closest).afterConfirmation == nil, "no expiry entry without a confirmation")
+        try render(expiry!, .small, "small-9-after-confirmation", to: output)
+        let unread = CheckInEntry(date: now, suggestion: atSite, lastVisit: nil, visitCount: 0, justCheckedIn: true, failed: false, map: nil)
+        check(CheckInCopy(entry: unread).visitLine == "Add a note in the app", "checked in, journal unreadable: no Visit #0")
+        try render(unread, .small, "small-10-checked-in-no-count", to: output)
 
         // A failed check-in claims nothing.
         check(!WidgetStore.checkIn(placeID: "no-such-place", in: folder, defaults: defaults, now: now), "unknown place fails")
@@ -106,7 +133,9 @@ struct WidgetHarness {
         check(unchanged.visits.count == 4, "failed check-in leaves the journal alone")
         let empty = FileManager.default.temporaryDirectory.appendingPathComponent("widget-harness-empty-\(UUID().uuidString)")
         try PlacesSnapshot.write(catalog.places, to: empty)
-        check(!WidgetStore.checkIn(placeID: price.id, in: empty, defaults: defaults, now: now), "no shared journal → fails")
+        let freshSuite = "widget-harness-\(UUID().uuidString)", fresh = UserDefaults(suiteName: freshSuite)!
+        defer { fresh.removePersistentDomain(forName: freshSuite) }
+        check(!WidgetStore.checkIn(placeID: price.id, in: empty, defaults: fresh, now: now), "no shared journal → fails")
         check(!FileManager.default.fileExists(atPath: WidgetStore.journalURL(in: empty).path), "and creates no journal")
         try? FileManager.default.removeItem(at: empty)
         let failedEntry = entry(atSite)
