@@ -2,24 +2,32 @@ import Foundation
 import CoreLocation
 
 /// One location fix for a timeline reload, using the app's When In Use permission
-/// (`NSWidgetWantsLocation`). Nil without permission, on error, or after the timeout.
+/// (`NSWidgetWantsLocation`). The fix is nil without permission, on error, or after the timeout;
+/// `allowed` tells "no permission" apart from "no usable fix".
 @MainActor
 final class WidgetLocation: NSObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
     private var continuation: CheckedContinuation<CLLocation?, Never>?
 
-    static func fix(timeout: TimeInterval = 10) async -> LocationFix? {
-        await WidgetLocation().locate(timeout: timeout)
+    static func fix(timeout: TimeInterval = 10) async -> (fix: LocationFix?, allowed: Bool) {
+        let finder = WidgetLocation()
+        guard finder.allowed else { return (nil, false) }
+        return (await finder.locate(timeout: timeout), true)
+    }
+
+    private var allowed: Bool {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways: break
+        default: return false
+        }
+        #if os(iOS)
+        return manager.isAuthorizedForWidgetUpdates
+        #else
+        return true
+        #endif
     }
 
     private func locate(timeout: TimeInterval) async -> LocationFix? {
-        switch manager.authorizationStatus {
-        case .authorizedWhenInUse, .authorizedAlways: break
-        default: return nil
-        }
-        #if os(iOS)
-        guard manager.isAuthorizedForWidgetUpdates else { return nil }
-        #endif
         // With Precise Location off the suggestion is "turn it on" whatever the fix says, so there's
         // no point asking for one. The coordinates of this fix are never read.
         guard manager.accuracyAuthorization == .fullAccuracy else {

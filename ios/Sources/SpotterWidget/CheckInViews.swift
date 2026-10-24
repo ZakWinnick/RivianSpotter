@@ -52,7 +52,8 @@ struct CheckInCopy {
 
     var visitLine: String {
         if entry.failed { return "Couldn't check in. Open RivianSpotter." }
-        if entry.justCheckedIn { return "Visit #\(entry.visitCount) · Add a note in the app" }
+        // A journal that couldn't be read back has no count to show.
+        if entry.justCheckedIn { return entry.visitCount > 0 ? "Visit #\(entry.visitCount) · Add a note in the app" : "Add a note in the app" }
         guard let last = entry.lastVisit else { return "First visit" }
         let age = entry.date.timeIntervalSince(last)
         if age < 30 * 60 { return "Last visit just now" }
@@ -125,7 +126,8 @@ struct CheckInText: View {
                     Circle().fill(CheckInCopy.dotColor(place)).frame(width: 7, height: 7)
                     Text("\(CheckInCopy.typeName(place)) · \(CheckInCopy.miles(meters, nearby: false)) away")
                 }.font(.system(size: 13)).foregroundStyle(WidgetPalette.secondary).lineLimit(1).minimumScaleFactor(0.75)
-            case .noUsableLocation: title("Allow location to find sites near you", size: 17)
+            case .noUsableLocation:
+                title(entry.locationAllowed ? "Tap ↻ to try again" : "Allow location to find sites near you", size: 17)
             case .needsPreciseLocation: title("Turn on Precise Location to check in", size: 17)
             case .noPlaces: EmptyView()
             }
@@ -140,7 +142,7 @@ struct CheckInText: View {
                 Text("\(CheckInCopy.typeName(place)) · \(CheckInCopy.miles(meters, nearby: true))")
             }
         case .closest: Text("No nearby site")
-        case .noUsableLocation: Text("Location off")
+        case .noUsableLocation: Text(entry.locationAllowed ? "Location unavailable" : "Location off")
         case .needsPreciseLocation: Text("Precise Location off")
         case .noPlaces: Text("RivianSpotter")
         }
@@ -167,6 +169,8 @@ struct CheckInAction: View {
                 }.buttonStyle(.plain)
             }
         case .closest: pill("Closest site", fill: .white.opacity(0.08), ink: .white.opacity(0.4))
+        // Permission is on but the fix was weak or stale: only the refresh button, beside this.
+        case .noUsableLocation where entry.locationAllowed: Spacer(minLength: 0)
         // A tap anywhere opens the app (`widgetURL`), so this is a label rather than a link.
         case .noUsableLocation, .needsPreciseLocation, .noPlaces:
             pill("Open RivianSpotter", fill: WidgetPalette.mint, ink: WidgetPalette.onMint)
@@ -197,7 +201,11 @@ struct SmallCheckIn: View {
     var refreshInline: Bool
 
     private var showsRefresh: Bool {
-        switch entry.suggestion { case .nearby, .closest: true; default: false }
+        switch entry.suggestion {
+        case .nearby, .closest: true
+        case .noUsableLocation: entry.locationAllowed
+        default: false
+        }
     }
 
     var body: some View {
@@ -257,7 +265,7 @@ struct LockScreenCheckIn: View {
         switch entry.suggestion {
         case .nearby(let place, _, _): place.guideName
         case .closest: "No nearby site"
-        case .noUsableLocation: "Location off"
+        case .noUsableLocation: entry.locationAllowed ? "Location unavailable" : "Location off"
         case .needsPreciseLocation: "Precise Location off"
         case .noPlaces: "RivianSpotter"
         }
@@ -279,6 +287,8 @@ struct LockScreenCheckIn: View {
             }
         case .closest(let place, let meters):
             Text("Nearest: \(place.guideName) · \(CheckInCopy.miles(meters, nearby: false))").font(.subheadline).lineLimit(2)
+        case .noUsableLocation where entry.locationAllowed:
+            Button(intent: RefreshIntent()) { Text("Tap ↻ to try again").font(.subheadline) }.buttonStyle(.plain)
         case .noUsableLocation: Text("Open RivianSpotter to allow location").font(.subheadline).lineLimit(2)
         case .needsPreciseLocation: Text("Turn on Precise Location to check in").font(.subheadline).lineLimit(2)
         case .noPlaces: Text("Open RivianSpotter").font(.subheadline)
