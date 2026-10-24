@@ -120,8 +120,8 @@ struct WidgetHarness {
         check(visits.first.map { $0.type == .ran && $0.note.isEmpty && abs($0.visitedAt.timeIntervalSince(now)) < 1 } ?? false,
               "newest visit: RAN, no note, now")
         let after = entry(atSite)
-        check(after.justCheckedIn && after.visitCount == 4 && !after.failed, "confirmation shows Visit #4")
-        check(CheckInCopy(entry: after).visitLine == "Visit #4 · Add a note in the app", "visit line: \(CheckInCopy(entry: after).visitLine)")
+        check(after.justCheckedIn && after.visitCount == 4 && !after.failed, "confirmation recorded (journal has 4 visits)")
+        check(CheckInCopy(entry: after).visitLine.isEmpty, "checked in: no subtitle (\(CheckInCopy(entry: after).visitLine))")
         try render(after, .small, "small-2-checked-in", to: output)
         try render(entry(atSite, map: map), .medium, "medium-5-checked-in-map", to: output)
         try render(after, .lock, "lock-4-checked-in", to: output)
@@ -136,7 +136,7 @@ struct WidgetHarness {
         check(entry(closest).afterConfirmation == nil, "no expiry entry without a confirmation")
         try render(expiry!, .small, "small-9-after-confirmation", to: output)
         let unread = CheckInEntry(date: now, suggestion: atSite, lastVisit: nil, visitCount: 0, justCheckedIn: true, failed: false, map: nil)
-        check(CheckInCopy(entry: unread).visitLine == "Add a note in the app", "checked in, journal unreadable: no Visit #0")
+        check(CheckInCopy(entry: unread).visitLine.isEmpty, "checked in, journal unreadable: no subtitle")
         try render(unread, .small, "small-10-checked-in-no-count", to: output)
 
         // A failed check-in claims nothing.
