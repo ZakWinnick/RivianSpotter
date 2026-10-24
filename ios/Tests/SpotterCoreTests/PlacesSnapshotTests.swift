@@ -30,4 +30,11 @@ final class PlacesSnapshotTests: XCTestCase {
         try Data("not json".utf8).write(to: root.appendingPathComponent("widget-places.json"))
         XCTAssertTrue(PlacesSnapshot.read(from: root).isEmpty)
     }
+
+    func testRemoveWithdrawsSnapshot() throws {
+        try PlacesSnapshot.write(try Catalog.bundled().places, to: root)
+        PlacesSnapshot.remove(from: root)
+        XCTAssertTrue(PlacesSnapshot.read(from: root).isEmpty)
+        PlacesSnapshot.remove(from: root)
+    }
 }

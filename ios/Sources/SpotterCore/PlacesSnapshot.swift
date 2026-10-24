@@ -17,6 +17,11 @@ public enum PlacesSnapshot {
         #endif
     }
 
+    /// Withdraws the snapshot, so the widget offers no check-ins when the app isn't using the shared journal.
+    public static func remove(from directory: URL) {
+        try? FileManager.default.removeItem(at: directory.appendingPathComponent(fileName))
+    }
+
     /// An empty list when the file is missing or unreadable.
     public static func read(from directory: URL) -> [Place] {
         guard let data = try? Data(contentsOf: directory.appendingPathComponent(fileName)) else { return [] }

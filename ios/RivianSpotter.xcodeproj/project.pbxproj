@@ -191,7 +191,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you. Your location is used when you tap Near me and is not saved in your journal.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "If you turn on Update widget when I arrive, RivianSpotter watches for nearby Rivian places so the widget is ready when you pull in. Your location stays on your device.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you and suggest check-ins in the widget. Your location stays on your device and is not saved in your journal.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -225,7 +226,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you. Your location is used when you tap Near me and is not saved in your journal.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "If you turn on Update widget when I arrive, RivianSpotter watches for nearby Rivian places so the widget is ready when you pull in. Your location stays on your device.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find Rivian places near you and suggest check-ins in the widget. Your location stays on your device and is not saved in your journal.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

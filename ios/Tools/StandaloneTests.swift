@@ -97,7 +97,8 @@ struct StandaloneTests {
         let snapshotTests = PlacesSnapshotTests()
         let snapshots: [(String, () throws -> Void)] = [
             ("Places snapshot keeps only checkable places", snapshotTests.testRoundTripKeepsOnlyCheckable),
-            ("Missing or corrupt places snapshot reads empty", snapshotTests.testMissingOrCorruptReadsEmpty)
+            ("Missing or corrupt places snapshot reads empty", snapshotTests.testMissingOrCorruptReadsEmpty),
+            ("Removing the places snapshot withdraws it", snapshotTests.testRemoveWithdrawsSnapshot)
         ]
         for (name, run) in snapshots {
             let before = failures
