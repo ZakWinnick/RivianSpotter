@@ -17,7 +17,7 @@
 - "Nearby" radius: 402 m (¼ mile). Usable location: `horizontalAccuracy <= 100` m, timestamp no older than 600 s, and full (not reduced) accuracy.
 - Checkable place: `hasMapCoordinates`, `listed != false`, `status` is `"open"` or `"unknown"`.
 - Arrival detection: at most 20 monitored regions of 402 m around the nearest checkable places. Off by default.
-- Copy is from the spec, exactly: "No nearby site", "Location off", "Allow location to find sites near you", "Open RivianSpotter", "Turn on Precise Location to check in", "Check In", "✓ Checked In", "First visit", "Last visit …", "Visit #N · Add a note in the app", "Couldn't check in. Open RivianSpotter.", Settings toggle "Update widget when I arrive".
+- Copy is from the spec, exactly: "No nearby site", "Location off", "Allow location to find sites near you", "Open RivianSpotter", "Turn on Precise Location to check in", "Check In", "✓ Checked In", "First visit", "Last visit …", "Couldn't check in. Open RivianSpotter.", Settings toggle "Update widget when I arrive".
 - Fonts: system font (`.system`), matching `GuideFont`. Widget surface stays dark (`#1b2620`) in light and dark mode. Button `#d8e7db` with text `#17231b`; confirmed state `#244e3c` with text `#d8e7db`; type dots from `PlaceType.mapColorHex`; the mark is `BrandMark` (asset `BrandMark`, which the extension's asset catalog needs too).
 - Nothing about location is stored or sent anywhere.
 - Each new SpotterCore source goes in three places: the app target's Sources phase, the widget target's Sources phase, and the `swiftc` file list in `ios/Tools/test-core.sh`. Each new test case goes in `ios/Tools/StandaloneTests.swift`'s list.

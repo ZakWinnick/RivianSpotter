@@ -61,8 +61,8 @@ struct CheckInCopy {
 
     var visitLine: String {
         if entry.failed { return "Couldn't check in. Open RivianSpotter." }
-        // A journal that couldn't be read back has no count to show.
-        if entry.justCheckedIn { return entry.visitCount > 0 ? "Visit #\(entry.visitCount) · Add a note in the app" : "Add a note in the app" }
+        // Once checked in, the "✓ Checked In" button says it all.
+        if entry.justCheckedIn { return "" }
         guard let last = entry.lastVisit else { return "First visit" }
         let age = entry.date.timeIntervalSince(last)
         if age < 30 * 60 { return "Last visit just now" }
@@ -138,7 +138,9 @@ struct CheckInText: View {
             switch entry.suggestion {
             case .nearby(let place, _, _):
                 title(place.guideName, size: 20)
-                Text(copy.visitLine).font(.system(size: 13)).foregroundStyle(WidgetPalette.secondary).lineLimit(2)
+                if !copy.visitLine.isEmpty {
+                    Text(copy.visitLine).font(.system(size: 13)).foregroundStyle(WidgetPalette.secondary).lineLimit(2)
+                }
             case .closest(let place, let meters):
                 title(place.guideName, size: 20)
                 HStack(spacing: 5) {
