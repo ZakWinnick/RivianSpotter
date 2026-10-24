@@ -17,6 +17,7 @@
 		720ED399626A152C0B8010C6 /* Sources/SpotterApp/PlaceGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */; };
 		A10000000000000000000002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000001 /* Assets.xcassets */; };
 		A10000000000000000000004 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000003 /* PrivacyInfo.xcprivacy */; };
+		A70000000000000000000002 /* Sources/SpotterCore/CheckInSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70000000000000000000001 /* Sources/SpotterCore/CheckInSuggestion.swift */; };
 		B3813A32900A1C13EFB47EA9 /* Sources/SpotterCore/Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */; };
 		B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */; };
 		D976E61445B8C8CFAD32638D /* Sources/SpotterCore/Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EF8EAD65CBA03925C29E8D /* Sources/SpotterCore/Place.swift */; };
@@ -34,6 +35,7 @@
 		592D1D4A03F392EA19EE204E /* Sources/SpotterApp/PlaceGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/PlaceGallery.swift; sourceTree = "<group>"; };
 		5BF40848688B6935FD74BCD7 /* Sources/SpotterCore/Resources/catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Sources/SpotterCore/Resources/catalog.json; sourceTree = "<group>"; };
 		7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterApp/SpotterApp.swift; sourceTree = "<group>"; };
+		A70000000000000000000001 /* Sources/SpotterCore/CheckInSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/CheckInSuggestion.swift; sourceTree = "<group>"; };
 		92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/SpotterCore/Journal.swift; sourceTree = "<group>"; };
 		A10000000000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A10000000000000000000003 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				1E0F47AE5768397CC730A6E0 /* Sources/SpotterApp/DeviceServices.swift */,
 				AE11A1AD8BA5370B7007E28D /* Sources/SpotterCore/CloudJournalStorage.swift */,
 				C7EF8EAD65CBA03925C29E8D /* Sources/SpotterCore/Place.swift */,
+				A70000000000000000000001 /* Sources/SpotterCore/CheckInSuggestion.swift */,
 				92D7AFB6D19967CF2358C915 /* Sources/SpotterCore/Journal.swift */,
 				7FF06B6BCBF25A63E9AA392A /* Sources/SpotterApp/SpotterApp.swift */,
 				5BF40848688B6935FD74BCD7 /* Sources/SpotterCore/Resources/catalog.json */,
@@ -155,6 +158,7 @@
 				B3D18AE88CE87736B00BF285 /* Sources/SpotterApp/DeviceServices.swift in Sources */,
 				3DEF8AF776AB3DFF89727398 /* Sources/SpotterCore/CloudJournalStorage.swift in Sources */,
 				D976E61445B8C8CFAD32638D /* Sources/SpotterCore/Place.swift in Sources */,
+				A70000000000000000000002 /* Sources/SpotterCore/CheckInSuggestion.swift in Sources */,
 				B3813A32900A1C13EFB47EA9 /* Sources/SpotterCore/Journal.swift in Sources */,
 				5910984348D613FFD1FC23BE /* Sources/SpotterApp/SpotterApp.swift in Sources */,
 			);

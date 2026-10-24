@@ -68,7 +68,16 @@ struct StandaloneTests {
             try await catalogTests.testStaleResponsesCannotReplaceBundleOrDownloadedSavedDetails()
             try await catalogTests.testDownloadCacheRevalidationAndFailurePreserveLatestDirectory()
         } catch { failure("Catalog updates: \(error)") }
-        print("\(cases.count + 9) cases, \(failures) failures")
+        let checkInTests = CheckInSuggestionTests()
+        do {
+            try checkInTests.testNearbyWithinQuarterMile()
+            try checkInTests.testClosestBeyondQuarterMile()
+            try checkInTests.testSkipsUncheckablePlaces()
+            try checkInTests.testTwoNearbyFlagsAlsoNearby()
+            try checkInTests.testRejectsStaleImpreciseOrReducedFixes()
+            checkInTests.testEmptyCatalog()
+        } catch { failure("Check-in suggestion: \(error)") }
+        print("\(cases.count + 15) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }
