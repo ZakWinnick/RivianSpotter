@@ -22,9 +22,15 @@ final class ArrivalMonitor: NSObject, ObservableObject, @preconcurrency CLLocati
     @Published private(set) var notice: String?
     private let manager = CLLocationManager()
     private var places: [Place] = []
+    /// Set when the person turns it on, until the When-In-Use to Always chain starts.
     private var upgradePending = false
-    private var alwaysRequested = false
+    /// An Always request is in flight. Only the delegate's authorization change settles it, so a
+    /// later `.authorizedAlways` re-enables the feature even after a fallback turned it off.
+    private var awaitingAlways = false
     private var promptShown = false
+
+    /// One instance for the app, created by the app delegate at launch.
+    static let shared = ArrivalMonitor()
 
     override init() {
         enabled = UserDefaults.standard.bool(forKey: Self.defaultsKey)
@@ -34,14 +40,19 @@ final class ArrivalMonitor: NSObject, ObservableObject, @preconcurrency CLLocati
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(resigned), name: UIApplication.willResignActiveNotification, object: nil)
         center.addObserver(self, selector: #selector(activated), name: UIApplication.didBecomeActiveNotification, object: nil)
-        if enabled { reconcile() } else { stop() }
+        if enabled {
+            // A background relaunch has no store yet; the widget's snapshot has the places.
+            if let directory = try? SharedStore.directory() { places = PlacesSnapshot.read(from: directory).filter(\.isCheckable) }
+            reconcile()
+        } else { stop() }
     }
 
     func setEnabled(_ on: Bool) {
         UserDefaults.standard.set(on, forKey: Self.defaultsKey)
         enabled = on
         notice = nil
-        if on { upgradePending = true; reconcile() } else { upgradePending = false; alwaysRequested = false; stop() }
+        awaitingAlways = false
+        if on { upgradePending = true; reconcile() } else { upgradePending = false; stop() }
     }
 
     func update(places: [Place]) {
@@ -52,33 +63,38 @@ final class ArrivalMonitor: NSObject, ObservableObject, @preconcurrency CLLocati
     private func reconcile() {
         switch manager.authorizationStatus {
         case .authorizedAlways: upgradePending = false; start()
-        case .notDetermined: manager.requestWhenInUseAuthorization()
+        case .notDetermined: upgradePending = true; manager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse:
-            if upgradePending { upgradePending = false; requestAlways() } else if !alwaysRequested { decline() }
-        default: decline()
+            if upgradePending { upgradePending = false; requestAlways() } else if !awaitingAlways { decline(final: true) }
+        default: decline(final: true)
         }
     }
 
     private func requestAlways() {
-        alwaysRequested = true; promptShown = false
+        awaitingAlways = true; promptShown = false
         manager.requestAlwaysAuthorization()
-        // With no prompt to show (already answered), nothing changes, so give up shortly.
+        // iOS may defer or skip the prompt, leaving the status unchanged with no callback.
         Task { [weak self] in
-            try? await Task.sleep(nanoseconds: 1_500_000_000)
-            guard let self, self.alwaysRequested, !self.promptShown, self.manager.authorizationStatus != .authorizedAlways else { return }
-            self.decline()
+            try? await Task.sleep(nanoseconds: 10_000_000_000)
+            self?.settleIfStillWaiting()
         }
     }
 
-    private func decline() {
+    /// No decision arrived. Turn the feature off for now; a later `.authorizedAlways` turns it back on.
+    private func settleIfStillWaiting() {
+        guard awaitingAlways, enabled, manager.authorizationStatus != .authorizedAlways else { return }
+        decline(final: false)
+    }
+
+    private func decline(final: Bool) {
         UserDefaults.standard.set(false, forKey: Self.defaultsKey)
-        enabled = false; alwaysRequested = false; upgradePending = false
+        enabled = false; upgradePending = false
+        if final { awaitingAlways = false }
         notice = Self.declinedNotice
         stop()
     }
 
     private func start() {
-        alwaysRequested = false
         manager.startMonitoringSignificantLocationChanges()
         manager.requestLocation()
         refreshRegions()
@@ -117,16 +133,55 @@ final class ArrivalMonitor: NSObject, ObservableObject, @preconcurrency CLLocati
         #endif
     }
 
-    @objc private func resigned() { if alwaysRequested { promptShown = true } }
+    @objc private func resigned() { if awaitingAlways { promptShown = true } }
+    /// Coming back after the Always prompt with no authorization change means "Keep While Using".
+    /// The delegate gets a second to report first.
     @objc private func activated() {
-        if alwaysRequested, promptShown, manager.authorizationStatus != .authorizedAlways { decline() }
+        guard awaitingAlways, promptShown else { return }
+        promptShown = false
+        Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            self?.settleIfStillWaiting()
+        }
     }
 
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { if enabled { reconcile() } }
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways:
+            guard enabled || awaitingAlways else { return }
+            awaitingAlways = false; upgradePending = false
+            if !enabled {
+                UserDefaults.standard.set(true, forKey: Self.defaultsKey)
+                enabled = true
+            }
+            notice = nil
+            start()
+        case .authorizedWhenInUse:
+            if upgradePending { upgradePending = false; requestAlways() }
+            else if enabled || awaitingAlways { decline(final: !awaitingAlways) }
+        case .denied, .restricted:
+            if enabled || awaitingAlways { decline(final: true) }
+        default: break
+        }
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         refreshRegions(); reloadWidget()
     }
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) { reloadWidget() }
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        #if DEBUG
+        Logger(subsystem: "com.rivianspotter.app", category: "arrival").notice("entered region \(region.identifier) state \(UIApplication.shared.applicationState.rawValue)")
+        #endif
+        reloadWidget()
+    }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+}
+
+final class AppDelegate: NSObject, UIApplicationDelegate {
+    /// Runs on every launch, including iOS relaunching the app in the background for a region
+    /// entry, before any scene exists. Creating the monitor here gives it a delegate to call.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        _ = ArrivalMonitor.shared
+        return true
+    }
 }
 #endif

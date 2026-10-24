@@ -30,8 +30,8 @@ final class SpotterStore: ObservableObject {
     let location = LocationService()
     let sync = CloudSyncStatus()
     #if os(iOS)
-    /// Created at launch so iOS can deliver a region entry to a relaunched app.
-    let arrival = ArrivalMonitor()
+    /// Owned by the app delegate, which creates it at launch so a background relaunch can deliver a region entry.
+    let arrival = ArrivalMonitor.shared
     #endif
     /// The App Group folder the widget reads, set only while the app uses the journal there.
     private var widgetDirectory: URL?
@@ -300,6 +300,9 @@ enum AppAppearance: String, CaseIterable, Identifiable {
 
 @main
 struct RivianSpotterApp: App {
+    #if os(iOS)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    #endif
     @StateObject private var store = SpotterStore()
     @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
     var body: some Scene {
