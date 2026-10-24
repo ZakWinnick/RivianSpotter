@@ -198,8 +198,8 @@ Behavior: enabling it calls `requestAlwaysAuthorization()`. With `.authorizedAlw
 
 **Files:**
 - Modify: `scripts/build-pages.cjs` (the privacy section around the "Network requests" paragraph): add that the widget uses your location on-device to suggest the nearest place, and that arrival detection is opt-in and on-device. Then run `npm run build` and `npm test`.
-- Modify: `ios/RELEASE_NOTES.md` (a new top section, "Version 1.1", with a short paragraph on widgets in the same voice), `ios/AppStore/` text if it lists features, and `ios/VERIFICATION.md`.
-- Modify: pbxproj: `MARKETING_VERSION = 1.1.0` and the next `CURRENT_PROJECT_VERSION` for both targets.
+- Modify: `ios/RELEASE_NOTES.md` (add a widgets paragraph to the existing Version 1.0 section, in the same voice), `ios/AppStore/` text if it lists features, and `ios/VERIFICATION.md`.
+- Modify: pbxproj: keep `MARKETING_VERSION = 1.0.0` (not yet released); set the next `CURRENT_PROJECT_VERSION` for both targets.
 
 - [ ] **Step 1:** Make the edits. Run `npm test` (expect pass), `sh ios/Tools/test-core.sh` (expect `0 failures`) and the simulator build.
 - [ ] **Step 2:** Run the end-to-end simulator pass with the app open in the background: check in from the widget, foreground the app, and the visit shows without a restart (Review Focus 2). Fresh install, add the widget before launching the app → "Open RivianSpotter" (Review Focus 3).
