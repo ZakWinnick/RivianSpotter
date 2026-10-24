@@ -54,6 +54,7 @@ final class SpotterStore: ObservableObject {
                 case .keptOld:
                     // No snapshot, so the widget can't write visits into a journal the app isn't reading.
                     PlacesSnapshot.remove(from: group)
+                    Self.reloadWidgets()
                     error = "Your journal couldn’t be moved for the widget yet. Your visits are safe; the app will try again next launch."
                 }
             }
@@ -82,10 +83,13 @@ final class SpotterStore: ObservableObject {
             error = "The location directory couldn’t be loaded. Your visits and notes are safe. Check for location updates in Settings."
         }
     }
+    /// Reloads the widget only when the journal changed: the widget opening the shared store can
+    /// post a remote change that lands here, and an unconditional reload would loop.
     func refresh() {
+        let before = journal
         do { try repository?.reload(); if let repository { apply(repository) } }
         catch { self.error = error.localizedDescription }
-        Self.reloadWidgets()
+        if journal != before { Self.reloadWidgets() }
     }
     /// Writes the checkable places for the widget off the main thread, one write after another so
     /// an older directory never lands last.
@@ -257,10 +261,6 @@ extension Place {
         guard !city.isEmpty, guideName.hasPrefix(prefix) else { return guideName }
         let suffix = guideName.dropFirst(prefix.count).trimmingCharacters(in: CharacterSet(charactersIn: " -"))
         return suffix.isEmpty ? city : suffix
-    }
-    var guideName: String {
-        name.replacingOccurrences(of: " - Service + Demo Center", with: "")
-            .replacingOccurrences(of: " - Service Center", with: "")
     }
     var directionsURL: URL? {
         guard status != "planned", listed else { return nil }

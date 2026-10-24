@@ -255,6 +255,14 @@ public enum PlaceClustering {
     }
 }
 
+public extension Place {
+    /// The name shown in the app and the widget, without the service-center suffix.
+    var guideName: String {
+        name.replacingOccurrences(of: " - Service + Demo Center", with: "")
+            .replacingOccurrences(of: " - Service Center", with: "")
+    }
+}
+
 /// Decodes one array element without failing the whole array.
 private struct Lenient<Value: Decodable>: Decodable {
     let value: Value?
