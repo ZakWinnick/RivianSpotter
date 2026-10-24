@@ -94,7 +94,18 @@ struct StandaloneTests {
             do { try sharedStoreTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
             if failures == before { print("PASS: \(name)") }
         }
-        print("\(cases.count + moves.count + 15) cases, \(failures) failures")
+        let snapshotTests = PlacesSnapshotTests()
+        let snapshots: [(String, () throws -> Void)] = [
+            ("Places snapshot keeps only checkable places", snapshotTests.testRoundTripKeepsOnlyCheckable),
+            ("Missing or corrupt places snapshot reads empty", snapshotTests.testMissingOrCorruptReadsEmpty)
+        ]
+        for (name, run) in snapshots {
+            let before = failures
+            do { try snapshotTests.setUpWithError(); try run() } catch { failure("\(name): \(error)") }
+            do { try snapshotTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
+            if failures == before { print("PASS: \(name)") }
+        }
+        print("\(cases.count + moves.count + snapshots.count + 15) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }
