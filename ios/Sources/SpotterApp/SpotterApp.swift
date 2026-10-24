@@ -1,6 +1,9 @@
 import SwiftUI
 import MapKit
 import UniformTypeIdentifiers
+#if os(iOS)
+import WidgetKit
+#endif
 #if SWIFT_PACKAGE
 import SpotterCore
 #endif
@@ -26,6 +29,13 @@ final class SpotterStore: ObservableObject {
     var catalogBanner: String? { catalogNoticeRequested ? catalogNotice : nil }
     let location = LocationService()
     let sync = CloudSyncStatus()
+    #if os(iOS)
+    /// Owned by the app delegate, which creates it at launch so a background relaunch can deliver a region entry.
+    let arrival = ArrivalMonitor.shared
+    #endif
+    /// The App Group folder the widget reads, set only while the app uses the journal there.
+    private var widgetDirectory: URL?
+    private var snapshotWrite: Task<Void, Never>?
 
     init() {
         // A damaged bundled directory must not take the journal down with it.
@@ -36,9 +46,23 @@ final class SpotterStore: ObservableObject {
             #else
             let storageName = "RivianSpotter"
             #endif
-            let directory = try FileManager.default.url(for: .applicationSupportDirectory,
+            var directory = try FileManager.default.url(for: .applicationSupportDirectory,
                 in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent(storageName, isDirectory: true)
+            #if os(iOS)
+            // Moved before anything opens the journal. Without a group container the app keeps its
+            // own folder and the widget has nothing to offer.
+            if let group = try? SharedStore.directory() {
+                switch (try? SharedStore.moveJournalIfNeeded(from: directory, to: group)) ?? .keptOld {
+                case .moved, .notNeeded: directory = group; widgetDirectory = group
+                case .keptOld:
+                    // No snapshot, so the widget can't write visits into a journal the app isn't reading.
+                    PlacesSnapshot.remove(from: group)
+                    Self.reloadWidgets()
+                    error = "Your journal couldn’t be moved for the widget yet. Your visits are safe; the app will try again next launch."
+                }
+            }
+            #endif
             let cacheURL = directory.appendingPathComponent("directory-cache.json")
             let cached = CatalogSnapshot.cached(at: cacheURL, unlessOlderThan: bundled)
             places = cached?.catalog.places ?? bundled?.places ?? []
@@ -57,14 +81,38 @@ final class SpotterStore: ObservableObject {
             sync.start(storage: storage, enabled: cloudEnabled) { [weak self] in self?.refresh() }
             apply(repository)
             ready = true
+            publishPlaces()
         } catch { self.error = error.localizedDescription }
         if places.isEmpty, error == nil {
             error = "The location directory couldn’t be loaded. Your visits and notes are safe. Check for location updates in Settings."
         }
     }
+    /// Reloads the widget only when the journal changed: the widget opening the shared store can
+    /// post a remote change that lands here, and an unconditional reload would loop.
     func refresh() {
+        let before = journal
         do { try repository?.reload(); if let repository { apply(repository) } }
         catch { self.error = error.localizedDescription }
+        if journal != before { Self.reloadWidgets() }
+    }
+    /// Writes the checkable places for the widget off the main thread, one write after another so
+    /// an older directory never lands last.
+    private func publishPlaces() {
+        #if os(iOS)
+        arrival.update(places: places)
+        #endif
+        guard let directory = widgetDirectory, repository != nil else { return }
+        let places = places, previous = snapshotWrite
+        snapshotWrite = Task.detached(priority: .utility) {
+            await previous?.value
+            try? PlacesSnapshot.write(places, to: directory)
+            SpotterStore.reloadWidgets()
+        }
+    }
+    nonisolated private static func reloadWidgets() {
+        #if os(iOS)
+        WidgetCenter.shared.reloadAllTimelines()
+        #endif
     }
     func refreshCatalog(force: Bool = false) async {
         if force { catalogNoticeRequested = true }
@@ -78,6 +126,7 @@ final class SpotterStore: ObservableObject {
             do {
                 let update = try await catalogUpdates.refresh()
                 places = update.catalog.places
+                publishPlaces()
                 catalogCheckedAt = update.checkedAt
                 catalogNotice = nil
                 catalogNoticeRequested = false
@@ -115,7 +164,7 @@ final class SpotterStore: ObservableObject {
         journal.savedPlaces.contains { $0.id == place.id || place.aliases.contains($0.id) }
     }
     func visits(to place: Place) -> [Visit] {
-        visits.filter { $0.place.id == place.id || place.aliases.contains($0.place.id) }
+        journal.visits(to: place)
     }
     /// A place by ID or alias: the current directory first, then the copy kept with a visit,
     /// saved place, or Base Camp so journal entries still open after a listing is removed.
@@ -144,6 +193,7 @@ final class SpotterStore: ObservableObject {
         do {
             try action(repository)
             apply(repository)
+            Self.reloadWidgets()
             return true
         } catch { self.error = error.localizedDescription; return false }
     }
@@ -219,10 +269,6 @@ extension Place {
         let suffix = guideName.dropFirst(prefix.count).trimmingCharacters(in: CharacterSet(charactersIn: " -"))
         return suffix.isEmpty ? city : suffix
     }
-    var guideName: String {
-        name.replacingOccurrences(of: " - Service + Demo Center", with: "")
-            .replacingOccurrences(of: " - Service Center", with: "")
-    }
     var directionsURL: URL? {
         guard status != "planned", listed else { return nil }
         var parts = URLComponents(string: "https://maps.apple.com/")!
@@ -254,6 +300,9 @@ enum AppAppearance: String, CaseIterable, Identifiable {
 
 @main
 struct RivianSpotterApp: App {
+    #if os(iOS)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    #endif
     @StateObject private var store = SpotterStore()
     @AppStorage("appearance") private var appearance = AppAppearance.system.rawValue
     var body: some Scene {
@@ -338,13 +387,16 @@ struct CategoryBrowseView: View {
     @State private var showMap: Bool
     @State private var unmappedOnly = false
     let mapRequest: Int
+    /// Set from outside (a widget link) to turn Near Me on; cleared once it's on.
+    @Binding var nearMeRequest: Bool
     @State private var filters = PlaceFilter()
     @State private var showFilters = false
     @State private var nearby = false
     @ScaledMetric(relativeTo: .body) private var cardWidth = 160.0
     private var palette: GuidePalette { .init(scheme: scheme) }
-    init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?, mapRequest: Int = 0) {
-        self.kind = kind; self.open = open; self.back = back; self.mapRequest = mapRequest
+    init(kind: PlaceType?, open: @escaping (Place) -> Void, back: (() -> Void)?, mapRequest: Int = 0,
+         nearMeRequest: Binding<Bool> = .constant(false)) {
+        self.kind = kind; self.open = open; self.back = back; self.mapRequest = mapRequest; _nearMeRequest = nearMeRequest
         _showMap = State(initialValue: kind == nil)
     }
     private var places: [Place] {
@@ -486,6 +538,11 @@ struct CategoryBrowseView: View {
                     .refreshable { await store.refreshCatalog(force: true) }
             }
         }.onChange(of: mapRequest) { _, _ in returnToMap() }
+            .onChange(of: nearMeRequest, initial: true) { _, requested in
+                guard requested else { return }
+                nearMeRequest = false
+                nearby = true; location.request()
+            }
             .sheet(isPresented: $showFilters) { filterSheet.spotterEnvironment(store) }
     }
     private var filterSheet: some View {

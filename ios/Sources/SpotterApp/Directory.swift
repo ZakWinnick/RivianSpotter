@@ -48,6 +48,7 @@ struct RootView: View {
     @State private var showSettings = false
     @State private var showBaseCampPicker = false
     @State private var mapRequest = 0
+    @State private var nearMeRequest = false
     enum Tab: Hashable { case locations, map, lists, browse }
     private var palette: GuidePalette { .init(scheme: scheme) }
     var body: some View {
@@ -60,6 +61,7 @@ struct RootView: View {
         .sheet(isPresented: $showSettings) { SettingsView().spotterEnvironment(store) }
         .sheet(isPresented: $showBaseCampPicker) { BaseCampPicker().spotterEnvironment(store) }
         .task { await store.refreshCatalog() }
+        .onOpenURL(perform: openLink)
         #if DEBUG
         .onAppear(perform: openScreenshotRoute)
         #endif
@@ -99,6 +101,24 @@ struct RootView: View {
     }
     #endif
 
+    /// Widget links: `rivianspotter://place/<id>` opens a place; `nearby` and `location` show the
+    /// Map with Near Me on, which asks for location access when it hasn't been decided.
+    private func openLink(_ url: URL) {
+        guard url.scheme == "rivianspotter" else { return }
+        showSettings = false; showBaseCampPicker = false
+        switch url.host {
+        case "place":
+            guard let id = url.pathComponents.dropFirst().first, !id.isEmpty else { return }
+            widePath.append(Route.place(id))
+            paths[tab, default: NavigationPath()].append(Route.place(id))
+        case "nearby", "location":
+            tab = .map; selection = .map
+            widePath = NavigationPath(); paths[.map] = NavigationPath()
+            mapRequest += 1; nearMeRequest = true
+        default: break
+        }
+    }
+
     private var wide: some View {
         NavigationSplitView {
             List(selection: $selection) {
@@ -109,7 +129,7 @@ struct RootView: View {
                 .navigationSplitViewColumnWidth(min: 230, ideal: 260)
         } detail: {
             NavigationStack(path: $widePath) {
-                DestinationView(destination: selection ?? .all, mapRequest: mapRequest).routeDestinations()
+                DestinationView(destination: selection ?? .all, mapRequest: mapRequest, nearMeRequest: $nearMeRequest).routeDestinations()
             }.environment(\.navigate) { widePath.append($0) }
         }
         .onChange(of: selection) { _, value in
@@ -126,7 +146,7 @@ struct RootView: View {
         })) {
             stack(.locations) { DestinationView(destination: .all) }
                 .tabItem { Label("Locations", systemImage: "square.grid.2x2") }.tag(Tab.locations)
-            stack(.map) { DestinationView(destination: .map, mapRequest: mapRequest) }
+            stack(.map) { DestinationView(destination: .map, mapRequest: mapRequest, nearMeRequest: $nearMeRequest) }
                 .tabItem { Label("Map", systemImage: "map") }.tag(Tab.map)
             stack(.lists) { DestinationView(destination: .lists) }
                 .tabItem { Label("Lists", systemImage: "list.bullet.rectangle.portrait") }.tag(Tab.lists)
@@ -234,6 +254,7 @@ extension PlaceStatusGroup {
 struct DestinationView: View {
     let destination: Destination
     var mapRequest = 0
+    var nearMeRequest: Binding<Bool> = .constant(false)
     @Environment(\.navigate) private var navigate
     var body: some View {
         switch destination {
@@ -243,7 +264,8 @@ struct DestinationView: View {
         case .data: LocationDataView()
         case .glossary: GlossaryView()
         case .map:
-            CategoryBrowseView(kind: nil, open: { navigate(.place($0.id)) }, back: nil, mapRequest: mapRequest)
+            CategoryBrowseView(kind: nil, open: { navigate(.place($0.id)) }, back: nil, mapRequest: mapRequest,
+                               nearMeRequest: nearMeRequest)
                 .navigationTitle("Map").hiddenNavigationBar()
         default: GalleryView(destination: destination)
         }

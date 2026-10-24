@@ -50,6 +50,34 @@ final class JournalTests: XCTestCase {
             XCTAssertTrue(rejected.safeSourceURL == nil)
         }
     }
+    /// The same place under a different ID, with the original ID kept as an alias.
+    private func renamed(_ place: Place, id: String, aliases: [String]) throws -> Place {
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(place)) as? [String: Any])
+        json["id"] = id
+        json["aliases"] = aliases
+        return try JSONDecoder().decode(Place.self, from: JSONSerialization.data(withJSONObject: json))
+    }
+    func testVisitsMatchPlaceAliases() throws {
+        let repository = try repository(), original = try place()
+        _ = try repository.checkIn(at: original, type: .ran, date: .distantPast, note: "")
+        let current = try renamed(original, id: "renamed-\(original.id)", aliases: [original.id])
+        XCTAssertEqual(repository.journal.visits(to: current).count, 1)
+        XCTAssertEqual(repository.journal.visits(to: original).count, 1)
+        let other = try renamed(original, id: "other-place", aliases: [])
+        XCTAssertTrue(repository.journal.visits(to: other).isEmpty)
+        // A visit recorded under a newer ID still matches a listing that only knows the older ID.
+        let newer = try renamed(original, id: "newer-\(original.id)", aliases: [original.id])
+        _ = try repository.checkIn(at: newer, type: .ran, date: .distantPast.addingTimeInterval(1), note: "")
+        XCTAssertEqual(repository.journal.visits(to: original).count, 2)
+    }
+    func testRepeatCheckInsHaveNoDailyLimit() throws {
+        let repository = try repository(), place = try place()
+        let day = Date(timeIntervalSince1970: 1_700_000_000)
+        for hour in 0..<3 { _ = try repository.checkIn(at: place, type: .ran, date: day.addingTimeInterval(Double(hour) * 3600), note: "Visit \(hour)") }
+        let visits = repository.journal.visits(to: place)
+        XCTAssertEqual(visits.count, 3)
+        XCTAssertEqual(visits.map(\.note), ["Visit 2", "Visit 1", "Visit 0"])
+    }
     func testRepeatVisitsPersistAndCountUniquePlacesSeparately() throws {
         let repository = try repository(), place = try place()
         let date = Date(timeIntervalSince1970: 1_700_000_000)

@@ -33,6 +33,8 @@ struct StandaloneTests {
         let tests = JournalTests()
         let cases: [(String, () throws -> Void)] = [
             ("Catalog types, identities, aliases, and imprecise pins", tests.testBundledInventoryCoversEveryKindAndStableIDs),
+            ("Visit lookup matches place aliases", tests.testVisitsMatchPlaceAliases),
+            ("Repeat check-ins have no daily limit, newest first", tests.testRepeatCheckInsHaveNoDailyLimit),
             ("Repeat visits persist; unique places count once", tests.testRepeatVisitsPersistAndCountUniquePlacesSeparately),
             ("Every location type supports check-ins", tests.testAllPlaceTypesAcceptCheckIns),
             ("Invalid visits leave storage unchanged", tests.testInvalidVisitDoesNotAlterJournal),
@@ -68,7 +70,43 @@ struct StandaloneTests {
             try await catalogTests.testStaleResponsesCannotReplaceBundleOrDownloadedSavedDetails()
             try await catalogTests.testDownloadCacheRevalidationAndFailurePreserveLatestDirectory()
         } catch { failure("Catalog updates: \(error)") }
-        print("\(cases.count + 9) cases, \(failures) failures")
+        let checkInTests = CheckInSuggestionTests()
+        do {
+            try checkInTests.testNearbyWithinQuarterMile()
+            try checkInTests.testClosestBeyondQuarterMile()
+            try checkInTests.testSkipsUncheckablePlaces()
+            try checkInTests.testTwoNearbyFlagsAlsoNearby()
+            try checkInTests.testRejectsStaleImpreciseOrReducedFixes()
+            checkInTests.testEmptyCatalog()
+        } catch { failure("Check-in suggestion: \(error)") }
+        let sharedStoreTests = SharedStoreTests()
+        let moves: [(String, () throws -> Void)] = [
+            ("Journal move keeps visits and Base Camp", sharedStoreTests.testMovePreservesVisitsAndBaseCamp),
+            ("Second journal move is a no-op", sharedStoreTests.testSecondRunIsNoOp),
+            ("Half-copied destination is replaced", sharedStoreTests.testHalfCopiedDestinationIsReplaced),
+            ("Unwritable destination keeps the old journal", sharedStoreTests.testUnwritableDestinationKeepsOld),
+            ("Visits only in the destination are never overwritten", sharedStoreTests.testDestinationVisitsMissingFromOldAreNeverOverwritten),
+            ("Legacy files move without an old store", sharedStoreTests.testNoOldStoreStillMovesLegacyFiles)
+        ]
+        for (name, run) in moves {
+            let before = failures
+            do { try sharedStoreTests.setUpWithError(); try run() } catch { failure("\(name): \(error)") }
+            do { try sharedStoreTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
+            if failures == before { print("PASS: \(name)") }
+        }
+        let snapshotTests = PlacesSnapshotTests()
+        let snapshots: [(String, () throws -> Void)] = [
+            ("Places snapshot keeps only checkable places", snapshotTests.testRoundTripKeepsOnlyCheckable),
+            ("Missing or corrupt places snapshot reads empty", snapshotTests.testMissingOrCorruptReadsEmpty),
+            ("Removing the places snapshot withdraws it", snapshotTests.testRemoveWithdrawsSnapshot)
+        ]
+        for (name, run) in snapshots {
+            let before = failures
+            do { try snapshotTests.setUpWithError(); try run() } catch { failure("\(name): \(error)") }
+            do { try snapshotTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
+            if failures == before { print("PASS: \(name)") }
+        }
+        print("\(cases.count + moves.count + snapshots.count + 15) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

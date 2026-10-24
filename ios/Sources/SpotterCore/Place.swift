@@ -44,7 +44,7 @@ public struct PlacePhoto: Codable, Equatable, Sendable {
     public var safeSourceURL: URL? {
         guard let url = URL(string: sourceURL), url.scheme == "https",
               url.user == nil, url.password == nil,
-              ["rivian.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
+              ["rivian.com", "rivianspotter.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
         return url
     }
 }
@@ -252,6 +252,14 @@ public enum PlaceClustering {
         let lats = places.compactMap(\.latitude), lons = places.compactMap(\.longitude)
         guard let minLat = lats.min(), let maxLat = lats.max(), let minLon = lons.min(), let maxLon = lons.max() else { return false }
         return maxLat - minLat < 0.0005 && maxLon - minLon < 0.0005
+    }
+}
+
+public extension Place {
+    /// The name shown in the app and the widget, without the service-center suffix.
+    var guideName: String {
+        name.replacingOccurrences(of: " - Service + Demo Center", with: "")
+            .replacingOccurrences(of: " - Service Center", with: "")
     }
 }
 

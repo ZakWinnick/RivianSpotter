@@ -297,9 +297,12 @@ struct SettingsView: View {
                     }
                     ExportJournalButton()
                 } footer: { Text("Visits, notes, saved places, and Base Camp are private. Nothing is published when you check in.") }
+                #if os(iOS)
+                ArrivalDetectionSection(monitor: store.arrival)
+                #endif
                 Section {
                     settingLabel("Location", "location.fill", .green)
-                    Text("Sort by Nearest asks for your location once. It isn’t saved or synced. You can record a visit without location access.")
+                    Text("Sort by Nearest and the check-in widget use your location to find places near you. Your location stays on this device and isn’t saved or synced. You can record a visit without location access.")
                         .font(.footnote).foregroundStyle(.secondary)
                     #if os(iOS)
                     if let url = URL(string: UIApplication.openSettingsURLString) { Link("Location Settings", destination: url) }
@@ -322,3 +325,22 @@ struct SettingsView: View {
         Label { Text(title).font(.body.weight(.semibold)) } icon: { IconTile(symbol: symbol, color: color, size: 28) }
     }
 }
+
+#if os(iOS)
+private struct ArrivalDetectionSection: View {
+    @ObservedObject var monitor: ArrivalMonitor
+    var body: some View {
+        Section {
+            Toggle(isOn: Binding(get: { monitor.enabled }, set: { monitor.setEnabled($0) })) {
+                Label { Text("Update widget when I arrive").font(.body.weight(.semibold)) } icon: {
+                    IconTile(symbol: "location.circle.fill", color: .orange, size: 28)
+                }
+            }
+            if let notice = monitor.notice {
+                Text(notice).font(.footnote).foregroundStyle(.secondary)
+                if let url = URL(string: UIApplication.openSettingsURLString) { Link("Open Settings", destination: url) }
+            }
+        } footer: { Text("Lets iOS wake RivianSpotter when you arrive at a Rivian place so the widget is ready. Requires Always location. Your location stays on this device.") }
+    }
+}
+#endif
