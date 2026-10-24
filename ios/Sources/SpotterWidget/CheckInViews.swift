@@ -32,6 +32,15 @@ enum WidgetLink {
         case .noPlaces: URL(string: "rivianspotter://nearby")
         }
     }
+
+    /// The Lock Screen widget always opens the site it shows, even when another is also nearby.
+    static func lockURL(for suggestion: CheckInSuggestion) -> URL? {
+        switch suggestion {
+        case .nearby(let place, _, _), .closest(let place, _): url(for: .closest(place, meters: 0))
+        case .needsPreciseLocation, .noUsableLocation: URL(string: "rivianspotter://location")
+        case .noPlaces: nil
+        }
+    }
 }
 
 /// Text for each state, shared by every size.
@@ -59,6 +68,15 @@ struct CheckInCopy {
         if age < 30 * 60 { return "Last visit just now" }
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
+        return "Last visit \(formatter.localizedString(for: last, relativeTo: entry.date))"
+    }
+
+    /// The Lock Screen's third line: abbreviated so it fits on one line ("Last visit 3w ago").
+    var lockVisitLine: String {
+        guard let last = entry.lastVisit else { return "First visit" }
+        if entry.date.timeIntervalSince(last) < 30 * 60 { return "Last visit just now" }
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .abbreviated
         return "Last visit \(formatter.localizedString(for: last, relativeTo: entry.date))"
     }
 }
@@ -250,48 +268,37 @@ struct MediumCheckIn: View {
     }
 }
 
-/// The Lock Screen widget: system rendering, no colors of its own.
+/// The Lock Screen widget: system rendering, no colors of its own, information only. A tap opens the
+/// shown site's page (`WidgetLink.lockURL`); check-in happens in the app or the Home Screen widget.
 struct LockScreenCheckIn: View {
     let entry: CheckInEntry
+    // Content margins are disabled for the edge-to-edge Home Screen designs; restore the system's here.
+    @Environment(\.widgetContentMargins) private var margins
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(heading).font(.headline).lineLimit(1).widgetAccentable()
-            detail
-        }.frame(maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading, spacing: 1) {
+            lines.0.font(.headline).lineLimit(1).truncationMode(.tail).widgetAccentable()
+            Text(lines.1).font(.subheadline).lineLimit(1)
+            if let third = lines.2 { Text(third).font(.subheadline).lineLimit(1) }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading).padding(margins)
     }
 
-    private var heading: String {
-        switch entry.suggestion {
-        case .nearby(let place, _, _): place.guideName
-        case .closest: "No nearby site"
-        case .noUsableLocation: entry.locationAllowed ? "Location unavailable" : "Location off"
-        case .needsPreciseLocation: "Precise Location off"
-        case .noPlaces: "RivianSpotter"
-        }
-    }
+    private func heading(_ symbol: String, _ text: String) -> Text { Text("\(Image(systemName: symbol)) \(text)") }
 
-    @ViewBuilder private var detail: some View {
+    private var lines: (Text, String, String?) {
         switch entry.suggestion {
-        case .nearby(let place, _, _):
-            if entry.failed {
-                Text("Couldn't check in. Open RivianSpotter.").font(.caption).lineLimit(2)
-            } else if entry.justCheckedIn {
-                Text("✓ Checked In").font(.subheadline.weight(.semibold))
-            } else {
-                Button(intent: CheckInIntent(placeID: place.id)) {
-                    Text("Check In").font(.subheadline.weight(.bold))
-                        .padding(.horizontal, 12).padding(.vertical, 3)
-                        .background(.white.opacity(0.25), in: Capsule())
-                }.buttonStyle(.plain)
-            }
+        case .nearby(let place, let meters, _):
+            let type = place.browseTypes.first
+            let third = entry.justCheckedIn ? "Checked in" : CheckInCopy(entry: entry).lockVisitLine
+            return (heading(type?.symbol ?? "mappin", place.guideName),
+                    "\(CheckInCopy.typeName(place)) · \(CheckInCopy.miles(meters, nearby: true))", third)
         case .closest(let place, let meters):
-            Text("Nearest: \(place.guideName) · \(CheckInCopy.miles(meters, nearby: false))").font(.subheadline).lineLimit(2)
-        case .noUsableLocation where entry.locationAllowed:
-            Button(intent: RefreshIntent()) { Text("Tap ↻ to try again").font(.subheadline) }.buttonStyle(.plain)
-        case .noUsableLocation: Text("Open RivianSpotter to allow location").font(.subheadline).lineLimit(2)
-        case .needsPreciseLocation: Text("Turn on Precise Location to check in").font(.subheadline).lineLimit(2)
-        case .noPlaces: Text("Open RivianSpotter").font(.subheadline)
+            return (heading("bolt.fill", "Nearest Rivian"), place.guideName, "\(CheckInCopy.miles(meters, nearby: false)) away")
+        case .noUsableLocation:
+            return entry.locationAllowed ? (Text("Location unavailable"), "Open RivianSpotter", nil)
+                                         : (Text("Location off"), "Open RivianSpotter to allow location", nil)
+        case .needsPreciseLocation: return (Text("Precise Location off"), "Open RivianSpotter", nil)
+        case .noPlaces: return (Text("RivianSpotter"), "Open the app to load places", nil)
         }
     }
 }

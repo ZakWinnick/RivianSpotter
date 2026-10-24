@@ -28,7 +28,13 @@ This follows Swarm's medium widget, which the user shared as a reference. The le
 
 ### Lock Screen widget
 
-`accessoryRectangular`: one line with the place name, and a second line with "Check In" (interactive) or "✓ Checked In", or "Nearest: Big Mountain Lodge · 12 mi" when nothing is close. Location off shows "Open RivianSpotter to allow location". It uses the system's lock-screen rendering, so it carries no colors of its own.
+User decision (Oct 24): the Lock Screen widget is information only, with no buttons. Check-in happens in the app or the Home Screen widget. `accessoryRectangular`, system rendering (no colors of its own), three lines at most:
+
+- **In range:** line 1 bold, the type's SF Symbol and the place's `guideName` (one line, tail truncation); line 2 "<Type> · <distance>" (for example "RAN · 0.1 mi"); line 3 "Last visit <relative>" (abbreviated, for example "Last visit 3w ago") or "First visit".
+- **Nothing close:** bolt symbol and "Nearest Rivian"; the place's `guideName`; "<distance> away".
+- **Just checked in:** the in-range layout with line 3 "Checked in".
+- **Location and data states** (text only): "Location off" / "Open RivianSpotter to allow location"; "Precise Location off" / "Open RivianSpotter"; "Location unavailable" / "Open RivianSpotter"; "RivianSpotter" / "Open the app to load places".
+- **Tap:** `rivianspotter://place/<id>` for the shown site in range or closest, even when another site is also nearby (Home Screen widgets keep the "nearby" routing); `rivianspotter://location` for location states; no URL when there is no snapshot.
 
 ## Which places count
 
@@ -53,7 +59,7 @@ Mapped places from the live catalog (`Place.hasMapCoordinates`), listed (`listed
 
 ## Goals
 
-- Log a visit in one tap from the Home Screen or Lock Screen when you're at a place.
+- Log a visit in one tap from the Home Screen widget when you're at a place.
 - When you're not at a place, show the closest one and how far it is.
 - Optionally update automatically as you arrive.
 

@@ -24,7 +24,7 @@ struct CheckInFamilyView: View {
             // The Lock Screen draws its own material; the widget adds no colors.
             CheckInWidgetView(entry: entry, layout: .lock)
                 .containerBackground(.clear, for: .widget)
-                .widgetURL(WidgetLink.url(for: entry.suggestion))
+                .widgetURL(WidgetLink.lockURL(for: entry.suggestion))
         default:
             CheckInWidgetView(entry: entry, layout: family == .systemMedium ? .medium : .small)
                 .containerBackground(Color(hex: "#1b2620"), for: .widget)

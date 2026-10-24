@@ -205,7 +205,7 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 
 ## Check-in widget / build 18 — October 24, 2026
 
-- Added small, medium and Lock Screen check-in widgets: one tap logs a visit at the place you are at, otherwise the closest place is shown. Added the opt-in "Update widget when I arrive" setting. The journal now lives in the App Group. Updated the privacy page, Settings location footer, release notes and listing. Build number 18 in the app and widget targets; version stays 1.0.0.
+- Added small, medium and Lock Screen check-in widgets: on the Home Screen one tap logs a visit at the place you are at, otherwise the closest place is shown; the Lock Screen widget is info-only and opens the site's page (not tested on a device). Added the opt-in "Update widget when I arrive" setting. The journal now lives in the App Group. Updated the privacy page, Settings location footer, release notes and listing. Build number 18 in the app and widget targets; version stays 1.0.0.
 - Core tests: 43 cases, 0 failures.
 - Widget harness: 0 failures, covering a visit saved through the intent path, a double tap logging one visit, and the confirmation expiry.
 - Simulator (iPhone 17 Pro), widget: showed Price, UT within 0.1 mi. Tapping Check In logged the visit ("✓ Checked In", "Visit #1") and the app's place page showed Visited. The journal moved to the App Group with the existing visit intact. Deep links place, nearby and location work.

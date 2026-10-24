@@ -62,6 +62,16 @@ struct WidgetHarness {
         check(WidgetLink.url(for: atSite)?.absoluteString == "rivianspotter://place/\(price.id)", "tap opens the place page")
         check(WidgetLink.url(for: locationOff)?.absoluteString == "rivianspotter://location", "location off opens location")
 
+        let alsoNearby = CheckInSuggestion.nearby(price, meters: 130, alsoNearby: true)
+        check(WidgetLink.lockURL(for: alsoNearby)?.absoluteString == "rivianspotter://place/\(price.id)", "lock: nearby with alsoNearby opens the place page")
+        check(WidgetLink.url(for: alsoNearby)?.absoluteString == "rivianspotter://nearby", "home: alsoNearby keeps nearby routing")
+        if case .closest(let lodge, _) = closest {
+            check(WidgetLink.lockURL(for: closest)?.absoluteString == "rivianspotter://place/\(lodge.id)", "lock: closest opens the place page")
+        }
+        check(WidgetLink.lockURL(for: locationOff)?.absoluteString == "rivianspotter://location" && WidgetLink.lockURL(for: preciseOff)?.absoluteString == "rivianspotter://location", "lock: location states open location")
+        check(WidgetLink.lockURL(for: noSnapshot) == nil, "lock: no snapshot has no URL")
+        check(CheckInCopy(entry: before).lockVisitLine == "Last visit 3w ago", "lock visit line: \(CheckInCopy(entry: before).lockVisitLine)")
+
         // The map, made the way the medium widget makes it.
         let map = await MapSnapshot.make(from: atPrice, to: price, size: MapSnapshot.mediumSize, scale: 3)
         check(map != nil, "map snapshot made (\(map?.count ?? 0) bytes)")
