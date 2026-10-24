@@ -71,6 +71,9 @@ struct WidgetHarness {
         check(WidgetLink.lockURL(for: locationOff)?.absoluteString == "rivianspotter://location" && WidgetLink.lockURL(for: preciseOff)?.absoluteString == "rivianspotter://location", "lock: location states open location")
         check(WidgetLink.lockURL(for: noSnapshot) == nil, "lock: no snapshot has no URL")
         check(CheckInCopy(entry: before).lockVisitLine == "Last visit 3w ago", "lock visit line: \(CheckInCopy(entry: before).lockVisitLine)")
+        let skewed = CheckInEntry(date: now, suggestion: atSite, lastVisit: now.addingTimeInterval(3600), visitCount: 1,
+                                  justCheckedIn: false, failed: false, map: nil)
+        check(CheckInCopy(entry: skewed).lockVisitLine == "Last visit just now", "lock visit line, future-dated: \(CheckInCopy(entry: skewed).lockVisitLine)")
 
         // The map, made the way the medium widget makes it.
         let map = await MapSnapshot.make(from: atPrice, to: price, size: MapSnapshot.mediumSize, scale: 3)

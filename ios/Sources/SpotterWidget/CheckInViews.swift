@@ -74,6 +74,7 @@ struct CheckInCopy {
     /// The Lock Screen's third line: abbreviated so it fits on one line ("Last visit 3w ago").
     var lockVisitLine: String {
         guard let last = entry.lastVisit else { return "First visit" }
+        // A future date (clock skew) is negative, so it reads as just now too.
         if entry.date.timeIntervalSince(last) < 30 * 60 { return "Last visit just now" }
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .abbreviated
@@ -278,8 +279,8 @@ struct LockScreenCheckIn: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 1) {
             lines.0.font(.headline).lineLimit(1).truncationMode(.tail).widgetAccentable()
-            Text(lines.1).font(.subheadline).lineLimit(1)
-            if let third = lines.2 { Text(third).font(.subheadline).lineLimit(1) }
+            Text(lines.1).font(.subheadline).lineLimit(1).privacySensitive()
+            if let third = lines.2 { Text(third).font(.subheadline).lineLimit(1).privacySensitive() }
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading).padding(margins)
     }
 
