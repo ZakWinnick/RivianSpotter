@@ -10,6 +10,8 @@ RivianSpotter 1.0 is here: a field guide to every Rivian place, and a private re
 
 **Your collection.** Check in when you visit, keep private notes, and watch your Visited count grow. Every visit becomes a receipt you can save or share, and Base Camp marks the place you call home.
 
+**Check in from your Home Screen.** Small, medium, and Lock Screen widgets let you check in with one tap when you’re at a place, and show the closest place when you’re not. Optional arrival updates, off by default, get the widget ready as you arrive, and your location stays on your device.
+
 **Private by design.** No accounts, no ads, no tracking. Your visits sync only through your own iCloud. Read the details at rivianspotter.com/privacy.html.
 
 **Everywhere you are.** iPhone, iPad, and Mac, in Light, Dark, or System appearance, with new and coming-soon locations arriving on their own.

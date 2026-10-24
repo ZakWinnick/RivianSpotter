@@ -21,7 +21,7 @@ A field guide to every Rivian place, and a private record of the ones you’ve b
 
 RivianSpotter puts the whole Rivian map in your pocket: Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada. Browse them as a photo gallery, by state, by type, or by what’s there, like Plug & Charge, a trailer-friendly stall, or coffee while you wait. Every place has its address, directions, hours, charging details, and prices.
 
-Check in when you visit and build your collection, with stats and a receipt card you can save or share. Pick a Base Camp, the place you think of as home. Your visits, notes, saved places, and Base Camp are private and sync through your own iCloud account.
+Check in when you visit and build your collection, with stats and a receipt card you can save or share. Add the widget to your Home Screen or Lock Screen to check in with one tap. Pick a Base Camp, the place you think of as home. Your visits, notes, saved places, and Base Camp are private and sync through your own iCloud account.
 
 New and coming-soon locations arrive automatically from RivianSpotter.com. Works on iPhone, iPad, and Mac, in Light or Dark.
 

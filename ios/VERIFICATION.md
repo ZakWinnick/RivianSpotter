@@ -202,3 +202,12 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #58: a pinch that starts on a map marker now zooms the map, and returning from a place keeps the map's zoom and position instead of resetting to the full map.
 - PR CI passed. Checked on the iPhone 17 Pro simulator: pinch centered on a cluster zoomed; tapping a cluster zoomed into it; opening Price, UT, going back, then opening nearby Big Mountain Lodge kept the same zoom throughout. iPad, Mac and VoiceOver were not retested.
 - Signed Release archive of `0bad611` succeeded. Apple accepted 1.0.0 (17) at 13:07 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Check-in widget / build 18 — October 24, 2026
+
+- Added small, medium and Lock Screen check-in widgets: one tap logs a visit at the place you are at, otherwise the closest place is shown. Added the opt-in "Update widget when I arrive" setting. The journal now lives in the App Group. Updated the privacy page, Settings location footer, release notes and listing. Build number 18 in the app and widget targets; version stays 1.0.0.
+- Core tests: 43 cases, 0 failures.
+- Widget harness: 0 failures, covering a visit saved through the intent path, a double tap logging one visit, and the confirmation expiry.
+- Simulator (iPhone 17 Pro), widget: showed Price, UT within 0.1 mi. Tapping Check In logged the visit ("✓ Checked In", "Visit #1") and the app's place page showed Visited. The journal moved to the App Group with the existing visit intact. Deep links place, nearby and location work.
+- Simulator, arrival setting: with location-always granted it monitored 20 regions, and 0 once turned off. A background relaunch on region entry was logged. Permission tap-through: When-In-Use and then the Always prompt appeared with the new copy. Declining turned the toggle off with the Settings link, and a later Always grant re-enabled it.
+- Not verified: physical device, iCloud sync of widget check-ins, the Mac "Designed for iPad" build, and VoiceOver.
