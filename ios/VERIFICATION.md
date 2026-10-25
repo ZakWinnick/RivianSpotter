@@ -223,3 +223,9 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 
 - Merged PR #63: the app name reads "Rivian Spotter" under the Home Screen icon, in the Settings header and in the sidebar wordmark (iPad, Mac, iPhone landscape). Checked on iPad Pro 11-inch, iPhone 17 Pro Max landscape and iPhone 17 Pro Home Screen simulators.
 - Signed Release archive of `fa009e8` succeeded. Apple accepted 1.0.0 (20) at 09:52 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Charlotte pin and Visited by Type / build 21 — October 25, 2026
+
+- Merged PR #64: Charlotte, NC Service + Demo Center uses 9309 Monroe Road with the official service-map pin (detail page and service map agree, same ZIP and phone; the directory lists 3909). Its duplicate service-map entry merged in with old links kept; Dallas Service + Demo Center likewise gained an exact pin. `npm test` 158 pass.
+- Merged PR #65: Lists → Visited by Type opens only your visits of that type. Checked on the iPhone 17 Pro simulator (RAN, Spaces, an empty type).
+- Signed Release archive of `a5164ee` succeeded. Apple accepted 1.0.0 (21) at 10:33 Pacific ("Upload succeeded"); processing was pending when recorded.
