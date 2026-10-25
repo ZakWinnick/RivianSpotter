@@ -28,9 +28,10 @@ enum MapSnapshot {
         options.region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: latSpan, longitudeDelta: lonSpan))
         options.size = size
         options.pointOfInterestFilter = .excludingAll
-        options.showsBuildings = false
         #if os(iOS)
-        options.traitCollection = UITraitCollection { $0.userInterfaceStyle = .dark; $0.displayScale = scale }
+        // MapKit accepts only the device's own screen scale (2× on iPad, 3× on most iPhones) and
+        // rejects any other, so the scale comes from the screen rather than the caller.
+        options.traitCollection = UITraitCollection { $0.userInterfaceStyle = .dark; $0.displayScale = UIScreen.main.scale }
         #else
         options.appearance = NSAppearance(named: .darkAqua)
         #endif
