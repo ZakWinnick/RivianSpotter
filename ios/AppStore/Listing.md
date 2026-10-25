@@ -2,11 +2,11 @@
 
 Copy these into App Store Connect. Screenshots are in `Screenshots/`, captured October 25, 2026 from the iPhone 17 Pro (iPhone with Dynamic Island, medium display, 1206 × 2622), iPhone Duo (1398 × 2034) and iPad Pro 13-inch (2064 × 2752) simulators with sample visits. Upload the light set; the dark set is there if you prefer it.
 
-Creative assets (product page header and search results) are in `Creative Assets/`, built on Apple's Universal, Search and Header templates with the brand lockup inside each art safe area:
+Creative assets (product page header and search results) are in `Creative Assets/`, built on Apple's Universal, Search and Header templates with the brand lockup inside each art safe area. All three are PNG, the one format App Store Connect accepts for every placement:
 
-- `rivian-spotter-universal-5244x2950.png`: one 16:9 image for both the header and search results (PNG required at this size).
-- `rivian-spotter-header-3840x1646.jpg`: product page header, 21:9.
-- `rivian-spotter-search-3840x2560.jpg`: search results, 3:2.
+- `rivian-spotter-universal-5244x2950.png`: one 16:9 image for both the header and search results.
+- `rivian-spotter-header-3840x1646.png`: product page header, 21:9.
+- `rivian-spotter-search-3840x2560.png`: search results, 3:2.
 
 The background is an AI-generated landscape (Higgsfield, GPT Image 2) with an unbranded charging stop; it shows no Rivian logos or real locations. Tagline: "Every Rivian place. Every visit."
 
