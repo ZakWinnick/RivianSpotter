@@ -324,7 +324,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rivian Spotter";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "If you turn on Update widget when I arrive, RivianSpotter watches for nearby Rivian places so the widget is ready when you pull in. Your location stays on your device.";
@@ -359,7 +359,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rivian Spotter";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "If you turn on Update widget when I arrive, RivianSpotter watches for nearby Rivian places so the widget is ready when you pull in. Your location stays on your device.";
@@ -420,7 +420,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/SpotterWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rivian Spotter";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,7 +454,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/SpotterWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RivianSpotter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rivian Spotter";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
