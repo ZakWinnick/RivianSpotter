@@ -75,6 +75,7 @@ final class CheckInSuggestionTests: XCTestCase {
         XCTAssertTrue(charlotte.isServiceAndDemo)
         XCTAssertEqual(charlotte.shortTypeLabel, "Service + Demo Center")
         XCTAssertEqual(charlotte.typeLabel, "Service + Demo Center")
+        XCTAssertEqual(charlotte.browseTypes, [.demo, .service])
         let ran = try XCTUnwrap(places.first { $0.browseTypes == [.ran] })
         XCTAssertFalse(ran.isServiceAndDemo)
         XCTAssertEqual(ran.shortTypeLabel, "RAN")

@@ -144,8 +144,8 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
     public var locality: String { [city, region, country].filter { !$0.isEmpty }.joined(separator: ", ") }
     public var typeLabel: String { isServiceAndDemo ? "Service + Demo Center" : types.map(\.displayName).joined(separator: " + ") }
     /// A Demo Center that also offers service, which Rivian calls a "Service + Demo Center". It's
-    /// browsed with Demo Centers but labeled with both.
-    public var isServiceAndDemo: Bool { browseTypes == [.demo] && types.contains(.service) }
+    /// browsed under both kinds and labeled with both.
+    public var isServiceAndDemo: Bool { browseTypes.contains(.demo) && types.contains(.service) }
     /// The short type line for cards and widgets: "RAN", "Waypoint", "Service + Demo Center".
     public var shortTypeLabel: String {
         isServiceAndDemo ? "Service + Demo Center" : browseTypes.map { $0 == .ran ? "RAN" : $0.rawValue }.joined(separator: " + ")

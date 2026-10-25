@@ -48,7 +48,11 @@
     return [p.chargerCount != null ? `${p.chargerCount} ${p.chargerCount === 1 ? "charger" : "chargers"}` : null,
       p.maxKw > 0 ? `Up to ${p.maxKw} kW` : null].filter(Boolean).join(" · ") || (p.type === "RAN" ? "DC Fast Charging" : "Level 2 Charging");
   }
-  function locationTypes(p) { return p.chargingNetworks ? [...new Set(p.chargingNetworks.map(c=>c.type))] : [p.type]; }
+  // A Service + Demo Center is browsed under both kinds; Demo Center stays first for its icon and color.
+  function locationTypes(p) {
+    if (p.chargingNetworks) return [...new Set(p.chargingNetworks.map(c=>c.type))];
+    return p.type === 'Demo Center' && p.capabilities?.includes('service') ? ['Demo Center', 'Service Center'] : [p.type];
+  }
   function groupChargingSites(chargers) {
     const key=p=>[p.country,p.state,(p.city||'').trim().toLowerCase(),(p.displayAddress||p.address||'').split(',')[0].toLowerCase().replace(/[^a-z0-9]/g,'')].join('|');
     const eligible=p=>p.listed!==false && p.status!=='planned' && p.address && isMapped(p);

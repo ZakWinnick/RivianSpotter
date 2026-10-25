@@ -234,4 +234,5 @@ test('a Demo Center that offers service is labeled a Service + Demo Center', () 
   assert.equal(U.locationTypeLabel({ type: 'Service Center', capabilities: ['service'] }), 'Service Center');
   const charlotte = require('../data/locations.json').find(p => p.slug === 'charlotte-service-demo-center');
   assert.equal(U.locationTypeLabel(charlotte), 'Service + Demo Center');
+  assert.deepEqual(require("../js/location-model.js").locationTypes(charlotte), ["Demo Center", "Service Center"]);
 });
