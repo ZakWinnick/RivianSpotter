@@ -78,6 +78,7 @@ struct StandaloneTests {
             try checkInTests.testTwoNearbyFlagsAlsoNearby()
             try checkInTests.testRejectsStaleImpreciseOrReducedFixes()
             checkInTests.testEmptyCatalog()
+            try checkInTests.testServiceAndDemoCentersAreLabeledWithBoth()
         } catch { failure("Check-in suggestion: \(error)") }
         let sharedStoreTests = SharedStoreTests()
         let moves: [(String, () throws -> Void)] = [
@@ -106,7 +107,7 @@ struct StandaloneTests {
             do { try snapshotTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
             if failures == before { print("PASS: \(name)") }
         }
-        print("\(cases.count + moves.count + snapshots.count + 15) cases, \(failures) failures")
+        print("\(cases.count + moves.count + snapshots.count + 16) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

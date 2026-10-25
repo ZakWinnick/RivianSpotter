@@ -69,4 +69,15 @@ final class CheckInSuggestionTests: XCTestCase {
     func testEmptyCatalog() {
         XCTAssertEqual(CheckInSuggestion.make(places: [], fix: fix(), now: now), .noPlaces)
     }
+    func testServiceAndDemoCentersAreLabeledWithBoth() throws {
+        let places = try Catalog.bundled().places
+        let charlotte = try XCTUnwrap(places.first { $0.name == "Charlotte, NC - Service + Demo Center" })
+        XCTAssertTrue(charlotte.isServiceAndDemo)
+        XCTAssertEqual(charlotte.shortTypeLabel, "Service + Demo Center")
+        XCTAssertEqual(charlotte.typeLabel, "Service + Demo Center")
+        XCTAssertEqual(charlotte.browseTypes, [.demo, .service])
+        let ran = try XCTUnwrap(places.first { $0.browseTypes == [.ran] })
+        XCTAssertFalse(ran.isServiceAndDemo)
+        XCTAssertEqual(ran.shortTypeLabel, "RAN")
+    }
 }

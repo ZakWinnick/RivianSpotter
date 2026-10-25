@@ -132,7 +132,8 @@ private struct PlaceDetailContent: View {
 
     private var pills: some View {
         TagFlow(spacing: 6) {
-            ForEach(place.browseTypes) { type in
+            // A Service + Demo Center shows both kinds, service first, as Rivian names it.
+            ForEach(place.isServiceAndDemo ? [.service, .demo] : place.browseTypes) { type in
                 Button { sheet = .info(.type(type)) } label: {
                     Pill(text: type == .ran ? "RAN" : type.rawValue, style: .filled(Color(hex: type.mapColorHex)))
                 }.buttonStyle(.plain).accessibilityLabel(type.displayName).accessibilityHint("Shows what this location type is")

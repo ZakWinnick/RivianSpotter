@@ -247,7 +247,7 @@ extension Color {
 extension Place {
     /// The small line above a card's name, where Facades shows the store number.
     var cardCaption: String {
-        let types = browseTypes.map { $0 == .ran ? "RAN" : $0.rawValue }.joined(separator: " + ")
+        let types = shortTypeLabel
         guard statusGroup == .comingSoon else { return types }
         return permit.map { "\(types) · \($0.label ?? $0.stageLabel)" } ?? "\(types) · Coming Soon"
     }
