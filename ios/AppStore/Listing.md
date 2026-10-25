@@ -1,6 +1,6 @@
 # App Store listing: RivianSpotter 1.0
 
-Copy these into App Store Connect. Screenshots are in `Screenshots/`, captured from the iPhone 17 Pro Max (6.9-inch, 1320 × 2868) and iPad Pro 13-inch (2064 × 2752) simulators with sample visits. Upload the light set; the dark set is there if you prefer it.
+Copy these into App Store Connect. Screenshots are in `Screenshots/`, captured October 25, 2026 from the iPhone 17 Pro (iPhone with Dynamic Island, medium display, 1206 × 2622), iPhone Duo (1398 × 2034) and iPad Pro 13-inch (2064 × 2752) simulators with sample visits. Upload the light set; the dark set is there if you prefer it.
 
 ## App information
 
