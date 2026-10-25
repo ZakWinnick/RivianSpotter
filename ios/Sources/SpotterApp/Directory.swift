@@ -124,7 +124,7 @@ struct RootView: View {
             List(selection: $selection) {
                 DirectoryRows(wide: true, settings: { showSettings = true }, baseCamp: { openBaseCamp(wide: true) })
             }.listStyle(.sidebar)
-                .navigationTitle("RivianSpotter")
+                .navigationTitle("Rivian Spotter")
                 .brandHeader(showsName: true)
                 .navigationSplitViewColumnWidth(min: 230, ideal: 260)
         } detail: {
@@ -296,11 +296,11 @@ extension View {
         toolbar {
             if showsName {
                 ToolbarItem(placement: .principal) {
-                    HStack(spacing: 8) { BrandMark(size: 26); Text("RivianSpotter").font(.headline) }
-                        .accessibilityElement(children: .combine).accessibilityLabel("RivianSpotter")
+                    HStack(spacing: 8) { BrandMark(size: 26); Text("Rivian Spotter").font(.headline) }
+                        .accessibilityElement(children: .combine).accessibilityLabel("Rivian Spotter")
                 }
             } else {
-                ToolbarItem(placement: .topBarLeading) { BrandMark().accessibilityLabel("RivianSpotter") }
+                ToolbarItem(placement: .topBarLeading) { BrandMark().accessibilityLabel("Rivian Spotter") }
             }
         }
         #else
