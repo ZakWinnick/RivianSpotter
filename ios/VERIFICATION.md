@@ -218,3 +218,8 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 
 - Merged PR #62: after a widget check-in the Home Screen widget shows only the place and "✓ Checked In" (no visit number or note hint). Widget harness 0 failures, core tests 43/0, simulator build succeeded.
 - Signed Release archive of `c74672e` succeeded. Apple accepted 1.0.0 (19) at 14:05 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Name as two words / build 20 — October 25, 2026
+
+- Merged PR #63: the app name reads "Rivian Spotter" under the Home Screen icon, in the Settings header and in the sidebar wordmark (iPad, Mac, iPhone landscape). Checked on iPad Pro 11-inch, iPhone 17 Pro Max landscape and iPhone 17 Pro Home Screen simulators.
+- Signed Release archive of `fa009e8` succeeded. Apple accepted 1.0.0 (20) at 09:52 Pacific ("Upload succeeded"); processing was pending when recorded.
