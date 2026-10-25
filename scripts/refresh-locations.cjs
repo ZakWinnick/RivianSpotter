@@ -167,9 +167,25 @@ function directoryRecord(raw, detail, features, date) {
  }
  result.status = /coming soon|opening soon/i.test(raw.publishedText.replace(/service\s+(?:coming|opening)\s+soon/gi,'')) ? 'planned' : /temporarily closed/i.test(raw.publishedText) ? 'temporarily-closed' : result.hours || result.serviceHours ? 'open' : 'unknown';
  if (result.status === 'unknown') result.verificationStatus = 'needs-review';
- const feature = features.find(f => f.properties.stateOrProvince === state && sameAddress(f.properties.address, raw.address));
+ const listed = detail.business?.address;
+ // Rivian's directory occasionally mistypes a street number (Charlotte: 3909 for 9309 Monroe Road).
+ // When the detail page's address is the one on the official service map, with the same ZIP code
+ // and phone number, those two official sources agree and their address and pin are used.
+ const digits = value => String(value || '').replace(/\D/g, '').slice(-10);
+ const corrected = listed?.streetAddress && listed.addressRegion === state && !sameAddress(listed.streetAddress, raw.address)
+  ? features.find(f => f.properties.stateOrProvince === state && sameAddress(f.properties.address, listed.streetAddress) &&
+    String(f.properties.postalCode || '').slice(0,5) === postalCode.slice(0,5) && digits(f.properties.phone).length === 10 && digits(f.properties.phone) === digits(result.phone))
+  : null;
+ const feature = features.find(f => f.properties.stateOrProvince === state && sameAddress(f.properties.address, raw.address)) || corrected;
  const geo = detail.business?.geo;
  if (feature && validCoordinates(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) {
+  // Only a different street number is a correction; "2512 Hawes" vs "2512 Hawes Ave" is the same
+  // address written two ways, so the directory's fuller form stays.
+  const number = value => (String(value || '').match(/^\s*(\d+)/) || [])[1];
+  if (feature === corrected && number(feature.properties.address) !== number(raw.address)) {
+   result.notes.push(`Rivian’s directory lists ${raw.address}; its detail page and service map both list ${clean(feature.properties.address)} with the same ZIP code and phone number, so that address and its map pin are used.`);
+   result.address = clean(feature.properties.address); result.listedAddress = raw.address;
+  }
   [result.lng,result.lat] = feature.geometry.coordinates;
   result.coordinateSource = `${SERVICE_SOURCE}#embedded-service-map`;
   result.coordinatePrecision = 'exact';
@@ -238,6 +254,9 @@ function reconcile(records, legacy, date) {
   record.id = matches[0]?.id ?? id++;
   const aliases = [...new Set(matches.flatMap(x=>[x.id,...(x.legacyIds || [])]))].filter(x=>x!==record.id);
   if (aliases.length) {record.legacyIds=aliases;duplicates.push({id:record.id,aliases});}
+  // A merged record keeps the old page addresses, so links to a former duplicate still work.
+  const slugs = [...new Set(matches.flatMap(x=>[x.slug,...(x.legacySlugs || [])]))].filter(x=>x && x!==record.slug);
+  if (slugs.length) record.legacySlugs=slugs;
   for (const match of matches) used.add(match.id);
   next.push(record);
  }
@@ -304,7 +323,7 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
  const features=[...unique.values()];
  const canonical=JSON.parse(fs.readFileSync(baselineCanonicalFile || path.join(ROOT,'data/locations.json'),'utf8'));
  const official=officialRecords(raw,details,features,date,canonical,failures);
- const supplemental=features.filter(f=>!official.some(x=>x.state===f.properties.stateOrProvince&&sameAddress(x.address,f.properties.address))).map(f=>serviceRecord(f,date));
+ const supplemental=features.filter(f=>!official.some(x=>x.officialServiceId===f.properties.id||(x.state===f.properties.stateOrProvince&&sameAddress(x.address,f.properties.address)))).map(f=>serviceRecord(f,date));
  const warnings=[...failures.map(f=>`Kept the last published record for ${f.slug}: its official detail page could not be read (${f.error}).`),
   ...(mapSource.slug!=='calgary-service-demo-center'?[`Read the official service map from ${mapSource.slug} because the usual page was unavailable.`]:[])];
  delete require.cache[require.resolve(path.join(ROOT,'js/locations.js'))];
