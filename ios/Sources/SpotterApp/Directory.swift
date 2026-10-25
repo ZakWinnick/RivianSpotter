@@ -7,6 +7,13 @@ import SpotterCore
 enum Destination: Hashable {
     case all, lists, visited, saved, receipts, regions, data, map, glossary
     case region(String), type(PlaceType), feature(String), status(PlaceStatusGroup)
+    /// The places of one type you've visited, from Lists → Visited by Type.
+    case visitedType(PlaceType)
+
+    var isVisited: Bool {
+        if case .visitedType = self { return true }
+        return self == .visited
+    }
 }
 
 enum Route: Hashable {
@@ -363,7 +370,7 @@ struct GalleryView: View {
     init(destination: Destination) {
         self.destination = destination
         // Visited remembers its own order and starts with the most recent visit.
-        let visited = destination == .visited
+        let visited = destination.isVisited
         _storedSort = AppStorage(wrappedValue: visited ? GallerySort.recent.rawValue : GallerySort.name.rawValue,
                                  visited ? "visitedSort" : "gallerySort")
     }
@@ -372,6 +379,7 @@ struct GalleryView: View {
         switch destination {
         case .all: "All Locations"
         case .visited: "Visited"
+        case .visitedType(let type): "Visited \(type == .ran ? "RAN" : type.browseTitle)"
         case .saved: "Saved"
         case .type(let type): type.browseTitle
         case .feature(let feature): feature
@@ -391,6 +399,7 @@ struct GalleryView: View {
     private var base: [Place] {
         switch destination {
         case .visited: store.visitedPlaces
+        case .visitedType(let type): store.visitedPlaces.filter { $0.browseTypes.contains(type) }
         case .saved: store.journal.savedPlaces.map(store.currentPlace)
         case .region(let code): store.places.filter { $0.region == code }
         default: store.places
@@ -398,7 +407,7 @@ struct GalleryView: View {
     }
     private var sort: GallerySort {
         let value = GallerySort(rawValue: storedSort) ?? .name
-        return value == .recent && destination != .visited ? .name : value
+        return value == .recent && !destination.isVisited ? .name : value
     }
     private var shown: [Place] {
         var list = base
@@ -415,7 +424,7 @@ struct GalleryView: View {
     }
     private func subtitle(_ place: Place) -> String? {
         if sort == .nearest, let distance = location.distanceLabel(to: place) { return "\(distance) · \(place.region)" }
-        if destination == .visited, let visit = store.visits(to: place).first {
+        if destination.isVisited, let visit = store.visits(to: place).first {
             return visit.visitedAt.formatted(date: .long, time: .omitted)
         }
         return nil
@@ -489,7 +498,7 @@ struct GalleryView: View {
                 storedSort = value
                 if value == GallerySort.nearest.rawValue { location.request() }
             })) {
-                ForEach(GallerySort.allCases.filter { $0 != .recent || destination == .visited }, id: \.self) { option in
+                ForEach(GallerySort.allCases.filter { $0 != .recent || destination.isVisited }, id: \.self) { option in
                     Label(option.rawValue, systemImage: option == .nearest ? "location" : option == .recent ? "clock" : "textformat")
                         .tag(option.rawValue)
                 }
@@ -507,7 +516,7 @@ struct GalleryView: View {
 
     @ViewBuilder private var emptyState: some View {
         let unfiltered = search.isEmpty && filter.count == 0
-        if unfiltered && destination == .visited {
+        if unfiltered && destination.isVisited {
             EmptyCollection(symbol: "checkmark.seal", title: "No Visits",
                             message: "Open any location and tap Visit to start your collection. Visits sync privately with iCloud.")
         } else if unfiltered && destination == .saved {
@@ -615,7 +624,7 @@ struct ListsView: View {
                     ForEach(PlaceType.allCases) { type in
                         let total = store.places.filter { $0.browseTypes.contains(type) }.count
                         let mine = visited.filter { $0.browseTypes.contains(type) }.count
-                        NavigationLink(value: Route.destination(.type(type))) {
+                        NavigationLink(value: Route.destination(.visitedType(type))) {
                             HStack(spacing: 10) {
                                 IconTile(symbol: type.symbol, color: type.browseColor(in: scheme))
                                 Text(type.browseTitle).font(.subheadline)
