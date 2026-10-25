@@ -229,3 +229,8 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 - Merged PR #64: Charlotte, NC Service + Demo Center uses 9309 Monroe Road with the official service-map pin (detail page and service map agree, same ZIP and phone; the directory lists 3909). Its duplicate service-map entry merged in with old links kept; Dallas Service + Demo Center likewise gained an exact pin. `npm test` 158 pass.
 - Merged PR #65: Lists → Visited by Type opens only your visits of that type. Checked on the iPhone 17 Pro simulator (RAN, Spaces, an empty type).
 - Signed Release archive of `a5164ee` succeeded. Apple accepted 1.0.0 (21) at 10:33 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Service + Demo Centers / build 22 — October 25, 2026
+
+- Merged PR #66: Demo Centers that offer service (68) are labeled "Service + Demo Center" on the website and in the app, and are browsed under both Demo Centers and Service Centers (Service Centers 42 to 108). Checked on the iPhone 17 Pro simulator; `npm test` 159 pass, core tests 44/0.
+- Signed Release archive of `20a549b` succeeded. Apple accepted 1.0.0 (22) at 10:50 Pacific ("Upload succeeded"); processing was pending when recorded.
