@@ -257,7 +257,7 @@ struct SettingsView: View {
                 Section {
                     VStack(spacing: 6) {
                         IconTile(symbol: "binoculars.fill", color: .guide(0.38, 0.055, 155), size: 64)
-                        Text("RivianSpotter").font(.title2.bold())
+                        Text("Rivian Spotter").font(.title2.bold())
                         if !version.isEmpty { Text("Version \(version)").font(.footnote).foregroundStyle(.secondary) }
                     }.frame(maxWidth: .infinity).padding(.vertical, 6)
                 }
