@@ -21198,6 +21198,105 @@
           "name": "Stallings - Service Center"
         }
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "directorySha256": "dd0942023f3d26469104501ab4a62b610f309f0546af45e94c144acb26fa498f",
+      "supplementalMapSha256": "27fbedf9a2e4fee6568c3f1656f6415b549ca13724cc367502751f86afd710a9",
+      "added": [],
+      "changed": [
+        {
+          "id": 66,
+          "name": "Dallas, TX - Service + Demo Center",
+          "fields": [
+            "lat",
+            "lng",
+            "coordinatePrecision",
+            "coordinateSource",
+            "verificationStatus",
+            "notes",
+            "officialServiceId",
+            "verificationNote",
+            "legacyIds",
+            "legacySlugs"
+          ]
+        },
+        {
+          "id": 152,
+          "name": "Charlotte, NC - Service + Demo Center",
+          "fields": [
+            "slug",
+            "name",
+            "type",
+            "hours",
+            "serviceHours",
+            "phone",
+            "services",
+            "capabilities",
+            "rivianUrl",
+            "bookingUrl",
+            "sourceUrl",
+            "notes",
+            "sourceKind",
+            "listedAddress",
+            "verificationNote",
+            "legacyIds",
+            "legacySlugs"
+          ]
+        }
+      ],
+      "mergedLegacyIds": [
+        {
+          "id": 152,
+          "aliases": [
+            163
+          ]
+        },
+        {
+          "id": 66,
+          "aliases": [
+            161
+          ]
+        },
+        {
+          "id": 73,
+          "aliases": [
+            86
+          ]
+        },
+        {
+          "id": 107,
+          "aliases": [
+            123
+          ]
+        }
+      ],
+      "unmatchedLegacy": [
+        {
+          "id": 31,
+          "name": "Orlando - Jetstream - Service Center"
+        },
+        {
+          "id": 59,
+          "name": "Montreal - Service + Demo Center"
+        },
+        {
+          "id": 78,
+          "name": "The Grove"
+        },
+        {
+          "id": 124,
+          "name": "Martinez - Service Center"
+        },
+        {
+          "id": 125,
+          "name": "Niagara Falls - Service Center"
+        },
+        {
+          "id": 126,
+          "name": "Stallings - Service Center"
+        }
+      ]
     }
   ]
 }

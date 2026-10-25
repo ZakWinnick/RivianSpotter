@@ -2764,10 +2764,10 @@
     "address": "2512 Hawes Ave",
     "city": "Dallas",
     "postalCode": "75235",
-    "lat": 32.8293432,
-    "lng": -96.8448581,
-    "coordinatePrecision": "map-pin",
-    "coordinateSource": "https://maps.app.goo.gl/Xotjn1sFRaPVqUHC6",
+    "lat": 32.8299009055197,
+    "lng": -96.84439115273304,
+    "coordinatePrecision": "exact",
+    "coordinateSource": "https://rivian.com/spaces/calgary-service-demo-center#embedded-service-map",
     "timezone": "America/Chicago",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
     "hours": "Tue–Sat: 9:00am–5:00pm\nSun–Mon: Closed",
@@ -2788,16 +2788,20 @@
     "bookingUrl": "https://rivian.com/demo-drive/book?locationId=f47dcd2c-0edf-42ca-a847-6c760ef4da38",
     "sourceUrl": "https://rivian.com/spaces/dallas-service-demo-center",
     "lastVerified": "2026-10-25",
-    "verificationStatus": "needs-review",
-    "notes": [
-      "Official detail structured data lists a different address (2512 Hawes); its coordinates were withheld. The directory address is used."
-    ],
+    "verificationStatus": "verified",
+    "notes": [],
     "hoursExceptions": [],
     "sourceKind": "directory",
     "serviceStatus": "open",
+    "officialServiceId": "db060ed5-32a5-4f89-96ac-89c3f38e2883",
     "officialDirectionsUrl": "https://maps.app.goo.gl/Xotjn1sFRaPVqUHC6",
-    "verificationNote": "Map pin located from the listed street address. Operating details retain their existing verification status.",
-    "coordinateMethod": "listed-address"
+    "verificationNote": "Published location facts and a matching coordinate point were checked against official sources; this was not an on-site visit.",
+    "legacyIds": [
+      161
+    ],
+    "legacySlugs": [
+      "dallas-tx-2512-hawes-service-center"
+    ]
   },
   {
     "id": 67,
@@ -6248,9 +6252,9 @@
   },
   {
     "id": 152,
-    "slug": "charlotte-nc-9309-monroe-road-service-center",
-    "name": "Charlotte - Service Center",
-    "type": "Service Center",
+    "slug": "charlotte-service-demo-center",
+    "name": "Charlotte, NC - Service + Demo Center",
+    "type": "Demo Center",
     "state": "NC",
     "country": "US",
     "address": "9309 Monroe Road",
@@ -6262,28 +6266,40 @@
     "coordinateSource": "https://rivian.com/spaces/calgary-service-demo-center#embedded-service-map",
     "timezone": "America/New_York",
     "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": null,
-    "serviceHours": "Monday: 8:00am-5:00pm\nTuesday: 8:00am-5:00pm\nWednesday: 8:00am-5:00pm\nThursday: 8:00am-5:00pm\nFriday: 8:00am-5:00pm\nSaturday: closed\nSunday: closed",
-    "phone": "+19803421261",
+    "hours": "Wed–Sun: 9:00am-6:00pm\nMon-Tue: Closed",
+    "serviceHours": "Mon–Fri: 8:00am–5:00pm\nSat–Sun: Closed",
+    "phone": "(980) 342-1261",
     "services": [
-      "Service appointments"
+      "See vehicles",
+      "Service appointments",
+      "Demo drives"
     ],
     "capabilities": [
-      "service"
+      "see-vehicles",
+      "service",
+      "demo-drive"
     ],
     "status": "open",
-    "rivianUrl": null,
-    "bookingUrl": null,
-    "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
+    "rivianUrl": "https://rivian.com/spaces/charlotte-service-demo-center",
+    "bookingUrl": "https://rivian.com/demo-drive/book?locationId=339d0581-2473-49e5-8dd2-e9f03a0169ae",
+    "sourceUrl": "https://rivian.com/spaces/charlotte-service-demo-center",
     "lastVerified": "2026-10-25",
     "verificationStatus": "verified",
     "notes": [
-      "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
+      "Rivian’s directory lists 3909 Monroe Road; its detail page and service map both list 9309 Monroe Road with the same ZIP code and phone number, so that address and its map pin are used."
     ],
     "hoursExceptions": [],
-    "sourceKind": "service-map",
+    "sourceKind": "directory",
     "serviceStatus": "open",
-    "officialServiceId": "00a7f314-7305-4736-b496-027b99a030f7"
+    "listedAddress": "3909 Monroe Road",
+    "officialServiceId": "00a7f314-7305-4736-b496-027b99a030f7",
+    "verificationNote": "Published location facts and a matching coordinate point were checked against official sources; this was not an on-site visit.",
+    "legacyIds": [
+      163
+    ],
+    "legacySlugs": [
+      "charlotte-nc-9309-monroe-road-service-center"
+    ]
   },
   {
     "id": 153,
@@ -6600,45 +6616,6 @@
     "officialServiceId": "835655e8-0dbb-4852-890a-dcfa46e027cb"
   },
   {
-    "id": 161,
-    "slug": "dallas-tx-2512-hawes-service-center",
-    "name": "Dallas - Service Center",
-    "type": "Service Center",
-    "state": "TX",
-    "country": "US",
-    "address": "2512 Hawes",
-    "city": "Dallas",
-    "postalCode": "75235",
-    "lat": 32.8299009055197,
-    "lng": -96.84439115273304,
-    "coordinatePrecision": "exact",
-    "coordinateSource": "https://rivian.com/spaces/calgary-service-demo-center#embedded-service-map",
-    "timezone": "America/Chicago",
-    "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": null,
-    "serviceHours": "Monday: 8:00am-6:00pm\nTuesday: 8:00am-6:00pm\nWednesday: 8:00am-6:00pm\nThursday: 8:00am-6:00pm\nFriday: 8:00am-6:00pm\nSaturday: 9:00am-2:00pm\nSunday: closed",
-    "phone": "+19452972349",
-    "services": [
-      "Service appointments"
-    ],
-    "capabilities": [
-      "service"
-    ],
-    "status": "open",
-    "rivianUrl": null,
-    "bookingUrl": null,
-    "sourceUrl": "https://rivian.com/spaces/calgary-service-demo-center",
-    "lastVerified": "2026-10-25",
-    "verificationStatus": "verified",
-    "notes": [
-      "Published in the service map embedded on Rivian’s official detail pages; not listed in the Spaces directory. Service visits require official scheduling."
-    ],
-    "hoursExceptions": [],
-    "sourceKind": "service-map",
-    "serviceStatus": "open",
-    "officialServiceId": "db060ed5-32a5-4f89-96ac-89c3f38e2883"
-  },
-  {
     "id": 162,
     "slug": "englewood-co-6951-s-blackhawk-st-service-center",
     "name": "Englewood - Service Center",
@@ -6676,48 +6653,5 @@
     "sourceKind": "service-map",
     "serviceStatus": "open",
     "officialServiceId": "7ed51822-0a90-41a7-94ab-88c955ba5d5b"
-  },
-  {
-    "id": 163,
-    "slug": "charlotte-service-demo-center",
-    "name": "Charlotte, NC - Service + Demo Center",
-    "type": "Demo Center",
-    "state": "NC",
-    "country": "US",
-    "address": "3909 Monroe Road",
-    "city": "Charlotte",
-    "postalCode": "28270",
-    "lat": null,
-    "lng": null,
-    "coordinatePrecision": "unknown",
-    "coordinateSource": null,
-    "timezone": "America/New_York",
-    "timezoneSource": "Derived from published North American locality and IANA timezone rules; not published by Rivian.",
-    "hours": "Wed–Sun: 9:00am-6:00pm\nMon-Tue: Closed",
-    "serviceHours": "Mon–Fri: 8:00am–5:00pm\nSat–Sun: Closed",
-    "phone": "(980) 342-1261",
-    "services": [
-      "See vehicles",
-      "Service appointments",
-      "Demo drives"
-    ],
-    "capabilities": [
-      "see-vehicles",
-      "service",
-      "demo-drive"
-    ],
-    "status": "open",
-    "rivianUrl": "https://rivian.com/spaces/charlotte-service-demo-center",
-    "bookingUrl": "https://rivian.com/demo-drive/book?locationId=339d0581-2473-49e5-8dd2-e9f03a0169ae",
-    "sourceUrl": "https://rivian.com/spaces/charlotte-service-demo-center",
-    "lastVerified": "2026-10-25",
-    "verificationStatus": "needs-review",
-    "notes": [
-      "Official detail structured data lists a different address (9309 Monroe Road); its coordinates were withheld. The directory address is used."
-    ],
-    "hoursExceptions": [],
-    "sourceKind": "directory",
-    "serviceStatus": "open",
-    "verificationNote": "Published location facts were checked against official sources; a matching coordinate point is not available."
   }
 ]
