@@ -70,6 +70,7 @@
     return /^(?:inoperable|offline|out of service|maintenance|under maintenance|unavailable|downtime|outage|temporarily closed)$/i.test(status || "");
   }
   function locationTypeLabel(p) {
+    if (p.type === 'Demo Center' && p.capabilities?.includes('service')) return 'Service + Demo Center';
     return p.chargingNetworks ? p.chargingNetworks.map(c=>typeLabel(c.type)).join(' + ') : typeLabel(p.type);
   }
   function parseRate(value) {

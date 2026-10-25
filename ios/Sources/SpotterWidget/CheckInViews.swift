@@ -48,8 +48,7 @@ struct CheckInCopy {
     let entry: CheckInEntry
 
     static func typeName(_ place: Place) -> String {
-        guard let type = place.browseTypes.first else { return "" }
-        return type == .ran ? "RAN" : type.rawValue
+        place.shortTypeLabel
     }
     static func dotColor(_ place: Place) -> Color { Color(hex: place.browseTypes.first?.mapColorHex ?? "#244e3c") }
     /// "0.1 mi" at a site; "12 mi" or "3.4 mi" for the closest place.

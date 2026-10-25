@@ -226,3 +226,12 @@ test('charging and service filters evaluate their own published schedules', () =
  assert.equal(model.getHoursState({...p,chargingHours:null},late,'charging').state,'unknown');
  assert.equal(model.getHoursState({...p,type:'Service Center',hours:null},new Date('2026-10-14T19:00:00Z')).state,'open');
 });
+
+test('a Demo Center that offers service is labeled a Service + Demo Center', () => {
+  const U = require('../js/components.js');
+  assert.equal(U.locationTypeLabel({ type: 'Demo Center', capabilities: ['see-vehicles', 'service', 'demo-drive'] }), 'Service + Demo Center');
+  assert.equal(U.locationTypeLabel({ type: 'Demo Center', capabilities: ['see-vehicles', 'demo-drive'] }), 'Demo Center');
+  assert.equal(U.locationTypeLabel({ type: 'Service Center', capabilities: ['service'] }), 'Service Center');
+  const charlotte = require('../data/locations.json').find(p => p.slug === 'charlotte-service-demo-center');
+  assert.equal(U.locationTypeLabel(charlotte), 'Service + Demo Center');
+});
