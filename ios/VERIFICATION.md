@@ -234,3 +234,8 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 
 - Merged PR #66: Demo Centers that offer service (68) are labeled "Service + Demo Center" on the website and in the app, and are browsed under both Demo Centers and Service Centers (Service Centers 42 to 108). Checked on the iPhone 17 Pro simulator; `npm test` 159 pass, core tests 44/0.
 - Signed Release archive of `20a549b` succeeded. Apple accepted 1.0.0 (22) at 10:50 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## iPad widget map / build 23 — October 25, 2026
+
+- Merged PR #68: the medium widget map is requested at the device screen scale; MapKit rejected 3x on 2x iPads ("Invalid content scale: 3.0"), so iPad showed no map. Checked on the iPad Pro 13-inch simulator; widget harness 0 failures.
+- Signed Release archive of `0d0e130` succeeded. Apple accepted 1.0.0 (23) at 14:12 Pacific ("Upload succeeded"); processing was pending when recorded.
