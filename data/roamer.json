@@ -1,16 +1,16 @@
 {
   "refreshMode": "daily",
-  "startedAt": "2026-10-24T12:24:18.392Z",
+  "startedAt": "2026-10-25T12:25:28.580Z",
   "sourceUrl": "https://rivianroamer.com/charging/networks/rivian-adventure-network",
-  "observedAt": "2026-10-24T12:24:19.590Z",
-  "completedAt": "2026-10-24T13:06:25.930Z",
-  "sourceHash": "e644355c4a2855ade8cbdb91ad82f70a4884a398f386169b22df251d0e56abe1",
+  "observedAt": "2026-10-25T12:25:29.233Z",
+  "completedAt": "2026-10-25T13:06:51.739Z",
+  "sourceHash": "769f4d5101b9bc76220956c014831ed49828032559f027535c9f922ccda96ace",
   "networkCount": 163,
   "coverage": {
-    "officialStationCount": 163,
-    "detailCount": 163,
-    "freshDetailCount": 163,
-    "checkedCount": 163,
+    "officialStationCount": 164,
+    "detailCount": 164,
+    "freshDetailCount": 164,
+    "checkedCount": 164,
     "missingDetailIds": [],
     "staleDetailIds": [],
     "notCheckedIds": [],
@@ -25,647 +25,6 @@
   "nextRequestAfter": null,
   "detailErrors": [],
   "changes": [
-    {
-      "sourceId": "US-RIV-L13314659433195868777",
-      "name": "Green River, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 203,
-      "after": 202,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L7424041354615157638",
-      "name": "Gallup, NM",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L16861839020131326021",
-      "name": "Paramus, NJ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 193,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L11216328121520348963",
-      "name": "Tumalo, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 191,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L413722300118841968",
-      "name": "Columbus, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 205,
-      "after": 204,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L4611788751077694388",
-      "name": "Dallas, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 195,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L18244789126233412697",
-      "name": "Southampton, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 170,
-      "after": 169,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L10624299143766229312",
-      "name": "St. Regis, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 205,
-      "after": 206,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L9570774573478610402",
-      "name": "Durango, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 191,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L15981145294435373717",
-      "name": "Maple Grove, MN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 190,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L12972394923134340248",
-      "name": "Norfolk, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 207,
-      "after": 206,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L13702960079394213821",
-      "name": "Tinton Falls, NJ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 191,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L758249561344712266",
-      "name": "Tysons, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 194,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L8523943087809503789",
-      "name": "Hailey, ID",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 183,
-      "after": 182,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L9142329312096486527",
-      "name": "Nags Head, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 194,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L8885168956190814694",
-      "name": "Asheville, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 208,
-      "after": 207,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L4273991074800533419",
-      "name": "King of Prussia, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 183,
-      "after": 184,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L3147603436561039726",
-      "name": "West Hartford, CT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 196,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L1673231108792194467",
-      "name": "Wickenburg, AZ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 206,
-      "after": 207,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L3537975081978947957",
-      "name": "Springfield, IL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 190,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L18445209299191994507",
-      "name": "Cisco, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 203,
-      "after": 204,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L13929179812369261194",
-      "name": "Flagler, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 208,
-      "after": 207,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L3709380606941632482",
-      "name": "Gardiner, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 183,
-      "after": 184,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L17973641159010138748",
-      "name": "Erie, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 209,
-      "after": 206,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L1975542962906512256",
-      "name": "Bozeman, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 183,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L15829662372818057990",
-      "name": "Lansing, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 200,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L9589799743002483697",
-      "name": "Fredericksburg, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 206,
-      "after": 210,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L17006744989382365407",
-      "name": "Joshua Tree, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 194,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L12472896150238355675",
-      "name": "San Bernardino, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 197,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L15229712559413049961",
-      "name": "Lake Charles, LA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 210,
-      "after": 209,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L16185308077383208865",
-      "name": "Walker, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 194,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L10652557770275483296",
-      "name": "Groveland, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 189,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L5060331665286459380",
-      "name": "Kittery, ME",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 210,
-      "after": 211,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L3538771059152261983",
-      "name": "Freeport, ME",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 186,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L14085821352242118384",
-      "name": "Phoenix, AZ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 195,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L15146476019938753049",
-      "name": "Moosic, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 199,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L15859044680188548619",
-      "name": "Sun Prairie, WI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 192,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L10427722039519689545",
-      "name": "Lee Vining, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 187,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L5537974582577164941",
-      "name": "Sacramento, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 196,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L18049577136964634071",
-      "name": "West Lebanon, NH",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 186,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L16930659329122367533",
-      "name": "Brattleboro, VT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L8478519600713924689",
-      "name": "Newburgh, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 191,
-      "after": 189,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L18082194197590694481",
-      "name": "Newark, DE",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L3893579330938555127",
-      "name": "Daytona Beach, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 199,
-      "after": 198,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L18312310840345009620",
-      "name": "Hagerstown, MD",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 200,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L8973735727059233087",
-      "name": "Breezewood, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 198,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L16599132064429353474",
-      "name": "Front Royal, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 195,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L6161725981375120230",
-      "name": "Pooler, GA",
-      "kind": "changed",
-      "field": "connectorSummary",
-      "before": "6 CCS",
-      "after": "4 CCS, 2 NACS",
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L6161725981375120230",
-      "name": "Pooler, GA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L6161725981375120230",
-      "name": "Pooler, GA",
-      "kind": "changed",
-      "field": "chargers",
-      "before": [
-        {
-          "name": "1C",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2B",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1B",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2A",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2C",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1A",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        }
-      ],
-      "after": [
-        {
-          "name": "1C",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2B",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1B",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2A",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2C",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1A",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        }
-      ],
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
-    {
-      "sourceId": "US-RIV-L6131509295739167154",
-      "name": "Waynesboro, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 200,
-      "observedAt": "2026-10-22T15:46:37.749Z"
-    },
     {
       "sourceId": "US-RIV-L11436858880889328402",
       "name": "Meadows of Dan, VA",
@@ -2364,6 +1723,465 @@
         }
       ],
       "observedAt": "2026-10-24T12:24:19.590Z"
+    },
+    {
+      "sourceId": "US-RIV-L7516200915009001275",
+      "name": "Centennial, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 188,
+      "after": 189,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L7795987714638529281",
+      "name": "Troy, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 179,
+      "after": 178,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L18130930869505269391",
+      "name": "Bow, NH",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 198,
+      "after": 197,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L3191419504072373751",
+      "name": "Independence, MO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 204,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L4986586767162045956",
+      "name": "Mammoth Lakes, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 181,
+      "after": 180,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L15487699439195265208",
+      "name": "Park City, UT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 178,
+      "after": 179,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L10291570024194613737",
+      "name": "Orange, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 204,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L5654322285721413519",
+      "name": "Fresno, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 206,
+      "after": 205,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L7988550135740307267",
+      "name": "Monticello, UT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 196,
+      "after": 197,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L3863879270565540626",
+      "name": "Waco, TX",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 199,
+      "after": 200,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L16335459844764403943",
+      "name": "Valley Stream, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 170,
+      "after": 167,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L13314659433195868777",
+      "name": "Green River, UT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 201,
+      "after": 200,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L7424041354615157638",
+      "name": "Gallup, NM",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 201,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L11216328121520348963",
+      "name": "Tumalo, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 188,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L4611788751077694388",
+      "name": "Dallas, TX",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 196,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L18244789126233412697",
+      "name": "Southampton, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 168,
+      "after": 166,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L8523943087809503789",
+      "name": "Hailey, ID",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 179,
+      "after": 178,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L4273991074800533419",
+      "name": "King of Prussia, PA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 187,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L3147603436561039726",
+      "name": "West Hartford, CT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 194,
+      "after": 195,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L6789027387627861019",
+      "name": "Albuquerque, NM",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 199,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L3537975081978947957",
+      "name": "Springfield, IL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 192,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L18445209299191994507",
+      "name": "Cisco, TX",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 202,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L17973641159010138748",
+      "name": "Erie, PA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 205,
+      "after": 204,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L1975542962906512256",
+      "name": "Bozeman, MT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 183,
+      "after": 182,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L10353286583268794570",
+      "name": "Queensbury, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 196,
+      "after": 195,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L1485045838776646592",
+      "name": "Del Norte, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 198,
+      "after": 199,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L15829662372818057990",
+      "name": "Lansing, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 201,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L16466370064849249099",
+      "name": "Shoshone, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 183,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L17006744989382365407",
+      "name": "Joshua Tree, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 194,
+      "after": 192,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L16185308077383208865",
+      "name": "Walker, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 190,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L10652557770275483296",
+      "name": "Groveland, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 186,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L15146476019938753049",
+      "name": "Moosic, PA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 199,
+      "after": 200,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L5537974582577164941",
+      "name": "Sacramento, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 196,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L10427722039519689545",
+      "name": "Lee Vining, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 184,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L6131509295739167154",
+      "name": "Waynesboro, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 199,
+      "after": 200,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L15997862222607707429",
+      "name": "Roanoke, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 194,
+      "after": 193,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L7132609490195715167",
+      "name": "Blowing Rock, NC",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 164,
+      "after": 165,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L5993475900119536878",
+      "name": "Saginaw, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 196,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L11403047073990046039",
+      "name": "Traverse City, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 183,
+      "after": 184,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L11479343488048371684",
+      "name": "Granger, IN",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 195,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L10753662044676103876",
+      "name": "Benton Harbor, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 196,
+      "after": 195,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L2203475084972246229",
+      "name": "Salida, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 190,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L11909426625037321337",
+      "name": "Montrose, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 191,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L15018620690735454571",
+      "name": "Grand Junction, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 201,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L16683122947996107049",
+      "name": "Kingman, AZ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 140,
+      "after": 139,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L616929346370577784",
+      "name": "The Dalles, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 196,
+      "after": 197,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L3542929152995317162",
+      "name": "Roseburg, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 204,
+      "after": 203,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L17370630439341751615",
+      "name": "Corte Madera, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 177,
+      "after": 176,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L9890192377452929010",
+      "name": "Fortuna, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 196,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L9424160446176239771",
+      "name": "Coos Bay, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 189,
+      "after": 188,
+      "observedAt": "2026-10-25T12:25:29.233Z"
+    },
+    {
+      "sourceId": "US-RIV-L4713596931305309683",
+      "name": "Lincoln City, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 182,
+      "after": 181,
+      "observedAt": "2026-10-25T12:25:29.233Z"
     }
   ],
   "stations": [
@@ -2385,8 +2203,6 @@
       },
       "firstTracked": "Oct 24, 2026",
       "reliabilityTone": null,
-      "observedAt": "2026-10-24T12:24:19.590Z",
-      "networkListed": true,
       "detailReportedStatus": null,
       "address": "2437 172nd St NE, Marysville, WA 98271, USA",
       "amenities": [
@@ -2527,7 +2343,9 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:24:35.116Z"
+      "detailsObservedAt": "2026-10-25T12:25:44.564Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
+      "networkListed": true
     },
     {
       "sourceId": "US-RIV-L11239378122582441769",
@@ -2689,8 +2507,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:24:50.600Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:25:59.668Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -2853,8 +2671,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:06:10.599Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:06:36.601Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -3077,8 +2895,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:01:48.640Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:02:19.229Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -3297,8 +3115,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:02:04.169Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:02:34.406Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -3312,7 +3130,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 NACS",
-      "averagePeakKw": 188,
+      "averagePeakKw": 189,
       "rates": {
         "Rivian": "$0.39",
         "Other EVs": "$0.46"
@@ -3328,7 +3146,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 188,
+      "averageKw": 189,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39/kWh",
@@ -3518,8 +3336,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:02:19.722Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:02:49.536Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -3742,8 +3560,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:02:35.148Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:03:04.664Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -3876,8 +3694,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:02:50.560Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:03:19.804Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4009,8 +3827,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:03:06.008Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:03:34.894Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4173,8 +3991,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:03:21.458Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:03:50.020Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4335,8 +4153,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:03:36.836Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:04:05.148Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4469,8 +4287,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:03:52.272Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:04:20.291Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4690,8 +4508,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:04:07.604Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:04:35.451Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4821,8 +4639,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:04:22.965Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:04:50.574Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4836,7 +4654,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 NACS",
-      "averagePeakKw": 179,
+      "averagePeakKw": 178,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -4853,7 +4671,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 179,
+      "averageKw": 178,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -4983,8 +4801,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:04:38.281Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:05:05.698Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -4998,7 +4816,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 NACS",
-      "averagePeakKw": 198,
+      "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -5015,7 +4833,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 198,
+      "averageKw": 197,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -5205,8 +5023,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:04:53.557Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:05:20.905Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -5397,8 +5215,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:05:09.025Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:05:36.060Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -5412,7 +5230,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 10,
       "connectorSummary": "10 NACS",
-      "averagePeakKw": 203,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.38",
         "Other EVs": "$0.45"
@@ -5430,7 +5248,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 203,
+      "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.38/kWh",
@@ -5590,8 +5408,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:05:24.479Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:05:51.182Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -5813,8 +5631,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:05:39.907Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:06:06.309Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6034,8 +5852,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:05:55.207Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:06:21.492Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6226,8 +6044,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:25:05.957Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:26:14.800Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6241,7 +6059,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 181,
+      "averagePeakKw": 180,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -6260,7 +6078,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 181,
+      "averageKw": 180,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.49/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.34 Mon-Fri 8:00am-8:00pm$0.49 Mon-Fri 8:00pm-11:59pm$0.46 Sat-Sun 12:00am-8:00am$0.34 Sat-Sun 8:00am-8:00pm$0.49 Sat-Sun 8:00pm-11:59pm$0.46",
@@ -6360,8 +6178,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:25:21.435Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:26:29.987Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6523,8 +6341,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:25:36.677Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:26:45.131Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6538,7 +6356,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "8 CCS, 4 NACS",
-      "averagePeakKw": 178,
+      "averagePeakKw": 179,
       "rates": {
         "Rivian": "$0.27-0.39",
         "Other EVs": "$0.32-0.46"
@@ -6557,7 +6375,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 178,
+      "averageKw": 179,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.27–0.39/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.27 Mon-Fri 8:00am-8:00pm$0.39 Mon-Fri 8:00pm-11:59pm$0.36 Sat-Sun 12:00am-8:00am$0.27 Sat-Sun 8:00am-8:00pm$0.39 Sat-Sun 8:00pm-11:59pm$0.36",
@@ -6747,8 +6565,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:25:52.181Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:27:00.266Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6909,8 +6727,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:26:07.477Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:27:15.402Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -6924,7 +6742,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "7 CCS, 5 NACS",
-      "averagePeakKw": 203,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.45-0.65"
@@ -6942,7 +6760,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 203,
+      "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.39 Mon-Fri 8:00am-8:00pm$0.55 Mon-Fri 8:00pm-11:59pm$0.51 Sat-Sun 12:00am-8:00am$0.39 Sat-Sun 8:00am-8:00pm$0.55 Sat-Sun 8:00pm-11:59pm$0.51",
@@ -7132,8 +6950,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:26:22.904Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:27:30.580Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -7355,8 +7173,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:26:38.288Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:27:45.717Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -7548,8 +7366,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:26:53.789Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:28:00.847Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -7563,7 +7381,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 10,
       "connectorSummary": "5 NACS, 5 CCS",
-      "averagePeakKw": 206,
+      "averagePeakKw": 205,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -7581,7 +7399,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 206,
+      "averageKw": 205,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.49/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.34 Mon-Fri 8:00am-8:00pm$0.49 Mon-Fri 8:00pm-11:59pm$0.46 Sat-Sun 12:00am-8:00am$0.34 Sat-Sun 8:00am-8:00pm$0.49 Sat-Sun 8:00pm-11:59pm$0.46",
@@ -7741,8 +7559,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:27:09.122Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:28:16.021Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -7933,8 +7751,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:27:24.468Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:28:31.220Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -7948,7 +7766,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 4,
       "connectorSummary": "4 CCS",
-      "averagePeakKw": 196,
+      "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.65",
         "Other EVs": "$0.67"
@@ -7966,7 +7784,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 197,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.65/kWh",
@@ -8036,8 +7854,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:27:39.835Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:28:46.362Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -8229,8 +8047,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:27:55.346Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:29:01.500Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -8362,8 +8180,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:28:10.707Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:29:16.629Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -8377,7 +8195,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "2 NACS, 4 CCS",
-      "averagePeakKw": 199,
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.26-0.37",
         "Other EVs": "$0.30-0.44"
@@ -8395,7 +8213,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.26–0.37/kWh Time-of-Use Rates Mon-Fri 3:00pm-7:00pm$0.34 Mon-Fri 7:00pm-9:00pm$0.37 Mon-Fri 9:00pm-3:00pm$0.26 Sat-Sun 3:00pm-7:00pm$0.34 Sat-Sun 7:00pm-9:00pm$0.37 Sat-Sun 9:00pm-3:00pm$0.26",
@@ -8495,8 +8313,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:28:26.178Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:29:31.816Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -8510,7 +8328,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 170,
+      "averagePeakKw": 167,
       "rates": {
         "Rivian": "$0.45",
         "Other EVs": "$0.49"
@@ -8528,7 +8346,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 170,
+      "averageKw": 167,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.45/kWh",
@@ -8628,8 +8446,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:28:41.608Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:29:46.946Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -8882,8 +8700,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:28:57.093Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:30:02.079Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9046,8 +8864,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:29:12.423Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:30:17.150Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9061,7 +8879,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 16,
       "connectorSummary": "6 NACS, 10 CCS",
-      "averagePeakKw": 201,
+      "averagePeakKw": 200,
       "rates": {
         "All EVs": "$0.47"
       },
@@ -9078,7 +8896,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 201,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -9328,8 +9146,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:29:27.867Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:30:32.330Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9343,7 +9161,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -9361,7 +9179,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 202,
+      "averageKw": 201,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.49/kWh",
@@ -9460,9 +9278,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:29:43.235Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-25T12:30:47.457Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9593,8 +9411,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:29:58.508Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:31:02.591Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9608,7 +9426,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -9626,7 +9444,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 190,
+      "averageKw": 188,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 5:00am-9:00am$0.44 Mon-Fri 9:00am-7:00pm$0.47 Mon-Fri 7:00pm-5:00am$0.33 Sat-Sun 5:00am-9:00am$0.44 Sat-Sun 9:00am-7:00pm$0.47 Sat-Sun 7:00pm-5:00am$0.33",
@@ -9726,8 +9544,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:30:13.818Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:31:17.673Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9860,8 +9678,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:30:29.299Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:31:32.894Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -9875,7 +9693,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "5 CCS, 1 NACS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -9891,7 +9709,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 195,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.32–0.45/kWh Time-of-Use Rates Mon-Fri 3:00am-7:00am$0.42 Mon-Fri 7:00am-8:00pm$0.45 Mon-Fri 8:00pm-3:00am$0.32 Sat-Sun 3:00am-7:00am$0.42 Sat-Sun 7:00am-8:00pm$0.45 Sat-Sun 8:00pm-3:00am$0.32",
@@ -9991,8 +9809,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:30:44.736Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:31:48.062Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10006,7 +9824,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 168,
+      "averagePeakKw": 166,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.51"
@@ -10024,7 +9842,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 168,
+      "averageKw": 166,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -10124,8 +9942,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:31:00.087Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:32:03.249Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10257,8 +10075,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:31:15.420Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:32:18.406Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10419,8 +10237,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:31:30.937Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:32:33.560Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10642,8 +10460,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:31:46.365Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:32:48.686Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10774,8 +10592,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:32:01.749Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:33:03.811Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -10907,8 +10725,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:32:17.150Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:33:18.934Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11038,9 +10856,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:32:32.516Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-25T12:33:34.114Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11054,7 +10872,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "3 NACS, 3 CCS",
-      "averagePeakKw": 179,
+      "averagePeakKw": 178,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -11073,7 +10891,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 179,
+      "averageKw": 178,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.32–0.45/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.42 Mon-Fri 8:00am-5:00pm$0.45 Mon-Fri 5:00pm-4:00am$0.32 Sat-Sun 4:00am-8:00am$0.42 Sat-Sun 8:00am-5:00pm$0.45 Sat-Sun 5:00pm-4:00am$0.32",
@@ -11172,9 +10990,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:32:47.829Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-25T12:33:49.238Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11304,9 +11122,9 @@
           ]
         }
       ],
-      "sourceUpdatedText": "Updated about 9 hours ago",
-      "detailsObservedAt": "2026-10-24T12:33:03.272Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-25T12:34:04.344Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11439,8 +11257,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:33:18.737Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:34:19.469Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11454,7 +11272,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 186,
+      "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -11472,7 +11290,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 186,
+      "averageKw": 187,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 5:00am-7:00pm$0.53 Mon-Fri 7:00pm-11:00pm$0.49 Mon-Fri 11:00pm-5:00am$0.37 Sat-Sun 5:00am-7:00pm$0.53 Sat-Sun 7:00pm-11:00pm$0.49 Sat-Sun 11:00pm-5:00am$0.37",
@@ -11602,8 +11420,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:33:34.282Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:34:34.672Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11764,8 +11582,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:33:49.723Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:34:49.796Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11898,8 +11716,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:34:05.199Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:35:04.923Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -11913,7 +11731,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 194,
+      "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -11929,7 +11747,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.37 Mon-Fri 8:00am-8:00pm$0.53 Mon-Fri 8:00pm-11:59pm$0.49 Sat-Sun 12:00am-8:00am$0.37 Sat-Sun 8:00am-8:00pm$0.53 Sat-Sun 8:00pm-11:59pm$0.49",
@@ -12029,8 +11847,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:34:20.527Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:35:20.053Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12044,7 +11862,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 200,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -12061,7 +11879,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 200,
+      "averageKw": 199,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.30–0.43/kWh Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.40 Mon-Fri 6:00am-9:00pm$0.43 Mon-Fri 9:00pm-2:00am$0.30 Sat-Sun 2:00am-6:00am$0.40 Sat-Sun 6:00am-9:00pm$0.43 Sat-Sun 9:00pm-2:00am$0.30",
@@ -12161,8 +11979,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:34:35.975Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:35:35.236Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12295,8 +12113,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:34:51.293Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:35:50.365Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12310,7 +12128,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "2 NACS, 6 CCS",
-      "averagePeakKw": 191,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -12326,7 +12144,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 191,
+      "averageKw": 192,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.49 Mon-Fri 8:00am-8:00pm$0.53 Mon-Fri 8:00pm-4:00am$0.37 Sat-Sun 4:00am-8:00am$0.49 Sat-Sun 8:00am-8:00pm$0.53 Sat-Sun 8:00pm-4:00am$0.37",
@@ -12456,8 +12274,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:35:06.800Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:36:05.538Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12590,8 +12408,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:35:22.131Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:36:20.660Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12605,7 +12423,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 203,
+      "averagePeakKw": 202,
       "rates": {
         "Rivian": "$0.55",
         "Other EVs": "$0.65"
@@ -12621,7 +12439,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 203,
+      "averageKw": 202,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.55/kWh",
@@ -12721,8 +12539,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:35:37.526Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:36:35.832Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -12855,8 +12673,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:35:52.798Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:36:50.955Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13017,8 +12835,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:36:08.275Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:37:06.133Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13180,8 +12998,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:36:23.605Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:37:21.300Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13283,8 +13101,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:36:39.112Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:37:36.425Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13298,7 +13116,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 205,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -13315,7 +13133,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 205,
+      "averageKw": 204,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 3:00am-7:00am$0.44 Mon-Fri 7:00am-7:00pm$0.47 Mon-Fri 7:00pm-3:00am$0.33 Sat-Sun 3:00am-7:00am$0.44 Sat-Sun 7:00am-7:00pm$0.47 Sat-Sun 7:00pm-3:00am$0.33",
@@ -13415,8 +13233,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:36:54.530Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:37:51.547Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13430,7 +13248,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "5 CCS, 3 NACS",
-      "averagePeakKw": 183,
+      "averagePeakKw": 182,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.34-0.49"
@@ -13448,7 +13266,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 183,
+      "averageKw": 182,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.32–0.45/kWh Time-of-Use Rates Mon-Fri 1:00am-5:00am$0.42 Mon-Fri 5:00am-6:00pm$0.45 Mon-Fri 6:00pm-1:00am$0.32 Sat-Sun 1:00am-5:00am$0.42 Sat-Sun 5:00am-6:00pm$0.45 Sat-Sun 6:00pm-1:00am$0.32",
@@ -13578,8 +13396,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:37:10.026Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:38:06.691Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13593,7 +13411,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 10,
       "connectorSummary": "6 CCS, 4 NACS",
-      "averagePeakKw": 196,
+      "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -13612,7 +13430,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -13772,8 +13590,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:37:25.357Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:38:21.797Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13787,7 +13605,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 198,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -13804,7 +13622,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 198,
+      "averageKw": 199,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -13904,8 +13722,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:37:40.734Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:38:36.923Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -13919,7 +13737,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 200,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -13938,7 +13756,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 200,
+      "averageKw": 201,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.30–0.43/kWh Time-of-Use Rates Mon-Fri 1:00am-7:00am$0.30 Mon-Fri 7:00am-9:00pm$0.43 Mon-Fri 9:00pm-1:00am$0.40 Sat-Sun 1:00am-7:00am$0.30 Sat-Sun 7:00am-9:00pm$0.43 Sat-Sun 9:00pm-1:00am$0.40",
@@ -14038,8 +13856,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:37:56.156Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:38:52.051Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -14170,8 +13988,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:38:11.529Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:39:07.197Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -14185,7 +14003,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 187,
+      "averagePeakKw": 183,
       "rates": {
         "Rivian": "$0.48",
         "Other EVs": "$0.56"
@@ -14204,7 +14022,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 187,
+      "averageKw": 183,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.48/kWh",
@@ -14304,8 +14122,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:38:26.943Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:39:22.415Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -14319,7 +14137,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "8 CCS, 4 NACS",
-      "averagePeakKw": 194,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -14335,7 +14153,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 192,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 3:00am-7:00am$0.49 Mon-Fri 7:00am-6:00pm$0.53 Mon-Fri 6:00pm-3:00am$0.37 Sat-Sun 3:00am-7:00am$0.49 Sat-Sun 7:00am-6:00pm$0.53 Sat-Sun 6:00pm-3:00am$0.37",
@@ -14525,8 +14343,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:38:42.409Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:39:37.538Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -14701,8 +14519,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:38:57.775Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:39:52.675Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -14879,8 +14697,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:39:13.162Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:40:07.809Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15010,8 +14828,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:39:28.544Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:40:22.889Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15025,7 +14843,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -15043,7 +14861,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 193,
+      "averageKw": 190,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.49/kWh Time-of-Use Rates Mon-Fri 8:00am-7:00pm$0.49 Mon-Fri 7:00pm-11:00pm$0.46 Mon-Fri 11:00pm-8:00am$0.34 Sat-Sun 8:00am-7:00pm$0.49 Sat-Sun 7:00pm-11:00pm$0.46 Sat-Sun 11:00pm-8:00am$0.34",
@@ -15143,8 +14961,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:39:44.002Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:40:38.017Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15277,8 +15095,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:39:59.274Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:40:53.135Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15292,7 +15110,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 5,
       "connectorSummary": "2 CCS, 3 NACS",
-      "averagePeakKw": 187,
+      "averagePeakKw": 186,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.57"
@@ -15309,7 +15127,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 187,
+      "averageKw": 186,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -15394,8 +15212,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:40:14.832Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:41:08.301Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15527,8 +15345,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:40:45.434Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:41:38.595Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15659,8 +15477,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:40:30.106Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:41:23.474Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15791,8 +15609,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:41:00.759Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:41:53.717Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -15806,7 +15624,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 199,
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -15822,7 +15640,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.37–0.53/kWh Time-of-Use Rates Mon-Fri 3:00am-7:00am$0.49 Mon-Fri 7:00am-8:00pm$0.53 Mon-Fri 8:00pm-3:00am$0.37 Sat-Sun 3:00am-7:00am$0.49 Sat-Sun 7:00am-8:00pm$0.53 Sat-Sun 8:00pm-3:00am$0.37",
@@ -15922,8 +15740,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:41:16.188Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:42:08.917Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -16055,140 +15873,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:41:31.525Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
-      "networkListed": true
-    },
-    {
-      "sourceId": "US-RIV-L10427722039519689545",
-      "name": "Lee Vining, CA",
-      "sourceUrl": "https://rivianroamer.com/charging/sites/US-RIV-L10427722039519689545",
-      "lat": 37.9472632,
-      "lng": -119.1123436,
-      "reportedStatus": "Operational",
-      "access": "All EVs",
-      "reliabilityGrade": "A",
-      "chargerCount": 6,
-      "connectorSummary": "4 NACS, 2 CCS",
-      "averagePeakKw": 186,
-      "rates": {
-        "Rivian": "$0.53",
-        "Other EVs": "$0.62"
-      },
-      "firstTracked": "Jun 19, 2024",
-      "reliabilityTone": "emerald",
-      "detailReportedStatus": null,
-      "address": "22 Vista Point Road, Lee Vining, CA 93541, USA",
-      "amenities": [
-        "Open to All",
-        "Plug & Charge",
-        "Trailer OK",
-        "Food",
-        "Restroom"
-      ],
-      "maxKw": 300,
-      "averageKw": 186,
-      "hours": "24/7",
-      "detailRates": {
-        "Rivian": "$0.53/kWh",
-        "Other": "$0.62/kWh",
-        "Idle": "$0.50/min (after 10m)"
-      },
-      "chargers": [
-        {
-          "name": "1B",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2A",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1A",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2B",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "1C",
-          "powerKw": 300,
-          "connector": "NACS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        },
-        {
-          "name": "2C",
-          "powerKw": 300,
-          "connector": "CCS",
-          "features": [
-            {
-              "label": "Card",
-              "description": "Pay with credit card at charger"
-            },
-            {
-              "label": "Remote",
-              "description": "Start and stop charging remotely via app"
-            }
-          ]
-        }
-      ],
-      "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:42:02.129Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:42:24.041Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -16202,7 +15888,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.36-0.51"
@@ -16221,7 +15907,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 195,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 12:00am-8:00am$0.33 Mon-Fri 8:00am-8:00pm$0.47 Mon-Fri 8:00pm-11:59pm$0.44 Sat-Sun 12:00am-8:00am$0.33 Sat-Sun 8:00am-8:00pm$0.47 Sat-Sun 8:00pm-11:59pm$0.44",
@@ -16351,8 +16037,140 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:41:46.868Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:42:39.171Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
+      "networkListed": true
+    },
+    {
+      "sourceId": "US-RIV-L10427722039519689545",
+      "name": "Lee Vining, CA",
+      "sourceUrl": "https://rivianroamer.com/charging/sites/US-RIV-L10427722039519689545",
+      "lat": 37.9472632,
+      "lng": -119.1123436,
+      "reportedStatus": "Operational",
+      "access": "All EVs",
+      "reliabilityGrade": "A",
+      "chargerCount": 6,
+      "connectorSummary": "4 NACS, 2 CCS",
+      "averagePeakKw": 184,
+      "rates": {
+        "Rivian": "$0.53",
+        "Other EVs": "$0.62"
+      },
+      "firstTracked": "Jun 19, 2024",
+      "reliabilityTone": "emerald",
+      "detailReportedStatus": null,
+      "address": "22 Vista Point Road, Lee Vining, CA 93541, USA",
+      "amenities": [
+        "Open to All",
+        "Plug & Charge",
+        "Trailer OK",
+        "Food",
+        "Restroom"
+      ],
+      "maxKw": 300,
+      "averageKw": 184,
+      "hours": "24/7",
+      "detailRates": {
+        "Rivian": "$0.53/kWh",
+        "Other": "$0.62/kWh",
+        "Idle": "$0.50/min (after 10m)"
+      },
+      "chargers": [
+        {
+          "name": "1B",
+          "powerKw": 300,
+          "connector": "NACS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        },
+        {
+          "name": "2A",
+          "powerKw": 300,
+          "connector": "NACS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        },
+        {
+          "name": "1A",
+          "powerKw": 300,
+          "connector": "NACS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        },
+        {
+          "name": "2B",
+          "powerKw": 300,
+          "connector": "CCS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        },
+        {
+          "name": "1C",
+          "powerKw": 300,
+          "connector": "NACS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        },
+        {
+          "name": "2C",
+          "powerKw": 300,
+          "connector": "CCS",
+          "features": [
+            {
+              "label": "Card",
+              "description": "Pay with credit card at charger"
+            },
+            {
+              "label": "Remote",
+              "description": "Start and stop charging remotely via app"
+            }
+          ]
+        }
+      ],
+      "sourceUpdatedText": "Updated about 10 hours ago",
+      "detailsObservedAt": "2026-10-25T12:42:54.302Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -16530,8 +16348,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:42:17.406Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:43:09.447Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -16724,8 +16542,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:42:32.754Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:43:24.573Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -16902,8 +16720,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:42:48.148Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:43:39.694Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17034,8 +16852,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:43:03.488Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:43:54.825Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17165,8 +16983,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:43:18.772Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:44:09.982Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17339,8 +17157,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:43:34.247Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:44:25.106Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17472,8 +17290,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:43:49.715Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:44:40.229Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17605,8 +17423,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:44:05.091Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:44:55.357Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17737,8 +17555,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:44:20.549Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:45:10.534Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -17871,8 +17689,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:44:36.002Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:45:25.661Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18005,8 +17823,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:44:51.512Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:45:40.764Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18138,8 +17956,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:45:06.882Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:45:55.849Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18153,7 +17971,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 199,
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -18170,7 +17988,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 199,
+      "averageKw": 200,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -18270,8 +18088,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:45:22.280Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:46:11.023Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18285,7 +18103,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 194,
+      "averagePeakKw": 193,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -18303,7 +18121,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 194,
+      "averageKw": 193,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 7:00am-7:00pm$0.47 Mon-Fri 7:00pm-11:00pm$0.44 Mon-Fri 11:00pm-7:00am$0.33 Sat-Sun 7:00am-7:00pm$0.47 Sat-Sun 7:00pm-11:00pm$0.44 Sat-Sun 11:00pm-7:00am$0.33",
@@ -18403,8 +18221,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:45:37.724Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:46:26.223Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18536,8 +18354,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:45:53.226Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:46:41.356Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18667,8 +18485,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:46:08.550Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:46:56.421Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18800,8 +18618,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:46:23.919Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:47:11.608Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -18815,7 +18633,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 164,
+      "averagePeakKw": 165,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -18834,7 +18652,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 164,
+      "averageKw": 165,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -18934,8 +18752,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:46:39.401Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:47:26.737Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19067,8 +18885,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:46:54.883Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:47:41.863Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19201,8 +19019,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:47:10.236Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:47:56.931Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19334,8 +19152,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:47:25.568Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:48:12.080Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19465,8 +19283,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:47:41.092Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:48:27.187Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19599,8 +19417,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:47:56.647Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:48:42.317Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19732,8 +19550,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:48:11.957Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:48:57.444Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19747,7 +19565,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 197,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -19765,7 +19583,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 197,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.49/kWh Time-of-Use Rates Mon-Fri 6:00am-10:00am$0.46 Mon-Fri 10:00am-9:00pm$0.49 Mon-Fri 9:00pm-6:00am$0.34 Sat-Sun 6:00am-10:00am$0.46 Sat-Sun 10:00am-9:00pm$0.49 Sat-Sun 9:00pm-6:00am$0.34",
@@ -19865,8 +19683,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:48:27.381Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:49:12.607Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -19999,8 +19817,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:48:42.818Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:49:27.728Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20133,8 +19951,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:48:58.253Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:49:42.813Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20148,7 +19966,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 183,
+      "averagePeakKw": 184,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.45-0.65"
@@ -20165,7 +19983,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 183,
+      "averageKw": 184,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 5:00am-9:00am$0.51 Mon-Fri 9:00am-9:00pm$0.55 Mon-Fri 9:00pm-5:00am$0.39 Sat-Sun 5:00am-9:00am$0.51 Sat-Sun 9:00am-9:00pm$0.55 Sat-Sun 9:00pm-5:00am$0.39",
@@ -20265,8 +20083,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:49:13.613Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:49:57.895Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20397,8 +20215,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:49:28.990Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:50:12.988Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20574,8 +20392,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:49:44.377Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:50:28.077Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20589,7 +20407,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.34-0.48",
         "Other EVs": "$0.36-0.52"
@@ -20608,7 +20426,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 193,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.34–0.48/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.45 Mon-Fri 8:00am-8:00pm$0.48 Mon-Fri 8:00pm-4:00am$0.34 Sat-Sun 4:00am-8:00am$0.45 Sat-Sun 8:00am-8:00pm$0.48 Sat-Sun 8:00pm-4:00am$0.34",
@@ -20708,8 +20526,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:49:59.880Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:50:43.202Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20723,7 +20541,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 196,
+      "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -20740,7 +20558,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 195,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -20840,8 +20658,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:50:15.344Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:50:58.295Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -20953,8 +20771,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:50:30.782Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:51:13.444Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21087,8 +20905,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:50:46.260Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:51:28.606Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21220,8 +21038,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:51:01.691Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:51:43.712Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21353,8 +21171,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:51:17.004Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:51:58.830Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21485,8 +21303,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:51:32.333Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:52:14.012Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21619,8 +21437,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:51:47.823Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:52:29.089Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21750,8 +21568,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:52:03.332Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:52:44.175Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21883,8 +21701,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:52:18.741Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:52:59.300Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -21898,7 +21716,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 4,
       "connectorSummary": "4 CCS",
-      "averagePeakKw": 191,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.59"
       },
@@ -21915,7 +21733,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 191,
+      "averageKw": 190,
       "hours": "24/7",
       "detailRates": {
         "Energy": "$0.59/kWh",
@@ -21984,8 +21802,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:52:34.149Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:53:14.455Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22116,8 +21934,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:52:49.605Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:53:29.568Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22131,7 +21949,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 191,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.36-0.51"
@@ -22149,7 +21967,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 190,
+      "averageKw": 191,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 1:00am-9:00am$0.33 Mon-Fri 9:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-9:00am$0.33 Sat-Sun 9:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
@@ -22249,8 +22067,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:53:05.095Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:53:44.638Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22264,7 +22082,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -22280,7 +22098,7 @@
         "Food"
       ],
       "maxKw": 300,
-      "averageKw": 202,
+      "averageKw": 201,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.33–0.47/kWh Time-of-Use Rates Mon-Fri 1:00am-10:00am$0.33 Mon-Fri 10:00am-9:00pm$0.47 Mon-Fri 9:00pm-1:00am$0.44 Sat-Sun 1:00am-10:00am$0.33 Sat-Sun 10:00am-9:00pm$0.47 Sat-Sun 9:00pm-1:00am$0.44",
@@ -22380,8 +22198,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:53:20.423Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:53:59.709Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22513,8 +22331,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:53:35.779Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:54:14.857Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22647,8 +22465,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:53:51.083Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:54:30.012Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22779,8 +22597,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:54:06.592Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:54:45.147Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22912,8 +22730,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:54:21.872Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:55:00.271Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -22927,7 +22745,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 140,
+      "averagePeakKw": 139,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.62"
@@ -22945,7 +22763,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 140,
+      "averageKw": 139,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.53/kWh",
@@ -23045,8 +22863,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:54:37.309Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:55:15.426Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23179,8 +22997,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:54:52.779Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:55:30.562Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23312,8 +23130,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:55:08.210Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:55:45.687Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23445,8 +23263,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:55:23.655Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:56:00.811Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23579,8 +23397,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:55:39.057Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:56:15.974Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23713,8 +23531,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:55:54.475Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:56:31.134Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23847,8 +23665,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:56:09.970Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:56:46.261Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -23933,8 +23751,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:56:25.334Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:57:01.390Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24066,8 +23884,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:56:40.631Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:57:16.547Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24200,8 +24018,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:56:56.112Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:57:31.686Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24332,8 +24150,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:57:11.538Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:57:46.814Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24511,8 +24329,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:57:27.004Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:58:01.941Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24644,8 +24462,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:57:42.288Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:58:17.144Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24659,7 +24477,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 196,
+      "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.46"
@@ -24677,7 +24495,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 196,
+      "averageKw": 197,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.43/kWh",
@@ -24777,8 +24595,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:57:57.838Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:58:32.297Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -24911,8 +24729,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:58:13.317Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:58:47.421Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25075,8 +24893,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:58:28.742Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:59:02.530Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25299,8 +25117,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:58:44.173Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:59:17.628Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25431,8 +25249,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:58:59.659Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:59:32.790Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25446,7 +25264,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 204,
+      "averagePeakKw": 203,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.51"
@@ -25464,7 +25282,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 204,
+      "averageKw": 203,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -25564,8 +25382,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:59:15.186Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T12:59:47.873Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25697,8 +25515,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:59:30.500Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:00:03.000Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25831,8 +25649,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T12:59:45.826Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:00:18.145Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25964,8 +25782,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:00:01.226Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:00:33.277Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -25979,7 +25797,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 10,
       "connectorSummary": "4 CCS, 6 NACS",
-      "averagePeakKw": 177,
+      "averagePeakKw": 176,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.42-0.59"
@@ -25997,7 +25815,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 177,
+      "averageKw": 176,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.39–0.55/kWh Time-of-Use Rates Mon-Fri 7:00am-7:00pm$0.55 Mon-Fri 7:00pm-11:00pm$0.51 Mon-Fri 11:00pm-7:00am$0.39 Sat-Sun 7:00am-7:00pm$0.55 Sat-Sun 7:00pm-11:00pm$0.51 Sat-Sun 11:00pm-7:00am$0.39",
@@ -26157,8 +25975,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:00:16.629Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:00:48.405Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26172,7 +25990,7 @@
       "reliabilityGrade": "B",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 197,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -26190,7 +26008,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 197,
+      "averageKw": 196,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -26290,8 +26108,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:00:31.980Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:01:03.553Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26305,7 +26123,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 189,
+      "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -26323,7 +26141,7 @@
         "Lodging"
       ],
       "maxKw": 300,
-      "averageKw": 189,
+      "averageKw": 188,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -26423,8 +26241,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:00:47.257Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:01:18.699Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26438,7 +26256,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 182,
+      "averagePeakKw": 181,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -26456,7 +26274,7 @@
         "Restroom"
       ],
       "maxKw": 300,
-      "averageKw": 182,
+      "averageKw": 181,
       "hours": "24/7",
       "detailRates": {
         "Rivian": "$0.47/kWh",
@@ -26556,8 +26374,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:01:02.561Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:01:33.848Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26690,8 +26508,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:01:18.011Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:01:48.972Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26824,8 +26642,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-10-24T13:01:33.400Z",
-      "observedAt": "2026-10-24T12:24:19.590Z",
+      "detailsObservedAt": "2026-10-25T13:02:04.101Z",
+      "observedAt": "2026-10-25T12:25:29.233Z",
       "networkListed": true
     },
     {
@@ -26947,8 +26765,8 @@
         }
       ],
       "sourceUpdatedText": "Updated about 1 month ago",
-      "detailsObservedAt": "2026-10-24T13:06:25.916Z",
-      "observedAt": "2026-10-24T13:06:25.916Z"
+      "detailsObservedAt": "2026-10-25T13:06:51.722Z",
+      "observedAt": "2026-10-25T13:06:51.722Z"
     }
   ]
 }
