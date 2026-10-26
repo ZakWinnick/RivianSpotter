@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 896,
+  "requests": 911,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-10-25T12:25:28.188Z",
+    "observedAt": "2026-10-26T13:55:21.542Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/0ujzbfo4yvr16.js",
     "sha256": "b9fea71f7e74b67ab118815557168312e9d5cd056c29afd404a0ba020a831862"
@@ -50,19 +50,10 @@
     "Waypoint": 207
   },
   "promotions": {
-    "promoted": [
-      {
-        "plannedSourceId": "PERMIT-WA-marysville-6bacb9c0",
-        "activeSourceId": "US-RIV-L18269386535760141253",
-        "matchedAt": "2026-10-25",
-        "activeFirstSeen": "2026-10-25",
-        "method": "announced-city-new-local-station",
-        "distanceKm": 0.01
-      }
-    ],
+    "promoted": [],
     "unresolved": []
   },
   "added": [],
   "removed": [],
-  "sha256": "e6e4663736a410a534105a9474a5e83a89bb38e9edfd32c0a926f137944c53e9"
+  "sha256": "e043fb324a7258ba40713dcf817d1c2d8f105af8296f31196e534c1359f6ac93"
 }
