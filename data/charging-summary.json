@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 901,
+  "requests": 893,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-10-27T12:29:22.154Z",
+    "observedAt": "2026-10-28T12:22:42.850Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/0ujzbfo4yvr16.js",
     "sha256": "b9fea71f7e74b67ab118815557168312e9d5cd056c29afd404a0ba020a831862"
@@ -47,13 +47,19 @@
   "warnings": [],
   "counts": {
     "RAN": 235,
-    "Waypoint": 207
+    "Waypoint": 208
   },
   "promotions": {
     "promoted": [],
     "unresolved": []
   },
-  "added": [],
+  "added": [
+    {
+      "id": 148584893467666,
+      "name": "Holly Recreation State Park",
+      "slug": "waypoint-holly-recreation-state-park-87231dbc09"
+    }
+  ],
   "removed": [],
-  "sha256": "6f71c7dc106feebc8bd690ba5998976e2bb0e9521de912612f7b3b288aad4724"
+  "sha256": "bb8e1eb5d87f03e4f9fa5cda1cb9d202f3c7b92fa4dec707d7c7b1383106c69b"
 }
