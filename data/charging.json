@@ -35,7 +35,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -87,7 +87,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -139,7 +139,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "reported",
@@ -189,7 +189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -239,7 +239,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -289,7 +289,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -341,7 +341,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -392,7 +392,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -443,7 +443,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -493,7 +493,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -543,7 +543,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -594,7 +594,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -645,7 +645,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -696,7 +696,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -747,7 +747,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -799,7 +799,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -849,7 +849,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "funding-awarded",
@@ -899,7 +899,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -912,57 +912,6 @@
       "siteName": "Outlets at Castle Rock (behind Sam's Club)",
       "addressNote": "from RAN Tracker’s map",
       "firstReported": "2026-10-15"
-    }
-  },
-  {
-    "id": 178905660535678,
-    "slug": "ran-permit-ct-manchester-a2b6b848f1",
-    "name": "Manchester, CT",
-    "type": "RAN",
-    "network": "Rivian Adventure Network",
-    "sourceId": "PERMIT-CT-manchester-6a9c541f",
-    "sourceKind": "charging-map",
-    "sourceUrl": "https://x.com/RANtracker/status/2095977228106662003",
-    "planningSource": "permit-filing",
-    "address": null,
-    "displayAddress": null,
-    "city": "Manchester",
-    "state": "CT",
-    "country": "US",
-    "lat": 41.796911,
-    "lng": -72.55154,
-    "coordinatePrecision": "permit-address",
-    "coordinateSource": "RAN Tracker’s map pin",
-    "chargerCount": null,
-    "maxKw": null,
-    "maxPowerLabel": null,
-    "reliabilityGrade": null,
-    "rivianOnly": null,
-    "capabilities": [
-      "charging"
-    ],
-    "services": [],
-    "status": "planned",
-    "listed": true,
-    "hours": null,
-    "chargingHours": null,
-    "timezone": null,
-    "phone": null,
-    "rivianUrl": null,
-    "bookingUrl": null,
-    "lastVerified": "2026-10-29",
-    "firstSeen": "2026-10-23",
-    "permit": {
-      "stage": "under-construction",
-      "stageLabel": "Under construction",
-      "address": "1127 Tolland Turnpike",
-      "reportedOn": "2026-09-04",
-      "sourceUrl": "https://x.com/RANtracker/status/2095977228106662003",
-      "sourceName": "RAN Tracker",
-      "sourceProfile": "https://x.com/rantracker",
-      "siteName": "Shoppes at Burr Corners",
-      "addressNote": "from RAN Tracker’s map",
-      "firstReported": "2026-03-04"
     }
   },
   {
@@ -1001,7 +950,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1052,7 +1001,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "under-construction",
@@ -1102,7 +1051,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "under-construction",
@@ -1153,7 +1102,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-approved",
@@ -1205,7 +1154,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1257,7 +1206,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "reported",
@@ -1309,7 +1258,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "reported",
@@ -1360,7 +1309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1412,7 +1361,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1464,7 +1413,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1515,7 +1464,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1565,7 +1514,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1616,7 +1565,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1667,7 +1616,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "reported",
@@ -1717,7 +1666,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1768,7 +1717,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-approved",
@@ -1820,7 +1769,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "permit": {
       "stage": "permit-filed",
@@ -1872,7 +1821,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -1911,7 +1860,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -1950,7 +1899,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "under-construction",
@@ -2001,7 +1950,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2040,7 +1989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2091,7 +2040,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2130,7 +2079,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2180,7 +2129,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-approved",
@@ -2231,7 +2180,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2282,7 +2231,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "funding-awarded",
@@ -2332,7 +2281,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2371,7 +2320,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2410,7 +2359,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "under-construction",
@@ -2461,7 +2410,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2500,7 +2449,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2539,7 +2488,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2578,7 +2527,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2617,7 +2566,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-approved",
@@ -2668,7 +2617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2719,7 +2668,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2758,7 +2707,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2797,7 +2746,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2847,7 +2796,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -2898,7 +2847,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2937,7 +2886,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -2976,7 +2925,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "under-construction",
@@ -3028,7 +2977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -3079,7 +3028,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -3118,7 +3067,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -3157,7 +3106,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -3196,7 +3145,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -3235,7 +3184,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -3285,7 +3234,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -3335,7 +3284,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16"
   },
   {
@@ -3374,7 +3323,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "permit": {
       "stage": "permit-filed",
@@ -3426,7 +3375,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3466,7 +3415,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3506,7 +3455,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3546,7 +3495,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3586,7 +3535,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3626,7 +3575,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3666,7 +3615,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3706,7 +3655,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3746,7 +3695,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3786,7 +3735,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3826,7 +3775,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3866,7 +3815,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3906,7 +3855,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3946,7 +3895,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -3986,7 +3935,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4026,7 +3975,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4066,7 +4015,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4106,7 +4055,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4146,7 +4095,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4186,7 +4135,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4226,7 +4175,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4266,7 +4215,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4306,7 +4255,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4346,7 +4295,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4386,7 +4335,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4426,7 +4375,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4466,7 +4415,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4506,7 +4455,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4546,7 +4495,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4586,7 +4535,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-16",
     "legacyIds": [
       140657572642625
@@ -4640,7 +4589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4680,7 +4629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4720,7 +4669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4760,7 +4709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4800,7 +4749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4840,7 +4789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4880,7 +4829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4920,7 +4869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -4960,7 +4909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5000,7 +4949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5040,7 +4989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5080,7 +5029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5120,7 +5069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5160,7 +5109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5200,7 +5149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5240,7 +5189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5280,7 +5229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5320,7 +5269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5360,7 +5309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5400,7 +5349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5440,7 +5389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5480,7 +5429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5520,7 +5469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5560,7 +5509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5600,7 +5549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5640,7 +5589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5680,7 +5629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5720,7 +5669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5760,7 +5709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5800,7 +5749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5840,7 +5789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5880,7 +5829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5920,7 +5869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -5960,7 +5909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6000,7 +5949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6040,7 +5989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6080,7 +6029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6120,7 +6069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6160,7 +6109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6200,7 +6149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6240,7 +6189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6280,7 +6229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6320,7 +6269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6360,7 +6309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6400,7 +6349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6440,7 +6389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6480,7 +6429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6520,7 +6469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6560,7 +6509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6600,7 +6549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6640,7 +6589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6680,7 +6629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6720,7 +6669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6760,7 +6709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6784,7 +6733,7 @@
     "chargerCount": 8,
     "maxKw": 300,
     "maxPowerLabel": "Up to 300 kW",
-    "reliabilityGrade": null,
+    "reliabilityGrade": "A",
     "rivianOnly": false,
     "capabilities": [
       "charging"
@@ -6800,7 +6749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-15"
   },
   {
@@ -6840,7 +6789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6880,7 +6829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6920,7 +6869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -6960,7 +6909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7000,7 +6949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7040,7 +6989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7080,7 +7029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7120,7 +7069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7160,7 +7109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7200,7 +7149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7240,7 +7189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7280,7 +7229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7320,7 +7269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7360,7 +7309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7400,7 +7349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7440,7 +7389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7480,7 +7429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7520,7 +7469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7560,7 +7509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7600,7 +7549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7640,7 +7589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7680,7 +7629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7720,7 +7669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7760,7 +7709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7800,7 +7749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7840,7 +7789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7880,7 +7829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7920,7 +7869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -7960,7 +7909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8000,7 +7949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8040,7 +7989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8080,7 +8029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8120,7 +8069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8160,7 +8109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8200,7 +8149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8240,7 +8189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8280,7 +8229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8320,7 +8269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8360,7 +8309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8400,7 +8349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8440,7 +8389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8480,7 +8429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8520,7 +8469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8560,7 +8509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8600,7 +8549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8640,7 +8589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8680,7 +8629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8720,7 +8669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8760,7 +8709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8800,7 +8749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8840,7 +8789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8880,7 +8829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8920,7 +8869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -8960,7 +8909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9000,7 +8949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9040,7 +8989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9080,7 +9029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9120,7 +9069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9160,7 +9109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9200,7 +9149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9240,7 +9189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9280,7 +9229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9320,7 +9269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9360,7 +9309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9400,7 +9349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9440,7 +9389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9480,7 +9429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9520,7 +9469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9560,7 +9509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9600,7 +9549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9640,7 +9589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9680,7 +9629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9720,7 +9669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9760,7 +9709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9800,7 +9749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9840,7 +9789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9880,7 +9829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9920,7 +9869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -9960,7 +9909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10000,7 +9949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10040,7 +9989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10080,7 +10029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10120,7 +10069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10160,7 +10109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10200,7 +10149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-28"
   },
   {
@@ -10240,7 +10189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10280,7 +10229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10320,7 +10269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10360,7 +10309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10400,7 +10349,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10440,7 +10389,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10480,7 +10429,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10520,7 +10469,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10560,7 +10509,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10600,7 +10549,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10640,7 +10589,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10680,7 +10629,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10720,7 +10669,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10760,7 +10709,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10800,7 +10749,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10840,7 +10789,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10880,7 +10829,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10920,7 +10869,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -10960,7 +10909,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11000,7 +10949,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11040,7 +10989,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11080,7 +11029,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11120,7 +11069,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11160,7 +11109,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11200,7 +11149,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11240,7 +11189,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11280,7 +11229,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11320,7 +11269,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11360,7 +11309,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-23",
     "legacyIds": [
       250797370470635
@@ -11414,7 +11363,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11454,7 +11403,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11494,7 +11443,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11534,7 +11483,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11574,7 +11523,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11614,7 +11563,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11654,7 +11603,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11694,7 +11643,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11734,8 +11683,62 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
+  },
+  {
+    "id": 178905660535678,
+    "slug": "ran-permit-ct-manchester-a2b6b848f1",
+    "name": "Manchester, CT",
+    "type": "RAN",
+    "network": "Rivian Adventure Network",
+    "sourceId": "US-RIV-L2040037821863997468",
+    "sourceKind": "charging-map",
+    "sourceUrl": "https://rivian.com/experience/charging#map",
+    "address": "1127 Tolland Turnpike, Manchester, CT 06042, USA",
+    "displayAddress": "1127 Tolland Turnpike",
+    "city": "Manchester",
+    "state": "CT",
+    "country": "US",
+    "lat": 41.79703988667018,
+    "lng": -72.55145788192749,
+    "coordinatePrecision": "map-pin",
+    "coordinateSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
+    "chargerCount": 12,
+    "maxKw": 300,
+    "maxPowerLabel": "Up to 300 kW",
+    "reliabilityGrade": null,
+    "rivianOnly": false,
+    "capabilities": [
+      "charging"
+    ],
+    "services": [
+      "DC Fast Charging"
+    ],
+    "status": "unknown",
+    "listed": true,
+    "hours": null,
+    "chargingHours": null,
+    "timezone": null,
+    "phone": null,
+    "rivianUrl": null,
+    "bookingUrl": null,
+    "lastVerified": "2026-10-30",
+    "firstSeen": "2026-10-23",
+    "legacyIds": [
+      250793976559294
+    ],
+    "legacySlugs": [
+      "ran-manchester-ct-e41885d334"
+    ],
+    "promotion": {
+      "plannedSourceId": "PERMIT-CT-manchester-6a9c541f",
+      "activeSourceId": "US-RIV-L2040037821863997468",
+      "matchedAt": "2026-10-30",
+      "activeFirstSeen": "2026-10-30",
+      "method": "announced-city-new-local-station",
+      "distanceKm": 0.02
+    }
   },
   {
     "id": 12164064049176,
@@ -11774,7 +11777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11814,7 +11817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11854,7 +11857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11894,7 +11897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11934,7 +11937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -11974,7 +11977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12014,7 +12017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12054,7 +12057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12094,7 +12097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12134,7 +12137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12174,7 +12177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12214,7 +12217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12254,7 +12257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12294,7 +12297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12334,7 +12337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12374,7 +12377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12414,7 +12417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12454,7 +12457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12494,7 +12497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12534,7 +12537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12574,7 +12577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12614,7 +12617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12654,7 +12657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12694,7 +12697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12734,7 +12737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12774,7 +12777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12814,7 +12817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12854,7 +12857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12894,7 +12897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12934,7 +12937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -12974,7 +12977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13014,7 +13017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13054,7 +13057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13094,7 +13097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13134,7 +13137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13174,7 +13177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13214,7 +13217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13254,7 +13257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13294,7 +13297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13334,7 +13337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13374,7 +13377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13414,7 +13417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13454,7 +13457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13494,7 +13497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13534,7 +13537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13574,7 +13577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13614,7 +13617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13654,7 +13657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13694,7 +13697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13734,7 +13737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13774,7 +13777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13814,7 +13817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13854,7 +13857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13894,7 +13897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13934,7 +13937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -13974,7 +13977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14014,7 +14017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14054,7 +14057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14094,7 +14097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14134,7 +14137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14174,7 +14177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14214,7 +14217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14254,7 +14257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14294,7 +14297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14334,7 +14337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14374,7 +14377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14414,7 +14417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14454,7 +14457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14494,7 +14497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14534,7 +14537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14574,7 +14577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14614,7 +14617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14654,7 +14657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14694,7 +14697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14734,7 +14737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14774,7 +14777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14814,7 +14817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14854,7 +14857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14894,7 +14897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14934,7 +14937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -14974,7 +14977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15014,7 +15017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15054,7 +15057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15094,7 +15097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15134,7 +15137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15174,7 +15177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15214,7 +15217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15254,7 +15257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15294,7 +15297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15334,7 +15337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15374,7 +15377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15414,7 +15417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15454,7 +15457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15494,7 +15497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15534,7 +15537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15574,7 +15577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15614,7 +15617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15654,7 +15657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15694,7 +15697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15734,7 +15737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15774,7 +15777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15814,7 +15817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15854,7 +15857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15894,7 +15897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15934,7 +15937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -15974,7 +15977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16014,7 +16017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16054,7 +16057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16094,7 +16097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16134,7 +16137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16174,7 +16177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16214,7 +16217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16254,7 +16257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16294,7 +16297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16334,7 +16337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16374,7 +16377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16414,7 +16417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16454,7 +16457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16494,7 +16497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16534,7 +16537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16574,7 +16577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16614,7 +16617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16654,7 +16657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16694,7 +16697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16734,7 +16737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16774,7 +16777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16814,7 +16817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16854,7 +16857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16894,7 +16897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16934,7 +16937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -16974,7 +16977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17014,7 +17017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17054,7 +17057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17094,7 +17097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17134,7 +17137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17174,7 +17177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17214,7 +17217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17254,7 +17257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17294,7 +17297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17334,7 +17337,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17374,7 +17377,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17414,7 +17417,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17454,7 +17457,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17494,7 +17497,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17534,7 +17537,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17574,7 +17577,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17614,7 +17617,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17654,7 +17657,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17694,7 +17697,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17734,7 +17737,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17774,7 +17777,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17814,7 +17817,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17854,7 +17857,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17894,7 +17897,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17934,7 +17937,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -17974,7 +17977,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18014,7 +18017,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18054,7 +18057,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18094,7 +18097,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18134,7 +18137,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18174,7 +18177,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18198,7 +18201,7 @@
     "chargerCount": 12,
     "maxKw": 300,
     "maxPowerLabel": "Up to 300 kW",
-    "reliabilityGrade": null,
+    "reliabilityGrade": "A",
     "rivianOnly": false,
     "capabilities": [
       "charging"
@@ -18214,7 +18217,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18254,7 +18257,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   },
   {
@@ -18294,7 +18297,7 @@
     "phone": null,
     "rivianUrl": null,
     "bookingUrl": null,
-    "lastVerified": "2026-10-29",
+    "lastVerified": "2026-10-30",
     "firstSeen": "2026-10-14"
   }
 ]

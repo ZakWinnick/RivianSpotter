@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 903,
+  "requests": 905,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-10-29T12:28:00.065Z",
+    "observedAt": "2026-10-30T12:29:34.263Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/0ujzbfo4yvr16.js",
     "sha256": "b9fea71f7e74b67ab118815557168312e9d5cd056c29afd404a0ba020a831862"
@@ -50,10 +50,19 @@
     "Waypoint": 208
   },
   "promotions": {
-    "promoted": [],
+    "promoted": [
+      {
+        "plannedSourceId": "PERMIT-CT-manchester-6a9c541f",
+        "activeSourceId": "US-RIV-L2040037821863997468",
+        "matchedAt": "2026-10-30",
+        "activeFirstSeen": "2026-10-30",
+        "method": "announced-city-new-local-station",
+        "distanceKm": 0.02
+      }
+    ],
     "unresolved": []
   },
   "added": [],
   "removed": [],
-  "sha256": "0890c02d01d90e131e163a0266e73d32550b9d11552838f21ddac51dd70eacb9"
+  "sha256": "7b7ec958077823b1e3d923675a805d5cdd7b4a23bdaaa6bbb31f065ad8ae72eb"
 }
