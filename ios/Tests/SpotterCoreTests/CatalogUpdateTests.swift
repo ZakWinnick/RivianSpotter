@@ -5,6 +5,34 @@ import XCTest
 #endif
 
 final class CatalogUpdateTests: XCTestCase {
+    func testSiteDistancesAndNearbyPlaces() throws {
+        let template = try JSONSerialization.jsonObject(with: JSONEncoder().encode(Catalog.bundled().places[0])) as! [String: Any]
+        func site(_ id: String, _ lat: Any, _ changes: [String: Any] = [:]) throws -> Place {
+            var json = template
+            json.merge(["id": id, "latitude": lat, "longitude": 0, "region": "CA", "country": "US",
+                        "coordinatePrecision": "exact", "listed": true, "status": "open"]) { _, new in new }
+            json.merge(changes) { _, new in new }
+            return try JSONDecoder().decode(Place.self, from: JSONSerialization.data(withJSONObject: json))
+        }
+        let origin = try site("origin", 0), near = try site("near", 1), far = try site("far", 2)
+        let unknown = try site("unknown", NSNull())
+        XCTAssertEqual(origin.distanceLabel(to: near), "69.1 mi")
+        XCTAssertEqual(origin.distanceLabel(to: origin), "<0.1 mi")
+        XCTAssertEqual(origin.distanceLabel(to: unknown), nil)
+        XCTAssertEqual(unknown.distanceLabel(to: near), nil)
+        XCTAssertEqual(origin.distanceLabel(to: try site("invalid", 91)), nil)
+        XCTAssertEqual(origin.distanceLabel(to: try site("untrusted", 0, ["coordinatePrecision": "unknown"])), nil)
+        let approximate = try site("approx", 1, ["status": "planned", "coordinatePrecision": "city"])
+        XCTAssertEqual(origin.distanceLabel(to: approximate), "Approx. 69.1 mi")
+        XCTAssertEqual(approximate.distanceLabel(to: origin), "Approx. 69.1 mi")
+        let west = try site("west", 0, ["longitude": 179.5]), east = try site("east", 0, ["longitude": -179.5])
+        XCTAssertEqual(west.distanceLabel(to: east), "69.1 mi")
+        let unlisted = try site("unlisted", 0.1, ["listed": false])
+        let otherRegion = try site("other", 0.1, ["region": "NV"])
+        XCTAssertEqual(origin.nearbyPlaces(in: [far, unknown, origin, unlisted, otherRegion, near]).map(\.id), ["near", "far", "unknown"])
+        XCTAssertEqual(origin.nearbyPlaces(in: [near, far, unknown, approximate, west, east]).count, 4)
+    }
+
     private func changedCatalog(revision: Int64? = nil) throws -> Data {
         let bundled = try Catalog.bundled()
         var json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(bundled)) as! [String: Any]

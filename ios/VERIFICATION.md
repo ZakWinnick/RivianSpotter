@@ -239,3 +239,10 @@ This entry supersedes earlier signing, runtime, photography-permission, and dist
 
 - Merged PR #68: the medium widget map is requested at the device screen scale; MapKit rejected 3x on 2x iPads ("Invalid content scale: 3.0"), so iPad showed no map. Checked on the iPad Pro 13-inch simulator; widget harness 0 failures.
 - Signed Release archive of `0d0e130` succeeded. Apple accepted 1.0.0 (23) at 14:12 Pacific ("Upload succeeded"); processing was pending when recorded.
+
+## Nearby place distances / build 24 — November 2, 2026
+
+- Added site-to-site straight-line distances to the website's related-place rows and an equivalent native section at the bottom of app place details. Approximate pins are labeled; missing or untrusted pins never produce a fabricated distance. Suggestions retain the website's same-state/province scope.
+- Website: 161 tests passed; static build generated 672 pages and 583 records with valid internal references. Desktop and 390px mobile previews checked; following a nearby link and returning worked.
+- App: 45 core checks passed, including distance calculation, approximate/missing pins, date-line crossing and nearby sorting. iOS simulator build succeeded. Refreshed the bundled catalog and set app/widget build numbers to 24 (version 1.0.0).
+- Native visual verification could not be completed because Simulator was unavailable to the UI-control tool. Physical-device, VoiceOver and cross-device iCloud behavior were not retested for this change.

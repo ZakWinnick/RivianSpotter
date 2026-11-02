@@ -425,6 +425,13 @@
   .link-row strong {
     color: var(--ink);
   }
+  .place-distance {
+    display: block;
+    margin-top: 6px;
+    font-size: .8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
 }
 @layer layout {
   .explorer-page {

@@ -236,6 +236,14 @@
       Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dlng / 2) ** 2;
     return 3958.8 * 2 * Math.asin(Math.sqrt(Math.min(1, h)));
   }
+  // Site-to-site distances use the same trusted pins as the map, never the visitor's location.
+  function placeDistanceLabel(a, b) {
+    if (!isMapped(a) || !isMapped(b)) return null;
+    const miles = distanceMiles(a, b);
+    const approximate = !["exact", "map-pin"].includes(a.coordinatePrecision) ||
+      !["exact", "map-pin"].includes(b.coordinatePrecision);
+    return `${approximate ? "Approx. " : ""}${miles < 0.1 ? "<0.1" : miles.toFixed(1)} mi`;
+  }
   function filterLocations(list, f = {}) {
     const q = (f.query || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
     return list.filter(
@@ -328,6 +336,7 @@
     schedule,
     getHoursState,
     distanceMiles,
+    placeDistanceLabel,
     filterLocations,
     getDirectionsUrl,
     getOfficialLink,

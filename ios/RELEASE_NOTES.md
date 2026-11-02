@@ -1,5 +1,9 @@
 # What’s New in RivianSpotter
 
+## Version 1.0 — Build 24
+
+See how far nearby places are from the location you’re viewing. Place pages now include up to four nearby locations in the same state or province, with straight-line distances and labels for approximate pins. Tap any suggestion to open its details in the app.
+
 ## Version 1.0
 
 RivianSpotter 1.0 is here: a field guide to every Rivian place, and a private record of the ones you’ve been to.

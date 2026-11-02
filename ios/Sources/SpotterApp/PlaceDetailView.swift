@@ -86,6 +86,7 @@ private struct PlaceDetailContent: View {
                         ShareLink(item: url, subject: Text(place.name)) { Label("Share", systemImage: "square.and.arrow.up").cardButton() }
                     }
                 }.buttonStyle(.plain)
+                morePlacesCard
             }.padding(.horizontal, 16).padding(.top, 8).padding(.bottom, 28)
                 .frame(maxWidth: 680).frame(maxWidth: .infinity)
         }
@@ -287,6 +288,31 @@ private struct PlaceDetailContent: View {
                             Spacer()
                             Image(systemName: "chevron.right").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
                         }.frame(minHeight: 36).contentShape(Rectangle())
+                    }.buttonStyle(.plain)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private var morePlacesCard: some View {
+        let nearby = place.nearbyPlaces(in: store.places)
+        if !nearby.isEmpty {
+            InfoCard(title: "More Places in \(place.region)", symbol: "map.fill", color: .green) {
+                Text("Straight-line distances from this location. Approximate pins are marked “Approx.”")
+                    .font(.caption).foregroundStyle(.secondary)
+                ForEach(nearby) { other in
+                    NavigationLink(value: Route.place(other.id)) {
+                        HStack(spacing: 12) {
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(other.guideName).font(.subheadline.weight(.semibold))
+                                Text(other.cardCaption).font(.caption).foregroundStyle(.secondary)
+                                Text(place.distanceLabel(to: other) ?? "Distance unavailable")
+                                    .font(.caption).monospacedDigit().foregroundStyle(.secondary)
+                            }.fixedSize(horizontal: false, vertical: true)
+                            Spacer(minLength: 0)
+                            Image(systemName: "chevron.right").font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary).accessibilityHidden(true)
+                        }.padding(.vertical, 8).frame(minHeight: 44).contentShape(Rectangle())
                     }.buttonStyle(.plain)
                 }
             }

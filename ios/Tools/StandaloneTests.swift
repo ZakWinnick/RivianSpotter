@@ -60,6 +60,7 @@ struct StandaloneTests {
         }
         let catalogTests = CatalogUpdateTests()
         do {
+            try catalogTests.testSiteDistancesAndNearbyPlaces()
             try catalogTests.testWebsitePresentationAndSafeDemoBooking()
             try catalogTests.testMapFiltersAndApproximatePlannedPins()
             try catalogTests.testSavedPlaceFollowsNewDetailsAndAliasesWithoutChangingJournal()
@@ -107,7 +108,7 @@ struct StandaloneTests {
             do { try snapshotTests.tearDownWithError() } catch { failure("cleanup: \(error)") }
             if failures == before { print("PASS: \(name)") }
         }
-        print("\(cases.count + moves.count + snapshots.count + 16) cases, \(failures) failures")
+        print("\(cases.count + moves.count + snapshots.count + 17) cases, \(failures) failures")
         if failures > 0 { exit(1) }
     }
 }

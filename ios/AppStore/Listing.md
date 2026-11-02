@@ -47,7 +47,12 @@ rivian,charging,charger,RAN,waypoint,EV,R1T,R1S,R2,adventure network,service cen
 
 ## What to Test (TestFlight, version 1.0)
 
-Welcome to RivianSpotter 1.0! Please try:
+Build 24 adds distances to nearby places. Please try:
+- Open a place and scroll to More Places. Check the distance labels and tap a suggestion, then go back.
+- Try an upcoming location with an approximate pin. Distances should be marked “Approx.”; missing pins should show “Distance unavailable.”
+- Distances are measured from the place you’re viewing, not your current location. No location permission is needed.
+
+Also keep testing:
 - Browsing All Locations in grid, thumbnails, and list, and sorting by Nearest.
 - Opening a place, getting directions, and checking in. Then look for it in Lists and Visit Receipts.
 - Choosing a Base Camp, and checking that it and your visits appear on your other devices.

@@ -160,6 +160,30 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
               abs(latitude) <= 90, abs(longitude) <= 180 else { return false }
         return hasPreciseCoordinates || (status == "planned" && ["city", "permit-address"].contains(coordinatePrecision))
     }
+    /// Distance between catalog pins, independent of the user's current location.
+    public func straightLineDistanceMiles(to other: Place) -> Double? {
+        guard hasMapCoordinates, other.hasMapCoordinates,
+              let latitude, let longitude, let otherLat = other.latitude, let otherLon = other.longitude else { return nil }
+        let rad = Double.pi / 180
+        let dlat = (otherLat - latitude) * rad, dlon = (otherLon - longitude) * rad
+        let h = pow(sin(dlat / 2), 2) + cos(latitude * rad) * cos(otherLat * rad) * pow(sin(dlon / 2), 2)
+        return 3958.8 * 2 * asin(sqrt(min(1, max(0, h))))
+    }
+    public func distanceLabel(to other: Place) -> String? {
+        guard let miles = straightLineDistanceMiles(to: other) else { return nil }
+        let value = miles < 0.1 ? "<0.1" : String(format: "%.1f", locale: Locale(identifier: "en_US_POSIX"), miles)
+        let prefix = hasPreciseCoordinates && other.hasPreciseCoordinates ? "" : "Approx. "
+        return "\(prefix)\(value) mi"
+    }
+    /// Matches the website's four closest listed places within the same state or province.
+    public func nearbyPlaces(in places: [Place]) -> [Place] {
+        Array(places.filter { $0.id != id && $0.listed && $0.region == region && $0.country == country }
+            .sorted {
+                let a = straightLineDistanceMiles(to: $0) ?? .infinity
+                let b = straightLineDistanceMiles(to: $1) ?? .infinity
+                return a == b ? $0.id < $1.id : a < b
+            }.prefix(4))
+    }
     public var statusLabel: String {
         if !listed { return "No longer listed" }
         switch status {
