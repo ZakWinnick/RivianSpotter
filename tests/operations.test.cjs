@@ -204,21 +204,22 @@ test('denied cache storage cannot hide valid network assets', async () => {
   assert.equal(await response.text(), 'uncached stylesheet');
 });
 
-test('release 2026.43.1 installation fetches fresh versioned shell assets', async () => {
+test('current release installation fetches fresh versioned shell assets', async () => {
+  const release = require('../package.json').version;
   const requests = [];
   const w = worker(async req => { requests.push(req); return new Response('fresh shell'); });
   w.context.Request = Request;
   let completion;
   w.listeners.install({waitUntil: value => {completion = value;}});
   await completion;
-  assert.match(w.value('CACHE_VERSION'), /2026\.43\.1$/);
+  assert.equal(w.value('CACHE_VERSION'), `rivianspotter-${release}`);
   const assets = w.value('STATIC_ASSETS');
   assert.equal(requests.length, assets.length);
   assert.ok(requests.every(req => req.cache === 'reload' || req.cache === 'no-store'));
   assert.ok(assets.includes('/js/config.js'));
   for (const req of requests) {
     const url = new URL(req.url);
-    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), '2026.43.1');
+    if (/\.(js|css)$/.test(url.pathname)) assert.equal(url.searchParams.get('v'), release);
   }
 });
 
