@@ -144,7 +144,7 @@ function body(report){
    lines.push(`${md(e.type)}${locality&&!e.name.includes(locality)?' · '+md(locality):''}`,'');
    if(kind==='added'||kind==='relisted')lines.push(...newLocationLines(e),'');
    if(kind==='no-longer-listed')lines.push('This location has been removed from the directory. That does not necessarily mean it has closed.','');
-   if(kind==='now-active')lines.push(p.fields['Location status']==='open'?'Previously marked coming soon; station details are now available.':'Previously marked coming soon; now on Rivian’s charging map with station details.','');
+   if(kind==='now-active')lines.push(e.changes.some(change=>change.field==='Location status'&&change.after==='open')?'Previously marked coming soon; station details are now available.':'Previously marked coming soon; now on Rivian’s charging map with station details.','');
    for(const d of e.changes)lines.push(...changeLines(d));
    lines.push('',`[View location](${e.url})`,'');
   }

@@ -241,7 +241,8 @@ function legacyUnion(canonical, browser) {
  return [...byId.values()].sort((a,b)=>a.id-b.id);
 }
 function reconcile(records, legacy, date) {
- const used = new Set(); const duplicates = []; const next = []; let id = Math.max(0,...legacy.map(x=>x.id))+1;
+ // Historical aliases still resolve old links and must never be allocated to new sites.
+ const used = new Set(); const duplicates = []; const next = []; let id = Math.max(0,...legacy.flatMap(x=>[x.id,...(x.legacyIds || [])]))+1;
  for (const record of records) {
   let matches = legacy.filter(x => !used.has(x.id) && ((x.slug && x.slug === record.slug) || (x.officialServiceId && x.officialServiceId === record.officialServiceId) || (x.state === record.state && sameAddress(x.address,record.address))));
   // Old city-only service placeholders can match only one explicit same-city service site.

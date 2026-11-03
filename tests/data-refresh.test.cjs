@@ -45,3 +45,19 @@ test('malformed Flight data fails with the page URL instead of silently losing s
   assert.throws(()=>api.parseDetail('<script>self.__next_f.push('+payload+')</script>',url),e=>/official Flight/.test(e.message)&&e.message.includes(url));
  }
 });
+
+test('new locations cannot reuse IDs reserved by historical aliases across refreshes',()=>{
+ const legacy=[{id:152,slug:'charlotte',name:'Charlotte',city:'Charlotte',state:'NC',address:'9309 Monroe Road',legacyIds:[163]},{id:162,slug:'existing',name:'Existing',city:'Town',state:'CA',address:'50 Old Road'}];
+ const makeRecords=()=>[{slug:'charlotte',name:'Charlotte',city:'Charlotte',state:'NC',address:'9309 Monroe Road',capabilities:['service']},{slug:'new-place',name:'New place',city:'Town',state:'CA',address:'100 Main Street',capabilities:[]}];
+ for(const matched of [true,false]){
+  const records=makeRecords().filter(x=>matched||x.slug!=='charlotte');
+  const first=api.reconcile(records,legacy,'2026-11-03').records;
+  assert.equal(first.find(x=>x.slug==='new-place').id,164);
+  assert.deepEqual(first.find(x=>x.id===152).legacyIds,[163]);
+  const second=api.reconcile(makeRecords(),first,'2026-11-04').records;
+  assert.equal(second.find(x=>x.slug==='new-place').id,164);
+  assert.deepEqual(second.find(x=>x.id===152).legacyIds,[163]);
+  const ids=second.flatMap(x=>[x.id,...(x.legacyIds||[])]);
+  assert.equal(new Set(ids).size,ids.length);
+ }
+});

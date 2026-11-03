@@ -67,3 +67,17 @@ test('port changes and rate schedule changes remain understandable and complete'
  const text=body({date:'2026-10-21',snapshot:fresh,events:[{...example,kind:'changed',changes:[{field:'Individual chargers',before:[{name:'1A',connector:'CCS',powerKw:200}],after:[{name:'1A',connector:'NACS',powerKw:300}]},{field:'Pricing',before:{Rivian:'$0.30–0.50/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.40'},after:{Rivian:'$0.30–0.50/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.45'}}]}]});
  assert.match(text,/Charger 1A.*NACS, 300 kW.*CCS, 200 kW/);assert.match(text,/time-of-use pricing changed/);assert.match(text,/Current schedule \(local time\)/);assert.match(text,/\$0.45\/kWh/);
 });
+
+test('now-active events render confirmed openings and newly detailed stations without crashing',()=>{
+ const original=normalize(data)[0];
+ const planned={...original,fields:{...original.fields,'Location status':'planned','Charger count':null}};
+ for(const status of ['open','unknown']){
+  const active={...original,fields:{...original.fields,'Location status':status,'Charger count':8}};
+  const events=compare([planned],[active]);
+  assert.equal(events[0].kind,'now-active');
+  const text=body({date:'2026-10-21',snapshot:fresh,events});
+  assert.match(text,/1 now active/);
+  assert.match(text,status==='open'?/Previously marked coming soon; station details are now available/:/Previously marked coming soon; now on Rivian’s charging map with station details/);
+  assert.match(text,/View location/);
+ }
+});
