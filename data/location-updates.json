@@ -2,6 +2,127 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-05",
+      "entries": [
+        {
+          "id": "3f9a4eadd278827c927217ce2c1960ee0deb936bdcd1835366fa33b653963c23",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "493bc4728a6b6a0d1b1b408a986c4529ceece3fe27ee30d3c498b84f44b060b8",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 8 (previously 10)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "adbe6b74091a5ec6849f9100188c2137b149ce46503a70a5763f33721c3708ad",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 4 (previously 3)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "957618846a6be4209b2b46f716558e74cdd6f71543fdb9d711072fdff919ac4c",
+          "locationId": "138138533074609",
+          "name": "Fortuna, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fortuna",
+          "region": "CA",
+          "url": "/locations/ran-fortuna-ca-7da2e22254/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a288c975a80d2a42cce0fa6aa5930e9e808a2d4c5d99b420e1bd5fbc5a3a0642",
+          "locationId": "85793015378558",
+          "name": "Macon, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Macon",
+          "region": "GA",
+          "url": "/locations/ran-macon-ga-4e073e2570/",
+          "kind": "changed",
+          "lines": [
+            "Connector types: 3 CCS, 3 NACS (previously 6 CCS).",
+            "Average peak power (kW): 198 (previously 199).",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0d872588b9bedced117d0b0e7634ac5ec8dc1635fa47d6a16485834252e2b22a",
+          "locationId": "230393513006492",
+          "name": "Marysville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Marysville",
+          "region": "WA",
+          "url": "/locations/ran-permit-wa-marysville-d18aab7113/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3e7cfb62b3680e397b1036537852b66539a0e3cad8aa8e2be53201881875a93a",
+          "locationId": "250913514883211",
+          "name": "Moosic, PA",
+          "type": "Rivian Adventure Network",
+          "city": "Moosic",
+          "region": "PA",
+          "url": "/locations/ran-moosic-pa-e4345add46/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "507dc6c75413f53d4726efd742f02cb7b34eba149ad57b86216c05aa9e04ee36",
+          "locationId": "147",
+          "name": "West Palm Beach, FL",
+          "type": "Space",
+          "city": "West Palm Beach",
+          "region": "FL",
+          "url": "/locations/west-palm-beach/",
+          "kind": "changed",
+          "lines": [
+            "Special hours: Closed on Sunday 11/8."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-04",
       "entries": [
         {
@@ -15187,11 +15308,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "sourceDates": {
-      "places": "2026-11-04",
-      "charging": "2026-11-04",
-      "chargingDetails": "2026-11-04"
+      "places": "2026-11-05",
+      "charging": "2026-11-05",
+      "chargingDetails": "2026-11-05"
     },
     "partialDetails": false
   }
