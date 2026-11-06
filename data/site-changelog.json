@@ -1,5 +1,14 @@
 [
   {
+    "version": "2026.45.2",
+    "date": "2026-11-06",
+    "title": "Introducing RivSpotter",
+    "changes": [
+      "Our website and app have a new name: RivSpotter. Find the same map, location updates, and private visit journal at rivspotter.com.",
+      "Updated the branding, shared links, and daily email digest. Existing location links continue to work."
+    ]
+  },
+  {
     "version": "2026.43.1",
     "date": "2026-10-21",
     "title": "Follow changes across the map",
@@ -14,7 +23,7 @@
     "date": "2026-10-16",
     "title": "Charging locations and map improvements",
     "changes": [
-      "Added Rivian\u2019s announced future charging locations, including King City and Salinas, with Coming Soon labels and distinct map markers.",
+      "Added Rivian’s announced future charging locations, including King City and Salinas, with Coming Soon labels and distinct map markers.",
       "Added daily updates for coming-soon locations. City-level pins show approximate locations until station addresses are published.",
       "Coming-soon locations now carry their saved places and page links forward when a matching active station is identified, adding published station and charging details automatically.",
       "Light and dark appearance now follows your device automatically, with no separate theme switch.",

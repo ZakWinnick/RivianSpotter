@@ -59,16 +59,16 @@ struct WidgetHarness {
         let preciseOff = CheckInSuggestion.make(places: places, fix: fix(39.6, -110.8, precise: false), now: now)
         let noSnapshot = CheckInSuggestion.make(places: [], fix: atPrice, now: now)
         check(locationOff == .noUsableLocation && preciseOff == .needsPreciseLocation && noSnapshot == .noPlaces, "location states")
-        check(WidgetLink.url(for: atSite)?.absoluteString == "rivianspotter://place/\(price.id)", "tap opens the place page")
-        check(WidgetLink.url(for: locationOff)?.absoluteString == "rivianspotter://location", "location off opens location")
+        check(WidgetLink.url(for: atSite)?.absoluteString == "rivspotter://place/\(price.id)", "tap opens the place page")
+        check(WidgetLink.url(for: locationOff)?.absoluteString == "rivspotter://location", "location off opens location")
 
         let alsoNearby = CheckInSuggestion.nearby(price, meters: 130, alsoNearby: true)
-        check(WidgetLink.lockURL(for: alsoNearby)?.absoluteString == "rivianspotter://place/\(price.id)", "lock: nearby with alsoNearby opens the place page")
-        check(WidgetLink.url(for: alsoNearby)?.absoluteString == "rivianspotter://nearby", "home: alsoNearby keeps nearby routing")
+        check(WidgetLink.lockURL(for: alsoNearby)?.absoluteString == "rivspotter://place/\(price.id)", "lock: nearby with alsoNearby opens the place page")
+        check(WidgetLink.url(for: alsoNearby)?.absoluteString == "rivspotter://nearby", "home: alsoNearby keeps nearby routing")
         if case .closest(let lodge, _) = closest {
-            check(WidgetLink.lockURL(for: closest)?.absoluteString == "rivianspotter://place/\(lodge.id)", "lock: closest opens the place page")
+            check(WidgetLink.lockURL(for: closest)?.absoluteString == "rivspotter://place/\(lodge.id)", "lock: closest opens the place page")
         }
-        check(WidgetLink.lockURL(for: locationOff)?.absoluteString == "rivianspotter://location" && WidgetLink.lockURL(for: preciseOff)?.absoluteString == "rivianspotter://location", "lock: location states open location")
+        check(WidgetLink.lockURL(for: locationOff)?.absoluteString == "rivspotter://location" && WidgetLink.lockURL(for: preciseOff)?.absoluteString == "rivspotter://location", "lock: location states open location")
         check(WidgetLink.lockURL(for: noSnapshot) == nil, "lock: no snapshot has no URL")
         check(CheckInCopy(entry: before).lockVisitLine == "Last visit 3w ago", "lock visit line: \(CheckInCopy(entry: before).lockVisitLine)")
         let skewed = CheckInEntry(date: now, suggestion: atSite, lastVisit: now.addingTimeInterval(3600), visitCount: 1,
@@ -99,7 +99,7 @@ struct WidgetHarness {
         try render(unavailable, .small, "small-8-location-unavailable", to: output)
         try render(unavailable, .medium, "medium-6-location-unavailable", to: output)
         try render(unavailable, .lock, "lock-5-location-unavailable", to: output)
-        check(WidgetLink.url(for: locationOff)?.absoluteString == "rivianspotter://location", "unavailable opens location")
+        check(WidgetLink.url(for: locationOff)?.absoluteString == "rivspotter://location", "unavailable opens location")
 
         // The gallery example: Price, UT from the snapshot, or the built-in copy without one.
         let gallery = GallerySample.entry(places: places), builtIn = GallerySample.entry(places: [])

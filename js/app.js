@@ -343,10 +343,10 @@
   async function share(id) {
     const p = find(id);
     if (!p) return;
-    const url = "https://rivianspotter.com" + M.locationUrl(p);
+    const url = "https://rivspotter.com" + M.locationUrl(p);
     try {
       if (navigator.share)
-        await navigator.share({ title: p.name + " · Rivian Spotter", url });
+        await navigator.share({ title: p.name + " · RivSpotter", url });
       else if (navigator.clipboard) {
         await navigator.clipboard.writeText(url);
         toast("Location link copied.");
@@ -382,7 +382,7 @@
         kind = $("contact-kind").value,
         body = $("contact-message").value;
       location.href =
-        "mailto:support@rivianspotter.com?subject=" +
+        "mailto:support@rivspotter.com?subject=" +
         encodeURIComponent(`[Location update] ${name || kind}`) +
         "&body=" +
         encodeURIComponent(

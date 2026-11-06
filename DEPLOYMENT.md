@@ -1,6 +1,6 @@
 # Deployment
 
-GitHub Pages serves the `dist` artifact produced by `.github/workflows/test.yml`. Pages must use GitHub Actions as its build source. The CNAME remains `rivianspotter.com`.
+GitHub Pages serves the `dist` artifact produced by `.github/workflows/test.yml`. Pages must use GitHub Actions as its build source. The CNAME remains `rivspotter.com`.
 
 Pull requests run tests, build and production dependency audit. A successful push to `main` deploys with `pages: write` and `id-token: write` scoped to the deployment job. Build permissions are read-only.
 

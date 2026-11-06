@@ -21,7 +21,7 @@ function publicEntry(event) {
   const kinds = ['added','now-active','changed','relisted','no-longer-listed'];
   if (!kinds.includes(event.kind) || !/^[a-f0-9]{64}$/.test(event.eventId || '')) throw Error('Invalid change event');
   const url = new URL(event.url);
-  if (url.origin !== 'https://rivianspotter.com' || !/^\/locations\/[a-z0-9-]+\/$/.test(url.pathname)) throw Error('Invalid location update URL');
+  if (!['https://rivspotter.com', 'https://rivianspotter.com'].includes(url.origin) || !/^\/locations\/[a-z0-9-]+\/$/.test(url.pathname)) throw Error('Invalid location update URL');
   const changes = (event.changes || []).filter(change => !['Map pin','Pin precision'].includes(change.field));
   if (event.kind === 'changed' && !changes.length) return null;
   const details = event.details || {};

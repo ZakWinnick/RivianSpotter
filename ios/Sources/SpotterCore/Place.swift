@@ -38,13 +38,13 @@ public struct PlacePhoto: Codable, Equatable, Sendable {
         guard let url = URL(string: imageURL), url.scheme == "https",
               url.user == nil, url.password == nil,
               ["media.rivian.com", "photos.plugshare.com", "cdn10.localdatacdn.com", "cdn8.localdatacdn.com",
-               "rivianspotter.com"].contains(url.host ?? "") else { return nil }
+               "rivianspotter.com", "rivspotter.com"].contains(url.host ?? "") else { return nil }
         return url
     }
     public var safeSourceURL: URL? {
         guard let url = URL(string: sourceURL), url.scheme == "https",
               url.user == nil, url.password == nil,
-              ["rivian.com", "rivianspotter.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
+              ["rivian.com", "rivianspotter.com", "rivspotter.com", "www.plugshare.com", "www.loc8nearme.com"].contains(url.host ?? "") else { return nil }
         return url
     }
 }
@@ -194,7 +194,7 @@ public struct Place: Codable, Identifiable, Equatable, Sendable {
         default: return "Listed by Rivian"
         }
     }
-    public var websiteURL: URL? { URL(string: "https://rivianspotter.com/locations/\(slug)/") }
+    public var websiteURL: URL? { URL(string: "https://rivspotter.com/locations/\(slug)/") }
     public var safeSourceURL: URL? {
         guard let sourceURL, let url = URL(string: sourceURL), url.scheme == "https", url.host != nil else { return nil }
         return url

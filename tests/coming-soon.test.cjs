@@ -66,7 +66,7 @@ test('retired announcement becomes a detailed station while preserving both publ
  const combined=M.combineLocations([],merged,[{sourceId:active.sourceId,sourceUrl:'https://rivianroamer.com/charging/sites/'+active.sourceId,detailRates:{Energy:'$0.45/kWh'},hours:'24/7',chargers:[{name:'1',powerKw:300,connector:'NACS',features:[]}]}])[0];
  const html=U.chargingDetails(combined);assert.match(html,/0.45/);assert.match(html,/NACS/);assert.doesNotMatch(html,/Coming Soon/);assert(M.getDirectionsUrl(combined));
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-promoted-page-'));
- try{require('../scripts/build-pages.cjs').buildPages(dir,[combined]);const page=fs.readFileSync(path.join(dir,M.locationUrl(p),'index.html'),'utf8'),alias=fs.readFileSync(path.join(dir,M.locationUrl(active),'index.html'),'utf8');assert.equal(page,alias);assert(page.includes('https://rivianspotter.com'+M.locationUrl(p)));assert.match(page,/100 Main St/);assert.match(page,/0.45/);}finally{fs.rmSync(dir,{recursive:true,force:true});}
+ try{require('../scripts/build-pages.cjs').buildPages(dir,[combined]);const page=fs.readFileSync(path.join(dir,M.locationUrl(p),'index.html'),'utf8'),alias=fs.readFileSync(path.join(dir,M.locationUrl(active),'index.html'),'utf8');assert.equal(page,alias);assert(page.includes('https://rivspotter.com'+M.locationUrl(p)));assert.match(page,/100 Main St/);assert.match(page,/0.45/);}finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 test('promotion is stable across repeated updates, source disappearance, and announcement reappearance',async()=>{
  const {plannedRecords,mergePlanned}=await api(),p=plannedRecords([rows[0]],'2026-10-16')[0],active=activeFrom(p);

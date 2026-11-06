@@ -9,6 +9,7 @@
 			<string>com.rivianspotter.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>rivspotter</string>
 				<string>rivianspotter</string>
 			</array>
 		</dict>

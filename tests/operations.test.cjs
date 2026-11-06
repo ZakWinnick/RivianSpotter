@@ -9,7 +9,7 @@ const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 function worker(fetcher = async () => new Response('fresh')) {
   const stores = new Map();
   const listeners = {};
-  const key = value => typeof value === 'string' ? new URL(value, 'https://rivianspotter.com').href : value.url;
+  const key = value => typeof value === 'string' ? new URL(value, 'https://rivspotter.com').href : value.url;
   const caches = {
     async open(name) {
       if (!stores.has(name)) stores.set(name, new Map());
@@ -26,12 +26,12 @@ function worker(fetcher = async () => new Response('fresh')) {
     async delete(name) { return stores.delete(name); }
   };
   const context = vm.createContext({ URL, Response, Headers, fetch: fetcher, caches, console,
-    self: { location: {origin: 'https://rivianspotter.com'}, addEventListener: (type, fn) => {listeners[type] = fn;}, skipWaiting: async () => {}, clients: {claim: async () => {}} }
+    self: { location: {origin: 'https://rivspotter.com'}, addEventListener: (type, fn) => {listeners[type] = fn;}, skipWaiting: async () => {}, clients: {claim: async () => {}} }
   });
   vm.runInContext(read('service-worker.js'), context);
   return {context, stores, listeners, caches, value: expression => vm.runInContext(expression, context)};
 }
-const request = (pathname, options = {}) => ({url: new URL(pathname, 'https://rivianspotter.com').href, method: 'GET', mode: 'cors', ...options});
+const request = (pathname, options = {}) => ({url: new URL(pathname, 'https://rivspotter.com').href, method: 'GET', mode: 'cors', ...options});
 
 // Exercise the deployed worker, rather than a separate policy implementation.
 test('precache includes real public files and excludes retired admin paths', () => {
@@ -227,11 +227,11 @@ test('versioned asset cache keys are distinct while data and page keys stay stab
   const w = worker();
   for (const pathname of ['/js/app.js', '/js/components.js', '/css/style.css', '/js/config.js']) {
     w.context.sampleRequest = request(`${pathname}?v=2026.43.1`);
-    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}?v=2026.43.1`);
+    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivspotter.com${pathname}?v=2026.43.1`);
   }
   for (const pathname of ['/data/locations.json', '/index.html', '/regions/']) {
     w.context.sampleRequest = request(`${pathname}?v=2026.43.1`);
-    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivianspotter.com${pathname}`);
+    assert.equal(w.value('cachePolicy(sampleRequest)?.key'), `https://rivspotter.com${pathname}`);
   }
 });
 
