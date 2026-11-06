@@ -1,4 +1,4 @@
-# App Store listing: RivianSpotter 1.0
+# App Store listing: RivSpotter 1.0
 
 Copy these into App Store Connect. Screenshots are in `Screenshots/`, captured October 25, 2026 from the iPhone 17 Pro (iPhone with Dynamic Island, medium display, 1206 × 2622), iPhone Duo (1398 × 2034) and iPad Pro 13-inch (2064 × 2752) simulators with sample visits. Upload the light set; the dark set is there if you prefer it.
 
@@ -12,12 +12,12 @@ The background is an AI-generated landscape (Higgsfield, GPT Image 2) with an un
 
 ## App information
 
-- **Name:** RivianSpotter
+- **Name:** RivSpotter
 - **Subtitle (30 max):** Field guide to Rivian places
 - **Category:** Navigation (secondary: Travel)
-- **Privacy policy URL:** https://rivianspotter.com/privacy.html
-- **Support URL:** https://rivianspotter.com/contact.html
-- **Marketing URL:** https://rivianspotter.com
+- **Privacy policy URL:** https://rivspotter.com/privacy.html
+- **Support URL:** https://rivspotter.com/contact.html
+- **Marketing URL:** https://rivspotter.com
 
 ## Promotional text (170 max)
 
@@ -27,13 +27,13 @@ Every Rivian Adventure Network charger, Waypoint, Space, Service Center, Demo Ce
 
 A field guide to every Rivian place, and a private record of the ones you’ve been to.
 
-RivianSpotter puts the whole Rivian map in your pocket: Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada. Browse them as a photo gallery, by state, by type, or by what’s there, like Plug & Charge, a trailer-friendly stall, or coffee while you wait. Every place has its address, directions, hours, charging details, and prices.
+RivSpotter puts the whole Rivian map in your pocket: Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada. Browse them as a photo gallery, by state, by type, or by what’s there, like Plug & Charge, a trailer-friendly stall, or coffee while you wait. Every place has its address, directions, hours, charging details, and prices.
 
 Check in when you visit and build your collection, with stats and a receipt card you can save or share. Add the widget to your Home Screen to check in with one tap, or to your Lock Screen to see the closest place. Pick a Base Camp, the place you think of as home. Your visits, notes, saved places, and Base Camp are private and sync through your own iCloud account.
 
-New and coming-soon locations arrive automatically from RivianSpotter.com. Works on iPhone, iPad, and Mac, in Light or Dark.
+New and coming-soon locations arrive automatically from RivSpotter.com. Works on iPhone, iPad, and Mac, in Light or Dark.
 
-RivianSpotter is independent and isn’t affiliated with or endorsed by Rivian.
+RivSpotter is independent and isn’t affiliated with or endorsed by Rivian.
 
 ## Keywords (100 max)
 

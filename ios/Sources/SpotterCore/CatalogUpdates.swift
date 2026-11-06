@@ -30,7 +30,7 @@ public struct CatalogSnapshot: Codable, Sendable {
 }
 
 public actor CatalogUpdates {
-    public static let endpoint = URL(string: "https://rivianspotter.com/api/v1/catalog.json")!
+    public static let endpoint = URL(string: "https://rivspotter.com/api/v1/catalog.json")!
     public typealias Fetch = @Sendable (URLRequest) async throws -> (Data, HTTPURLResponse)
     private let cacheURL: URL
     private let fetch: Fetch

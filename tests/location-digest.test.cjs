@@ -50,7 +50,7 @@ test('stale snapshots and incomplete refreshes are disclosed, never called a suc
  assert.match(text,/Today’s update is delayed/);assert.match(text,/October 19/);assert.doesNotMatch(text,/No location changes today|snapshot|in_progress|github.com|Digest reference|T13:00:00/);
 });
 const fresh={sourceDates:{places:'2026-10-21',charging:'2026-10-21',chargingDetails:'2026-10-21T13:00:00Z'},latestRefresh:{status:'completed',conclusion:'success'}};
-const example={id:'1',name:'Example Station',type:'Rivian Adventure Network',city:'Town',state:'CA',url:'https://rivianspotter.com/locations/example/'};
+const example={id:'1',name:'Example Station',type:'Rivian Adventure Network',city:'Town',state:'CA',url:'https://rivspotter.com/locations/example/'};
 test('subscriber format states meaningful changes without debug fields or empty totals',()=>{
  const text=body({date:'2026-10-21',snapshot:fresh,events:[{...example,kind:'changed',changes:[{field:'Pricing',before:{Rivian:'$0.40'},after:{Rivian:'$0.45/kWh'}},{field:'Visiting hours',before:'9am–5pm',after:'9am–6pm'}]}]});
  assert.match(text,/1 location updated/);assert.match(text,/\$0.45\/kWh \(previously \$0.40\/kWh\)/);assert.match(text,/9am–6pm \(previously 9am–5pm\)/);assert.match(text,/\[View location\]/);

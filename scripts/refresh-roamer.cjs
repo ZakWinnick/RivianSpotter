@@ -45,7 +45,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
   if(fs.existsSync(file))return {html:fs.readFileSync(file,'utf8'),observedAt:fs.statSync(file).mtime.toISOString()};
   if(cacheOnly)return null;
   if(requests)await pause(15000);
-  const response=await fetchImpl(url,{signal:AbortSignal.timeout(25000),headers:{'User-Agent':'RivianSpotter/1.0 (+https://rivianspotter.com/about.html)'}});requests++;
+  const response=await fetchImpl(url,{signal:AbortSignal.timeout(25000),headers:{'User-Agent':'RivSpotter/1.0 (+https://rivspotter.com/about.html)'}});requests++;
   if(!response.ok){const error=Error(`Source returned ${response.status}; no immediate retry`);error.status=response.status;error.rateLimited=response.status===429;error.retryAfter=response.headers.get('retry-after');throw error;}
   const html=await response.text();if(html.length>5e6)throw Error('Oversized response');fs.writeFileSync(file,html);return {html,observedAt:new Date().toISOString()};
  }

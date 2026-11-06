@@ -1,4 +1,4 @@
-# Rivian Spotter
+# RivSpotter
 
 An independent map and directory of Rivian Spaces, Demo Centers, Service Centers and Outposts across the US and Canada.
 

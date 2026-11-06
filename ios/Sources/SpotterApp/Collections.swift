@@ -257,7 +257,7 @@ struct SettingsView: View {
                 Section {
                     VStack(spacing: 6) {
                         IconTile(symbol: "binoculars.fill", color: .guide(0.38, 0.055, 155), size: 64)
-                        Text("Rivian Spotter").font(.title2.bold())
+                        Text("RivSpotter").font(.title2.bold())
                         if !version.isEmpty { Text("Version \(version)").font(.footnote).foregroundStyle(.secondary) }
                     }.frame(maxWidth: .infinity).padding(.vertical, 6)
                 }
@@ -287,7 +287,7 @@ struct SettingsView: View {
                     Button(store.updatingCatalog ? "Checking…" : "Check for Updates") {
                         Task { await store.refreshCatalog(force: true) }
                     }.disabled(store.updatingCatalog)
-                } footer: { Text("The directory updates from RivianSpotter when you open the app. Your visits and notes stay private.") }
+                } footer: { Text("The directory updates from RivSpotter when you open the app. Your visits and notes stay private.") }
                 Section {
                     settingLabel("iCloud & Storage", "icloud.fill", .cyan)
                     Text(sync.title).font(.subheadline.weight(.semibold))
@@ -340,7 +340,7 @@ private struct ArrivalDetectionSection: View {
                 Text(notice).font(.footnote).foregroundStyle(.secondary)
                 if let url = URL(string: UIApplication.openSettingsURLString) { Link("Open Settings", destination: url) }
             }
-        } footer: { Text("Lets iOS wake RivianSpotter when you arrive at a Rivian place so the widget is ready. Requires Always location. Your location stays on this device.") }
+        } footer: { Text("Lets iOS wake RivSpotter when you arrive at a Rivian place so the widget is ready. Requires Always location. Your location stays on this device.") }
     }
 }
 #endif

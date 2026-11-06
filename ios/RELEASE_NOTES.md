@@ -1,4 +1,4 @@
-# What’s New in RivianSpotter
+# What’s New in RivSpotter
 
 ## Version 1.0 — Build 24
 
@@ -6,7 +6,7 @@ See how far nearby places are from the location you’re viewing. Place pages no
 
 ## Version 1.0
 
-RivianSpotter 1.0 is here: a field guide to every Rivian place, and a private record of the ones you’ve been to.
+RivSpotter 1.0 is here: a field guide to every Rivian place, and a private record of the ones you’ve been to.
 
 **The whole map, in your pocket.** Rivian Adventure Network chargers, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts across the US and Canada, each with its address, hours, charging details, prices, and directions.
 
@@ -16,7 +16,7 @@ RivianSpotter 1.0 is here: a field guide to every Rivian place, and a private re
 
 **Check in from your Home Screen.** Small and medium widgets let you check in with one tap when you’re at a place, and show the closest place when you’re not. The Lock Screen widget shows the place and your last visit, and opens it in the app. Optional arrival updates, off by default, get the widget ready as you arrive, and your location stays on your device.
 
-**Private by design.** No accounts, no ads, no tracking. Your visits sync only through your own iCloud. Read the details at rivianspotter.com/privacy.html.
+**Private by design.** No accounts, no ads, no tracking. Your visits sync only through your own iCloud. Read the details at rivspotter.com/privacy.html.
 
 **Everywhere you are.** iPhone, iPad, and Mac, in Light, Dark, or System appearance, with new and coming-soon locations arriving on their own.
 
@@ -34,15 +34,15 @@ A field guide to Rivian, built to be browsed.
 
 **More ways to explore.** Browse by state or province, see the whole directory in charts, and look up any location type or site feature in the glossary. On iPad, a sidebar keeps it all one tap away.
 
-**Always current.** New and coming-soon locations arrive from RivianSpotter.com on their own, with richer charging details: prices, time-of-use schedules, individual chargers, and reliability grades.
+**Always current.** New and coming-soon locations arrive from RivSpotter.com on their own, with richer charging details: prices, time-of-use schedules, individual chargers, and reliability grades.
 
 **Your look, your call.** Choose Light, Dark, or System in Settings, at the bottom of Browse.
 
-**Fixes.** Settings opens reliably when you run RivianSpotter on a Mac, and your Base Camp now sits neatly on its own line in the sidebar.
+**Fixes.** Settings opens reliably when you run RivSpotter on a Mac, and your Base Camp now sits neatly on its own line in the sidebar.
 
 ## Version 0.1
 
-Hello, world. RivianSpotter arrives on iPhone and iPad.
+Hello, world. RivSpotter arrives on iPhone and iPad.
 
 - Explore every Rivian Adventure Network site, Waypoint, Space, Service Center, Demo Center, and Outpost.
 - Check in when you visit, add a private note, and look back on everywhere you’ve been.

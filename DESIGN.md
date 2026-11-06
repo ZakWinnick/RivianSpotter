@@ -1,4 +1,4 @@
-# RivianSpotter design system
+# RivSpotter design system
 
 Approved direction: map-first explorer with warm off-white, charcoal, forest, and a restrained yellow accent, following the Code to Adventure refresh's clarity and quiet confidence.
 

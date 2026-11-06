@@ -108,10 +108,10 @@ struct RootView: View {
     }
     #endif
 
-    /// Widget links: `rivianspotter://place/<id>` opens a place; `nearby` and `location` show the
+    /// Widget links: `rivspotter://place/<id>` opens a place; `nearby` and `location` show the
     /// Map with Near Me on, which asks for location access when it hasn't been decided.
     private func openLink(_ url: URL) {
-        guard url.scheme == "rivianspotter" else { return }
+        guard ["rivspotter", "rivianspotter"].contains(url.scheme ?? "") else { return }
         showSettings = false; showBaseCampPicker = false
         switch url.host {
         case "place":
@@ -131,7 +131,7 @@ struct RootView: View {
             List(selection: $selection) {
                 DirectoryRows(wide: true, settings: { showSettings = true }, baseCamp: { openBaseCamp(wide: true) })
             }.listStyle(.sidebar)
-                .navigationTitle("Rivian Spotter")
+                .navigationTitle("RivSpotter")
                 .brandHeader(showsName: true)
                 .navigationSplitViewColumnWidth(min: 230, ideal: 260)
         } detail: {
@@ -279,7 +279,7 @@ struct DestinationView: View {
     }
 }
 
-/// The RivianSpotter route mark from the app icon. The desktop preview has no asset catalog,
+/// The RivSpotter route mark from the app icon. The desktop preview has no asset catalog,
 /// so it shows nothing there.
 struct BrandMark: View {
     var size: CGFloat = 28
@@ -303,11 +303,11 @@ extension View {
         toolbar {
             if showsName {
                 ToolbarItem(placement: .principal) {
-                    HStack(spacing: 8) { BrandMark(size: 26); Text("Rivian Spotter").font(.headline) }
-                        .accessibilityElement(children: .combine).accessibilityLabel("Rivian Spotter")
+                    HStack(spacing: 8) { BrandMark(size: 26); Text("RivSpotter").font(.headline) }
+                        .accessibilityElement(children: .combine).accessibilityLabel("RivSpotter")
                 }
             } else {
-                ToolbarItem(placement: .topBarLeading) { BrandMark().accessibilityLabel("Rivian Spotter") }
+                ToolbarItem(placement: .topBarLeading) { BrandMark().accessibilityLabel("RivSpotter") }
             }
         }
         #else

@@ -41,7 +41,7 @@ test('inventory-wide grouping covers Las Vegas and Corte Madera and preserves ev
   for(const c of chargers)assert(fs.existsSync(path.join(dir,M.locationUrl(c),'index.html')),c.slug);
   for(const p of pairs){
    const alias=fs.readFileSync(path.join(dir,M.locationUrl(p.chargingNetworks[1]),'index.html'),'utf8');
-   assert(alias.includes(`href="https://rivianspotter.com${M.locationUrl(p)}"`));
+   assert(alias.includes(`href="https://rivspotter.com${M.locationUrl(p)}"`));
    assert(alias.includes('Rivian Adventure Network + Waypoint'));
    assert(alias.includes('DC Fast Charging')&&alias.includes('Level 2 Charging'));
   }

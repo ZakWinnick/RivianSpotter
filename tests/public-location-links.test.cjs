@@ -35,7 +35,7 @@ test('generated public pages retain analytics and contain no review warnings or 
    const html=fs.readFileSync(path.join(dir,route,route.endsWith('/')?'index.html':''),'utf8');
    assert.equal((html.match(analytics)||[]).length,1,`${route} analytics`);
    assert.match(html,/<meta name="twitter:card" content="summary_large_image">/,route);
-   assert.match(html,/<meta property="og:image" content="https:\/\/rivianspotter\.com\/assets\/spotter-social-card\.png">/,route);
+   assert.match(html,/<meta property="og:image" content="https:\/\/rivspotter\.com\/assets\/spotter-social-card\.png">/,route);
    assert.match(html,/<meta name="twitter:title" content="[^"]+">/,route);
    assert.doesNotMatch(html,/needs? confirmation|need review|awaiting.*verification|verification queue|visible uncertainty|details need|no current source match/i,route);
   }

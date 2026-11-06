@@ -14,7 +14,7 @@ The user approved the full October 14, 2026 audit recommendations with “Do all
 
 ## Native field guide and visits (October 20, 2026)
 
-The user wants RivianSpotter to combine the independent reporting and historical attention of ifoAppleStore with the personal field-guide experience of Facades. The website is the public catalog and editorial record; the iOS companion lets people explore and check in to RANs, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts.
+The user wants RivSpotter to combine the independent reporting and historical attention of ifoAppleStore with the personal field-guide experience of Facades. The website is the public catalog and editorial record; the iOS companion lets people explore and check in to RANs, Waypoints, Spaces, Service Centers, Demo Centers, and Outposts.
 
 The approved first implementation is a private visit journal: repeat and past visits, optional notes, a separate Want to Visit list, and personal visit counts. Check-ins are self-reported and do not imply live availability or an opening-status update. Public sharing is deliberate. The initial app lives under `ios/`, reuses canonical location identities, and does not require an account. See `ios/README.md` for implementation and verification limits.
 

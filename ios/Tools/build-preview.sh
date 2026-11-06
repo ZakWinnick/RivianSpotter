@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
-preview_app="$PWD/.build/RivianSpotter Preview.app"
+preview_app="$PWD/.build/RivSpotter Preview.app"
 preview_sdk="$(xcrun --sdk macosx --show-sdk-path)"
 # The installed macOS 27 Command Line Tools omit the new SwiftUI macro plugin.
 # Use the installed macOS 26 SDK for the desktop development preview when present.
@@ -21,7 +21,7 @@ cat > "$preview_app/Contents/Info.plist" <<'PLIST'
 <plist version="1.0"><dict>
 <key>CFBundleExecutable</key><string>SpotterPreview</string>
 <key>CFBundleIdentifier</key><string>com.rivianspotter.preview</string>
-<key>CFBundleName</key><string>RivianSpotter Preview</string>
+<key>CFBundleName</key><string>RivSpotter Preview</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleShortVersionString</key><string>1.0.0</string>
 <key>CFBundleVersion</key><string>15</string>

@@ -13,7 +13,7 @@ const CANADA=new Set('AB BC MB NB NL NS NT NU ON PE QC SK YT'.split(' '));
 
 export async function geocode({address,city,state},fetchImpl=fetch){
   const query=new URLSearchParams({street:address,city,state,country:CANADA.has(state)?'Canada':'United States',format:'jsonv2',limit:'1'});
-  const r=await fetchImpl(`https://nominatim.openstreetmap.org/search?${query}`,{headers:{'User-Agent':'RivianSpotter permit curation (support@rivianspotter.com)'},signal:AbortSignal.timeout(20000)});
+  const r=await fetchImpl(`https://nominatim.openstreetmap.org/search?${query}`,{headers:{'User-Agent':'RivSpotter permit curation (support@rivspotter.com)'},signal:AbortSignal.timeout(20000)});
   if(!r.ok)throw Error(`Geocoding failed: HTTP ${r.status}`);
   const [hit]=await r.json();
   if(!hit)return null;

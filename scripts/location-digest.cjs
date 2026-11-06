@@ -1,6 +1,6 @@
 // Shared public location-change comparison and reader-facing descriptions.
 const path=require('node:path'),crypto=require('node:crypto');
-const REPO=path.resolve(__dirname,'..'),BASE='https://rivianspotter.com';
+const REPO=path.resolve(__dirname,'..'),BASE='https://rivspotter.com';
 const M=require('../js/location-model.js');
 const hash=v=>crypto.createHash('sha256').update(JSON.stringify(v)).digest('hex');
 function stable(v){
@@ -128,7 +128,7 @@ function body(report){
  const kinds={added:'Added to the map','now-active':'Now active',relisted:'Back on the map',changed:'Location updates','no-longer-listed':'No longer on the map'};
  const totals=Object.fromEntries(Object.keys(kinds).map(k=>[k,report.events.filter(e=>e.kind===k).length]));
  const tally=[totals.added?`${totals.added} new location${totals.added===1?'':'s'}`:null,totals['now-active']?`${totals['now-active']} now active`:null,totals.relisted?`${totals.relisted} back on the map`:null,totals.changed?`${totals.changed} location${totals.changed===1?'':'s'} updated`:null,totals['no-longer-listed']?`${totals['no-longer-listed']} removed`:null].filter(Boolean).join(' · ');
- const lines=['# Rivian Spotter',`**Your location update · ${dateLabel(report.date)}**`,''];
+ const lines=['# RivSpotter',`**Your location update · ${dateLabel(report.date)}**`,''];
  if(report.events.length){
   lines.push(tally,'');
   if(delayed)lines.push(`Today’s update is taking longer than usual. Here’s what has changed on the map so far. The latest location information is from ${dateLabel(s.charging<s.places?s.charging:s.places)}.`,'');
@@ -149,9 +149,9 @@ function body(report){
    lines.push('',`[View location](${e.url})`,'');
   }
  }
- lines.push('','[Explore the map](https://rivianspotter.com)','');
+ lines.push('','[Explore the map](https://rivspotter.com)','');
  if(report.events.some(e=>e.changes.some(c=>c.field==='Reported charger condition')))lines.push('Charger reports reflect the latest daily check, not live availability.','');
- lines.push('Rivian Spotter · An independent guide to Rivian locations and charging.');
+ lines.push('RivSpotter · An independent guide to Rivian locations and charging.');
  return lines.join('\n');
 }
 

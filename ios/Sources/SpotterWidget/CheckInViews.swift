@@ -25,11 +25,11 @@ enum WidgetLayout { case small, medium, lock }
 enum WidgetLink {
     static func url(for suggestion: CheckInSuggestion) -> URL? {
         switch suggestion {
-        case .nearby(_, _, true): URL(string: "rivianspotter://nearby")
+        case .nearby(_, _, true): URL(string: "rivspotter://nearby")
         case .nearby(let place, _, false), .closest(let place, _):
-            URL(string: "rivianspotter://place/")?.appendingPathComponent(place.id)
-        case .needsPreciseLocation, .noUsableLocation: URL(string: "rivianspotter://location")
-        case .noPlaces: URL(string: "rivianspotter://nearby")
+            URL(string: "rivspotter://place/")?.appendingPathComponent(place.id)
+        case .needsPreciseLocation, .noUsableLocation: URL(string: "rivspotter://location")
+        case .noPlaces: URL(string: "rivspotter://nearby")
         }
     }
 
@@ -37,7 +37,7 @@ enum WidgetLink {
     static func lockURL(for suggestion: CheckInSuggestion) -> URL? {
         switch suggestion {
         case .nearby(let place, _, _), .closest(let place, _): url(for: .closest(place, meters: 0))
-        case .needsPreciseLocation, .noUsableLocation: URL(string: "rivianspotter://location")
+        case .needsPreciseLocation, .noUsableLocation: URL(string: "rivspotter://location")
         case .noPlaces: nil
         }
     }
@@ -59,7 +59,7 @@ struct CheckInCopy {
     }
 
     var visitLine: String {
-        if entry.failed { return "Couldn't check in. Open RivianSpotter." }
+        if entry.failed { return "Couldn't check in. Open RivSpotter." }
         // Once checked in, the "✓ Checked In" button says it all.
         if entry.justCheckedIn { return "" }
         guard let last = entry.lastVisit else { return "First visit" }
@@ -164,7 +164,7 @@ struct CheckInText: View {
         case .closest: Text("No nearby site")
         case .noUsableLocation: Text(entry.locationAllowed ? "Location unavailable" : "Location off")
         case .needsPreciseLocation: Text("Precise Location off")
-        case .noPlaces: Text("RivianSpotter")
+        case .noPlaces: Text("RivSpotter")
         }
     }
 
@@ -174,7 +174,7 @@ struct CheckInText: View {
     }
 }
 
-/// Check In, its confirmation, the "Closest site" label, or Open RivianSpotter.
+/// Check In, its confirmation, the "Closest site" label, or Open RivSpotter.
 struct CheckInAction: View {
     let entry: CheckInEntry
 
@@ -193,7 +193,7 @@ struct CheckInAction: View {
         case .noUsableLocation where entry.locationAllowed: Spacer(minLength: 0)
         // A tap anywhere opens the app (`widgetURL`), so this is a label rather than a link.
         case .noUsableLocation, .needsPreciseLocation, .noPlaces:
-            pill("Open RivianSpotter", fill: WidgetPalette.mint, ink: WidgetPalette.onMint)
+            pill("Open RivSpotter", fill: WidgetPalette.mint, ink: WidgetPalette.onMint)
         }
     }
 
@@ -297,10 +297,10 @@ struct LockScreenCheckIn: View {
         case .closest(let place, let meters):
             return (heading("bolt.fill", "Nearest Rivian"), place.guideName, "\(CheckInCopy.miles(meters, nearby: false)) away")
         case .noUsableLocation:
-            return entry.locationAllowed ? (Text("Location unavailable"), "Open RivianSpotter", nil)
-                                         : (Text("Location off"), "Open RivianSpotter to allow location", nil)
-        case .needsPreciseLocation: return (Text("Precise Location off"), "Open RivianSpotter", nil)
-        case .noPlaces: return (Text("RivianSpotter"), "Open the app to load places", nil)
+            return entry.locationAllowed ? (Text("Location unavailable"), "Open RivSpotter", nil)
+                                         : (Text("Location off"), "Open RivSpotter to allow location", nil)
+        case .needsPreciseLocation: return (Text("Precise Location off"), "Open RivSpotter", nil)
+        case .noPlaces: return (Text("RivSpotter"), "Open the app to load places", nil)
         }
     }
 }

@@ -151,8 +151,8 @@ final class SpotterStore: ObservableObject {
         var parts: [String] = []
         if unreadableRecordCount > 0 {
             parts.append(unreadableRecordCount == 1
-                ? "1 visit or saved place couldn’t be read, possibly because it was added with a newer version of RivianSpotter. It’s kept and will appear after you update."
-                : "\(unreadableRecordCount) visits or saved places couldn’t be read, possibly because they were added with a newer version of RivianSpotter. They’re kept and will appear after you update.")
+                ? "1 visit or saved place couldn’t be read, possibly because it was added with a newer version of RivSpotter. It’s kept and will appear after you update."
+                : "\(unreadableRecordCount) visits or saved places couldn’t be read, possibly because they were added with a newer version of RivSpotter. They’re kept and will appear after you update.")
         }
         if legacyJournalUnreadable {
             parts.append("An older visit file on this device couldn’t be read. It was left untouched, and new visits save normally.")
@@ -730,7 +730,7 @@ struct ExportJournalButton: View {
             .foregroundStyle(GuidePalette(scheme: scheme).accent)
             .frame(minHeight: 44).disabled(!store.ready)
             .fileExporter(isPresented: $showExport, document: document, contentType: .json,
-                          defaultFilename: "RivianSpotter-Journal") { result in
+                          defaultFilename: "RivSpotter-Journal") { result in
                 if case .failure(let error) = result { store.error = error.localizedDescription }
             }
     }
@@ -919,7 +919,7 @@ struct VisitEditor: View {
         #endif
     }
     private var receipt: String {
-        "I visited \(visit.place.name) · \(visit.type.rawValue)\n\(visit.visitedAt.formatted(date: .long, time: .omitted))\n\(visit.place.websiteURL?.absoluteString ?? "https://rivianspotter.com")"
+        "I visited \(visit.place.name) · \(visit.type.rawValue)\n\(visit.visitedAt.formatted(date: .long, time: .omitted))\n\(visit.place.websiteURL?.absoluteString ?? "https://rivspotter.com")"
     }
 }
 

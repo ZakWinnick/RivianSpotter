@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {publicEntry,append}=require('../scripts/update-location-feed.cjs');
 const {renderFeed}=require('../scripts/build-location-updates.cjs');
-const event=(changes=[],kind='changed')=>({eventId:'a'.repeat(64),id:'test',name:'Test Station',type:'Rivian Adventure Network',city:'Test',state:'CA',url:'https://rivianspotter.com/locations/test/',kind,changes});
+const event=(changes=[],kind='changed')=>({eventId:'a'.repeat(64),id:'test',name:'Test Station',type:'Rivian Adventure Network',city:'Test',state:'CA',url:'https://rivspotter.com/locations/test/',kind,changes});
 const options={date:'2026-10-21',sourceDates:{places:'2026-10-21',charging:'2026-10-21'}};
 const empty=()=>({schemaVersion:1,days:[]});
 test('public updates omit map pin and precision changes, including pin-only entries',()=>{

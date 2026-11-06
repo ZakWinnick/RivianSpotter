@@ -3,7 +3,7 @@ const fs = require("node:fs"),
 const M = require("../js/location-model.js"),
   U = require("../js/components.js"),
   e = M.escapeHtml;
-const BASE = "https://rivianspotter.com";
+const BASE = "https://rivspotter.com";
 const regions = {
   AK: "Alaska",
   AL: "Alabama",
@@ -80,7 +80,7 @@ function shell({
   content,
   structured,
 }) {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#244e3c"><title>${e(title)} · Rivian Spotter</title><meta name="description" content="${e(description)}"><link rel="canonical" href="${BASE}${url}"><meta property="og:title" content="${e(title)} · Rivian Spotter"><meta property="og:description" content="${e(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${BASE}${url}"><meta property="og:site_name" content="Rivian Spotter"><meta property="og:image" content="https://rivianspotter.com/assets/spotter-social-card.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Rivian Spotter. Find your next stop. Your guide to Rivian places and charging."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://rivianspotter.com/assets/spotter-social-card.png"><meta name="twitter:image:alt" content="Rivian Spotter. Find your next stop. Your guide to Rivian places and charging."><meta name="twitter:title" content="${e(title)} · Rivian Spotter"><meta name="twitter:description" content="${e(description)}"><link rel="icon" href="/assets/spotter-route-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css"><script defer src="/js/components.js"></script>${page ? '<script defer src="/js/location-model.js"></script><script defer src="/js/locations.js"></script><script defer src="/js/charging.js"></script><script defer src="/js/roamer.js"></script><script defer src="/js/app.js"></script>' : ""}${structured ? '<script type="application/ld+json">' + JSON.stringify(structured).replace(/</g, "\\u003c") + "</script>" : ""}<script src="https://tinylytics.app/embed/jj-9YE1ymyozj9wFfy7d.js" defer></script></head><body data-page="${page}"${slug ? ' data-slug="' + e(slug) + '"' : ""}>${U.header(active)}<main id="main" class="page ${page === "location" ? "location-page" : ""}">${content}${U.footer()}</main><div id="toast" class="toast" role="status" hidden></div></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#244e3c"><title>${e(title)} · RivSpotter</title><meta name="description" content="${e(description)}"><link rel="canonical" href="${BASE}${url}"><meta property="og:title" content="${e(title)} · RivSpotter"><meta property="og:description" content="${e(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${BASE}${url}"><meta property="og:site_name" content="RivSpotter"><meta property="og:image" content="https://rivspotter.com/assets/spotter-social-card.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="RivSpotter. Find your next stop. Your guide to Rivian places and charging."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://rivspotter.com/assets/spotter-social-card.png"><meta name="twitter:image:alt" content="RivSpotter. Find your next stop. Your guide to Rivian places and charging."><meta name="twitter:title" content="${e(title)} · RivSpotter"><meta name="twitter:description" content="${e(description)}"><link rel="icon" href="/assets/spotter-route-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css"><script defer src="/js/components.js"></script>${page ? '<script defer src="/js/location-model.js"></script><script defer src="/js/locations.js"></script><script defer src="/js/charging.js"></script><script defer src="/js/roamer.js"></script><script defer src="/js/app.js"></script>' : ""}${structured ? '<script type="application/ld+json">' + JSON.stringify(structured).replace(/</g, "\\u003c") + "</script>" : ""}<script src="https://tinylytics.app/embed/jj-9YE1ymyozj9wFfy7d.js" defer></script></head><body data-page="${page}"${slug ? ' data-slug="' + e(slug) + '"' : ""}>${U.header(active)}<main id="main" class="page ${page === "location" ? "location-page" : ""}">${content}${U.footer()}</main><div id="toast" class="toast" role="status" hidden></div></body></html>`;
 }
 function linkRow(p, origin = null) {
   const distance = origin ? M.placeDistanceLabel(origin, p) : null;
@@ -142,9 +142,9 @@ function buildPages(dist, list, summary = {}) {
         header(
           "An independent field guide",
           "Less searching.<br>More getting there.",
-          "Rivian Spotter brings Rivian’s places into one useful map, so you can decide where to go and what to expect.",
+          "RivSpotter brings Rivian’s places into one useful map, so you can decide where to go and what to expect.",
         ) +
-        `<div class="content-grid">${section("A place for every kind of visit.", '<p>Explore Spaces to see the vehicles, find a location offering demo drives, check a service address, or make an Outpost part of a trip.</p><p>Each location page brings together its published address, contact details, hours, and official links. Filters use the capabilities confirmed by Rivian’s sources.</p><p><a href="/regions/">Browse the regional directory →</a></p>')}${section("Built for a useful next step.", "<p>Save a shortlist, share an individual place, and get directions for your next visit. General opening hours and service hours remain separate.</p><p>Rivian Spotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive. Rivian names and trademarks belong to their owners.</p>")}</div><section id="sources" class="content-section"><h2>Information from Rivian.</h2><p>Location information comes from <a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">Rivian’s official location directory</a>, its location pages, its service-center map, and its <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener">charging map</a>. Location pages include official links and the latest source refresh date.</p><p>Opening hours use the destination’s local time zone. Visiting, service, and charging hours are listed separately where published. Service visits and demo drives can be arranged directly with Rivian.</p><p>This directory includes Rivian Adventure Network and Waypoint charging locations from Rivian’s public charging map. Charger counts, published maximum power and access are shown on station pages. Map pins come from the official map; directions use the published station address when available. These are station details, not live charger availability. Charging details include pricing, connectors, location grades, and reported issues. Each snapshot has its own capture date. Charging information is refreshed daily. Announced future locations are labeled Coming Soon with approximate city pins; addresses and station details appear when published. Nearby charging and Rivian places link to each other without merging their services or hours.</p></section>${section("Privacy, in plain language.", '<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used locally to sort places and are not saved by Rivian Spotter. The map provider receives normal map requests for the area you view.</p><p>Maps are provided by Mapbox and its data partners. Their <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We use Tinylytics for site-usage analytics. We do not add advertising trackers. A service worker stores public pages and location data on your device for faster repeat visits and limited offline access.</p><p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>')}${section("Help keep the map useful.", '<p>A moved address, new opening, or changed schedule is worth sharing.</p><p><a class="button" href="/contact.html">Report an update</a></p>')}`,
+        `<div class="content-grid">${section("A place for every kind of visit.", '<p>Explore Spaces to see the vehicles, find a location offering demo drives, check a service address, or make an Outpost part of a trip.</p><p>Each location page brings together its published address, contact details, hours, and official links. Filters use the capabilities confirmed by Rivian’s sources.</p><p><a href="/regions/">Browse the regional directory →</a></p>')}${section("Built for a useful next step.", "<p>Save a shortlist, share an individual place, and get directions for your next visit. General opening hours and service hours remain separate.</p><p>RivSpotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive. Rivian names and trademarks belong to their owners.</p>")}</div><section id="sources" class="content-section"><h2>Information from Rivian.</h2><p>Location information comes from <a href="https://rivian.com/spaces/locations" target="_blank" rel="noopener">Rivian’s official location directory</a>, its location pages, its service-center map, and its <a href="https://rivian.com/experience/charging#map" target="_blank" rel="noopener">charging map</a>. Location pages include official links and the latest source refresh date.</p><p>Opening hours use the destination’s local time zone. Visiting, service, and charging hours are listed separately where published. Service visits and demo drives can be arranged directly with Rivian.</p><p>This directory includes Rivian Adventure Network and Waypoint charging locations from Rivian’s public charging map. Charger counts, published maximum power and access are shown on station pages. Map pins come from the official map; directions use the published station address when available. These are station details, not live charger availability. Charging details include pricing, connectors, location grades, and reported issues. Each snapshot has its own capture date. Charging information is refreshed daily. Announced future locations are labeled Coming Soon with approximate city pins; addresses and station details appear when published. Nearby charging and Rivian places link to each other without merging their services or hours.</p></section>${section("Privacy, in plain language.", '<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used locally to sort places and are not saved by RivSpotter. The map provider receives normal map requests for the area you view.</p><p>Maps are provided by Mapbox and its data partners. Their <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We use Tinylytics for site-usage analytics. We do not add advertising trackers. A service worker stores public pages and location data on your device for faster repeat visits and limited offline access.</p><p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>')}${section("Help keep the map useful.", '<p>A moved address, new opening, or changed schedule is worth sharing.</p><p><a class="button" href="/contact.html">Report an update</a></p>')}`,
     }),
   );
   write(
@@ -152,34 +152,34 @@ function buildPages(dist, list, summary = {}) {
     shell({
       title: "Privacy",
       description:
-        "How the Rivian Spotter website and iOS app handle your location, saved places, visits, and data.",
+        "How the RivSpotter website and iOS app handle your location, saved places, visits, and data.",
       url: "/privacy.html",
       content:
         header(
           "Privacy policy",
           "Your trips are yours.",
-          "Rivian Spotter has no accounts, no advertising, and no tracking across apps or sites. Here is exactly what the website and the iOS app do with your information.",
+          "RivSpotter has no accounts, no advertising, and no tracking across apps or sites. Here is exactly what the website and the iOS app do with your information.",
         ) +
         section(
           "The iOS app.",
-          "<p><strong>Visits, notes, saved places, and Base Camp</strong> are stored on your device. When you’re signed in to iCloud, they also sync through your own private iCloud database, which only you can access. Rivian Spotter never receives or sees them. Exporting your journal creates a file you choose where to save.</p>" +
-            "<p><strong>Location.</strong> The app asks for your location when you sort by Nearest or tap Near me on the map. It takes a single reading to sort places and center the map. Your location is not saved, synced, or sent to Rivian Spotter.</p>" +
-            "<p><strong>The check-in widget</strong> uses your location on your device to suggest the nearest Rivian place and to let you check in with one tap. Visits you record from the widget are stored on your device and sync through iCloud the next time you open the app. <strong>Arrival updates</strong> are optional and off by default. If you turn on “Update widget when I arrive,” iOS wakes the app briefly when you reach a nearby Rivian place so the widget is ready; this requires Always location and happens entirely on your device. Your location is never saved, synced, or sent to RivianSpotter. The medium widget’s map image comes from Apple Maps, like the app’s maps. Turning the setting off stops arrival updates.</p>" +
-            "<p><strong>Network requests.</strong> The app downloads the public location directory from rivianspotter.com and loads location photos from their hosts (Rivian, PlugShare, and Loc8NearMe). Maps and directions use Apple Maps. These requests include standard information such as your IP address, as any internet request does.</p>" +
+          "<p><strong>Visits, notes, saved places, and Base Camp</strong> are stored on your device. When you’re signed in to iCloud, they also sync through your own private iCloud database, which only you can access. RivSpotter never receives or sees them. Exporting your journal creates a file you choose where to save.</p>" +
+            "<p><strong>Location.</strong> The app asks for your location when you sort by Nearest or tap Near me on the map. It takes a single reading to sort places and center the map. Your location is not saved, synced, or sent to RivSpotter.</p>" +
+            "<p><strong>The check-in widget</strong> uses your location on your device to suggest the nearest Rivian place and to let you check in with one tap. Visits you record from the widget are stored on your device and sync through iCloud the next time you open the app. <strong>Arrival updates</strong> are optional and off by default. If you turn on “Update widget when I arrive,” iOS wakes the app briefly when you reach a nearby Rivian place so the widget is ready; this requires Always location and happens entirely on your device. Your location is never saved, synced, or sent to RivSpotter. The medium widget’s map image comes from Apple Maps, like the app’s maps. Turning the setting off stops arrival updates.</p>" +
+            "<p><strong>Network requests.</strong> The app downloads the public location directory from rivspotter.com and loads location photos from their hosts (Rivian, PlugShare, and Loc8NearMe). Maps and directions use Apple Maps. These requests include standard information such as your IP address, as any internet request does.</p>" +
             "<p><strong>Visit receipts</strong> show the place and date, never your notes, and are shared only when you choose to share them.</p>" +
             "<p>The app contains no analytics, advertising, or tracking code.</p>",
         ) +
         section(
           "The website.",
-          "<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used in your browser to sort places and are not saved by Rivian Spotter.</p>" +
+          "<p>Saved places and theme preferences stay in your browser. “Near me” requests your location only when you tap it; coordinates are used in your browser to sort places and are not saved by RivSpotter.</p>" +
             '<p>Maps are provided by Mapbox and its data partners, whose <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a> applies to map use. We use Tinylytics for privacy-friendly site-usage counts. A service worker stores public pages and location data on your device for faster repeat visits and offline access.</p>' +
             "<p>Correction reports open an email draft in your own mail app. Nothing is sent until you send it.</p>",
         ) +
         section(
           "Your choices.",
           "<p>You can delete visits, saved places, or Base Camp in the app at any time; deleting the app removes its data from your device, and you can remove its iCloud data in your device’s iCloud settings. Location access can be changed in Settings.</p>" +
-            '<p>Questions? Email <a href="mailto:support@rivianspotter.com">support@rivianspotter.com</a>.</p>' +
-            "<p>Rivian Spotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive.</p>" +
+            '<p>Questions? Email <a href="mailto:support@rivspotter.com">support@rivspotter.com</a>.</p>' +
+            "<p>RivSpotter is independently maintained and is not affiliated with or endorsed by Rivian Automotive.</p>" +
             '<p class="muted">Effective October 24, 2026.</p>',
         ),
     }),
@@ -189,7 +189,7 @@ function buildPages(dist, list, summary = {}) {
     shell({
       title: "Report an update",
       description:
-        "Share a new Rivian location, corrected address or updated hours with Rivian Spotter.",
+        "Share a new Rivian location, corrected address or updated hours with RivSpotter.",
       url: "/contact.html",
       page: "contact",
       content:
@@ -198,7 +198,7 @@ function buildPages(dist, list, summary = {}) {
           "Something changed?",
           "Send a correction, suggest a new location, or let us know what could work better.",
         ) +
-        `<div class="content-grid"><section><form id="contact-form"><div class="form-field"><label for="contact-location">Location name <span class="muted">(optional)</span></label><input id="contact-location" name="location" maxlength="160" placeholder="e.g. Venice Space"></div><div class="form-field"><label for="contact-kind">What needs updating?</label><select id="contact-kind"><option>Location details</option><option>New location</option><option>Hours or temporary closure</option><option>Map or website issue</option><option>Other feedback</option></select></div><div class="form-field"><label for="contact-message">What should we know?</label><textarea id="contact-message" name="message" required maxlength="5000" placeholder="Tell us what changed and what the correct information should be."></textarea></div><div class="form-field"><label for="contact-source">Official source link <span class="muted">(optional)</span></label><input id="contact-source" type="url" name="source" placeholder="https://rivian.com/…"></div><button class="button primary" type="submit">Prepare email ${U.icon("arrow")}</button><p class="muted" style="font-size:.8rem;margin-top:12px">Opens a draft in your mail app. Review it there before sending.</p><p id="contact-status" class="notice" style="margin-top:20px" role="status" hidden>Your mail app should open with a draft. If it doesn’t, email support@rivianspotter.com directly. This form has not sent a message.</p></form></section><aside class="stack" style="align-content:start"><h2>Every good detail helps.</h2><p class="muted">An official link, complete address, or photo of posted hours can help us update the directory.</p><p class="muted">For vehicle support, service appointments, or booking changes, contact Rivian directly.</p><a href="mailto:support@rivianspotter.com">support@rivianspotter.com</a><a href="https://rivian.com/support" target="_blank" rel="noopener">Rivian support →</a></aside></div>`,
+        `<div class="content-grid"><section><form id="contact-form"><div class="form-field"><label for="contact-location">Location name <span class="muted">(optional)</span></label><input id="contact-location" name="location" maxlength="160" placeholder="e.g. Venice Space"></div><div class="form-field"><label for="contact-kind">What needs updating?</label><select id="contact-kind"><option>Location details</option><option>New location</option><option>Hours or temporary closure</option><option>Map or website issue</option><option>Other feedback</option></select></div><div class="form-field"><label for="contact-message">What should we know?</label><textarea id="contact-message" name="message" required maxlength="5000" placeholder="Tell us what changed and what the correct information should be."></textarea></div><div class="form-field"><label for="contact-source">Official source link <span class="muted">(optional)</span></label><input id="contact-source" type="url" name="source" placeholder="https://rivian.com/…"></div><button class="button primary" type="submit">Prepare email ${U.icon("arrow")}</button><p class="muted" style="font-size:.8rem;margin-top:12px">Opens a draft in your mail app. Review it there before sending.</p><p id="contact-status" class="notice" style="margin-top:20px" role="status" hidden>Your mail app should open with a draft. If it doesn’t, email support@rivspotter.com directly. This form has not sent a message.</p></form></section><aside class="stack" style="align-content:start"><h2>Every good detail helps.</h2><p class="muted">An official link, complete address, or photo of posted hours can help us update the directory.</p><p class="muted">For vehicle support, service appointments, or booking changes, contact Rivian directly.</p><a href="mailto:support@rivspotter.com">support@rivspotter.com</a><a href="https://rivian.com/support" target="_blank" rel="noopener">Rivian support →</a></aside></div>`,
     }),
   );
   write("/updates.html", shell({
@@ -211,9 +211,9 @@ function buildPages(dist, list, summary = {}) {
     "/changelog.html",
     shell({
       title: "Changelog",
-      description: "New features, improvements, and fixes to Rivian Spotter.",
+      description: "New features, improvements, and fixes to RivSpotter.",
       url: "/changelog.html",
-      content: header("Site changelog", "What’s new.", "New features, improvements, and fixes to Rivian Spotter.") +
+      content: header("Site changelog", "What’s new.", "New features, improvements, and fixes to RivSpotter.") +
         `<div class="changelog">${require("../data/site-changelog.json").map(entry=>`<article class="changelog-entry"><div class="changelog-meta">${entry.date ? `<time datetime="${e(entry.date)}">${M.formatDate(entry.date)}</time>` : ""}<span class="tag">${e(entry.version)}</span></div><h2>${e(entry.title)}</h2><ul>${entry.changes.map(change=>`<li>${e(change)}</li>`).join("")}</ul></article>`).join("")}</div>`,
     }),
   );
@@ -222,7 +222,7 @@ function buildPages(dist, list, summary = {}) {
     shell({
       title: "Directory overview",
       description:
-        "Current location coverage for the Rivian Spotter directory.",
+        "Current location coverage for the RivSpotter directory.",
       url: "/stats.html",
       active: "Updates",
       content:
@@ -372,7 +372,7 @@ function buildPages(dist, list, summary = {}) {
     "/404.html",
     shell({
       title: "Page not found",
-      description: "Find your way back to the Rivian Spotter directory.",
+      description: "Find your way back to the RivSpotter directory.",
       url: "/404.html",
       content:
         header(
