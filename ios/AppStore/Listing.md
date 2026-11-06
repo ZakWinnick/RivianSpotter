@@ -2,13 +2,14 @@
 
 Copy these into App Store Connect. Screenshots are in `Screenshots/`, captured October 25, 2026 from the iPhone 17 Pro (iPhone with Dynamic Island, medium display, 1206 × 2622), iPhone Duo (1398 × 2034) and iPad Pro 13-inch (2064 × 2752) simulators with sample visits. Upload the light set; the dark set is there if you prefer it.
 
-Creative assets (product page header and search results) are in `Creative Assets/`, built on Apple's Universal, Search and Header templates with the brand lockup inside each art safe area. All three are PNG, the one format App Store Connect accepts for every placement:
+Creative assets in `Creative Assets/` were updated for RivSpotter on November 6, 2026 and uploaded to the existing App Store Connect listing:
 
-- `rivian-spotter-universal-5244x2950.png`: one 16:9 image for both the header and search results.
-- `rivian-spotter-header-3840x1646.png`: product page header, 21:9.
-- `rivian-spotter-search-3840x2560.png`: search results, 3:2.
+- `rivspotter-header-3840x1646.png`: product page header.
+- `rivspotter-search-3840x2560.png`: search results.
 
-The background is an AI-generated landscape (Higgsfield, GPT Image 2) with an unbranded charging stop; it shows no Rivian logos or real locations. Tagline: "Every Rivian place. Every visit."
+The older `rivian-spotter-*` artwork is retained only as source history; do not upload it. The background is an AI-generated landscape with an unbranded charging stop; it shows no Rivian logos or real locations. Tagline: "Every Rivian place. Every visit."
+
+The existing iPhone screenshots do not contain the old app name. The four iPad light screenshots still show it and need fresh captures from build 25 before submission. Do not alter screenshots to imitate app UI.
 
 ## App information
 
@@ -47,7 +48,7 @@ rivian,charging,charger,RAN,waypoint,EV,R1T,R1S,R2,adventure network,service cen
 
 ## What to Test (TestFlight, version 1.0)
 
-Build 24 adds distances to nearby places. Please try:
+Build 25 introduces RivSpotter and rivspotter.com. Verify that existing visits, notes, saved places, Base Camp, and iCloud sync survive the update, and check app and widget links. Build 24 also added distances to nearby places. Please try:
 - Open a place and scroll to More Places. Check the distance labels and tap a suggestion, then go back.
 - Try an upcoming location with an approximate pin. Distances should be marked “Approx.”; missing pins should show “Distance unavailable.”
 - Distances are measured from the place you’re viewing, not your current location. No location permission is needed.
