@@ -9,7 +9,7 @@ Creative assets in `Creative Assets/` were updated for RivSpotter on November 6,
 
 The older `rivian-spotter-*` artwork is retained only as source history; do not upload it. The background is an AI-generated landscape with an unbranded charging stop; it shows no Rivian logos or real locations. Tagline: "Every Rivian place. Every visit."
 
-The existing iPhone screenshots do not contain the old app name. The four iPad light screenshots still show it and need fresh captures from build 25 before submission. Do not alter screenshots to imitate app UI.
+The existing iPhone screenshots do not contain the old app name. The four current iPad light screenshots are in `Screenshots/RivSpotter iPad 13-inch/`, captured November 6, 2026 from build 25 on the iPad Pro 13-inch (M5), iPadOS 26.4, at 2064 × 2752. They replace the October iPad images in App Store Connect. The Lists screenshot shows a fresh local journal with no visits; no personal journal data was used. Older iPad images remain only as history. Do not alter screenshots to imitate app UI.
 
 ## App information
 
