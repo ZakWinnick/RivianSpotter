@@ -2,6 +2,95 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-07",
+      "entries": [
+        {
+          "id": "33fcbeba71292cb53e1aeda4fd129d0790ede3f18908faa6eb62398238b2b88e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 7 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9f836aa364ac233af704dfe4cba4a5ce08fb682bcd94019ece37851354236c36",
+          "locationId": "178905660535678",
+          "name": "Manchester, CT",
+          "type": "Rivian Adventure Network",
+          "city": "Manchester",
+          "region": "CT",
+          "url": "/locations/ran-permit-ct-manchester-a2b6b848f1/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0c1d3114cf153efbacc2c14a1c4e8dd35bf0761930c805ded5aa8fd3fe4d6eaf",
+          "locationId": "38639720785519",
+          "name": "Newark, DE",
+          "type": "Rivian Adventure Network",
+          "city": "Newark",
+          "region": "DE",
+          "url": "/locations/ran-newark-de-232482c5a4/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f98d371a4c445aa44a549eb679da103448dad5c957fce3fad23087f0b857a297",
+          "locationId": "11418482790177",
+          "name": "Ritzville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Ritzville",
+          "region": "WA",
+          "url": "/locations/ran-ritzville-wa-0a62928d0c/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 12)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8cddd61d77760dbf1b1a8cd556189224794bc14547477d78e6ee7f9b2c51e2bb",
+          "locationId": "43316260826867",
+          "name": "Slidell, LA",
+          "type": "Rivian Adventure Network",
+          "city": "Slidell",
+          "region": "LA",
+          "url": "/locations/ran-slidell-la-27655a47ac/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-06",
       "entries": [
         {
@@ -16773,11 +16862,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-06",
+    "date": "2026-11-07",
     "sourceDates": {
-      "places": "2026-11-06",
-      "charging": "2026-11-06",
-      "chargingDetails": "2026-11-06"
+      "places": "2026-11-07",
+      "charging": "2026-11-07",
+      "chargingDetails": "2026-11-07"
     },
     "partialDetails": false
   }
