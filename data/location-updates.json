@@ -2,6 +2,67 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-09",
+      "entries": [
+        {
+          "id": "031b257bfda1ba0c0145f5bf27e7d168780b7c6933d99c443d580c6303b1c730",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: B (previously A)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "def415e0ab585f62d572185d80cb636c46443d4da5bf9552ad157a8148ce020e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c38f5bea6b1b903c777c449320d70a321f41ab98ff8e232cbda30dfc882c8710",
+          "locationId": "92271036139181",
+          "name": "Normal, IL",
+          "type": "Rivian Adventure Network",
+          "city": "Normal",
+          "region": "IL",
+          "url": "/locations/ran-normal-il-53eb8645c4/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 193)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-08",
       "entries": [
         {
@@ -18463,11 +18524,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "sourceDates": {
-      "places": "2026-11-08",
-      "charging": "2026-11-08",
-      "chargingDetails": "2026-11-08"
+      "places": "2026-11-09",
+      "charging": "2026-11-09",
+      "chargingDetails": "2026-11-09"
     },
     "partialDetails": false
   }
