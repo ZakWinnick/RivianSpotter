@@ -598,6 +598,20 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Cypress",
+      "state": "TX",
+      "address": "29300 Hempstead Road",
+      "addressNote": "main address of Houston Premium Outlets",
+      "siteName": "Houston Premium Outlets",
+      "stage": "permit-filed",
+      "firstReported": "2026-11-04",
+      "reportedOn": "2026-11-04",
+      "sourceUrl": "https://x.com/RANtracker/status/2118090028232643025",
+      "lat": 29.997129,
+      "lng": -95.757126,
+      "coordinateSource": "OpenStreetMap Nominatim geocode of Houston Premium Outlets (© OpenStreetMap contributors)"
+    },
+    {
       "city": "Houston",
       "state": "TX",
       "address": "2519 Southwest Fwy",
@@ -690,6 +704,20 @@
       "lng": -122.197291,
       "coordinateSource": "RAN Tracker’s map pin",
       "addressNote": "from RAN Tracker’s map"
+    },
+    {
+      "city": "Port Angeles",
+      "state": "WA",
+      "address": "Safeway",
+      "addressNote": "the Safeway on U.S. Highway 101; the post gives no street address",
+      "siteName": "Safeway",
+      "stage": "under-construction",
+      "firstReported": "2026-11-09",
+      "reportedOn": "2026-11-09",
+      "sourceUrl": "https://x.com/RANtracker/status/2119917974094332344",
+      "lat": 48.1061,
+      "lng": -123.380361,
+      "coordinateSource": "OpenStreetMap Nominatim geocode of the Safeway supermarket on U.S. Highway 101 (© OpenStreetMap contributors)"
     },
     {
       "city": "Rockport",
