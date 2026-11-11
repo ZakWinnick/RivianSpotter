@@ -78,6 +78,27 @@ async function pool(items, fn, concurrency=4) {
   await Promise.all(Array.from({length:concurrency},async()=>{while(!failure && next<items.length) {try {await fn(items[next++]);} catch(e) {failure=e;}}}));
   if(failure) throw failure;
 }
+// Keep one request in flight: a 429 must pause every queued tile, including requests that
+// were already waiting before the response arrived. Never shorten a server Retry-After.
+export function createTileRequestGate({interval=3000, now=()=>Date.now(), sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms))}={}) {
+  let tail=Promise.resolve(), next=0;
+  return function run(fetchTile) {
+    const turn=tail.then(async()=>{
+      while(now()<next) await sleep(next-now());
+      next=now()+interval;
+      const response=await fetchTile();
+      if(response.status===429) {
+        const value=response.headers.get('retry-after');
+        const seconds=value===null?NaN:Number(value);
+        const retry=Number.isFinite(seconds)?seconds*1000:(Date.parse(value)-now())||0;
+        next=Math.max(next,now()+Math.max(60000,retry));
+      }
+      return response;
+    });
+    tail=turn.then(()=>{},()=>{});
+    return turn;
+  };
+}
 export async function refreshCharging({outputDir=ROOT,date=new Date().toISOString().slice(0,10),cacheDir}={}) {
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('Invalid refresh date');
   const scratch=cacheDir || fs.mkdtempSync(path.join(os.tmpdir(),'spotter-charging-'));
@@ -94,13 +115,7 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
     warnings.push(`Kept the previous ${rows.length} coming-soon locations: the coming-soon source could not be read (${e.message}).`);
   }
   const memo=new Map(); let requests=0, splitTiles=0;
-  let gate=Promise.resolve(), pauseUntil=0;
-  function throttle() {
-    const turn=gate.then(async()=>{
-      await new Promise(resolve=>setTimeout(resolve,Math.max(1000,pauseUntil-Date.now())));
-    });
-    gate=turn;return turn;
-  }
+  const requestTile=createTileRequestGate();
   async function tile(coords) {
     const key=coords.join('/'); if(memo.has(key)) return memo.get(key);
     const pending=(async()=>{
@@ -109,12 +124,7 @@ export async function refreshCharging({outputDir=ROOT,date=new Date().toISOStrin
       let last;
       for(let attempt=0;attempt<5;attempt++) {
         try {
-          await throttle();requests++;
-          const r=await fetch(`${TILES}/${key}`,{signal:AbortSignal.timeout(20000)});
-          if(r.status===429) {
-            const after=r.headers.get('retry-after'), delay=Number(after);
-            pauseUntil=Date.now()+Math.max(30000*(attempt+1),Number.isFinite(delay)?delay*1000:(Date.parse(after)-Date.now())||0);
-          }
+          const r=await requestTile(()=>{requests++;return fetch(`${TILES}/${key}`,{signal:AbortSignal.timeout(20000)});});
           if(!r.ok) {const err=Error(`Charging tile ${key}: HTTP ${r.status}`);err.status=r.status;throw err;}
           const bytes=new Uint8Array(await r.arrayBuffer());
           const features=decodeTile(bytes,coords); fs.writeFileSync(file,bytes);return features;
