@@ -5,6 +5,22 @@ const M=require('../js/location-model.js'), U=require('../js/components.js');
 const fixtures=require('./fixtures/charging-features.json');
 const api=()=>import('../scripts/refresh-charging.mjs');
 
+test('queued tile requests honor a 429 retry-after before continuing',async()=>{
+ const {createTileRequestGate}=await api();let clock=0,active=0;const starts=[];
+ const gate=createTileRequestGate({interval:3000,now:()=>clock,sleep:async ms=>{clock+=ms;}});
+ const request=(status,headers={})=>gate(async()=>{assert.equal(active++,0);starts.push(clock);await Promise.resolve();active--;return {status,headers:new Headers(headers)};});
+ await Promise.all([request(200),request(429,{'Retry-After':'120'}),request(200)]);
+ assert.deepEqual(starts,[0,3000,123000]);
+});
+test('queued tile requests respect date retry-after and recover from rejected requests',async()=>{
+ const {createTileRequestGate}=await api();let clock=100000;const starts=[];
+ const gate=createTileRequestGate({interval:3000,now:()=>clock,sleep:async ms=>{clock+=ms;}});
+ await assert.rejects(gate(async()=>{throw Error('network');}),/network/);
+ await gate(async()=>{starts.push(clock);return {status:429,headers:new Headers({'Retry-After':new Date(clock+180000).toUTCString()})};});
+ await gate(async()=>{starts.push(clock);return {status:200,headers:new Headers()};});
+ assert.deepEqual(starts,[103000,283000]);
+});
+
 test('charging importer retains station facts, omits live availability and keeps stable links',async()=>{
  const {normalize}=await api();
  const waypoint=normalize(fixtures[0],'2026-10-14'),ran=normalize(fixtures[1],'2026-10-14');
