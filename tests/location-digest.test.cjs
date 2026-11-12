@@ -63,6 +63,13 @@ test('new listings show visit essentials and distinguish coming soon',()=>{
 test('a clean no-change day is short and clear',()=>{
  const text=body({date:'2026-10-21',snapshot:fresh,events:[]});assert.match(text,/No location changes today/);assert(text.length<500);assert.doesNotMatch(text,/delayed|0 newly|coverage|captured/);
 });
+test('pin precision changes describe unavailable locations without claiming improvement',()=>{
+ const {changeLines}=require('../scripts/location-digest.cjs');
+ assert.match(changeLines({field:'Pin precision',before:'exact',after:'unknown'})[0],/no longer specified/i);
+ assert.match(changeLines({field:'Pin precision',before:'exact',after:null})[0],/no longer specified/i);
+ assert.match(changeLines({field:'Pin precision',before:'city',after:'exact'})[0],/more precise/i);
+ assert.match(changeLines({field:'Pin precision',before:'exact',after:'city'})[0],/approximate city/i);
+});
 test('port changes and rate schedule changes remain understandable and complete',()=>{
  const text=body({date:'2026-10-21',snapshot:fresh,events:[{...example,kind:'changed',changes:[{field:'Individual chargers',before:[{name:'1A',connector:'CCS',powerKw:200}],after:[{name:'1A',connector:'NACS',powerKw:300}]},{field:'Pricing',before:{Rivian:'$0.30–0.50/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.40'},after:{Rivian:'$0.30–0.50/kWh Time-of-Use Rates Mon-Fri 4:00am-8:00am$0.45'}}]}]});
  assert.match(text,/Charger 1A.*NACS, 300 kW.*CCS, 200 kW/);assert.match(text,/time-of-use pricing changed/);assert.match(text,/Current schedule \(local time\)/);assert.match(text,/\$0.45\/kWh/);

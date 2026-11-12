@@ -97,7 +97,7 @@ function changeLines(d){
  }
  if(d.field==='Reported charger condition')return [`- **Charger update:** ${after&&/^operational$/i.test(after)?'Reported as working again':words(after)}${before?` (previously ${words(before).toLowerCase()})`:''}.`];
  if(d.field==='Map pin')return ['- **Map location:** The pin was updated. See the location page for directions.'];
- if(d.field==='Pin precision')return [`- **Map location:** ${after==='city'?'An approximate city location is shown; the address has not been published.':after?'A more precise location is now available.':'The location’s precision is no longer specified.'}`];
+ if(d.field==='Pin precision')return [`- **Map location:** ${after==='city'?'An approximate city location is shown; the address has not been published.':!after||after==='unknown'?'The location’s precision is no longer specified.':before==='city'?'A more precise location is now available.':'The location’s precision has changed.'}`];
  if(d.field==='Rivian-only access')return [`- **Vehicle access:** ${after===true?'Rivian vehicles only':after===false?'Open to other EVs':'Access details are no longer published'}.`];
  if(['Official page','Booking link','Directions link'].includes(d.field))return [`- **${label}:** ${after&&/^https:\/\//.test(after)?`[Updated link](${after})`:'The previous link is no longer listed'}.`];
  if(['Services','Visit options','Site features'].includes(d.field)){
