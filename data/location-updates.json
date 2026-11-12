@@ -2,6 +2,117 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-12",
+      "entries": [
+        {
+          "id": "b8441b9a69e6f3f58d59018938f4b16939b1a6e1de9e679322332723bd2fffc2",
+          "locationId": "188436359188894",
+          "name": "Astoria, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Astoria",
+          "region": "OR",
+          "url": "/locations/ran-astoria-or-ab61c2314f/",
+          "kind": "changed",
+          "lines": [
+            "Connector types: 3 NACS, 3 CCS (previously 6 CCS).",
+            "Average peak power (kW): 185 (previously 186).",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b705285bac07adbd4ca479cb90af705202c91e7893198659ace113a40b3a503d",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 7)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "72aaef46796cb3c1acfe1f26f1eaaea10a2daa8142f287a2f4037c60d91dd1b5",
+          "locationId": "142762870371269",
+          "name": "Dallas, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Dallas",
+          "region": "TX",
+          "url": "/locations/ran-dallas-tx-81d7921db1/",
+          "kind": "changed",
+          "lines": [
+            "Connector types: 2 NACS, 4 CCS (previously 5 CCS, 1 NACS).",
+            "Average peak power (kW): 191 (previously 192).",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "08597c30aec5ab4c960dcfb0e70140531484fcf0c475925bb3c3eca9c69f60f1",
+          "locationId": "114613134048542",
+          "name": "Daytona Beach, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Daytona Beach",
+          "region": "FL",
+          "url": "/locations/ran-daytona-beach-fl-683d7314fa/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 204 (previously 203)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "74077698aeac289357cc39d3efb23c28ffe99a1823cbb2fccfa25a9d5e4db0c8",
+          "locationId": "154",
+          "name": "Emeryville - Service Center",
+          "type": "Service Center",
+          "city": "Emeryville",
+          "region": "CA",
+          "url": "/locations/emeryville-ca-1483-67th-street-service-center/",
+          "kind": "changed",
+          "lines": [
+            "Service hours: Monday: 8:00am-5:00pm Tuesday: 8:00am-5:00pm Wednesday: 8:00am-5:00pm Thursday: 8:00am-5:00pm Friday: 8:00am-5:00pm Saturday: closed Sunday: closed (previously Monday: 9:00am-6:00pm Tuesday: 9:00am-6:00pm Wednesday: 9:00am-6:00pm Thursday: 9:00am-6:00pm Friday: 9:00am-6:00pm Saturday: 9:00am-6:00pm Sunday: 9:00am-6:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e259dd35bbcad711aec3b71c769b20eb2c0d50a0d6944de048fcb852b9c631e3",
+          "locationId": "98914932127690",
+          "name": "Kingman, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Kingman",
+          "region": "AZ",
+          "url": "/locations/ran-kingman-az-59f66d5535/",
+          "kind": "changed",
+          "lines": [
+            "Connector types: 2 NACS, 4 CCS (previously 6 CCS).",
+            "Charger 2B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "12eb117c2578848b39acffff3b62e8bd692f8213056219cd74a4cb43d589ca16",
+          "locationId": "65415504111846",
+          "name": "Salida, CO - Monarch Spur Trail",
+          "type": "Waypoint",
+          "city": "Salida",
+          "region": "CO",
+          "url": "/locations/waypoint-salida-co-monarch-spur-trail-3b7ebbd366/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 2 (previously 4)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-11",
       "entries": [
         {
@@ -21164,11 +21275,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "sourceDates": {
-      "places": "2026-11-11",
-      "charging": "2026-11-11",
-      "chargingDetails": "2026-11-11"
+      "places": "2026-11-12",
+      "charging": "2026-11-12",
+      "chargingDetails": "2026-11-12"
     },
     "partialDetails": false
   }
