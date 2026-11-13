@@ -300,13 +300,26 @@ function officialRecords(raw, details, features, date, canonical, failures) {
 }
 async function download(url) {
  const response = await fetch(url,{signal:AbortSignal.timeout(45000)});
- if (!response.ok || !response.url.startsWith('https://rivian.com/')) throw Error(`Official fetch failed ${response.status}: ${url}`);
+ if (!response.ok || !response.url.startsWith('https://rivian.com/')) {const error=Error(`Official fetch failed ${response.status}: ${url}`);error.status=response.status;throw error;}
  return response.text();
+}
+// Retry transient transport errors and invalid responses, while validating every attempt.
+async function fetchDirectory({get=()=>download(DIRECTORY),wait=ms=>new Promise(resolve=>setTimeout(resolve,ms)),minimum=100}={}) {
+ const delays=[5000,15000];
+ for(let attempt=0;;attempt++) {
+  try {const html=await get();return {html,raw:parseDirectory(html,{minimum})};}
+  catch(e) {
+   if(e.status===429)throw e; // Never retry a rate-limited source without a known cooldown.
+   if(attempt>=delays.length)throw Error(`Official directory unavailable after ${attempt+1} attempts: ${e.message}`);
+   console.warn(`Official directory attempt ${attempt+1} failed (${e.message}); retrying in ${delays[attempt]/1000}s.`);
+   await wait(delays[attempt]);
+  }
+ }
 }
 async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,detailsDir,apply=false,outputDir,baselineCanonicalFile,baselineBrowserFile}={}) {
  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('Use ISO verification date');
- const directoryHtml = directoryFile ? fs.readFileSync(directoryFile,'utf8') : await download(DIRECTORY);
- const raw = parseDirectory(directoryHtml);
+ const directory = directoryFile ? (()=>{const html=fs.readFileSync(directoryFile,'utf8');return {html,raw:parseDirectory(html)};})() : await fetchDirectory();
+ const directoryHtml=directory.html,raw=directory.raw;
  const details = new Map(), failures = []; let cursor=0;
  async function worker(){while(cursor<raw.length){const record=raw[cursor++];try{const html=detailsDir?fs.readFileSync(path.join(detailsDir,record.slug+'.html'),'utf8'):await download(record.sourceUrl);details.set(record.slug,parseDetail(html,record.sourceUrl));}catch(e){failures.push({slug:record.slug,url:record.sourceUrl,error:e.message});}}}
  await Promise.all(Array.from({length:4},worker));
@@ -345,4 +358,4 @@ async function refresh({date=new Date().toISOString().slice(0,10),directoryFile,
  return summary;
 }
 if(require.main===module){const args=process.argv.slice(2);const value=flag=>{const i=args.indexOf(flag);return i<0?undefined:args[i+1];};refresh({date:value('--date'),directoryFile:value('--directory-file'),detailsDir:value('--details-dir'),apply:args.includes('--apply'),outputDir:value('--output-dir'),baselineCanonicalFile:value('--baseline-canonical-file'),baselineBrowserFile:value('--baseline-browser-file')}).then(x=>console.log(JSON.stringify({date:x.date,directoryCount:x.directoryCount,supplementalMapFeatureCount:x.supplementalMapFeatureCount,supplementalAddedCount:x.supplementalAddedCount,totalCount:x.totalCount,added:x.added.length,merged:x.mergedLegacyIds.length,unmatchedLegacy:x.unmatchedLegacy,coordinateCounts:x.coordinateCounts,needsReview:x.needsReview.length,applied:args.includes('--apply')},null,2))).catch(e=>{console.error(e.message);process.exitCode=1;});}
-module.exports={officialRecords,serviceMapSource,maxDetailFailures,parseDirectory,parseDetail,addressKey,sameAddress,officialUrl,hoursFields,timezoneFor,legacyUnion,reconcile,directoryRecord,serviceRecord,refresh};
+module.exports={officialRecords,serviceMapSource,maxDetailFailures,parseDirectory,fetchDirectory,parseDetail,addressKey,sameAddress,officialUrl,hoursFields,timezoneFor,legacyUnion,reconcile,directoryRecord,serviceRecord,refresh};
