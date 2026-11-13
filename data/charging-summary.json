@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 911,
+  "requests": 934,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-11-12T14:08:00.370Z",
+    "observedAt": "2026-11-13T16:16:04.095Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/0flci9px43gyd.js",
     "sha256": "2f39770e9f50cfd447269179e075a334a17a9178ffa3cf4f51e46e494f258500"
@@ -46,14 +46,20 @@
   },
   "warnings": [],
   "counts": {
-    "RAN": 236,
+    "RAN": 237,
     "Waypoint": 208
   },
   "promotions": {
     "promoted": [],
     "unresolved": []
   },
-  "added": [],
+  "added": [
+    {
+      "id": 174705885347076,
+      "name": "Mount Laurel, NJ",
+      "slug": "ran-mount-laurel-nj-9ee4e22d3a"
+    }
+  ],
   "removed": [],
-  "sha256": "bbf748e9bac5fcfda5ffbbb748490a466d9070806e34fc6ad54a1519d43f328b"
+  "sha256": "d8f52816fc2a0e1633bff591c7f1dd5bcf1d1ee8a02939e94c9c73bb89b2efde"
 }
