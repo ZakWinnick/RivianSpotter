@@ -2,6 +2,71 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-14",
+      "entries": [
+        {
+          "id": "3f9a4eadd278827c927217ce2c1960ee0deb936bdcd1835366fa33b653963c23",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "def415e0ab585f62d572185d80cb636c46443d4da5bf9552ad157a8148ce020e",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 8)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "666955467d59e5b36a29afa374b66a1864d123dfd4ebfdf0bc47973a5807454e",
+          "locationId": "76093292580340",
+          "name": "Corte Madera, CA - Town Center",
+          "type": "Waypoint",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/waypoint-corte-madera-ca-town-center-4534d99d4b/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 3 (previously 4)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bc86295904e2055749d3a62d52680433795b2e24b3065fa80864d0a0027af3b2",
+          "locationId": "174705885347076",
+          "name": "Mount Laurel, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Mt Laurel Township",
+          "region": "NJ",
+          "url": "/locations/ran-mount-laurel-nj-9ee4e22d3a/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 10 (previously 8).",
+            "Connector types: 10 NACS (previously 8 NACS).",
+            "Site features: Added Trailer OK.",
+            "Charger 3A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added.",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app — details added."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-13",
       "entries": [
         {
@@ -22856,11 +22921,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-13",
+    "date": "2026-11-14",
     "sourceDates": {
-      "places": "2026-11-13",
-      "charging": "2026-11-13",
-      "chargingDetails": "2026-11-13"
+      "places": "2026-11-14",
+      "charging": "2026-11-14",
+      "chargingDetails": "2026-11-14"
     },
     "partialDetails": false
   }
