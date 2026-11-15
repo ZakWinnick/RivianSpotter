@@ -1,5 +1,14 @@
 [
   {
+    "version": "Website",
+    "date": "2026-11-15",
+    "title": "Website improvements",
+    "changes": [
+      "Moved RivSpotter to AWS Amplify Hosting and CloudFront, creating a foundation for future features and improvements.",
+      "Updated caching and deployment workflows to help keep the website and app’s location data current."
+    ]
+  },
+  {
     "version": "2026.45.2",
     "date": "2026-11-06",
     "title": "Introducing RivSpotter",
