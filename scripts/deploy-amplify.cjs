@@ -42,11 +42,15 @@ async function verifyCatalog({ appId, branch, expected, request = fetch, pause =
   throw new Error(`Published catalog for ${branch} does not match the validated artifact`);
 }
 
+function extractCatalog(archive) {
+  return execFileSync('unzip', ['-p', archive, 'api/v1/catalog.json'], { maxBuffer: 64 * 1024 * 1024 });
+}
+
 if (require.main === module) {
   (async () => {
     const appId = process.env.AMPLIFY_APP_ID;
     const archive = process.argv[2];
-    const expected = execFileSync('unzip', ['-p', archive, 'api/v1/catalog.json']);
+    const expected = extractCatalog(archive);
     for (const branch of ['staging', 'beta']) {
       const job = await deploy({ appId, branch, archive });
       await verifyCatalog({ appId, branch, expected });
@@ -54,4 +58,4 @@ if (require.main === module) {
     }
   })().catch(error => { console.error(error.message); process.exitCode = 1; });
 }
-module.exports = { deploy, verifyCatalog };
+module.exports = { deploy, verifyCatalog, extractCatalog };
