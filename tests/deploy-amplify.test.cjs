@@ -57,3 +57,17 @@ test('catalog verification fails rather than accepting stale data', async () => 
   const { verifyCatalog } = require('../scripts/deploy-amplify.cjs');
   await assert.rejects(verifyCatalog({ appId: 'd123', branch: 'beta', expected: Buffer.from('current'), attempts: 2, pause: async () => {}, request: async () => new Response('old') }), /does not match/);
 });
+
+test('extracts catalogs larger than the default process output buffer', () => {
+  const { mkdirSync } = require('node:fs');
+  const { execFileSync } = require('node:child_process');
+  const { extractCatalog } = require('../scripts/deploy-amplify.cjs');
+  const dir = mkdtempSync(join(tmpdir(), 'amplify-large-'));
+  try {
+    mkdirSync(join(dir, 'api', 'v1'), { recursive: true });
+    const expected = Buffer.alloc(1200000, 65);
+    writeFileSync(join(dir, 'api', 'v1', 'catalog.json'), expected);
+    execFileSync('zip', ['-q', 'site.zip', 'api/v1/catalog.json'], { cwd: dir });
+    assert.deepEqual(extractCatalog(join(dir, 'site.zip')), expected);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
