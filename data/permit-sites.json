@@ -367,6 +367,20 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Darien",
+      "state": "CT",
+      "address": "Corbin Drive & Post Road",
+      "addressNote": "intersection on the permit drawing, Post Rd / US-1; no street number",
+      "siteName": "The Corbin District",
+      "stage": "permit-approved",
+      "firstReported": "2026-11-17",
+      "reportedOn": "2026-11-17",
+      "sourceUrl": "https://x.com/RANtracker/status/2122787949855273179",
+      "lat": 41.073612,
+      "lng": -73.472348,
+      "coordinateSource": "Entered manually from the permit address"
+    },
+    {
       "city": "Manchester",
       "state": "CT",
       "address": "1127 Tolland Turnpike",
