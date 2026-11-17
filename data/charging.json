@@ -2698,10 +2698,10 @@
     "city": "Darien",
     "state": "CT",
     "country": "US",
-    "lat": 41.0787,
-    "lng": -73.4693,
-    "coordinatePrecision": "city",
-    "coordinateSource": "https://rivian.com/experience/charging#map",
+    "lat": 41.073612,
+    "lng": -73.472348,
+    "coordinatePrecision": "permit-address",
+    "coordinateSource": "Entered manually from the permit address",
     "chargerCount": null,
     "maxKw": null,
     "maxPowerLabel": null,
@@ -2720,7 +2720,19 @@
     "rivianUrl": null,
     "bookingUrl": null,
     "lastVerified": "2026-11-17",
-    "firstSeen": "2026-10-16"
+    "firstSeen": "2026-10-16",
+    "permit": {
+      "stage": "permit-approved",
+      "stageLabel": "Permit approved",
+      "address": "Corbin Drive & Post Road",
+      "reportedOn": "2026-11-17",
+      "sourceUrl": "https://x.com/RANtracker/status/2122787949855273179",
+      "sourceName": "RAN Tracker",
+      "sourceProfile": "https://x.com/rantracker",
+      "siteName": "The Corbin District",
+      "addressNote": "intersection on the permit drawing, Post Rd / US-1; no street number",
+      "firstReported": "2026-11-17"
+    }
   },
   {
     "id": 135641367709223,
