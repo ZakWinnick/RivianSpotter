@@ -26,7 +26,7 @@ function routePath(path) {
 }
 
 function dynamicPage(path) {
-  if (['/updates.html', '/stats.html'].includes(path) ||
+  if (['/updates.html', '/stats.html', '/changelog.html'].includes(path) ||
       /^\/(locations|regions)(?:\/(?:index\.html)?)?$/.test(path)) return {};
   const match = /^\/(locations|regions)\/([a-z0-9-]+)(?:\/index\.html|\/)?$/.exec(path);
   return match ? { section: match[1], key: match[2] } : null;

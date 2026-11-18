@@ -96,7 +96,7 @@ test('dynamic beta routes use one shell for real locations, aliases, and regions
   const options = { mode: 'dynamic', fetcher, routeCache };
   for (const path of [
     '/locations/', '/locations/new-place/', '/locations/old-place/index.html',
-    '/regions/ca/', '/stats.html', '/updates.html',
+    '/regions/ca/', '/stats.html', '/updates.html', '/changelog.html',
   ]) {
     const response = await handleRequest(new Request('https://beta.rivspotter.com' + path), options);
     assert.equal(response.status, 200);
