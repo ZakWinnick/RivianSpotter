@@ -47,7 +47,7 @@ function extractCatalog(archive) {
 }
 
 function selectedBranch(branch) {
-  if (!['staging', 'beta'].includes(branch)) throw new Error('Select exactly one Amplify branch: staging or beta');
+  if (!['staging', 'beta', 'beta-data'].includes(branch)) throw new Error('Select exactly one Amplify branch: staging, beta, or beta-data');
   return branch;
 }
 
