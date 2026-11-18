@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 
-function buildSnapshot(dist, output, {shellRelease} = {}) {
+function buildSnapshot(dist, output, {shellRelease,designSha} = {}) {
   dist = path.resolve(dist); output = path.resolve(output);
   if (!/^[A-Za-z0-9._-]+$/.test(shellRelease || '')) throw Error('A verified deployed beta shell release is required');
   if (fs.existsSync(output)) throw Error('Snapshot output already exists');
@@ -16,12 +16,16 @@ function buildSnapshot(dist, output, {shellRelease} = {}) {
     if (stat.isDirectory()) { for (const name of fs.readdirSync(source).sort()) add(path.posix.join(relative,name)); return; }
     if (!stat.isFile()) throw Error(`Non-file in snapshot: ${relative}`);
     let bytes = fs.readFileSync(source);
-    if (relative.endsWith('.html')) bytes = Buffer.from(bytes.toString('utf8').replace(/((?:src|href)="\/(?:js|css|vendor)\/[^"?]+\.(?:js|css))\?v=[^"]+"/g, `$1?v=${shellRelease}"`));
+    if (relative.endsWith('.html')) {
+      const content=bytes.toString('utf8').replace(/((?:src|href)="\/(?:js|css|vendor)\/[^"?]+\.(?:js|css))\?v=[^"]+"/g, `$1?v=${shellRelease}"`);
+      bytes=Buffer.from(designSha?require('./beta-release-assets.cjs').rewriteHtml(content,designSha):content);
+    }
     if (relative === 'service-worker.js') {
       let text = bytes.toString('utf8');
       if (!/const RELEASE = '[^']+';/.test(text) || !/const PUBLIC_DATA = new Set\(\[/.test(text)) throw Error('Unsupported service-worker format');
       text = text.replace(/const RELEASE = '[^']+';/, `const RELEASE = '${shellRelease}';`)
         .replace('const PUBLIC_DATA = new Set([', "const PUBLIC_DATA = new Set(['/data/beta-bundle.json', '/js/app.js', '/js/charging.js', '/js/roamer.js', ");
+      if(designSha)text=require('./beta-release-assets.cjs').rewriteWorker(text,designSha);
       bytes = Buffer.from(text);
     }
     if (relative === 'js/app.js') {
@@ -51,7 +55,7 @@ function buildSnapshot(dist, output, {shellRelease} = {}) {
   return {snapshot,catalogRevision:catalog.revision,files:files.length,bytes:files.reduce((sum,f)=>sum+f.size,0)};
 }
 if (require.main === module) {
-  try { console.log(JSON.stringify(buildSnapshot(process.argv[2],process.argv[3],{shellRelease:process.env.BETA_SHELL_RELEASE}))); }
+  try { console.log(JSON.stringify(buildSnapshot(process.argv[2],process.argv[3],{shellRelease:process.env.BETA_SHELL_RELEASE,designSha:process.env.BETA_DESIGN_SHA}))); }
   catch(e) { console.error(e.message); process.exitCode=1; }
 }
 module.exports={buildSnapshot};

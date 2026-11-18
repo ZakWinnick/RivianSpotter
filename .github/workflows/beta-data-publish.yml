@@ -21,10 +21,29 @@ jobs:
         with:
           path: main
           persist-credentials: false
-      - name: Checkout the approved beta design
+      - name: Resolve the actually deployed beta design
+        id: release
+        run: |
+          status=$(curl --silent --show-error -o "$RUNNER_TEMP/beta-release.json" -w '%{http_code}' https://beta.d3qy7654vf25z2.amplifyapp.com/beta-release.json)
+          if [ "$status" = 404 ]; then
+            sha=6f7f9ffc88843497b46be784cf77cb22644e3488
+            shell=2026.47.0-270f5b1dd20f
+            design=
+          elif [ "$status" = 200 ]; then
+            sha=$(node -e 'const x=require(process.argv[1]); if(x.schemaVersion!==1 || !/^[a-f0-9]{40}$/.test(x.designSha))process.exit(1); process.stdout.write(x.designSha)' "$RUNNER_TEMP/beta-release.json")
+            shell="$sha"
+            design="$sha"
+          else
+            echo "Cannot read deployed beta release (HTTP $status)" >&2
+            exit 1
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "shell=$shell" >> "$GITHUB_OUTPUT"
+          echo "design=$design" >> "$GITHUB_OUTPUT"
+      - name: Checkout the deployed beta design
         uses: actions/checkout@v4
         with:
-          ref: 6f7f9ffc88843497b46be784cf77cb22644e3488
+          ref: ${{ steps.release.outputs.sha }}
           path: design
           persist-credentials: false
       - name: Clear the checkout data before restoring the refresh snapshot
@@ -65,11 +84,18 @@ jobs:
           cmp "$RUNNER_TEMP/expected-catalog.json" design/dist/api/v1/catalog.json
       - name: Package data, generated pages and offline fallback only
         env:
-          BETA_SHELL_RELEASE: '2026.47.0-270f5b1dd20f'
+          BETA_SHELL_RELEASE: ${{ steps.release.outputs.shell }}
+          BETA_DESIGN_SHA: ${{ steps.release.outputs.design }}
         run: |
-          curl --fail --silent --show-error https://beta.rivspotter.com/service-worker.js > "$RUNNER_TEMP/current-beta-worker.js"
-          grep -F "const RELEASE = '$BETA_SHELL_RELEASE';" "$RUNNER_TEMP/current-beta-worker.js"
+          if [ -z "$BETA_DESIGN_SHA" ]; then
+            curl --fail --silent --show-error https://beta.rivspotter.com/service-worker.js > "$RUNNER_TEMP/current-beta-worker.js"
+            grep -F "const RELEASE = '$BETA_SHELL_RELEASE';" "$RUNNER_TEMP/current-beta-worker.js"
+          fi
           node main/scripts/beta-data-snapshot.cjs design/dist "$RUNNER_TEMP/beta-data"
+          if [ -n "$BETA_DESIGN_SHA" ]; then
+            curl --fail --silent --show-error "https://beta.d3qy7654vf25z2.amplifyapp.com/beta-releases/$BETA_DESIGN_SHA/js/app.js" > "$RUNNER_TEMP/current-app.js"
+            cmp "$RUNNER_TEMP/current-app.js" "$RUNNER_TEMP/beta-data/files/js/app.js"
+          fi
           cd "$RUNNER_TEMP/beta-data/files"
           zip -qr "$RUNNER_TEMP/beta-data.zip" .
       - uses: actions/upload-artifact@v4
