@@ -28,3 +28,24 @@ test('coordinated releases keep both generations of shell assets with matching d
     }
   }finally{fs.rmSync(temp,{recursive:true,force:true});}
 });
+test('dynamic design releases contain shells only and retain both asset generations',()=>{
+  const temp=fs.mkdtempSync(path.join(os.tmpdir(),'riv-beta-dynamic-')),old='a'.repeat(40),next='b'.repeat(40);
+  function put(base,name,value){const f=path.join(base,name);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,value);}
+  function design(dir,label){
+    put(dir,'api/v1/catalog.json',JSON.stringify({schemaVersion:1,revision:7,places:[{id:'1'}]}));
+    put(dir,'dynamic.html','<link href="/css/style.css?v=old"><script src="/js/app.js?v=old"></script>');
+    put(dir,'index.html','<link href="/css/style.css?v=old">');
+    put(dir,'service-worker.js',"const RELEASE = 'old';\nconst STATIC_ASSETS = ['/css/style.css','/js/app.js'];\nif (STATIC_ASSETS.includes(url.pathname)) {}");
+    put(dir,'js/app.js',label);put(dir,'css/style.css',label);
+  }
+  try{
+    const a=path.join(temp,'a'),b=path.join(temp,'b'),out=path.join(temp,'out');design(a,'old');design(b,'new');
+    const result=assemble({oldDist:a,newDist:b,output:out,oldSha:old,newSha:next});assert.equal(result.dynamic,true);
+    assert.deepEqual(fs.readdirSync(out).sort(),['new-shell','old-shell']);
+    for(const shell of ['old-shell','new-shell']){
+      assert.equal(fs.readFileSync(path.join(out,shell,'beta-releases',old,'css/style.css'),'utf8'),'old');
+      assert.equal(fs.readFileSync(path.join(out,shell,'beta-releases',next,'css/style.css'),'utf8'),'new');
+    }
+    assert.ok(fs.readFileSync(path.join(out,'new-shell','dynamic.html'),'utf8').includes(`/beta-releases/${next}/js/app.js`));
+  }finally{fs.rmSync(temp,{recursive:true,force:true});}
+});

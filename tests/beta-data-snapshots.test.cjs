@@ -74,3 +74,79 @@ test('proxy returns unavailable instead of serving stale data when the data orig
   const result = await handleRequest(new Request('https://beta.rivspotter.com/api/v1/catalog.json'), {origin:'https://beta-data.d3qy7654vf25z2.amplifyapp.com',fetcher:async()=>new Response('failure',{status:500})});
   assert.equal(result.status,503);
 });
+
+test('dynamic beta routes use one shell for real locations, aliases, and regions', async () => {
+  const requests = [];
+  const routeCache = {};
+  const fetcher = async request => {
+    requests.push(request);
+    if (request.url.endsWith('/data/beta-routes.json')) {
+      return Response.json({
+        schemaVersion: 1,
+        snapshotId: 'a'.repeat(64),
+        locations: { 'new-place': 'new-place', 'old-place': 'new-place' },
+        regions: ['ca'],
+      });
+    }
+    assert.equal(request.url, 'https://beta.d3qy7654vf25z2.amplifyapp.com/dynamic.html');
+    return new Response(request.method === 'HEAD' ? null : 'shared shell', {
+      headers: { etag: '"shell"' },
+    });
+  };
+  const options = { mode: 'dynamic', fetcher, routeCache };
+  for (const path of [
+    '/locations/', '/locations/new-place/', '/locations/old-place/index.html',
+    '/regions/ca/', '/stats.html', '/updates.html', '/changelog.html',
+  ]) {
+    const response = await handleRequest(new Request('https://beta.rivspotter.com' + path), options);
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), 'shared shell');
+  }
+  const unknown = await handleRequest(new Request('https://beta.rivspotter.com/locations/unknown/'), options);
+  assert.equal(unknown.status, 404);
+  assert.equal(unknown.headers.get('cache-control'), 'no-store');
+  assert.equal(requests.filter(request => request.url.endsWith('/data/beta-routes.json')).length, 1);
+
+  const head = await handleRequest(new Request('https://beta.rivspotter.com/locations/old-place', {
+    method: 'HEAD',
+    headers: { 'If-None-Match': '"shell"', cookie: 'private' },
+  }), options);
+  assert.equal(await head.text(), '');
+  assert.equal(requests.at(-1).method, 'HEAD');
+  assert.equal(requests.at(-1).headers.get('if-none-match'), '"shell"');
+  assert.equal(requests.at(-1).headers.has('cookie'), false);
+});
+
+test('dynamic mode keeps assets on the shell and proxies only the public feed', async () => {
+  const requests = [];
+  const options = {
+    mode: 'dynamic',
+    fetcher: async request => {
+      requests.push(request.url);
+      return Response.json({ ok: true });
+    },
+  };
+  for (const uri of ['/service-worker.js', '/js/app.js', '/js/locations.js', '/images/logo.png']) {
+    const response = await handleRequest(new Request('https://beta.rivspotter.com' + uri), options);
+    assert.equal(response, null);
+  }
+  assert.equal(await handleRequest(new Request('https://rivspotter.com/locations/new-place/'), options), null);
+  const feed = await handleRequest(new Request('https://beta.rivspotter.com/data/beta-bundle.json'), options);
+  assert.equal(feed.status, 200);
+  assert.deepEqual(requests, ['https://beta-data.d3qy7654vf25z2.amplifyapp.com/data/beta-bundle.json']);
+});
+
+test('dynamic missing routes require a valid route index and a deployed shell', async () => {
+  const request = new Request('https://beta.rivspotter.com/locations/new-place/');
+  for (const fetcher of [
+    async () => new Response('missing', { status: 404 }),
+    async () => Response.json({ schemaVersion: 1, snapshotId: 'a'.repeat(64), locations: {}, regions: [] }),
+    async req => req.url.endsWith('/data/beta-routes.json')
+      ? Response.json({ schemaVersion: 1, snapshotId: 'a'.repeat(64), locations: { 'new-place': 'new-place' }, regions: ['ca'] })
+      : new Response('missing shell', { status: 404 }),
+  ]) {
+    const result = await handleRequest(request, { mode: 'dynamic', fetcher });
+    assert.equal(result.status, 503);
+    assert.equal(result.headers.get('cache-control'), 'no-store');
+  }
+});

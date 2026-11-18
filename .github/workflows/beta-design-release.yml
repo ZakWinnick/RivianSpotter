@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ github.ref == 'refs/heads/main' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' && vars.BETA_DYNAMIC_RENDER_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -74,7 +74,7 @@ jobs:
           BETA_NEW_SHA: ${{ steps.designs.outputs.new }}
         run: |
           node main/scripts/assemble-beta-design.cjs old/dist new/dist "$RUNNER_TEMP/release"
-          for dir in old-shell new-shell old-data/files new-data/files; do
+          for dir in old-shell new-shell; do
             name=${dir//\//-}
             (cd "$RUNNER_TEMP/release/$dir" && zip -qr "$RUNNER_TEMP/$name.zip" .)
           done
@@ -84,8 +84,6 @@ jobs:
           path: |
             ${{ runner.temp }}/old-shell.zip
             ${{ runner.temp }}/new-shell.zip
-            ${{ runner.temp }}/old-data-files.zip
-            ${{ runner.temp }}/new-data-files.zip
           retention-days: 7
   deploy:
     needs: build
@@ -110,10 +108,6 @@ jobs:
         env:
           AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
         run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/release/old-shell.zip" beta
-      - name: Switch previous pages to their immutable asset URLs
-        env:
-          AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
-        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/release/old-data-files.zip" beta-data
       - name: Require the requested design still be the branch head
         env:
           REQUESTED_SHA: ${{ inputs.design_sha }}
@@ -125,7 +119,3 @@ jobs:
         env:
           AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
         run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/release/new-shell.zip" beta
-      - name: Publish the matching beta location pages and catalog
-        env:
-          AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
-        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/release/new-data-files.zip" beta-data

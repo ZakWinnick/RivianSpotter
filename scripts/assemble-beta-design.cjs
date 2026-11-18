@@ -12,6 +12,20 @@ function rewriteHtmlTree(dir,sha){
 function assemble({oldDist,newDist,output,oldSha,newSha}) {
   validatedRelease(oldSha);validatedRelease(newSha);
   if(fs.existsSync(output))throw Error('Output already exists');
+  if(fs.existsSync(path.join(oldDist,'dynamic.html'))&&fs.existsSync(path.join(newDist,'dynamic.html'))){
+    const oldCatalog=fs.readFileSync(path.join(oldDist,'api/v1/catalog.json')),newCatalog=fs.readFileSync(path.join(newDist,'api/v1/catalog.json'));
+    if(!oldCatalog.equals(newCatalog))throw Error('Design builds use different catalog data');
+    for(const [name,dist,sha] of [['old-shell',oldDist,oldSha],['new-shell',newDist,newSha]]){
+      const target=path.join(output,name);fs.cpSync(dist,target,{recursive:true});rewriteHtmlTree(target,sha);
+      writeReleaseAssets(oldDist,path.join(oldDist,'js/app.js'),target,oldSha);
+      writeReleaseAssets(newDist,path.join(newDist,'js/app.js'),target,newSha);
+      const worker=path.join(target,'service-worker.js');
+      fs.writeFileSync(worker,require('./beta-release-assets.cjs').rewriteWorker(fs.readFileSync(worker,'utf8'),sha));
+      fs.writeFileSync(path.join(target,'beta-release.json'),JSON.stringify({schemaVersion:1,designSha:sha,dynamic:true})+'\n');
+    }
+    return {oldSha,newSha,catalogRevision:JSON.parse(oldCatalog).revision,dynamic:true};
+  }
+  if(fs.existsSync(path.join(oldDist,'dynamic.html'))||fs.existsSync(path.join(newDist,'dynamic.html')))throw Error('Legacy-to-dynamic migration requires the coordinated transitional cutover');
   const oldSnapshot=path.join(output,'old-data'),newSnapshot=path.join(output,'new-data');
   const oldInfo=buildSnapshot(oldDist,oldSnapshot,{shellRelease:oldSha,designSha:oldSha});
   const newInfo=buildSnapshot(newDist,newSnapshot,{shellRelease:newSha,designSha:newSha});
