@@ -397,67 +397,51 @@
       $("contact-status").hidden = false;
     });
   }
-  async function load() {
-    try {
-      const response = await fetch("/data/locations.json", {
-        cache: "no-cache",
-      });
-      if (!response.ok) throw Error();
-      const data = await response.json();
-      all = Array.isArray(data) ? data : data.locations || [];
-      if (!all.length) throw Error();
-    } catch {
-      all =
-        typeof rivianLocations !== "undefined"
-          ? rivianLocations
-          : window.rivianLocations || [];
-      if (!all.length) {
-        if ($("results"))
-          $("results").innerHTML =
-            '<div class="empty"><h2>Locations couldn’t load.</h2><p>Check your connection and try again.</p><button class="button" data-reload>Try again</button></div>';
-        return;
-      }
-      toast(
-        "Showing the bundled location directory. Live refresh is unavailable.",
-      );
-    }
-    let chargers = typeof rivianChargingLocations !== "undefined" ? rivianChargingLocations : [];
-    try {
-      const response = await fetch("/data/charging.json", {cache:"no-cache"});
-      if (!response.ok) throw Error("Charging directory unavailable");
-      const data = await response.json();
-      if (!Array.isArray(data) || !data.length) throw Error("Empty charging directory");
-      chargers = data;
-    } catch { /* Use the release's bundled charging snapshot when offline. */ }
-    let roamer = typeof rivianRoamerSnapshot !== "undefined" ? rivianRoamerSnapshot.stations : [];
-    try { const response=await fetch("/data/roamer.json",{cache:"no-cache"}); if(response.ok){const snapshot=await response.json();if(Array.isArray(snapshot.stations))roamer=snapshot.stations;} } catch { /* Use the bundled snapshot when offline. */ }
-    all = M.combineLocations(all, chargers, roamer);
+  let snapshotReady = false, pendingSnapshot = null;
+  function applySnapshot(data, initial = false) {
+    const previous = selected?.id;
+    all = M.combineLocations(data.locations, data.charging, data.roamer);
     normalizeSaved();
     if (page === "explore") {
-      $("state-filter").innerHTML =
-        '<option value="">All regions</option>' +
-        [...new Set(all.map((p) => p.state))]
-          .filter(Boolean)
-          .sort()
-          .map((s) => `<option>${e(s)}</option>`)
-          .join("");
-      const target = readUrl();
-      render();
-      SpotterMap.init((id) => select(id));
-      if (target) select(target, { focus: false, push: false });
+      const oldState = $("state-filter").value;
+      $("state-filter").innerHTML = '<option value="">All regions</option>' + [...new Set(all.map(p => p.state))].filter(Boolean).sort().map(s => `<option>${e(s)}</option>`).join("");
+      if (oldState) $("state-filter").value = oldState;
+      if (initial) {
+        const target = readUrl(); render(); SpotterMap.init((id) => select(id));
+        if (target) select(target, { focus: false, push: false });
+      } else {
+        if (previous) selected = find(previous) || selected;
+        const resultsTop=$('results').scrollTop; render(); $('results').scrollTop=resultsTop;
+        if (selected && !$('detail').hidden) {
+          const top=$('detail').scrollTop; $('detail').innerHTML=detail(selected); $('detail').scrollTop=top;
+        }
+      }
     }
     if (page === "saved") renderSaved();
-    if (page === "contact") contact();
-    if (page === "location") {
-      const p = all.find((p) => p.slug === document.body.dataset.slug);
-      if (p)
-        document.querySelectorAll("[data-save]").forEach((b) => {
-          b.setAttribute("aria-pressed", String(saveIds.includes(p.id)));
-          b.innerHTML =
-            U.icon("save") + (saveIds.includes(p.id) ? "Saved" : "Save");
-        });
+    if (initial && page === "contact") contact();
+  }
+  async function load() {
+    try { const data=await SpotterSnapshot.refresh(); applySnapshot(data,!snapshotReady); snapshotReady=true; }
+    catch {
+      const locations=typeof rivianLocations!=="undefined"?rivianLocations:window.rivianLocations||[];
+      const charging=typeof rivianChargingLocations!=="undefined"?rivianChargingLocations:[];
+      const roamer=typeof rivianRoamerSnapshot!=="undefined"?rivianRoamerSnapshot.stations:[];
+      if (!locations.length) { if ($("results")) $("results").innerHTML='<div class="empty"><h2>Locations couldn’t load.</h2><p>Check your connection and try again.</p><button class="button" data-reload>Try again</button></div>'; return; }
+      applySnapshot({locations,charging,roamer},!snapshotReady); snapshotReady=true;
+      toast("Showing the bundled location directory. Live refresh is unavailable.");
     }
   }
+  document.addEventListener('spotter:snapshot', (event) => {
+    if (!snapshotReady) return;
+    const active=document.activeElement;
+    if (active && active!==document.body && (active.matches('input,textarea,select') || $('detail')?.contains(active))) { pendingSnapshot=event.detail; return; }
+    applySnapshot(event.detail);
+  });
+  document.addEventListener('focusout', () => setTimeout(() => {
+    const active=document.activeElement;
+    if (pendingSnapshot && (!active || active===document.body || !(active.matches('input,textarea,select') || $('detail')?.contains(active)))) { const value=pendingSnapshot; pendingSnapshot=null; applySnapshot(value); }
+  },0));
+
   document.addEventListener("click", (ev) => {
     const b = ev.target.closest("button");
     if (!b) return;
