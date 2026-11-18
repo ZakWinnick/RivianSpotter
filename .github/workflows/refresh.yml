@@ -167,11 +167,21 @@ jobs:
     uses: ./.github/workflows/deploy-beta.yml
 
   publish_beta_data:
-    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' }}
+    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' && vars.BETA_DYNAMIC_RENDER_ENABLED != 'true' }}
     needs: refresh
     permissions:
       contents: read
       id-token: write
     uses: ./.github/workflows/beta-data-publish.yml
+    with:
+      use_refresh_artifact: true
+
+  publish_beta_json:
+    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' && vars.BETA_DYNAMIC_RENDER_ENABLED == 'true' }}
+    needs: refresh
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/beta-json-publish.yml
     with:
       use_refresh_artifact: true
