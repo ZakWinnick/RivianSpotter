@@ -96,7 +96,7 @@ jobs:
         if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: validated-beta-data
+          name: validated-location-data
           path: data/
           retention-days: 7
       - name: Preserve collected data after a later failure
@@ -114,34 +114,6 @@ jobs:
       - name: Record source coverage
         run: |
           node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} Rivian Adventure Network locations (${s.comingSoon?.count || 0} coming soon), ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"
-  deploy_beta:
-    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED != 'true' }}
-    needs: refresh
-    permissions:
-      contents: read
-      id-token: write
-    uses: ./.github/workflows/deploy-beta.yml
-
-  publish_beta_data:
-    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' && vars.BETA_DYNAMIC_RENDER_ENABLED != 'true' }}
-    needs: refresh
-    permissions:
-      contents: read
-      id-token: write
-    uses: ./.github/workflows/beta-data-publish.yml
-    with:
-      use_refresh_artifact: true
-
-  publish_beta_json:
-    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED == 'true' && vars.BETA_DYNAMIC_RENDER_ENABLED == 'true' }}
-    needs: refresh
-    permissions:
-      contents: read
-      id-token: write
-    uses: ./.github/workflows/beta-json-publish.yml
-    with:
-      use_refresh_artifact: true
-
   publish_production_json:
     if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' }}
     needs: refresh

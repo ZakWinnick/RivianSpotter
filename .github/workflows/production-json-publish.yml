@@ -35,7 +35,7 @@ jobs:
         if: ${{ inputs.use_refresh_artifact == true }}
         uses: actions/download-artifact@v4
         with:
-          name: validated-beta-data
+          name: validated-location-data
           path: main/data
       - name: Fetch the refresh catalog artifact
         if: ${{ inputs.use_refresh_artifact == true }}
