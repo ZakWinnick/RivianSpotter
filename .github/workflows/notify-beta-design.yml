@@ -1,0 +1,32 @@
+name: Request beta design release
+
+on:
+  push:
+    branches: [beta-main]
+    paths:
+      - '**.html'
+      - 'css/**'
+      - 'js/**'
+      - 'assets/**'
+      - 'images/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'build.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'service-worker.js'
+      - 'manifest.json'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the trusted main workflow to release this exact design
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DESIGN_SHA: ${{ github.sha }}
+        run: gh workflow run beta-design-release.yml --repo "$GITHUB_REPOSITORY" --ref main -f "design_sha=$DESIGN_SHA"
