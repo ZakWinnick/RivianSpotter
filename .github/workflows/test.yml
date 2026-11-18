@@ -45,6 +45,13 @@ jobs:
           name: validated-aws-site
           path: ${{ runner.temp }}/rivspotter-site.zip
           retention-days: 7
+      - name: Preserve data for the beta build
+        if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-beta-data
+          path: data/
+          retention-days: 7
       - name: Upload static site
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
@@ -86,7 +93,15 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_AMPLIFY_ROLE_ARN }}
           aws-region: us-east-1
-      - name: Deploy the same validated artifact to staging and beta
+      - name: Deploy the production artifact
         env:
           AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
-        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/aws-site/rivspotter-site.zip"
+        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/aws-site/rivspotter-site.zip" staging
+
+  deploy_beta:
+    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    needs: build
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/deploy-beta.yml

@@ -6,6 +6,14 @@ const { join } = require('node:path');
 const { tmpdir } = require('node:os');
 const { deploy } = require('../scripts/deploy-amplify.cjs');
 
+test('deployments require one explicitly selected supported branch', () => {
+  const { selectedBranch } = require('../scripts/deploy-amplify.cjs');
+  assert.equal(selectedBranch('staging'), 'staging');
+  assert.equal(selectedBranch('beta'), 'beta');
+  assert.throws(() => selectedBranch(), /branch/i);
+  assert.throws(() => selectedBranch('production'), /branch/i);
+});
+
 test('uploads the artifact and waits for a successful Amplify deployment', async () => {
   const dir = mkdtempSync(join(tmpdir(), 'amplify-test-'));
   const archive = join(dir, 'site.zip');
