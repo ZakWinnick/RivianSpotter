@@ -149,7 +149,7 @@ test('retired PHP routes never read credentials, write files, or send email', ()
   }
 });
 
-test('CI blocks on tests, build, and production dependency audit; Pages uses dist', () => {
+test('CI validates releases and the scheduled refresh publishes data only', () => {
   const workflows = fs.readdirSync(path.join(root,'.github/workflows')).filter(f => /\.ya?ml$/.test(f)).map(f => read(`.github/workflows/${f}`)).join('\n');
   assert.match(workflows, /node --test tests\/\*\.test\.cjs/);
   assert.match(workflows, /npm run build/);
@@ -163,17 +163,18 @@ test('CI blocks on tests, build, and production dependency audit; Pages uses dis
   const refresh = read('.github/workflows/refresh.yml');
   assert.doesNotMatch(refresh, /pull_request|--force/);
   assert.match(refresh, /if: github.ref == 'refs\/heads\/main'/);
-  assert(refresh.indexOf('npm run build && npm test') < refresh.indexOf('git push'));
+  assert(refresh.indexOf('node scripts/build-refresh-catalog.cjs') < refresh.indexOf('git push'));
   // If main moves mid-run, data is re-applied only when nobody else changed the data files,
   // and the result is rebuilt and re-tested before the second push.
   const guard = refresh.indexOf('git diff --name-only HEAD~1 origin/main -- $DATA_FILES');
   assert(guard > 0 && guard < refresh.indexOf('git reset --hard origin/main'));
-  assert(refresh.indexOf('git reset --hard origin/main') < refresh.lastIndexOf('npm ci && npm run build && npm test'));
-  assert(refresh.lastIndexOf('npm ci && npm run build && npm test') < refresh.lastIndexOf('git push origin HEAD:main'));
+  assert(refresh.indexOf('git reset --hard origin/main') < refresh.lastIndexOf('npm ci && node scripts/build-refresh-catalog.cjs'));
+  assert(refresh.lastIndexOf('npm ci && node scripts/build-refresh-catalog.cjs') < refresh.lastIndexOf('git push origin HEAD:main'));
   assert.match(refresh, /needs: refresh/);
   assert.match(refresh, /cancel-in-progress: false/);
-  assert.match(workflows, /actions\/deploy-pages@/);
-  assert.match(workflows, /path: dist/);
+  assert.doesNotMatch(refresh, /actions\/deploy-pages@|rivspotter-site\.zip|npm run build/);
+  assert.match(refresh, /production-json-publish\.yml/);
+  assert.match(refresh, /timezone: America\/Los_Angeles/);
   assert.match(workflows, /needs: build/);
 });
 

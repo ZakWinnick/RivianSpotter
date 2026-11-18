@@ -34,7 +34,7 @@ jobs:
         if: ${{ inputs.use_refresh_artifact == true }}
         uses: actions/download-artifact@v4
         with:
-          name: validated-aws-site
+          name: validated-catalog
           path: ${{ runner.temp }}/production
       - uses: actions/setup-node@v4
         with:
@@ -44,7 +44,7 @@ jobs:
           FROM_REFRESH: ${{ inputs.use_refresh_artifact }}
         run: |
           if [ "$FROM_REFRESH" = true ]; then
-            unzip -p "$RUNNER_TEMP/production/rivspotter-site.zip" api/v1/catalog.json > "$RUNNER_TEMP/expected-catalog.json"
+            cp "$RUNNER_TEMP/production/catalog.json" "$RUNNER_TEMP/expected-catalog.json"
           else
             curl --fail --silent --show-error https://rivspotter.com/api/v1/catalog.json > "$RUNNER_TEMP/expected-catalog.json"
           fi

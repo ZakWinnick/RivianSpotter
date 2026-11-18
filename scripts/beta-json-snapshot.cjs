@@ -19,7 +19,8 @@ function buildJsonSnapshot({dataDir,catalog,output,combine=M.combineLocations}){
  }
  const catalogIds=new Set(api.places.map(p=>String(p.id)));
  if(catalogIds.size!==api.places.length||catalogIds.size!==ids.size||[...ids].some(id=>!catalogIds.has(id)))throw Error('Catalog and map identities do not match');
- const payload={schemaVersion:1,revision:api.revision,locations:places,charging,roamer:roamer.stations,photos,updates,changelog,summary,chargingSummary};
+ const {stations,...roamerReport}=roamer;
+ const payload={schemaVersion:1,revision:api.revision,locations:places,charging,roamer:stations,roamerReport,photos,updates,changelog,summary,chargingSummary};
  const snapshotId=createHash('sha256').update(JSON.stringify(payload)).digest('hex');
  const routes={schemaVersion:1,snapshotId,locations,regions:[...regions].sort()};
  const urls=['/','/locations/','/regions/','/updates.html','/changelog.html','/about.html','/privacy.html','/contact.html',...Object.keys(locations).map(s=>`/locations/${s}/`),...routes.regions.map(s=>`/regions/${s}/`)];
@@ -28,6 +29,7 @@ function buildJsonSnapshot({dataDir,catalog,output,combine=M.combineLocations}){
  fs.writeFileSync(path.join(output,'api/v1/catalog.json'),catalog);
  fs.writeFileSync(path.join(output,'data/beta-bundle.json'),JSON.stringify({...payload,snapshotId})+'\n');
  fs.writeFileSync(path.join(output,'data/beta-routes.json'),JSON.stringify(routes)+'\n');
+ for(const name of ['locations.json','charging.json','roamer.json','charging-summary.json','refresh-summary.json','location-history.json','location-updates.json']) fs.copyFileSync(path.join(dataDir,name),path.join(output,'data',name));
  fs.writeFileSync(path.join(output,'sitemap.xml'),sitemap+'\n');
  return {catalogRevision:api.revision,snapshotId,locations:combined.length,routes:Object.keys(locations).length,bytes:Buffer.byteLength(JSON.stringify(payload))};
 }
