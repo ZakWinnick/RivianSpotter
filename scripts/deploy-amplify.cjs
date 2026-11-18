@@ -46,16 +46,20 @@ function extractCatalog(archive) {
   return execFileSync('unzip', ['-p', archive, 'api/v1/catalog.json'], { maxBuffer: 64 * 1024 * 1024 });
 }
 
+function selectedBranch(branch) {
+  if (!['staging', 'beta'].includes(branch)) throw new Error('Select exactly one Amplify branch: staging or beta');
+  return branch;
+}
+
 if (require.main === module) {
   (async () => {
     const appId = process.env.AMPLIFY_APP_ID;
     const archive = process.argv[2];
+    const branch = selectedBranch(process.argv[3]);
     const expected = extractCatalog(archive);
-    for (const branch of ['staging', 'beta']) {
-      const job = await deploy({ appId, branch, archive });
-      await verifyCatalog({ appId, branch, expected });
-      console.log(`Amplify ${branch} deployment ${job} succeeded and catalog matched`);
-    }
+    const job = await deploy({ appId, branch, archive });
+    await verifyCatalog({ appId, branch, expected });
+    console.log(`Amplify ${branch} deployment ${job} succeeded and catalog matched`);
   })().catch(error => { console.error(error.message); process.exitCode = 1; });
 }
-module.exports = { deploy, verifyCatalog, extractCatalog };
+module.exports = { deploy, verifyCatalog, extractCatalog, selectedBranch };
