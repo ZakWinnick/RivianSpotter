@@ -274,7 +274,7 @@ function buildPages(dist, list, summary = {}) {
       description:
         "Current location coverage for the RivSpotter directory.",
       url: "/stats.html",
-      active: "Updates",
+      active: "Location data",
       content:
         header(
           "",

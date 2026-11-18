@@ -142,13 +142,16 @@
   };
   const tabs = [["Locations", "/locations/"], ["Map", "/"], ["Saved", "/saved.html"], ["Browse", "/regions/"]];
   // Pages written before the redesign still pass their old section names.
-  const activeAlias = { Explore: "Map", Updates: "Browse", About: "Browse" };
+  const activeAlias = { Explore: "Map" };
+  // Secondary pages: always listed on desktop, partly on tablets, behind More on phones.
+  const pages = [["Updates", "/updates.html", "tablet"], ["Location data", "/stats.html", ""], ["Changelog", "/changelog.html", ""], ["About", "/about.html", "tablet"], ["Report an update", "/contact.html", ""]];
   function header(active = "") {
     const current = activeAlias[active] || active;
-    const more = [["Location updates", "/updates.html"], ["Location data", "/stats.html"], ["Changelog", "/changelog.html"], ["About", "/about.html"], ["Report an update", "/contact.html"]];
+    const here = (n) => (n === active ? ' aria-current="page"' : "");
+    const moreIcon = '<svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="7.5" cy="12" r=".7" fill="currentColor"/><circle cx="12" cy="12" r=".7" fill="currentColor"/><circle cx="16.5" cy="12" r=".7" fill="currentColor"/></svg>';
     return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="RivSpotter home"><img src="/assets/spotter-app-mark.png" width="40" height="40" alt=""><span>RivSpotter</span></a><nav class="tab-bar" aria-label="Main navigation">${tabs
       .map(([n, h]) => `<a href="${h}"${current === n ? ' aria-current="page"' : ""}><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${tabIcons[n]}</svg><span>${n}</span></a>`)
-      .join("")}</nav><details class="more-menu"><summary aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="7.5" cy="12" r=".7" fill="currentColor"/><circle cx="12" cy="12" r=".7" fill="currentColor"/><circle cx="16.5" cy="12" r=".7" fill="currentColor"/></svg></summary><div class="more-list">${more.map(([n, h]) => `<a href="${h}">${n}</a>`).join("")}</div></details></header>`;
+      .join("")}<details class="more-menu"><summary>${moreIcon}<span>More</span></summary><div class="more-list">${pages.map(([n, h, keep]) => `<a href="${h}"${keep ? ` class="shown-on-${keep}"` : ""}${here(n)}>${n}</a>`).join("")}</div></details></nav><nav class="page-links" aria-label="More pages">${pages.map(([n, h, keep]) => `<a href="${h}"${keep ? "" : ' class="desktop-only"'}${here(n)}>${n}</a>`).join("")}</nav></header>`;
   }
   function footer() {
     return `<footer class="site-footer"><span>Independent and community maintained. Not affiliated with Rivian.</span><span><a href="/updates.html">Updates</a><a href="/stats.html">Location data</a><a href="/changelog.html">Changelog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Report an update</a></span></footer>`;

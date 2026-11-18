@@ -12,6 +12,8 @@ test('header carries the app tabs with the map as home', () => {
     assert.match(html, new RegExp(`href="${href.replace(/[.]/g, '\\.')}"[^>]*>.*?<span>${name}</span>`));
   assert.match(html, /href="\/"\s+aria-current="page"/);
   assert.doesNotMatch(html, /iPhone app/);
+  for (const href of ['/updates.html', '/stats.html', '/changelog.html', '/about.html', '/contact.html'])
+    assert.match(html.slice(html.indexOf('class="page-links"')), new RegExp(`href="${href.replace(/[.]/g, '\\.')}"`), `${href} is listed in the header`);
   assert.match(U.header('Explore'), /href="\/"\s+aria-current="page"/, 'old page names still mark the map tab');
 });
 

@@ -128,19 +128,30 @@
   .tab-bar a:hover { text-decoration: none; background: var(--fill); }
   .tab-bar a[aria-current] { background: var(--tint); color: var(--forest); }
   .tab-icon { width: 20px; height: 20px; flex: none; }
-  .more-menu { position: relative; }
+  .more-menu { position: relative; display: none; }
   .more-menu summary {
-    list-style: none; width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center;
-    background: var(--glass); color: var(--forest); box-shadow: var(--shadow); cursor: pointer;
+    list-style: none; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+    border-radius: 999px; color: var(--ink); font-size: 0.9rem; font-weight: 600; cursor: pointer;
   }
   .more-menu summary::-webkit-details-marker { display: none; }
-  .more-menu summary svg { width: 24px; height: 24px; }
+  .more-menu summary:hover, .more-menu[open] summary { background: var(--fill); }
   .more-list {
-    position: absolute; right: 0; top: 52px; min-width: 220px; padding: 6px; border-radius: 18px;
-    background: var(--card); box-shadow: var(--shadow-float); display: grid;
+    position: absolute; right: 0; top: 54px; min-width: 220px; padding: 6px; border-radius: 18px;
+    background: var(--card); box-shadow: var(--shadow-float); display: grid; z-index: 50;
   }
   .more-list a { padding: 11px 14px; border-radius: 12px; color: var(--ink); font-size: 0.95rem; }
   .more-list a:hover { background: var(--fill); text-decoration: none; }
+  .more-list a[aria-current], .page-links a[aria-current] { color: var(--forest); background: var(--tint); }
+  .page-links {
+    display: flex; gap: 2px; padding: 5px; border-radius: 999px;
+    background: var(--glass); box-shadow: var(--shadow);
+    -webkit-backdrop-filter: saturate(1.6) blur(18px); backdrop-filter: saturate(1.6) blur(18px);
+  }
+  .page-links a {
+    display: flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px;
+    color: var(--ink); font-size: 0.88rem; font-weight: 600; white-space: nowrap;
+  }
+  .page-links a:hover { background: var(--fill); text-decoration: none; }
 
   /* Buttons */
   .button, .icon-button {
@@ -616,11 +627,22 @@
   [data-update-card][hidden], [data-update-day][hidden], [data-update-controls][hidden] { display: none !important; }
 
   /* ---------- Tablet ---------- */
-  @media (max-width: 1100px) and (min-width: 761px) {
-    .site-header { padding-inline: 20px; }
+  @media (max-width: 1359px) and (min-width: 761px) {
     .brand span { display: none; }
     .explorer-page .brand { padding: 5px; }
-    .tab-bar a { padding: 0 14px; }
+  }
+  /* Tablet: compact tabs, the two most used pages inline, the rest under More. */
+  @media (max-width: 1279px) and (min-width: 761px) {
+    .site-header { padding-inline: 20px; gap: 10px; }
+    .brand span { display: none; }
+    .explorer-page .brand { padding: 5px; }
+    .tab-bar a { padding: 0 12px; gap: 6px; font-size: 0.85rem; }
+    .page-links a { padding: 0 12px; font-size: 0.85rem; }
+    .page-links .desktop-only, .more-list .shown-on-tablet { display: none; }
+    .more-menu { display: block; }
+    .more-menu summary { padding: 0 12px; font-size: 0.85rem; }
+  }
+  @media (max-width: 1100px) and (min-width: 761px) {
     .sidebar { width: 340px; }
     .map-topbar, .map-legend { left: 376px; }
     .map-legend { max-width: calc(100% - 460px); }
@@ -634,10 +656,14 @@
   @media (max-width: 760px) {
     body:not(.explorer-page) { padding-bottom: 104px; }
     .site-header, .explorer-page .site-header { position: static; padding: 0; margin: 0; display: block; max-width: none; pointer-events: auto; }
-    .brand, .more-menu { display: none; }
+    .brand, .page-links { display: none; }
+    .more-menu { display: block; }
+    .more-menu summary { flex-direction: column; gap: 2px; justify-content: center; min-height: 56px; padding: 0; font-size: 0.7rem; }
+    .more-list { top: auto; bottom: 70px; right: -5px; }
+    .tab-bar .more-list a { display: block; min-height: 0; padding: 13px 16px; font-size: 1rem; font-weight: 500; text-align: left; }
     .tab-bar {
       position: fixed; z-index: 40; left: 12px; right: 12px; bottom: max(14px, env(safe-area-inset-bottom));
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 5px;
+      display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; padding: 5px;
       box-shadow: var(--shadow-float);
     }
     .tab-bar a { flex-direction: column; gap: 2px; justify-content: center; min-height: 56px; padding: 0; font-size: 0.7rem; }
