@@ -165,6 +165,7 @@ function detailPage(list,p){
  return placePage(p,{official,directions,booking,nearby,exceptionText});
 }
 function classify(pathname){
+ pathname=pathname.replace(/\/index\.html$/,'/');
  if(pathname==='/locations/'||pathname==='/locations')return {kind:'gallery'};
  if(pathname==='/regions/'||pathname==='/regions')return {kind:'browse'};
  if(pathname==='/updates.html')return {kind:'updates'};

@@ -411,7 +411,7 @@
         if (target) select(target, { focus: false, push: false });
       } else {
         if (previous) selected = find(previous) || selected;
-        render();
+        const resultsTop=$('results').scrollTop; render(); $('results').scrollTop=resultsTop;
         if (selected && !$('detail').hidden) {
           const top=$('detail').scrollTop; $('detail').innerHTML=detail(selected); $('detail').scrollTop=top;
         }
