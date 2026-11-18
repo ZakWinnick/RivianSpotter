@@ -3,7 +3,7 @@
  function createStore({fetchSnapshot,readCache,writeCache,digest,onChange=()=>{}}){
   let current=null,initialized=false,inflight=null;
   async function valid(x){
-   if(!x||x.schemaVersion!==1||!Number.isSafeInteger(x.revision)||x.revision<=0||!/^[a-f0-9]{64}$/.test(x.snapshotId||'')||!Array.isArray(x.locations)||!x.locations.length||!Array.isArray(x.charging)||!Array.isArray(x.roamer)||!x.updates||!Array.isArray(x.updates.days)||!x.photos||!x.summary||!x.chargingSummary)return false;
+   if(!x||x.schemaVersion!==1||!Number.isSafeInteger(x.revision)||x.revision<=0||!/^[a-f0-9]{64}$/.test(x.snapshotId||'')||!Array.isArray(x.locations)||!x.locations.length||!Array.isArray(x.charging)||!Array.isArray(x.roamer)||!x.updates||!Array.isArray(x.updates.days)||!Array.isArray(x.changelog)||!x.photos||!x.summary||!x.chargingSummary)return false;
    const {snapshotId,...payload}=x;return await digest(JSON.stringify(payload))===snapshotId;
   }
   async function refresh(){

@@ -45,7 +45,7 @@ async function networkFirst(request, policy) {
       const shellResponse = await shell.match(policy.key);
       if (shellResponse) return shellResponse;
       if (request.mode === 'navigate') {
-        if (/^\/(?:locations|regions)(?:\/[a-z0-9-]+)?\/?$/.test(new URL(request.url).pathname) || ['/updates.html','/stats.html'].includes(new URL(request.url).pathname)) { const dynamic = await shell.match('/dynamic.html'); if (dynamic) return dynamic; }
+        if (/^\/(?:locations|regions)(?:\/[a-z0-9-]+)?\/?$/.test(new URL(request.url).pathname) || ['/updates.html','/stats.html','/changelog.html'].includes(new URL(request.url).pathname)) { const dynamic = await shell.match('/dynamic.html'); if (dynamic) return dynamic; }
         const offline = await shell.match('/offline.html');
         if (offline) return offline;
       }

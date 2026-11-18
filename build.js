@@ -86,7 +86,7 @@ for (const file of ["mapbox-gl.js", "mapbox-gl.css"])
     path.join(dist, "vendor", file),
   );
 // Editorial shells are design assets; location facts live only in the JSON snapshot.
-for (const file of ["about.html", "privacy.html", "contact.html", "saved.html", "changelog.html", "404.html"]) {
+for (const file of ["about.html", "privacy.html", "contact.html", "saved.html", "404.html"]) {
   let html=fs.readFileSync(path.join(root,file),"utf8");
   html=html.replace(/(<script defer src="\/js\/app\.js(?:\?[^"]*)?">)/, '<script defer src="/js/snapshot-store.js"></script>$1');
   fs.writeFileSync(path.join(dist,file),html);
@@ -124,7 +124,7 @@ function check(dir) {
       )) {
         const url = m[1];
         const target = path.join(dist, decodeURIComponent(url));
-        if (!fs.existsSync(target) && !/^\/(?:locations|regions)(?:\/[a-z0-9-]+)?\/?$/.test(url) && !['/updates.html','/stats.html','/sitemap.xml'].includes(url))
+        if (!fs.existsSync(target) && !/^\/(?:locations|regions)(?:\/[a-z0-9-]+)?\/?$/.test(url) && !['/updates.html','/stats.html','/changelog.html','/sitemap.xml'].includes(url))
           errors.push(path.relative(dist, file) + ": " + url);
       }
     }

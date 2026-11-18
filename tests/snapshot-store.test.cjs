@@ -1,7 +1,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const {createStore}=require('../js/snapshot-store.js');
-function snapshot(revision,label){const x={schemaVersion:1,revision,locations:[{id:1}],charging:[{id:2}],roamer:[],photos:{},updates:{days:[]},summary:{label},chargingSummary:{}};return {...x,snapshotId:crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex')};}
+function snapshot(revision,label){const x={schemaVersion:1,revision,locations:[{id:1}],charging:[{id:2}],roamer:[],photos:{},updates:{days:[]},changelog:[],summary:{label},chargingSummary:{}};return {...x,snapshotId:crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex')};}
 const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
 test('uses the full snapshot identity, including updates with identical iOS revision',async()=>{
  let source=snapshot(7,'first'),cached=null,events=0;const store=createStore({fetchSnapshot:async()=>source,readCache:async()=>cached,writeCache:async x=>{cached=x},digest,onChange:()=>events++});
