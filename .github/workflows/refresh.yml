@@ -51,12 +51,12 @@ jobs:
         # This run commits data/catalog-revision.json below, so it may record a new revision.
         env:
           CATALOG_REVISION_UPDATE: '1'
-        run: npm run build && npm test && node scripts/audit-dependencies.cjs
+        run: node scripts/build-refresh-catalog.cjs "$RUNNER_TEMP/catalog.json" && npm test && node scripts/audit-dependencies.cjs
       - name: Save the validated data
         env:
           CATALOG_REVISION_UPDATE: '1'
           DATA_FILES: data/location-updates.json data/catalog-revision.json data/locations.json data/refresh-summary.json data/location-history.json data/charging.json data/charging-summary.json data/roamer.json
-          GENERATED_FILES: js/locations.js js/charging.js js/roamer.js about.html privacy.html contact.html saved.html stats.html updates.html changelog.html 404.html
+          GENERATED_FILES: js/locations.js js/charging.js js/roamer.js
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -76,7 +76,7 @@ jobs:
           git reset --hard origin/main
           tar -xf "$stash/data.tar"
           node -e "require('./scripts/generate-data.cjs').generate();require('./scripts/generate-charging.cjs').generate();require('./scripts/generate-roamer.cjs').generate()"
-          npm ci && npm run build && npm test
+          npm ci && node scripts/build-refresh-catalog.cjs "$RUNNER_TEMP/catalog.json" && npm test
           git add $DATA_FILES $GENERATED_FILES
           git commit -m 'Refresh official Rivian location and charging data'
           git push origin HEAD:main
@@ -85,26 +85,20 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: node scripts/report-refresh-warnings.cjs
-      - name: Package the validated AWS artifact
-        if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && true }}
-        run: cd dist && zip -qr "$RUNNER_TEMP/rivspotter-site.zip" .
-      - name: Preserve the validated AWS artifact
-        if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && true }}
+      - name: Preserve validated catalog
+        if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: validated-aws-site
-          path: ${{ runner.temp }}/rivspotter-site.zip
+          name: validated-catalog
+          path: ${{ runner.temp }}/catalog.json
           retention-days: 7
-      - name: Preserve refreshed data for the beta build
+      - name: Preserve refreshed data
         if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: validated-beta-data
           path: data/
           retention-days: 7
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
       - name: Preserve collected data after a later failure
         if: ${{ failure() && steps.inventory.outcome == 'success' }}
         uses: actions/upload-artifact@v4
@@ -120,44 +114,6 @@ jobs:
       - name: Record source coverage
         run: |
           node -e 'const s=require("./data/charging-summary.json"),p=require("./data/locations.json"); console.log(`Refreshed ${s.date}: ${p.length} places, ${s.counts.RAN} Rivian Adventure Network locations (${s.comingSoon?.count || 0} coming soon), ${s.counts.Waypoint} Waypoint locations.`)' >> "$GITHUB_STEP_SUMMARY"
-  deploy:
-    needs: refresh
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/deploy-pages@v4
-        id: deployment
-
-  deploy_aws:
-    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && true }}
-    needs: refresh
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: actions/download-artifact@v4
-        with:
-          name: validated-aws-site
-          path: ${{ runner.temp }}/aws-site
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ vars.AWS_AMPLIFY_ROLE_ARN }}
-          aws-region: us-east-1
-      - name: Deploy the production artifact
-        env:
-          AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
-        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/aws-site/rivspotter-site.zip" staging
-
   deploy_beta:
     if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' && vars.BETA_DATA_PUBLISH_ENABLED != 'true' }}
     needs: refresh
@@ -185,3 +141,11 @@ jobs:
     uses: ./.github/workflows/beta-json-publish.yml
     with:
       use_refresh_artifact: true
+
+  publish_production_json:
+    if: ${{ vars.AMPLIFY_DEPLOY_ENABLED == 'true' }}
+    needs: refresh
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/production-json-publish.yml

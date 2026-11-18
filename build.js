@@ -1,7 +1,6 @@
 /* Reproducible static release. Only explicitly public files enter dist. */
 const fs = require("node:fs"),
   path = require("node:path");
-const { buildPages } = require("./scripts/build-pages.cjs");
 const { header } = require("./js/components.js");
 const root = __dirname,
   dist = path.join(root, "dist");
@@ -11,9 +10,13 @@ const places = JSON.parse(
 const charging = require('./scripts/generate-charging.cjs').generate();
 const roamer = require('./scripts/generate-roamer.cjs').generate();
 const locations = require('./js/location-model.js').combineLocations(places, charging, roamer.stations);
-// Data-only scheduled releases also invalidate bundled browser assets and offline snapshots.
-const release = require('./package.json').version + '-' + require('node:crypto').createHash('sha256')
-  .update(JSON.stringify(locations)).digest('hex').slice(0, 12);
+// Code changes must invalidate old shell caches, including when data has not changed.
+const shellHash = require('node:crypto').createHash('sha256');
+for (const file of ['index.html', 'dynamic.html', 'service-worker.js', 'css/style.css',
+  'js/components.js', 'js/app.js', 'js/map.js', 'js/snapshot-store.js', 'js/dynamic-views.js']) {
+  shellHash.update(file).update(fs.readFileSync(path.join(root, file)));
+}
+const release = require('./package.json').version + '-' + shellHash.digest('hex').slice(0, 12);
 if (!Array.isArray(locations) || !locations.length)
   throw Error("Canonical location array is empty");
 require("./scripts/generate-data.cjs").generate();
@@ -28,6 +31,7 @@ function copy(file) {
 }
 for (const file of [
   "index.html",
+  "dynamic.html",
   "admin.html",
   "admin-new.html",
   "offline.html",
@@ -39,6 +43,8 @@ for (const file of [
   "js/location-model.js",
   "js/map.js",
   "js/app.js",
+  "js/snapshot-store.js",
+  "js/dynamic-views.js",
   "js/config.js",
   "js/updates.js",
   "js/locations.js",
@@ -46,6 +52,8 @@ for (const file of [
   "js/roamer.js",
   "data/roamer.json",
   "js/admin.js",
+  "js/gallery.js",
+  "assets/spotter-app-mark.png",
   "assets/spotter-social-card.png",
   "assets/spotter-social-card.svg",
   "assets/spotter-route.svg",
@@ -71,8 +79,8 @@ for (const route of ["admin", "admin-new"]) {
 }
 let index = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 index = index.replace(
-  '<div data-site-header data-active="Explore"></div>',
-  header("Explore"),
+  '<div data-site-header data-active="Map"></div>',
+  header("Map"),
 );
 fs.writeFileSync(path.join(dist, "index.html"), index);
 fs.mkdirSync(path.join(dist, "vendor"), { recursive: true });
@@ -81,12 +89,13 @@ for (const file of ["mapbox-gl.js", "mapbox-gl.css"])
     require.resolve("mapbox-gl/dist/" + file),
     path.join(dist, "vendor", file),
   );
-const summary = JSON.parse(
-  fs.readFileSync(path.join(root, "data/refresh-summary.json"), "utf8"),
-);
-summary.charging = JSON.parse(fs.readFileSync(path.join(root, 'data/charging-summary.json'), 'utf8'));
-summary.roamer = roamer;
-const routes = buildPages(dist, locations, summary);
+// Editorial shells are design assets; location facts live only in the JSON snapshot.
+for (const file of ["about.html", "privacy.html", "contact.html", "saved.html", "404.html"]) {
+  let html=fs.readFileSync(path.join(root,file),"utf8");
+  html=html.replace(/(<script defer src="\/js\/app\.js(?:\?[^"]*)?">)/, '<script defer src="/js/snapshot-store.js"></script>$1');
+  fs.writeFileSync(path.join(dist,file),html);
+}
+fs.writeFileSync(path.join(dist, "robots.txt"), "User-agent: *\nAllow: /\nDisallow: /admin.html\nSitemap: https://rivspotter.com/sitemap.xml\n");
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 function versionAssets(dir) {
   for (const name of fs.readdirSync(dir)) {
@@ -105,18 +114,6 @@ function versionAssets(dir) {
   }
 }
 versionAssets(dist);
-// These top-level entry pages are generated from scripts/build-pages.cjs, never hand edited.
-for (const file of [
-  "about.html",
-  "privacy.html",
-  "contact.html",
-  "stats.html",
-  "saved.html",
-  "updates.html",
-  "changelog.html",
-  "404.html",
-])
-  fs.copyFileSync(path.join(dist, file), path.join(root, file));
 const errors = [];
 let htmlCount = 0;
 function check(dir) {
@@ -131,7 +128,7 @@ function check(dir) {
       )) {
         const url = m[1];
         const target = path.join(dist, decodeURIComponent(url));
-        if (!fs.existsSync(target))
+        if (!fs.existsSync(target) && !/^\/(?:locations|regions)(?:\/[a-z0-9-]+)?\/?$/.test(url) && !['/updates.html','/stats.html','/changelog.html','/sitemap.xml'].includes(url))
           errors.push(path.relative(dist, file) + ": " + url);
       }
     }
