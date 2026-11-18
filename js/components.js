@@ -27,7 +27,9 @@
     clock: "M12 6v6l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0",
     map: "m2 5 6-3 8 3 6-3v17l-6 3-8-3-6 3V5Zm6-3v17m8-14v17",
     list: "M8 5h14M8 12h14M8 19h14M2 5h1m-1 7h1m-1 7h1",
-    external: "M14 2h8v8m0-8L10 14M10 3H2v19h19v-9",
+    external: "M14 3h7v7m0-7L10 14M10 4H4v16h16v-6",
+    phone: "M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z",
+    calendar: "M4 6h16v15H4zM4 10h16M8 3v4m8-4v4",
   };
   function icon(name, cls = "") {
     return `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${paths[name] || paths.pin}"/></svg>`;
@@ -132,29 +134,36 @@
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
     return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
+  const tabIcons = {
+    Locations: '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/>',
+    Map: '<path d="M2 5.5 8 3v16l-6 2.5V5.5ZM9.5 3l5 2v16l-5-2V3ZM16 5l6-2.5v16L16 21V5Z"/>',
+    Saved: '<path d="M6 2h12a1 1 0 0 1 1 1v19l-7-4.5L5 22V3a1 1 0 0 1 1-1Z"/>',
+    Browse: '<path d="M7 3h10v2H7zM5 6h14v2H5z"/><rect x="3" y="9" width="18" height="12" rx="3"/>',
+  };
+  const tabs = [["Locations", "/locations/"], ["Map", "/"], ["Saved", "/saved.html"], ["Browse", "/regions/"]];
+  // Pages written before the redesign still pass their old section names.
+  const activeAlias = { Explore: "Map", Updates: "Browse", About: "Browse" };
   function header(active = "") {
-    return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="RivSpotter home"><img src="/assets/spotter-route.svg" width="36" height="36" alt=""><span>RIV<span class="brand-light">SPOTTER</span></span></a><nav aria-label="Main navigation">${[
-      ["Explore", "/"],
-      ["Saved", "/saved.html"],
-      ["Updates", "/updates.html"],
-      ["About", "/about.html"],
-    ]
-      .map(
-        ([n, h]) =>
-          `<a href="${h}"${active === n ? ' aria-current="page"' : ""}>${n}</a>`,
-      )
-      .join(
-        "",
-      )}</nav></header>`;
+    const current = activeAlias[active] || active;
+    const more = [["Location updates", "/updates.html"], ["Location data", "/stats.html"], ["Changelog", "/changelog.html"], ["About", "/about.html"], ["Report an update", "/contact.html"]];
+    return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/" aria-label="RivSpotter home"><img src="/assets/spotter-app-mark.png" width="40" height="40" alt=""><span>RivSpotter</span></a><nav class="tab-bar" aria-label="Main navigation">${tabs
+      .map(([n, h]) => `<a href="${h}"${current === n ? ' aria-current="page"' : ""}><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${tabIcons[n]}</svg><span>${n}</span></a>`)
+      .join("")}</nav><details class="more-menu"><summary aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="7.5" cy="12" r=".7" fill="currentColor"/><circle cx="12" cy="12" r=".7" fill="currentColor"/><circle cx="16.5" cy="12" r=".7" fill="currentColor"/></svg></summary><div class="more-list">${more.map(([n, h]) => `<a href="${h}">${n}</a>`).join("")}</div></details></header>`;
   }
   function footer() {
-    return `<footer class="site-footer"><span>Independent. Community maintained.</span><span><a href="/changelog.html">Changelog</a><a href="/contact.html">Report an update</a><a href="/about.html#sources">Sources</a><a href="/privacy.html">Privacy</a></span></footer>`;
+    return `<footer class="site-footer"><span>Independent and community maintained. Not affiliated with Rivian.</span><span><a href="/updates.html">Updates</a><a href="/stats.html">Location data</a><a href="/changelog.html">Changelog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Report an update</a></span></footer>`;
   }
   function mount() {
     const h = document.querySelector("[data-site-header]");
     if (h && !h.children.length) h.innerHTML = header(h.dataset.active || "");
     const f = document.querySelector("[data-site-footer]");
     if (f && !f.children.length) f.innerHTML = footer();
+    document.addEventListener?.("click", (ev) => {
+      document.querySelectorAll(".more-menu[open]").forEach((menu) => { if (!menu.contains(ev.target)) menu.open = false; });
+    });
+    document.addEventListener?.("keydown", (ev) => {
+      if (ev.key === "Escape") document.querySelectorAll(".more-menu[open]").forEach((menu) => { menu.open = false; menu.querySelector("summary").focus(); });
+    });
     const media = matchMedia("(prefers-color-scheme: dark)");
     function apply(dark) {
       const value = dark ? "dark" : "light";

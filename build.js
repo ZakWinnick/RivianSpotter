@@ -46,6 +46,8 @@ for (const file of [
   "js/roamer.js",
   "data/roamer.json",
   "js/admin.js",
+  "js/gallery.js",
+  "assets/spotter-app-mark.png",
   "assets/spotter-social-card.png",
   "assets/spotter-social-card.svg",
   "assets/spotter-route.svg",
@@ -71,8 +73,8 @@ for (const route of ["admin", "admin-new"]) {
 }
 let index = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 index = index.replace(
-  '<div data-site-header data-active="Explore"></div>',
-  header("Explore"),
+  '<div data-site-header data-active="Map"></div>',
+  header("Map"),
 );
 fs.writeFileSync(path.join(dist, "index.html"), index);
 fs.mkdirSync(path.join(dist, "vendor"), { recursive: true });

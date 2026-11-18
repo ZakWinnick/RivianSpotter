@@ -47,6 +47,33 @@ window.SpotterMap = (() => {
     document.getElementById("map-caption").textContent =
       "List and location details are still available";
   }
+  // Type symbols drawn from the same stroke icons the site uses, so markers match the app.
+  const typePaths = {
+    Space: "M4 21V8l8-5 8 5v13M1 21h22M9 21v-7h6v7",
+    "Demo Center": "m3 11 2-6h14l2 6M2 11h20v8H2v-8Zm3 8v3m14-3v3",
+    "Service Center": "m14 3-3 4 2 4 4 2 4-3a7 7 0 0 1-9 9L5 23l-4-4 7-7a7 7 0 0 1 6-9Z",
+    Outpost: "m2 21 10-18 10 18H2Zm6 0 4-7 4 7",
+    RAN: "m13 2-9 12h7l-1 8 10-12h-7l1-8Z",
+    Waypoint: "M8 2v5m8-5v5M6 7h12v4a6 6 0 0 1-12 0V7Zm6 10v5",
+  };
+  function addTypeIcons() {
+    if (!map?.addImage || typeof document.createElement !== "function" || typeof Path2D === "undefined") return;
+    for (const [type, d] of Object.entries(typePaths))
+      for (const planned of [false, true]) {
+        const name = "spot-" + type + (planned ? "-planned" : "");
+        if (map.hasImage?.(name)) continue;
+        const size = 40, canvas = document.createElement("canvas");
+        canvas.width = canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        ctx.translate(8, 8);
+        ctx.scale(1, 1);
+        ctx.lineWidth = 2.6;
+        ctx.lineCap = ctx.lineJoin = "round";
+        ctx.strokeStyle = planned ? "#b4621a" : "#ffffff";
+        ctx.stroke(new Path2D(d));
+        map.addImage(name, ctx.getImageData(0, 0, size, size), { pixelRatio: 2 });
+      }
+  }
   function install() {
     if (!map || map.getSource("places")) return;
     ready = true;
@@ -67,10 +94,10 @@ window.SpotterMap = (() => {
       source: "places",
       filter: ["has", "point_count"],
       paint: {
-        "circle-color": "#37483d",
-        "circle-radius": ["step", ["get", "point_count"], 19, 10, 23, 40, 28],
-        "circle-stroke-color": "#f8f7f3",
-        "circle-stroke-width": 2,
+        "circle-color": document.documentElement.dataset.theme === "dark" ? "#3a3a3c" : "#2c2c2e",
+        "circle-radius": ["step", ["get", "point_count"], 18, 10, 22, 40, 27],
+        "circle-stroke-color": "#ffffff",
+        "circle-stroke-width": 3,
       },
     });
     map.addLayer({
@@ -95,14 +122,15 @@ window.SpotterMap = (() => {
         "circle-radius": [
           "case",
           ["boolean", ["feature-state", "selected"], false],
-          16,
-          12,
+          17,
+          13,
         ],
-        "circle-stroke-width": 2.5,
+        "circle-stroke-width": ["case", ["boolean", ["feature-state", "selected"], false], 4, 2.5],
         "circle-stroke-color": ["case", ["==", ["get", "planned"], true], "#b4621a", ["==", ["get", "combined"], true], "#7062a4", "#ffffff"],
       },
     });
-    map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"text-field":["match",["get","type"],"Space","◇","Demo Center","↗","Service Center","+","Outpost","△","RAN","ϟ","Waypoint","↯","•"],"text-size":16,"text-font":["Arial Unicode MS Bold"],"text-allow-overlap":true},paint:{"text-color":["case",["==",["get","planned"],true],"#b4621a","#fff"]}});
+    addTypeIcons();
+    map.addLayer({id:"place-icons",type:"symbol",source:"places",filter:["!",["has","point_count"]],layout:{"icon-image":["concat","spot-",["get","type"],["case",["==",["get","planned"],true],"-planned",""]],"icon-size":0.95,"icon-allow-overlap":true,"icon-ignore-placement":true}});
     if (selected) mark(selected);
   }
   function init(callback) {
@@ -139,6 +167,13 @@ window.SpotterMap = (() => {
         new mapboxgl.ScaleControl({ unit: "imperial" }),
         "bottom-left",
       );
+      // The finder floats over the map on wider screens; frame the camera beside it.
+      const pad = () => {
+        const finder = document.getElementById("finder")?.getBoundingClientRect?.();
+        map?.setPadding?.({ left: innerWidth > 760 && finder ? Math.round(finder.right) : 0, top: 0, right: 0, bottom: 0 });
+      };
+      pad();
+      window.addEventListener?.("resize", pad);
       map.on("style.load", install);
       map.on("click", "places", (e) =>
         onSelect(Number(e.features[0].properties.id)),
