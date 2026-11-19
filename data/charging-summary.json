@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "sourceUrl": "https://rivian.com/experience/charging#map",
   "tileSource": "https://api.rivianservices.com/map-chargers/tiles/chrg2",
   "coverage": [
@@ -32,10 +32,10 @@
   "pinZoom": 12,
   "tilesScanned": 544,
   "splitTiles": 0,
-  "requests": 922,
+  "requests": 903,
   "comingSoon": {
     "count": 36,
-    "observedAt": "2026-11-18T14:17:41.260Z",
+    "observedAt": "2026-11-19T13:58:09.204Z",
     "sourceUrl": "https://rivian.com/experience/charging#map",
     "assetUrl": "https://rivian.com/root/_next/static/chunks/2crkkyg930--r.js",
     "sha256": "bafb12fa18fad14a856a5b9fdd5d609c6856fd5ada9f8d2262824577191990d6"
@@ -50,10 +50,19 @@
     "Waypoint": 208
   },
   "promotions": {
-    "promoted": [],
+    "promoted": [
+      {
+        "plannedSourceId": "RIVIAN-PLANNED-AZ-page",
+        "activeSourceId": "US-RIV-L1363618434612894948",
+        "matchedAt": "2026-11-19",
+        "activeFirstSeen": "2026-11-19",
+        "method": "announced-city-new-local-station",
+        "distanceKm": 2.77
+      }
+    ],
     "unresolved": []
   },
   "added": [],
   "removed": [],
-  "sha256": "25afe30e14eb86af1dd7df70b9439ac9c85bcaa4aecb4f6a9c74b82a01798b28"
+  "sha256": "3327c5be721334da5640ff047b48fb2094dbb4bcff0ab50cde5fac6b3293fbc5"
 }

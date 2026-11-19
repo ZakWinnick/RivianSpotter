@@ -1,1290 +1,878 @@
 {
   "refreshMode": "daily",
-  "startedAt": "2026-11-18T14:17:41.559Z",
+  "startedAt": "2026-11-19T13:58:09.540Z",
   "sourceUrl": "https://rivianroamer.com/charging/networks/rivian-adventure-network",
-  "observedAt": "2026-11-18T14:17:42.376Z",
-  "completedAt": "2026-11-18T14:59:49.780Z",
-  "sourceHash": "8672fa15bbef6d8120f56df505a78f1c73b887808de406b4cc15e3d6cce604f0",
-  "networkCount": 166,
+  "observedAt": "2026-11-19T13:58:09.935Z",
+  "completedAt": "2026-11-19T14:40:20.498Z",
+  "sourceHash": "17e0c04508a3913d84d5c72a3ed676ed6c3c75df1b23abab521816e4890451b3",
+  "networkCount": 167,
   "coverage": {
-    "officialStationCount": 166,
+    "officialStationCount": 167,
     "detailCount": 166,
     "freshDetailCount": 166,
-    "checkedCount": 166,
-    "missingDetailIds": [],
+    "checkedCount": 0,
+    "missingDetailIds": [
+      "US-RIV-L1363618434612894948"
+    ],
     "staleDetailIds": [],
-    "notCheckedIds": [],
-    "missingFields": []
+    "notCheckedIds": [
+      "US-RIV-L10186351206568156344",
+      "US-RIV-L10291570024194613737",
+      "US-RIV-L10353286583268794570",
+      "US-RIV-L10427722039519689545",
+      "US-RIV-L10461199998633248139",
+      "US-RIV-L10507911838236990683",
+      "US-RIV-L10624299143766229312",
+      "US-RIV-L10652557770275483296",
+      "US-RIV-L10753662044676103876",
+      "US-RIV-L11216328121520348963",
+      "US-RIV-L11239378122582441769",
+      "US-RIV-L11403047073990046039",
+      "US-RIV-L11436858880889328402",
+      "US-RIV-L11479343488048371684",
+      "US-RIV-L11703884261784064412",
+      "US-RIV-L11857927989230157957",
+      "US-RIV-L11909426625037321337",
+      "US-RIV-L1195453907241473386",
+      "US-RIV-L12109742311651856363",
+      "US-RIV-L12314948866156935967",
+      "US-RIV-L12405604048218838563",
+      "US-RIV-L12432239427733940105",
+      "US-RIV-L12472896150238355675",
+      "US-RIV-L12968954152362062981",
+      "US-RIV-L12972394923134340248",
+      "US-RIV-L13002215087692727396",
+      "US-RIV-L13160365438350136805",
+      "US-RIV-L13314659433195868777",
+      "US-RIV-L13498339696147909887",
+      "US-RIV-L1363618434612894948",
+      "US-RIV-L13702960079394213821",
+      "US-RIV-L13914547768396721542",
+      "US-RIV-L13929179812369261194",
+      "US-RIV-L14085821352242118384",
+      "US-RIV-L14261616079622453079",
+      "US-RIV-L14270338080788955338",
+      "US-RIV-L1433263278942627264",
+      "US-RIV-L1481328980808519155",
+      "US-RIV-L14834864349385467",
+      "US-RIV-L1485045838776646592",
+      "US-RIV-L1501559582835047932",
+      "US-RIV-L15018620690735454571",
+      "US-RIV-L15121183632846050728",
+      "US-RIV-L15129032571483408438",
+      "US-RIV-L15135988719474469754",
+      "US-RIV-L15146476019938753049",
+      "US-RIV-L15229712559413049961",
+      "US-RIV-L15367048680819249735",
+      "US-RIV-L1536973069723518180",
+      "US-RIV-L15472195556443831857",
+      "US-RIV-L15487699439195265208",
+      "US-RIV-L1560410546772104724",
+      "US-RIV-L15829662372818057990",
+      "US-RIV-L15859044680188548619",
+      "US-RIV-L15981145294435373717",
+      "US-RIV-L15997862222607707429",
+      "US-RIV-L16052092696909092589",
+      "US-RIV-L16156613826762267113",
+      "US-RIV-L16180912729239013297",
+      "US-RIV-L16185308077383208865",
+      "US-RIV-L16335459844764403943",
+      "US-RIV-L16442060602726540329",
+      "US-RIV-L16466370064849249099",
+      "US-RIV-L16599132064429353474",
+      "US-RIV-L16632393921841581148",
+      "US-RIV-L16683122947996107049",
+      "US-RIV-L16691258893957934011",
+      "US-RIV-L1673231108792194467",
+      "US-RIV-L16861839020131326021",
+      "US-RIV-L16930659329122367533",
+      "US-RIV-L17006744989382365407",
+      "US-RIV-L17370630439341751615",
+      "US-RIV-L17620489318147302052",
+      "US-RIV-L17641453518864376760",
+      "US-RIV-L17652440181098458760",
+      "US-RIV-L17938202737814445982",
+      "US-RIV-L17973641159010138748",
+      "US-RIV-L18049577136964634071",
+      "US-RIV-L18082194197590694481",
+      "US-RIV-L18130930869505269391",
+      "US-RIV-L18146895674242985745",
+      "US-RIV-L1821599963793729614",
+      "US-RIV-L18244789126233412697",
+      "US-RIV-L18269386535760141253",
+      "US-RIV-L18307752973360333246",
+      "US-RIV-L18312310840345009620",
+      "US-RIV-L18445209299191994507",
+      "US-RIV-L1975044840395909413",
+      "US-RIV-L1975542962906512256",
+      "US-RIV-L2040037821863997468",
+      "US-RIV-L2084433070517610626",
+      "US-RIV-L2203475084972246229",
+      "US-RIV-L2517985733117554268",
+      "US-RIV-L2797438283583649266",
+      "US-RIV-L3046584760508613880",
+      "US-RIV-L3069914869317071021",
+      "US-RIV-L3147603436561039726",
+      "US-RIV-L3159334161514072739",
+      "US-RIV-L3191419504072373751",
+      "US-RIV-L3537975081978947957",
+      "US-RIV-L3538771059152261983",
+      "US-RIV-L3542929152995317162",
+      "US-RIV-L3709380606941632482",
+      "US-RIV-L3863879270565540626",
+      "US-RIV-L3893579330938555127",
+      "US-RIV-L4075861308012401216",
+      "US-RIV-L4126083133598127782",
+      "US-RIV-L413722300118841968",
+      "US-RIV-L4273991074800533419",
+      "US-RIV-L432186029470666930",
+      "US-RIV-L4368258503024005988",
+      "US-RIV-L4414117162286468312",
+      "US-RIV-L451425707649488557",
+      "US-RIV-L4611788751077694388",
+      "US-RIV-L4713596931305309683",
+      "US-RIV-L4843721662822998457",
+      "US-RIV-L4986586767162045956",
+      "US-RIV-L5060331665286459380",
+      "US-RIV-L5149488329460563001",
+      "US-RIV-L522379042628834090",
+      "US-RIV-L5537974582577164941",
+      "US-RIV-L5654322285721413519",
+      "US-RIV-L5678645418825622776",
+      "US-RIV-L5734501248498362119",
+      "US-RIV-L59172885036745502",
+      "US-RIV-L5993475900119536878",
+      "US-RIV-L6131509295739167154",
+      "US-RIV-L6161725981375120230",
+      "US-RIV-L616929346370577784",
+      "US-RIV-L6200260832041606775",
+      "US-RIV-L6481507683470816561",
+      "US-RIV-L6631153745463604715",
+      "US-RIV-L6744571973401894993",
+      "US-RIV-L6789027387627861019",
+      "US-RIV-L6905328069614466474",
+      "US-RIV-L7024502087325169943",
+      "US-RIV-L702957870126867115",
+      "US-RIV-L7132609490195715167",
+      "US-RIV-L7424041354615157638",
+      "US-RIV-L7516200915009001275",
+      "US-RIV-L758249561344712266",
+      "US-RIV-L7641288578487901879",
+      "US-RIV-L7662840825567723852",
+      "US-RIV-L7795987714638529281",
+      "US-RIV-L7953531635816439930",
+      "US-RIV-L7988550135740307267",
+      "US-RIV-L8243884661803372232",
+      "US-RIV-L8267170825039704413",
+      "US-RIV-L8384578670029334531",
+      "US-RIV-L8478519600713924689",
+      "US-RIV-L8523943087809503789",
+      "US-RIV-L8740227313370960063",
+      "US-RIV-L8755147034765709304",
+      "US-RIV-L8885168956190814694",
+      "US-RIV-L8973735727059233087",
+      "US-RIV-L9142329312096486527",
+      "US-RIV-L9309269417456666382",
+      "US-RIV-L9367585392851189242",
+      "US-RIV-L9424160446176239771",
+      "US-RIV-L9570774573478610402",
+      "US-RIV-L9580574407240181901",
+      "US-RIV-L9589799743002483697",
+      "US-RIV-L9690482648894021784",
+      "US-RIV-L9726565561055182556",
+      "US-RIV-L9815295768790822562",
+      "US-RIV-L9854751878238936816",
+      "US-RIV-L9890192377452929010"
+    ],
+    "missingFields": [
+      {
+        "sourceId": "US-RIV-L1363618434612894948",
+        "fields": [
+          "hours"
+        ]
+      }
+    ]
   },
-  "stationCount": 166,
+  "stationCount": 167,
   "detailCount": 166,
-  "missingDetailIds": [],
+  "missingDetailIds": [
+    "US-RIV-L1363618434612894948"
+  ],
   "scheduleEnabled": true,
   "cadence": "Daily network and station details, spaced 15 seconds apart; unfinished coverage resumes on the next run",
   "rateLimited": false,
   "nextRequestAfter": null,
-  "detailErrors": [],
-  "changes": [
+  "detailErrors": [
     {
-      "sourceId": "US-RIV-L5654322285721413519",
-      "name": "Fresno, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-16T14:43:52.236Z"
+      "sourceId": "US-RIV-L1363618434612894948",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L7988550135740307267",
-      "name": "Monticello, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 194,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13498339696147909887",
-      "name": "Idaho Springs, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 194,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L7024502087325169943",
-      "name": "Brewer, ME",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 187,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L16335459844764403943",
-      "name": "Valley Stream, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 161,
-      "after": 163,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13314659433195868777",
-      "name": "Green River, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 198,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L7424041354615157638",
-      "name": "Gallup, NM",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 204,
-      "after": 203,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L11216328121520348963",
-      "name": "Tumalo, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 185,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L413722300118841968",
-      "name": "Columbus, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 199,
-      "after": 200,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L18244789126233412697",
-      "name": "Southampton, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 154,
-      "after": 152,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L10624299143766229312",
-      "name": "St. Regis, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 199,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L9570774573478610402",
-      "name": "Durango, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 177,
-      "after": 174,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L15981145294435373717",
-      "name": "Maple Grove, MN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 193,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13702960079394213821",
-      "name": "Tinton Falls, NJ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 183,
-      "after": 184,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L8523943087809503789",
-      "name": "Hailey, ID",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 181,
-      "after": 179,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L9142329312096486527",
-      "name": "Nags Head, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 191,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L4075861308012401216",
-      "name": "Pismo Beach, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 196,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L6789027387627861019",
-      "name": "Albuquerque, NM",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 190,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L3537975081978947957",
-      "name": "Springfield, IL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 189,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L18445209299191994507",
-      "name": "Cisco, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 207,
-      "after": 204,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13929179812369261194",
-      "name": "Flagler, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 207,
-      "after": 210,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L8243884661803372232",
-      "name": "Placerville, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 194,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L17973641159010138748",
-      "name": "Erie, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 195,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L1975542962906512256",
-      "name": "Bozeman, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 171,
-      "after": 172,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L10353286583268794570",
-      "name": "Queensbury, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 186,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L1485045838776646592",
-      "name": "Del Norte, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 199,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L15829662372818057990",
-      "name": "Lansing, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L16466370064849249099",
-      "name": "Shoshone, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 195,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L17006744989382365407",
-      "name": "Joshua Tree, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 182,
-      "after": 183,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L7662840825567723852",
-      "name": "Lynnwood, WA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 183,
-      "after": 182,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L12472896150238355675",
-      "name": "San Bernardino, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 191,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L1433263278942627264",
-      "name": "Burley, ID",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 203,
-      "after": 205,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L15859044680188548619",
-      "name": "Sun Prairie, WI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 186,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L10427722039519689545",
-      "name": "Lee Vining, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 182,
-      "after": 181,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L16930659329122367533",
-      "name": "Brattleboro, VT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 187,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L18082194197590694481",
-      "name": "Newark, DE",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 191,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L3893579330938555127",
-      "name": "Daytona Beach, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 205,
-      "after": 206,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L18312310840345009620",
-      "name": "Hagerstown, MD",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 188,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L16599132064429353474",
-      "name": "Front Royal, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 197,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L15997862222607707429",
-      "name": "Roanoke, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 188,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L7132609490195715167",
-      "name": "Blowing Rock, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 179,
-      "after": 180,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L7953531635816439930",
-      "name": "Greenville, SC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 202,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13002215087692727396",
-      "name": "Strongsville, OH",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 191,
-      "after": 189,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L6905328069614466474",
-      "name": "Mackinaw City, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 191,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L4126083133598127782",
-      "name": "Whittier, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 189,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L3159334161514072739",
-      "name": "Maumee, OH",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 187,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L5993475900119536878",
-      "name": "Saginaw, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 194,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L14270338080788955338",
-      "name": "Grayling, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 195,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L8384578670029334531",
-      "name": "Cookeville, TN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 202,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L13160365438350136805",
-      "name": "Atlanta, GA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 188,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L11479343488048371684",
-      "name": "Granger, IN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 190,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L10753662044676103876",
-      "name": "Benton Harbor, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 190,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L4368258503024005988",
-      "name": "San Antonio, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L17641453518864376760",
-      "name": "Broomfield, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 181,
-      "after": 180,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L4414117162286468312",
-      "name": "Sedona, AZ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 185,
-      "after": 187,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L10186351206568156344",
-      "name": "Bishop, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 193,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L11703884261784064412",
-      "name": "Klamath Falls, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 193,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L15129032571483408438",
-      "name": "Crescent, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 202,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L1501559582835047932",
-      "name": "Madras, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 189,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L1975044840395909413",
-      "name": "Truckee, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 179,
-      "after": 180,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L616929346370577784",
-      "name": "The Dalles, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 197,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L6481507683470816561",
-      "name": "Mount Shasta, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 196,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L432186029470666930",
-      "name": "Happy Valley, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 189,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L9726565561055182556",
-      "name": "Ukiah, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 195,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L17370630439341751615",
-      "name": "Corte Madera, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 177,
-      "after": 176,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L9424160446176239771",
-      "name": "Coos Bay, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 188,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L4713596931305309683",
-      "name": "Lincoln City, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 170,
-      "after": 173,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L14834864349385467",
-      "name": "Aberdeen, WA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 180,
-      "after": 182,
-      "observedAt": "2026-11-16T14:43:52.236Z"
-    },
-    {
-      "sourceId": "US-RIV-L9854751878238936816",
-      "name": "Ritzville, WA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 200,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L702957870126867115",
-      "name": "Tremonton, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 202,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3069914869317071021",
-      "name": "West Melbourne, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 201,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L9580574407240181901",
-      "name": "Tampa, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 200,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L9309269417456666382",
-      "name": "Price, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L18307752973360333246",
-      "name": "Jacumba, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 199,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L7795987714638529281",
-      "name": "Troy, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 176,
-      "after": 175,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3191419504072373751",
-      "name": "Independence, MO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 199,
-      "after": 198,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L6744571973401894993",
-      "name": "Tigard, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 179,
-      "after": 178,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1195453907241473386",
-      "name": "Medford, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 195,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L7988550135740307267",
-      "name": "Monticello, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 195,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L7024502087325169943",
-      "name": "Brewer, ME",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 190,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L16335459844764403943",
-      "name": "Valley Stream, NY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 163,
-      "after": 162,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L13314659433195868777",
-      "name": "Green River, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L413722300118841968",
-      "name": "Columbus, TX",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 200,
-      "after": 199,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L15121183632846050728",
-      "name": "East Greenwich, RI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 191,
-      "after": 190,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L15981145294435373717",
-      "name": "Maple Grove, MN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 193,
-      "after": 194,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L758249561344712266",
-      "name": "Tysons, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 188,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L8523943087809503789",
-      "name": "Hailey, ID",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 179,
-      "after": 175,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L8885168956190814694",
-      "name": "Asheville, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L4273991074800533419",
-      "name": "King of Prussia, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 182,
-      "after": 181,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L4075861308012401216",
-      "name": "Pismo Beach, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 195,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3147603436561039726",
-      "name": "West Hartford, CT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 188,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L6789027387627861019",
-      "name": "Albuquerque, NM",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 189,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3537975081978947957",
-      "name": "Springfield, IL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 187,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L13929179812369261194",
-      "name": "Flagler, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 210,
-      "after": 209,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L8243884661803372232",
-      "name": "Placerville, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 193,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L17973641159010138748",
-      "name": "Erie, PA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 194,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1975542962906512256",
-      "name": "Bozeman, MT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 172,
-      "after": 170,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1485045838776646592",
-      "name": "Del Norte, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 199,
-      "after": 198,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L12472896150238355675",
-      "name": "San Bernardino, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 191,
-      "after": 192,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1433263278942627264",
-      "name": "Burley, ID",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 205,
-      "after": 206,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L15859044680188548619",
-      "name": "Sun Prairie, WI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 185,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L10427722039519689545",
-      "name": "Lee Vining, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 181,
-      "after": 182,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1481328980808519155",
-      "name": "Holyoke, MA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 188,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3893579330938555127",
-      "name": "Daytona Beach, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 206,
-      "after": 205,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L16599132064429353474",
-      "name": "Front Royal, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 196,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L11436858880889328402",
-      "name": "Meadows of Dan, VA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 204,
-      "after": 198,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L7953531635816439930",
-      "name": "Greenville, SC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L6905328069614466474",
-      "name": "Mackinaw City, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 191,
-      "after": 190,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L4126083133598127782",
-      "name": "Whittier, NC",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 188,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L3159334161514072739",
-      "name": "Maumee, OH",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 184,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L10461199998633248139",
-      "name": "Clare, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 186,
-      "after": 184,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L11403047073990046039",
-      "name": "Traverse City, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 178,
-      "after": 177,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L8384578670029334531",
-      "name": "Cookeville, TN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L11479343488048371684",
-      "name": "Granger, IN",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 188,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L10753662044676103876",
-      "name": "Benton Harbor, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 189,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L8755147034765709304",
-      "name": "Cheyenne, WY",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 198,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L2203475084972246229",
-      "name": "Salida, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 190,
-      "after": 194,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L16691258893957934011",
-      "name": "Holbrook, AZ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 200,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L4414117162286468312",
-      "name": "Sedona, AZ",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 187,
-      "after": 186,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L1821599963793729614",
-      "name": "Inyokern, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 197,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L15129032571483408438",
-      "name": "Crescent, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L616929346370577784",
-      "name": "The Dalles, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 195,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L9890192377452929010",
-      "name": "Fortuna, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 194,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L9424160446176239771",
-      "name": "Coos Bay, OR",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 188,
-      "after": 187,
-      "observedAt": "2026-11-17T13:53:12.281Z"
-    },
-    {
-      "sourceId": "US-RIV-L14834864349385467",
-      "name": "Aberdeen, WA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 182,
-      "after": 181,
-      "observedAt": "2026-11-17T13:53:12.281Z"
+      "sourceId": "US-RIV-L8267170825039704413",
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L2040037821863997468",
-      "name": "Manchester, CT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 192,
-      "after": 193,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L13914547768396721542",
-      "name": "Jacksonville, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 198,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L18269386535760141253",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L3069914869317071021",
-      "name": "West Melbourne, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 201,
-      "after": 203,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L11239378122582441769",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L9309269417456666382",
-      "name": "Price, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 198,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L6744571973401894993",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L12968954152362062981",
-      "name": "Walsenburg, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 193,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L4986586767162045956",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L7795987714638529281",
-      "name": "Troy, MI",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 175,
-      "after": 177,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L2084433070517610626",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L18130930869505269391",
-      "name": "Bow, NH",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 196,
-      "after": 195,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L15487699439195265208",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L1536973069723518180",
-      "name": "Irvine, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 193,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L522379042628834090",
+      "message": "Incomplete station detail"
     },
     {
-      "sourceId": "US-RIV-L3191419504072373751",
-      "name": "Independence, MO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 198,
-      "after": 196,
-      "observedAt": "2026-11-18T14:17:42.376Z"
-    },
-    {
-      "sourceId": "US-RIV-L10507911838236990683",
-      "name": "Temecula, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 199,
-      "after": 200,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "sourceId": "US-RIV-L10291570024194613737",
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L14261616079622453079",
-      "name": "Lakewood, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 189,
-      "after": 187,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1195453907241473386",
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L5654322285721413519",
-      "name": "Fresno, CA",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 197,
-      "after": 196,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9367585392851189242",
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L7988550135740307267",
-      "name": "Monticello, UT",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 195,
-      "after": 194,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L13498339696147909887",
-      "name": "Idaho Springs, CO",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 194,
-      "after": 193,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7024502087325169943",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3863879270565540626",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16335459844764403943",
+      "message": "Incomplete station detail"
     },
     {
       "sourceId": "US-RIV-L12432239427733940105",
-      "name": "Tallahassee, FL",
-      "kind": "changed",
-      "field": "averagePeakKw",
-      "before": 202,
-      "after": 201,
-      "observedAt": "2026-11-18T14:17:42.376Z"
+      "message": "Incomplete station detail"
     },
+    {
+      "sourceId": "US-RIV-L18146895674242985745",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13314659433195868777",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7424041354615157638",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16861839020131326021",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11216328121520348963",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L413722300118841968",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4611788751077694388",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18244789126233412697",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10624299143766229312",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9570774573478610402",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15981145294435373717",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12972394923134340248",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13702960079394213821",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L758249561344712266",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8523943087809503789",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9142329312096486527",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8885168956190814694",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4273991074800533419",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8740227313370960063",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4075861308012401216",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3147603436561039726",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6789027387627861019",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1673231108792194467",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3537975081978947957",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12314948866156935967",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18445209299191994507",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13929179812369261194",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8243884661803372232",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7641288578487901879",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3709380606941632482",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17973641159010138748",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1975542962906512256",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10353286583268794570",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1485045838776646592",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15829662372818057990",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9589799743002483697",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16466370064849249099",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17006744989382365407",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7662840825567723852",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12472896150238355675",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15229712559413049961",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16185308077383208865",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1433263278942627264",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10652557770275483296",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3538771059152261983",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5060331665286459380",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L14085821352242118384",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15146476019938753049",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15859044680188548619",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5537974582577164941",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10427722039519689545",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18049577136964634071",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16930659329122367533",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1481328980808519155",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8478519600713924689",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18082194197590694481",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3893579330938555127",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L2517985733117554268",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5734501248498362119",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18312310840345009620",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8973735727059233087",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16599132064429353474",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6161725981375120230",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6131509295739167154",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15997862222607707429",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11436858880889328402",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L2797438283583649266",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16632393921841581148",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7132609490195715167",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7953531635816439930",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13002215087692727396",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6905328069614466474",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L451425707649488557",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4126083133598127782",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3159334161514072739",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5993475900119536878",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10461199998633248139",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L14270338080788955338",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11403047073990046039",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8384578670029334531",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13160365438350136805",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11479343488048371684",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10753662044676103876",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5678645418825622776",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16052092696909092589",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9690482648894021784",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3046584760508613880",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11857927989230157957",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17938202737814445982",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4368258503024005988",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L8755147034765709304",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L2203475084972246229",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17641453518864376760",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11909426625037321337",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15018620690735454571",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16691258893957934011",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L5149488329460563001",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4414117162286468312",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15472195556443831857",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16683122947996107049",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15367048680819249735",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6200260832041606775",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4843721662822998457",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12109742311651856363",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10186351206568156344",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1821599963793729614",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1560410546772104724",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L11703884261784064412",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15129032571483408438",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1501559582835047932",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17620489318147302052",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1975044840395909413",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L616929346370577784",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6481507683470816561",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16442060602726540329",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17652440181098458760",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16180912729239013297",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3542929152995317162",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L432186029470666930",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L16156613826762267113",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9726565561055182556",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L17370630439341751615",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9890192377452929010",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9424160446176239771",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L4713596931305309683",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L14834864349385467",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L59172885036745502",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9854751878238936816",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15135988719474469754",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7516200915009001275",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L702957870126867115",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9815295768790822562",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3069914869317071021",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9580574407240181901",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12405604048218838563",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L9309269417456666382",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18307752973360333246",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L12968954152362062981",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L7795987714638529281",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L18130930869505269391",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L1536973069723518180",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L3191419504072373751",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L6631153745463604715",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L10507911838236990683",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L13914547768396721542",
+      "message": "Incomplete station detail"
+    },
+    {
+      "sourceId": "US-RIV-L15121183632846050728",
+      "message": "Incomplete station detail"
+    }
+  ],
+  "changes": [
     {
       "sourceId": "US-RIV-L18146895674242985745",
       "name": "Oklahoma City, OK",
@@ -1824,9 +1412,1287 @@
       "before": 181,
       "after": 179,
       "observedAt": "2026-11-18T14:17:42.376Z"
+    },
+    {
+      "sourceId": "US-RIV-L1363618434612894948",
+      "name": "Page, AZ",
+      "kind": "newly-detected",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L2040037821863997468",
+      "name": "Manchester, CT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 194,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18269386535760141253",
+      "name": "Marysville, WA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 192,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13914547768396721542",
+      "name": "Jacksonville, FL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 198,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9854751878238936816",
+      "name": "Ritzville, WA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L702957870126867115",
+      "name": "Tremonton, UT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 201,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3069914869317071021",
+      "name": "West Melbourne, FL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 204,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9580574407240181901",
+      "name": "Tampa, FL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 201,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12405604048218838563",
+      "name": "Latham, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 192,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12968954152362062981",
+      "name": "Walsenburg, CO",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12968954152362062981",
+      "name": "Walsenburg, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 194,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7795987714638529281",
+      "name": "Troy, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 177,
+      "after": 175,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18130930869505269391",
+      "name": "Bow, NH",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 194,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6631153745463604715",
+      "name": "Rocklin, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 6 NACS",
+      "after": "6 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6631153745463604715",
+      "name": "Rocklin, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4986586767162045956",
+      "name": "Mammoth Lakes, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4986586767162045956",
+      "name": "Mammoth Lakes, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 161,
+      "after": 157,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L2084433070517610626",
+      "name": "Bellingham, WA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L2084433070517610626",
+      "name": "Bellingham, WA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 180,
+      "after": 178,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15487699439195265208",
+      "name": "Park City, UT",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "8 CCS, 4 NACS",
+      "after": "4 NACS, 8 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10291570024194613737",
+      "name": "Orange, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "7 CCS, 5 NACS",
+      "after": "5 NACS, 7 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10291570024194613737",
+      "name": "Orange, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L14261616079622453079",
+      "name": "Lakewood, CO",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "8 CCS, 4 NACS",
+      "after": "4 NACS, 8 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1195453907241473386",
+      "name": "Medford, OR",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 4 NACS",
+      "after": "4 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1195453907241473386",
+      "name": "Medford, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 197,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9367585392851189242",
+      "name": "Beaver, UT",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 4 NACS",
+      "after": "4 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7988550135740307267",
+      "name": "Monticello, UT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 194,
+      "after": 195,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13498339696147909887",
+      "name": "Idaho Springs, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 192,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7024502087325169943",
+      "name": "Brewer, ME",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 188,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16335459844764403943",
+      "name": "Valley Stream, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 162,
+      "after": 161,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12432239427733940105",
+      "name": "Tallahassee, FL",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "10 CCS, 4 NACS",
+      "after": "4 NACS, 10 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12432239427733940105",
+      "name": "Tallahassee, FL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 201,
+      "after": 200,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16861839020131326021",
+      "name": "Paramus, NJ",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11216328121520348963",
+      "name": "Tumalo, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 183,
+      "after": 184,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L413722300118841968",
+      "name": "Columbus, TX",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 199,
+      "after": 198,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15121183632846050728",
+      "name": "East Greenwich, RI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 189,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18244789126233412697",
+      "name": "Southampton, NY",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10624299143766229312",
+      "name": "St. Regis, MT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 201,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9570774573478610402",
+      "name": "Durango, CO",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9570774573478610402",
+      "name": "Durango, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 175,
+      "after": 174,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15981145294435373717",
+      "name": "Maple Grove, MN",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 194,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12972394923134340248",
+      "name": "Norfolk, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 196,
+      "after": 197,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13702960079394213821",
+      "name": "Tinton Falls, NJ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 184,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L758249561344712266",
+      "name": "Tysons, VA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8523943087809503789",
+      "name": "Hailey, ID",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 173,
+      "after": 174,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4273991074800533419",
+      "name": "King of Prussia, PA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4273991074800533419",
+      "name": "King of Prussia, PA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 181,
+      "after": 179,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4075861308012401216",
+      "name": "Pismo Beach, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3147603436561039726",
+      "name": "West Hartford, CT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 188,
+      "after": 187,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6789027387627861019",
+      "name": "Albuquerque, NM",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 189,
+      "after": 188,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1673231108792194467",
+      "name": "Wickenburg, AZ",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3537975081978947957",
+      "name": "Springfield, IL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13929179812369261194",
+      "name": "Flagler, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 209,
+      "after": 210,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8243884661803372232",
+      "name": "Placerville, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8243884661803372232",
+      "name": "Placerville, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 192,
+      "after": 193,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7641288578487901879",
+      "name": "Normal, IL",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1975542962906512256",
+      "name": "Bozeman, MT",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "5 CCS, 3 NACS",
+      "after": "3 NACS, 5 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1975542962906512256",
+      "name": "Bozeman, MT",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 173,
+      "after": 171,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10353286583268794570",
+      "name": "Queensbury, NY",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 4 NACS",
+      "after": "4 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10353286583268794570",
+      "name": "Queensbury, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 185,
+      "after": 187,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15829662372818057990",
+      "name": "Lansing, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 196,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16466370064849249099",
+      "name": "Shoshone, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 194,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17006744989382365407",
+      "name": "Joshua Tree, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "8 CCS, 4 NACS",
+      "after": "4 NACS, 8 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7662840825567723852",
+      "name": "Lynnwood, WA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 3 NACS",
+      "after": "3 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L7662840825567723852",
+      "name": "Lynnwood, WA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 182,
+      "after": 181,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L12472896150238355675",
+      "name": "San Bernardino, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 192,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15229712559413049961",
+      "name": "Lake Charles, LA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 205,
+      "after": 204,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16185308077383208865",
+      "name": "Walker, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 188,
+      "after": 189,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1433263278942627264",
+      "name": "Burley, ID",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 206,
+      "after": 205,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10652557770275483296",
+      "name": "Groveland, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "2 CCS, 3 NACS",
+      "after": "3 NACS, 2 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10652557770275483296",
+      "name": "Groveland, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 182,
+      "after": 181,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15146476019938753049",
+      "name": "Moosic, PA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 200,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10427722039519689545",
+      "name": "Lee Vining, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 183,
+      "after": 181,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L5537974582577164941",
+      "name": "Sacramento, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 2 NACS",
+      "after": "2 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L5537974582577164941",
+      "name": "Sacramento, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18049577136964634071",
+      "name": "West Lebanon, NH",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 3 NACS",
+      "after": "3 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18049577136964634071",
+      "name": "West Lebanon, NH",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 181,
+      "after": 182,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1481328980808519155",
+      "name": "Holyoke, MA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 3 NACS",
+      "after": "3 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1481328980808519155",
+      "name": "Holyoke, MA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 188,
+      "after": 187,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8478519600713924689",
+      "name": "Newburgh, NY",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8478519600713924689",
+      "name": "Newburgh, NY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 183,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3893579330938555127",
+      "name": "Daytona Beach, FL",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 205,
+      "after": 206,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L5734501248498362119",
+      "name": "Henderson, NC",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18312310840345009620",
+      "name": "Hagerstown, MD",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L18312310840345009620",
+      "name": "Hagerstown, MD",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 188,
+      "after": 187,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16599132064429353474",
+      "name": "Front Royal, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 196,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6161725981375120230",
+      "name": "Pooler, GA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15997862222607707429",
+      "name": "Roanoke, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11436858880889328402",
+      "name": "Meadows of Dan, VA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L2797438283583649266",
+      "name": "Charlotte, NC",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 193,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16632393921841581148",
+      "name": "Augusta, GA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 205,
+      "after": 204,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13002215087692727396",
+      "name": "Strongsville, OH",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 191,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6905328069614466474",
+      "name": "Mackinaw City, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 189,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L451425707649488557",
+      "name": "Macon, GA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4126083133598127782",
+      "name": "Whittier, NC",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3159334161514072739",
+      "name": "Maumee, OH",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L3159334161514072739",
+      "name": "Maumee, OH",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 183,
+      "after": 181,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10461199998633248139",
+      "name": "Clare, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 185,
+      "after": 184,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11403047073990046039",
+      "name": "Traverse City, MI",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 177,
+      "after": 176,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8384578670029334531",
+      "name": "Cookeville, TN",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 203,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L13160365438350136805",
+      "name": "Atlanta, GA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11479343488048371684",
+      "name": "Granger, IN",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 188,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L5678645418825622776",
+      "name": "Slidell, LA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 202,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9690482648894021784",
+      "name": "Columbia, MO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 180,
+      "after": 182,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11857927989230157957",
+      "name": "Wichita, KS",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17938202737814445982",
+      "name": "Hays, KS",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4368258503024005988",
+      "name": "San Antonio, TX",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8755147034765709304",
+      "name": "Cheyenne, WY",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L8755147034765709304",
+      "name": "Cheyenne, WY",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 203,
+      "after": 202,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L2203475084972246229",
+      "name": "Salida, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 194,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17641453518864376760",
+      "name": "Broomfield, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 179,
+      "after": 178,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15018620690735454571",
+      "name": "Grand Junction, CO",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 198,
+      "after": 199,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16691258893957934011",
+      "name": "Holbrook, AZ",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "5 CCS, 1 NACS",
+      "after": "1 NACS, 5 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16691258893957934011",
+      "name": "Holbrook, AZ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 199,
+      "after": 200,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L5149488329460563001",
+      "name": "Flagstaff, AZ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 192,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4414117162286468312",
+      "name": "Sedona, AZ",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4414117162286468312",
+      "name": "Sedona, AZ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 187,
+      "after": 186,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15367048680819249735",
+      "name": "Quartzsite, AZ",
+      "kind": "changed",
+      "field": "reliabilityGrade",
+      "before": "A",
+      "after": "B",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L15367048680819249735",
+      "name": "Quartzsite, AZ",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 192,
+      "after": 193,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6200260832041606775",
+      "name": "Spokane, WA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L6200260832041606775",
+      "name": "Spokane, WA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 191,
+      "after": 190,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4843721662822998457",
+      "name": "Las Vegas, NV",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L10186351206568156344",
+      "name": "Bishop, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 193,
+      "after": 192,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1821599963793729614",
+      "name": "Inyokern, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1821599963793729614",
+      "name": "Inyokern, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 197,
+      "after": 196,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1560410546772104724",
+      "name": "Olancha, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 202,
+      "after": 200,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L11703884261784064412",
+      "name": "Klamath Falls, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 192,
+      "after": 191,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1501559582835047932",
+      "name": "Madras, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 190,
+      "after": 189,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17620489318147302052",
+      "name": "Buttonwillow, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "6 CCS, 3 NACS",
+      "after": "3 NACS, 6 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L1975044840395909413",
+      "name": "Truckee, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 179,
+      "after": 178,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L616929346370577784",
+      "name": "The Dalles, OR",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16442060602726540329",
+      "name": "Firebaugh, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "5 CCS, 7 NACS",
+      "after": "7 NACS, 5 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L432186029470666930",
+      "name": "Happy Valley, OR",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 2 NACS",
+      "after": "2 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L16156613826762267113",
+      "name": "Crescent City, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 171,
+      "after": 172,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9726565561055182556",
+      "name": "Ukiah, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 195,
+      "after": 196,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17370630439341751615",
+      "name": "Corte Madera, CA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "4 CCS, 6 NACS",
+      "after": "6 NACS, 4 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L17370630439341751615",
+      "name": "Corte Madera, CA",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 177,
+      "after": 176,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L9424160446176239771",
+      "name": "Coos Bay, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 186,
+      "after": 185,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L4713596931305309683",
+      "name": "Lincoln City, OR",
+      "kind": "changed",
+      "field": "averagePeakKw",
+      "before": 171,
+      "after": 170,
+      "observedAt": "2026-11-19T13:58:09.935Z"
+    },
+    {
+      "sourceId": "US-RIV-L59172885036745502",
+      "name": "Forks, WA",
+      "kind": "changed",
+      "field": "connectorSummary",
+      "before": "3 CCS, 3 NACS",
+      "after": "3 NACS, 3 CCS",
+      "observedAt": "2026-11-19T13:58:09.935Z"
     }
   ],
   "stations": [
+    {
+      "sourceId": "US-RIV-L1363618434612894948",
+      "name": "Page, AZ",
+      "sourceUrl": "https://rivianroamer.com/charging/sites/US-RIV-L1363618434612894948",
+      "lat": 36.9058713,
+      "lng": -111.4848855,
+      "reportedStatus": "Operational",
+      "access": "All EVs",
+      "reliabilityGrade": null,
+      "chargerCount": 4,
+      "connectorSummary": "4 NACS",
+      "averagePeakKw": null,
+      "rates": {
+        "Rivian": "$0.58",
+        "Other EVs": "$0.68"
+      },
+      "firstTracked": "Nov 19, 2026",
+      "reliabilityTone": null,
+      "observedAt": "2026-11-19T13:58:09.935Z",
+      "networkListed": true
+    },
     {
       "sourceId": "US-RIV-L8267170825039704413",
       "name": "Mount Laurel, NJ",
@@ -2017,7 +2883,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:17:57.677Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -2031,7 +2897,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 NACS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -2240,7 +3106,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:18:12.851Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -2254,7 +3120,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 NACS",
-      "averagePeakKw": 192,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -2402,7 +3268,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:18:28.011Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -2566,7 +3432,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:18:43.383Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -2580,7 +3446,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 NACS",
-      "averagePeakKw": 198,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.38",
         "Other EVs": "$0.45"
@@ -2730,7 +3596,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:59:34.514Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -2744,7 +3610,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 NACS",
-      "averagePeakKw": 200,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.37",
         "Other EVs": "$0.44"
@@ -2954,7 +3820,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:55:15.534Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3175,7 +4041,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:55:30.817Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3396,7 +4262,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:55:46.149Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3410,7 +4276,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 CCS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -3620,7 +4486,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:56:01.348Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3754,7 +4620,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:56:16.644Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3768,7 +4634,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 203,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -3887,7 +4753,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:56:31.846Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -3901,7 +4767,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 NACS",
-      "averagePeakKw": 200,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.38",
         "Other EVs": "$0.45"
@@ -4051,7 +4917,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:56:46.992Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4065,7 +4931,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 CCS",
-      "averagePeakKw": 192,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.45",
         "Other EVs": "$0.53"
@@ -4213,7 +5079,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:57:02.329Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4347,7 +5213,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:57:17.573Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4568,7 +5434,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:57:32.776Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4581,8 +5447,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 193,
+      "connectorSummary": "2 NACS, 4 CCS",
+      "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.58",
         "Other EVs": "$0.68"
@@ -4699,7 +5565,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:57:47.929Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4713,7 +5579,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "8 NACS",
-      "averagePeakKw": 177,
+      "averagePeakKw": 175,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -4861,7 +5727,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:58:03.175Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -4875,7 +5741,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "12 NACS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -5083,7 +5949,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:58:18.514Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -5275,7 +6141,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:58:33.751Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -5468,7 +6334,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:58:48.952Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -5481,8 +6347,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "6 CCS, 6 NACS",
-      "averagePeakKw": 187,
+      "connectorSummary": "6 NACS, 6 CCS",
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -5691,7 +6557,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:59:04.100Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -5912,7 +6778,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:59:19.286Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6104,7 +6970,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:18:58.537Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6117,8 +6983,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 161,
+      "connectorSummary": "2 NACS, 4 CCS",
+      "averagePeakKw": 157,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -6238,7 +7104,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:19:13.743Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6251,8 +7117,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 180,
+      "connectorSummary": "2 NACS, 6 CCS",
+      "averagePeakKw": 178,
       "rates": {
         "Rivian": "$0.39",
         "Other EVs": "$0.46"
@@ -6401,7 +7267,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:19:28.902Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6414,7 +7280,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "8 CCS, 4 NACS",
+      "connectorSummary": "4 NACS, 8 CCS",
       "averagePeakKw": 173,
       "rates": {
         "Rivian": "$0.27-0.39",
@@ -6625,7 +7491,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:19:44.112Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6787,7 +7653,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:19:59.277Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -6800,8 +7666,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "7 CCS, 5 NACS",
-      "averagePeakKw": 200,
+      "connectorSummary": "5 NACS, 7 CCS",
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.45-0.65"
@@ -7010,7 +7876,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:20:14.432Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7023,7 +7889,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "8 CCS, 4 NACS",
+      "connectorSummary": "4 NACS, 8 CCS",
       "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.30-0.43",
@@ -7233,7 +8099,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:20:29.637Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7246,8 +8112,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 10,
-      "connectorSummary": "6 CCS, 4 NACS",
-      "averagePeakKw": 195,
+      "connectorSummary": "4 NACS, 6 CCS",
+      "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -7426,7 +8292,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:20:44.894Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7619,7 +8485,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:21:00.107Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7632,7 +8498,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 10,
-      "connectorSummary": "6 CCS, 4 NACS",
+      "connectorSummary": "4 NACS, 6 CCS",
       "averagePeakKw": 202,
       "rates": {
         "Rivian": "$0.43",
@@ -7811,7 +8677,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:21:15.486Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7825,7 +8691,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 4,
       "connectorSummary": "4 CCS",
-      "averagePeakKw": 194,
+      "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.65",
         "Other EVs": "$0.67"
@@ -7914,7 +8780,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:21:30.625Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -7928,7 +8794,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 10,
       "connectorSummary": "4 NACS, 6 CCS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.39",
         "Other EVs": "$0.46"
@@ -8107,7 +8973,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:21:45.860Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -8121,7 +8987,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.39",
         "Other EVs": "$0.46"
@@ -8240,7 +9106,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:22:01.016Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -8373,7 +9239,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:22:16.246Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -8387,7 +9253,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 162,
+      "averagePeakKw": 161,
       "rates": {
         "Rivian": "$0.45",
         "Other EVs": "$0.49"
@@ -8506,7 +9372,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:22:31.501Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -8519,8 +9385,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 14,
-      "connectorSummary": "10 CCS, 4 NACS",
-      "averagePeakKw": 201,
+      "connectorSummary": "4 NACS, 10 CCS",
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.34-0.49"
@@ -8760,7 +9626,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:22:46.745Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -8924,7 +9790,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:23:01.896Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9206,7 +10072,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:23:17.144Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9339,7 +10205,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:23:32.433Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9352,7 +10218,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.37-0.53",
@@ -9471,7 +10337,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:23:47.636Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9485,7 +10351,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 183,
+      "averagePeakKw": 184,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -9604,7 +10470,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:24:02.938Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9618,7 +10484,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 199,
+      "averagePeakKw": 198,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -9738,7 +10604,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:24:18.150Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9869,7 +10735,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:24:33.321Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -9883,7 +10749,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 189,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -10003,7 +10869,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:59:49.768Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10016,7 +10882,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 151,
       "rates": {
         "Rivian": "$0.47",
@@ -10136,7 +11002,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:24:48.483Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10150,7 +11016,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.27-0.38",
         "Other EVs": "$0.29-0.41"
@@ -10269,7 +11135,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:25:03.648Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10282,8 +11148,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 175,
+      "connectorSummary": "2 NACS, 6 CCS",
+      "averagePeakKw": 174,
       "rates": {
         "Rivian": "$0.59",
         "Other EVs": "$0.67"
@@ -10431,7 +11297,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:25:18.819Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10445,7 +11311,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 12,
       "connectorSummary": "4 NACS, 8 CCS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -10654,7 +11520,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:25:34.012Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10668,7 +11534,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 196,
+      "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -10786,7 +11652,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:25:49.326Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10800,7 +11666,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 184,
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -10919,7 +11785,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:26:04.482Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -10932,7 +11798,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.37-0.53",
@@ -11051,7 +11917,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:26:19.657Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11065,7 +11931,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "3 NACS, 3 CCS",
-      "averagePeakKw": 173,
+      "averagePeakKw": 174,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -11185,7 +12051,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:26:35.035Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11317,7 +12183,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:26:50.186Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11451,7 +12317,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:27:05.379Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11464,8 +12330,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 181,
+      "connectorSummary": "2 NACS, 6 CCS",
+      "averagePeakKw": 179,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -11614,7 +12480,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:27:20.571Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11776,7 +12642,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:27:35.774Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11789,7 +12655,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.37-0.53",
@@ -11910,7 +12776,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:27:50.931Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -11924,7 +12790,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 188,
+      "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -12041,7 +12907,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:28:06.213Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12055,7 +12921,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 189,
+      "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -12173,7 +13039,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:28:21.370Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12186,7 +13052,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.49",
@@ -12307,7 +13173,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:28:36.612Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12321,7 +13187,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 8,
       "connectorSummary": "2 NACS, 6 CCS",
-      "averagePeakKw": 187,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -12468,7 +13334,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:28:51.769Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12602,7 +13468,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:29:06.962Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12734,7 +13600,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:29:22.113Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12748,7 +13614,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 209,
+      "averagePeakKw": 210,
       "rates": {
         "Rivian": "$0.55",
         "Other EVs": "$0.59"
@@ -12868,7 +13734,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:29:37.324Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -12881,8 +13747,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 192,
+      "connectorSummary": "2 NACS, 6 CCS",
+      "averagePeakKw": 193,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -13030,7 +13896,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:29:52.478Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13043,7 +13909,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 6 CCS",
       "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.32-0.45",
@@ -13193,7 +14059,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:30:07.703Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13296,7 +14162,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:30:22.889Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13428,7 +14294,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:30:38.255Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13441,8 +14307,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "5 CCS, 3 NACS",
-      "averagePeakKw": 173,
+      "connectorSummary": "3 NACS, 5 CCS",
+      "averagePeakKw": 171,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.34-0.49"
@@ -13591,7 +14457,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:30:53.415Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13604,8 +14470,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 10,
-      "connectorSummary": "6 CCS, 4 NACS",
-      "averagePeakKw": 185,
+      "connectorSummary": "4 NACS, 6 CCS",
+      "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -13785,7 +14651,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:31:08.572Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13917,7 +14783,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:31:23.804Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -13931,7 +14797,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 197,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -14051,7 +14917,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:31:39.122Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14183,7 +15049,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:31:54.438Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14197,7 +15063,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.48",
         "Other EVs": "$0.56"
@@ -14317,7 +15183,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:32:09.733Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14330,7 +15196,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "8 CCS, 4 NACS",
+      "connectorSummary": "4 NACS, 8 CCS",
       "averagePeakKw": 183,
       "rates": {
         "Rivian": "$0.37-0.53",
@@ -14538,7 +15404,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:32:25.024Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14551,8 +15417,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 9,
-      "connectorSummary": "6 CCS, 3 NACS",
-      "averagePeakKw": 182,
+      "connectorSummary": "3 NACS, 6 CCS",
+      "averagePeakKw": 181,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -14714,7 +15580,7 @@
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
       "detailsObservedAt": "2026-11-18T14:32:40.202Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14728,7 +15594,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 9,
       "connectorSummary": "9 NACS",
-      "averagePeakKw": 191,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -14892,7 +15758,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:32:55.363Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -14906,7 +15772,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 205,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.44"
       },
@@ -15023,7 +15889,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:33:10.668Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15037,7 +15903,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 188,
+      "averagePeakKw": 189,
       "rates": {
         "Rivian": "$0.34-0.49",
         "Other EVs": "$0.40-0.58"
@@ -15156,7 +16022,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:33:26.048Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15170,7 +16036,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 206,
+      "averagePeakKw": 205,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -15290,7 +16156,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:33:41.196Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15303,8 +16169,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 5,
-      "connectorSummary": "2 CCS, 3 NACS",
-      "averagePeakKw": 182,
+      "connectorSummary": "3 NACS, 2 CCS",
+      "averagePeakKw": 181,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.57"
@@ -15407,7 +16273,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:33:56.520Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15539,7 +16405,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:34:11.673Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15672,7 +16538,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:34:26.983Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15804,7 +16670,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:34:42.140Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -15818,7 +16684,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 200,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -15935,7 +16801,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:34:57.351Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16068,7 +16934,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:35:12.605Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16082,7 +16948,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "4 NACS, 2 CCS",
-      "averagePeakKw": 183,
+      "averagePeakKw": 181,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.62"
@@ -16200,7 +17066,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:35:43.108Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16213,8 +17079,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 8,
-      "connectorSummary": "6 CCS, 2 NACS",
-      "averagePeakKw": 191,
+      "connectorSummary": "2 NACS, 6 CCS",
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.36-0.51"
@@ -16364,7 +17230,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:35:27.958Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16377,8 +17243,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 9,
-      "connectorSummary": "6 CCS, 3 NACS",
-      "averagePeakKw": 181,
+      "connectorSummary": "3 NACS, 6 CCS",
+      "averagePeakKw": 182,
       "rates": {
         "Rivian": "$0.45",
         "Other EVs": "$0.53"
@@ -16543,7 +17409,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:35:58.261Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16737,7 +17603,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:36:13.501Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16750,8 +17616,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 9,
-      "connectorSummary": "6 CCS, 3 NACS",
-      "averagePeakKw": 188,
+      "connectorSummary": "3 NACS, 6 CCS",
+      "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -16915,7 +17781,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:36:28.727Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -16928,8 +17794,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 186,
+      "connectorSummary": "2 NACS, 4 CCS",
+      "averagePeakKw": 183,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -17047,7 +17913,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:36:44.060Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17178,7 +18044,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:36:59.365Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17192,7 +18058,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 9,
       "connectorSummary": "9 CCS",
-      "averagePeakKw": 205,
+      "averagePeakKw": 206,
       "rates": {
         "Rivian": "$0.50"
       },
@@ -17352,7 +18218,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:37:14.642Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17485,7 +18351,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:37:29.887Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17498,7 +18364,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 3 CCS",
       "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.43",
@@ -17618,7 +18484,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:37:45.197Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17631,8 +18497,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
-      "averagePeakKw": 188,
+      "connectorSummary": "3 NACS, 3 CCS",
+      "averagePeakKw": 187,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -17750,7 +18616,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:38:00.357Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17884,7 +18750,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:38:15.531Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -17898,7 +18764,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 197,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -18018,7 +18884,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:38:30.802Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18031,7 +18897,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 201,
       "rates": {
         "Rivian": "$0.30-0.43",
@@ -18151,7 +19017,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:38:46.012Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18283,7 +19149,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:39:01.162Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18297,7 +19163,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 186,
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -18416,7 +19282,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:39:16.328Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18430,7 +19296,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 197,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -18549,7 +19415,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:39:31.472Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18563,7 +19429,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "2 NACS, 4 CCS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 193,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.33-0.46"
@@ -18680,7 +19546,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:39:46.849Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18694,7 +19560,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 205,
+      "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.30-0.43",
         "Other EVs": "$0.35-0.51"
@@ -18813,7 +19679,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:40:02.008Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -18947,7 +19813,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:40:17.235Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19080,7 +19946,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:40:32.399Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19094,7 +19960,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 191,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -19214,7 +20080,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:40:47.617Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19228,7 +20094,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 189,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -19347,7 +20213,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:41:02.770Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19360,7 +20226,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 3 CCS",
       "averagePeakKw": 198,
       "rates": {
         "Rivian": "$0.30-0.43",
@@ -19478,7 +20344,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:41:18.144Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19492,7 +20358,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 186,
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.43",
         "Other EVs": "$0.51"
@@ -19612,7 +20478,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:41:33.717Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19625,8 +20491,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 183,
+      "connectorSummary": "2 NACS, 4 CCS",
+      "averagePeakKw": 181,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -19745,7 +20611,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:41:49.004Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19878,7 +20744,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:42:04.198Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -19892,7 +20758,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 185,
+      "averagePeakKw": 184,
       "rates": {
         "Rivian": "$0.58",
         "Other EVs": "$0.67"
@@ -20012,7 +20878,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:42:19.584Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20146,7 +21012,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:42:34.744Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20160,7 +21026,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 177,
+      "averagePeakKw": 176,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.45-0.65"
@@ -20278,7 +21144,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:42:50.245Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20292,7 +21158,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 203,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -20410,7 +21276,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:43:05.405Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20424,7 +21290,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 9,
       "connectorSummary": "9 CCS",
-      "averagePeakKw": 187,
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.37-0.53"
@@ -20587,7 +21453,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:43:20.604Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20601,7 +21467,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 188,
       "rates": {
         "Rivian": "$0.34-0.48",
         "Other EVs": "$0.36-0.52"
@@ -20721,7 +21587,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:43:35.846Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20853,7 +21719,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:43:50.996Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -20867,7 +21733,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 5,
       "connectorSummary": "5 CCS",
-      "averagePeakKw": 203,
+      "averagePeakKw": 202,
       "rates": {
         "Rivian": "$0.43"
       },
@@ -20966,7 +21832,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:44:06.291Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21100,7 +21966,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:44:21.509Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21114,7 +21980,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 180,
+      "averagePeakKw": 182,
       "rates": {
         "Rivian": "$0.27-0.39",
         "Other EVs": "$0.32-0.46"
@@ -21233,7 +22099,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:44:36.861Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21366,7 +22232,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:44:52.012Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21379,7 +22245,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 3 CCS",
       "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.33-0.47",
@@ -21498,7 +22364,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:45:07.164Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21511,7 +22377,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 3 CCS",
       "averagePeakKw": 210,
       "rates": {
         "Rivian": "$0.47",
@@ -21631,7 +22497,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:45:22.382Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21644,7 +22510,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.30-0.43",
@@ -21762,7 +22628,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:45:37.563Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21775,8 +22641,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
-      "averagePeakKw": 203,
+      "connectorSummary": "3 NACS, 3 CCS",
+      "averagePeakKw": 202,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.45-0.65"
@@ -21894,7 +22760,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:45:52.706Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -21908,7 +22774,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 4,
       "connectorSummary": "4 NACS",
-      "averagePeakKw": 194,
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.59",
         "Other EVs": "$0.67"
@@ -21998,7 +22864,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:46:07.905Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22012,7 +22878,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "2 NACS, 4 CCS",
-      "averagePeakKw": 179,
+      "averagePeakKw": 178,
       "rates": {
         "Rivian": "$0.32-0.45",
         "Other EVs": "$0.34-0.49"
@@ -22130,7 +22996,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:46:23.427Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22263,7 +23129,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:46:38.619Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22277,7 +23143,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 198,
+      "averagePeakKw": 199,
       "rates": {
         "Rivian": "$0.33-0.47",
         "Other EVs": "$0.39-0.55"
@@ -22394,7 +23260,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:46:53.765Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22407,8 +23273,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "5 CCS, 1 NACS",
-      "averagePeakKw": 199,
+      "connectorSummary": "1 NACS, 5 CCS",
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.65",
         "Other EVs": "$0.67"
@@ -22527,7 +23393,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:47:08.918Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22541,7 +23407,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 191,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -22661,7 +23527,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:47:24.125Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22674,8 +23540,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
-      "averagePeakKw": 187,
+      "connectorSummary": "3 NACS, 3 CCS",
+      "averagePeakKw": 186,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -22793,7 +23659,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:47:39.344Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -22926,7 +23792,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:47:54.599Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23059,7 +23925,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:48:09.765Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23070,16 +23936,16 @@
       "lng": -114.2388543,
       "reportedStatus": "Operational",
       "access": "All EVs",
-      "reliabilityGrade": "A",
+      "reliabilityGrade": "B",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 192,
+      "averagePeakKw": 193,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.62"
       },
       "firstTracked": null,
-      "reliabilityTone": "emerald",
+      "reliabilityTone": "lime",
       "detailReportedStatus": null,
       "address": "1349 W. Main Street, Quartzsite, AZ 85346, USA",
       "amenities": [
@@ -23193,7 +24059,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:48:24.948Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23206,8 +24072,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
-      "averagePeakKw": 191,
+      "connectorSummary": "3 NACS, 3 CCS",
+      "averagePeakKw": 190,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.44-0.62"
@@ -23326,7 +24192,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:48:40.160Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23339,7 +24205,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 194,
       "rates": {
         "Rivian": "$0.41-0.59",
@@ -23459,7 +24325,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:48:55.380Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23593,7 +24459,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:49:10.684Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23607,7 +24473,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 193,
+      "averagePeakKw": 192,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.57"
@@ -23727,7 +24593,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:49:25.867Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23740,8 +24606,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
-      "averagePeakKw": 197,
+      "connectorSummary": "2 NACS, 4 CCS",
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -23861,7 +24727,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:49:41.021Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23875,7 +24741,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 3,
       "connectorSummary": "3 CCS",
-      "averagePeakKw": 202,
+      "averagePeakKw": 200,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.57"
@@ -23947,7 +24813,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:49:56.247Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -23961,7 +24827,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 192,
+      "averagePeakKw": 191,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -24080,7 +24946,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:50:11.416Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24214,7 +25080,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:50:26.584Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24228,7 +25094,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 190,
+      "averagePeakKw": 189,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.53"
@@ -24346,7 +25212,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:50:41.732Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24359,7 +25225,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 9,
-      "connectorSummary": "6 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 6 CCS",
       "averagePeakKw": 197,
       "rates": {
         "Rivian": "$0.53",
@@ -24525,7 +25391,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:50:56.950Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24539,7 +25405,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "2 NACS, 4 CCS",
-      "averagePeakKw": 179,
+      "averagePeakKw": 178,
       "rates": {
         "Rivian": "$0.37-0.53",
         "Other EVs": "$0.40-0.57"
@@ -24658,7 +25524,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:51:12.110Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24671,7 +25537,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 195,
       "rates": {
         "Rivian": "$0.43",
@@ -24791,7 +25657,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:51:27.323Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24925,7 +25791,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:51:42.474Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -24938,7 +25804,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 12,
-      "connectorSummary": "5 CCS, 7 NACS",
+      "connectorSummary": "7 NACS, 5 CCS",
       "averagePeakKw": 204,
       "rates": {
         "Rivian": "$0.49",
@@ -25149,7 +26015,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:51:57.696Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25373,7 +26239,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:52:12.845Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25505,7 +26371,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:52:28.045Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25638,7 +26504,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:52:43.284Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25651,7 +26517,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "4 CCS, 2 NACS",
+      "connectorSummary": "2 NACS, 4 CCS",
       "averagePeakKw": 189,
       "rates": {
         "Rivian": "$0.34-0.48",
@@ -25771,7 +26637,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:52:58.442Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25785,7 +26651,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 171,
+      "averagePeakKw": 172,
       "rates": {
         "Rivian": "$0.53",
         "Other EVs": "$0.62"
@@ -25905,7 +26771,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:53:13.654Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -25919,7 +26785,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 NACS",
-      "averagePeakKw": 195,
+      "averagePeakKw": 196,
       "rates": {
         "Rivian": "$0.49",
         "Other EVs": "$0.58"
@@ -26038,7 +26904,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:53:28.853Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26051,8 +26917,8 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 10,
-      "connectorSummary": "4 CCS, 6 NACS",
-      "averagePeakKw": 177,
+      "connectorSummary": "6 NACS, 4 CCS",
+      "averagePeakKw": 176,
       "rates": {
         "Rivian": "$0.39-0.55",
         "Other EVs": "$0.42-0.59"
@@ -26231,7 +27097,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:53:44.046Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26364,7 +27230,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:53:59.366Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26378,7 +27244,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 186,
+      "averagePeakKw": 185,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -26497,7 +27363,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:54:14.511Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26511,7 +27377,7 @@
       "reliabilityGrade": "A",
       "chargerCount": 6,
       "connectorSummary": "6 CCS",
-      "averagePeakKw": 171,
+      "averagePeakKw": 170,
       "rates": {
         "Rivian": "$0.47",
         "Other EVs": "$0.55"
@@ -26630,7 +27496,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:54:29.764Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26764,7 +27630,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:54:44.996Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },
     {
@@ -26777,7 +27643,7 @@
       "access": "All EVs",
       "reliabilityGrade": "A",
       "chargerCount": 6,
-      "connectorSummary": "3 CCS, 3 NACS",
+      "connectorSummary": "3 NACS, 3 CCS",
       "averagePeakKw": 193,
       "rates": {
         "Rivian": "$0.53",
@@ -26898,7 +27764,7 @@
       ],
       "sourceUpdatedText": "Updated about 11 hours ago",
       "detailsObservedAt": "2026-11-18T14:55:00.372Z",
-      "observedAt": "2026-11-18T14:17:42.376Z",
+      "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     }
   ]
