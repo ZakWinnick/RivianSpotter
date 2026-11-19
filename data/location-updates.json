@@ -818,7 +818,7 @@
           "chargerReport": false
         },
         {
-          "id": "cf450ed2e54cf642c47f31f2f468ff144d19e82ebb4371fe8daa50e8de16fae5",
+          "id": "c86ae33c5a72c10859989971990811537e9697643c53e042ff4377d7e299a0a3",
           "locationId": "171674885969233",
           "name": "Page, AZ",
           "type": "Rivian Adventure Network",
@@ -835,10 +835,16 @@
             "Maximum power (kW): 300 — details added.",
             "Vehicle access: Open to other EVs.",
             "Connector types: 4 NACS — details added.",
+            "Site features: Added Coffee, Food, Lodging, Open to All, Plug & Charge, Restroom.",
+            "Charger 1A: NACS, 300 kW — details added.",
+            "Charger 1B: NACS, 300 kW — details added.",
+            "Charger 3A: NACS, 300 kW — details added.",
+            "Charger 3B: NACS, 300 kW, trailer friendly — details added.",
             "Reported vehicle access: All EVs — details added.",
             "Charger update: Reported operational.",
             "Charging prices: Other EVs: $0.68/kWh (previously not published).",
-            "Charging prices: Rivian vehicles: $0.58/kWh (previously not published)."
+            "Charging prices: Rivian vehicles: $0.58/kWh (previously not published).",
+            "Idle fee: $0.50/min (after 10m) — details added."
           ],
           "chargerReport": true
         },

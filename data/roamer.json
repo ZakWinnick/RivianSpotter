@@ -3,17 +3,15 @@
   "startedAt": "2026-11-19T13:58:09.540Z",
   "sourceUrl": "https://rivianroamer.com/charging/networks/rivian-adventure-network",
   "observedAt": "2026-11-19T13:58:09.935Z",
-  "completedAt": "2026-11-19T14:40:20.498Z",
+  "completedAt": "2026-11-19T15:10:47.153Z",
   "sourceHash": "17e0c04508a3913d84d5c72a3ed676ed6c3c75df1b23abab521816e4890451b3",
   "networkCount": 167,
   "coverage": {
     "officialStationCount": 167,
-    "detailCount": 166,
-    "freshDetailCount": 166,
-    "checkedCount": 0,
-    "missingDetailIds": [
-      "US-RIV-L1363618434612894948"
-    ],
+    "detailCount": 167,
+    "freshDetailCount": 167,
+    "checkedCount": 2,
+    "missingDetailIds": [],
     "staleDetailIds": [],
     "notCheckedIds": [
       "US-RIV-L10186351206568156344",
@@ -45,7 +43,6 @@
       "US-RIV-L13160365438350136805",
       "US-RIV-L13314659433195868777",
       "US-RIV-L13498339696147909887",
-      "US-RIV-L1363618434612894948",
       "US-RIV-L13702960079394213821",
       "US-RIV-L13914547768396721542",
       "US-RIV-L13929179812369261194",
@@ -149,7 +146,6 @@
       "US-RIV-L6481507683470816561",
       "US-RIV-L6631153745463604715",
       "US-RIV-L6744571973401894993",
-      "US-RIV-L6789027387627861019",
       "US-RIV-L6905328069614466474",
       "US-RIV-L7024502087325169943",
       "US-RIV-L702957870126867115",
@@ -194,19 +190,13 @@
     ]
   },
   "stationCount": 167,
-  "detailCount": 166,
-  "missingDetailIds": [
-    "US-RIV-L1363618434612894948"
-  ],
+  "detailCount": 167,
+  "missingDetailIds": [],
   "scheduleEnabled": true,
   "cadence": "Daily network and station details, spaced 15 seconds apart; unfinished coverage resumes on the next run",
   "rateLimited": false,
   "nextRequestAfter": null,
   "detailErrors": [
-    {
-      "sourceId": "US-RIV-L1363618434612894948",
-      "message": "Incomplete station detail"
-    },
     {
       "sourceId": "US-RIV-L8267170825039704413",
       "message": "Incomplete station detail"
@@ -369,10 +359,6 @@
     },
     {
       "sourceId": "US-RIV-L3147603436561039726",
-      "message": "Incomplete station detail"
-    },
-    {
-      "sourceId": "US-RIV-L6789027387627861019",
       "message": "Incomplete station detail"
     },
     {
@@ -2691,7 +2677,53 @@
       "firstTracked": "Nov 19, 2026",
       "reliabilityTone": null,
       "observedAt": "2026-11-19T13:58:09.935Z",
-      "networkListed": true
+      "networkListed": true,
+      "maxKw": 300,
+      "chargers": [
+        {
+          "name": "1A",
+          "connector": "NACS",
+          "powerKw": 300,
+          "features": []
+        },
+        {
+          "name": "3A",
+          "connector": "NACS",
+          "powerKw": 300,
+          "features": []
+        },
+        {
+          "name": "3B",
+          "connector": "NACS",
+          "powerKw": 300,
+          "features": [
+            {
+              "label": "trailer friendly",
+              "description": "trailer friendly"
+            }
+          ]
+        },
+        {
+          "name": "1B",
+          "connector": "NACS",
+          "powerKw": 300,
+          "features": []
+        }
+      ],
+      "amenities": [
+        "Open to All",
+        "Plug & Charge",
+        "Coffee",
+        "Food",
+        "Lodging",
+        "Restroom"
+      ],
+      "detailRates": {
+        "Rivian": "$0.58",
+        "Other": "$0.68",
+        "Idle": "$0.50/min (after 10m)"
+      },
+      "detailsObservedAt": "2026-11-19T15:06:10.521Z"
     },
     {
       "sourceId": "US-RIV-L8267170825039704413",
@@ -12941,15 +12973,15 @@
       "averageKw": 189,
       "hours": "24/7",
       "detailRates": {
-        "Rivian": "$0.30–0.43/kWh Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.40 Mon-Fri 6:00am-9:00pm$0.43 Mon-Fri 9:00pm-2:00am$0.30 Sat-Sun 2:00am-6:00am$0.40 Sat-Sun 6:00am-9:00pm$0.43 Sat-Sun 9:00pm-2:00am$0.30",
-        "Other": "$0.33–0.46/kWh Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.43 Mon-Fri 6:00am-9:00pm$0.46 Mon-Fri 9:00pm-2:00am$0.33 Sat-Sun 2:00am-6:00am$0.43 Sat-Sun 6:00am-9:00pm$0.46 Sat-Sun 9:00pm-2:00am$0.33",
+        "Rivian": "$0.30–0.43 Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.40 Mon-Fri 6:00am-9:00pm$0.43 Mon-Fri 9:00pm-2:00am$0.30 Sat-Sun 2:00am-6:00am$0.40 Sat-Sun 6:00am-9:00pm$0.43 Sat-Sun 9:00pm-2:00am$0.30",
+        "Other": "$0.33–0.46 Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.43 Mon-Fri 6:00am-9:00pm$0.46 Mon-Fri 9:00pm-2:00am$0.33 Sat-Sun 2:00am-6:00am$0.43 Sat-Sun 6:00am-9:00pm$0.46 Sat-Sun 9:00pm-2:00am$0.33",
         "Idle": "$0.50/min (after 10m)"
       },
       "chargers": [
         {
           "name": "3B",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -12963,8 +12995,8 @@
         },
         {
           "name": "1B",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -12978,8 +13010,8 @@
         },
         {
           "name": "3A",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -12993,8 +13025,8 @@
         },
         {
           "name": "2A",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -13008,8 +13040,8 @@
         },
         {
           "name": "2B",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -13023,8 +13055,8 @@
         },
         {
           "name": "1A",
-          "powerKw": 300,
           "connector": "CCS",
+          "powerKw": 300,
           "features": [
             {
               "label": "Card",
@@ -13038,7 +13070,7 @@
         }
       ],
       "sourceUpdatedText": "Updated about 10 hours ago",
-      "detailsObservedAt": "2026-11-18T14:28:21.370Z",
+      "detailsObservedAt": "2026-11-19T15:07:46.736Z",
       "observedAt": "2026-11-19T13:58:09.935Z",
       "networkListed": true
     },

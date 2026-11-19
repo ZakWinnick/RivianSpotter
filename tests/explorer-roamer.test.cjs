@@ -173,3 +173,12 @@ test('repeated invalid station pages stop detail requests and retain coverage wa
   assert.equal(calls,3);assert.equal(result.detailErrors.length,3);assert.equal(result.detailCount,0);
  } finally {fs.rmSync(f.dir,{recursive:true,force:true});}
 });
+test('redesigned public detail pages parse explicit uniform charger details without inventing missing fields',()=>{
+ const html=`<body data-navigation-page="charging_sites:show:US-RIV-L123"><main><h1>Example</h1><div><div><p>per kWh for a Rivian</p><div>$0.58</div></div></div><section><h2>Chargers</h2><p>2 NACS, each rated to 300 kW</p><div><div title="1A, Working"><span>1A</span></div><div title="1B, Working, trailer friendly"><span>1B</span></div></div></section><section><h2>Details</h2><dl><div><dt>Rated to</dt><dd>300 kW</dd></div></dl></section></main></body>`;
+ const d=api.parseDetail(html,{sourceId:'US-RIV-L123'});assert.equal(d.chargerCount,2);assert.equal(d.connectorSummary,'2 NACS');assert.deepEqual(d.chargers.map(x=>[x.name,x.connector,x.powerKw]),[['1A','NACS',300],['1B','NACS',300]]);assert(!Object.hasOwn(d,'hours'));assert.throws(()=>api.parseDetail(html.replace('2 NACS, each rated','2 CCS, 2 NACS, each rated'),{sourceId:'US-RIV-L123'}),/Incomplete/);assert.throws(()=>api.parseDetail(html,{sourceId:'US-RIV-L999'}),/identity mismatch/);
+});
+test('redesigned tiles retain previously published charger features the new view omits',()=>{
+ const old={chargers:[{name:'1A',connector:'NACS',powerKw:300,features:[{label:'Card',description:'Credit card reader'}]}],detailRates:{Idle:'$0.50/min (after 10m)'}};
+ const update={partialChargerFeatures:true,chargers:[{name:'1A',connector:'NACS',powerKw:300,features:[]}],detailRates:{Rivian:'$0.58'}};
+ const merged=api.mergePartialDetail(old,update);assert.deepEqual(merged.chargers[0].features,old.chargers[0].features);assert.equal(merged.detailRates.Idle,old.detailRates.Idle);assert.equal(merged.detailRates.Rivian,'$0.58');
+});
