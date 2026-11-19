@@ -28,6 +28,8 @@ function samePrice(a,b){
 }
 function sameField(field,a,b){
  if(field!=='Pricing')return JSON.stringify(comparable(field,a))===JSON.stringify(comparable(field,b));
+ if(a&&b&&Object.values(a).filter(Boolean).length===1&&Object.values(b).filter(Boolean).length===1&&
+    ((a.Energy&&b.Rivian&&samePrice(a.Energy,b.Rivian))||(b.Energy&&a.Rivian&&samePrice(b.Energy,a.Rivian))))return true;
  const keys=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);
  return [...keys].every(k=>samePrice(a?.[k],b?.[k]));
 }
@@ -109,7 +111,7 @@ function changeLines(d){
    return [`- **Charger ${md(key)}:** ${b?md(describe(b)):'No longer listed'}${a?` (previously ${md(describe(a))})`:' — details added'}.`];
   });
  }
- if(d.field==='Reported charger condition')return [`- **Charger update:** ${after&&/^operational$/i.test(after)?'Reported as working again':words(after)}${before?` (previously ${words(before).toLowerCase()})`:''}.`];
+ if(d.field==='Reported charger condition')return [`- **Charger update:** ${after&&/^operational$/i.test(after)?(before?'Reported as working again':'Reported operational'):words(after)}${before?` (previously ${words(before).toLowerCase()})`:''}.`];
  if(d.field==='Map pin')return ['- **Map location:** The pin was updated. See the location page for directions.'];
  if(d.field==='Pin precision')return [`- **Map location:** ${after==='city'?'An approximate city location is shown; the address has not been published.':!after||after==='unknown'?'The location’s precision is no longer specified.':before==='city'?'A more precise location is now available.':'The location’s precision has changed.'}`];
  if(d.field==='Rivian-only access')return [`- **Vehicle access:** ${after===true?'Rivian vehicles only':after===false?'Open to other EVs':'Access details are no longer published'}.`];

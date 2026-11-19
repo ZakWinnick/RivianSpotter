@@ -271,7 +271,7 @@
           "chargerReport": false
         },
         {
-          "id": "5b35929063ae55c6421c6c51e7f990e92e21bc305ac7aab05d50c147d506e9fc",
+          "id": "4400f3e23b0bd4d5f5a5b47eec2e1b7285335a38bdedde78442633b5f2633ff3",
           "locationId": "114613134048542",
           "name": "Daytona Beach, FL",
           "type": "Rivian Adventure Network",
@@ -281,9 +281,7 @@
           "kind": "changed",
           "lines": [
             "Average peak power (kW): 206 (previously 205).",
-            "Charger update: Inoperable (previously offline).",
-            "Charging prices: Charging: not published (previously $0.50/kWh).",
-            "Charging prices: Rivian vehicles: $0.50/kWh (previously not published)."
+            "Charger update: Inoperable (previously offline)."
           ],
           "chargerReport": true
         },
@@ -526,7 +524,7 @@
           "chargerReport": false
         },
         {
-          "id": "77b37c0f6eb584a95145c04819d9bd5bc995dbff74e51d1d978c11ff38f06b17",
+          "id": "00b45a4138097479ab164d343b860a4c8cef686343c5c041cae75eb82f97c634",
           "locationId": "77645970849984",
           "name": "Lake Charles, LA",
           "type": "Rivian Adventure Network",
@@ -535,9 +533,7 @@
           "url": "/locations/ran-lake-charles-la-469e5c737e/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 204 (previously 205).",
-            "Charging prices: Charging: not published (previously $0.44/kWh).",
-            "Charging prices: Rivian vehicles: $0.44/kWh (previously not published)."
+            "Average peak power (kW): 204 (previously 205)."
           ],
           "chargerReport": false
         },
@@ -840,7 +836,7 @@
             "Vehicle access: Open to other EVs.",
             "Connector types: 4 NACS — details added.",
             "Reported vehicle access: All EVs — details added.",
-            "Charger update: Reported as working again.",
+            "Charger update: Reported operational.",
             "Charging prices: Other EVs: $0.68/kWh (previously not published).",
             "Charging prices: Rivian vehicles: $0.58/kWh (previously not published)."
           ],
@@ -1001,7 +997,7 @@
           "chargerReport": false
         },
         {
-          "id": "b54eba3c4a63488a45d712207cde9d815ba358195b33becf8838df8f0a2f2924",
+          "id": "2651e78cf12236ee155a47b5ce4d2b04f3f18757fd21b736948f03eb0eed48d9",
           "locationId": "43316260826867",
           "name": "Slidell, LA",
           "type": "Rivian Adventure Network",
@@ -1011,9 +1007,7 @@
           "kind": "changed",
           "lines": [
             "Rating: B (previously A).",
-            "Average peak power (kW): 202 (previously 203).",
-            "Charging prices: Charging: not published (previously $0.43/kWh).",
-            "Charging prices: Rivian vehicles: $0.43/kWh (previously not published)."
+            "Average peak power (kW): 202 (previously 203)."
           ],
           "chargerReport": false
         },

@@ -99,3 +99,11 @@ test('equivalent flat rates with different units do not create changes',()=>{
  const next=structuredClone(base);next.fields.Pricing={Rivian:'$0.49'};
  assert.deepEqual(compare([base],[next]),[]);
 });
+test('a matching generic price and Rivian-only summary do not imply a rate change',()=>{
+ const a=normalize(data)[0];a.fields.Pricing={Energy:'$0.50/kWh'};const b=structuredClone(a);b.fields.Pricing={Rivian:'$0.50','Other EVs':null};
+ assert.deepEqual(compare([a],[b]),[]);
+});
+test('an initial operational observation does not claim recovery',()=>{
+ const {changeLines}=require('../scripts/location-digest.cjs');
+ assert.doesNotMatch(changeLines({field:'Reported charger condition',before:null,after:'Operational'})[0],/again|recover/i);
+});
