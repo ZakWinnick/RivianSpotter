@@ -5,22 +5,7 @@
       "date": "2026-11-19",
       "entries": [
         {
-          "id": "1819c99fc840dd8071f7df721ce73b65e502868778b10a526c4500aac7c57754",
-          "locationId": "235591122702559",
-          "name": "Aberdeen, WA",
-          "type": "Rivian Adventure Network",
-          "city": "Aberdeen",
-          "region": "WA",
-          "url": "/locations/ran-aberdeen-wa-d644d51f0e/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "45cb5207c1238750d69cb78a1f5bbf5b33936ad09e12d01ce5cd446fb69cd4b0",
+          "id": "3250a1b75b1b063de8d50c3a23ad2539f6b715e28193e32c8afdc1d2aa3aa24b",
           "locationId": "38133378632761",
           "name": "Albuquerque, NM",
           "type": "Rivian Adventure Network",
@@ -29,44 +14,12 @@
           "url": "/locations/ran-albuquerque-nm-22ae9e6d89/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 188 (previously 189).",
-            "Charging prices: Other EVs: $0.33-0.46/kWh (previously $0.33–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
+            "Average peak power (kW): 188 (previously 189)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c273ef23b3635521cf3a0675f877789c3c32cf888af6ae623450e4b1590cfd54",
-          "locationId": "257368736267938",
-          "name": "Asheville, NC",
-          "type": "Rivian Adventure Network",
-          "city": "Asheville",
-          "region": "NC",
-          "url": "/locations/ran-asheville-nc-ea13540abc/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "8e7b03c01930b7163a4632007a0760f7a3d2d7640f84c18848f2d5257e2ce1b2",
-          "locationId": "188436359188894",
-          "name": "Astoria, OR",
-          "type": "Rivian Adventure Network",
-          "city": "Astoria",
-          "region": "OR",
-          "url": "/locations/ran-astoria-or-ab61c2314f/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "5fa23b80fe604e7320198ca94fc60a5d6624503a0625369951a9b29bf37439b7",
+          "id": "e07fb8aed91df246a63c7a969b1262d306c90ae906dabfdb5f16670a23d710fd",
           "locationId": "129335467139810",
           "name": "Atlanta, GA",
           "type": "Rivian Adventure Network",
@@ -75,14 +28,12 @@
           "url": "/locations/ran-atlanta-ga-75a1428420/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 187).",
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 185 (previously 187)."
           ],
           "chargerReport": false
         },
         {
-          "id": "bbde4f55980cc56daef7d9d8c405f9fa4a308b7245b79c20724c6ff7683fecdc",
+          "id": "8cd26ec318615feee01f81471afee41cd9133979873cafd2290e8ee5d76b703f",
           "locationId": "158649045143946",
           "name": "Augusta, GA",
           "type": "Rivian Adventure Network",
@@ -91,74 +42,12 @@
           "url": "/locations/ran-augusta-ga-904a5beb8f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 204 (previously 205).",
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
+            "Average peak power (kW): 204 (previously 205)."
           ],
           "chargerReport": false
         },
         {
-          "id": "13abe95e86d296f426f1e482ce94182f3314bb463cf82db6a8b76d6363769c04",
-          "locationId": "277193814054893",
-          "name": "Barstow, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Barstow",
-          "region": "CA",
-          "url": "/locations/ran-barstow-ca-fc1b36c2d5/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "518a6b28b5c27318b30659eb62bc5ef4fafb858721d243b85ee8be2f2736c463",
-          "locationId": "95288923178880",
-          "name": "Baton Rouge, LA",
-          "type": "Rivian Adventure Network",
-          "city": "Baton Rouge",
-          "region": "LA",
-          "url": "/locations/ran-baton-rouge-la-56aa2e5b85/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "278cfd29e114c089c3eea5c8662a3cfb2b99ef07ef473ffef6757cff2cc8f079",
-          "locationId": "147848053298584",
-          "name": "Beaver, UT",
-          "type": "Rivian Adventure Network",
-          "city": "Beaver",
-          "region": "UT",
-          "url": "/locations/ran-beaver-ut-86778ea353/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "c0250439643e66f352ac7fc64c76b4c7ff8c0495daa2e2165d5b9edcec5b667a",
-          "locationId": "111861218646514",
-          "name": "Belcamp, MD",
-          "type": "Rivian Adventure Network",
-          "city": "Belcamp",
-          "region": "MD",
-          "url": "/locations/ran-belcamp-md-65bcb82457/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "d0ecc4a4f4a96272d6b951b478738ca6cb4e5562f9bc08722c6d4fc7f3084f2b",
+          "id": "74e80814b30f9902dfd79880a444bc5e811d526c23f499bab2133b657061eb3e",
           "locationId": "257642394550505",
           "name": "Bellingham, WA",
           "type": "Rivian Adventure Network",
@@ -167,29 +56,12 @@
           "url": "/locations/ran-bellingham-wa-ea530b58be/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 178 (previously 180).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39/kWh."
+            "Average peak power (kW): 178 (previously 180)."
           ],
           "chargerReport": false
         },
         {
-          "id": "7c1483ba3f1badd1984366d59ec0035185ca1b146c19152f2014ef505b4c0a0f",
-          "locationId": "110073077138684",
-          "name": "Benton Harbor, MI",
-          "type": "Rivian Adventure Network",
-          "city": "Benton Harbor",
-          "region": "MI",
-          "url": "/locations/ran-benton-harbor-mi-641c629a42/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "8223df62c0a4110852fb8ba17ed784110ec60717dfab4ae1cd5af84108990880",
+          "id": "5776eac75a0070f736e561d86a847b5e9f04a5bf37744b027d27ce97288ff669",
           "locationId": "188627419351693",
           "name": "Bishop, CA",
           "type": "Rivian Adventure Network",
@@ -198,29 +70,12 @@
           "url": "/locations/ran-bishop-ca-ab8e3e4408/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 192 (previously 193).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.57/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
+            "Average peak power (kW): 192 (previously 193)."
           ],
           "chargerReport": false
         },
         {
-          "id": "3e42e9db3354bf6498ae3d3d465f1b579a53037e36131f0e24f7507dda0cff65",
-          "locationId": "263569874185086",
-          "name": "Blowing Rock, NC",
-          "type": "Rivian Adventure Network",
-          "city": "Blowing Rock",
-          "region": "NC",
-          "url": "/locations/ran-blowing-rock-nc-efb724aa29/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "33b4e09800e8bca3817582749c40d13fab5bf768c2f0581131ef7427f4e45e5a",
+          "id": "c922ca61c3268e14949a8996973e9e2f4aa9fe64a0a641cb735080d4e0e48772",
           "locationId": "214591878194517",
           "name": "Bow, NH",
           "type": "Rivian Adventure Network",
@@ -229,14 +84,12 @@
           "url": "/locations/ran-bow-nh-c32b909ca3/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 194 (previously 195).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 194 (previously 195)."
           ],
           "chargerReport": false
         },
         {
-          "id": "e5aadc6fb9e191a2a4510d8ccdc3981024774f513f68f908d2c3259a31ed2177",
+          "id": "68791eb31ad173e42b2253df208a184f654a9444a47ebe288a49c47a9124257d",
           "locationId": "231354624041867",
           "name": "Bozeman, MT",
           "type": "Rivian Adventure Network",
@@ -245,44 +98,12 @@
           "url": "/locations/ran-bozeman-mt-d26a721fa1/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 171 (previously 173).",
-            "Charging prices: Other EVs: $0.34-0.49/kWh (previously $0.34–0.49/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 171 (previously 173)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c9a242a0d136aa0eea71811f04ee05298b0d35f0dd01b86ad2d535740813667a",
-          "locationId": "89472769338862",
-          "name": "Brattleboro, VT",
-          "type": "Rivian Adventure Network",
-          "city": "Brattleboro",
-          "region": "VT",
-          "url": "/locations/ran-brattleboro-vt-51600092eb/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.59/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "72816de65137ac5e4187a16f3e8949c1df4d33673b09bec043213a61dd4e215d",
-          "locationId": "84211511368349",
-          "name": "Breezewood, PA",
-          "type": "Rivian Adventure Network",
-          "city": "Breezewood",
-          "region": "PA",
-          "url": "/locations/ran-breezewood-pa-4c97052958/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "095989e70401a1f20b864cf3877eb5139ee884fface0e5bb4657698dcb04aa71",
+          "id": "bd777262aa0d9bbefc4c45ccd0c697a94f181326dde0e68cd20923cd3758c764",
           "locationId": "204993087758700",
           "name": "Brewer, ME",
           "type": "Rivian Adventure Network",
@@ -291,14 +112,12 @@
           "url": "/locations/ran-brewer-me-ba70ac1e1f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 188 (previously 190).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39/kWh."
+            "Average peak power (kW): 188 (previously 190)."
           ],
           "chargerReport": false
         },
         {
-          "id": "17802480e6d1708a4027201045d379947d3c0cc508f67e9b852c8536502eb53e",
+          "id": "222b6c5585a66c958430d880e12e3367897131686f66fdc99bb11ace01abfb22",
           "locationId": "212859002834548",
           "name": "Broomfield, CO",
           "type": "Rivian Adventure Network",
@@ -307,14 +126,12 @@
           "url": "/locations/ran-broomfield-co-c19819310c/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 178 (previously 179).",
-            "Charging prices: Other EVs: $0.34-0.49/kWh (previously $0.34–0.49/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 178 (previously 179)."
           ],
           "chargerReport": false
         },
         {
-          "id": "6bc9e40e59e6a750a105bab9a84f3eff344259454e8590e225e46c9e4b0e19d1",
+          "id": "77028daa281f94e0aa900ddc8d2097cd65ebea26664e0f2518111d405e482a95",
           "locationId": "215330668966219",
           "name": "Burley, ID",
           "type": "Rivian Adventure Network",
@@ -323,59 +140,12 @@
           "url": "/locations/ran-burley-id-c3d793f92f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 205 (previously 206).",
-            "Charging prices: Other EVs: $0.33-0.46/kWh (previously $0.33–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
+            "Average peak power (kW): 205 (previously 206)."
           ],
           "chargerReport": false
         },
         {
-          "id": "4e4ba8dfb456ad4a9712b9b400c487e9c0e2cb825d388cbd173d90dcb03c9390",
-          "locationId": "268040868869126",
-          "name": "Buttonwillow, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Buttonwillow",
-          "region": "CA",
-          "url": "/locations/ran-buttonwillow-ca-f3c820b6f1/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.57/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "564debbf7bacf718597c492d3bcbf47d36671dd6db8813b4bce9ab7aceb744cd",
-          "locationId": "279344763752190",
-          "name": "Centennial, CO",
-          "type": "Rivian Adventure Network",
-          "city": "Englewood",
-          "region": "CO",
-          "url": "/locations/ran-centennial-co-fe10055a8c/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "cb5d4b70212c43d2c4293457803e2b19268d8a95d6a8175382930428b1761a08",
-          "locationId": "71228648044313",
-          "name": "Centerville, TX",
-          "type": "Rivian Adventure Network",
-          "city": "Centerville",
-          "region": "TX",
-          "url": "/locations/ran-centerville-tx-40c8363474/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.28-0.40/kWh (previously $0.28–0.40/kWh).",
-            "Charging prices: Rivian vehicles: $0.26-0.37/kWh (previously $0.26–0.37/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "6029a6f3304879d76d2c0d207865fb91c8dfedc0a7f70c55c37a9f2bc3eaabc4",
+          "id": "66949fda6badd0b7c64e9137e79bd0a518abf4c02119b8459d02056c02826578",
           "locationId": "110824558252997",
           "name": "Charlotte, NC",
           "type": "Rivian Adventure Network",
@@ -384,14 +154,12 @@
           "url": "/locations/ran-charlotte-nc-64cb5a5e11/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 193 (previously 195).",
-            "Charging prices: Other EVs: $0.33-0.46/kWh (previously $0.33–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
+            "Average peak power (kW): 193 (previously 195)."
           ],
           "chargerReport": false
         },
         {
-          "id": "50a68cd8ed3e4f9d3c22b5bb444ccfe587b8a0d881bd79b87cae536fc5631710",
+          "id": "4df89a44c60ce58d58485fb6f809af2687915a40d3a73386c57b70f7bc6b9481",
           "locationId": "84695766045675",
           "name": "Cheyenne, WY",
           "type": "Rivian Adventure Network",
@@ -400,44 +168,12 @@
           "url": "/locations/ran-cheyenne-wy-4d07c4fd51/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 202 (previously 203).",
-            "Charging prices: Other EVs: $0.45-0.65/kWh (previously $0.45–0.65/kWh).",
-            "Charging prices: Rivian vehicles: $0.39-0.55/kWh (previously $0.39–0.55/kWh)."
+            "Average peak power (kW): 202 (previously 203)."
           ],
           "chargerReport": false
         },
         {
-          "id": "6e5b86951ea09b458b0f4bfc7aaaf232e3f1ac7e017191f9eeb2264c474ddf5d",
-          "locationId": "93852176692327",
-          "name": "Chipley, FL",
-          "type": "Rivian Adventure Network",
-          "city": "Chipley",
-          "region": "FL",
-          "url": "/locations/ran-chipley-fl-555ba997f2/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "7d28ddc90aef15a929d4997c54c1019e8b6ca003b0ae45eb6770a9c63548b9a1",
-          "locationId": "77610361945526",
-          "name": "Cisco, TX",
-          "type": "Rivian Adventure Network",
-          "city": "Cisco",
-          "region": "TX",
-          "url": "/locations/ran-cisco-tx-469611febb/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.65/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.55/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "dd033ee49a8c77319a56ae3ca9e86de6a34792d3f3e19dd2de87dc7e5d363223",
+          "id": "1e102edede1c62c06fa9e0e450b51179c44614734176c3b033ceb8ab4bdcf6ae",
           "locationId": "139998102922368",
           "name": "Clare, MI",
           "type": "Rivian Adventure Network",
@@ -446,14 +182,12 @@
           "url": "/locations/ran-clare-mi-7f53d92262/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 184 (previously 185).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.58/kWh."
+            "Average peak power (kW): 184 (previously 185)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c8e0683eaa24ba3274653be009418caddd74eca203dd7cfd82dabab76a9919fd",
+          "id": "2f4e3ff593ea72c7d72290a691585a20a5d2f20814bc98d35539312cac2b80d0",
           "locationId": "217978262547294",
           "name": "Columbia, MO",
           "type": "Rivian Adventure Network",
@@ -462,14 +196,12 @@
           "url": "/locations/ran-columbia-mo-c64004d929/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 182 (previously 180).",
-            "Charging prices: Other EVs: $0.32-0.46/kWh (previously $0.32–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.27-0.39/kWh (previously $0.27–0.39/kWh)."
+            "Average peak power (kW): 182 (previously 180)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c8420384dee101e9c13bea4d340092aa323da5d6ca82f656bfb86ec61988d8c6",
+          "id": "ec4de5793ee9b8edce13c2bde3a841f1426f9581ad613cf01ff3bd1f0e74893e",
           "locationId": "53687897613114",
           "name": "Columbus, TX",
           "type": "Rivian Adventure Network",
@@ -478,14 +210,12 @@
           "url": "/locations/ran-columbus-tx-30d43001a0/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 198 (previously 199).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 198 (previously 199)."
           ],
           "chargerReport": false
         },
         {
-          "id": "bace6fc2335a6cb065df1b942809fdfbefd2854ba69960a0223eb1c3cb5e4439",
+          "id": "63df35644bf1d03c0d98f47b47843132d75b7448e01b8006d07dccea77abd36e",
           "locationId": "261976896705032",
           "name": "Cookeville, TN",
           "type": "Rivian Adventure Network",
@@ -494,14 +224,12 @@
           "url": "/locations/ran-cookeville-tn-ee443fcecf/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 203 (previously 202).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 203 (previously 202)."
           ],
           "chargerReport": false
         },
         {
-          "id": "d1b0543e9cb804351f0681186fcaf40b777b4950665f41123c5f958b8acf4be7",
+          "id": "bb216ff6be4fb515f9674aa9c2d40e403c1b28a2b7c3b141917ee879a669cece",
           "locationId": "41537236444516",
           "name": "Coos Bay, OR",
           "type": "Rivian Adventure Network",
@@ -510,14 +238,12 @@
           "url": "/locations/ran-coos-bay-or-25c72429e3/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 186).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 185 (previously 186)."
           ],
           "chargerReport": false
         },
         {
-          "id": "8bc9055af54b4503c9aa0be9e11c0e3c947802d07338424469312c534fe04e5a",
+          "id": "81908e1371610832e63c6053f4e3a71c5680cc119679db3dc7597ff3bd074800",
           "locationId": "136055300967291",
           "name": "Corte Madera, CA",
           "type": "Rivian Adventure Network",
@@ -526,14 +252,12 @@
           "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 176 (previously 177).",
-            "Charging prices: Other EVs: $0.42-0.59/kWh (previously $0.42–0.59/kWh).",
-            "Charging prices: Rivian vehicles: $0.39-0.55/kWh (previously $0.39–0.55/kWh)."
+            "Average peak power (kW): 176 (previously 177)."
           ],
           "chargerReport": false
         },
         {
-          "id": "d3732d3f0ed260f0a557867b02abe4c55a132b2bfaaa31cabe7822b195aba28d",
+          "id": "9ae0ac80b196c3a7e7172b230441654856c9f15c3aa99fdf17340872087ce53e",
           "locationId": "66019383404162",
           "name": "Crescent City, CA",
           "type": "Rivian Adventure Network",
@@ -542,39 +266,7 @@
           "url": "/locations/ran-crescent-city-ca-3c0b55d624/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 172 (previously 171).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "f73fa83d58758d693838d15d2d100b43b33c35a383cb5462b99eaa66dc67f2dd",
-          "locationId": "136744945757526",
-          "name": "Crescent, OR",
-          "type": "Rivian Adventure Network",
-          "city": "Crescent",
-          "region": "OR",
-          "url": "/locations/ran-crescent-or-7c5e69db6b/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "ffefc498633b4b7de67ed0587d745f5392d65e0a645599fdf2ab0113a6f62379",
-          "locationId": "142762870371269",
-          "name": "Dallas, TX",
-          "type": "Rivian Adventure Network",
-          "city": "Dallas",
-          "region": "TX",
-          "url": "/locations/ran-dallas-tx-81d7921db1/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 172 (previously 171)."
           ],
           "chargerReport": false
         },
@@ -596,22 +288,7 @@
           "chargerReport": true
         },
         {
-          "id": "9822a6bb529010bd3deb2f37d8f76d0f0e7bb1410699759533ced65774e2ea6f",
-          "locationId": "73775626682695",
-          "name": "Del Norte, CO",
-          "type": "Rivian Adventure Network",
-          "city": "Del Norte",
-          "region": "CO",
-          "url": "/locations/ran-del-norte-co-431939f63f/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "701130c8f02146c72ac463eceaeba7921c22c2ee30031e9a64f227fccc31a3db",
+          "id": "51c3146b607faab5cf9d1c92c160c5c3227ff96ddc0d2732dcffa224cae08f55",
           "locationId": "200742139635433",
           "name": "Durango, CO",
           "type": "Rivian Adventure Network",
@@ -620,14 +297,12 @@
           "url": "/locations/ran-durango-co-b692ebdd64/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 174 (previously 175).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.59/kWh."
+            "Average peak power (kW): 174 (previously 175)."
           ],
           "chargerReport": false
         },
         {
-          "id": "9005eb0b16544f0e6ecdd56a615674727461f39900316c7f87efeecb85ac4a9e",
+          "id": "831fc80629ead1ef5703516b80f8f4d534b4e3101895c75596aa5f87b18e5782",
           "locationId": "145276773753703",
           "name": "East Greenwich, RI",
           "type": "Rivian Adventure Network",
@@ -636,59 +311,12 @@
           "url": "/locations/ran-east-greenwich-ri-8420e26f21/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 189 (previously 190).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 189 (previously 190)."
           ],
           "chargerReport": false
         },
         {
-          "id": "f6711bc68b028f8b462618f1ecdaaac53ace290f313c228590c5d08f1fbce61a",
-          "locationId": "233100145736528",
-          "name": "Ellensburg, WA",
-          "type": "Rivian Adventure Network",
-          "city": "Ellensburg",
-          "region": "WA",
-          "url": "/locations/ran-ellensburg-wa-d400db52f9/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.49/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "504e9ed7aa7dd908ecb9c7ce503839cf8713b690d0fb78a6350dd9bc9fd0a596",
-          "locationId": "228805268606232",
-          "name": "Erie, PA",
-          "type": "Rivian Adventure Network",
-          "city": "Erie",
-          "region": "PA",
-          "url": "/locations/ran-erie-pa-d018e0b2ca/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "8e2d4bb36aa99d1a2f8107b1f12c5f51fac157a655a6ae681220116d3b0a6167",
-          "locationId": "250854254819132",
-          "name": "Firebaugh, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Firebaugh",
-          "region": "CA",
-          "url": "/locations/ran-firebaugh-ca-e4268eb074/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "08500950b1f3a02af8129f6f21f8d7ada75dd50a6365cdf4e549cb8c04edde78",
+          "id": "16bdbd75a5491382de52108880f545bd507bb91d90b20a46c8b8a6f7980faffc",
           "locationId": "162077279640688",
           "name": "Flagler, CO",
           "type": "Rivian Adventure Network",
@@ -697,14 +325,12 @@
           "url": "/locations/ran-flagler-co-93688e9e9a/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 210 (previously 209).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.59/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.55/kWh."
+            "Average peak power (kW): 210 (previously 209)."
           ],
           "chargerReport": false
         },
         {
-          "id": "bd734d3137252151f960780776a9b85f22371e8a6cbe12bbf54e672ef9fb5654",
+          "id": "21773a944a14a6c6ddb7132b11db7c587b8d9a1c928677990f23ab988f16584f",
           "locationId": "71821161004224",
           "name": "Flagstaff, AZ",
           "type": "Rivian Adventure Network",
@@ -713,89 +339,12 @@
           "url": "/locations/ran-flagstaff-az-41522ababa/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 192 (previously 191).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 192 (previously 191)."
           ],
           "chargerReport": false
         },
         {
-          "id": "73835e2bd4e4af4ebab1901e0fac16a7643489b8607277c662567f5bce115bcc",
-          "locationId": "47595949473056",
-          "name": "Forks, WA",
-          "type": "Rivian Adventure Network",
-          "city": "Forks",
-          "region": "WA",
-          "url": "/locations/ran-forks-wa-2b49cb99fa/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "727bc17b6dfa987177293f732e592bdf595b85e8cff2556139aff1a673df4fbc",
-          "locationId": "138138533074609",
-          "name": "Fortuna, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Fortuna",
-          "region": "CA",
-          "url": "/locations/ran-fortuna-ca-7da2e22254/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "e3746e5e036e6e6a38733f0113a7ca1a496e87f94b5e69471729a31c701b5881",
-          "locationId": "61449316742323",
-          "name": "Fredericksburg, VA",
-          "type": "Rivian Adventure Network",
-          "city": "Fredericksburg",
-          "region": "VA",
-          "url": "/locations/ran-fredericksburg-va-37e348a2f2/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "35bd8d1182b9ae4dcc5aafc245d8ecb7e0e328316efcde2cf7cd43125d07bb9b",
-          "locationId": "126449562009907",
-          "name": "Freeport, ME",
-          "type": "Rivian Adventure Network",
-          "city": "Freeport",
-          "region": "ME",
-          "url": "/locations/ran-freeport-me-7301552a7e/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "06d250d0f26c79462c366e3d2caade7dc1ed2e3b582e11326c593c02dc6bf978",
-          "locationId": "22233721676895",
-          "name": "Fresno, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Fresno",
-          "region": "CA",
-          "url": "/locations/ran-fresno-ca-1438b105e2/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.58/kWh (previously $0.40–0.58/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "0b04681bbc9c30b9f09c90f2fd6200b9060a1e724e1dffd4bc3ea0b073d2f223",
+          "id": "f1236a5facbe0b92db5b5f3821bc8d1da6e5bfede5766cd565ad904e6b783234",
           "locationId": "7081075479687",
           "name": "Front Royal, VA",
           "type": "Rivian Adventure Network",
@@ -804,59 +353,12 @@
           "url": "/locations/ran-front-royal-va-0670b0edd2/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 196 (previously 197).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 196 (previously 197)."
           ],
           "chargerReport": false
         },
         {
-          "id": "d8947adb605d5ab2d69d77698e6ba20f99e06849ed7515408eb8282fb4157382",
-          "locationId": "105225338058043",
-          "name": "Gallup, NM",
-          "type": "Rivian Adventure Network",
-          "city": "Gallup",
-          "region": "NM",
-          "url": "/locations/ran-gallup-nm-5fb3aed632/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "249a2ffaa1009c097c468152969e1022bff1a35347ded2a212a5a2a6c0e561de",
-          "locationId": "31266654148170",
-          "name": "Gardiner, MT",
-          "type": "Rivian Adventure Network",
-          "city": "Gardiner",
-          "region": "MT",
-          "url": "/locations/ran-gardiner-mt-1c6fd5c114/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.59/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "00c44800f5556f41b566e9bcefa478adbd1f9a5c89b6e259d7bf79bfa430b9bc",
-          "locationId": "114705372878349",
-          "name": "Gila Bend, AZ",
-          "type": "Rivian Adventure Network",
-          "city": "Gila Bend",
-          "region": "AZ",
-          "url": "/locations/ran-gila-bend-az-6852ecf1d3/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.65/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "5487f81cfbd975737052e8b95329713d907b9e5f79c921373162b9c6cee49412",
+          "id": "cbc29b6d7b61ac7aa59d5cc5759fe376c31a74c623db9053637587946db9987e",
           "locationId": "50783239063680",
           "name": "Grand Junction, CO",
           "type": "Rivian Adventure Network",
@@ -865,14 +367,12 @@
           "url": "/locations/ran-grand-junction-co-2e2fe4dd86/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 198).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 199 (previously 198)."
           ],
           "chargerReport": false
         },
         {
-          "id": "055549ae4f9b9e391b965e6e76552028cdbceec680f55acec34266603f0e882d",
+          "id": "582d2e36a2a63725f0594683dba855e696c93886010c782240b5add676969898",
           "locationId": "80127509954447",
           "name": "Granger, IN",
           "type": "Rivian Adventure Network",
@@ -881,44 +381,12 @@
           "url": "/locations/ran-granger-in-48e023b53d/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 188 (previously 190).",
-            "Charging prices: Other EVs: $0.36-0.52/kWh (previously $0.36–0.52/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.48/kWh (previously $0.34–0.48/kWh)."
+            "Average peak power (kW): 188 (previously 190)."
           ],
           "chargerReport": false
         },
         {
-          "id": "2a631e77d9bb297ec386e91804f16f5aae6a851ae16bb79cfd6e4533d13c38f7",
-          "locationId": "65893990238647",
-          "name": "Grayling, MI",
-          "type": "Rivian Adventure Network",
-          "city": "Grayling",
-          "region": "MI",
-          "url": "/locations/ran-grayling-mi-3bee23d247/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "58e864de634bfec59767ea04b1ed1e8273db658fb5feab57d9a96c1db984ee73",
-          "locationId": "183583970664712",
-          "name": "Greenville, SC",
-          "type": "Rivian Adventure Network",
-          "city": "Greenville",
-          "region": "SC",
-          "url": "/locations/ran-greenville-sc-a6f7f94c5e/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "770f0858a238f3c171f030b071791cb22914023dcae9d7080e88732e3d94fc23",
+          "id": "85449739e344487eff4074a7b6956ba3cefb2b6b7c634c4cbaf89aed53133557",
           "locationId": "10544233595795",
           "name": "Groveland, CA",
           "type": "Rivian Adventure Network",
@@ -927,14 +395,12 @@
           "url": "/locations/ran-groveland-ca-0997053d01/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 181 (previously 182).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.57/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
+            "Average peak power (kW): 181 (previously 182)."
           ],
           "chargerReport": false
         },
         {
-          "id": "1d9da34a0bc24c5efd59c0def933b45dfd57e458abfc029a342daaa061fe9b91",
+          "id": "053173650540285dec3ccf33986f8edcbdb6580aadd10b63cc725e706acc46ea",
           "locationId": "228259124219856",
           "name": "Hagerstown, MD",
           "type": "Rivian Adventure Network",
@@ -943,14 +409,12 @@
           "url": "/locations/ran-hagerstown-md-cf99b7f4cd/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 187 (previously 188).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 187 (previously 188)."
           ],
           "chargerReport": false
         },
         {
-          "id": "77da152059b4e143d5eaccac24d946513f42ac123af15309088e092ebf5bd470",
+          "id": "84eb45ed1fcc017ad734b18f0634ce9ff2182cb7f8574ea60116e12fb750ec12",
           "locationId": "137700098066321",
           "name": "Hailey, ID",
           "type": "Rivian Adventure Network",
@@ -959,59 +423,12 @@
           "url": "/locations/ran-hailey-id-7d3ccd5f05/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 174 (previously 173).",
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 174 (previously 173)."
           ],
           "chargerReport": false
         },
         {
-          "id": "ab0c2fe001b9de5ad22ea0e8380b2176c672c6d0d0912a8949fe4f5fc889368a",
-          "locationId": "178080276260207",
-          "name": "Happy Valley, OR",
-          "type": "Rivian Adventure Network",
-          "city": "Happy Valley",
-          "region": "OR",
-          "url": "/locations/ran-happy-valley-or-a1f68b8c63/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.36-0.52/kWh (previously $0.36–0.52/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.48/kWh (previously $0.34–0.48/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "1f4bc19e833f0dcdd1ee13bfe31d01df8bf434433b4d0daf29826e45fc23efa4",
-          "locationId": "125863313125091",
-          "name": "Hays, KS",
-          "type": "Rivian Adventure Network",
-          "city": "Hays",
-          "region": "KS",
-          "url": "/locations/ran-hays-ks-7278d6026c/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "1665b13aed78cb2ea1923df1460407720b28ee51cf91da6231d984a87b3c2a98",
-          "locationId": "150974802561288",
-          "name": "Henderson, NC",
-          "type": "Rivian Adventure Network",
-          "city": "Henderson",
-          "region": "NC",
-          "url": "/locations/ran-henderson-nc-894f8f6ac6/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "49e47d2d40058e2ce40c055c50eae254358a2ba915c8b59a64d1ecfe7390ace6",
+          "id": "e8e0e861e4bd12e265586220186ac0d0e4f2adb32169e6aeb249a65af476065d",
           "locationId": "226698157416751",
           "name": "Holbrook, AZ",
           "type": "Rivian Adventure Network",
@@ -1020,14 +437,12 @@
           "url": "/locations/ran-holbrook-az-ce2e47159e/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 200 (previously 199).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.65/kWh."
+            "Average peak power (kW): 200 (previously 199)."
           ],
           "chargerReport": false
         },
         {
-          "id": "04e8d6d1390b5c866e10b697ddce4dfa084a6e859cb21f759dc7c7f5050a624b",
+          "id": "c63fdbc3aee1db08f2f24daf6bd647a86f015d226e274f19f3cb066b5a13147d",
           "locationId": "19411687677695",
           "name": "Holyoke, MA",
           "type": "Rivian Adventure Network",
@@ -1036,14 +451,12 @@
           "url": "/locations/ran-holyoke-ma-11a7a2b05c/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 187 (previously 188).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 187 (previously 188)."
           ],
           "chargerReport": false
         },
         {
-          "id": "b6ee3d2ffef872a1ad9994af14a79e8150a03dcaa3e934806fe0d53694278d64",
+          "id": "0e42a1681e3a5d28b1aaa32a7bd21478cb499036a50324eed169571c130e9246",
           "locationId": "175489736196339",
           "name": "Idaho Springs, CO",
           "type": "Rivian Adventure Network",
@@ -1052,29 +465,12 @@
           "url": "/locations/ran-idaho-springs-co-9f9b6353fe/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 192 (previously 193).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39/kWh."
+            "Average peak power (kW): 192 (previously 193)."
           ],
           "chargerReport": false
         },
         {
-          "id": "5dbba3d86198808dd2a53d715d79523257295ea108c49b6ebdf14868175c29a4",
-          "locationId": "21886094918491",
-          "name": "Independence, MO",
-          "type": "Rivian Adventure Network",
-          "city": "Independence",
-          "region": "MO",
-          "url": "/locations/ran-independence-mo-13e7c0da81/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.45/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.38/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "77566673e192d984b801ae18b86ce48124760385c2faef0984c83ddb533ac70d",
+          "id": "7b79e87285d9cb16bcd3d5593390ef5d67810eee731f99a1270b1e63a4ed65f0",
           "locationId": "169045817157391",
           "name": "Inyokern, CA",
           "type": "Rivian Adventure Network",
@@ -1083,44 +479,12 @@
           "url": "/locations/ran-inyokern-ca-99bf0bd2a4/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 196 (previously 197).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 196 (previously 197)."
           ],
           "chargerReport": false
         },
         {
-          "id": "59c6ec12059400db853a31f5bc6b6995ea3adfc733b7bcb28f7d023c02fa6c81",
-          "locationId": "149576742135264",
-          "name": "Irvine, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Irvine",
-          "region": "CA",
-          "url": "/locations/ran-irvine-ca-880a0c85a3/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.58/kWh (previously $0.40–0.58/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "7b7f39719b15cfccc08e70b462642b4bab0d1e16dc6845ef86a61cae6d79dc30",
-          "locationId": "36004817709429",
-          "name": "Jackson, WY",
-          "type": "Rivian Adventure Network",
-          "city": "Jackson",
-          "region": "WY",
-          "url": "/locations/ran-coming-soon-wy-jackson-20bf064f67/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.59/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.55/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "cda8ec860443d43726ffbe85fc947a508535c942ba6d90f3b2dcf144f161778d",
+          "id": "0ffa4775595e38d3e7fa935f01985f3c47438e6b7a0287252e75f4697f1994b0",
           "locationId": "108504500787583",
           "name": "Jacksonville, FL",
           "type": "Rivian Adventure Network",
@@ -1129,44 +493,12 @@
           "url": "/locations/ran-jacksonville-fl-62af2c2a97/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 198).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.45/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.38/kWh."
+            "Average peak power (kW): 199 (previously 198)."
           ],
           "chargerReport": false
         },
         {
-          "id": "7a2eace1cb2f2090c1579d28d7a5a96a55a5dcdd496f9b379bc27e1b3da66977",
-          "locationId": "151656054371743",
-          "name": "Jacumba, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Jacumba Hot Springs",
-          "region": "CA",
-          "url": "/locations/ran-jacumba-ca-89ee2d3073/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.65/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "be09ddd2d757b5fa49f7881c3a5faaeaeba8e991496ff3b9e94df2916213a6e9",
-          "locationId": "82791612080483",
-          "name": "Joshua Tree, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Joshua Tree",
-          "region": "CA",
-          "url": "/locations/ran-joshua-tree-ca-4b4c6c919f/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "d43f9ca46d1fd421efeca435c921b60b8d10a61b7b6e7b3818b8ddb7f7ff5a47",
+          "id": "ddd205fa3a8ff75dadd03b2e6fa5b77583f918b5576f1dd5df3a1bde5df084d8",
           "locationId": "204191351692338",
           "name": "King of Prussia, PA",
           "type": "Rivian Adventure Network",
@@ -1175,44 +507,12 @@
           "url": "/locations/ran-king-of-prussia-pa-b9b600ec99/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 179 (previously 181).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 179 (previously 181)."
           ],
           "chargerReport": false
         },
         {
-          "id": "5e3924f525b797486ecb08c7e7fa06f5497f877f29051e6bb963acade8d65359",
-          "locationId": "98914932127690",
-          "name": "Kingman, AZ",
-          "type": "Rivian Adventure Network",
-          "city": "Kingman",
-          "region": "AZ",
-          "url": "/locations/ran-kingman-az-59f66d5535/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "7d4ff3a9174f83b50ed503e0be0b8ad227fa1b25882942cfcc3bdf4d99c9381f",
-          "locationId": "87134916432034",
-          "name": "Kittery, ME",
-          "type": "Rivian Adventure Network",
-          "city": "Kittery",
-          "region": "ME",
-          "url": "/locations/ran-kittery-me-4f3fadae8e/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "06253b29d038b8b275127c771e1d389db79c7f67174189f176e916d5fae5c1db",
+          "id": "f8610823151e2fecfc5b54431e6170e88e030746f8ad91cc1d4d6eab4a53dc0b",
           "locationId": "244246443878970",
           "name": "Klamath Falls, OR",
           "type": "Rivian Adventure Network",
@@ -1221,9 +521,7 @@
           "url": "/locations/ran-klamath-falls-or-de240e7727/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 191 (previously 192).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 191 (previously 192)."
           ],
           "chargerReport": false
         },
@@ -1244,22 +542,7 @@
           "chargerReport": false
         },
         {
-          "id": "bb568ddaf1932b8d80a04e42257ed15ef6251c9c09c73377ded602e539704016",
-          "locationId": "246277750444366",
-          "name": "Lakewood, CO",
-          "type": "Rivian Adventure Network",
-          "city": "Lakewood",
-          "region": "CO",
-          "url": "/locations/ran-lakewood-co-dffd01c58f/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.33-0.46/kWh (previously $0.33–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "51c417d40f6a67f28f58273434ab0a4686b24bb8c7e1ea0a2163f02135e26829",
+          "id": "a0e6f33f86574be44c2b3e722b95a7c7eccf80f30fbfb1e5a32d337be14688cc",
           "locationId": "171922907469954",
           "name": "Lansing, MI",
           "type": "Rivian Adventure Network",
@@ -1268,29 +551,12 @@
           "url": "/locations/ran-lansing-mi-9c5cebc4d6/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 196 (previously 197).",
-            "Charging prices: Other EVs: $0.33-0.46/kWh (previously $0.33–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
+            "Average peak power (kW): 196 (previously 197)."
           ],
           "chargerReport": false
         },
         {
-          "id": "7f7bd2bc2c3ec24291121440f19003b462a1d2d98a61d316d436befdd5f3b01d",
-          "locationId": "60206738990646",
-          "name": "Las Vegas, NV",
-          "type": "Rivian Adventure Network",
-          "city": "Las Vegas",
-          "region": "NV",
-          "url": "/locations/ran-las-vegas-nv-36c1f93b23/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.45-0.64/kWh (previously $0.45–0.64/kWh).",
-            "Charging prices: Rivian vehicles: $0.41-0.59/kWh (previously $0.41–0.59/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "ce7d91067a0c4753f2a235fc4dde21d2c137bea31c5a23bcc807fed1ab7003d1",
+          "id": "9a47d3875806973e731ea5a4d0ef5e120ebaf737dea9fcd9e75c7a32f303ce0c",
           "locationId": "12207313668604",
           "name": "Latham, NY",
           "type": "Rivian Adventure Network",
@@ -1299,14 +565,12 @@
           "url": "/locations/ran-latham-ny-0b1a3c8907/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 192).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
+            "Average peak power (kW): 190 (previously 192)."
           ],
           "chargerReport": false
         },
         {
-          "id": "30d96fc6019cdb7d4cf632113455ba8b98379e15218e20085cb18ea95b35d967",
+          "id": "a33a931ea5d0239b6574ba23d329a9eb404c5ee2df74bed2cd26e060e7355028",
           "locationId": "22283758886660",
           "name": "Lee Vining, CA",
           "type": "Rivian Adventure Network",
@@ -1315,14 +579,12 @@
           "url": "/locations/ran-lee-vining-ca-144457791c/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 181 (previously 183).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
+            "Average peak power (kW): 181 (previously 183)."
           ],
           "chargerReport": false
         },
         {
-          "id": "efa347ad5d6d660ee3671c822a5980e2b267a2fc83daf17494c9cb8ebd3f6229",
+          "id": "2cff690e9d100a4d1db6009603daf1b3233eb1716bf76a06f82efb1ec833931a",
           "locationId": "218799063731520",
           "name": "Lincoln City, OR",
           "type": "Rivian Adventure Network",
@@ -1331,14 +593,12 @@
           "url": "/locations/ran-lincoln-city-or-c6ff20694b/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 170 (previously 171).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 170 (previously 171)."
           ],
           "chargerReport": false
         },
         {
-          "id": "f7692bc611577119edac6bed862a07263e6594cfee576ddfe2454ccdc8aba0a7",
+          "id": "6b5989d04440292dfdc19f4f9d117e1c2a6d71eb3b2bb5f21de78ca48b87fd22",
           "locationId": "22345941019327",
           "name": "Lynnwood, WA",
           "type": "Rivian Adventure Network",
@@ -1347,14 +607,12 @@
           "url": "/locations/ran-lynnwood-wa-1452d1d128/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 181 (previously 182).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 181 (previously 182)."
           ],
           "chargerReport": false
         },
         {
-          "id": "51ac3992e9132ead2531b7632c7b8173958ba9bdfcfac241807debd3f68f4db4",
+          "id": "f76570131ca41acdda8e6cb16fbe76652661f53e70029524c6869feec5e56091",
           "locationId": "23563085393340",
           "name": "Mackinaw City, MI",
           "type": "Rivian Adventure Network",
@@ -1363,29 +621,12 @@
           "url": "/locations/ran-mackinaw-city-mi-156e35466b/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 189).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 190 (previously 189)."
           ],
           "chargerReport": false
         },
         {
-          "id": "9ba578760fdabe2bcb17a8254aed96161e14f84b6ee45985777823c2490546fd",
-          "locationId": "85793015378558",
-          "name": "Macon, GA",
-          "type": "Rivian Adventure Network",
-          "city": "Macon",
-          "region": "GA",
-          "url": "/locations/ran-macon-ga-4e073e2570/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "7f28bfe51c5fc26ee70712875ed5acd5ea1c7ef1a7c8242570404ff377d34921",
+          "id": "72d52dcb9010c386ab0d4c3de2feebdf4a082bf210e8a0da3583228f28226b35",
           "locationId": "233199267194620",
           "name": "Madras, OR",
           "type": "Rivian Adventure Network",
@@ -1394,14 +635,12 @@
           "url": "/locations/ran-madras-or-d417ef6c64/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 189 (previously 190).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 189 (previously 190)."
           ],
           "chargerReport": false
         },
         {
-          "id": "b1dd5f8082cdd2e80880aa3340c5046314c8bf4b538d8b550ffe0b2e4d270d79",
+          "id": "ec83d0465bc8de293c2fbaa5f8dfb66330d8e300dbd84a87f03275490e0b4231",
           "locationId": "31762405664723",
           "name": "Mammoth Lakes, CA",
           "type": "Rivian Adventure Network",
@@ -1410,14 +649,12 @@
           "url": "/locations/ran-mammoth-lakes-ca-1ce342d8e5/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 157 (previously 161).",
-            "Charging prices: Other EVs: $0.40-0.58/kWh (previously $0.40–0.58/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
+            "Average peak power (kW): 157 (previously 161)."
           ],
           "chargerReport": false
         },
         {
-          "id": "286eec92190d9e78e7ecb8070e52233f5591bfdb130fa799f6299d7f9620a768",
+          "id": "30e0e9387099ff537150a25056f72c4938416a6f564aaef7da0db444632f013d",
           "locationId": "178905660535678",
           "name": "Manchester, CT",
           "type": "Rivian Adventure Network",
@@ -1426,29 +663,12 @@
           "url": "/locations/ran-permit-ct-manchester-a2b6b848f1/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 194 (previously 193).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 194 (previously 193)."
           ],
           "chargerReport": false
         },
         {
-          "id": "e8a6487b60ec7d759af3ff93961ff1b6e00703796d8fe29ef98e8933fb03d479",
-          "locationId": "36133846908052",
-          "name": "Manteca, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Manteca",
-          "region": "CA",
-          "url": "/locations/ran-manteca-ca-20dd110cba/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "390b5c16d2ee797ad84b1c1b4e5b3e0e1d9e8ec55389c708c15a41171b01608f",
+          "id": "b0297b8be07042e7653e1ce4ae4f4239b5ba35fab9e590ed62352e168f9c36ce",
           "locationId": "66760459609391",
           "name": "Maple Grove, MN",
           "type": "Rivian Adventure Network",
@@ -1457,14 +677,12 @@
           "url": "/locations/ran-maple-grove-mn-3cb7e16ba2/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 194 (previously 193).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 194 (previously 193)."
           ],
           "chargerReport": false
         },
         {
-          "id": "35aed6d556af43102b48b902fdfcb7d135f0dc2af0a2aed37b5ae201c825765f",
+          "id": "332e1bfc01d86233d386a3c73334204573a943506cca9427ba0cca329d62a025",
           "locationId": "230393513006492",
           "name": "Marysville, WA",
           "type": "Rivian Adventure Network",
@@ -1473,14 +691,12 @@
           "url": "/locations/ran-permit-wa-marysville-d18aab7113/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 192).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 190 (previously 192)."
           ],
           "chargerReport": false
         },
         {
-          "id": "ff1a6ab5f4bf6dccd48cec2b2a7c1ed8937da4d9679dccf3ba4fcd1b02f9bd65",
+          "id": "fced9d60171cb8ab4c2b5bd7c5232f8206340bc4087f0f4f3659a5386d23a98d",
           "locationId": "128379472982154",
           "name": "Maumee, OH",
           "type": "Rivian Adventure Network",
@@ -1489,14 +705,12 @@
           "url": "/locations/ran-maumee-oh-74c2acd2ee/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 181 (previously 183).",
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 181 (previously 183)."
           ],
           "chargerReport": false
         },
         {
-          "id": "1567a15af0202488def65e9df5bc06e8b287ad60252de1b2d0850370309942e9",
+          "id": "6f0adb28e45fba9fc1900c0fca95b867b70d1d4c0207c8a958c3090749720d10",
           "locationId": "186753582865905",
           "name": "Meadows of Dan, VA",
           "type": "Rivian Adventure Network",
@@ -1505,14 +719,12 @@
           "url": "/locations/ran-meadows-of-dan-va-a9d9f4e85b/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 197).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 199 (previously 197)."
           ],
           "chargerReport": false
         },
         {
-          "id": "58c066ba485a84513b0a8a999bea9249b2a366088e137fc593c1309242e71f31",
+          "id": "4d513718e01a3ddc4d01a17eee280028d7c3b8b00b65717f36653678f783f871",
           "locationId": "104839235830052",
           "name": "Medford, OR",
           "type": "Rivian Adventure Network",
@@ -1521,14 +733,12 @@
           "url": "/locations/ran-medford-or-5f59c959be/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 197 (previously 195).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 197 (previously 195)."
           ],
           "chargerReport": false
         },
         {
-          "id": "b4b93526c1a0dfa87aba3137d29ad4686686d4b642851976dcdff0756b0f8cd0",
+          "id": "681df694c8c18ca527b2a24425bb749e22b3f18d3e501cf581e6a96b28cff637",
           "locationId": "21487137388149",
           "name": "Monticello, UT",
           "type": "Rivian Adventure Network",
@@ -1537,29 +747,12 @@
           "url": "/locations/ran-monticello-ut-138add21b4/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 195 (previously 194).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.65/kWh."
+            "Average peak power (kW): 195 (previously 194)."
           ],
           "chargerReport": false
         },
         {
-          "id": "08266915e5d4ebb6b49a36734b1b5c46017da6198226f6e100bff6b1f3cc05bd",
-          "locationId": "153455229831021",
-          "name": "Montrose, CO",
-          "type": "Rivian Adventure Network",
-          "city": "Montrose",
-          "region": "CO",
-          "url": "/locations/ran-montrose-co-8b91146745/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.36-0.51/kWh (previously $0.36–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "755f307a4bcdd7e889b44936ee8d8254c00e82d593562b1846623c27ccd50961",
+          "id": "c3f26d2f2ab9c07d15da6dd0bf25fe9310bb31c444f9a26ac0896d6e8b7119b0",
           "locationId": "250913514883211",
           "name": "Moosic, PA",
           "type": "Rivian Adventure Network",
@@ -1568,74 +761,12 @@
           "url": "/locations/ran-moosic-pa-e4345add46/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 200).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 199 (previously 200)."
           ],
           "chargerReport": false
         },
         {
-          "id": "06aa8a8358734040c902767143029b5fca30394d8174fe6648ab9e27661a7199",
-          "locationId": "174705885347076",
-          "name": "Mount Laurel, NJ",
-          "type": "Rivian Adventure Network",
-          "city": "Mt Laurel Township",
-          "region": "NJ",
-          "url": "/locations/ran-mount-laurel-nj-9ee4e22d3a/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "2e84a1ec50a15c745b6802f9e9e3b01905c0e259b061908ef6ae6404faf8e06c",
-          "locationId": "262367076666157",
-          "name": "Mount Shasta, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Mount Shasta",
-          "region": "CA",
-          "url": "/locations/ran-mount-shasta-ca-ee9f185888/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "5ad73dc4b645a19f52bcca6f351194e463bad400bdbd3d9cc12e2943561f96e7",
-          "locationId": "143615168784743",
-          "name": "Nags Head, NC",
-          "type": "Rivian Adventure Network",
-          "city": "Nags Head",
-          "region": "NC",
-          "url": "/locations/ran-nags-head-nc-829e030f67/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.29-0.41/kWh (previously $0.29–0.41/kWh).",
-            "Charging prices: Rivian vehicles: $0.27-0.38/kWh (previously $0.27–0.38/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "3e3c362e1354fc9fedb13818bb1bd026092d840420f738d3ab5f106ae4bd30e1",
-          "locationId": "38639720785519",
-          "name": "Newark, DE",
-          "type": "Rivian Adventure Network",
-          "city": "Newark",
-          "region": "DE",
-          "url": "/locations/ran-newark-de-232482c5a4/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "c03008b4d1efd3fdb8c2305b90eb00aed1631e09bcada14a191c1498dc08573e",
+          "id": "420cc9809d3508874b9d08c63f0ecf7f0cd0cd278c9b870c3d0f04e4611760de",
           "locationId": "28678847263009",
           "name": "Newburgh, NY",
           "type": "Rivian Adventure Network",
@@ -1644,14 +775,12 @@
           "url": "/locations/ran-newburgh-ny-1a155071ae/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 183 (previously 186).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 183 (previously 186)."
           ],
           "chargerReport": false
         },
         {
-          "id": "38e15ae57a46c6b0a2a3e49796fc135737b12733c1a99b330202fcc8fd79ddee",
+          "id": "84acb03de08b5cc31f6303588cdb09425399df40c25bf9d2093e88c1db1c903b",
           "locationId": "166744023368471",
           "name": "Norfolk, VA",
           "type": "Rivian Adventure Network",
@@ -1660,44 +789,12 @@
           "url": "/locations/ran-norfolk-va-97a71e38c0/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 197 (previously 196).",
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 197 (previously 196)."
           ],
           "chargerReport": false
         },
         {
-          "id": "bb25bc9169feaadcf8f86d918b6344136f2f22bd806a666a585c497ad445cd79",
-          "locationId": "92271036139181",
-          "name": "Normal, IL",
-          "type": "Rivian Adventure Network",
-          "city": "Normal",
-          "region": "IL",
-          "url": "/locations/ran-normal-il-53eb8645c4/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "99050586ba376faae50759eb7f89c1166d1b5f1dee4e6768679d8c99f5cd05ac",
-          "locationId": "213327395451684",
-          "name": "Oklahoma City, OK",
-          "type": "Rivian Adventure Network",
-          "city": "Oklahoma City",
-          "region": "OK",
-          "url": "/locations/ran-oklahoma-city-ok-c205279130/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "d0eb6321e7daabf6710d92a1a7cace98f10376ed08b98ddbd6c394613fe502d9",
+          "id": "d7dd68f0e2c6c3584f6c92f01d037ad9c1db1b75b0fa6948998ecda86aa99650",
           "locationId": "105998078963897",
           "name": "Olancha, CA",
           "type": "Rivian Adventure Network",
@@ -1706,14 +803,12 @@
           "url": "/locations/ran-olancha-ca-606799c8ae/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 200 (previously 202).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.57/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
+            "Average peak power (kW): 200 (previously 202)."
           ],
           "chargerReport": false
         },
         {
-          "id": "332b7d074683673a3f25e6bbd9e317d3867c087d0eb4f5d580bcec7058bd8c5c",
+          "id": "5af4831c258965fe3753d7d3c71c8494b8a521fa1857b70c6d113a39631342d9",
           "locationId": "70307904233768",
           "name": "Orange, CA",
           "type": "Rivian Adventure Network",
@@ -1722,9 +817,7 @@
           "url": "/locations/ran-orange-ca-3ff1d598de/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 200).",
-            "Charging prices: Other EVs: $0.45-0.65/kWh (previously $0.45–0.65/kWh).",
-            "Charging prices: Rivian vehicles: $0.39-0.55/kWh (previously $0.39–0.55/kWh)."
+            "Average peak power (kW): 199 (previously 200)."
           ],
           "chargerReport": false
         },
@@ -1754,67 +847,7 @@
           "chargerReport": true
         },
         {
-          "id": "9ea392e36e66dc88fdb9ef5846f4d940c1a96d92e0f19dbc1d8dfa6c95600dbf",
-          "locationId": "197924104146020",
-          "name": "Paramus, NJ",
-          "type": "Rivian Adventure Network",
-          "city": "Paramus",
-          "region": "NJ",
-          "url": "/locations/ran-paramus-nj-b402cbdc4a/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "63664a58af96ab08a2b2f06b0a8108500fd80a9a4d2f0a18555deccace0fee74",
-          "locationId": "10013892171193",
-          "name": "Park City, UT",
-          "type": "Rivian Adventure Network",
-          "city": "Park City",
-          "region": "UT",
-          "url": "/locations/ran-park-city-ut-091b8a6d13/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.32-0.46/kWh (previously $0.32–0.46/kWh).",
-            "Charging prices: Rivian vehicles: $0.27-0.39/kWh (previously $0.27–0.39/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "1e8f9b6f87c466a0cbbcf57a98eeaea279a7e5737c5d9010e65e326c83101862",
-          "locationId": "207532463807553",
-          "name": "Phoenix, AZ",
-          "type": "Rivian Adventure Network",
-          "city": "Phoenix",
-          "region": "AZ",
-          "url": "/locations/ran-phoenix-az-bcbfeab99a/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "8bd216a6ca40dd10cdf49ce968e00a5a07accab9a05e671d75af79b8d3052ece",
-          "locationId": "180247158082072",
-          "name": "Pismo Beach, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Pismo Beach",
-          "region": "CA",
-          "url": "/locations/ran-pismo-beach-ca-a3ef0fc507/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "47e3ac4cf17e299dbb316ab0e0e05e2e5f88cc9e82196fceffebb4450c1b62f8",
+          "id": "a250bc110d76fdde8aab7794095f08b57a18fae0bb541e7b51069b08b9e507af",
           "locationId": "119737626898978",
           "name": "Placerville, CA",
           "type": "Rivian Adventure Network",
@@ -1823,59 +856,12 @@
           "url": "/locations/ran-placerville-ca-6ce696a86f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 193 (previously 192).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 193 (previously 192)."
           ],
           "chargerReport": false
         },
         {
-          "id": "a0cf1222fd50ebe6431029d8288c7906a19cba616bf7c05324cca75f652947c2",
-          "locationId": "149450316288872",
-          "name": "Plymouth, MI",
-          "type": "Rivian Adventure Network",
-          "city": "Plymouth",
-          "region": "MI",
-          "url": "/locations/ran-plymouth-mi-87ec9cf451/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "7c4de0db3207379e91d4a076ac150487d35b9ad35ce678b9a9109c04c2fff1c4",
-          "locationId": "81221597953092",
-          "name": "Pooler, GA",
-          "type": "Rivian Adventure Network",
-          "city": "Pooler",
-          "region": "GA",
-          "url": "/locations/ran-pooler-ga-49dee06f3a/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "dbf435cf44a9263999b7cd3485afed2215eb470e25d63eb09531f75a7406ced2",
-          "locationId": "96922781711411",
-          "name": "Price, UT",
-          "type": "Rivian Adventure Network",
-          "city": "Price",
-          "region": "UT",
-          "url": "/locations/ran-price-ut-582697ea39/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.39/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "20529ce78c4fe0c54169e6b43e787618628ce55c0f23fa5406be2962e21856b2",
+          "id": "48bab8e64e7377814c60d95c710c0a3adf6f569ff206973df00dda865a138fbe",
           "locationId": "166229043927307",
           "name": "Quartzsite, AZ",
           "type": "Rivian Adventure Network",
@@ -1884,14 +870,12 @@
           "url": "/locations/ran-quartzsite-az-972f370e16/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 193 (previously 192).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.62/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.53/kWh."
+            "Average peak power (kW): 193 (previously 192)."
           ],
           "chargerReport": false
         },
         {
-          "id": "982a81172befa4170b7bec42b09dfc55b6a5a726a13bd54c7fb407697aa2897a",
+          "id": "673badb7a961f9fb81f565b3bb061afa43eb4f425652a75e1b288c99746b8c43",
           "locationId": "53232422430611",
           "name": "Queensbury, NY",
           "type": "Rivian Adventure Network",
@@ -1900,14 +884,12 @@
           "url": "/locations/ran-queensbury-ny-306a2391e5/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 187 (previously 185).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 187 (previously 185)."
           ],
           "chargerReport": false
         },
         {
-          "id": "ef15a279444c6cdffba998e3f53230b2c319a68e236ed4537c9e6484657e8a54",
+          "id": "4086f4e35a360a270ec52b81f2eeffa07586007e2010f46f813a937c15b2ae23",
           "locationId": "11418482790177",
           "name": "Ritzville, WA",
           "type": "Rivian Adventure Network",
@@ -1916,14 +898,12 @@
           "url": "/locations/ran-ritzville-wa-0a62928d0c/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 199 (previously 200).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.44/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.37/kWh."
+            "Average peak power (kW): 199 (previously 200)."
           ],
           "chargerReport": false
         },
         {
-          "id": "26d578d2c6ae6c99e04db7d7cc3fdff9e9e14e08373475160470ec78cb2f827a",
+          "id": "a8a1609b2f5ffad676ec2bc0b882a1b7ba78b0d2dbe60f0563affcee35762264",
           "locationId": "229446042890445",
           "name": "Roanoke, VA",
           "type": "Rivian Adventure Network",
@@ -1932,14 +912,12 @@
           "url": "/locations/ran-roanoke-va-d0ae11d26e/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 186).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 185 (previously 186)."
           ],
           "chargerReport": false
         },
         {
-          "id": "6db7a0bc1c2c988156acf5e65970e60066d2dc53c002e1806a2159af250cc68b",
+          "id": "66adb333edea013908c1394ad0475d4446b7b9fd78c1045ea64b30a345da29d7",
           "locationId": "219786332766711",
           "name": "Rocklin, CA",
           "type": "Rivian Adventure Network",
@@ -1948,29 +926,12 @@
           "url": "/locations/ran-rocklin-ca-c7e4fe3b3f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 187).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
+            "Average peak power (kW): 185 (previously 187)."
           ],
           "chargerReport": false
         },
         {
-          "id": "d012a3d66d554b75b6669528971765c8db423cf7c700b0a23e5f70d93309a5cb",
-          "locationId": "93878610043074",
-          "name": "Roseburg, OR",
-          "type": "Rivian Adventure Network",
-          "city": "Roseburg",
-          "region": "OR",
-          "url": "/locations/ran-roseburg-or-5561d124de/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "40381f286acfbd2b01d7aebe9a2de3744a2037baf1a0b09803c3e4f0a7fd7168",
+          "id": "215772b8feabb4f6d7a80e009e129b81abdf43cb082ec38b8fe9c4e02ee02aa4",
           "locationId": "272515155339162",
           "name": "Sacramento, CA",
           "type": "Rivian Adventure Network",
@@ -1979,29 +940,12 @@
           "url": "/locations/ran-sacramento-ca-f7d9e0f865/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 191).",
-            "Charging prices: Other EVs: $0.36-0.51/kWh (previously $0.36–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 190 (previously 191)."
           ],
           "chargerReport": false
         },
         {
-          "id": "3064dfa7672ecb287ef369b258b1b6da1c372df543012c9840cd915f3b7a555c",
-          "locationId": "178870021911385",
-          "name": "Saginaw, MI",
-          "type": "Rivian Adventure Network",
-          "city": "Saginaw",
-          "region": "MI",
-          "url": "/locations/ran-saginaw-mi-a2ae6c0eb1/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.58/kWh (previously $0.40–0.58/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "219dc8d339cd1225816883d4d6b66df00073dab76eaa203be9b32ae62b17b0d0",
+          "id": "233dcabd3c24c1e121075ed37030e63288aacc6c1ea22ea4d84834cb7c218434",
           "locationId": "18906307910619",
           "name": "Salida, CO",
           "type": "Rivian Adventure Network",
@@ -2010,29 +954,12 @@
           "url": "/locations/ran-salida-co-1131f7b519/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 194).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.67/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.59/kWh."
+            "Average peak power (kW): 190 (previously 194)."
           ],
           "chargerReport": false
         },
         {
-          "id": "2893ab07fb0f347a515366c788a6028ac96b8e62993c40645525bbe9927a6373",
-          "locationId": "212798187575528",
-          "name": "San Antonio, TX",
-          "type": "Rivian Adventure Network",
-          "city": "San Antonio",
-          "region": "TX",
-          "url": "/locations/ran-san-antonio-tx-c189f051d6/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.35-0.51/kWh (previously $0.35–0.51/kWh).",
-            "Charging prices: Rivian vehicles: $0.30-0.43/kWh (previously $0.30–0.43/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "2af4b983bfb6f6eebc95dfa38b7d787fd343c75c30ecdfd6504b0503b715bd7c",
+          "id": "ecf007bc5e859262d21f551f045a053fd54b5cf6294b359119750f1b36c0ea5e",
           "locationId": "170893426109227",
           "name": "San Bernardino, CA",
           "type": "Rivian Adventure Network",
@@ -2041,29 +968,12 @@
           "url": "/locations/ran-san-bernardino-ca-9b6d39e5e8/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 192 (previously 191).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 192 (previously 191)."
           ],
           "chargerReport": false
         },
         {
-          "id": "25055e77544a1ab6a9450c6ff60ff308d015bdb43ea3ed3c941b97ce5fda5b73",
-          "locationId": "149578027455422",
-          "name": "Santa Nella, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Santa Nella",
-          "region": "CA",
-          "url": "/locations/ran-santa-nella-ca-880a592211/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.37-0.53/kWh (previously $0.37–0.53/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "2088d5edad7de7724cf7ac4609b98798fa73b094480a4c9743067120806f9245",
+          "id": "59d7d726f5388b24ad158602f209203931bd7e4f810bb98fed4da94035a6f077",
           "locationId": "55601172076096",
           "name": "Sedona, AZ",
           "type": "Rivian Adventure Network",
@@ -2072,14 +982,12 @@
           "url": "/locations/ran-sedona-az-3291a80d14/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 186 (previously 187).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 186 (previously 187)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c2486e6745432b24b5f7b0d6a020c6ad8480852f680e1d101c2b74fafda218d4",
+          "id": "b5b7eb7d8ca8a502ee94a4a4d0582eab83cb3597447769a803993580ed34c687",
           "locationId": "228222902815394",
           "name": "Shoshone, CA",
           "type": "Rivian Adventure Network",
@@ -2088,9 +996,7 @@
           "url": "/locations/ran-shoshone-ca-cf9148fe08/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 194 (previously 195).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.56/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.48/kWh."
+            "Average peak power (kW): 194 (previously 195)."
           ],
           "chargerReport": false
         },
@@ -2112,22 +1018,7 @@
           "chargerReport": false
         },
         {
-          "id": "757b6f13005d0bd7c7a975769a34be0313be160cba48896786377297d2ae6967",
-          "locationId": "51689744291378",
-          "name": "Southampton, NY",
-          "type": "Rivian Adventure Network",
-          "city": "Southampton",
-          "region": "NY",
-          "url": "/locations/ran-southampton-ny-2f02f4c993/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "163422957a40f3a3239052953c5ae3b11f595c963886a3cad8a7b4fd744821ef",
+          "id": "f74941da2d7d0c110526f7828bb0d0e6547cf5994f4b049930ca539e8314bc35",
           "locationId": "112674191113591",
           "name": "Spokane, WA",
           "type": "Rivian Adventure Network",
@@ -2136,14 +1027,12 @@
           "url": "/locations/ran-spokane-wa-667a0113bb/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 191).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 190 (previously 191)."
           ],
           "chargerReport": false
         },
         {
-          "id": "6dab4eb1c0629841aa257ca9d706ae2730cb6ca6fd6612d43122aa9aa7b36c88",
+          "id": "fee2fcb1cf49d6f1a58c0de48f270bf253851e2dd3684e8815665d0ba34e70bb",
           "locationId": "119830985676850",
           "name": "Springfield, IL",
           "type": "Rivian Adventure Network",
@@ -2152,14 +1041,12 @@
           "url": "/locations/ran-springfield-il-6cfc534655/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 190 (previously 187).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 190 (previously 187)."
           ],
           "chargerReport": false
         },
         {
-          "id": "8ce01f07ed3751706077f2657dac0e639c508f3001501350b3a1f2e34aca0ea9",
+          "id": "788b6f2649cf591c092d00b1a9488eeb83c4d8472691bb080ddf063e5b4c6877",
           "locationId": "227950270792277",
           "name": "St. Regis, MT",
           "type": "Rivian Adventure Network",
@@ -2168,14 +1055,12 @@
           "url": "/locations/ran-st-regis-mt-cf51cedb80/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 201 (previously 202).",
-            "Charging prices: Other EVs: $0.29-0.41/kWh (previously $0.29–0.41/kWh).",
-            "Charging prices: Rivian vehicles: $0.27-0.38/kWh (previously $0.27–0.38/kWh)."
+            "Average peak power (kW): 201 (previously 202)."
           ],
           "chargerReport": false
         },
         {
-          "id": "e624925018caf111af0d0863f08604d02f0b4b14481e8eda61ade17037509c0d",
+          "id": "1413136ac0f47b4f026b7de7c13790616caebbc44b44b502cf200dfa9e6dba33",
           "locationId": "36150349692396",
           "name": "Strongsville, OH",
           "type": "Rivian Adventure Network",
@@ -2184,29 +1069,12 @@
           "url": "/locations/ran-strongsville-oh-20e0e8b13b/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 191 (previously 190).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 191 (previously 190)."
           ],
           "chargerReport": false
         },
         {
-          "id": "a7a77eb3520032ebddd2cf8613ba250b504dc12dbb6d11fe7ec11d774f56075e",
-          "locationId": "255284487515663",
-          "name": "Sun Prairie, WI",
-          "type": "Rivian Adventure Network",
-          "city": "Sun Prairie",
-          "region": "WI",
-          "url": "/locations/ran-sun-prairie-wi-e82e0d22ab/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "60ee6180d7ddd0a6cdd89eee0d532b5172d6aa1190ac5a9a28b2dd5f32b46110",
+          "id": "97b09c4b69e8bce62b17580ced84dad0e27ce4841e4ed1b1c3b6a7ac5825ca16",
           "locationId": "178258361445921",
           "name": "Tallahassee, FL",
           "type": "Rivian Adventure Network",
@@ -2215,14 +1083,12 @@
           "url": "/locations/ran-tallahassee-fl-a2200240ab/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 200 (previously 201).",
-            "Charging prices: Other EVs: $0.34-0.49/kWh (previously $0.34–0.49/kWh).",
-            "Charging prices: Rivian vehicles: $0.32-0.45/kWh (previously $0.32–0.45/kWh)."
+            "Average peak power (kW): 200 (previously 201)."
           ],
           "chargerReport": false
         },
         {
-          "id": "0b68625fd5bdf3b0aea54c04bfb6293b2686d6c87bf1ae6dd36f316c39944dd7",
+          "id": "038c1237024b5e9484b87b4d08c68a1a7aa019d60588642a3933fa0dce5270c7",
           "locationId": "251441353060337",
           "name": "Tampa, FL",
           "type": "Rivian Adventure Network",
@@ -2231,59 +1097,12 @@
           "url": "/locations/ran-tampa-fl-e4af4078ad/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 201 (previously 200).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.45/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.38/kWh."
+            "Average peak power (kW): 201 (previously 200)."
           ],
           "chargerReport": false
         },
         {
-          "id": "5ff94c5c42d5fc83b6102c6f0f1b55f1ef4c3dce5e675adcd21d485c5fc9d7f0",
-          "locationId": "178472444771548",
-          "name": "Temecula, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Temecula",
-          "region": "CA",
-          "url": "/locations/ran-temecula-ca-a251da9cfa/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "1bcbdf54285c9f75ac189d2a89234f785147197d53c0d0e3e5f83aa8d45d142a",
-          "locationId": "196931123633120",
-          "name": "The Dalles, OR",
-          "type": "Rivian Adventure Network",
-          "city": "The Dalles",
-          "region": "OR",
-          "url": "/locations/ran-the-dalles-or-b31b999c19/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.46/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "4c7f83c0327ed7c96fded4882641f33dbf7698a0ca1340aa2e1be90a0bcb9141",
-          "locationId": "48547681086758",
-          "name": "Tigard, OR",
-          "type": "Rivian Adventure Network",
-          "city": "Tigard",
-          "region": "OR",
-          "url": "/locations/ran-tigard-or-2c276339ea/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.56/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.48/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "2c3e4f2e6d33b2df956ea8ab4b82ebecfc5a7c279e0a727ff765136f7fd03ad1",
+          "id": "5f50d0c172abf3d65de3c6f6accb9d814008b36b948ca6ed375e1fb4f0943ca2",
           "locationId": "160016829112304",
           "name": "Tinton Falls, NJ",
           "type": "Rivian Adventure Network",
@@ -2292,14 +1111,12 @@
           "url": "/locations/ran-tinton-falls-nj-9188d2329d/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 184).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 185 (previously 184)."
           ],
           "chargerReport": false
         },
         {
-          "id": "a85dfe85ea43a9caa04d9f37eb010b7d9822ab9dd07de29f5ebca2f452e4020c",
+          "id": "32c828225edc722114bc16f8560054bdf0499f37bf66128510b225b59881aa1b",
           "locationId": "267691712384647",
           "name": "Traverse City, MI",
           "type": "Rivian Adventure Network",
@@ -2308,14 +1125,12 @@
           "url": "/locations/ran-traverse-city-mi-f376d55dcc/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 176 (previously 177).",
-            "Charging prices: Other EVs: $0.45-0.65/kWh (previously $0.45–0.65/kWh).",
-            "Charging prices: Rivian vehicles: $0.39-0.55/kWh (previously $0.39–0.55/kWh)."
+            "Average peak power (kW): 176 (previously 177)."
           ],
           "chargerReport": false
         },
         {
-          "id": "8ce5940248c148febf18ba07bcf5232ec887e75a0f9089a10b5cf26fa97a7cf5",
+          "id": "782d3ed7109e09752691f4b57d42c3fc8e7964f9971a16c97eccd6fa8774e196",
           "locationId": "260629789564797",
           "name": "Tremonton, UT",
           "type": "Rivian Adventure Network",
@@ -2324,14 +1139,12 @@
           "url": "/locations/ran-tremonton-ut-ed0a99f71d/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 201 (previously 202).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 201 (previously 202)."
           ],
           "chargerReport": false
         },
         {
-          "id": "4187c07270fa18413a6982118d6a0380529a76977d6e9c27d8314456ee04fcfa",
+          "id": "d567089735ef3e1b497930b8aa58d41735308ce32607c5c5f58badce4ebac555",
           "locationId": "244372480160287",
           "name": "Troy, MI",
           "type": "Rivian Adventure Network",
@@ -2340,14 +1153,12 @@
           "url": "/locations/ran-troy-mi-de4166d02f/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 175 (previously 177).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 175 (previously 177)."
           ],
           "chargerReport": false
         },
         {
-          "id": "c2c81f839b2e207fbcce42e3fa5db2bb459609cd18ad99d0a352e022912268ae",
+          "id": "cb95827d8f15efb51e286bd409df82d4ad5da1c04e3b1b865beb2be4fd249ebe",
           "locationId": "279209326445141",
           "name": "Truckee, CA",
           "type": "Rivian Adventure Network",
@@ -2356,14 +1167,12 @@
           "url": "/locations/ran-truckee-ca-fdf07ca940/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 178 (previously 179).",
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 178 (previously 179)."
           ],
           "chargerReport": false
         },
         {
-          "id": "e321fc35f2172a7c1fdf4be9e4ee845f9df8b117e5bc81d34cd786c188b1e236",
+          "id": "b6dd291c4be0fba27e2a0af706b505cc84e228c8a2763580d64d950db34acfbe",
           "locationId": "144744178376577",
           "name": "Tumalo, OR",
           "type": "Rivian Adventure Network",
@@ -2372,29 +1181,12 @@
           "url": "/locations/ran-tumalo-or-83a4e1469d/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 184 (previously 183).",
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
+            "Average peak power (kW): 184 (previously 183)."
           ],
           "chargerReport": false
         },
         {
-          "id": "4db4250ce410f769b794ea1d2a3176933659be43096f480b0e30098f24fe5291",
-          "locationId": "31506990674112",
-          "name": "Tysons, VA",
-          "type": "Rivian Adventure Network",
-          "city": "Tysons",
-          "region": "VA",
-          "url": "/locations/ran-tysons-va-1ca7caed6e/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.40-0.57/kWh (previously $0.40–0.57/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "bf4bb6ef05d002288ad507d3cfa43dbfc954d1e44d6e8900159f07071f3f078c",
+          "id": "ccb92c3c527758044ae815adbdc8970c650473fed48208ed6055443cfe2c257d",
           "locationId": "75072932440176",
           "name": "Ukiah, CA",
           "type": "Rivian Adventure Network",
@@ -2403,14 +1195,12 @@
           "url": "/locations/ran-ukiah-ca-4447476926/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 196 (previously 195).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 196 (previously 195)."
           ],
           "chargerReport": false
         },
         {
-          "id": "bc2d2b1ae57040ac7697775c73cd6a48203fd4f317449bd90dc1bcde093706ec",
+          "id": "b11d90ab924e5fcd4f93beaf542ae98432736c96db12d1f275782d3f4f7921ec",
           "locationId": "213287289416080",
           "name": "Valley Stream, NY",
           "type": "Rivian Adventure Network",
@@ -2419,44 +1209,12 @@
           "url": "/locations/ran-valley-stream-ny-c1fbd10fa7/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 161 (previously 162).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.49/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
+            "Average peak power (kW): 161 (previously 162)."
           ],
           "chargerReport": false
         },
         {
-          "id": "a6bba556e464b6212ac8fc0c58049bb2525cacc49d34673b665ae01afeb6ed6a",
-          "locationId": "242062678117749",
-          "name": "Ventura, CA",
-          "type": "Rivian Adventure Network",
-          "city": "Ventura",
-          "region": "CA",
-          "url": "/locations/ran-ventura-ca-dc279be20b/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.47-0.67/kWh (previously $0.47–0.67/kWh).",
-            "Charging prices: Rivian vehicles: $0.41-0.59/kWh (previously $0.41–0.59/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "dac3f6def64aa7a2780620a13d61986b446e119fc224423fb2b9d29f6a2e69a5",
-          "locationId": "136188286067891",
-          "name": "Waco, TX",
-          "type": "Rivian Adventure Network",
-          "city": "Waco",
-          "region": "TX",
-          "url": "/locations/ran-waco-tx-7bdcce5aa2/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.30-0.44/kWh (previously $0.30–0.44/kWh).",
-            "Charging prices: Rivian vehicles: $0.26-0.37/kWh (previously $0.26–0.37/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "623bceb53b2358722835be0a886682615037c0dd3dadbdeeb4de3748432de8e7",
+          "id": "42687f55148e697cbe9af9974b54a830f21402037fd4bfd44dd5323315b8ddd8",
           "locationId": "268614210224558",
           "name": "Walker, MI",
           "type": "Rivian Adventure Network",
@@ -2465,14 +1223,12 @@
           "url": "/locations/ran-walker-mi-f44d9e85bf/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 189 (previously 188).",
-            "Charging prices: Other EVs: $0.40-0.58/kWh (previously $0.40–0.58/kWh).",
-            "Charging prices: Rivian vehicles: $0.34-0.49/kWh (previously $0.34–0.49/kWh)."
+            "Average peak power (kW): 189 (previously 188)."
           ],
           "chargerReport": false
         },
         {
-          "id": "1c1586e8ac2b8f8aa33566a1ba0d8cbf83832cb5d5b149b832cdbf82580f7cd9",
+          "id": "5b6887d15a824c1ea64c73ce4d82f7645cc8c490dcfda663e458f1e1d5b720e8",
           "locationId": "125668983164768",
           "name": "Walsenburg, CO",
           "type": "Rivian Adventure Network",
@@ -2481,29 +1237,12 @@
           "url": "/locations/ran-walsenburg-co-724b970a8d/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 194 (previously 193).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.68/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.58/kWh."
+            "Average peak power (kW): 194 (previously 193)."
           ],
           "chargerReport": false
         },
         {
-          "id": "97060a0ee4b25d4f50786958e185b66cf0b857c78ad2486caa271d89ecbc86f2",
-          "locationId": "176235202974085",
-          "name": "Waynesboro, VA",
-          "type": "Rivian Adventure Network",
-          "city": "Waynesboro",
-          "region": "VA",
-          "url": "/locations/ran-waynesboro-va-a048f49c4f/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.55/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.47/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "912311c0dfaf5ff36cb1b647de67e2691dc3c864f59d25a9c1b9c6912d5c371e",
+          "id": "7146336f8acbbbf5961ce1016c1de497144ea910bc5e5dfe02c3363a332bf3f7",
           "locationId": "79115396918013",
           "name": "West Hartford, CT",
           "type": "Rivian Adventure Network",
@@ -2512,14 +1251,12 @@
           "url": "/locations/ran-west-hartford-ct-47f47d11e8/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 187 (previously 188).",
-            "Charging prices: Other EVs: $0.44-0.62/kWh (previously $0.44–0.62/kWh).",
-            "Charging prices: Rivian vehicles: $0.37-0.53/kWh (previously $0.37–0.53/kWh)."
+            "Average peak power (kW): 187 (previously 188)."
           ],
           "chargerReport": false
         },
         {
-          "id": "4b0e86383be807fa4b6c872f08279591a621f63f3b8c8c572c740352c75abfaa",
+          "id": "82f9781b62f0b969aac7ea1fa86fa488baf36bd941d2dca4d538ff6798ef35f9",
           "locationId": "105001383192459",
           "name": "West Lebanon, NH",
           "type": "Rivian Adventure Network",
@@ -2528,14 +1265,12 @@
           "url": "/locations/ran-west-lebanon-nh-5f7f8a1625/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 182 (previously 181).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.53/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.45/kWh."
+            "Average peak power (kW): 182 (previously 181)."
           ],
           "chargerReport": false
         },
         {
-          "id": "842b3af260374adb3bd04274162a53a3dae309447f95c627b601d2ec305a528e",
+          "id": "e26bfed0c48db82ebd76a0364dcac684b6e670371885301106ec1f3478c3297b",
           "locationId": "39771778830057",
           "name": "West Melbourne, FL",
           "type": "Rivian Adventure Network",
@@ -2544,14 +1279,12 @@
           "url": "/locations/ran-west-melbourne-fl-242c16b08c/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 204 (previously 203).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
+            "Average peak power (kW): 204 (previously 203)."
           ],
           "chargerReport": false
         },
         {
-          "id": "98b8b5bfcf743f59fcabda1d4cf970d429244b74baa71980e986646221064180",
+          "id": "b91dd7e9c0f5181e4c4e3953cb76da67762624ff58c3d6e52cb213a4892f1de0",
           "locationId": "75388329664253",
           "name": "Whittier, NC",
           "type": "Rivian Adventure Network",
@@ -2560,39 +1293,7 @@
           "url": "/locations/ran-whittier-nc-4490b68cdc/",
           "kind": "changed",
           "lines": [
-            "Average peak power (kW): 185 (previously 186).",
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.51/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.43/kWh."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "150e95c7a6f42884effcce22a7633e04e8f12abaa1d2389b670ff3f40d2562e5",
-          "locationId": "126495172544",
-          "name": "Wichita, KS",
-          "type": "Rivian Adventure Network",
-          "city": "Wichita",
-          "region": "KS",
-          "url": "/locations/ran-wichita-ks-001d73a3e5/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: $0.39-0.55/kWh (previously $0.39–0.55/kWh).",
-            "Charging prices: Rivian vehicles: $0.33-0.47/kWh (previously $0.33–0.47/kWh)."
-          ],
-          "chargerReport": false
-        },
-        {
-          "id": "906848ba76f055a2cfdb696d7db1ef993b72205e1cbad0ca51f106b7fe253648",
-          "locationId": "90060663779952",
-          "name": "Wickenburg, AZ",
-          "type": "Rivian Adventure Network",
-          "city": "Wickenburg",
-          "region": "AZ",
-          "url": "/locations/ran-wickenburg-az-51e8e1d030/",
-          "kind": "changed",
-          "lines": [
-            "Charging prices: Other EVs: time-of-use pricing changed; the range remains $0.58/kWh.",
-            "Charging prices: Rivian vehicles: time-of-use pricing changed; the range remains $0.49/kWh."
+            "Average peak power (kW): 185 (previously 186)."
           ],
           "chargerReport": false
         }

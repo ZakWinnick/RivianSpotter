@@ -17,6 +17,20 @@ function comparable(field,value){
  }
  return stable(value);
 }
+function samePrice(a,b){
+ if(!a||!b)return stable(a)===stable(b);
+ const {parseRate}=require('../js/components.js'),x=parseRate(a),y=parseRate(b);
+ const summary=v=>String(v||'').replace(/[–—]/g,'-').replace(/\s+/g,'').toLowerCase();
+ if(summary(x.summary)!==summary(y.summary))return false;
+ const detail=p=>p.periods.length?stable(p.periods):p.note?stable(p.note):null;
+ const dx=detail(x),dy=detail(y);
+ return !dx||!dy||JSON.stringify(dx)===JSON.stringify(dy);
+}
+function sameField(field,a,b){
+ if(field!=='Pricing')return JSON.stringify(comparable(field,a))===JSON.stringify(comparable(field,b));
+ const keys=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);
+ return [...keys].every(k=>samePrice(a?.[k],b?.[k]));
+}
 function normalize(data){
  const observations=new Map(data.roamer.stations.map(r=>[r.sourceId,r]));
  return [...data.locations,...data.charging].map(p=>{
@@ -49,7 +63,7 @@ function compare(before,after){
   else if(!previous.listed&&p.listed)kind='relisted';
   else if(!p.listed)continue;
   else {
-   changes=[...new Set([...Object.keys(previous.fields),...Object.keys(p.fields)])].filter(k=>JSON.stringify(comparable(k,previous.fields[k]))!==JSON.stringify(comparable(k,p.fields[k]))).map(field=>({field,before:previous.fields[field]??null,after:p.fields[field]??null}));
+   changes=[...new Set([...Object.keys(previous.fields),...Object.keys(p.fields)])].filter(k=>!sameField(k,previous.fields[k],p.fields[k])).map(field=>({field,before:previous.fields[field]??null,after:p.fields[field]??null}));
    if(!changes.length)continue;
    // Rivian's charging map never says "open", so a coming-soon station counts as active once it
    // appears there with station details; an unknown status alone is not an opening.
@@ -80,7 +94,7 @@ function schedule(value){
 function changeLines(d){
  const before=d.before,after=d.after,label=md(d.field);
  if(d.field==='Pricing'){
-  return [...new Set([...Object.keys(before||{}),...Object.keys(after||{})])].filter(k=>stable(before?.[k])!==stable(after?.[k])).flatMap(k=>{
+  return [...new Set([...Object.keys(before||{}),...Object.keys(after||{})])].filter(k=>!samePrice(before?.[k],after?.[k])).flatMap(k=>{
    const a=before?.[k],b=after?.[k],who=k==='Energy'?'Charging':k==='Rivian'?'Rivian vehicles':k;
    const summary=rate(a)===rate(b)?`${who}: time-of-use pricing changed; the range remains ${rate(b)}.`:`${who}: ${rate(b)} (previously ${rate(a)}).`;
    const detail=schedule(b);

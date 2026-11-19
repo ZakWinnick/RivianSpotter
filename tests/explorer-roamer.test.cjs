@@ -166,3 +166,10 @@ test('a newer network condition supersedes an older detail warning',()=>{
  assert.doesNotMatch(U.roamerDetails(r),/Reported Charger Issue/);
  r.detailsObservedAt='2026-10-16T01:00:00Z';assert.match(U.roamerDetails(r),/Reported Charger Issue/);
 });
+test('repeated invalid station pages stop detail requests and retain coverage warnings',async()=>{
+ const f=detailImportFixture();let calls=0;
+ try {
+  const result=await api.refresh({...f,fetchImpl:async url=>{calls++;return new Response(detailFor(url).replace('<div>1</div>','<div>2</div>'));},pause:async()=>{}});
+  assert.equal(calls,3);assert.equal(result.detailErrors.length,3);assert.equal(result.detailCount,0);
+ } finally {fs.rmSync(f.dir,{recursive:true,force:true});}
+});

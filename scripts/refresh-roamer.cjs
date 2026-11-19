@@ -64,7 +64,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  // Missing details first, then oldest. Each site is requested at most once per run.
  const complete=s=>Array.isArray(s.chargers)&&s.chargers.length>0;
  const queue=stations.slice().sort((a,b)=>Number(complete(a))-Number(complete(b)) || (a.detailsObservedAt||'').localeCompare(b.detailsObservedAt||''));
- let fetchedDetails=0,nextRequestAfter=null;const detailErrors=[],checkedIds=[];
+ let fetchedDetails=0,nextRequestAfter=null,parseFailures=0;const detailErrors=[],checkedIds=[];
  const fields=['reportedStatus','detailReportedStatus','reliabilityGrade','access','connectorSummary','chargerCount','rates','maxKw','averagePeakKw','hours','amenities','detailRates','chargers'];
  function checkpoint(){
   const currentChanges=old?stations.flatMap(s=>{const prev=previous.get(s.sourceId);return !prev?[{sourceId:s.sourceId,name:s.name,kind:'newly-detected',observedAt}]:fields.filter(k=>k in prev && JSON.stringify(s[k])!==JSON.stringify(prev[k])).map(field=>({sourceId:s.sourceId,name:s.name,kind:'changed',field,before:prev[field],after:s[field],observedAt}));}):[];
@@ -75,8 +75,8 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  for(const s of queue){
   if(Date.now()-started>=maxRunMs)break;
   const cached=fs.existsSync(path.join(cacheDir,s.sourceId+'.html'));if(!cached && (cacheOnly||fetchedDetails>=maxDetails))continue;
-  try{if(!cached)fetchedDetails++;const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,parseDetail(result.html,{sourceId:s.sourceId}),{detailsObservedAt:result.observedAt});if(!s.networkListed)s.observedAt=result.observedAt;checkedIds.push(s.sourceId);checkpoint();}
-  catch(error){detailErrors.push({sourceId:s.sourceId,message:error.message});console.warn(error.message);if(error.rateLimited){rateLimited=true;nextRequestAfter=retryAt(error);}checkpoint();if(error.rateLimited||!error.status&&/fetch|timeout|abort/i.test(error.message)||error.status>=500)break;}
+  try{if(!cached)fetchedDetails++;const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,parseDetail(result.html,{sourceId:s.sourceId}),{detailsObservedAt:result.observedAt});parseFailures=0;if(!s.networkListed)s.observedAt=result.observedAt;checkedIds.push(s.sourceId);checkpoint();}
+  catch(error){detailErrors.push({sourceId:s.sourceId,message:error.message});console.warn(error.message);if(error.rateLimited){rateLimited=true;nextRequestAfter=retryAt(error);}parseFailures=/^(Incomplete station detail|Missing station detail|Station detail identity mismatch)$/.test(error.message)?parseFailures+1:0;checkpoint();if(parseFailures>=3||error.rateLimited||!error.status&&/fetch|timeout|abort/i.test(error.message)||error.status>=500)break;}
  }
  const result=checkpoint();console.log(`Saved ${stations.length} stations, ${result.detailCount} detail snapshots; ${requests} requests.`);return result;
 }

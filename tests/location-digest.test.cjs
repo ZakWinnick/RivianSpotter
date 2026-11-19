@@ -88,3 +88,14 @@ test('now-active events render confirmed openings and newly detailed stations wi
   assert.match(text,/View location/);
  }
 });
+test('a summary-only rate does not invent a change when a detailed schedule becomes unavailable',()=>{
+ const base=normalize(data)[0];base.fields.Pricing={Rivian:'$0.30–0.43/kWh Time-of-Use Rates Mon-Fri 2:00am-6:00am$0.40 Mon-Fri 6:00am-9:00pm$0.43'};
+ const next=structuredClone(base);next.fields.Pricing={Rivian:'$0.30-0.43'};
+ assert.deepEqual(compare([base],[next]),[]);
+ next.fields.Pricing.Rivian='$0.31-0.43';assert.equal(compare([base],[next])[0].changes[0].field,'Pricing');
+});
+test('equivalent flat rates with different units do not create changes',()=>{
+ const base=normalize(data)[0];base.fields.Pricing={Rivian:'$0.49/kWh'};
+ const next=structuredClone(base);next.fields.Pricing={Rivian:'$0.49'};
+ assert.deepEqual(compare([base],[next]),[]);
+});
