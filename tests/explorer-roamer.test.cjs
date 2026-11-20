@@ -182,3 +182,8 @@ test('redesigned tiles retain previously published charger features the new view
  const update={partialChargerFeatures:true,chargers:[{name:'1A',connector:'NACS',powerKw:300,features:[]}],detailRates:{Rivian:'$0.58'}};
  const merged=api.mergePartialDetail(old,update);assert.deepEqual(merged.chargers[0].features,old.chargers[0].features);assert.equal(merged.detailRates.Idle,old.detailRates.Idle);assert.equal(merged.detailRates.Rivian,'$0.58');
 });
+
+test('redesigned mixed connector tiles match the published counts and identify each charger',()=>{
+ const html=`<body data-navigation-page="charging_sites:show:US-RIV-L123"><main><h1>Example</h1><section><h2>Chargers</h2><p>2 CCS and 1 NACS, each rated to 300 kW</p><div><div title="1A, Working, CCS"></div><div title="1B, Working, CCS · trailer friendly"></div><div title="2A, Working, NACS"></div></div></section></main></body>`;
+ const d=api.parseDetail(html,{sourceId:'US-RIV-L123'});assert.equal(d.connectorSummary,'2 CCS, 1 NACS');assert.deepEqual(d.chargers.map(x=>x.connector),['CCS','CCS','NACS']);assert.equal(d.chargers[1].features[0].label,'trailer friendly');assert.throws(()=>api.parseDetail(html.replace('Working, NACS','Working, CCS'),{sourceId:'US-RIV-L123'}),/Incomplete/);assert.throws(()=>api.parseDetail(html.replace('Working, NACS','Working'),{sourceId:'US-RIV-L123'}),/Incomplete/);
+});
