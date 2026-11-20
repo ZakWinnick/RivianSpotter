@@ -22,18 +22,20 @@ function parseDetail(html,{sourceId}={}){
  const $=load(html),main=$('main');if(!main.find('h1').length)throw Error('Missing station detail');
  const pageId=$('body').attr('data-navigation-page')?.match(/^charging_sites:show:(US-RIV-L\d+)$/)?.[1];
  if(sourceId && pageId!==sourceId)throw Error('Station detail identity mismatch');
- // The public site now presents charger tiles instead of a table. Parse only
- // the explicitly uniform connector/power form; mixed or unknown forms fail closed.
+ // Parse only explicit connector counts and power, verifying every tile against the summary.
  if(!main.find('tbody tr').length){
   const heading=main.find('h2').filter((i,e)=>clean($(e).text())==='Chargers').first();
   const card=heading.parent(),summary=clean(card.children('p').first().text());
-  const match=summary.match(/^(\d+)\s+(NACS|CCS|J1772|CHAdeMO),\s*each rated to\s+(\d+(?:\.\d+)?)\s*kW$/i);
+  const match=summary.match(/^(.+),\s*each rated to\s+(\d+(?:\.\d+)?)\s*kW$/i);
   if(!match)throw Error('Incomplete station detail');
-  const count=Number(match[1]),connector=match[2].toUpperCase(),powerKw=Number(match[3]);
+  const parts=match[1].split(/\s*(?:,|\band\b)\s*/i),counts={};
+  for(const part of parts){const item=part.match(/^(\d+)\s+(NACS|CCS|J1772|CHAdeMO)$/i);if(!item||!Number(item[1]))throw Error('Incomplete station detail');const key=item[2].toUpperCase();if(counts[key])throw Error('Incomplete station detail');counts[key]=Number(item[1]);}
+  const types=Object.keys(counts),count=Object.values(counts).reduce((a,b)=>a+b,0),powerKw=Number(match[2]);
   const tiles=card.find('[title]').toArray().map(el=>clean($(el).attr('title')).split(',').map(clean));
-  const chargers=tiles.map(([name,...labels])=>({name,connector,powerKw,features:labels.filter(x=>/trailer friendly/i.test(x)).map(x=>({label:x,description:x}))}));
-  if(!count||powerKw<=0||powerKw>2000||chargers.length!==count||chargers.some(c=>!c.name)||new Set(chargers.map(c=>c.name)).size!==count)throw Error('Incomplete station detail');
-  const result={chargerCount:count,connectorSummary:`${count} ${connector}`,maxKw:powerKw,chargers,partialChargerFeatures:true};
+  const chargers=tiles.map(([name,...labels])=>{const detail=labels.join(', '),explicit=detail.match(/(?:^|[,\s])(NACS|CCS|J1772|CHAdeMO)(?=\s|[·,]|$)/i)?.[1]?.toUpperCase();return {name,connector:explicit||(types.length===1?types[0]:null),powerKw,features:/trailer friendly/i.test(detail)?[{label:'trailer friendly',description:'trailer friendly'}]:[]};});
+  const observed={};for(const c of chargers)observed[c.connector]=(observed[c.connector]||0)+1;
+  if(!count||powerKw<=0||powerKw>2000||chargers.length!==count||chargers.some(c=>!c.name||!counts[c.connector])||new Set(chargers.map(c=>c.name)).size!==count||types.some(t=>observed[t]!==counts[t]))throw Error('Incomplete station detail');
+  const result={chargerCount:count,connectorSummary:types.map(t=>`${counts[t]} ${t}`).join(', '),maxKw:powerKw,chargers,partialChargerFeatures:true};
   const details=main.find('h2').filter((i,e)=>clean($(e).text())==='Details').first().parent();
   const amenity=details.find('dt').filter((i,e)=>clean($(e).text())==='Amenities').first().next('dd');
   if(amenity.length){const text=clean(amenity.text());if(text){const amenities=text.replace(/,?\s+and\s+/i,', ').split(/,\s*/).filter(Boolean).map(x=>x[0].toUpperCase()+x.slice(1));const page=clean(main.text());result.amenities=[...(/Open to all EVs/i.test(page)?['Open to All']:[]),...(/Plug\s*&\s*Charge/i.test(page)?['Plug & Charge']:[]),...amenities];}}
