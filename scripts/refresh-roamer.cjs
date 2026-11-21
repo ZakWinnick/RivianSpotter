@@ -38,7 +38,7 @@ function parseDetail(html,{sourceId}={}){
   const result={chargerCount:count,connectorSummary:types.map(t=>`${counts[t]} ${t}`).join(', '),maxKw:powerKw,chargers,partialChargerFeatures:true};
   const details=main.find('h2').filter((i,e)=>clean($(e).text())==='Details').first().parent();
   const amenity=details.find('dt').filter((i,e)=>clean($(e).text())==='Amenities').first().next('dd');
-  if(amenity.length){const text=clean(amenity.text());if(text){const amenities=text.replace(/,?\s+and\s+/i,', ').split(/,\s*/).filter(Boolean).map(x=>x[0].toUpperCase()+x.slice(1));const page=clean(main.text());result.amenities=[...(/Open to all EVs/i.test(page)?['Open to All']:[]),...(/Plug\s*&\s*Charge/i.test(page)?['Plug & Charge']:[]),...amenities];}}
+  if(amenity.length){const text=clean(amenity.text());if(text){const amenities=text.replace(/,?\s+and\s+/i,', ').split(/,\s*/).filter(Boolean).map(x=>x[0].toUpperCase()+x.slice(1));const page=clean(main.text());result.amenities=[...(/Open to all EVs/i.test(page)?['Open to All']:[]),...(/Plug\s*&\s*Charge/i.test(page)?['Plug & Charge']:[]),...amenities,...(chargers.some(c=>c.features.some(f=>/trailer friendly/i.test(f.label||'')))?['Trailer OK']:[])];}}
   const rates={};main.find('p').each((i,e)=>{const label=clean($(e).text());const key=/^per kWh for a Rivian$/i.test(label)?'Rivian':/^per kWh for other EVs$/i.test(label)?'Other':null;if(!key)return;const value=clean($(e).parent().clone().find('p').remove().end().text());if(/^\$\d/.test(value))rates[key]=value;});
   const idle=main.find('p').toArray().map(e=>clean($(e).text())).find(x=>/^Idle fee /i.test(x))?.match(/^Idle fee\s+(\$\d+(?:\.\d+)?)\s+a minute after\s+(\d+)\s+minutes?/i);
   if(idle)rates.Idle=`${idle[1]}/min (after ${idle[2]}m)`;
