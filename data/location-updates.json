@@ -2,6 +2,2326 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-21",
+      "entries": [
+        {
+          "id": "68a5f10ad164757b0bb8eca5dc5be429d4dfea7905e1739943210faf7b87ac2c",
+          "locationId": "235591122702559",
+          "name": "Aberdeen, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Aberdeen",
+          "region": "WA",
+          "url": "/locations/ran-aberdeen-wa-d644d51f0e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 181 (previously 180).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "01126fd6deafd8e80f4c798531de1469cb912d4f2833bfeaca3200d753b58fd5",
+          "locationId": "38133378632761",
+          "name": "Albuquerque, NM",
+          "type": "Rivian Adventure Network",
+          "city": "Albuquerque",
+          "region": "NM",
+          "url": "/locations/ran-albuquerque-nm-22ae9e6d89/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 187)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "97379db2305e0baa4690947071b6a621cb89760cec8a7218c655145071205784",
+          "locationId": "257368736267938",
+          "name": "Asheville, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Asheville",
+          "region": "NC",
+          "url": "/locations/ran-asheville-nc-ea13540abc/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 195 (previously 197).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "003cf6d22b9b7165e90c2130fe2277fd4d7a9411cb6ca6e6b59803e3cb44fff9",
+          "locationId": "188436359188894",
+          "name": "Astoria, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Astoria",
+          "region": "OR",
+          "url": "/locations/ran-astoria-or-ab61c2314f/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e94c2fbc787a3a4fa4d63c57d3882b597e52de8c101fd1db88977cfa6803fd25",
+          "locationId": "158649045143946",
+          "name": "Augusta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Augusta",
+          "region": "GA",
+          "url": "/locations/ran-augusta-ga-904a5beb8f/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A (previously B).",
+            "Average peak power (kW): 203 (previously 204)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eb3b407057d88b3023452284e7496e46e5a8da7aa9d739480af5c5e73a8fe5c4",
+          "locationId": "29",
+          "name": "Aventura, FL Aventura Mall",
+          "type": "Space",
+          "city": "Aventura",
+          "region": "FL",
+          "url": "/locations/miami-aventura/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10:00am-7:30pm 11/26: Closed 12/24: 9:00am-3:30pm 12/25: Closed Mon–Sat: 10:00am-9:30pm Sun: 11:00am–8:00pm (previously Mon–Sat: 10:00am-9:30pm Sun: 11:00am–8:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "94503703bb6241a06ca97ab3a0bc84f9ee7f37d1ac951a4c4131439ad0d5e448",
+          "locationId": "277193814054893",
+          "name": "Barstow, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Barstow",
+          "region": "CA",
+          "url": "/locations/ran-barstow-ca-fc1b36c2d5/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "70a2df8581153b5dfd95fd6dbe80c7adfc25499471e298a53f195ded7ce6eb28",
+          "locationId": "95288923178880",
+          "name": "Baton Rouge, LA",
+          "type": "Rivian Adventure Network",
+          "city": "Baton Rouge",
+          "region": "LA",
+          "url": "/locations/ran-baton-rouge-la-56aa2e5b85/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 200).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "237d6a274849e4f622911c5bd5b8d57ffe0bc1489cec90d12f44b59b2b05510d",
+          "locationId": "147848053298584",
+          "name": "Beaver, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Beaver",
+          "region": "UT",
+          "url": "/locations/ran-beaver-ut-86778ea353/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fe9e873db8ef1204ad394cd8ac59e355faeb3c08a239e19dde2aad0951013f2c",
+          "locationId": "257642394550505",
+          "name": "Bellingham, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Bellingham",
+          "region": "WA",
+          "url": "/locations/ran-bellingham-wa-ea530b58be/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 175 (previously 177).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 4A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 4B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "60e0d8701cbb77aa78d4765851b3516de14db0225f47b2270046b64658ce4622",
+          "locationId": "188627419351693",
+          "name": "Bishop, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Bishop",
+          "region": "CA",
+          "url": "/locations/ran-bishop-ca-ab8e3e4408/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 190 (previously 192).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "69ead957d37eeb890a940f596c7fe9aa19f21ad6b333bb75a37b0acd8d86c622",
+          "locationId": "263569874185086",
+          "name": "Blowing Rock, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Blowing Rock",
+          "region": "NC",
+          "url": "/locations/ran-blowing-rock-nc-efb724aa29/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 183 (previously 185).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "022bcc5d78b33dcdfa0c85f131a0b4847405e38097f7107dd279cb2969376a1a",
+          "locationId": "214591878194517",
+          "name": "Bow, NH",
+          "type": "Rivian Adventure Network",
+          "city": "Bow",
+          "region": "NH",
+          "url": "/locations/ran-bow-nh-c32b909ca3/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "589fecb4f86dc6ff40fa159b45f0ee3946f966bf12569688e8ea0e9929a5a2d2",
+          "locationId": "231354624041867",
+          "name": "Bozeman, MT",
+          "type": "Rivian Adventure Network",
+          "city": "Bozeman",
+          "region": "MT",
+          "url": "/locations/ran-bozeman-mt-d26a721fa1/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 173 (previously 172).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 4B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9748f0c276880614d2541d3219756c5d62445f2b6b62fbdf65d0409bb02f916c",
+          "locationId": "89472769338862",
+          "name": "Brattleboro, VT",
+          "type": "Rivian Adventure Network",
+          "city": "Brattleboro",
+          "region": "VT",
+          "url": "/locations/ran-brattleboro-vt-51600092eb/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7afd6c2c319bc85f6c0dfd180ff489a0653dfa0bd1643f986942a245b47593c5",
+          "locationId": "84211511368349",
+          "name": "Breezewood, PA",
+          "type": "Rivian Adventure Network",
+          "city": "Breezewood",
+          "region": "PA",
+          "url": "/locations/ran-breezewood-pa-4c97052958/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 199).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3d48f5ae0e703f3ee3b2772147707afcbf763eadfcce2fbfb517fc1fbaa5cb1c",
+          "locationId": "204993087758700",
+          "name": "Brewer, ME",
+          "type": "Rivian Adventure Network",
+          "city": "Brewer",
+          "region": "ME",
+          "url": "/locations/ran-brewer-me-ba70ac1e1f/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a4eda65e311ff36291bba75473e3f0b5dd3c8ef347a3b3a63601cdb29c0099a2",
+          "locationId": "52",
+          "name": "Brooklyn, NY",
+          "type": "Space",
+          "city": "Brooklyn",
+          "region": "NY",
+          "url": "/locations/brooklyn/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10:00am-5:00pm Mon-Sun: 10am-7pm (previously Mon-Sun: 10am-7pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f2669e0510fb1e6618915e053bad2f6df27820710f1e99b0b9c0a16a2674d84d",
+          "locationId": "212859002834548",
+          "name": "Broomfield, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Broomfield",
+          "region": "CO",
+          "url": "/locations/ran-broomfield-co-c19819310c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3e9f1c42bff180d136a6f04bf3761f07909a72b5e69a0e25272cfc83d14d6ec4",
+          "locationId": "215330668966219",
+          "name": "Burley, ID",
+          "type": "Rivian Adventure Network",
+          "city": "Burley",
+          "region": "ID",
+          "url": "/locations/ran-burley-id-c3d793f92f/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d031c305998e509686220c82ad55b30d92674776c17086ca9aa87c3431f5e3ec",
+          "locationId": "268040868869126",
+          "name": "Buttonwillow, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Buttonwillow",
+          "region": "CA",
+          "url": "/locations/ran-buttonwillow-ca-f3c820b6f1/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f34df53e3b1174e32f0c31a5b95d034e0b7ae53faa9606a72371347ad34c4c37",
+          "locationId": "279344763752190",
+          "name": "Centennial, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Englewood",
+          "region": "CO",
+          "url": "/locations/ran-centennial-co-fe10055a8c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8f010df59d39fb4e8d6d1e9ffdbecf47d2816ce1f316c478a8146fe7f86a25f9",
+          "locationId": "71228648044313",
+          "name": "Centerville, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Centerville",
+          "region": "TX",
+          "url": "/locations/ran-centerville-tx-40c8363474/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 201).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e43f9035fe56ce66f0f51bc5f2fb64108f97edfe63458e2beefd23c9fc9de56b",
+          "locationId": "84695766045675",
+          "name": "Cheyenne, WY",
+          "type": "Rivian Adventure Network",
+          "city": "Cheyenne",
+          "region": "WY",
+          "url": "/locations/ran-cheyenne-wy-4d07c4fd51/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 203).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fba1630d34f6a6a6f6283341f3588c62e977135166db6fa65ee416e4867ff9e2",
+          "locationId": "93852176692327",
+          "name": "Chipley, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Chipley",
+          "region": "FL",
+          "url": "/locations/ran-chipley-fl-555ba997f2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 207 (previously 206).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6859e06390e91c72114bf1cecdb7df2c61cd4d9085c0e26d79f95a182c3f8299",
+          "locationId": "77610361945526",
+          "name": "Cisco, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Cisco",
+          "region": "TX",
+          "url": "/locations/ran-cisco-tx-469611febb/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 201).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0e2345e3bb26b7198acaa1f3ccf514162ac4804749b21298bed0a41c54778be0",
+          "locationId": "139998102922368",
+          "name": "Clare, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Clare",
+          "region": "MI",
+          "url": "/locations/ran-clare-mi-7f53d92262/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7c3e8959c11d76ba3a026c85bebbef6ae9399cc9b2054e3173ade845c57e2ff7",
+          "locationId": "217978262547294",
+          "name": "Columbia, MO",
+          "type": "Rivian Adventure Network",
+          "city": "Columbia",
+          "region": "MO",
+          "url": "/locations/ran-columbia-mo-c64004d929/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 180 (previously 181).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b8fc95e965e60f271867f6fc983fa692eefab50373da49353dad835427348916",
+          "locationId": "53687897613114",
+          "name": "Columbus, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Columbus",
+          "region": "TX",
+          "url": "/locations/ran-columbus-tx-30d43001a0/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "619dd679ce4738b7c04d420e5067729790dffdcdc2db1b3cfbcc0faca1249327",
+          "locationId": "261976896705032",
+          "name": "Cookeville, TN",
+          "type": "Rivian Adventure Network",
+          "city": "Cookeville",
+          "region": "TN",
+          "url": "/locations/ran-cookeville-tn-ee443fcecf/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "747b729609ed29a1703d5d3d3b91889228f92cc4ad543e071f79e70601cbe9da",
+          "locationId": "41537236444516",
+          "name": "Coos Bay, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Coos Bay",
+          "region": "OR",
+          "url": "/locations/ran-coos-bay-or-25c72429e3/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2edf86a7d9e5ffcb543f5623b9cce2ca8707b89cb69ca92bb82972d5b54c0ca9",
+          "locationId": "66019383404162",
+          "name": "Crescent City, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Crescent City",
+          "region": "CA",
+          "url": "/locations/ran-crescent-city-ca-3c0b55d624/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ed4eaa351019767f23565053b2bcfd206886a29784cf2a9aafdb977cb6247da6",
+          "locationId": "136744945757526",
+          "name": "Crescent, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Crescent",
+          "region": "OR",
+          "url": "/locations/ran-crescent-or-7c5e69db6b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 197 (previously 199).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "972b0c6a06b6ed98bd48a02e53712df435e9497442a7ef282b289151a8f2d3ef",
+          "locationId": "114613134048542",
+          "name": "Daytona Beach, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Daytona Beach",
+          "region": "FL",
+          "url": "/locations/ran-daytona-beach-fl-683d7314fa/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger update: Offline (previously inoperable)."
+          ],
+          "chargerReport": true
+        },
+        {
+          "id": "903c52b53af3696ed6a5385493e63b530f812a60e5fc3e8e90139a1509f8a8f9",
+          "locationId": "200742139635433",
+          "name": "Durango, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Durango",
+          "region": "CO",
+          "url": "/locations/ran-durango-co-b692ebdd64/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "33fe87ad5a8c78b3c4ff5739b78e6053bf2f4f5d787b76d7213145929e4f0c18",
+          "locationId": "165",
+          "name": "Eagan, MN - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Eagan",
+          "region": "MN",
+          "url": "/locations/eagan-service-demo-center/",
+          "kind": "added",
+          "lines": [
+            "3374 Columbia Drive Suite 200",
+            "Visiting hours: Tue–Sat: 9:00am–5:00pm Sun–Mon: Closed",
+            "Service hours: Mon–Fri: 8:00am–5:00pm Sat–Sun: Closed"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "799319120678d79377259b4fa0df648287e9673cbbe4288cc2559744482c47fe",
+          "locationId": "145276773753703",
+          "name": "East Greenwich, RI",
+          "type": "Rivian Adventure Network",
+          "city": "East Greenwich",
+          "region": "RI",
+          "url": "/locations/ran-east-greenwich-ri-8420e26f21/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 185).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ca1b78ce42ebb59454af30a47f88518747bcd4d50609c2c9c944d01309e3e456",
+          "locationId": "228805268606232",
+          "name": "Erie, PA",
+          "type": "Rivian Adventure Network",
+          "city": "Erie",
+          "region": "PA",
+          "url": "/locations/ran-erie-pa-d018e0b2ca/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "38c7850c109ff55e5ac03262b3d66aa2200fd6fef21130b70751a5d600078a56",
+          "locationId": "250854254819132",
+          "name": "Firebaugh, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Firebaugh",
+          "region": "CA",
+          "url": "/locations/ran-firebaugh-ca-e4268eb074/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b6059e1b02642165977eb863a1f65b356245e6129ff08bd19da92dca742a27ff",
+          "locationId": "162077279640688",
+          "name": "Flagler, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Flagler",
+          "region": "CO",
+          "url": "/locations/ran-flagler-co-93688e9e9a/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 208 (previously 209).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4b0e8f6bbb1851d1c3083e71def6328d2ba7e545ec4915108e5eac494d44651a",
+          "locationId": "71821161004224",
+          "name": "Flagstaff, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Flagstaff",
+          "region": "AZ",
+          "url": "/locations/ran-flagstaff-az-41522ababa/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e91c6d2545d57c56ee9b1a548b5e85aafafb6c9639f854c3b20da65af5381de9",
+          "locationId": "47595949473056",
+          "name": "Forks, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Forks",
+          "region": "WA",
+          "url": "/locations/ran-forks-wa-2b49cb99fa/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "177f6df57d91c503c8325363eb954270ec4fa47a42347992133e508d43876676",
+          "locationId": "138138533074609",
+          "name": "Fortuna, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fortuna",
+          "region": "CA",
+          "url": "/locations/ran-fortuna-ca-7da2e22254/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 193).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5ad9edcd1fc583b8aa976e648fbf6531b0b132a81af193ae4c6872527164ead4",
+          "locationId": "61449316742323",
+          "name": "Fredericksburg, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Fredericksburg",
+          "region": "VA",
+          "url": "/locations/ran-fredericksburg-va-37e348a2f2/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "29b9d7811b96900697663340f8a67e7d7d93c086ec029e57f432ad4ea3282adc",
+          "locationId": "126449562009907",
+          "name": "Freeport, ME",
+          "type": "Rivian Adventure Network",
+          "city": "Freeport",
+          "region": "ME",
+          "url": "/locations/ran-freeport-me-7301552a7e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 183)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1c22a396863f6ef47c19e907838e7084b11a2a34f338b85a9e0104327ead079c",
+          "locationId": "22233721676895",
+          "name": "Fresno, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fresno",
+          "region": "CA",
+          "url": "/locations/ran-fresno-ca-1438b105e2/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 5A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e517b80f962fd0943e857fce16405835a0a703effff698cb86757781ad36844d",
+          "locationId": "7081075479687",
+          "name": "Front Royal, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Front Royal",
+          "region": "VA",
+          "url": "/locations/ran-front-royal-va-0670b0edd2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 196 (previously 197).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ac23267f260c82ef4d2b234ee0befb5e8f6677ecfd2e0bb8df9b25b85ac3e699",
+          "locationId": "105225338058043",
+          "name": "Gallup, NM",
+          "type": "Rivian Adventure Network",
+          "city": "Gallup",
+          "region": "NM",
+          "url": "/locations/ran-gallup-nm-5fb3aed632/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 201 (previously 202).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b1a8cbafa9a33d9d386136688413b76775aa8010efeaf3f3842c804b1197130b",
+          "locationId": "31266654148170",
+          "name": "Gardiner, MT",
+          "type": "Rivian Adventure Network",
+          "city": "Gardiner",
+          "region": "MT",
+          "url": "/locations/ran-gardiner-mt-1c6fd5c114/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 183 (previously 182)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "34660ce73a82d73e028268b3764ca2d003ba9717818a4e7a5311f5bf40761b96",
+          "locationId": "114705372878349",
+          "name": "Gila Bend, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Gila Bend",
+          "region": "AZ",
+          "url": "/locations/ran-gila-bend-az-6852ecf1d3/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "85dd8e1cdd3708a79a1895999fb45f3eb011788b4f1b013c94a21e257f0baabd",
+          "locationId": "80127509954447",
+          "name": "Granger, IN",
+          "type": "Rivian Adventure Network",
+          "city": "Granger",
+          "region": "IN",
+          "url": "/locations/ran-granger-in-48e023b53d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 189).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a6ce9e6f73d1696a62e689052e1048ad173b18cff0aa598ea189d2e49eaf9e5d",
+          "locationId": "65893990238647",
+          "name": "Grayling, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Grayling",
+          "region": "MI",
+          "url": "/locations/ran-grayling-mi-3bee23d247/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 193).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "674225398090a1e1b147a0b939a716a78b778a97107a24085afd1b1ffa9b9bc5",
+          "locationId": "228717358521720",
+          "name": "Green River, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Green River",
+          "region": "UT",
+          "url": "/locations/ran-green-river-ut-d00468d95b/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 8A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 8B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "21ff98f12d9c4c2d2ae1dbeb42d78b811da546ae50802eee70eaf2663f4a1ec1",
+          "locationId": "183583970664712",
+          "name": "Greenville, SC",
+          "type": "Rivian Adventure Network",
+          "city": "Greenville",
+          "region": "SC",
+          "url": "/locations/ran-greenville-sc-a6f7f94c5e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 201).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "92d91d04b17649e26b13a4a85904cdf1b7787c87a6519c0465ef9990a79562bb",
+          "locationId": "10544233595795",
+          "name": "Groveland, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Groveland",
+          "region": "CA",
+          "url": "/locations/ran-groveland-ca-0997053d01/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 183)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6f5213605caad28c75a6503685e21bfd6442ca77f792cf4fac85351cb6b8d273",
+          "locationId": "137700098066321",
+          "name": "Hailey, ID",
+          "type": "Rivian Adventure Network",
+          "city": "Hailey",
+          "region": "ID",
+          "url": "/locations/ran-hailey-id-7d3ccd5f05/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c355c3ee59458b82dc8cefcdc04df88ae912f232e4768e495e2262cc92b9505e",
+          "locationId": "178080276260207",
+          "name": "Happy Valley, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Happy Valley",
+          "region": "OR",
+          "url": "/locations/ran-happy-valley-or-a1f68b8c63/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 189).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4704a16192ae44894d35ec0ba0fdb06d25696ba05685393ebf5da867216a1c97",
+          "locationId": "125863313125091",
+          "name": "Hays, KS",
+          "type": "Rivian Adventure Network",
+          "city": "Hays",
+          "region": "KS",
+          "url": "/locations/ran-hays-ks-7278d6026c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ff88375f1c99554429cffa5099eb683dbd26f439b2f92766620313866de912b7",
+          "locationId": "150974802561288",
+          "name": "Henderson, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Henderson",
+          "region": "NC",
+          "url": "/locations/ran-henderson-nc-894f8f6ac6/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d03407f76f06d99cad504e7f369fca0c7c7b4cbfd9c6a46dce520e51a52993b9",
+          "locationId": "226698157416751",
+          "name": "Holbrook, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Holbrook",
+          "region": "AZ",
+          "url": "/locations/ran-holbrook-az-ce2e47159e/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c63fdbc3aee1db08f2f24daf6bd647a86f015d226e274f19f3cb066b5a13147d",
+          "locationId": "19411687677695",
+          "name": "Holyoke, MA",
+          "type": "Rivian Adventure Network",
+          "city": "Holyoke",
+          "region": "MA",
+          "url": "/locations/ran-holyoke-ma-11a7a2b05c/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 188)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a91ee5d0535c8b67ad8d0dcd6814533c394c207d2c656acf03d98b198d8e683f",
+          "locationId": "175489736196339",
+          "name": "Idaho Springs, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Idaho Springs",
+          "region": "CO",
+          "url": "/locations/ran-idaho-springs-co-9f9b6353fe/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "26fe7dc6d233ec857d0759d601a73758e4c91eb3f35c878b4d9d7502f021bdc3",
+          "locationId": "21886094918491",
+          "name": "Independence, MO",
+          "type": "Rivian Adventure Network",
+          "city": "Independence",
+          "region": "MO",
+          "url": "/locations/ran-independence-mo-13e7c0da81/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 5B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "92677d75dec42e45febe9c4e6508b071f99f22f33da77c2f1eb83d4b0623ddef",
+          "locationId": "169045817157391",
+          "name": "Inyokern, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Inyokern",
+          "region": "CA",
+          "url": "/locations/ran-inyokern-ca-99bf0bd2a4/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "af8654b0600e296426e4ad4de5d0888898ded55b59093b2663080f72b5e602ce",
+          "locationId": "149576742135264",
+          "name": "Irvine, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Irvine",
+          "region": "CA",
+          "url": "/locations/ran-irvine-ca-880a0c85a3/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5835ea1670375d2f424a868b68933395a7e5e38035df8770a870b1f2c115bb23",
+          "locationId": "36004817709429",
+          "name": "Jackson, WY",
+          "type": "Rivian Adventure Network",
+          "city": "Jackson",
+          "region": "WY",
+          "url": "/locations/ran-coming-soon-wy-jackson-20bf064f67/",
+          "kind": "changed",
+          "lines": [
+            "Rating: A — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ef1b4168e3e20db88316cccdb6d95caebc0960995caba7bbbca74645af03fda7",
+          "locationId": "108504500787583",
+          "name": "Jacksonville, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Jacksonville",
+          "region": "FL",
+          "url": "/locations/ran-jacksonville-fl-62af2c2a97/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d61bdff3f9d539a9eb675db4fbd5d5b5fad5e846ba8b1bbcb6b876695a17cea6",
+          "locationId": "151656054371743",
+          "name": "Jacumba, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Jacumba Hot Springs",
+          "region": "CA",
+          "url": "/locations/ran-jacumba-ca-89ee2d3073/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 198)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8504c17b1f6072aa74dc6755c0a74dc814198dde6942b80c56782892595cd193",
+          "locationId": "82791612080483",
+          "name": "Joshua Tree, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Joshua Tree",
+          "region": "CA",
+          "url": "/locations/ran-joshua-tree-ca-4b4c6c919f/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 6B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "cdc9ea067a98385f37764950996fbe6071a4d98d39318e0f851cd25417277080",
+          "locationId": "204191351692338",
+          "name": "King of Prussia, PA",
+          "type": "Rivian Adventure Network",
+          "city": "King of Prussia",
+          "region": "PA",
+          "url": "/locations/ran-king-of-prussia-pa-b9b600ec99/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 178 (previously 179)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "794ab78511aabdde88bfb85cda5d91119315395ba509666558d120e246762831",
+          "locationId": "98914932127690",
+          "name": "Kingman, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Kingman",
+          "region": "AZ",
+          "url": "/locations/ran-kingman-az-59f66d5535/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "394d9ad922bd6abff3eb9a66dfaf3e86d7e03b2ff21d63faa66a066ac36fdcc9",
+          "locationId": "87134916432034",
+          "name": "Kittery, ME",
+          "type": "Rivian Adventure Network",
+          "city": "Kittery",
+          "region": "ME",
+          "url": "/locations/ran-kittery-me-4f3fadae8e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 195 (previously 194).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "104b01788583f33b6e486d83aafe281c6ef146d341a1a181a753a91c8b202a46",
+          "locationId": "244246443878970",
+          "name": "Klamath Falls, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Klamath Falls",
+          "region": "OR",
+          "url": "/locations/ran-klamath-falls-or-de240e7727/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 191).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a674ceff8fe1a0ad06af5645547ce18235d17071cb0571003faaa47785fd5a99",
+          "locationId": "77645970849984",
+          "name": "Lake Charles, LA",
+          "type": "Rivian Adventure Network",
+          "city": "Lake Charles",
+          "region": "LA",
+          "url": "/locations/ran-lake-charles-la-469e5c737e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 203 (previously 204).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "61eda9e1a7af48b3b62057c09f66a047f5cb6e7b6f9cc54c882af71cfe45c660",
+          "locationId": "246277750444366",
+          "name": "Lakewood, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Lakewood",
+          "region": "CO",
+          "url": "/locations/ran-lakewood-co-dffd01c58f/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5a63757b09ad2e3e4f6c5db5dc30a697760ade4e360b96c0396f038514dbb331",
+          "locationId": "171922907469954",
+          "name": "Lansing, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Lansing",
+          "region": "MI",
+          "url": "/locations/ran-lansing-mi-9c5cebc4d6/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 193 (previously 196).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eec503e9c91b1d7ec616249e5cb505d7425a7d33384646a55192726b1a67e80a",
+          "locationId": "60206738990646",
+          "name": "Las Vegas, NV",
+          "type": "Rivian Adventure Network",
+          "city": "Las Vegas",
+          "region": "NV",
+          "url": "/locations/ran-las-vegas-nv-36c1f93b23/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0b885556c837d8278c19aff524f3380e43f7d1645cf9713a471e053c2023f367",
+          "locationId": "12207313668604",
+          "name": "Latham, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Latham",
+          "region": "NY",
+          "url": "/locations/ran-latham-ny-0b1a3c8907/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 188).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 4B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6db52ed9384109d2f50e61f003ee831949b779909781d2acdf1a3762906db0b8",
+          "locationId": "22283758886660",
+          "name": "Lee Vining, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Lee Vining",
+          "region": "CA",
+          "url": "/locations/ran-lee-vining-ca-144457791c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "cc24f6d86f0192259f2905f9ffe7e0d3ff0e17fa4aedf609eae860c91f5ce5e0",
+          "locationId": "218799063731520",
+          "name": "Lincoln City, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Lincoln City",
+          "region": "OR",
+          "url": "/locations/ran-lincoln-city-or-c6ff20694b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 173 (previously 174).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a68529b8cd89f8556981a8bec42352f905d55a96ca4c282adf3d32e367c3a359",
+          "locationId": "22345941019327",
+          "name": "Lynnwood, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Lynnwood",
+          "region": "WA",
+          "url": "/locations/ran-lynnwood-wa-1452d1d128/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 180 (previously 181)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6c41bfdd0d272f33dab0c97207264c4ad088d9016e2400e773c33aac02230931",
+          "locationId": "85793015378558",
+          "name": "Macon, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Macon",
+          "region": "GA",
+          "url": "/locations/ran-macon-ga-4e073e2570/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "85045763ae81e59329904eb5b507223ecd39a361bcf242577d2410f69d497921",
+          "locationId": "233199267194620",
+          "name": "Madras, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Madras",
+          "region": "OR",
+          "url": "/locations/ran-madras-or-d417ef6c64/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 190).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1894ff2b32dbe4f0bf4ebaa9f8e35561655c1e3b18eebfe6e01b5f0310bce395",
+          "locationId": "31762405664723",
+          "name": "Mammoth Lakes, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Mammoth Lakes",
+          "region": "CA",
+          "url": "/locations/ran-mammoth-lakes-ca-1ce342d8e5/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 153 (previously 152).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "32862e82b4ca4b25de85d9b12643b8e8e9c5fa52d569179f652e56785d2a3292",
+          "locationId": "36133846908052",
+          "name": "Manteca, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Manteca",
+          "region": "CA",
+          "url": "/locations/ran-manteca-ca-20dd110cba/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fb8ff66082db0c0cada9d536522779cfded58d0319de810ca09cba34dea3de2a",
+          "locationId": "66760459609391",
+          "name": "Maple Grove, MN",
+          "type": "Rivian Adventure Network",
+          "city": "Maple Grove",
+          "region": "MN",
+          "url": "/locations/ran-maple-grove-mn-3cb7e16ba2/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "923f25f999520e1e17e3c2181586e0380acff2dd725ce205a5f988947c923fa3",
+          "locationId": "230393513006492",
+          "name": "Marysville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Marysville",
+          "region": "WA",
+          "url": "/locations/ran-permit-wa-marysville-d18aab7113/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 190)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f055ebd93132f20c332c0b2bf595418cfac955bf9444dcc9e6201184b44fbb12",
+          "locationId": "128379472982154",
+          "name": "Maumee, OH",
+          "type": "Rivian Adventure Network",
+          "city": "Maumee",
+          "region": "OH",
+          "url": "/locations/ran-maumee-oh-74c2acd2ee/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c4c79bd686bb826f67b561f815164b3baf0bacceb71e3e9091f0f26ee28375ae",
+          "locationId": "186753582865905",
+          "name": "Meadows of Dan, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Meadows of Dan",
+          "region": "VA",
+          "url": "/locations/ran-meadows-of-dan-va-a9d9f4e85b/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e1ada0d09b4de0253ff19854cdd628fa1a1a44d9cfbae3e36f370b6408c8b582",
+          "locationId": "104839235830052",
+          "name": "Medford, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Medford",
+          "region": "OR",
+          "url": "/locations/ran-medford-or-5f59c959be/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 197 (previously 198)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ed952f31efde8ac4bbae19407fd4a60a029151bda26b9bd68e21d4da42941398",
+          "locationId": "21487137388149",
+          "name": "Monticello, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Monticello",
+          "region": "UT",
+          "url": "/locations/ran-monticello-ut-138add21b4/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 197 (previously 196).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d72aa0f41a392e202dc6ca2c72bf491f3f1d4009780f6df03afea038bc2b3bd9",
+          "locationId": "153455229831021",
+          "name": "Montrose, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Montrose",
+          "region": "CO",
+          "url": "/locations/ran-montrose-co-8b91146745/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 172 (previously 173).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a9309816877914d71998a6ac32057925ff60f335a0a28b4194fed2bd486b446c",
+          "locationId": "250913514883211",
+          "name": "Moosic, PA",
+          "type": "Rivian Adventure Network",
+          "city": "Moosic",
+          "region": "PA",
+          "url": "/locations/ran-moosic-pa-e4345add46/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "dc07c828c05ee3dfdb59023fcc13bcfaba979e9fe8b46699f356d5c1f37ff36d",
+          "locationId": "262367076666157",
+          "name": "Mount Shasta, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Mount Shasta",
+          "region": "CA",
+          "url": "/locations/ran-mount-shasta-ca-ee9f185888/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 197).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eed238b6c93831a3897f05aa9b8cfcf2d191b3c97a6417b3aff646694648529b",
+          "locationId": "143615168784743",
+          "name": "Nags Head, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Nags Head",
+          "region": "NC",
+          "url": "/locations/ran-nags-head-nc-829e030f67/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bc9f01ee568ea057f6da3ad892a01132d3201f5765dae1483276ec4587c249a9",
+          "locationId": "38639720785519",
+          "name": "Newark, DE",
+          "type": "Rivian Adventure Network",
+          "city": "Newark",
+          "region": "DE",
+          "url": "/locations/ran-newark-de-232482c5a4/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 190 (previously 191)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1b318bf21c2e2d270fba038f72f114f9f7feea2bc57d5b563c88ad521b56eb6e",
+          "locationId": "166744023368471",
+          "name": "Norfolk, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Norfolk",
+          "region": "VA",
+          "url": "/locations/ran-norfolk-va-97a71e38c0/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 196 (previously 198).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "89c6484d919fc6415f00be0acd4e27a78d91537d09cd2353ef9a981a21d662c5",
+          "locationId": "92271036139181",
+          "name": "Normal, IL",
+          "type": "Rivian Adventure Network",
+          "city": "Normal",
+          "region": "IL",
+          "url": "/locations/ran-normal-il-53eb8645c4/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "51adc4306fd07ac0b396e2a47eec7e428cc23ae28c751d03090ee0724541efef",
+          "locationId": "213327395451684",
+          "name": "Oklahoma City, OK",
+          "type": "Rivian Adventure Network",
+          "city": "Oklahoma City",
+          "region": "OK",
+          "url": "/locations/ran-oklahoma-city-ok-c205279130/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 181 (previously 189).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "210f6c6f2f6bbd960ad43810f45ccee36267bb4eebe0e42ffed2af791f35345f",
+          "locationId": "70307904233768",
+          "name": "Orange, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Orange",
+          "region": "CA",
+          "url": "/locations/ran-orange-ca-3ff1d598de/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 197 (previously 198).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9cc6f6c570b32954f427947d14e81c671b4d7ed2d12428b13ee0868ddd0a2893",
+          "locationId": "171674885969233",
+          "name": "Page, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Page",
+          "region": "AZ",
+          "url": "/locations/ran-coming-soon-az-page-9c232c8913/",
+          "kind": "changed",
+          "lines": [
+            "Charger 2B: NACS, 300 kW — details added.",
+            "Charger 2A: NACS, 300 kW, trailer friendly — details added."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "40f31c7200ea4543cc72f467c79fb61558ebf186ce80a73d98277876f0c751af",
+          "locationId": "197924104146020",
+          "name": "Paramus, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Paramus",
+          "region": "NJ",
+          "url": "/locations/ran-paramus-nj-b402cbdc4a/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "96f2add815b5e3b939157fe4e279f063ea35c613f40a9e1322d6a07c06130985",
+          "locationId": "10013892171193",
+          "name": "Park City, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Park City",
+          "region": "UT",
+          "url": "/locations/ran-park-city-ut-091b8a6d13/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 6B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8c6b9401c4d841e9ae9fba258146700ec58af0215b9ed103f4b7be58d5c2a28e",
+          "locationId": "207532463807553",
+          "name": "Phoenix, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Phoenix",
+          "region": "AZ",
+          "url": "/locations/ran-phoenix-az-bcbfeab99a/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 187)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "83324049cc297cb7a1937bc1993e79f05523743b6bb62e02ae693a9e2751db0c",
+          "locationId": "180247158082072",
+          "name": "Pismo Beach, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Pismo Beach",
+          "region": "CA",
+          "url": "/locations/ran-pismo-beach-ca-a3ef0fc507/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "76c7c1be2fd18e02b71aaa392b5dd99dc3b004e965db3331d5b84d0b6b2391c8",
+          "locationId": "119737626898978",
+          "name": "Placerville, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Placerville",
+          "region": "CA",
+          "url": "/locations/ran-placerville-ca-6ce696a86f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7d9ce8254b52a04b290efb46e3620bb5257d45b291500a4018f05837ecac86ad",
+          "locationId": "149450316288872",
+          "name": "Plymouth, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Plymouth",
+          "region": "MI",
+          "url": "/locations/ran-plymouth-mi-87ec9cf451/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "34747cc6201ab0b1ba98b054507700dccf6c295c1d9ad13dd1b94848ae8b186c",
+          "locationId": "166",
+          "name": "Pompano Beach, FL - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Pompano Beach",
+          "region": "FL",
+          "url": "/locations/pompano-beach-service-demo-center/",
+          "kind": "added",
+          "lines": [
+            "311 Racetrack Loop Suite 1100",
+            "Visiting hours: Mon–Sun: 9:00am-6:00pm",
+            "Service hours: Mon–Fri: 8:00am-5:00pm Sat–Sun: Closed"
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d278d40d3e2c9c7c32df6593d49225bf06f3ec3ed4cfb6c5ab81e39e4e422130",
+          "locationId": "81221597953092",
+          "name": "Pooler, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Pooler",
+          "region": "GA",
+          "url": "/locations/ran-pooler-ga-49dee06f3a/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "daa5fe1109e851b0a35d54f9862eb2148d627d66ff929e44676ca548cc37f734",
+          "locationId": "96922781711411",
+          "name": "Price, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Price",
+          "region": "UT",
+          "url": "/locations/ran-price-ut-582697ea39/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 199).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b25edec99169127f06d8449df75e961bb3872fdfa97dbccfeb1943ac11e2b397",
+          "locationId": "166229043927307",
+          "name": "Quartzsite, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Quartzsite",
+          "region": "AZ",
+          "url": "/locations/ran-quartzsite-az-972f370e16/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "470c93e5e77188e26c2d37ffa460fe5131479aa1be6d81bae960bb922fda57fc",
+          "locationId": "53232422430611",
+          "name": "Queensbury, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Queensbury",
+          "region": "NY",
+          "url": "/locations/ran-queensbury-ny-306a2391e5/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1e42674f974cdde979b47bbfa7648fb1767c94bb616b839d191c8eaa2779cab7",
+          "locationId": "11418482790177",
+          "name": "Ritzville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Ritzville",
+          "region": "WA",
+          "url": "/locations/ran-ritzville-wa-0a62928d0c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2bb71ef8a4adc5f89d10332fd7f90b2f6eb66d32457b4c6f7361cdaa245ca89f",
+          "locationId": "229446042890445",
+          "name": "Roanoke, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Roanoke",
+          "region": "VA",
+          "url": "/locations/ran-roanoke-va-d0ae11d26e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 185).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "277c9909d0ee8e6c319b0726df2bce181f1e05eeb419f05539e10f1f280da670",
+          "locationId": "219786332766711",
+          "name": "Rocklin, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Rocklin",
+          "region": "CA",
+          "url": "/locations/ran-rocklin-ca-c7e4fe3b3f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 182 (previously 183).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 4A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1666affe6e30a2ab096c50d59977e0eb946f0e38233d9f80d561b06ebc8d70ac",
+          "locationId": "272515155339162",
+          "name": "Sacramento, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Sacramento",
+          "region": "CA",
+          "url": "/locations/ran-sacramento-ca-f7d9e0f865/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 189).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "cffbe79e6850addaf9d534797b186b0fc4b422af37a168a1daba5fb9a5497d95",
+          "locationId": "178870021911385",
+          "name": "Saginaw, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Saginaw",
+          "region": "MI",
+          "url": "/locations/ran-saginaw-mi-a2ae6c0eb1/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 196 (previously 195).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0c24b58caf0aacff93dea5f0495d2001a99e14dcdec5343ce0bd23cef8cfeab9",
+          "locationId": "18906307910619",
+          "name": "Salida, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Salida",
+          "region": "CO",
+          "url": "/locations/ran-salida-co-1131f7b519/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 189 (previously 187).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fb188da871020be45e2efcb85d189532dbaf032658be7b0d74250adf61e4871c",
+          "locationId": "212798187575528",
+          "name": "San Antonio, TX",
+          "type": "Rivian Adventure Network",
+          "city": "San Antonio",
+          "region": "TX",
+          "url": "/locations/ran-san-antonio-tx-c189f051d6/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 195 (previously 197)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1c64ff027a59bf3182423d7dafae9ea3acde4226a2d77dd35018b47a73591b3b",
+          "locationId": "170893426109227",
+          "name": "San Bernardino, CA",
+          "type": "Rivian Adventure Network",
+          "city": "San Bernardino",
+          "region": "CA",
+          "url": "/locations/ran-san-bernardino-ca-9b6d39e5e8/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bd0bcc5290cd4b92173fa141bf2bd2774184aa9900ccd4a778345e54f37ff365",
+          "locationId": "149578027455422",
+          "name": "Santa Nella, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Santa Nella",
+          "region": "CA",
+          "url": "/locations/ran-santa-nella-ca-880a592211/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 201).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5eb8292df0c2413bcd75078bda0451e444492f499254bb8a1924769b727f7e93",
+          "locationId": "55601172076096",
+          "name": "Sedona, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Sedona",
+          "region": "AZ",
+          "url": "/locations/ran-sedona-az-3291a80d14/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 183 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a36fc3baa0372cb74fae42a1d63476d8790abd5bf967fac9fda5fb86200415d3",
+          "locationId": "228222902815394",
+          "name": "Shoshone, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Shoshone",
+          "region": "CA",
+          "url": "/locations/ran-shoshone-ca-cf9148fe08/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 187).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "44d2e0acabf7cd9c792a997a2f36e9cf049932bedbe53d06837dac34370523dc",
+          "locationId": "43316260826867",
+          "name": "Slidell, LA",
+          "type": "Rivian Adventure Network",
+          "city": "Slidell",
+          "region": "LA",
+          "url": "/locations/ran-slidell-la-27655a47ac/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 204 (previously 203)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bfa2f314ae97d037a2eb1f81adddf0019508ce5c764ed90dea51c4b9d607e1dd",
+          "locationId": "51689744291378",
+          "name": "Southampton, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Southampton",
+          "region": "NY",
+          "url": "/locations/ran-southampton-ny-2f02f4c993/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c56dbbdd3cb378fb88c4c4c31a5904c3e2a901c0c0d26d8b44a1bf2bdc99fa06",
+          "locationId": "112674191113591",
+          "name": "Spokane, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Spokane Valley",
+          "region": "WA",
+          "url": "/locations/ran-spokane-wa-667a0113bb/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 189).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "31448f85a2cc4155af5b56725a8d542d10f64273682f6605af902f0bc967480b",
+          "locationId": "119830985676850",
+          "name": "Springfield, IL",
+          "type": "Rivian Adventure Network",
+          "city": "Springfield",
+          "region": "IL",
+          "url": "/locations/ran-springfield-il-6cfc534655/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "493506d3a10cf4172056d4e293bbe06557c12fba1083501856db4758ff51fd4d",
+          "locationId": "36150349692396",
+          "name": "Strongsville, OH",
+          "type": "Rivian Adventure Network",
+          "city": "Strongsville",
+          "region": "OH",
+          "url": "/locations/ran-strongsville-oh-20e0e8b13b/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "acd00a19cf002fff64731cbb6e21c5c94214f684e58476af106ecb70ef1f7bae",
+          "locationId": "178258361445921",
+          "name": "Tallahassee, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Tallahassee",
+          "region": "FL",
+          "url": "/locations/ran-tallahassee-fl-a2200240ab/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9300de120b610a90268f6f0d96e48c855e25197aaa556cd2f826e924a7db577a",
+          "locationId": "251441353060337",
+          "name": "Tampa, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Tampa",
+          "region": "FL",
+          "url": "/locations/ran-tampa-fl-e4af4078ad/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 201).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b7091624e4e868012a2ba2f86a98aaacb6c67396250bc6a6cbe047039e2e38f2",
+          "locationId": "196931123633120",
+          "name": "The Dalles, OR",
+          "type": "Rivian Adventure Network",
+          "city": "The Dalles",
+          "region": "OR",
+          "url": "/locations/ran-the-dalles-or-b31b999c19/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 195 (previously 196).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "aa37435fa11c28278a02f25f1b2b2de1d8932890c76e854030d3492309c906a8",
+          "locationId": "160016829112304",
+          "name": "Tinton Falls, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Tinton Falls",
+          "region": "NJ",
+          "url": "/locations/ran-tinton-falls-nj-9188d2329d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 179 (previously 183).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a72576eae8d65bc3deb956c30c524476e43bc4ea33878c802c84d7468004d54f",
+          "locationId": "267691712384647",
+          "name": "Traverse City, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Traverse City",
+          "region": "MI",
+          "url": "/locations/ran-traverse-city-mi-f376d55dcc/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 177 (previously 176).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "df9fe69bcba09bf9f72e282c6e1ae4283116f6a4909f6799250f409c278ab73e",
+          "locationId": "260629789564797",
+          "name": "Tremonton, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Tremonton",
+          "region": "UT",
+          "url": "/locations/ran-tremonton-ut-ed0a99f71d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 203 (previously 202).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 6B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "48bae15f6814e3232b7987fd14b3c7e7e7f30b6ad52a932c445a2a6c8d353131",
+          "locationId": "244372480160287",
+          "name": "Troy, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Troy",
+          "region": "MI",
+          "url": "/locations/ran-troy-mi-de4166d02f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 173 (previously 172).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 4A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "72e1bfe82f7e823a88765176f3d000b8809f5ab8d696336300d39aa3357f0fa7",
+          "locationId": "279209326445141",
+          "name": "Truckee, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Truckee",
+          "region": "CA",
+          "url": "/locations/ran-truckee-ca-fdf07ca940/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6801d900bd0e8d6d832e8cfb802e9a907f431abc69cb49462675fb510ef826a0",
+          "locationId": "144744178376577",
+          "name": "Tumalo, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Bend",
+          "region": "OR",
+          "url": "/locations/ran-tumalo-or-83a4e1469d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 182 (previously 181)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d725912402166753a49a46aca1cc34fc53b256c6b2f07e4378a9e5bba5d736e8",
+          "locationId": "31506990674112",
+          "name": "Tysons, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Tysons",
+          "region": "VA",
+          "url": "/locations/ran-tysons-va-1ca7caed6e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 187)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fc6ed84493a3b7a9ea86c94bbf2d46e4ccde42566d250e7588c5b0953f2b53bb",
+          "locationId": "75072932440176",
+          "name": "Ukiah, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Ukiah",
+          "region": "CA",
+          "url": "/locations/ran-ukiah-ca-4447476926/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c123cef1505e12999735576773da96791261689226380b60ac58d371731eb50c",
+          "locationId": "213287289416080",
+          "name": "Valley Stream, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Valley Stream",
+          "region": "NY",
+          "url": "/locations/ran-valley-stream-ny-c1fbd10fa7/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9a03f8cfbc2a3853afb6e196d446736a8e6d3400bb31df35c15813cd0f8fc074",
+          "locationId": "136188286067891",
+          "name": "Waco, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Waco",
+          "region": "TX",
+          "url": "/locations/ran-waco-tx-7bdcce5aa2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 195)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "06c944da7b00617f8f97ba4a1f26ec3fb77babec56a4cbec641dc165ff993af8",
+          "locationId": "268614210224558",
+          "name": "Walker, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Walker",
+          "region": "MI",
+          "url": "/locations/ran-walker-mi-f44d9e85bf/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 193 (previously 191).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "92c7e5a5a7f1bc26dfde62bd5bfa4fc9f778f63b911f772caab8484b2c899348",
+          "locationId": "125668983164768",
+          "name": "Walsenburg, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Walsenburg",
+          "region": "CO",
+          "url": "/locations/ran-walsenburg-co-724b970a8d/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Charger 1B: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "941348697e45ed8f7e07532bcbfd658da94a623ea9d1bc366b92c3bb0574d402",
+          "locationId": "176235202974085",
+          "name": "Waynesboro, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Waynesboro",
+          "region": "VA",
+          "url": "/locations/ran-waynesboro-va-a048f49c4f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 193 (previously 195).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 2C: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8e2023ba50e1c51c75acd907be565639b941ee9aad727a9efe78ee4c5255adbc",
+          "locationId": "79115396918013",
+          "name": "West Hartford, CT",
+          "type": "Rivian Adventure Network",
+          "city": "West Hartford",
+          "region": "CT",
+          "url": "/locations/ran-west-hartford-ct-47f47d11e8/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 188)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "968f181ace14c53b69f90cc10c40e74f338af02c98731a6160203ef707b21c55",
+          "locationId": "105001383192459",
+          "name": "West Lebanon, NH",
+          "type": "Rivian Adventure Network",
+          "city": "West Lebanon",
+          "region": "NH",
+          "url": "/locations/ran-west-lebanon-nh-5f7f8a1625/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 181 (previously 182).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "49f07727a5ede68605317f96508cd5840173a7c313ac931e01a0e5729716d2b4",
+          "locationId": "39771778830057",
+          "name": "West Melbourne, FL",
+          "type": "Rivian Adventure Network",
+          "city": "West Melbourne",
+          "region": "FL",
+          "url": "/locations/ran-west-melbourne-fl-242c16b08c/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4279e5c2a7060e5ab2136cb598f80f00bc66fbb6f68477fef74604807a09d19c",
+          "locationId": "75388329664253",
+          "name": "Whittier, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Whittier",
+          "region": "NC",
+          "url": "/locations/ran-whittier-nc-4490b68cdc/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 180 (previously 183).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c1df6c92ffec158c6cf60fe7b906ea2747afea6376e2115b9834a9fba65058a0",
+          "locationId": "126495172544",
+          "name": "Wichita, KS",
+          "type": "Rivian Adventure Network",
+          "city": "Wichita",
+          "region": "KS",
+          "url": "/locations/ran-wichita-ks-001d73a3e5/",
+          "kind": "changed",
+          "lines": [
+            "Site features: no longer lists Trailer OK.",
+            "Charger 1A: NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously NACS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fab25d4ea00f8e59209ab0f067b21b862b72c2cf03238a468db56b7c8762661b",
+          "locationId": "90060663779952",
+          "name": "Wickenburg, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Wickenburg",
+          "region": "AZ",
+          "url": "/locations/ran-wickenburg-az-51e8e1d030/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 201 (previously 202).",
+            "Site features: no longer lists Trailer OK.",
+            "Charger 3B: CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app, trailer friendly (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-20",
       "entries": [
         {
@@ -30318,12 +32638,12 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-20",
+    "date": "2026-11-21",
     "sourceDates": {
-      "places": "2026-11-20",
-      "charging": "2026-11-20",
-      "chargingDetails": "2026-11-20"
+      "places": "2026-11-21",
+      "charging": "2026-11-21",
+      "chargingDetails": "2026-11-21"
     },
-    "partialDetails": true
+    "partialDetails": false
   }
 }

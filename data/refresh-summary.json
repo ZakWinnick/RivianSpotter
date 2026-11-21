@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "sourceUrl": "https://rivian.com/spaces/locations",
-  "directorySha256": "e7ce005e5317deff4f11d043e6f0166f155adc411f69ba49ed95b295dd7222d0",
-  "directoryCount": 116,
+  "directorySha256": "e3c44724a260fb67f72cecb9a1cbb2fcd2f6d09464eb26a0a27034c7c7122cd5",
+  "directoryCount": 118,
   "directorySlugs": [
     "calgary-service-demo-center",
     "scottsdale",
@@ -33,6 +33,7 @@
     "glen-burnie-service-demo-center",
     "caledonia-service-demo-center",
     "madison-heights-service-demo-center",
+    "eagan-service-demo-center",
     "minneapolis",
     "st-louis-service-demo-center",
     "belgrade-service-demo-center",
@@ -102,6 +103,7 @@
     "louisville-service-demo-center",
     "miramar-service-demo-center",
     "orlando-service-demo-center",
+    "pompano-beach-service-demo-center",
     "st-augustine-service-demo-center",
     "tampa-service-demo-center",
     "west-palm-beach",
@@ -125,14 +127,27 @@
   "supplementalMapPage": "calgary-service-demo-center",
   "warnings": [],
   "detailFailures": [],
-  "supplementalMapSha256": "eebb7080b9c7b13580b3d8efb9f0fc1399070c2bc93904a2684d871efa95d9bb",
-  "supplementalMapFeatureCount": 104,
+  "supplementalMapSha256": "ba9c391eabc07a7d49ced63c09ba2a6842a8585156dd55900bc1da755e5d3bed",
+  "supplementalMapFeatureCount": 105,
   "supplementalAddedCount": 36,
-  "legacyCanonicalCount": 160,
-  "legacyBrowserCount": 160,
-  "legacyUnionCount": 160,
-  "totalCount": 159,
-  "added": [],
+  "legacyCanonicalCount": 159,
+  "legacyBrowserCount": 159,
+  "legacyUnionCount": 159,
+  "totalCount": 161,
+  "added": [
+    {
+      "id": 165,
+      "name": "Eagan, MN - Service + Demo Center",
+      "slug": "eagan-service-demo-center",
+      "sourceKind": "directory"
+    },
+    {
+      "id": 166,
+      "name": "Pompano Beach, FL - Service + Demo Center",
+      "slug": "pompano-beach-service-demo-center",
+      "sourceKind": "directory"
+    }
+  ],
   "changed": [
     {
       "id": 1,
@@ -180,9 +195,7 @@
       "id": 7,
       "name": "Del Mar, CA",
       "fields": [
-        "lastVerified",
-        "verificationStatus",
-        "notes"
+        "lastVerified"
       ]
     },
     {
@@ -238,12 +251,7 @@
       "id": 15,
       "name": "Pasadena, CA",
       "fields": [
-        "lat",
-        "lng",
-        "coordinatePrecision",
-        "coordinateSource",
-        "lastVerified",
-        "verificationNote"
+        "lastVerified"
       ]
     },
     {
@@ -341,6 +349,7 @@
       "id": 29,
       "name": "Aventura, FL Aventura Mall",
       "fields": [
+        "hours",
         "lastVerified"
       ]
     },
@@ -362,12 +371,7 @@
       "id": 33,
       "name": "Alpharetta, GA",
       "fields": [
-        "lat",
-        "lng",
-        "coordinatePrecision",
-        "coordinateSource",
-        "lastVerified",
-        "verificationNote"
+        "lastVerified"
       ]
     },
     {
@@ -500,6 +504,7 @@
       "id": 52,
       "name": "Brooklyn, NY",
       "fields": [
+        "hours",
         "lastVerified"
       ]
     },
@@ -507,7 +512,6 @@
       "id": 53,
       "name": "New York, NY Meatpacking District",
       "fields": [
-        "hours",
         "lastVerified"
       ]
     },
@@ -662,9 +666,7 @@
       "id": 76,
       "name": "Miami, FL Brickell",
       "fields": [
-        "lastVerified",
-        "verificationStatus",
-        "notes"
+        "lastVerified"
       ]
     },
     {
@@ -1063,12 +1065,7 @@
       "id": 139,
       "name": "Glendale, CA",
       "fields": [
-        "lat",
-        "lng",
-        "coordinatePrecision",
-        "coordinateSource",
-        "lastVerified",
-        "verificationNote"
+        "lastVerified"
       ]
     },
     {
@@ -1138,15 +1135,7 @@
       "id": 150,
       "name": "Houston, TX - Service + Demo Center",
       "fields": [
-        "lat",
-        "lng",
-        "coordinatePrecision",
-        "coordinateSource",
-        "lastVerified",
-        "officialServiceId",
-        "verificationNote",
-        "legacyIds",
-        "legacySlugs"
+        "lastVerified"
       ]
     },
     {
@@ -1478,12 +1467,19 @@
       "notes": [
         "Official detail structured data lists a different address (600 Market Street); its coordinates were withheld. The directory address is used."
       ]
+    },
+    {
+      "id": 166,
+      "name": "Pompano Beach, FL - Service + Demo Center",
+      "notes": [
+        "The directory publishes operating hours but the embedded service map labels this site in the works. Confirm current availability with Rivian."
+      ]
     }
   ],
   "coordinateCounts": {
-    "exact": 130,
+    "exact": 131,
     "map-pin": 26,
-    "unknown": 3
+    "unknown": 4
   },
   "officialDirectory": [
     {
@@ -1581,7 +1577,7 @@
       "name": "Aventura, FL Aventura Mall",
       "address": "19501 Biscayne Blvd Space 1966",
       "cityLine": "Aventura, FL 33180",
-      "publishedText": "(786) 937-5226\n\nMon–Sat: 10:00am-9:30pm\nSun: 11:00am–8:00pm",
+      "publishedText": "11/25: 10:00am-7:30pm\n11/26: Closed\n12/24: 9:00am-3:30pm\n12/25: Closed\n(786) 937-5226\n\nMon–Sat: 10:00am-9:30pm\nSun: 11:00am–8:00pm",
       "bookingUrl": "https://rivian.com/demo-drive/book?locationId=23e75023-d5b3-4607-ae86-11d178662ef3",
       "sourceUrl": "https://rivian.com/spaces/miami-aventura"
     },
@@ -1748,6 +1744,15 @@
       "sourceUrl": "https://rivian.com/spaces/madison-heights-service-demo-center"
     },
     {
+      "slug": "eagan-service-demo-center",
+      "name": "Eagan, MN - Service + Demo Center",
+      "address": "3374 Columbia Drive Suite 200",
+      "cityLine": "Eagan, MN 55121",
+      "publishedText": "(651) 571-4616\nGeneral hours\nTue–Sat: 9:00am–5:00pm\nSun–Mon: Closed\n\nService hours\nMon–Fri: 8:00am–5:00pm\nSat–Sun: Closed",
+      "bookingUrl": "https://rivian.com/demo-drive/book?locationId=96264519-27f0-4ba7-8ed2-50b3a6e0f55e",
+      "sourceUrl": "https://rivian.com/spaces/eagan-service-demo-center"
+    },
+    {
       "slug": "minneapolis",
       "name": "Edina, MN",
       "address": "1 W 69th Street Suite 3601",
@@ -1860,7 +1865,7 @@
       "name": "Brooklyn, NY",
       "address": "366 Wythe Ave",
       "cityLine": "Brooklyn, NY 11249",
-      "publishedText": "(718) 568-7423\n\nMon-Sun: 10am-7pm",
+      "publishedText": "11/25: 10:00am-5:00pm\n(718) 568-7423\n\nMon-Sun: 10am-7pm",
       "bookingUrl": "https://rivian.com/demo-drive/book?locationId=330e2374-b804-449d-b89f-8a991ef3c55f",
       "sourceUrl": "https://rivian.com/spaces/brooklyn"
     },
@@ -2369,6 +2374,15 @@
       "sourceUrl": "https://rivian.com/spaces/orlando-service-demo-center"
     },
     {
+      "slug": "pompano-beach-service-demo-center",
+      "name": "Pompano Beach, FL - Service + Demo Center",
+      "address": "311 Racetrack Loop Suite 1100",
+      "cityLine": "Pompano Beach, FL 33069",
+      "publishedText": "(754) 256-2374\nGeneral hours\nMon–Sun: 9:00am-6:00pm\n\nService hours\nMon–Fri: 8:00am-5:00pm\nSat–Sun: Closed",
+      "bookingUrl": "https://rivian.com/demo-drive/book?locationId=32bc556f-4779-4c08-91c1-15730a40c00c",
+      "sourceUrl": "https://rivian.com/spaces/pompano-beach-service-demo-center"
+    },
+    {
       "slug": "st-augustine-service-demo-center",
       "name": "St. Augustine, FL - Service + Demo Center",
       "address": "245 Foundry Lane Suite 110",
@@ -2534,467 +2548,475 @@
   "detailSources": [
     {
       "url": "https://rivian.com/spaces/calgary-service-demo-center",
-      "sha256": "eebb7080b9c7b13580b3d8efb9f0fc1399070c2bc93904a2684d871efa95d9bb"
+      "sha256": "ba9c391eabc07a7d49ced63c09ba2a6842a8585156dd55900bc1da755e5d3bed"
     },
     {
       "url": "https://rivian.com/spaces/scottsdale",
-      "sha256": "332e893ce9230f62c0b2bbe7cb5e5602a841ab3970db542d21600659ca57b0d0"
+      "sha256": "dcbf9b15012a5372ab09b2072797665c416259240e46307f050540ddaf9b1d24"
     },
     {
       "url": "https://rivian.com/spaces/tempe-service-demo-center",
-      "sha256": "0bafa6536ffc32c4320b537195fecf33a4e0c90d8c7882420018df2b13535472"
+      "sha256": "0c48ccaab6b214bb04a4cfa85cbf1c09ce1465b037b4c5f2dc5def6aeba296df"
     },
     {
       "url": "https://rivian.com/spaces/vancouver",
-      "sha256": "7e0baa978176814e52341f4e4c39fa036d9d19f1713e86ceee390b0e7e254aa3"
+      "sha256": "1ba933d4557b59bc712a004809f4ef250368aa952267877ba7d09032830b361b"
     },
     {
       "url": "https://rivian.com/spaces/brea",
-      "sha256": "032d2200c813dbb9633b988ea79ef1f614f67955707e4571192a089c8ffcf298"
+      "sha256": "a8b891ce1e001c8b0d3688b2a0d4924eec70a0d225a923ba1ee95eaa7539f410"
     },
     {
       "url": "https://rivian.com/spaces/burbank-service-demo-center",
-      "sha256": "21f86f4cdd14c6acd3d85537a724570bf66fd82f65ca42f6c38d3da03dbd545a"
+      "sha256": "e416f43274efda74408241a15eb8f61ae1437c0cf7e2194041867dd97dc8c8bb"
     },
     {
       "url": "https://rivian.com/spaces/calabasas",
-      "sha256": "3dc4876229c74ca7166028e9d5e32135ee48ffd03082558cc88f3c2cdd8fc87a"
+      "sha256": "bf7a9696b04498e44989bbfd9d9b561b452a141e5b9036b54e4cbf9c69ae38ab"
     },
     {
       "url": "https://rivian.com/spaces/boulder",
-      "sha256": "bdcac3173a04eb355c2bb6f7f3b86bb59d37224047a67597dc4486c84c76f3a2"
+      "sha256": "50ffcc78821bc1b8be9c34234d50bc20bb8485051d7a5ecabf1f50df5832809c"
     },
     {
       "url": "https://rivian.com/spaces/colorado-springs-service-demo-center",
-      "sha256": "90e37f43e26ee5b94dfc2450d43e4b20ff0382ef4bab62a76ebd5c5cad80df7c"
+      "sha256": "0c55708557847a226df801dc2581fbcbb284a2ad7e97e233238ee92ebd17ae44"
     },
     {
       "url": "https://rivian.com/spaces/denver",
-      "sha256": "5c5df4b3ebc91e09e88e0c205f152563bb20afdc48498d1832015798cc39a4d9"
+      "sha256": "0d4fda57e69509f7fdaabc814477c903e9277bdedadfff013e3bb906ea7bd97b"
     },
     {
       "url": "https://rivian.com/spaces/miami-aventura",
-      "sha256": "c2b57e80644d6c02b25ae9602eaa0113ca19a388c5cd6583edb29dc979137cf7"
+      "sha256": "1cfbe0d3f548a187b2b991c09ff1f709ba53517a4ed34fbf3b4a8622d58ffd11"
     },
     {
       "url": "https://rivian.com/spaces/fort-myers-service-demo-center",
-      "sha256": "d814aef91772b3589412f01d625afa380c504717c248a3d9d2cf6b7b04e30386"
+      "sha256": "25f31d5402ae4a9c86c957f60eed9f2398dfc41f50f56110a503ef46a0e03022"
     },
     {
       "url": "https://rivian.com/spaces/miami-brickell",
-      "sha256": "37ba8aad979219de23a18a07d8d9abdaa132120b661a8fca3bb264d92c7b24a1"
+      "sha256": "ed747b6f2a5eb8f64bb43738c88edfb1cb3727b4017756098fad73a7dc4539a1"
     },
     {
       "url": "https://rivian.com/spaces/alpharetta",
-      "sha256": "167c7bb703b64d76359a7de4a6e4954f23e2dce3cc7ac49777655ebc93031ac7"
+      "sha256": "1969b5e99cb6ff1a2e2061c1c2db77141f5ffd20c08b1995f1cdecd484919b23"
     },
     {
       "url": "https://rivian.com/spaces/atlanta",
-      "sha256": "f43962a8721ce7676ec7f08009baea1de7136c8fcb99c072f583b85af8007864"
+      "sha256": "988e445bd65da7d44610b3f564aea6446ae405acfec41fc8184114f5cdfb2158"
     },
     {
       "url": "https://rivian.com/spaces/honolulu-service-demo-center",
-      "sha256": "b90096dc6cc8429a7e4d85e76b04c60b9990bef570c2cac4ced27b0b9e41883e"
+      "sha256": "e0e4899bd3af092cf649b74543cab776fc97fe9ca80ec7c11f42a236f6b2cfff"
     },
     {
       "url": "https://rivian.com/spaces/boise-service-demo-center",
-      "sha256": "61b9ead93c8a2c2d3c2c63bf2d6b4ee3a6317c589edebebd88c02099c71c920d"
+      "sha256": "73ecbd8453e19c8cc5c04c8b7135b13712d5541a9ff949e4184f2351ee636c51"
     },
     {
       "url": "https://rivian.com/spaces/buffalo-grove-service-demo-center",
-      "sha256": "3982fa47bbc6dc493f351bba823571586c72a6cffc424fc92d7b88622ff8efac"
+      "sha256": "3478dc3f6f1281ab15c5755af8d5119c8b5babe9f91c379a121bfaf3d7f1cca6"
     },
     {
       "url": "https://rivian.com/spaces/chicago",
-      "sha256": "eedde8b917a90ecc67916137f0fb8dc63bbca5929254eee61a3c12ceab04bd3b"
+      "sha256": "f8676dcf94de0e9207fb34b106de8d0802c215eea24c5988cdb039e94cb8fe3b"
     },
     {
       "url": "https://rivian.com/spaces/melrose-park-service-demo-center",
-      "sha256": "6d309f68e15fa58a7180390743264b6c49c5345fcc50aeb596eee7e686983bca"
+      "sha256": "43fa2a880f493e2e2e7c8173c74608cb36b16822cb50da1d9bf0b09f4a1beed0"
     },
     {
       "url": "https://rivian.com/spaces/fishers-service-demo-center",
-      "sha256": "ab754043a3c2bf3a52222bc262e5706174b70325deb007b6982fd353c977cc13"
+      "sha256": "60a715982f94da0f0c38c3c5dc878d0779760c9f594ceeae8d17685ba5d74760"
     },
     {
       "url": "https://rivian.com/spaces/kansas-city-service-demo-center",
-      "sha256": "a096dc7e98aaeab4af2e50fdfffa6aa4db03fb865fc765bdd0bb940cd5bb6fa6"
+      "sha256": "717deb7110440f0b9d82dda3e72023563d8db7b98eb21cc987f065fc3cfce747"
     },
     {
       "url": "https://rivian.com/spaces/boston",
-      "sha256": "3283c54cbf13ea960928e878ed0fd518d107cd4ee09d8780959c1555b8fcc22a"
+      "sha256": "9899dbda00f1caea31c31265f1a6383cbf9fe7da52ad04eef0cbe73cfad77b4d"
     },
     {
       "url": "https://rivian.com/spaces/canton-service-demo-center",
-      "sha256": "553ce74394dcce9365ffcb9acf28c4069bd45737d667157a85ef3cb4b547cacd"
+      "sha256": "fb5bac987b0f1579aa819cd00327af8c908f41cd6fea1a15b2e55931696305c8"
     },
     {
       "url": "https://rivian.com/spaces/dedham",
-      "sha256": "a0ce641115bc906b49834321e3674f6d66ec6a0d93f83b1c02a0c017d026a5a6"
+      "sha256": "59c4d4d5fd26592b01b53d424f1c483ac2b9309fbff99b6523b50d52d79836b4"
     },
     {
       "url": "https://rivian.com/spaces/gaithersburg-service-demo-center",
-      "sha256": "5dc5d0b444e89b643c50fe643919c4879422b3938cc97e49398da7ffc0ca1977"
+      "sha256": "2c25ee1a1930695f78d85bbfc878e7953e06b762e444c8a1d40c93a46cfbf3ca"
     },
     {
       "url": "https://rivian.com/spaces/glen-burnie-service-demo-center",
-      "sha256": "057fd138993d3e9696264930508ca3080187ac60d5eec356e1895922848bd2f8"
+      "sha256": "8691c5b979d3d74f907b540633392507f72173254a9ba46b08da88abb9c13188"
     },
     {
       "url": "https://rivian.com/spaces/caledonia-service-demo-center",
-      "sha256": "97753c75c274c6e0874fca422d94a6ecb3e293b26eeee189e136cc129206a24c"
+      "sha256": "f0b4d7f75d43320c53c0b4f90c0205883fbad78fdfcddb633f43db6c73cb32e8"
     },
     {
       "url": "https://rivian.com/spaces/madison-heights-service-demo-center",
-      "sha256": "cfd84777b5b13f55ca474bd6aa4dc1c83c0fe7535b12ce104cfffcc24abe9b7d"
+      "sha256": "962567112376ec043c485b986623a16d4690141ebd886738c9c16e6cc758b66d"
+    },
+    {
+      "url": "https://rivian.com/spaces/eagan-service-demo-center",
+      "sha256": "6a62a8c6dd5692f8285868c36908f8920de504f8bb154ce5425d4140282fb719"
     },
     {
       "url": "https://rivian.com/spaces/minneapolis",
-      "sha256": "3afedcde24ce41bd598b93662fa5d310e121f8c50825581a71b0cc7575c2c10e"
+      "sha256": "0ab567afcfa3901a2edbf063f5c63995eb798554e52064f09ba44cff285ffba6"
     },
     {
       "url": "https://rivian.com/spaces/st-louis-service-demo-center",
-      "sha256": "8ef7845dc02f9c53629b141014bc8421b0398113bcf462098764066bd95e8eb2"
+      "sha256": "cca24f71dc17ef5a8ff7e17d8bcc2141d5dfc1b762e01312ebd0b07a6c7196ac"
     },
     {
       "url": "https://rivian.com/spaces/belgrade-service-demo-center",
-      "sha256": "5adb772d5428e2a66ec8b767324cdd1e6472bf36e27a661ae4a5dfe5632613fd"
+      "sha256": "b60151ab9a7293366eef4519e2f7545801b7e8a7a39ae3f761f45d68c0e896a9"
     },
     {
       "url": "https://rivian.com/spaces/charlotte-service-demo-center",
-      "sha256": "2d36daed3ff36857fa5c4344df3160913538143e8996c1fbb96a8baae3e14d42"
+      "sha256": "caccb950fc5fe63b5883bfd597a7034ea281b17562e1884184073a2ef9d92b86"
     },
     {
       "url": "https://rivian.com/spaces/knightdale-service-demo-center",
-      "sha256": "7a472dc92bf5cf56a480af8aa9c9c8c300846342891880be06856fb733f87770"
+      "sha256": "cd145ecb360154eeba00bc21591b9142c603e44a9d3d653cc4bfcd9dca3ae3a1"
     },
     {
       "url": "https://rivian.com/spaces/hudson-service-demo-center",
-      "sha256": "aeb24516a0802afb17217db2ff01901bdbd5bdac448ece55254b26d6492508ec"
+      "sha256": "288208407104b61edb0ffb9a39e004719c01448d7baade53f90bb83a798ae2a8"
     },
     {
       "url": "https://rivian.com/spaces/east-rutherford",
-      "sha256": "5de2c2dc584980e4493aaac8507e8eb4c1133cdeae9e9e43041a24040e43e93f"
+      "sha256": "fc4e5f3665d07aa4986a4f6fe0194904341129abe0d992e0ec7854229c363823"
     },
     {
       "url": "https://rivian.com/spaces/trenton-service-demo-center",
-      "sha256": "2c33c98bfd3edebfdcb030bae1dbf78e11eeebb3d8153750be4ffab8882a26bf"
+      "sha256": "b392fcfdaa004b178feb95525ac6695f83b31758555dbec628dd42e5cab45275"
     },
     {
       "url": "https://rivian.com/spaces/woodbridge-service-demo-center",
-      "sha256": "8a6ddf70c477181da9790ebdf51ea495d3d70537274959bdea9e2d2d6d8b5fbf"
+      "sha256": "54797a52531f7179dee9b3717cfeacf8c27eb41d97fad635b4f2f25ae38e439b"
     },
     {
       "url": "https://rivian.com/spaces/north-las-vegas-service-demo-center",
-      "sha256": "1500395ee09cdefdba0d420ac66c658b66929703d955813948059770f7b3b2b6"
+      "sha256": "ad160e515f35a7eb6e06502e9c00d082996195b0f43937463c8a2cbb0147193b"
     },
     {
       "url": "https://rivian.com/spaces/sparks-service-demo-center",
-      "sha256": "9712f2e4cb44cc9c64fc127e603d6c9b3a7443d212d17128c249f70e7aa6d7cb"
+      "sha256": "d5a6d52cf1b189e5d556d584d3ed82f6349cd3ba09c7c749bfa6bda69bf80515"
     },
     {
       "url": "https://rivian.com/spaces/blauvelt-service-demo-center",
-      "sha256": "bb8745f62e21a8b61da00a325469db2bf48162e572d6efe1c162fb075e16db88"
+      "sha256": "e4e45e4398f8ac20597b77182a4fa138963b9b84a0795cc6d5cd64a66e34d3f0"
     },
     {
       "url": "https://rivian.com/spaces/brooklyn",
-      "sha256": "a6af1060251037115ade23c9cfefab1cd4347f9b67d01da55db93330aa9f4f03"
+      "sha256": "7a420251fe58befe756d8ee2b25308a9723cb8d3951366792f051b2eadf70b6c"
     },
     {
       "url": "https://rivian.com/spaces/clifton-park-service-demo-center",
-      "sha256": "3beabf04e43b059230c53e457ffccdd3b6dcb6fb158c510fd03061ece8f416c3"
+      "sha256": "b18292a59b47c06cec1e7c8fe16729dd64ff236f2672c2fb6764f07afd0a09a3"
     },
     {
       "url": "https://rivian.com/spaces/oklahoma-city-service-demo-center",
-      "sha256": "72e0538599539dee7ea3eccc9b7a6f52428a3217c2d9e68facc0d30b7448af2f"
+      "sha256": "f170c430628f23a79bcfd5c5ac13867171acfdf5fa9e451d6601076e41a43f1b"
     },
     {
       "url": "https://rivian.com/spaces/toronto",
-      "sha256": "b74e51599835d77156948367518151306088c1bd9582589369f5d202eb17f8a8"
+      "sha256": "76b792b5fce40a9a60c8b30a80f7e7fd974ffa882d450f461f70ab1541fe171c"
     },
     {
       "url": "https://rivian.com/spaces/toronto-service-demo-center",
-      "sha256": "6b3ace0cf79ec75b83a8f3d66f5c3c9e5328c89e68823d1ebab311162a659c52"
+      "sha256": "c6fcd5e4adf2a06ea3c3956e3769584262ffd14af77dce46f95b03589c046b29"
     },
     {
       "url": "https://rivian.com/spaces/portland-service-demo-center",
-      "sha256": "d38e0845c4cdd8121c35acec7c4aeaf58abff91c8cb06545de0ef34ff68ddcc9"
+      "sha256": "385e6e4cdd5e49705a5a34fcb95bdb8a3b0faa506fdd529c8d0e4b1e9b1d6b6a"
     },
     {
       "url": "https://rivian.com/spaces/tigard",
-      "sha256": "2c6fa0db63d0fbdab620e13ec5ba2e05f95feb478db931899ef80965ac739aac"
+      "sha256": "02053b9c19e7a74ef43426a66d81dba5d86ab23f3ea8fc2518672a48728c603c"
     },
     {
       "url": "https://rivian.com/spaces/bethel-park-service-demo-center",
-      "sha256": "6803b03df2ebac44b3de220b67f715ed60ac8911f7a04413c679f754bb6adf6f"
+      "sha256": "16031832cdc1f39e239e018d89ebc2412bbd82fdab515ad9ffd5a2882628516f"
     },
     {
       "url": "https://rivian.com/spaces/king-of-prussia",
-      "sha256": "e2b42e8252b1a96a015e2a81e11bd979176c3a3d3ba8204e8a1225d9053e9fcd"
+      "sha256": "dce51b70c8cad6d6cc7d46193e908c8a01d1ecb138802acbc086f73753536d60"
     },
     {
       "url": "https://rivian.com/spaces/laval-service-demo-center",
-      "sha256": "b2fc9065928c2030f5e78c373ca3890814f6b985ea47ac00b9c17e7cf23f845a"
+      "sha256": "8c0f43f9e731d9b71b5d471e33df93db653d38a17351fa16b657c23cd49d41d6"
     },
     {
       "url": "https://rivian.com/spaces/ladson-service-demo-center",
-      "sha256": "dd77eafa9a6b0045e3a61f3aa142223fdba5a17276b3406d7f6856b61badbb85"
+      "sha256": "ed5a0593dc7885cd5ad19d928539081e100e35f3ce672711ca8327b8903f6fcf"
     },
     {
       "url": "https://rivian.com/spaces/franklin-service-demo-center",
-      "sha256": "dd45f4ddadd297586aa9b03d285737572dcf1c877f7ea74c0a94f6d66f3b4a82"
+      "sha256": "e280c43ded357bb9f3df541ab0a98df91edba446ddd2231c816058cb87fdec11"
     },
     {
       "url": "https://rivian.com/spaces/memphis-service-demo-center",
-      "sha256": "94a35356d6621e1e35452829b91ff53348d1640427fe7264c989a6497b00816b"
+      "sha256": "dfc08b7e548a5df53b75da2ebd0759144e60f747b3ef949dd5882a34328c340b"
     },
     {
       "url": "https://rivian.com/spaces/nashville",
-      "sha256": "96725129f62b7c71b0c3ca8876ce9c0af3715ed301f749a938b651777418411a"
+      "sha256": "9e798cfba5e7a7568221a04a765e76c7efd89b1c2de304e61f083ee4b58a3e88"
     },
     {
       "url": "https://rivian.com/spaces/austin",
-      "sha256": "1fd9ec8decd630e5097d3340f05ca356c461427e62326d241847d711d1504106"
+      "sha256": "01801163acc178135413a2a53d78d59e7c29e5ce1942cf3877cb152e2706eb0f"
     },
     {
       "url": "https://rivian.com/spaces/austin-service-demo-center",
-      "sha256": "695413a526709fddecdd3bfb391a31e4d54624d4c6ce3d4aa796acb6129828b2"
+      "sha256": "cfc036febb78de0162e5d830bdd0cb7d22020773c55eee4b1a6dee592a3618df"
     },
     {
       "url": "https://rivian.com/spaces/dallas",
-      "sha256": "38ff73951a65277ae693a02708875667e8fd634c1b2f53c8e7321f492d8ab791"
+      "sha256": "5e4eac816e568362230e0485c200bc9a8141bbc07cf53181c92327ed66d88147"
     },
     {
       "url": "https://rivian.com/spaces/salt-lake-city-service-demo-center",
-      "sha256": "b50dd144bcca2588d432a466f7d867dd0dce98b1f34d9715c7935fcfffb2c232"
+      "sha256": "e4a92c37572d881dac5afafd7777f2e71e460fcafcd101dfd2ad1fd9b3fac9fa"
     },
     {
       "url": "https://rivian.com/spaces/mclean",
-      "sha256": "7b5d97b598139fe5ed8ad7d3fcaefbc15632866e6ff6037a2a8b84ca05f9763e"
+      "sha256": "9e1a36e5a4f82a012ab006357e0470f3a0021509ce04e3a54da3d00ae89eaf91"
     },
     {
       "url": "https://rivian.com/spaces/richmond-service-demo-center",
-      "sha256": "bfedb179a39893b2b6cc97a7465ec90ce66e14501ee7f121dbe12fde6928f031"
+      "sha256": "976dec40f8e4f515cea5010f474e678603a1073e2158e84053d018c9a5bec259"
     },
     {
       "url": "https://rivian.com/spaces/bellevue-service-demo-center",
-      "sha256": "93c3ce24239c0029d82247d9cc9b3e7ce1f2d209b3c88bf8bccbfa8909c81405"
+      "sha256": "6ee8aed4be6ff3b133978ba15782c7785319139063091240eae0c63017d2d057"
     },
     {
       "url": "https://rivian.com/spaces/bothell-service-demo-center",
-      "sha256": "86a184adfc700fc282b72614f084546ce473bfc9594d4a59d7007de91f7d218c"
+      "sha256": "fa97632e6c5106d009956ada14d59b598ed13bad242672a13976fec070caab2c"
     },
     {
       "url": "https://rivian.com/spaces/fife-service-demo-center",
-      "sha256": "35138fc3eb441ed7a94210f6b6a63e9c2a9d350594ba722dc1320a19993dcebc"
+      "sha256": "ca35ac22490f490fcbdbce133971191d8b5e163ba1443725464f26e38d149244"
     },
     {
       "url": "https://rivian.com/spaces/appleton-service-demo-center",
-      "sha256": "8e5b872863f6467a652535052f6cb463526f3c62d4596c5e5660b787b588d432"
+      "sha256": "a85e1ff60b5996b2308d42d5e33acd4ae918156da075f30c1e6af0bdb21b64e1"
     },
     {
       "url": "https://rivian.com/spaces/menomonee-falls-service-demo-center",
-      "sha256": "8fe91694cc3cbdef95899f7062b8ecc53699cbaa0773645569d42449b8457233"
+      "sha256": "2c8be5515d04c535ad5ca4f6bed206d82262502a23ea952d4e1ed5838201f5e7"
     },
     {
       "url": "https://rivian.com/spaces/colma-service-demo-center",
-      "sha256": "74ca3335276e7d3da3323242b2f2d15a3e49fe8a4036d6d60fe58e9ad4c52222"
+      "sha256": "25e4e750f5a9ce4dd01764816d04ff979b16a175d808e4ce68ae1cf791042803"
     },
     {
       "url": "https://rivian.com/spaces/costa-mesa-service-demo-center",
-      "sha256": "ececafec4d1bbdbcac1b68b4afaad668f365658354b1dc0ea168bf84eae6e97e"
+      "sha256": "8f0e117a647ed46e0f5348b2d30a0c6e21a90f881afbf5e6946606e01848fade"
     },
     {
       "url": "https://rivian.com/spaces/del-mar",
-      "sha256": "7251378822feeb04e89f6612b4879a13174d0bc317d248a7b82151832c895d06"
+      "sha256": "864f80d46b949fe311397523cfb634c33285221e2f43948edc87a3ff4c5bf006"
     },
     {
       "url": "https://rivian.com/spaces/eastvale-service-demo-center",
-      "sha256": "ac048460c7adba2235824f0ebf6a67183f4d97022f79b97ad45d9efd2dc1415b"
+      "sha256": "15d1fd7ccfa7ce3ce86a8c65ff043115eea07bb1f80bf7f0a563e3545e8c8ecf"
     },
     {
       "url": "https://rivian.com/spaces/el-segundo-service-demo-center",
-      "sha256": "b40272f46d5ecac0c16fd8d31ad870a16dd6d3609ab30eae73abae615e989364"
+      "sha256": "0aee63a6e7a77ed1ec57943c311b5fabbf78cb2351e38fa218d85199c9212d15"
     },
     {
       "url": "https://rivian.com/spaces/el-segundo",
-      "sha256": "c26b94bb59291a657b46beb2fc42162d387cedb7e724ba6babb913a90e2513b7"
+      "sha256": "26c55aa70cdf3a675f587d64f3ff6bc90c7e09561a3f2a5585084f2af713110f"
     },
     {
       "url": "https://rivian.com/spaces/fresno-service-demo-center",
-      "sha256": "6288f31b4e3107af75bffcc43c0aee919e436ecabc56bf0e73aab111e30c3c07"
+      "sha256": "df45582cfacf84d36398225c02080f7546f36b566c2a67ce84bdb45668f10222"
     },
     {
       "url": "https://rivian.com/spaces/glendale",
-      "sha256": "5927efb0f6a50625aeb7b70566dd81b789e9c1eb7f76a9a1cf95ffb91023d6b0"
+      "sha256": "1fca99d6b21e564e5b66301f9048fb0e8ba936e05c3bba8d10e9c8d2d6599684"
     },
     {
       "url": "https://rivian.com/spaces/irvine",
-      "sha256": "d8441ee4553758c997eefb72a9de9ed519d352ce6b2e1da9d0641b4941f29601"
+      "sha256": "6980bbda6c77036ae482d69e1b0e559925794dae5f7c448257e975722b86e143"
     },
     {
       "url": "https://rivian.com/spaces/joshua-tree",
-      "sha256": "ae2fa91fe48e861215a0997c8ecf67f6cc67981bb8eea8784b6bf6695a104109"
+      "sha256": "b22e28d4806e6d5796a69cde7fa1acb581c64014441663de4de5a002bd8414ee"
     },
     {
       "url": "https://rivian.com/spaces/la-jolla",
-      "sha256": "c26f3d86cb760a0c2f51a165e6e79d56ad00689525c355066f0eaaf83e7ba3fd"
+      "sha256": "5ed344199b2c4863d69b2426419bc4e85c19f10e719f42fab3f3d3bec30cd517"
     },
     {
       "url": "https://rivian.com/spaces/laguna-beach",
-      "sha256": "44d820bb4550e11fb8c497f1ecb54c749c0c802b218e26f4d3ef17acd0c27260"
+      "sha256": "6c911578424e88020919d6344ad8d225d94549efc208d901e89ff614c822831e"
     },
     {
       "url": "https://rivian.com/spaces/lake-forest-service-demo-center",
-      "sha256": "fe62548a1e2e0bf3bc7dfa9b531b6ed3fac506cf04a7621ce35221afa8298fda"
+      "sha256": "683fe52c0be50e0d00047340d383032693053723094869887f22cb891d6d2ea1"
     },
     {
       "url": "https://rivian.com/spaces/milpitas-service-demo-center",
-      "sha256": "ad71a549b802713c7599dbc947163d029f7535e02b792f14cf559a44e418457b"
+      "sha256": "8f2e0fe9bf8de63e50c7f557a55b10a74f3a3b99ee3015c9e246b3ca7e500ad8"
     },
     {
       "url": "https://rivian.com/spaces/palo-alto",
-      "sha256": "ee99f20b6774c4a12d750b06f092cab3575da6b221dbd0b3b9f07d2efbbf475a"
+      "sha256": "714b5f15e5e9d33965d913578020c4272608fd9c1ac252abe7525934ab992978"
     },
     {
       "url": "https://rivian.com/spaces/pasadena",
-      "sha256": "e7ae5c6f836a9e90f71c6c9b5aafba7c6ef2e1e13495fa6eaf4ca4bfa6f1a56f"
+      "sha256": "a229d3f0c8d9d17e3f2a49b948f7e848736d0a50b526013ed8bdb20cae2b3c02"
     },
     {
       "url": "https://rivian.com/spaces/rocklin-service-demo-center",
-      "sha256": "445e29f693b5938eb38446c30cf8c4ad108c368e6d7e361990b1d0f46fc10817"
+      "sha256": "52f704e851a9641870f42bfa21e9049bd0afc78ddcb84da586f276beb88361fd"
     },
     {
       "url": "https://rivian.com/spaces/san-diego",
-      "sha256": "949a21f8e35daa7e5b3b5580716a17fdcc1e273cd18ca7edf0dd9e199aa7f757"
+      "sha256": "1138da880508f704280b4c1705541cef69393b84feae935470d192af3eba674d"
     },
     {
       "url": "https://rivian.com/spaces/san-diego-service-demo-center",
-      "sha256": "5392144dd5fc17de6463efb8d8486068e736c04cdb7c0d74ca8ae60a66daef30"
+      "sha256": "e41bb14c859d2d0bab3bf2c232dc40b982d056a0c75df741817a02ad03ac82b8"
     },
     {
       "url": "https://rivian.com/spaces/san-francisco",
-      "sha256": "c0655fbd34ef4040cccd40e9da92bd094b5835cab9ed139d12c37435d5122d44"
+      "sha256": "e6209f7c8238e375b78584b0a74f4f64d30a831b7bd8d7db35878595cd9dd5e6"
     },
     {
       "url": "https://rivian.com/spaces/san-jose",
-      "sha256": "1cc3e064c49795ab1652bbc4a2eaef1f90d1ee9deaaa3ebb517af586ef8208dc"
+      "sha256": "cc7dd79de7c3bb1a8c7a36f352252c6ec56b173843e046b10745dde31353eaae"
     },
     {
       "url": "https://rivian.com/spaces/south-san-francisco-service-demo-center",
-      "sha256": "73a7632c55c590129fba5080b1813f41d50de2399993b785cd5f053a8a98fa84"
+      "sha256": "cd14e7cb8a5aa7092a86a8c00c06082cfb768c91f926e40ebb9ded46fed417d7"
     },
     {
       "url": "https://rivian.com/spaces/van-nuys-service-demo-center",
-      "sha256": "3cf8b79c5bb29d16e1baca4dc8c580296d88b563488cf27f761946199b2b55db"
+      "sha256": "45d468909ec76f7c6311001419deffe98f968b3e42c585c047d3228bb9c9b095"
     },
     {
       "url": "https://rivian.com/spaces/venice",
-      "sha256": "77908f439fa335f0a30642f52656abaa1b53f99a8ea36eeb865bd0d244c7e70b"
+      "sha256": "522038bc7d20c65df7663e6e579e893781ce9d7f58522bf0b8283b29af1672f8"
     },
     {
       "url": "https://rivian.com/spaces/vista-service-demo-center",
-      "sha256": "c91dab4ea8a725baa55d3e8da9f7e97954c43cece5ccc4e2196b446860a14476"
+      "sha256": "16a1f7166fd87c78097977b2d2bfd9a1704e55f9d48973c03c39cc6540e4808b"
     },
     {
       "url": "https://rivian.com/spaces/walnut-creek",
-      "sha256": "93b5b7b9d798612137378dd5ff59d1ac371739b91ea7d2205235d192f504c50f"
+      "sha256": "47addb7af8738421c457f057978a38d8f1308aec5a046cd39d2a9b9af267ca11"
     },
     {
       "url": "https://rivian.com/spaces/west-sacramento-service-demo-center",
-      "sha256": "773553332977d0a7bb9961bba2b31251e55c5fac2e206fec8edfdde377abb7eb"
+      "sha256": "9432725b9805496b4133637312fe4af5e3ac605f3bf9cb49a68879e36ef7a745"
     },
     {
       "url": "https://rivian.com/spaces/yosemite",
-      "sha256": "b8d637ab0e7f3f2e05e52f699832d4540225f791d8d61ef210d28124d8d0c7fa"
+      "sha256": "2084ace29f4a42a761033f391e6a1778b74b9285ab102d437a61af1337de33ef"
     },
     {
       "url": "https://rivian.com/spaces/lone-tree",
-      "sha256": "c71b1d96f59ca60aab9fce48321d3df51fd78107d66653419496d5354aad95ec"
+      "sha256": "77b735a3bea473fba08c899efaec4fa480e35c6c4ea6d38e0702aba185f80fca"
     },
     {
       "url": "https://rivian.com/spaces/louisville-service-demo-center",
-      "sha256": "ad6df01b29c6e5d39ccef896f66912e136a05403c213a69912c463362986f690"
+      "sha256": "c35191e4e713defd78b101f734516d292c55e1a4c2dfef16cdb3961a439ec198"
     },
     {
       "url": "https://rivian.com/spaces/miramar-service-demo-center",
-      "sha256": "73d2740a26aa6a1c53cc46949341e099846747232a6f7cb1ecd6e6434b3143ac"
+      "sha256": "fc18c0fb395c810e37fbc6e270166e32418dfd1153baa918840717035df96e53"
     },
     {
       "url": "https://rivian.com/spaces/orlando-service-demo-center",
-      "sha256": "c9de90bd9cf927200d5cc3b8729e645b294de5286141825cb539e28710c6a0b9"
+      "sha256": "e53689507fcd53dd2ad1c98adabf49c1bc845837afe00b59fa3aa25f83208490"
+    },
+    {
+      "url": "https://rivian.com/spaces/pompano-beach-service-demo-center",
+      "sha256": "461220204affdb516bd405c923e63c86cebf38a826bf685ca4bb49b41d578aec"
     },
     {
       "url": "https://rivian.com/spaces/st-augustine-service-demo-center",
-      "sha256": "25942841ab76ccf4ce76b166427634ed3ad92fe245bee6399c4fb24c63cf6fc6"
+      "sha256": "a4ca130ff8092ee29ddfb9b6d23a3c9341db4e2d9058e904564bad5020b30c43"
     },
     {
       "url": "https://rivian.com/spaces/tampa-service-demo-center",
-      "sha256": "8e103055b18479250f87fc37d8cc78ecad94aff129cdcbf0e7a2dd05565324b2"
+      "sha256": "c493ca3b5d799804865124e761155b99e86a51e3420831007a36087cad9109c6"
     },
     {
       "url": "https://rivian.com/spaces/west-palm-beach",
-      "sha256": "da82c4d00a83545f720aa53861787587349721a7247c4d6cc939b20ad465b293"
+      "sha256": "cb616534fcded372e4ca874ade266b0ae07601f5fecd748e7b8aa00a617098ef"
     },
     {
       "url": "https://rivian.com/spaces/oakbrook",
-      "sha256": "3e3a147cafbc2382c4dc6c1c8fc22483ef33e30bda0133b88b9ade11756a5368"
+      "sha256": "a7695274126b0e70ae3b066df2fdfd702914a40849ffac7644c351a029332c71"
     },
     {
       "url": "https://rivian.com/spaces/skokie",
-      "sha256": "7eeabf759626fe1f4c0f2aa725c8b596a07dfd4bf0b5570feb2140097083fe5a"
+      "sha256": "1a14bd6029f96869d8bba6ea06aee08e768f79ef8dccb2c4862f55313fc56593"
     },
     {
       "url": "https://rivian.com/spaces/lynnfield",
-      "sha256": "44a44e90dd1507562614531183fb511b31848c7dad3c9e1af379e68401ea9857"
+      "sha256": "e94056f334bfd1b57c7051e6fec66c2dac5bb5edd6051014c46abab0af1822bc"
     },
     {
       "url": "https://rivian.com/spaces/new-york",
-      "sha256": "d12848e93a01a37142d62698872382a0acfdc31813b226deacccba3a5d0e6a85"
+      "sha256": "0917e66eb9da8726803843e8e9b1edb7ab3ad2fdcfdd2ed36a0d7383a7d9ad0d"
     },
     {
       "url": "https://rivian.com/spaces/roslyn",
-      "sha256": "fa86a9ee34727dfddb4560512eeaa062c36aaf8421714f3bc5c7151b2b38cb7c"
+      "sha256": "c19238f50933fe372abb8fee1f74a64e31b1732aca4a9420cccd12eb4d91b725"
     },
     {
       "url": "https://rivian.com/spaces/hamptons",
-      "sha256": "72a9bfde8ff024932fd2b3978ff54bd4c84adaeaf4db8ff63944c5db01e9b797"
+      "sha256": "dff8c82ac9165c99c91ce1d8d13ef0ab2233e961d39eb952d5882caa5bb815dd"
     },
     {
       "url": "https://rivian.com/spaces/west-henrietta-service-demo-center",
-      "sha256": "871296d42ba847f03dcb7fdb809465f01d446c5d8a685f7187a591f49a93acad"
+      "sha256": "313b8b2ed5e8e90dd6a967672af71ca46cc6697a35f2683728bc78afe665543f"
     },
     {
       "url": "https://rivian.com/spaces/white-plains",
-      "sha256": "c6031dcd226dbb8894a1099e0b2ac1a878d5670059dad7d3728d848b724aabd8"
+      "sha256": "86f4eece296a4b33ce4b9e1ffcc738dc1332bf44937aa974ad232a23ab8c35d7"
     },
     {
       "url": "https://rivian.com/spaces/woodbury-service-demo-center",
-      "sha256": "c5c98661c84fa93e3f55c70f74b3d8f20ea2adc54d025b88aa56851b1eee4eff"
+      "sha256": "8ccbce4253a140cdd89d3579646e45f8999a6b12f05644097e4f7766b88f9dd2"
     },
     {
       "url": "https://rivian.com/spaces/dallas-service-demo-center",
-      "sha256": "a10fa448f9770c2079138d75a176d6676d66ff3d967b9d781f91c3b6fa96a957"
+      "sha256": "f1b94c1eb5d9650a723cc1f21c9713b1ff5078786ffb1a0f15b7933e7c4f6aeb"
     },
     {
       "url": "https://rivian.com/spaces/houston-service-demo-center",
-      "sha256": "29579a417d17d9cebbee2cd170c111b6e63eab616f6790e500951fab7cdd07e1"
+      "sha256": "465f4706ddc2fd057934b19d28d5e2e10f15070e080c788ccd011c815cfa180c"
     },
     {
       "url": "https://rivian.com/spaces/katy-service-demo-center",
-      "sha256": "b8d37409688ef3e090c4135f19e619d11b398db13eb6390eb743141e77b2cb85"
+      "sha256": "526208cddc7f49c46dc5d94e0f05b130a6b51c0c0009d66cdd043777673ac34b"
     },
     {
       "url": "https://rivian.com/spaces/san-antonio-service-demo-center",
-      "sha256": "793018afc184110aa05619967572bd3b6e0323a77c694bf45302ae11c98d0752"
+      "sha256": "989d02fd72b3a0df7a8eeceb83d3586be1f1160471c255891f5756476b5fa210"
     },
     {
       "url": "https://rivian.com/spaces/seattle",
-      "sha256": "a2a5052251284f4a7a8f6328fbcbd09c6a7a2546ebec35c6234a5ede22b50f9c"
+      "sha256": "c3e56906f24758a59cbb6878f07e1241dd6eb8e6c365e60e15715933c5eb8751"
     },
     {
       "url": "https://rivian.com/spaces/seattle-service-demo-center",
-      "sha256": "468f0d9ad149f7a6a4519ae42d2f4669b59c0cd3de08c4565cb223c866b01fcd"
+      "sha256": "2cdfe1d9e8bdb929ce83dd46ce9640348d6b58248b5f53fc2e14acdb1e35737e"
     }
   ],
   "limitations": [
