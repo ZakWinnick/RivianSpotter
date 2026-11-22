@@ -17,6 +17,22 @@ function comparable(field,value){
  }
  return stable(value);
 }
+function samePrice(a,b){
+ if(!a||!b)return stable(a)===stable(b);
+ const {parseRate}=require('../js/components.js'),x=parseRate(a),y=parseRate(b);
+ const summary=v=>String(v||'').replace(/[–—]/g,'-').replace(/\s+/g,'').toLowerCase();
+ if(summary(x.summary)!==summary(y.summary))return false;
+ const detail=p=>p.periods.length?stable(p.periods):p.note?stable(p.note):null;
+ const dx=detail(x),dy=detail(y);
+ return !dx||!dy||JSON.stringify(dx)===JSON.stringify(dy);
+}
+function sameField(field,a,b){
+ if(field!=='Pricing')return JSON.stringify(comparable(field,a))===JSON.stringify(comparable(field,b));
+ if(a&&b&&Object.values(a).filter(Boolean).length===1&&Object.values(b).filter(Boolean).length===1&&
+    ((a.Energy&&b.Rivian&&samePrice(a.Energy,b.Rivian))||(b.Energy&&a.Rivian&&samePrice(b.Energy,a.Rivian))))return true;
+ const keys=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);
+ return [...keys].every(k=>samePrice(a?.[k],b?.[k]));
+}
 function normalize(data){
  const observations=new Map(data.roamer.stations.map(r=>[r.sourceId,r]));
  return [...data.locations,...data.charging].map(p=>{
@@ -49,7 +65,7 @@ function compare(before,after){
   else if(!previous.listed&&p.listed)kind='relisted';
   else if(!p.listed)continue;
   else {
-   changes=[...new Set([...Object.keys(previous.fields),...Object.keys(p.fields)])].filter(k=>JSON.stringify(comparable(k,previous.fields[k]))!==JSON.stringify(comparable(k,p.fields[k]))).map(field=>({field,before:previous.fields[field]??null,after:p.fields[field]??null}));
+   changes=[...new Set([...Object.keys(previous.fields),...Object.keys(p.fields)])].filter(k=>!sameField(k,previous.fields[k],p.fields[k])).map(field=>({field,before:previous.fields[field]??null,after:p.fields[field]??null}));
    if(!changes.length)continue;
    // Rivian's charging map never says "open", so a coming-soon station counts as active once it
    // appears there with station details; an unknown status alone is not an opening.
@@ -80,7 +96,7 @@ function schedule(value){
 function changeLines(d){
  const before=d.before,after=d.after,label=md(d.field);
  if(d.field==='Pricing'){
-  return [...new Set([...Object.keys(before||{}),...Object.keys(after||{})])].filter(k=>stable(before?.[k])!==stable(after?.[k])).flatMap(k=>{
+  return [...new Set([...Object.keys(before||{}),...Object.keys(after||{})])].filter(k=>!samePrice(before?.[k],after?.[k])).flatMap(k=>{
    const a=before?.[k],b=after?.[k],who=k==='Energy'?'Charging':k==='Rivian'?'Rivian vehicles':k;
    const summary=rate(a)===rate(b)?`${who}: time-of-use pricing changed; the range remains ${rate(b)}.`:`${who}: ${rate(b)} (previously ${rate(a)}).`;
    const detail=schedule(b);
@@ -95,7 +111,7 @@ function changeLines(d){
    return [`- **Charger ${md(key)}:** ${b?md(describe(b)):'No longer listed'}${a?` (previously ${md(describe(a))})`:' — details added'}.`];
   });
  }
- if(d.field==='Reported charger condition')return [`- **Charger update:** ${after&&/^operational$/i.test(after)?'Reported as working again':words(after)}${before?` (previously ${words(before).toLowerCase()})`:''}.`];
+ if(d.field==='Reported charger condition')return [`- **Charger update:** ${after&&/^operational$/i.test(after)?(before?'Reported as working again':'Reported operational'):words(after)}${before?` (previously ${words(before).toLowerCase()})`:''}.`];
  if(d.field==='Map pin')return ['- **Map location:** The pin was updated. See the location page for directions.'];
  if(d.field==='Pin precision')return [`- **Map location:** ${after==='city'?'An approximate city location is shown; the address has not been published.':!after||after==='unknown'?'The location’s precision is no longer specified.':before==='city'?'A more precise location is now available.':'The location’s precision has changed.'}`];
  if(d.field==='Rivian-only access')return [`- **Vehicle access:** ${after===true?'Rivian vehicles only':after===false?'Open to other EVs':'Access details are no longer published'}.`];

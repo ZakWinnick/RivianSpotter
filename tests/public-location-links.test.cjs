@@ -29,7 +29,7 @@ test('generated public pages retain analytics and contain no review warnings or 
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'spotter-public-'));
  try{
   const routes=buildPages(dir,records,summary);
-  const analytics = /<script src="https:\/\/tinylytics\.app\/embed\/jj-9YE1ymyozj9wFfy7d\.js" defer><\/script>/g;
+  const analytics = /<script defer src="https:\/\/tinylytics\.app\/js\/script\.js" data-site="jj-9YE1ymyozj9wFfy7d"><\/script>/g;
   assert.equal((fs.readFileSync(path.join(__dirname,'../index.html'),'utf8').match(analytics)||[]).length,1,'explorer analytics');
   for(const route of routes){
    const html=fs.readFileSync(path.join(dir,route,route.endsWith('/')?'index.html':''),'utf8');

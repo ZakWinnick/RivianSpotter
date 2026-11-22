@@ -10,6 +10,8 @@ test('deployments require one explicitly selected supported branch', () => {
   const { selectedBranch } = require('../scripts/deploy-amplify.cjs');
   assert.equal(selectedBranch('staging'), 'staging');
   assert.equal(selectedBranch('beta'), 'beta');
+  assert.equal(selectedBranch('beta-data'), 'beta-data');
+  assert.equal(selectedBranch('production-data'), 'production-data');
   assert.throws(() => selectedBranch(), /branch/i);
   assert.throws(() => selectedBranch('production'), /branch/i);
 });

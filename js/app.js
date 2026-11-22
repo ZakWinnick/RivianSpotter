@@ -11,8 +11,8 @@
     selected = null,
     origin = null,
     area = null,
-    view = "list",
-    detailReturnView = "list",
+    view = "map",
+    detailReturnView = "map",
     mode = "all",
     saveIds = [],
     timer,
@@ -108,7 +108,7 @@
       saved: f.savedOnly ? "1" : "",
       sort: $("sort-filter").value === "name" ? "" : $("sort-filter").value,
       location: selected?.slug || "",
-      view: (selected ? detailReturnView : view) === "map" ? "map" : "",
+      view: (selected ? detailReturnView : view) === "list" ? "list" : "",
       bounds: area?.map((x) => x.toFixed(5)).join(",") || "",
     }))
       if (value) p.set(key, value);
@@ -140,7 +140,7 @@
       b.length === 4 && b.every(Number.isFinite) && b[0] < b[2] && b[1] < b[3]
         ? b
         : null;
-    view = p.get("view") === "map" ? "map" : "list";
+    view = p.get("view") === "list" ? "list" : "map";
     setView(view, false);
     const extra = ["intent", "state", "open", "saved"].some((k) => p.has(k));
     $("extra-filters").hidden = !extra;
@@ -233,7 +233,7 @@
     writeUrl();
   }
   function sourceDate(p) {
-    return M.sourceLine(p) ? `<div class="source-date"><span>${e(M.sourceLine(p))}</span></div>` : "";
+    return M.sourceLine(p) ? `<div class="source-date"><span class="tile tile-record">${U.icon("check")}</span><span>${e(M.sourceLine(p))}</span></div>` : "";
   }
   function detail(p) {
     const official = M.getOfficialLink(p),
@@ -241,7 +241,13 @@
       directions = M.getDirectionsUrl(p),
       h = M.getHoursState(p),
       phone = String(p.phone || "").replace(/[^+\d]/g, "");
-    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(U.locationTypeLabel(p))}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><div class="location-title"><h2 id="detail-title" tabindex="-1"><a href="${e(M.locationUrl(p))}">${e(p.name)}</a></h2>${U.locationGrade(p)}</div><address>${e(M.addressLine(p))}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address>${sourceDate(p)}<div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${booking ? `<a class="button${directions ? "" : " primary"}" href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : ""}${official ? `<a class="button" href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : ""}${phone ? `<a class="button" href="tel:${e(phone)}">Call ${e(p.phone)}</a>` : ""}</div>${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section"><h3>${U.icon("clock")} ${p.type === "Service Center" ? "Service hours" : "Visiting hours"} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h3 style="margin-top:16px">Service hours</h3><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning" style="margin-top:12px">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h3 style="margin-top:16px">Charging hours</h3><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted" style="font-size:.7rem;margin-top:10px">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}<div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details →</a>`;
+    const linkRows = [
+      booking ? `<a href="${e(booking)}" target="_blank" rel="noopener">Book a Demo Drive ${U.icon("external")}</a>` : "",
+      official ? `<a href="${e(official.url)}" target="_blank" rel="noopener">${e(official.label)} ${U.icon("external")}</a>` : "",
+      phone ? `<a href="tel:${e(phone)}">Call ${e(p.phone)} ${U.icon("chevron")}</a>` : "",
+    ].filter(Boolean).join("");
+    const hoursLabel = p.type === "Service Center" ? "Service hours" : "Visiting hours";
+    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(U.locationTypeLabel(p))}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><div class="location-title"><h2 id="detail-title" tabindex="-1"><a href="${e(M.locationUrl(p))}">${e(p.name)}</a></h2>${U.locationGrade(p)}</div><address>${e(M.addressLine(p))}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${linkRows ? `<div class="link-group">${linkRows}</div>` : ""}</div>${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section card-section"><h3><span class="tile tile-hours">${U.icon("clock")}</span>${hoursLabel} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h4>Service hours</h4><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h4>Charging hours</h4><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted fine-print">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}${sourceDate(p)}<div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details ${U.icon("chevron")}</a>`;
   }
   function select(id, { focus = true, push = true } = {}) {
     const p = find(id);
@@ -368,7 +374,7 @@
       `${saved.length} ${saved.length === 1 ? "place" : "places"} saved on this device`;
     $("saved-results").innerHTML = saved.length
       ? saved.map((p) => row(p, true)).join("")
-      : `<div class="empty">${U.icon("save")}<h2>Your next stops belong here.</h2><p>Save a location while exploring, then come back when you’re ready to go.</p><a class="button primary" href="/">Explore locations</a></div>`;
+      : `<div class="empty">${U.icon("save")}<h2>Nothing saved yet.</h2><p>Tap Save on any location and it shows up here.</p><a class="button primary" href="/">Open the map</a></div>`;
   }
   function contact() {
     const slug = params().get("location"),
@@ -391,67 +397,51 @@
       $("contact-status").hidden = false;
     });
   }
-  async function load() {
-    try {
-      const response = await fetch("/data/locations.json", {
-        cache: "no-cache",
-      });
-      if (!response.ok) throw Error();
-      const data = await response.json();
-      all = Array.isArray(data) ? data : data.locations || [];
-      if (!all.length) throw Error();
-    } catch {
-      all =
-        typeof rivianLocations !== "undefined"
-          ? rivianLocations
-          : window.rivianLocations || [];
-      if (!all.length) {
-        if ($("results"))
-          $("results").innerHTML =
-            '<div class="empty"><h2>Locations couldn’t load.</h2><p>Check your connection and try again.</p><button class="button" data-reload>Try again</button></div>';
-        return;
-      }
-      toast(
-        "Showing the bundled location directory. Live refresh is unavailable.",
-      );
-    }
-    let chargers = typeof rivianChargingLocations !== "undefined" ? rivianChargingLocations : [];
-    try {
-      const response = await fetch("/data/charging.json", {cache:"no-cache"});
-      if (!response.ok) throw Error("Charging directory unavailable");
-      const data = await response.json();
-      if (!Array.isArray(data) || !data.length) throw Error("Empty charging directory");
-      chargers = data;
-    } catch { /* Use the release's bundled charging snapshot when offline. */ }
-    let roamer = typeof rivianRoamerSnapshot !== "undefined" ? rivianRoamerSnapshot.stations : [];
-    try { const response=await fetch("/data/roamer.json",{cache:"no-cache"}); if(response.ok){const snapshot=await response.json();if(Array.isArray(snapshot.stations))roamer=snapshot.stations;} } catch { /* Use the bundled snapshot when offline. */ }
-    all = M.combineLocations(all, chargers, roamer);
+  let snapshotReady = false, pendingSnapshot = null;
+  function applySnapshot(data, initial = false) {
+    const previous = selected?.id;
+    all = M.combineLocations(data.locations, data.charging, data.roamer);
     normalizeSaved();
     if (page === "explore") {
-      $("state-filter").innerHTML =
-        '<option value="">All regions</option>' +
-        [...new Set(all.map((p) => p.state))]
-          .filter(Boolean)
-          .sort()
-          .map((s) => `<option>${e(s)}</option>`)
-          .join("");
-      const target = readUrl();
-      render();
-      SpotterMap.init((id) => select(id));
-      if (target) select(target, { focus: false, push: false });
+      const oldState = $("state-filter").value;
+      $("state-filter").innerHTML = '<option value="">All regions</option>' + [...new Set(all.map(p => p.state))].filter(Boolean).sort().map(s => `<option>${e(s)}</option>`).join("");
+      if (oldState) $("state-filter").value = oldState;
+      if (initial) {
+        const target = readUrl(); render(); SpotterMap.init((id) => select(id));
+        if (target) select(target, { focus: false, push: false });
+      } else {
+        if (previous) selected = find(previous) || selected;
+        const resultsTop=$('results').scrollTop; render(); $('results').scrollTop=resultsTop;
+        if (selected && !$('detail').hidden) {
+          const top=$('detail').scrollTop; $('detail').innerHTML=detail(selected); $('detail').scrollTop=top;
+        }
+      }
     }
     if (page === "saved") renderSaved();
-    if (page === "contact") contact();
-    if (page === "location") {
-      const p = all.find((p) => p.slug === document.body.dataset.slug);
-      if (p)
-        document.querySelectorAll("[data-save]").forEach((b) => {
-          b.setAttribute("aria-pressed", String(saveIds.includes(p.id)));
-          b.innerHTML =
-            U.icon("save") + (saveIds.includes(p.id) ? "Saved" : "Save");
-        });
+    if (initial && page === "contact") contact();
+  }
+  async function load() {
+    try { const data=await SpotterSnapshot.refresh(); applySnapshot(data,!snapshotReady); snapshotReady=true; }
+    catch {
+      const locations=typeof rivianLocations!=="undefined"?rivianLocations:window.rivianLocations||[];
+      const charging=typeof rivianChargingLocations!=="undefined"?rivianChargingLocations:[];
+      const roamer=typeof rivianRoamerSnapshot!=="undefined"?rivianRoamerSnapshot.stations:[];
+      if (!locations.length) { if ($("results")) $("results").innerHTML='<div class="empty"><h2>Locations couldn’t load.</h2><p>Check your connection and try again.</p><button class="button" data-reload>Try again</button></div>'; return; }
+      applySnapshot({locations,charging,roamer},!snapshotReady); snapshotReady=true;
+      toast("Showing the bundled location directory. Live refresh is unavailable.");
     }
   }
+  document.addEventListener('spotter:snapshot', (event) => {
+    if (!snapshotReady) return;
+    const active=document.activeElement;
+    if (active && active!==document.body && (active.matches('input,textarea,select') || $('detail')?.contains(active))) { pendingSnapshot=event.detail; return; }
+    applySnapshot(event.detail);
+  });
+  document.addEventListener('focusout', () => setTimeout(() => {
+    const active=document.activeElement;
+    if (pendingSnapshot && (!active || active===document.body || !(active.matches('input,textarea,select') || $('detail')?.contains(active)))) { const value=pendingSnapshot; pendingSnapshot=null; applySnapshot(value); }
+  },0));
+
   document.addEventListener("click", (ev) => {
     const b = ev.target.closest("button");
     if (!b) return;

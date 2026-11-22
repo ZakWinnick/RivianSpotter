@@ -22,6 +22,29 @@ function parseDetail(html,{sourceId}={}){
  const $=load(html),main=$('main');if(!main.find('h1').length)throw Error('Missing station detail');
  const pageId=$('body').attr('data-navigation-page')?.match(/^charging_sites:show:(US-RIV-L\d+)$/)?.[1];
  if(sourceId && pageId!==sourceId)throw Error('Station detail identity mismatch');
+ // Parse only explicit connector counts and power, verifying every tile against the summary.
+ if(!main.find('tbody tr').length){
+  const heading=main.find('h2').filter((i,e)=>clean($(e).text())==='Chargers').first();
+  const card=heading.parent(),summary=clean(card.children('p').first().text());
+  const match=summary.match(/^(.+),\s*each rated to\s+(\d+(?:\.\d+)?)\s*kW$/i);
+  if(!match)throw Error('Incomplete station detail');
+  const parts=match[1].split(/\s*(?:,|\band\b)\s*/i),counts={};
+  for(const part of parts){const item=part.match(/^(\d+)\s+(NACS|CCS|J1772|CHAdeMO)$/i);if(!item||!Number(item[1]))throw Error('Incomplete station detail');const key=item[2].toUpperCase();if(counts[key])throw Error('Incomplete station detail');counts[key]=Number(item[1]);}
+  const types=Object.keys(counts),count=Object.values(counts).reduce((a,b)=>a+b,0),powerKw=Number(match[2]);
+  const tiles=card.find('[title]').toArray().map(el=>clean($(el).attr('title')).split(',').map(clean));
+  const chargers=tiles.map(([name,...labels])=>{const detail=labels.join(', '),explicit=detail.match(/(?:^|[,\s])(NACS|CCS|J1772|CHAdeMO)(?=\s|[·,]|$)/i)?.[1]?.toUpperCase();return {name,connector:explicit||(types.length===1?types[0]:null),powerKw,features:/trailer friendly/i.test(detail)?[{label:'trailer friendly',description:'trailer friendly'}]:[]};});
+  const observed={};for(const c of chargers)observed[c.connector]=(observed[c.connector]||0)+1;
+  if(!count||powerKw<=0||powerKw>2000||chargers.length!==count||chargers.some(c=>!c.name||!counts[c.connector])||new Set(chargers.map(c=>c.name)).size!==count||types.some(t=>observed[t]!==counts[t]))throw Error('Incomplete station detail');
+  const result={chargerCount:count,connectorSummary:types.map(t=>`${counts[t]} ${t}`).join(', '),maxKw:powerKw,chargers,partialChargerFeatures:true};
+  const details=main.find('h2').filter((i,e)=>clean($(e).text())==='Details').first().parent();
+  const amenity=details.find('dt').filter((i,e)=>clean($(e).text())==='Amenities').first().next('dd');
+  if(amenity.length){const text=clean(amenity.text());if(text){const amenities=text.replace(/,?\s+and\s+/i,', ').split(/,\s*/).filter(Boolean).map(x=>x[0].toUpperCase()+x.slice(1));const page=clean(main.text());result.amenities=[...(/Open to all EVs/i.test(page)?['Open to All']:[]),...(/Plug\s*&\s*Charge/i.test(page)?['Plug & Charge']:[]),...amenities,...(chargers.some(c=>c.features.some(f=>/trailer friendly/i.test(f.label||'')))?['Trailer OK']:[])];}}
+  const rates={};main.find('p').each((i,e)=>{const label=clean($(e).text());const key=/^per kWh for a Rivian$/i.test(label)?'Rivian':/^per kWh for other EVs$/i.test(label)?'Other':null;if(!key)return;const value=clean($(e).parent().clone().find('p').remove().end().text());if(/^\$\d/.test(value))rates[key]=value;});
+  const idle=main.find('p').toArray().map(e=>clean($(e).text())).find(x=>/^Idle fee /i.test(x))?.match(/^Idle fee\s+(\$\d+(?:\.\d+)?)\s+a minute after\s+(\d+)\s+minutes?/i);
+  if(idle)rates.Idle=`${idle[1]}/min (after ${idle[2]}m)`;
+  if(Object.keys(rates).length)result.detailRates=rates;
+  return result;
+ }
  const metrics={};main.find('div.text-center').children('div').each((i,el)=>{const kids=$(el).children('div');if(kids.length>=2)metrics[clean(kids.eq(1).text())]=clean(kids.eq(0).text());});
  const amenities=main.find('div.mt-3').first().children('span').toArray().map(el=>clean($(el).text()));
  const rates={};main.find('span').filter((i,el)=>['Rivian','Other','Energy','Idle'].includes(clean($(el).text()))).each((i,el)=>{const value=clean($(el).next('span').text());if(value)rates[clean($(el).text())]=value;});
@@ -32,6 +55,17 @@ function parseDetail(html,{sourceId}={}){
  const connectors={};for(const c of chargers)connectors[c.connector]=(connectors[c.connector]||0)+1;
  const detailReportedStatus=main.find('p').toArray().some(el=>clean($(el).text())==='All chargers offline')?'Offline':null;
  return {detailReportedStatus,chargerCount:chargers.length,connectorSummary:Object.entries(connectors).map(([type,count])=>`${count} ${type}`).join(', '),address,amenities,maxKw:Number(metrics['Max kW'])||null,averageKw:Number(metrics['Avg kW'])||null,hours:metrics.Hours||null,detailRates:rates,chargers,sourceUpdatedText};
+}
+function mergePartialDetail(previous,update){
+ if(!update.partialChargerFeatures)return update;
+ const next={...update};delete next.partialChargerFeatures;
+ const old=new Map((previous.chargers||[]).map(c=>[c.name,c]));
+ next.chargers=next.chargers.map(c=>{
+  const features=[...(old.get(c.name)?.features||[]),...c.features],seen=new Set();
+  return {...c,features:features.filter(f=>{const k=JSON.stringify(f);if(seen.has(k))return false;seen.add(k);return true;})};
+ });
+ if(next.detailRates)next.detailRates={...previous.detailRates,...next.detailRates};
+ return next;
 }
 async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDetails=Infinity,maxRunMs=60*60*1000,officialStations=[],fetchImpl=fetch,pause=ms=>new Promise(r=>setTimeout(r,ms))}={}){
  cacheDir ||= fs.mkdtempSync(path.join(require('node:os').tmpdir(),'spotter-roamer-'));
@@ -64,7 +98,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  // Missing details first, then oldest. Each site is requested at most once per run.
  const complete=s=>Array.isArray(s.chargers)&&s.chargers.length>0;
  const queue=stations.slice().sort((a,b)=>Number(complete(a))-Number(complete(b)) || (a.detailsObservedAt||'').localeCompare(b.detailsObservedAt||''));
- let fetchedDetails=0,nextRequestAfter=null;const detailErrors=[],checkedIds=[];
+ let fetchedDetails=0,nextRequestAfter=null,parseFailures=0;const detailErrors=[],checkedIds=[];
  const fields=['reportedStatus','detailReportedStatus','reliabilityGrade','access','connectorSummary','chargerCount','rates','maxKw','averagePeakKw','hours','amenities','detailRates','chargers'];
  function checkpoint(){
   const currentChanges=old?stations.flatMap(s=>{const prev=previous.get(s.sourceId);return !prev?[{sourceId:s.sourceId,name:s.name,kind:'newly-detected',observedAt}]:fields.filter(k=>k in prev && JSON.stringify(s[k])!==JSON.stringify(prev[k])).map(field=>({sourceId:s.sourceId,name:s.name,kind:'changed',field,before:prev[field],after:s[field],observedAt}));}):[];
@@ -75,8 +109,8 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  for(const s of queue){
   if(Date.now()-started>=maxRunMs)break;
   const cached=fs.existsSync(path.join(cacheDir,s.sourceId+'.html'));if(!cached && (cacheOnly||fetchedDetails>=maxDetails))continue;
-  try{if(!cached)fetchedDetails++;const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,parseDetail(result.html,{sourceId:s.sourceId}),{detailsObservedAt:result.observedAt});if(!s.networkListed)s.observedAt=result.observedAt;checkedIds.push(s.sourceId);checkpoint();}
-  catch(error){detailErrors.push({sourceId:s.sourceId,message:error.message});console.warn(error.message);if(error.rateLimited){rateLimited=true;nextRequestAfter=retryAt(error);}checkpoint();if(error.rateLimited||!error.status&&/fetch|timeout|abort/i.test(error.message)||error.status>=500)break;}
+  try{if(!cached)fetchedDetails++;const result=await get(s.sourceUrl,s.sourceId);if(!result)continue;Object.assign(s,mergePartialDetail(s,parseDetail(result.html,{sourceId:s.sourceId})),{detailsObservedAt:result.observedAt});parseFailures=0;if(!s.networkListed)s.observedAt=result.observedAt;checkedIds.push(s.sourceId);checkpoint();}
+  catch(error){detailErrors.push({sourceId:s.sourceId,message:error.message});console.warn(error.message);if(error.rateLimited){rateLimited=true;nextRequestAfter=retryAt(error);}parseFailures=/^(Incomplete station detail|Missing station detail|Station detail identity mismatch)$/.test(error.message)?parseFailures+1:0;checkpoint();if(parseFailures>=3||error.rateLimited||!error.status&&/fetch|timeout|abort/i.test(error.message)||error.status>=500)break;}
  }
  const result=checkpoint();console.log(`Saved ${stations.length} stations, ${result.detailCount} detail snapshots; ${requests} requests.`);return result;
 }
@@ -96,5 +130,5 @@ function coverage(stations,officialStations,{checkedIds=[],now=Date.now(),maxAge
  }
  return {officialStationCount:targets.length,detailCount:targets.length-missingDetailIds.length,freshDetailCount:targets.length-missingDetailIds.length-staleDetailIds.length,checkedCount:targets.length-notCheckedIds.length,missingDetailIds,staleDetailIds,notCheckedIds,missingFields};
 }
-module.exports={parseNetwork,parseDetail,refresh,coverage};
+module.exports={parseNetwork,parseDetail,mergePartialDetail,refresh,coverage};
 if(require.main===module)refresh({officialStations:JSON.parse(fs.readFileSync('data/charging.json','utf8')),cacheDir:process.env.ROAMER_CACHE_DIR,cacheOnly:process.argv.includes('--cache-only')}).catch(e=>{console.error(e.message);process.exitCode=1;});
