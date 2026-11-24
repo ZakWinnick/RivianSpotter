@@ -2,6 +2,1291 @@
   "schemaVersion": 1,
   "days": [
     {
+      "date": "2026-11-24",
+      "entries": [
+        {
+          "id": "9c5fe83b5c5def7c1336fb19f9e300c4ae5b0985ef901f006641553cba46d096",
+          "locationId": "235591122702559",
+          "name": "Aberdeen, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Aberdeen",
+          "region": "WA",
+          "url": "/locations/ran-aberdeen-wa-d644d51f0e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 181 (previously 182)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8466c7fc3d12306466fb99bc193fcc142262eb3317fe28f6dfdfc9ef9f73fcbf",
+          "locationId": "257368736267938",
+          "name": "Asheville, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Asheville",
+          "region": "NC",
+          "url": "/locations/ran-asheville-nc-ea13540abc/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 196)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "33a32c9730d58eb8b54bc9b95d4728ac652e7626cb9f3e9c99859b72b48b69d3",
+          "locationId": "129335467139810",
+          "name": "Atlanta, GA",
+          "type": "Rivian Adventure Network",
+          "city": "Atlanta",
+          "region": "GA",
+          "url": "/locations/ran-atlanta-ga-75a1428420/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 185)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4e4dfd3ae15ec300ac0487deec89e2613b968531564695bbea93c21d8da2f213",
+          "locationId": "147848053298584",
+          "name": "Beaver, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Beaver",
+          "region": "UT",
+          "url": "/locations/ran-beaver-ut-86778ea353/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 201 (previously 202)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1611c5b30180ff5ef62d54eb0d8acd986cb55067a4662ed1ee3a390170ba171a",
+          "locationId": "257642394550505",
+          "name": "Bellingham, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Bellingham",
+          "region": "WA",
+          "url": "/locations/ran-bellingham-wa-ea530b58be/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 175 (previously 174)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "63f686c053b3cb2eebd6566f7e7f59feeedecfa628d2e191998ac615c66e12f9",
+          "locationId": "110073077138684",
+          "name": "Benton Harbor, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Benton Harbor",
+          "region": "MI",
+          "url": "/locations/ran-benton-harbor-mi-641c629a42/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 189)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3636bcf5945d02dc23d0ef0cb70989a4ab69225aef064af435160d46e718bbd4",
+          "locationId": "51",
+          "name": "Blauvelt, NY - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Blauvelt",
+          "region": "NY",
+          "url": "/locations/blauvelt-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/24: 8am-3pm 11/25: Closed 12/24: 8am-3pm 12/25: Closed General hours Mon–Sun: 9:00am–5:00pm (previously Mon–Sun: 9:00am–5:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d7d94aa217623a66aacd367a23f899e92fd945c627610231a025ea224f204fd3",
+          "locationId": "263569874185086",
+          "name": "Blowing Rock, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Blowing Rock",
+          "region": "NC",
+          "url": "/locations/ran-blowing-rock-nc-efb724aa29/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 183 (previously 184)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0e6ab18d1e73f2b63ac6fb31bb156a5108e5dc428d72035d9f3a2a37abb42db3",
+          "locationId": "214591878194517",
+          "name": "Bow, NH",
+          "type": "Rivian Adventure Network",
+          "city": "Bow",
+          "region": "NH",
+          "url": "/locations/ran-bow-nh-c32b909ca3/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 191)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7e393e4793422d8cfc52bed0572f481b8f51762b83570fc0bf04eaff8ba58ca4",
+          "locationId": "231354624041867",
+          "name": "Bozeman, MT",
+          "type": "Rivian Adventure Network",
+          "city": "Bozeman",
+          "region": "MT",
+          "url": "/locations/ran-bozeman-mt-d26a721fa1/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 173 (previously 174)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7f71c37d6262e80c5ef960768baf840d6ea77b0c37cfb16a762a9f35f9c620a5",
+          "locationId": "204993087758700",
+          "name": "Brewer, ME",
+          "type": "Rivian Adventure Network",
+          "city": "Brewer",
+          "region": "ME",
+          "url": "/locations/ran-brewer-me-ba70ac1e1f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e1a9e3d8ffb207761b76096f18402bca46109db4fc8c9504b8492b8cfa6db186",
+          "locationId": "212859002834548",
+          "name": "Broomfield, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Broomfield",
+          "region": "CO",
+          "url": "/locations/ran-broomfield-co-c19819310c/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 176 (previously 175)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "77028daa281f94e0aa900ddc8d2097cd65ebea26664e0f2518111d405e482a95",
+          "locationId": "215330668966219",
+          "name": "Burley, ID",
+          "type": "Rivian Adventure Network",
+          "city": "Burley",
+          "region": "ID",
+          "url": "/locations/ran-burley-id-c3d793f92f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 205 (previously 206)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "86cb4024ad6686e53aff6077fc748801578215a5e71f46ab09f33577dfef1615",
+          "locationId": "102",
+          "name": "Canton, MA - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Canton",
+          "region": "MA",
+          "url": "/locations/canton-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 12/24: 8am-3pm 12/25: Closed General hours Mon–Fri: 8:00am–5:00pm Sat–Sun: 9:00am–4:00pm (previously Mon–Fri: 8:00am–5:00pm Sat–Sun: 9:00am–4:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "487a2d24b5fa0e76918f7def6f7737c109cb9be10428ffddcd246e58ae27a3e9",
+          "locationId": "279344763752190",
+          "name": "Centennial, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Englewood",
+          "region": "CO",
+          "url": "/locations/ran-centennial-co-fe10055a8c/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 171 (previously 170)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "43306e810c3544d9bbd4f3e556ab7af6fcf0cbc49061ee349cc0a36946b3788d",
+          "locationId": "71228648044313",
+          "name": "Centerville, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Centerville",
+          "region": "TX",
+          "url": "/locations/ran-centerville-tx-40c8363474/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 200)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "736ec72d293a05eede120ebc208547f03996546869166ada4dd46c594db6fe41",
+          "locationId": "139998102922368",
+          "name": "Clare, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Clare",
+          "region": "MI",
+          "url": "/locations/ran-clare-mi-7f53d92262/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9fefb9405460df55e45f254f0a9f40f5332d0837bd4b721da90a0d63bc9844de",
+          "locationId": "217978262547294",
+          "name": "Columbia, MO",
+          "type": "Rivian Adventure Network",
+          "city": "Columbia",
+          "region": "MO",
+          "url": "/locations/ran-columbia-mo-c64004d929/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 178 (previously 180)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "54bf820bf85e9dd5a9b69d856d353549d4a1f5a7ba6b4d49f59bfe2cfa78c4d4",
+          "locationId": "261976896705032",
+          "name": "Cookeville, TN",
+          "type": "Rivian Adventure Network",
+          "city": "Cookeville",
+          "region": "TN",
+          "url": "/locations/ran-cookeville-tn-ee443fcecf/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 203)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e7a28914556ce3c484c543c6c2fcda51014e8377a9fc21002f3603777a768321",
+          "locationId": "136055300967291",
+          "name": "Corte Madera, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Corte Madera",
+          "region": "CA",
+          "url": "/locations/ran-corte-madera-ca-7bbdd7d309/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 174 (previously 175)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eda7b5696f59582f4105b5300edc71c89809d77f2379015d9b63a46f89927be6",
+          "locationId": "66019383404162",
+          "name": "Crescent City, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Crescent City",
+          "region": "CA",
+          "url": "/locations/ran-crescent-city-ca-3c0b55d624/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 175 (previously 176)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0a163b7b2b62f85686a68aafafd8cd0f618dbbc21e29ed312a3b63324500f435",
+          "locationId": "114613134048542",
+          "name": "Daytona Beach, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Daytona Beach",
+          "region": "FL",
+          "url": "/locations/ran-daytona-beach-fl-683d7314fa/",
+          "kind": "changed",
+          "lines": [
+            "Charger count: 8 (previously 9).",
+            "Vehicle access: Open to other EVs.",
+            "Connector types: 8 CCS (previously 9 CCS).",
+            "Average peak power (kW): 203 (previously 204).",
+            "Site features: Added Open to All.",
+            "Charger 3A: No longer listed (previously CCS, 300 kW, Pay with credit card at charger, Start and stop charging remotely via app).",
+            "Reported vehicle access: All EVs (previously Rivian only)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1a2e2ddca919a262a3291de3eec8d2e9b7a7503d6e5a18aad0e89466003e1cbc",
+          "locationId": "130",
+          "name": "Dedham, MA",
+          "type": "Space",
+          "city": "Dedham",
+          "region": "MA",
+          "url": "/locations/dedham/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 12/24: 10am-4pm 12:25: Closed Mon-Sat: 10am–8pm Sun: 11am–6pm (previously Mon-Sat: 10am–8pm Sun: 11am–6pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "db994b04b9d3fbec16c3a613d2e8ed875a8014217edc5a7f7b993b8ee710608a",
+          "locationId": "200742139635433",
+          "name": "Durango, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Durango",
+          "region": "CO",
+          "url": "/locations/ran-durango-co-b692ebdd64/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 171 (previously 175)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6b33a4380885661aa1004f71591cf1690c56b30cf12ecadf9fa3b01a816dff2c",
+          "locationId": "145276773753703",
+          "name": "East Greenwich, RI",
+          "type": "Rivian Adventure Network",
+          "city": "East Greenwich",
+          "region": "RI",
+          "url": "/locations/ran-east-greenwich-ri-8420e26f21/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 187)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ff408bba4ec820e87dbd019eec2700d2cc72fac36f2488306288a04942d88f05",
+          "locationId": "132",
+          "name": "East Rutherford, NJ American Dream",
+          "type": "Space",
+          "city": "East Rutherford",
+          "region": "NJ",
+          "url": "/locations/east-rutherford/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 11/27: 7am-10pm 12/24: 10am-7pm 12/25: Closed 12/26: 9am-10pm 12/31: 11am-6pm 1/1: 11am-10pm Mon–Sat: 11:00am-9:00pm Sun: 11:00am-8:00pm (previously Mon–Sat: 11:00am-9:00pm Sun: 11:00am-7:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e712d51fd4799cf8e6c406b323e7a48e4f4d0495e3fd8b1b000043c0f70913e9",
+          "locationId": "131",
+          "name": "Edina, MN",
+          "type": "Space",
+          "city": "Edina",
+          "region": "MN",
+          "url": "/locations/minneapolis/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 12/25: Closed Mon-Sat: 10:00am-8:00pm Sun: Closed (previously Mon-Sat: 10:00am-7:00pm Sun: Closed)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a2b2f793ba41ca72b70175de2815f5850a47e2e6074a1cb962a03023e15aad3a",
+          "locationId": "250854254819132",
+          "name": "Firebaugh, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Firebaugh",
+          "region": "CA",
+          "url": "/locations/ran-firebaugh-ca-e4268eb074/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 203 (previously 204)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a814025afe767ef1012c8bf7b147fdb7aacbc23ba709ea05c48913cc6cce817c",
+          "locationId": "22233721676895",
+          "name": "Fresno, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Fresno",
+          "region": "CA",
+          "url": "/locations/ran-fresno-ca-1438b105e2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1d47bfff6d82af804b5b4bae90fdf6d08d51c540bbf809927f0938aff61df6b5",
+          "locationId": "7081075479687",
+          "name": "Front Royal, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Front Royal",
+          "region": "VA",
+          "url": "/locations/ran-front-royal-va-0670b0edd2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 197 (previously 196)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "771e8adba279302be164c77faccbb1e2e65566dfc677a534eeca01f2ce91fab2",
+          "locationId": "50783239063680",
+          "name": "Grand Junction, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Grand Junction",
+          "region": "CO",
+          "url": "/locations/ran-grand-junction-co-2e2fe4dd86/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 200)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "48c53f75eaad3e238d92b271ebf8e309af490fd4b5eedd8973b44f85bbdc2902",
+          "locationId": "80127509954447",
+          "name": "Granger, IN",
+          "type": "Rivian Adventure Network",
+          "city": "Granger",
+          "region": "IN",
+          "url": "/locations/ran-granger-in-48e023b53d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 181 (previously 182)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "3c7d6667a284e890be852bbebc05817eb18c23617388231bed1e591636cfb69c",
+          "locationId": "228717358521720",
+          "name": "Green River, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Green River",
+          "region": "UT",
+          "url": "/locations/ran-green-river-ut-d00468d95b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 201)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e335436ee0b03efff90222d101e32919480eed63e8ba65afa53904452eb968e9",
+          "locationId": "183583970664712",
+          "name": "Greenville, SC",
+          "type": "Rivian Adventure Network",
+          "city": "Greenville",
+          "region": "SC",
+          "url": "/locations/ran-greenville-sc-a6f7f94c5e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 201)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7949d9b08a52b37b59e5dc8786f1ada7cfe316f2adffc980f5f6ad8aac13c2ff",
+          "locationId": "228259124219856",
+          "name": "Hagerstown, MD",
+          "type": "Rivian Adventure Network",
+          "city": "Hagerstown",
+          "region": "MD",
+          "url": "/locations/ran-hagerstown-md-cf99b7f4cd/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 186 (previously 185)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "5c9d0f64f4aa60607839f3600949ca1ca8a35eee081ddbd23b3ff36bf1f1790e",
+          "locationId": "178080276260207",
+          "name": "Happy Valley, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Happy Valley",
+          "region": "OR",
+          "url": "/locations/ran-happy-valley-or-a1f68b8c63/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 185 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b74ba4ec673a7871decbe6cf00fc319adf029b8bc7ac997a87bb7ba4edc8c4a9",
+          "locationId": "226698157416751",
+          "name": "Holbrook, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Holbrook",
+          "region": "AZ",
+          "url": "/locations/ran-holbrook-az-ce2e47159e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 201 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "a0446a28184909b3eaba837beb80af4349894dea8bd14abef814c40f729cd75d",
+          "locationId": "150",
+          "name": "Houston, TX - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Houston",
+          "region": "TX",
+          "url": "/locations/houston-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 9am-3pm 11/26: Closed 12/25: Closed 1/1: Closed General hours Mon–Fri: 8:00am–5:00pm Sat: 9:00am-5:00pm Sun: Closed (previously Mon–Fri: 8:00am–5:00pm Sat: 9:00am-5:00pm Sun: Closed)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "eaaf2cd84c34003b25dbec806b979f1455429e88b7d9b9375414944cde7f3ca6",
+          "locationId": "103",
+          "name": "Hudson, NH - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Hudson",
+          "region": "NH",
+          "url": "/locations/hudson-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 8am-3pm 11/26: Closed 12/24: 8am-3pm 12/25: Closed 1/1: Closed General hours Mon–Fri: 8:00am–5:00pm Sat–Sun: 9:00am–4:00pm (previously Mon–Fri: 8:00am–5:00pm Sat–Sun: 9:00am–4:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "f027486bf1c9beb0a729c8b725946b848921ecf1319cd73af44a23a8fb5e4de1",
+          "locationId": "21886094918491",
+          "name": "Independence, MO",
+          "type": "Rivian Adventure Network",
+          "city": "Independence",
+          "region": "MO",
+          "url": "/locations/ran-independence-mo-13e7c0da81/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 192)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7c6a1319f94a484a0d4ed30e198a55fa18bab8c087668d0deb363b97411fbc20",
+          "locationId": "169045817157391",
+          "name": "Inyokern, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Inyokern",
+          "region": "CA",
+          "url": "/locations/ran-inyokern-ca-99bf0bd2a4/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 195)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4bedbd5f1ed7ec987ed4d8c004b8eb79ed6c3e7578cda521943e0dc8a75d0595",
+          "locationId": "11",
+          "name": "Irvine, CA",
+          "type": "Space",
+          "city": "Irvine",
+          "region": "CA",
+          "url": "/locations/irvine/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 12/24: 10am-7pm 12/25: Closed 12/31: 10am-7pm Sun–Thurs: 10:00am–9:00pm Fri–Sat: 10:00am–10:00pm (previously Sun–Thurs: 10:00am–9:00pm Fri–Sat: 10:00am–10:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "99fed063cdd9ab9f6ec7f7630028e9e51e6d4ea685fd3f3ebb1bf16de9be63b4",
+          "locationId": "36004817709429",
+          "name": "Jackson, WY",
+          "type": "Rivian Adventure Network",
+          "city": "Jackson",
+          "region": "WY",
+          "url": "/locations/ran-coming-soon-wy-jackson-20bf064f67/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 189)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "060f06054ee7ec8d649ec8a27b4be7c73c8ca5b57efff2a55f86f42d5c0d2a91",
+          "locationId": "108504500787583",
+          "name": "Jacksonville, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Jacksonville",
+          "region": "FL",
+          "url": "/locations/ran-jacksonville-fl-62af2c2a97/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "49190272305d17988fbde59930257caf7ffa555109afb992f69206b5cd1a0844",
+          "locationId": "82791612080483",
+          "name": "Joshua Tree, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Joshua Tree",
+          "region": "CA",
+          "url": "/locations/ran-joshua-tree-ca-4b4c6c919f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 183)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7f9cbd309b160a116126da4584b78f361491dc0a3ab8495261d4acd113e2f681",
+          "locationId": "244246443878970",
+          "name": "Klamath Falls, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Klamath Falls",
+          "region": "OR",
+          "url": "/locations/ran-klamath-falls-or-de240e7727/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "7bd9de94d9c07f17db2c86fa4afdd17cefa63d143350effe624867f9cead9f90",
+          "locationId": "90",
+          "name": "La Jolla, CA",
+          "type": "Space",
+          "city": "San Diego",
+          "region": "CA",
+          "url": "/locations/la-jolla/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/26: Closed 11/27: 8:00 AM – 9:00 PM 11/28: 10:00 AM – 9:00 PM 12/4–12/5: 10:00 AM – 9:00 PM 12/6: 10:00 AM – 8:00 PM 12/7–12/10: 10:00 AM – 9:00 PM 12/24: 9:00 AM – 6:00 PM 12/25: Closed 12/26: 9:00 AM – 9:00 PM 12/27–12/30: 10:00 AM – 9:00 PM 12/31: 10:00 AM – 6:00 PM 1/1/2027: 10:00 AM – 8:00 PM Mon-Sat: 10:00am–8:00pm Sun: 11:00am–7:00pm 12/11–12/23: 9:00 AM – 9:00 PM (previously Mon-Sat: 10:00am–8:00pm Sun: 11:00am–7:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b79f215f8308843967ec80403ca994f4d8ed47d6ca1a14841b3fd69e8f3da8d0",
+          "locationId": "246277750444366",
+          "name": "Lakewood, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Lakewood",
+          "region": "CO",
+          "url": "/locations/ran-lakewood-co-dffd01c58f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 182 (previously 183)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1cdb0dc27a978e2ab5bf739af72c03b3700437bcc85c2f015d9a232a0b32b45f",
+          "locationId": "12207313668604",
+          "name": "Latham, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Latham",
+          "region": "NY",
+          "url": "/locations/ran-latham-ny-0b1a3c8907/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 187)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "2cff690e9d100a4d1db6009603daf1b3233eb1716bf76a06f82efb1ec833931a",
+          "locationId": "218799063731520",
+          "name": "Lincoln City, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Lincoln City",
+          "region": "OR",
+          "url": "/locations/ran-lincoln-city-or-c6ff20694b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 170 (previously 171)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "df8a1f3352551ce704eb00c709f4d554255e70101f208ef2fa9b4c32ab722075",
+          "locationId": "22345941019327",
+          "name": "Lynnwood, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Lynnwood",
+          "region": "WA",
+          "url": "/locations/ran-lynnwood-wa-1452d1d128/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 180 (previously 179)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4d6951c03a95267f401973230912ca40566c5ddf1266b829a7d2216ae9ebe01e",
+          "locationId": "23563085393340",
+          "name": "Mackinaw City, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Mackinaw City",
+          "region": "MI",
+          "url": "/locations/ran-mackinaw-city-mi-156e35466b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 196)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4aed9b6cc0e91f2edfd7fc62f0950ba251ee0a85f1833c0fc736b371729533c1",
+          "locationId": "178905660535678",
+          "name": "Manchester, CT",
+          "type": "Rivian Adventure Network",
+          "city": "Manchester",
+          "region": "CT",
+          "url": "/locations/ran-permit-ct-manchester-a2b6b848f1/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 192 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "dce5d25d39f3a234667c43305edd0db62038a64a75e0c3296490cee83aeb1279",
+          "locationId": "230393513006492",
+          "name": "Marysville, WA",
+          "type": "Rivian Adventure Network",
+          "city": "Marysville",
+          "region": "WA",
+          "url": "/locations/ran-permit-wa-marysville-d18aab7113/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 190 (previously 191)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d82aaf1e43a27c2952a7bcfa466a295c2152e622d5582e429261695ba7b8f54c",
+          "locationId": "186753582865905",
+          "name": "Meadows of Dan, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Meadows of Dan",
+          "region": "VA",
+          "url": "/locations/ran-meadows-of-dan-va-a9d9f4e85b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 200)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e4f95ceb378679de8e16698747faf8c1502329668e59bd18cdad6f78472331de",
+          "locationId": "76",
+          "name": "Miami, FL Brickell",
+          "type": "Space",
+          "city": "Miami",
+          "region": "FL",
+          "url": "/locations/miami-brickell/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10am-7pm 11/26: Closed 12/24: 10am-7pm 12/25: Closed Mon–Sat: 10am–9pm Sun: 11am–6pm (previously Mon–Sat: 10am–9pm Sun: 11am–6pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "599c779078786fffda54443591f31c3eda813d999fa76845fa2832a71d8f9fbe",
+          "locationId": "53",
+          "name": "New York, NY Meatpacking District",
+          "type": "Space",
+          "city": "New York",
+          "region": "NY",
+          "url": "/locations/new-york/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10am-5pm 11/26: Closed 12/24: 10am-5pm 12/25: Closed 1/1: Closed Mon–Sun: 10am–7pm (previously Mon–Sun: 10am–7pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b2adb5b55a8d61dffa8bb84da982ae6d31f0983cad00e9ee004fad08e575796f",
+          "locationId": "213327395451684",
+          "name": "Oklahoma City, OK",
+          "type": "Rivian Adventure Network",
+          "city": "Oklahoma City",
+          "region": "OK",
+          "url": "/locations/ran-oklahoma-city-ok-c205279130/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 190)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "659676d0cb5d8fd4718067d76f8ab0bab07f32274177f854aea92d0b3f9a5ef5",
+          "locationId": "30",
+          "name": "Orlando, FL - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Orlando",
+          "region": "FL",
+          "url": "/locations/orlando-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 9am-4pm 11/26: Closed 12/24: 9am-4pm 12/25: Closed 1/1: Closed General hours Mon–Sat: 9am-6pm Sun: 9am-5:00pm (previously Mon–Sat: 9am-6pm Sun: 9am-5:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1383b3d135ace99c58d5ac68c2179d2a2f102c97aca9824612fef807a4dd7d9d",
+          "locationId": "96922781711411",
+          "name": "Price, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Price",
+          "region": "UT",
+          "url": "/locations/ran-price-ut-582697ea39/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 202 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1a699b66a0a699e6447099f421bdefef6d54f87918e0494bf97cfdc0e4e48d3e",
+          "locationId": "166229043927307",
+          "name": "Quartzsite, AZ",
+          "type": "Rivian Adventure Network",
+          "city": "Quartzsite",
+          "region": "AZ",
+          "url": "/locations/ran-quartzsite-az-972f370e16/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 195)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "036b140c02f507c67cc712f1d7110c1286a1b9eabade1f9d710cef350e9f4cc6",
+          "locationId": "229446042890445",
+          "name": "Roanoke, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Roanoke",
+          "region": "VA",
+          "url": "/locations/ran-roanoke-va-d0ae11d26e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 184 (previously 185)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "402c2ed447c6e9f1255a05165d4628d210d89b0d66b6bb6a24e6e17923c548da",
+          "locationId": "219786332766711",
+          "name": "Rocklin, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Rocklin",
+          "region": "CA",
+          "url": "/locations/ran-rocklin-ca-c7e4fe3b3f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 185 (previously 184)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "9fc43e3eb6bb493b7c6d969864023738f62ed7f9a2d6ca1f820f1e86d2263768",
+          "locationId": "54",
+          "name": "Roslyn, NY",
+          "type": "Space",
+          "city": "Roslyn",
+          "region": "NY",
+          "url": "/locations/roslyn/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10am-4pm 11/26: Closed 12/25: Closed 1/1: Closed Mon–Fri: 10:00am–6:00pm Sat: 10:00pm–7:00pm Sun: 12:00pm–6:00pm (previously Mon–Fri: 10:00am–6:00pm Sat: 10:00pm–7:00pm Sun: 12:00pm–6:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "08dcd3dc7188b3350a9c8d7587958973e0aca4cce76703ed043b89cf07416df2",
+          "locationId": "272515155339162",
+          "name": "Sacramento, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Sacramento",
+          "region": "CA",
+          "url": "/locations/ran-sacramento-ca-f7d9e0f865/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 188 (previously 189)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "fab917b4accb349e1e000466e6d952d5626436287f785e33fe5ebc6d557d9d08",
+          "locationId": "178870021911385",
+          "name": "Saginaw, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Saginaw",
+          "region": "MI",
+          "url": "/locations/ran-saginaw-mi-a2ae6c0eb1/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 195 (previously 196)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "6de42589e089e745ae5123e71829408a035f8d5cf7c1e4a551b7905f16c33ffa",
+          "locationId": "18906307910619",
+          "name": "Salida, CO",
+          "type": "Rivian Adventure Network",
+          "city": "Salida",
+          "region": "CO",
+          "url": "/locations/ran-salida-co-1131f7b519/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "384e315b9516b62d5e34da8a0e84be495ab661367aca8c4bb8569f5459b0ffc8",
+          "locationId": "212798187575528",
+          "name": "San Antonio, TX",
+          "type": "Rivian Adventure Network",
+          "city": "San Antonio",
+          "region": "TX",
+          "url": "/locations/ran-san-antonio-tx-c189f051d6/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 195)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "856eec2d92c9fc9d07ea008570f41c0e119dd2d1a58605db1f55ec1181eca03e",
+          "locationId": "170893426109227",
+          "name": "San Bernardino, CA",
+          "type": "Rivian Adventure Network",
+          "city": "San Bernardino",
+          "region": "CA",
+          "url": "/locations/ran-san-bernardino-ca-9b6d39e5e8/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 191 (previously 192)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d4a75ad986c833d458ed9cae0d670810e0078f505d407945c89e44084ba9d0ac",
+          "locationId": "43316260826867",
+          "name": "Slidell, LA",
+          "type": "Rivian Adventure Network",
+          "city": "Slidell",
+          "region": "LA",
+          "url": "/locations/ran-slidell-la-27655a47ac/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 203 (previously 204)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ebd3881b5357a4605b06c70b4d9b9bb88ddf5da949c240e158297b754c98df7b",
+          "locationId": "51689744291378",
+          "name": "Southampton, NY",
+          "type": "Rivian Adventure Network",
+          "city": "Southampton",
+          "region": "NY",
+          "url": "/locations/ran-southampton-ny-2f02f4c993/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 150 (previously 147)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "59eb163de8babeda3348175bcc45e2a8d53379e6b3b9b0ea0841ea3c16c3a5d1",
+          "locationId": "146",
+          "name": "St. Augustine, FL - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "St. Augustine",
+          "region": "FL",
+          "url": "/locations/st-augustine-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 9am-3:30pm 11/26: Closed 12/24: 9am-3:30pm 12/25: Closed 1/1: Closed General hours Mon–Sun: 9am–5:30pm (previously Mon–Sun: 9am–5:30pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8b3cd29a6926d00d5d4a5b0bc47585e27241e8f76512e531d826e767d898234d",
+          "locationId": "36150349692396",
+          "name": "Strongsville, OH",
+          "type": "Rivian Adventure Network",
+          "city": "Strongsville",
+          "region": "OH",
+          "url": "/locations/ran-strongsville-oh-20e0e8b13b/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 187 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8f3cfb6e06ee15e4fa63e2af0070572613a667b73a12d26e68b1e1b406fe4abc",
+          "locationId": "178258361445921",
+          "name": "Tallahassee, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Tallahassee",
+          "region": "FL",
+          "url": "/locations/ran-tallahassee-fl-a2200240ab/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 199 (previously 200)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "ab759f390bdc84eac81fe3279f40e05db0a966000adba36d54123e2104e57b18",
+          "locationId": "251441353060337",
+          "name": "Tampa, FL",
+          "type": "Rivian Adventure Network",
+          "city": "Tampa",
+          "region": "FL",
+          "url": "/locations/ran-tampa-fl-e4af4078ad/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "132f02f0799841cc365157a52266d5fc4c25f696c31760f82a070006362dce6c",
+          "locationId": "178472444771548",
+          "name": "Temecula, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Temecula",
+          "region": "CA",
+          "url": "/locations/ran-temecula-ca-a251da9cfa/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 198 (previously 199)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "b48e8fa5bc8ca4fee9f573bc2fce25813d36c2ebc5fac0b67add78c5304050a6",
+          "locationId": "196931123633120",
+          "name": "The Dalles, OR",
+          "type": "Rivian Adventure Network",
+          "city": "The Dalles",
+          "region": "OR",
+          "url": "/locations/ran-the-dalles-or-b31b999c19/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 195)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4f6713aaf5e7b335f02c3ac34b04959a7b9d72896afaba7143ed53dfba1de120",
+          "locationId": "75",
+          "name": "The Hamptons, NY Charging Outpost",
+          "type": "Outpost",
+          "city": "Southampton",
+          "region": "NY",
+          "url": "/locations/hamptons/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 9am-3pm 11/26: Closed 12/25: Closed Mon–Sun: 9am–5pm 24-hour restroom access (previously Mon–Sun: 9am–5pm 24-hour restroom access)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "0e85eaf3c92b12589985b467a94e0d7b09d0c456b5440e85574d6235c8e1b2e0",
+          "locationId": "48547681086758",
+          "name": "Tigard, OR",
+          "type": "Rivian Adventure Network",
+          "city": "Tigard",
+          "region": "OR",
+          "url": "/locations/ran-tigard-or-2c276339ea/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 176 (previously 177)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "01f919dceae41a516cadb6be641badeb058562f864f606309d3d3d5d3e0b2f13",
+          "locationId": "160016829112304",
+          "name": "Tinton Falls, NJ",
+          "type": "Rivian Adventure Network",
+          "city": "Tinton Falls",
+          "region": "NJ",
+          "url": "/locations/ran-tinton-falls-nj-9188d2329d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 182 (previously 180)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "1a01ae8d5f8c6f28d1efca7f2c005285409a586e4e2c2cf296bce0f31861e8bf",
+          "locationId": "260629789564797",
+          "name": "Tremonton, UT",
+          "type": "Rivian Adventure Network",
+          "city": "Tremonton",
+          "region": "UT",
+          "url": "/locations/ran-tremonton-ut-ed0a99f71d/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 200 (previously 201)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "179decf646305f640aaccaf35cece21ad6e45e1bc32836261344e1e9567a6de3",
+          "locationId": "104",
+          "name": "Trenton, NJ - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Trenton",
+          "region": "NJ",
+          "url": "/locations/trenton-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 8am-3pm 11/26: Closed 12/24: 8am-3pm 12/25: Closed 1/1: Closed General hours Mon–Sat: 8am–5:00pm Sun: 9am-4:00pm (previously Mon–Sat: 8am–5:00pm Sun: 9am-4:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "c45a7632bcaeb70e38d7375d4c5ab535549593ab180a07979bc5c92830959bd5",
+          "locationId": "244372480160287",
+          "name": "Troy, MI",
+          "type": "Rivian Adventure Network",
+          "city": "Troy",
+          "region": "MI",
+          "url": "/locations/ran-troy-mi-de4166d02f/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 170 (previously 171)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "968a28813b73ef24b346d2fdb35029bea5b7ed3a94ede5cea1c57c9cca9d9c80",
+          "locationId": "31506990674112",
+          "name": "Tysons, VA",
+          "type": "Rivian Adventure Network",
+          "city": "Tysons",
+          "region": "VA",
+          "url": "/locations/ran-tysons-va-1ca7caed6e/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 185 (previously 186)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "057520b42a393dcbbbc4f27d031030433aa150f7a2ed95b2a943402b673d8b09",
+          "locationId": "75072932440176",
+          "name": "Ukiah, CA",
+          "type": "Rivian Adventure Network",
+          "city": "Ukiah",
+          "region": "CA",
+          "url": "/locations/ran-ukiah-ca-4447476926/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 194 (previously 193)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "8cb1058fcfe645c7259650ff111c53c4f8848e9edc40ff3e7002ff8395170092",
+          "locationId": "136188286067891",
+          "name": "Waco, TX",
+          "type": "Rivian Adventure Network",
+          "city": "Waco",
+          "region": "TX",
+          "url": "/locations/ran-waco-tx-7bdcce5aa2/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 193 (previously 194)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "42f835a9a810d4a64cf96b12ccd4b14ffac29a44c2ec69bfe0a87428a52a0dab",
+          "locationId": "106",
+          "name": "West Henrietta, NY - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "West Henrietta",
+          "region": "NY",
+          "url": "/locations/west-henrietta-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 8am-3pm 11/26: Closed 12/24: 8am-3pm 12/25: Closed 1/1: Closed General hours Mon–Sun: 9:00am-5:30pm (previously Mon–Sun: 9:00am-5:30pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "e4f21b29f76b8cfe077152a136f73d7f6d46ea6c2819c17f7042464050a1c5ec",
+          "locationId": "105001383192459",
+          "name": "West Lebanon, NH",
+          "type": "Rivian Adventure Network",
+          "city": "West Lebanon",
+          "region": "NH",
+          "url": "/locations/ran-west-lebanon-nh-5f7f8a1625/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 179 (previously 180)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "4f65d6c2ea5cf601529e7c33d1432823974b38fe5a7c5581fb44e55ea147e0ac",
+          "locationId": "55",
+          "name": "White Plains, NY The Westchester",
+          "type": "Space",
+          "city": "White Plains",
+          "region": "NY",
+          "url": "/locations/white-plains/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 10am-5pm 11/26: Closed 12/24: 10am-5pm 12/25: Closed Mon–Thurs: 10:00am-7:00pm Fri-Sat: 10:00am-8:00pm Sun: 11:00pm-6:00pm (previously Mon–Thurs: 10:00am-8:00pm Fri-Sat: 10:00am-9:00pm Sun: 12:00pm-6:00pm)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "d4bd6cd46533bb517ea42335c524bcb64ae6ce675e664d73809c6d5ea555ac1f",
+          "locationId": "75388329664253",
+          "name": "Whittier, NC",
+          "type": "Rivian Adventure Network",
+          "city": "Whittier",
+          "region": "NC",
+          "url": "/locations/ran-whittier-nc-4490b68cdc/",
+          "kind": "changed",
+          "lines": [
+            "Average peak power (kW): 180 (previously 179)."
+          ],
+          "chargerReport": false
+        },
+        {
+          "id": "bf07a929a594b9d2e924a132ef39cb8340e8377f22bc97c536b683f24134883e",
+          "locationId": "50",
+          "name": "Woodbridge, NJ - Service + Demo Center",
+          "type": "Demo Center",
+          "city": "Iselin",
+          "region": "NJ",
+          "url": "/locations/woodbridge-service-demo-center/",
+          "kind": "changed",
+          "lines": [
+            "Visiting hours: 11/25: 8am-3pm 11/26: Closed 12/24: 8am-3pm 12/25: Closed 1/1: Closed General hours Mon–Thurs: 8am–4:30pm Fri–Sun: 9am-5:30pm (previously Mon–Thurs: 8am–4:30pm Fri–Sun: 9am-5:30pm)."
+          ],
+          "chargerReport": false
+        }
+      ]
+    },
+    {
       "date": "2026-11-23",
       "entries": [
         {
@@ -34716,11 +36001,11 @@
     }
   ],
   "latestCheck": {
-    "date": "2026-11-23",
+    "date": "2026-11-24",
     "sourceDates": {
-      "places": "2026-11-23",
-      "charging": "2026-11-23",
-      "chargingDetails": "2026-11-23"
+      "places": "2026-11-24",
+      "charging": "2026-11-24",
+      "chargingDetails": "2026-11-24"
     },
     "partialDetails": false
   }
