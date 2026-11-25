@@ -1,7 +1,8 @@
 /* Public HTML only. Daily, paced detail coverage with resumable checkpoints. */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {load}=require('cheerio');
-const NETWORK='https://rivianroamer.com/charging/networks/rivian-adventure-network';
+const SOURCE_ORIGIN='https://evroamer.com';
+const NETWORK=new URL('/charging/networks/rivian-adventure-network',SOURCE_ORIGIN).href;
 const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
 function parseNetwork(html,{minimum=100}={}){
  const $=load(html),markers=JSON.parse($('[data-cluster-map-markers-value]').attr('data-cluster-map-markers-value')||'[]');
@@ -91,7 +92,7 @@ async function refresh({output='data/roamer.json',cacheDir,cacheOnly=false,maxDe
  const listedIds=new Set(stations.map(s=>s.sourceId));
  for(const p of officialStations.filter(p=>p.type==='RAN'&&p.listed!==false&&p.status!=='planned')){
   if(!/^US-RIV-L\d+$/.test(p.sourceId))throw Error('Invalid official station ID');
-  if(!listedIds.has(p.sourceId))stations.push({...previous.get(p.sourceId),sourceId:p.sourceId,name:p.name,lat:p.lat,lng:p.lng,sourceUrl:`https://rivianroamer.com/charging/sites/${p.sourceId}`,networkListed:false});
+  if(!listedIds.has(p.sourceId))stations.push({...previous.get(p.sourceId),sourceId:p.sourceId,name:p.name,lat:p.lat,lng:p.lng,sourceUrl:`${SOURCE_ORIGIN}/charging/sites/${p.sourceId}`,networkListed:false});
  }
  const detailKeys=['detailReportedStatus','address','amenities','maxKw','averageKw','hours','detailRates','chargers','sourceUpdatedText','detailsObservedAt'];
  for(const s of stations){const prev=previous.get(s.sourceId);if(prev)for(const key of detailKeys)if(key in prev)s[key]=prev[key];if(listedIds.has(s.sourceId)){s.observedAt=observedAt;s.networkListed=true;}}

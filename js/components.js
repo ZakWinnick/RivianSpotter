@@ -87,7 +87,7 @@
   }
   function roamerDetails(r, {showUnavailable = false} = {}) {
     if(!r && !showUnavailable) return "";
-    if(r && !/^https:\/\/rivianroamer\.com\/charging\/sites\/US-RIV-L\d+$/.test(r.sourceUrl||"")) return "";
+    if(r && !/^https:\/\/(?:evroamer|rivianroamer)\.com\/charging\/sites\/US-RIV-L\d+$/.test(r.sourceUrl||"")) return "";
     r ||= {};
     const date = value=>new Date(value).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"UTC"});
     const observed = r.observedAt ? date(r.observedAt) : null, detailsDate=r.detailsObservedAt?date(r.detailsObservedAt):null;

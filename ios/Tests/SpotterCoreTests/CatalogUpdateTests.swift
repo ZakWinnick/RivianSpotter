@@ -5,6 +5,14 @@ import XCTest
 #endif
 
 final class CatalogUpdateTests: XCTestCase {
+    func testChargingSourceLinksUseCurrentHostForNewAndStoredURLs() {
+        for host in ["evroamer.com", "rivianroamer.com"] {
+            let section = PlaceInformation(title: "Charging", facts: [], expandable: false,
+                                           sourceURL: "https://\(host)/charging/sites/US-RIV-L123")
+            XCTAssertEqual(section.safeSourceURL?.absoluteString, "https://evroamer.com/charging/sites/US-RIV-L123")
+        }
+    }
+
     func testSiteDistancesAndNearbyPlaces() throws {
         let template = try JSONSerialization.jsonObject(with: JSONEncoder().encode(Catalog.bundled().places[0])) as! [String: Any]
         func site(_ id: String, _ lat: Any, _ changes: [String: Any] = [:]) throws -> Place {

@@ -10,7 +10,9 @@ test('mode, category and capability filters keep charging and mixed-purpose plac
  assert.deepEqual(M.filterLocations(records,{mode:'charge',type:'Waypoint'}).map(p=>p.id),[2]);
 });
 test('public network parser keeps prices, connectors, power and grades without inventing availability',()=>{
- const [r]=api.parseNetwork(network(),{minimum:1});assert.equal(r.connectorSummary,'4 NACS, 2 CCS');assert.equal(r.rates.Rivian,'$0.40');assert.equal(r.averagePeakKw,205);assert.equal(r.reliabilityGrade,'B');assert.equal(r.reliabilityTone,'lime');assert(!('available' in r));
+ const [r]=api.parseNetwork(network(),{minimum:1});
+ assert.equal(r.sourceUrl,'https://evroamer.com/charging/sites/US-RIV-L123');
+ assert.equal(r.connectorSummary,'4 NACS, 2 CCS');assert.equal(r.rates.Rivian,'$0.40');assert.equal(r.averagePeakKw,205);assert.equal(r.reliabilityGrade,'B');assert.equal(r.reliabilityTone,'lime');assert(!('available' in r));
  assert.throws(()=>api.parseNetwork(network()),/Incomplete/);assert.throws(()=>api.parseNetwork(network()+row('US-RIV-L123','Duplicate'),{minimum:1}),/duplicate/);
  assert.throws(()=>api.parseNetwork(network().replace('coordinates','badCoordinates'),{minimum:1}));
 });
@@ -129,7 +131,9 @@ test('official sites absent from network listing are checked directly every day,
  const fetchImpl=async url=>{calls.push(url);return new Response(detailFor(url).replace('</main>','<span>Energy</span><span>$0.59/kWh</span><span>Idle</span><span>$0.50/min</span></main>'));};
  try{
   const first=await api.refresh({...f,officialStations,fetchImpl,pause:async()=>{}});
-  assert.equal(calls.length,101);assert(calls.some(url=>url.endsWith(sourceId)));
+  assert.equal(calls.length,101);
+  assert.ok(calls.every(url=>new URL(url).hostname==='evroamer.com'));
+  assert.ok(calls.includes('https://evroamer.com/charging/sites/'+sourceId));
   assert.equal(first.networkCount,100);assert.equal(first.coverage.officialStationCount,1);assert.equal(first.coverage.checkedCount,1);assert.equal(first.coverage.freshDetailCount,1);
   const station=first.stations.find(s=>s.sourceId===sourceId);
   assert.equal(station.networkListed,false);assert.equal(station.connectorSummary,'1 NACS');assert.equal(station.detailRates.Energy,'$0.59/kWh');

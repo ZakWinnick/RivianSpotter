@@ -31,7 +31,12 @@ function chargingInformation(p) {
   if (r?.chargerCount != null && r.chargerCount !== p.chargerCount) facts.push(fact('Charger count in community snapshot', `${r.chargerCount} reported on ${day(r.observedAt)}; Rivian lists ${p.chargerCount ?? 'an unpublished number'}. Sources differ.`));
   if (r?.averagePeakKw || r?.averageKw) facts.push(fact('Average peak power', `${r.averagePeakKw || r.averageKw} kW · reported charging performance, separate from maximum rated power.`));
   if (r?.observedAt) facts.push(fact('Charging snapshot', day(r.observedAt)));
-  const summary = section(title, facts, false, r?.sourceUrl || null);
+  // Installed iOS clients allow the original host in the v1 catalog. It redirects to the new host.
+  const sourceURL = r?.sourceUrl?.replace(
+    /^https:\/\/evroamer\.com(?=\/charging\/sites\/US-RIV-L\d+$)/,
+    'https://rivianroamer.com'
+  ) || null;
+  const summary = section(title, facts, false, sourceURL);
   summary.reliability = locationReliability(p);
   summary.metrics = [fact(p.chargerCount === 1 ? 'Charger' : 'Chargers', p.chargerCount ?? '—'), fact('Maximum Power', p.maxKw > 0 ? `${p.maxKw} kW` : '—')];
   summary.tags = [p.type === 'RAN' ? 'DC Fast Charging' : 'Level 2 Charging', p.rivianOnly === true ? 'Rivian Vehicles Only' : p.rivianOnly === false ? 'Open to Other EVs' : 'Access Not Listed'];
