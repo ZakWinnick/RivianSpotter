@@ -301,6 +301,24 @@
   .charging-facts span { color: var(--muted); font-size: 0.8rem; }
   .charging-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .charging-note { font-size: 0.8rem; color: var(--muted); margin-top: 14px; line-height: 1.55; }
+  .ran-status, .ran-curves { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; }
+  .ran-status h3, .ran-curves h3 { font-size: 1rem; margin: 0 0 6px; }
+  .ran-status p, .ran-curves p { margin: 4px 0; }
+  .ran-curve-plot { display: block; width: 100%; height: auto; max-width: 580px; margin: 12px auto 4px; }
+  .ran-curve-grid line { stroke: var(--line); }
+  .ran-curve-grid text { fill: var(--muted); font-size: 13px; }
+  .ran-curve-plot polyline, .ran-curve-key path { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ran-curve-key { width: 20px; height: 10px; margin-right: 8px; vertical-align: middle; }
+  .ran-series-0 { stroke: light-dark(#28775d, #80caae); }
+  .ran-series-1 { stroke: light-dark(#9d531e, #f1aa6f); }
+  .ran-series-2 { stroke: light-dark(#3558a6, #8eb3ff); }
+  .ran-series-3 { stroke: light-dark(#9e3c79, #e597cb); }
+  .ran-series-4 { stroke: light-dark(#615489, #bda6eb); }
+  .ran-series-5 { stroke: light-dark(#836225, #dfc277); }
+  .ran-curves table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .ran-curves th, .ran-curves td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  .ran-curves th:first-child { padding-left: 0; }
+  .ran-curves th:not(:first-child), .ran-curves td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .charging-network { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); min-width: 0; }
   .charging-network > h3 { margin: 0 0 12px; font-size: 1rem; }
   .related-places { margin-top: 18px; background: var(--card); border-radius: var(--radius); overflow: hidden; }

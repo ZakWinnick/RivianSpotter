@@ -13,7 +13,7 @@ const locations = require('./js/location-model.js').combineLocations(places, cha
 // Code changes must invalidate old shell caches, including when data has not changed.
 const shellHash = require('node:crypto').createHash('sha256');
 for (const file of ['index.html', 'dynamic.html', 'service-worker.js', 'css/style.css',
-  'js/components.js', 'js/app.js', 'js/map.js', 'js/snapshot-store.js', 'js/dynamic-views.js']) {
+  'js/components.js', 'js/ran-performance.js', 'js/app.js', 'js/map.js', 'js/snapshot-store.js', 'js/dynamic-views.js']) {
   shellHash.update(file).update(fs.readFileSync(path.join(root, file)));
 }
 const release = require('./package.json').version + '-' + shellHash.digest('hex').slice(0, 12);
@@ -45,6 +45,7 @@ for (const file of [
   "js/app.js",
   "js/snapshot-store.js",
   "js/dynamic-views.js",
+  "js/ran-performance.js",
   "js/config.js",
   "js/updates.js",
   "js/locations.js",

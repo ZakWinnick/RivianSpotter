@@ -127,12 +127,14 @@
     const pinNote = permit ? "" : `<p class="charging-note">Approximate location from Rivian’s map. The exact charging-site address is not yet listed.</p>`;
     return `<p class="notice coming-soon"><strong>${escape(heading)}</strong></p>${stalled}<p>${intro}</p>${funding}${permitHtml}${pinNote}`;
   }
-  function chargingDetails(p) {
-    if(p.chargingNetworks)return `<p class="charging-note">Fast charging and Level 2 charging at this location.</p>${p.chargingNetworks.map(c=>`<section class="charging-network"><h3>${escape(typeLabel(c.type))}</h3>${chargingDetails(c)}</section>`).join('')}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
+  function chargingDetails(p, {showPerformance = false} = {}) {
+    if(p.chargingNetworks)return `<p class="charging-note">Fast charging and Level 2 charging at this location.</p>${p.chargingNetworks.map(c=>`<section class="charging-network"><h3>${escape(typeLabel(c.type))}</h3>${chargingDetails(c, {showPerformance})}</section>`).join('')}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
 
     if(p.status === "planned") return plannedDetails(p);
+    const performance = showPerformance && p.type === "RAN" && p.listed !== false && /^US-RIV-L\d+$/.test(p.sourceId)
+      ? `<div data-ran-performance="${escape(p.sourceId)}"></div>` : "";
     const access=p.rivianOnly===true?'Rivian Vehicles Only':p.rivianOnly===false?'Open to Other EVs':'Access Not Listed';
-    return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
+    return `${p.listed===false?'<p class="notice">This station is no longer listed on Rivian’s current charging map.</p>':''}<div class="charging-facts"><div><strong>${p.chargerCount == null ? '—' : escape(p.chargerCount)}</strong><span>${p.chargerCount===1?'Charger':'Chargers'}</span></div><div><strong>${p.maxKw>0?escape(p.maxKw)+' <small>kW</small>':'—'}</strong><span>Maximum Power</span></div></div><div class="charging-tags"><span class="tag">${p.type==='RAN'?'DC Fast Charging':'Level 2 Charging'}</span><span class="tag">${access}</span></div><p class="charging-note">Station details, not live charger availability. Charging speed depends on the vehicle and conditions. Check connector compatibility and any host access rules before your visit.</p>${performance}${roamerDetails(p.roamer, {showUnavailable:p.type === "RAN"})}${relatedPlaces(p.nearbyPlaces,'Nearby Rivian Places')}`;
   }
   const tabIcons = {
     Locations: '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/>',
