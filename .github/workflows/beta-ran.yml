@@ -9,7 +9,7 @@ on:
         description: Beta operation
         type: choice
         default: refresh-data
-        options: [refresh-data, smoke-test-data, deploy-design]
+        options: [refresh-data, smoke-test-data, deploy-design, sync-catalog]
       design_sha:
         description: Exact beta-main commit to deploy
         type: string
@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   collect:
-    if: github.ref == 'refs/heads/main' && inputs.operation != 'deploy-design'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.operation == 'refresh-data' || inputs.operation == 'smoke-test-data')
     runs-on: ubuntu-latest
     timeout-minutes: 115
     steps:
@@ -85,6 +85,50 @@ jobs:
           fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh beta RAN observations' -- ran-performance.json
           git push origin HEAD:refs/heads/beta-ran-data
+
+  sync_catalog:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.operation == 'sync-catalog')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Stage and validate the current catalog
+        id: catalog
+        run: |
+          production="https://production-data.d3qy7654vf25z2.amplifyapp.com"
+          beta="https://beta-data.d3qy7654vf25z2.amplifyapp.com"
+          mkdir -p "$RUNNER_TEMP/catalog/data" "$RUNNER_TEMP/catalog/api/v1"
+          cd "$RUNNER_TEMP/catalog"
+          for item in data/beta-bundle.json data/beta-routes.json api/v1/catalog.json \
+              data/locations.json data/charging.json data/roamer.json data/charging-summary.json \
+              data/refresh-summary.json data/location-history.json data/location-updates.json sitemap.xml; do
+            curl -fsSL --retry 3 --max-time 30 "$production/$item" -o "$item"
+          done
+          snapshot=$(jq -er '.snapshotId | select(test("^[a-f0-9]{64}$"))' data/beta-bundle.json)
+          test "$snapshot" = "$(jq -er '.snapshotId' data/beta-routes.json)"
+          test "$(jq -er '.revision' data/beta-bundle.json)" = "$(jq -er '.revision' api/v1/catalog.json)"
+          current=$(curl -fsSL --max-time 20 "$beta/data/beta-bundle.json" | jq -r '.snapshotId' || true)
+          if [ "$snapshot" = "$current" ]; then
+            echo "Beta already serves the current catalog."
+            exit 0
+          fi
+          zip -qr "$RUNNER_TEMP/beta-catalog.zip" api data sitemap.xml
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - uses: aws-actions/configure-aws-credentials@v4
+        if: steps.catalog.outputs.changed == 'true'
+        with:
+          role-to-assume: ${{ vars.AWS_AMPLIFY_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Publish the catalog to the beta data origin
+        if: steps.catalog.outputs.changed == 'true'
+        env:
+          AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
+        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/beta-catalog.zip" beta-data
 
   build_design:
     if: github.ref == 'refs/heads/main' && inputs.operation == 'deploy-design'
