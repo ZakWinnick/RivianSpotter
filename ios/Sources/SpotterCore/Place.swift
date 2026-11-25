@@ -65,7 +65,11 @@ public struct PlaceInformation: Codable, Equatable, Sendable {
     public var tags: [String]? = nil
     public var safeSourceURL: URL? {
         guard let sourceURL, let url = URL(string: sourceURL), url.scheme == "https",
-              ["rivianroamer.com", "x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""), url.user == nil, url.password == nil else { return nil }
+              ["evroamer.com", "rivianroamer.com", "x.com", "twitter.com", "www.google.com", "google.com"].contains(url.host ?? ""), url.user == nil, url.password == nil else { return nil }
+        if url.host == "rivianroamer.com", var destination = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            destination.host = "evroamer.com"
+            return destination.url
+        }
         return url
     }
 }
