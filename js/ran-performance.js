@@ -5,6 +5,8 @@
 })(globalThis, function (escape) {
   "use strict";
   const dashes = ["", "9 4", "3 4", "12 4 3 4"];
+  const betaHosts = new Set(["beta.rivspotter.com", "beta.d3qy7654vf25z2.amplifyapp.com"]);
+  const betaFeed = "https://raw.githubusercontent.com/ZakWinnick/RivianSpotter/beta-ran-data/ran-performance.json";
   const timestamp = new Intl.DateTimeFormat("en-US", {
     month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
   });
@@ -65,16 +67,22 @@
   async function mount(container) {
     const target = container.querySelector("[data-ran-performance]");
     if (!target) return;
-    try {
-      const response = await fetch("/data/ran-performance.json", {cache: "no-cache", signal: AbortSignal.timeout(5000)});
-      if (!response.ok) return;
-      const feed = await response.json();
-      const station = feed.schemaVersion === 1 && feed.stations?.[target.dataset.ranPerformance];
-      if (station && target.isConnected) {
-        target.innerHTML = renderStatus(station.availability, station.observedAt) + renderCurves(station.curves);
+    const feeds = ["/data/ran-performance.json"];
+    if (betaHosts.has(location.hostname)) feeds.push(betaFeed);
+    for (const url of feeds) {
+      try {
+        const response = await fetch(url, {cache: "no-cache", signal: AbortSignal.timeout(5000)});
+        if (!response.ok) continue;
+        const feed = await response.json();
+        if (feed.schemaVersion !== 1) continue;
+        const station = feed.stations?.[target.dataset.ranPerformance];
+        if (station && target.isConnected) {
+          target.innerHTML = renderStatus(station.availability, station.observedAt) + renderCurves(station.curves);
+        }
+        return;
+      } catch {
+        // Station details still work when the companion feed is unavailable.
       }
-    } catch {
-      // Station details still work when the companion feed is unavailable.
     }
   }
 
