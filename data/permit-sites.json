@@ -461,6 +461,20 @@
       "coordinateSource": "RAN Tracker’s map pin"
     },
     {
+      "city": "Hingham",
+      "state": "MA",
+      "address": "94 Derby Street",
+      "addressNote": "main address of Whole Foods at Derby Street Shops",
+      "siteName": "Whole Foods at Derby Street Shops",
+      "stage": "permit-approved",
+      "firstReported": "2026-11-25",
+      "reportedOn": "2026-11-25",
+      "sourceUrl": "https://x.com/i/status/2125688020775153896",
+      "lat": 42.178869,
+      "lng": -70.90794,
+      "coordinateSource": "OpenStreetMap Nominatim geocode of the permit address (© OpenStreetMap contributors)"
+    },
+    {
       "city": "Edison",
       "state": "NJ",
       "address": "199 Lafayette Ave",
