@@ -1,0 +1,140 @@
+name: RivSpotter beta web and RAN data
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Beta operation
+        type: choice
+        default: refresh-data
+        options: [refresh-data, smoke-test-data, deploy-design]
+      design_sha:
+        description: Exact beta-main commit to deploy
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rivspotter-beta-${{ inputs.operation == 'deploy-design' && 'design' || 'ran-data' }}
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    if: github.ref == 'refs/heads/main' && inputs.operation != 'deploy-design'
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: beta-main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Read the current catalog and previous observations
+        run: |
+          mkdir -p "$RUNNER_TEMP/ran"
+          curl -fsSL --retry 3 --max-time 30 https://production-data.d3qy7654vf25z2.amplifyapp.com/data/charging.json -o "$RUNNER_TEMP/ran/charging.json"
+          curl -fsSL --retry 3 --max-time 30 https://raw.githubusercontent.com/ZakWinnick/RivianSpotter/beta-ran-data/ran-performance.json -o "$RUNNER_TEMP/ran/ran-performance.json"
+      - name: Refresh station observations
+        env:
+          OPERATION: ${{ inputs.operation }}
+        run: |
+          export RIVSPOTTER_RAN_CATALOG="$RUNNER_TEMP/ran/charging.json"
+          args=()
+          if [ "$OPERATION" = smoke-test-data ]; then
+            args+=(US-RIV-L10186351206568156344)
+          fi
+          if ! node scripts/refresh-ran-preview.cjs "$RUNNER_TEMP/ran/ran-performance.json" "${args[@]}"; then
+            echo "::warning::The sweep was incomplete. Publishing validated observations and preserving previous values."
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beta-ran-snapshot
+          path: ${{ runner.temp }}/ran/ran-performance.json
+          if-no-files-found: error
+          retention-days: 3
+
+  publish:
+    if: github.ref == 'refs/heads/main'
+    needs: collect
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: beta-ran-data
+      - uses: actions/download-artifact@v4
+        with:
+          name: beta-ran-snapshot
+          path: ${{ runner.temp }}/observations
+      - name: Publish the beta JSON feed
+        run: |
+          file="$RUNNER_TEMP/observations/ran-performance.json"
+          jq -e '.schemaVersion == 1 and (.stations | type == "object" and length > 0)' "$file" >/dev/null
+          cp "$file" ran-performance.json
+          if git diff --quiet -- ran-performance.json; then
+            echo "Preview snapshot is unchanged."
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh beta RAN observations' -- ran-performance.json
+          git push origin HEAD:refs/heads/beta-ran-data
+
+  build_design:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'deploy-design'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: beta-main
+          persist-credentials: false
+      - name: Verify the requested beta revision
+        env:
+          DESIGN_SHA: ${{ inputs.design_sha }}
+        run: test "$(git rev-parse HEAD)" = "$DESIGN_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: cd dist && zip -qr "$RUNNER_TEMP/beta-shell.zip" .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beta-shell
+          path: ${{ runner.temp }}/beta-shell.zip
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy_design:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'deploy-design'
+    needs: build_design
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: beta-shell
+          path: ${{ runner.temp }}/beta-shell
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_AMPLIFY_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Deploy the existing Amplify beta branch
+        env:
+          AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID }}
+        run: node scripts/deploy-amplify.cjs "$RUNNER_TEMP/beta-shell/beta-shell.zip" beta
