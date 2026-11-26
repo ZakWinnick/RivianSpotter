@@ -20,8 +20,8 @@
       ? " · " + (reportedAt ? "Reported " : "Checked ") + '<time datetime="' + escape(date.toISOString()) + '">' + escape(timestamp.format(date)) + "</time>"
       : "";
     return '<section class="ran-status"><h3>Charger status</h3><p><strong>' +
-      working + " of " + total + " chargers working</strong></p>" +
-      '<p class="charging-note">Equipment status' + when + "</p></section>";
+      working + " of " + total + " chargers available</strong></p>" +
+      '<p class="charging-note">Equipment in service' + when + "</p></section>";
   }
 
   function renderCurves(series) {

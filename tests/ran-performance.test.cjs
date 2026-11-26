@@ -41,7 +41,7 @@ test('reads working count and validated observed curves for the expected station
 
 test('availability and curve cards can display independently', () => {
   const result = parseStation(page(stationId), stationId, seen);
-  assert.match(view.renderStatus(result.availability, seen), /0 of 6 chargers working/);
+  assert.match(view.renderStatus(result.availability, seen), /0 of 6 chargers available/);
   assert.match(view.renderStatus(result.availability, seen), /Reported/);
   assert.equal(view.renderStatus(null, seen), '');
   assert.equal(view.renderCurves([]), '');
