@@ -277,7 +277,7 @@ test('crosshairs-only locator handles pending, granted and denied location reque
 });
 
 test('popup close restores its originating view, including switching locations and desktop resize',()=>{
- const app=read('js/app.js'),flow=app.slice(app.indexOf('  function select(id,'),app.indexOf('  function reset()'));
+ const app=read('js/app.js'),flow=app.slice(app.indexOf('  function renderDetail('),app.indexOf('  function reset()'));
  for(const initial of ['list','map']){
   const nodes=new Map(),get=id=>{if(!nodes.has(id))nodes.set(id,{dataset:{},setAttribute(){},focus(){},hidden:true});return nodes.get(id);};
   let clearCount=0;const ctx={selected:null,view:initial,detailReturnView:'list',lastTrigger:null,innerWidth:390,

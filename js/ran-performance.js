@@ -10,6 +10,13 @@
   const timestamp = new Intl.DateTimeFormat("en-US", {
     month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
   });
+  const emptyMessages = {
+    planned: ["Coming soon", "Charging curves will appear once sessions are reported."],
+    unlisted: ["This station is no longer listed.", "No current charging curves are available."],
+    missing: ["No charger status has been reported.", "No charging curves have been reported."],
+    unavailable: ["Temporarily unavailable.", "Temporarily unavailable."],
+  };
+  let cachedFeed, cacheUntil = 0, pendingFeed;
 
   function renderStatus(availability, observedAt) {
     if (!availability) return "";
@@ -64,9 +71,7 @@
       '<th scope="col">Vehicles</th></tr></thead><tbody>' + rows + "</tbody></table></div></section>";
   }
 
-  async function mount(container) {
-    const target = container.querySelector("[data-ran-performance]");
-    if (!target) return;
+  async function loadFeed() {
     const feeds = ["/data/ran-performance.json"];
     if (betaHosts.has(location.hostname)) feeds.push(betaFeed);
     for (const url of feeds) {
@@ -74,16 +79,35 @@
         const response = await fetch(url, {cache: "no-cache", signal: AbortSignal.timeout(5000)});
         if (!response.ok) continue;
         const feed = await response.json();
-        if (feed.schemaVersion !== 1) continue;
-        const station = feed.stations?.[target.dataset.ranPerformance];
-        if (station && target.isConnected) {
-          target.innerHTML = renderStatus(station.availability, station.observedAt) + renderCurves(station.curves);
-        }
-        return;
+        if (feed.schemaVersion !== 1 || !feed.stations || typeof feed.stations !== "object" || Array.isArray(feed.stations)) continue;
+        cachedFeed = feed;
+        cacheUntil = Date.now() + 60_000;
+        return feed;
       } catch {
-        // Station details still work when the companion feed is unavailable.
+        // Try the next feed location.
       }
     }
+    return null;
+  }
+
+  function emptyCard(section, heading, message) {
+    return '<section class="ran-' + section + '"><h3>' + heading +
+      '</h3><p class="charging-note">' + message + "</p></section>";
+  }
+
+  async function mount(container) {
+    const target = container.querySelector("[data-ran-performance]");
+    if (!target) return;
+    const {ranPerformance: id, ranPerformanceState: state} = target.dataset;
+    const feed = id && (Date.now() < cacheUntil
+      ? cachedFeed : await (pendingFeed ??= loadFeed().finally(() => { pendingFeed = null; })));
+    if (!target.isConnected) return;
+    const station = feed?.stations[id];
+    const messages = emptyMessages[state] || emptyMessages[id && !feed ? "unavailable" : "missing"];
+    const status = renderStatus(station?.availability, station?.observedAt) ||
+      emptyCard("status", "Charger status", messages[0]);
+    const chart = renderCurves(station?.curves) || emptyCard("curves", "Charging curves", messages[1]);
+    target.innerHTML = status + chart;
   }
 
   return {mount, renderStatus, renderCurves};

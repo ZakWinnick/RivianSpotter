@@ -247,7 +247,13 @@
       phone ? `<a href="tel:${e(phone)}">Call ${e(p.phone)} ${U.icon("chevron")}</a>` : "",
     ].filter(Boolean).join("");
     const hoursLabel = p.type === "Service Center" ? "Service hours" : "Visiting hours";
-    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(U.locationTypeLabel(p))}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><div class="location-title"><h2 id="detail-title" tabindex="-1"><a href="${e(M.locationUrl(p))}">${e(p.name)}</a></h2>${U.locationGrade(p)}</div><address>${e(M.addressLine(p))}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${linkRows ? `<div class="link-group">${linkRows}</div>` : ""}</div>${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p)}</div>` : `<div class="detail-section card-section"><h3><span class="tile tile-hours">${U.icon("clock")}</span>${hoursLabel} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h4>Service hours</h4><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h4>Charging hours</h4><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted fine-print">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}${sourceDate(p)}<div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details ${U.icon("chevron")}</a>`;
+    return `<div class="detail-top"><span class="category">${typeIcon(p)}${e(U.locationTypeLabel(p))}</span><button id="close-detail" class="icon-button" type="button" aria-label="Close location details">${U.icon("close")}</button></div><div class="location-title"><h2 id="detail-title" tabindex="-1"><a href="${e(M.locationUrl(p))}">${e(p.name)}</a></h2>${U.locationGrade(p)}</div><address>${e(M.addressLine(p))}<br>${e(p.city)}, ${e(p.state)} ${e(p.postalCode || "")}${p.country ? " · " + e(p.country === "US" ? "United States" : p.country === "CA" ? "Canada" : p.country) : ""}</address><div class="detail-actions">${directions ? `<a class="button primary" href="${e(directions)}" target="_blank" rel="noopener">${U.icon("arrow")}Directions</a>` : ""}${linkRows ? `<div class="link-group">${linkRows}</div>` : ""}</div>${M.isCharging(p) ? `<div class="detail-section">${U.chargingDetails(p, {showPerformance: true})}</div>` : `<div class="detail-section card-section"><h3><span class="tile tile-hours">${U.icon("clock")}</span>${hoursLabel} <span class="status ${h.state}">${e(h.label)}</span></h3><p class="hours-text">${e((p.type === "Service Center" ? p.serviceHours : p.hours) || "Hours not listed.")}</p>${p.serviceHours && p.type !== "Service Center" ? `<h4>Service hours</h4><p class="hours-text">${e(p.serviceHours)}</p>` : ""}${p.serviceStatus === "planned" ? '<p class="notice warning">Service coming soon. Visiting and demo-drive hours are listed above.</p>' : ""}${p.chargingHours ? `<h4>Charging hours</h4><p class="hours-text">${e(p.chargingHours)}</p>` : ""}${p.timezone ? `<p class="muted fine-print">Local time · ${e(p.timezone.replaceAll("_", " "))}</p>` : ""}</div>${U.relatedPlaces(p.chargingStations, "Charging Nearby")}`}${sourceDate(p)}<div class="utility-actions"><button class="button" type="button" data-save="${p.id}" aria-pressed="${saveIds.includes(p.id)}">${U.icon("save")}${saveIds.includes(p.id) ? "Saved" : "Save"}</button><button class="button" type="button" data-share="${p.id}">${U.icon("share")}Share</button><a class="button" href="/contact.html?location=${encodeURIComponent(p.slug)}">Report update</a></div><a class="detail-link" href="${M.locationUrl(p)}">Full location details ${U.icon("chevron")}</a>`;
+  }
+  function renderDetail(p, scrollTop = 0) {
+    const detailSheet = $("detail");
+    detailSheet.innerHTML = detail(p);
+    globalThis.SpotterRanPerformance?.mount(detailSheet);
+    detailSheet.scrollTop = scrollTop;
   }
   function select(id, { focus = true, push = true } = {}) {
     const p = find(id);
@@ -260,9 +266,8 @@
       lastTrigger = document.activeElement;
     }
     selected = p;
-    $("detail").innerHTML = detail(p);
     $("detail").hidden = false;
-    $("detail").scrollTop = 0;
+    renderDetail(p);
     browseChrome();
     if(innerWidth <= 760) setView("map", false);
     document.querySelectorAll(".location-row").forEach((el) => {
@@ -413,7 +418,7 @@
         if (previous) selected = find(previous) || selected;
         const resultsTop=$('results').scrollTop; render(); $('results').scrollTop=resultsTop;
         if (selected && !$('detail').hidden) {
-          const top=$('detail').scrollTop; $('detail').innerHTML=detail(selected); $('detail').scrollTop=top;
+          renderDetail(selected, $('detail').scrollTop);
         }
       }
     }
