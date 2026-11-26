@@ -102,7 +102,7 @@
     const feed = id && (Date.now() < cacheUntil
       ? cachedFeed : await (pendingFeed ??= loadFeed().finally(() => { pendingFeed = null; })));
     if (!target.isConnected) return;
-    const station = feed?.stations[id];
+    const station = feed?.stations?.[id];
     const messages = emptyMessages[state] || emptyMessages[id && !feed ? "unavailable" : "missing"];
     const status = renderStatus(station?.availability, station?.observedAt) ||
       emptyCard("status", "Charger status", messages[0]);

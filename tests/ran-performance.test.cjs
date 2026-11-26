@@ -67,6 +67,15 @@ test('a coming-soon RAN page keeps a charging performance section', () => {
   assert.doesNotMatch(ui.chargingDetails({...site, type: 'Waypoint'}, {showPerformance: true}), /data-ran-performance/);
 });
 
+test('a coming-soon RAN shows both explanations without requesting the feed', async () => {
+  const {module, target, container, code} = await mountFixture();
+  target.dataset = {ranPerformance: '', ranPerformanceState: 'planned'};
+  vm.runInNewContext(code, {module, fetch: () => assert.fail('Unexpected request for a coming-soon station')});
+  await module.exports(escapeHtml).mount(container);
+  assert.match(target.innerHTML, /Charger status.*Coming soon/);
+  assert.match(target.innerHTML, /Charging curves.*once sessions are reported/);
+});
+
 test('an in-service count stays visible when the station has no observed curves', async () => {
   const station = parseStation(page(stationId, false), stationId, seen);
   const {module, target, container, code} = await mountFixture();
